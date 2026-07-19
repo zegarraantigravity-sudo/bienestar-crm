@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Phone, Calendar, Award, DollarSign, Target, TrendingUp } from 'lucide-react';
 
 export default function DashboardView({ leads }) {
-  const [monthlyGoal, setMonthlyGoal] = useState(15000);
+  const [monthlyGoal, setMonthlyGoal] = useState(30000);
 
   const totalLeads = leads.length;
   
@@ -43,7 +43,7 @@ export default function DashboardView({ leads }) {
   const goalPercentage = monthlyGoal > 0 ? Math.min(((totalGanado / monthlyGoal) * 100), 100) : 0;
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(val);
   };
 
   // Find max value in funnel to scale the bar lengths

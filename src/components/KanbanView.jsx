@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Phone, Calendar, CheckCircle, AlertTriangle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, Calendar, Target } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 
 const columns = [
@@ -18,6 +18,17 @@ const clientTypeMapping = {
   tienda_suplementos: { label: 'Tienda', cssClass: 'badge-tienda' },
   herbalife_distribuidor: { label: 'Herbalife', cssClass: 'badge-herbalife' },
   otro: { label: 'Otro', cssClass: 'badge-otro' }
+};
+
+const planLabels = {
+  plan_30: 'Plan 30',
+  plan_80: 'Plan 80',
+  plan_200: 'Plan 200',
+  plan_500: 'Plan 500',
+  plan_1200: 'Plan 1200',
+  prueba_30_creditos: 'Plan 30',
+  estandar: 'Plan Estándar',
+  premium: 'Plan Premium'
 };
 
 export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
@@ -56,11 +67,17 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
   const handleLogCall = async (lead, e) => {
     e.stopPropagation(); // Prevent modal trigger
     
-    // Parse notes
+    // Parse notes payload
     let notesList = [];
+    let nextActionText = '';
     try {
-      notesList = JSON.parse(lead.notes || '[]');
-      if (!Array.isArray(notesList)) {
+      const parsed = JSON.parse(lead.notes || '[]');
+      if (Array.isArray(parsed)) {
+        notesList = parsed;
+      } else if (parsed && typeof parsed === 'object') {
+        notesList = parsed.timeline || [];
+        nextActionText = parsed.next_action || '';
+      } else {
         notesList = lead.notes ? [{ date: lead.created_at || new Date().toISOString(), text: lead.notes }] : [];
       }
     } catch (err) {
@@ -72,14 +89,19 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
       date: new Date().toISOString(),
       text: "📞 Llamada comercial realizada desde el Tablero Kanban."
     };
-    const updatedNotes = [newNote, ...notesList];
+    const updatedNotesList = [newNote, ...notesList];
 
     try {
+      const notesPayload = JSON.stringify({
+        timeline: updatedNotesList,
+        next_action: nextActionText
+      });
+
       const { data, error } = await supabase
         .from('leads')
         .update({
           status: 'llamado',
-          notes: JSON.stringify(updatedNotes),
+          notes: notesPayload,
           last_interaction: new Date().toISOString()
         })
         .eq('id', lead.id)
@@ -94,7 +116,17 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
   };
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(val);
+  };
+
+  const getNextAction = (notesString) => {
+    try {
+      const obj = JSON.parse(notesString);
+      if (obj && !Array.isArray(obj) && typeof obj === 'object') {
+        return obj.next_action || '';
+      }
+    } catch (e) {}
+    return '';
   };
 
   return (
@@ -124,6 +156,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                 const clientType = clientTypeMapping[lead.client_type] || clientTypeMapping.otro;
                 const nextStatus = getNextStatus(lead.status);
                 const prevStatus = getPrevStatus(lead.status);
+                const action = getNextAction(lead.notes);
 
                 return (
                   <div 
@@ -139,9 +172,31 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                         {clientType.label}
                       </span>
                       <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
-                        {lead.target_plan === 'prueba_30_creditos' ? '30 Creds' : lead.target_plan}
+                        {planLabels[lead.target_plan] || lead.target_plan}
                       </span>
                     </div>
+
+                    {/* Display Next Action if defined */}
+                    {action && (
+                      <div style={{ 
+                        fontSize: '0.75rem', 
+                        color: 'hsl(var(--color-presentacion))', 
+                        marginTop: '8px', 
+                        padding: '6px 8px', 
+                        backgroundColor: 'hsla(35, 100%, 55%, 0.08)', 
+                        borderRadius: '6px',
+                        border: '1px solid hsla(35, 100%, 55%, 0.15)',
+                        fontWeight: 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}>
+                        <Target size={12} style={{ flexShrink: 0 }} />
+                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {action}
+                        </span>
+                      </div>
+                    )}
 
                     <div className="card-footer">
                       <span className="card-value">{formatCurrency(lead.estimated_value)}</span>

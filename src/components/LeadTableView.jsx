@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Phone, Mail, User, Plus } from 'lucide-react';
+import { Search, Phone, Mail, Plus, Target } from 'lucide-react';
 
 const clientTypeLabels = {
   coach: 'Entrenador (Coach)',
@@ -11,7 +11,13 @@ const clientTypeLabels = {
 };
 
 const planLabels = {
-  prueba_30_creditos: 'Prueba 30 Créditos',
+  plan_30: 'Plan 30',
+  plan_80: 'Plan 80',
+  plan_200: 'Plan 200',
+  plan_500: 'Plan 500',
+  plan_1200: 'Plan 1200',
+  // legacy
+  prueba_30_creditos: 'Plan 30',
   estandar: 'Plan Estándar',
   premium: 'Plan Premium'
 };
@@ -42,7 +48,16 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
 
   // Filter logic
   const filteredLeads = leads.filter(lead => {
-    const searchString = `${lead.business_name} ${lead.contact_name} ${lead.phone || ''} ${lead.email || ''}`.toLowerCase();
+    // Parse next action for searching
+    let nextActionText = '';
+    try {
+      const obj = JSON.parse(lead.notes);
+      if (obj && !Array.isArray(obj) && typeof obj === 'object') {
+        nextActionText = obj.next_action || '';
+      }
+    } catch (e) {}
+
+    const searchString = `${lead.business_name} ${lead.contact_name} ${lead.phone || ''} ${lead.email || ''} ${nextActionText}`.toLowerCase();
     const matchesSearch = searchString.includes(searchTerm.toLowerCase());
     
     const matchesStatus = statusFilter === 'todos' || lead.status === statusFilter;
@@ -53,7 +68,17 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
   });
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(val);
+  };
+
+  const getNextAction = (notesString) => {
+    try {
+      const obj = JSON.parse(notesString);
+      if (obj && !Array.isArray(obj) && typeof obj === 'object') {
+        return obj.next_action || '';
+      }
+    } catch (e) {}
+    return '';
   };
 
   return (
@@ -65,7 +90,7 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
           <Search className="search-icon-svg" size={18} />
           <input
             type="text"
-            placeholder="Buscar por empresa, contacto, teléfono, correo..."
+            placeholder="Buscar por empresa, contacto, próxima acción, teléfono..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -91,9 +116,11 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
           onChange={(e) => setPlanFilter(e.target.value)}
         >
           <option value="todos">Todos los Planes</option>
-          <option value="prueba_30_creditos">Prueba 30 Créditos</option>
-          <option value="estandar">Plan Estándar</option>
-          <option value="premium">Plan Premium</option>
+          <option value="plan_30">Plan 30</option>
+          <option value="plan_80">Plan 80</option>
+          <option value="plan_200">Plan 200</option>
+          <option value="plan_500">Plan 500</option>
+          <option value="plan_1200">Plan 1200</option>
         </select>
 
         <select
@@ -142,53 +169,62 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
                 </tr>
               </thead>
               <tbody>
-                {filteredLeads.map(lead => (
-                  <tr key={lead.id} onClick={() => onSelectLead(lead)}>
-                    <td>
-                      <div className="td-name">{lead.business_name}</div>
-                      <div className="td-subtitle">{lead.contact_name}</div>
-                    </td>
-                    <td>
-                      <span className={`badge badge-client ${clientTypeBadgeClasses[lead.client_type] || 'badge-otro'}`}>
-                        {clientTypeLabels[lead.client_type] || lead.client_type}
-                      </span>
-                    </td>
-                    <td>
-                      <div style={{ fontWeight: 500 }}>
-                        {planLabels[lead.target_plan] || lead.target_plan}
-                      </div>
-                    </td>
-                    <td>
-                      <div className={`status-indicator status-${lead.status}`}>
-                        {statusLabels[lead.status] || lead.status}
-                      </div>
-                    </td>
-                    <td>
-                      <div style={{ fontWeight: 700 }}>
-                        {formatCurrency(lead.estimated_value)}
-                      </div>
-                    </td>
-                    <td>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.8rem' }}>
-                        {lead.phone && (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
-                            <Phone size={12} style={{ color: 'hsl(var(--text-muted))' }} />
-                            <span>{lead.phone}</span>
+                {filteredLeads.map(lead => {
+                  const action = getNextAction(lead.notes);
+                  return (
+                    <tr key={lead.id} onClick={() => onSelectLead(lead)}>
+                      <td>
+                        <div className="td-name">{lead.business_name}</div>
+                        <div className="td-subtitle">{lead.contact_name}</div>
+                        {action && (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: 'hsl(var(--color-presentacion))', marginTop: '6px', fontWeight: 500 }}>
+                            <Target size={12} />
+                            <span>Próxima: {action}</span>
                           </div>
                         )}
-                        {lead.email && (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
-                            <Mail size={12} style={{ color: 'hsl(var(--text-muted))' }} />
-                            <span>{lead.email}</span>
-                          </div>
-                        )}
-                        {!lead.phone && !lead.email && (
-                          <span style={{ color: 'hsl(var(--text-muted))', fontStyle: 'italic' }}>Sin datos</span>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td>
+                        <span className={`badge badge-client ${clientTypeBadgeClasses[lead.client_type] || 'badge-otro'}`}>
+                          {clientTypeLabels[lead.client_type] || lead.client_type}
+                        </span>
+                      </td>
+                      <td>
+                        <div style={{ fontWeight: 500 }}>
+                          {planLabels[lead.target_plan] || lead.target_plan}
+                        </div>
+                      </td>
+                      <td>
+                        <div className={`status-indicator status-${lead.status}`}>
+                          {statusLabels[lead.status] || lead.status}
+                        </div>
+                      </td>
+                      <td>
+                        <div style={{ fontWeight: 700 }}>
+                          {formatCurrency(lead.estimated_value)}
+                        </div>
+                      </td>
+                      <td>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.8rem' }}>
+                          {lead.phone && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
+                              <Phone size={12} style={{ color: 'hsl(var(--text-muted))' }} />
+                              <span>{lead.phone}</span>
+                            </div>
+                          )}
+                          {lead.email && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
+                              <Mail size={12} style={{ color: 'hsl(var(--text-muted))' }} />
+                              <span>{lead.email}</span>
+                            </div>
+                          )}
+                          {!lead.phone && !lead.email && (
+                            <span style={{ color: 'hsl(var(--text-muted))', fontStyle: 'italic' }}>Sin datos</span>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
