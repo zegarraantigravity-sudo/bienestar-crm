@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Columns, Users, Plus, RefreshCw } from 'lucide-react';
+import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut } from 'lucide-react';
 import { supabase } from './lib/supabaseClient';
 
 // Views
 import DashboardView from './components/DashboardView';
 import KanbanView from './components/KanbanView';
 import LeadTableView from './components/LeadTableView';
+import LoginView from './components/LoginView';
 
 // Modals
 import LeadModal from './components/LeadModal';
 
 export default function App() {
+  const [session, setSession] = useState(null);
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeView, setActiveView] = useState('dashboard');
@@ -19,8 +21,27 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
 
-  // Fetch leads from Supabase
+  // Monitor Supabase Authentication state
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (!session) setLoading(false);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (!session) {
+        setLeads([]);
+        setLoading(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Fetch leads from Supabase (only if logged in)
   const fetchLeads = async () => {
+    if (!session) return;
     setLoading(true);
     try {
       const { data, error } = await supabase
@@ -39,8 +60,16 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetchLeads();
-  }, []);
+    if (session) {
+      fetchLeads();
+    }
+  }, [session]);
+
+  const handleLogout = async () => {
+    if (window.confirm('¿Deseas cerrar sesión?')) {
+      await supabase.auth.signOut();
+    }
+  };
 
   // Update lead in state after modal save or kanban move
   const handleSaveLead = (savedLead) => {
@@ -72,6 +101,11 @@ export default function App() {
     setSelectedLead(null);
     setIsModalOpen(true);
   };
+
+  // If not logged in, render the Login View
+  if (!session) {
+    return <LoginView />;
+  }
 
   return (
     <div className="app-container">
@@ -116,14 +150,26 @@ export default function App() {
           </ul>
         </nav>
 
-        <div className="sidebar-footer">
-          <div className="user-avatar">
-            SC
+        <div className="sidebar-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="user-avatar">
+              {session.user.email.substring(0, 2).toUpperCase()}
+            </div>
+            <div className="user-info">
+              <span className="user-name" style={{ maxWidth: '110px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {session.user.email}
+              </span>
+              <span className="user-role">Administrador</span>
+            </div>
           </div>
-          <div className="user-info">
-            <span className="user-name">Socio Comercial</span>
-            <span className="user-role">Administrador</span>
-          </div>
+          <button 
+            onClick={handleLogout} 
+            className="btn-icon-only" 
+            title="Cerrar Sesión"
+            style={{ padding: '6px', border: 'none', background: 'transparent' }}
+          >
+            <LogOut size={16} style={{ color: 'hsl(var(--color-perdido))' }} />
+          </button>
         </div>
       </aside>
 
