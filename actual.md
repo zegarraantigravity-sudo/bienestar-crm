@@ -6,7 +6,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ## 📅 Estado Actual del Proyecto
 
-*   **Repositorio GitHub**: [Hotrebla/bienestar-crm](https://github.com/Hotrebla/bienestar-crm)
+*   **Repositorio GitHub**: [zegarraantigravity-sudo/bienestar-crm](https://github.com/zegarraantigravity-sudo/bienestar-crm)
 *   **Servidor de Base de Datos**: Supabase (Proyecto: `Bienestar-CRM`)
 *   **Hosting Frontend**: Vercel (Producción)
 *   **Moneda Oficial**: Soles Peruanos (`S/.`)
