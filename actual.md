@@ -50,7 +50,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Autocompletado inteligente de precio estimado según el plan seleccionado.
     *   Eliminación de la restricción antigua de la base de datos para habilitar los nuevos tiers de planes.
 
-### 5. Seguridad y Autenticación
+### 5. Acciones de Contacto Rápido (WhatsApp)
+*   **Integración Directa de WhatsApp**: Botón verde con enlace directo a WhatsApp (`https://wa.me/51...`) que formatea automáticamente números peruanos (añadiendo código de país +51 si tiene 9 dígitos) e incluye un mensaje inicial personalizado para iniciar chats instantáneamente.
+*   **Ubicación**: Disponible en el Directorio de Leads (columna Contacto Directo), en las tarjetas del Tablero Kanban y en el modal de detalle del lead.
+
+### 6. Seguridad y Autenticación
 *   **Acceso Restringido**: Implementación de una pantalla de Login premium antes de cargar la aplicación conectada directamente a Supabase Auth.
 *   **Cierre de Sesión**: Botón en la parte inferior izquierda de la barra lateral para salir de la sesión de forma segura.
 
@@ -61,7 +65,8 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### Fase 2: Optimización de Seguimiento e Interacciones
 - [ ] **Filtro de Asignación comercial**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado para evaluar el desempeño individual.
 - [ ] **Campos del Lead Personalizados**: Agregar campos adicionales como RUC de la empresa, dirección o enlace de redes sociales al formulario de registro.
-- [ ] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) o correos usando el número y mail registrado en la tarjeta del lead.
+- [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) usando el número registrado en la tarjeta del lead.
+
 
 ### Fase 3: Integraciones y Notificaciones
 - [ ] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (como comprobantes de pago o capturas de pantalla) vinculándolo con Supabase Storage.

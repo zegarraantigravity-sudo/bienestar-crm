@@ -299,6 +299,42 @@ button, input, select, textarea {
   border-color: hsl(var(--text-secondary));
 }
 
+/* WhatsApp Button Styles */
+.btn-whatsapp-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  margin-left: 4px;
+}
+
+.btn-whatsapp-sm:hover {
+  background-color: rgba(37, 211, 102, 0.3);
+  color: #34e775;
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp-icon {
+  color: #25D366 !important;
+  background-color: rgba(37, 211, 102, 0.12) !important;
+  border-color: rgba(37, 211, 102, 0.25) !important;
+}
+
+.btn-whatsapp-icon:hover {
+  background-color: rgba(37, 211, 102, 0.25) !important;
+  border-color: rgba(37, 211, 102, 0.5) !important;
+  color: #34e775 !important;
+}
+
+
 /* Metric Cards Grid */
 .metrics-grid {
   display: grid;

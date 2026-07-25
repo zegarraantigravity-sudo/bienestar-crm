@@ -1,6 +1,7 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Phone, Calendar, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, Calendar, Target, MessageCircle } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
+import { getWhatsAppUrl } from '../lib/utils';
 
 const columns = [
   { id: 'prospecto', title: 'Prospectos', color: 'hsl(var(--color-prospecto))' },
@@ -157,6 +158,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                 const nextStatus = getNextStatus(lead.status);
                 const prevStatus = getPrevStatus(lead.status);
                 const action = getNextAction(lead.notes);
+                const waUrl = getWhatsAppUrl(lead.phone, lead.contact_name || lead.business_name);
 
                 return (
                   <div 
@@ -202,6 +204,20 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                       <span className="card-value">{formatCurrency(lead.estimated_value)}</span>
                       
                       <div className="card-actions">
+                        {waUrl && (
+                          <a 
+                            href={waUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="btn-icon-only btn-whatsapp-icon"
+                            title="Enviar WhatsApp"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ padding: '4px', borderRadius: '6px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                          >
+                            <MessageCircle size={12} />
+                          </a>
+                        )}
+
                         {/* Quick log call button if in 'prospecto' status */}
                         {lead.status === 'prospecto' && (
                           <button 
@@ -262,3 +278,4 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
     </div>
   );
 }
+

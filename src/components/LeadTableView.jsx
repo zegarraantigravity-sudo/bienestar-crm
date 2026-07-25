@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Search, Phone, Mail, Plus, Target } from 'lucide-react';
+import { Search, Phone, Mail, Plus, Target, MessageCircle } from 'lucide-react';
+import { getWhatsAppUrl } from '../lib/utils';
 
 const clientTypeLabels = {
   coach: 'Entrenador (Coach)',
@@ -171,6 +172,7 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
               <tbody>
                 {filteredLeads.map(lead => {
                   const action = getNextAction(lead.notes);
+                  const waUrl = getWhatsAppUrl(lead.phone, lead.contact_name || lead.business_name);
                   return (
                     <tr key={lead.id} onClick={() => onSelectLead(lead)}>
                       <td>
@@ -204,11 +206,24 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
                         </div>
                       </td>
                       <td>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.8rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem' }}>
                           {lead.phone && (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'hsl(var(--text-secondary))', flexWrap: 'wrap' }}>
                               <Phone size={12} style={{ color: 'hsl(var(--text-muted))' }} />
                               <span>{lead.phone}</span>
+                              {waUrl && (
+                                <a
+                                  href={waUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="btn-whatsapp-sm"
+                                  title="Enviar mensaje por WhatsApp"
+                                >
+                                  <MessageCircle size={12} />
+                                  <span>WhatsApp</span>
+                                </a>
+                              )}
                             </div>
                           )}
                           {lead.email && (
@@ -234,3 +249,4 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead }) {
     </div>
   );
 }
+

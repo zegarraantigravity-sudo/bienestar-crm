@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target } from 'lucide-react';
+import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
+import { getWhatsAppUrl } from '../lib/utils';
 
 const planValues = {
   plan_30: 300,
@@ -194,6 +195,8 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
     }
   };
 
+  const modalWaUrl = getWhatsAppUrl(formData.phone, formData.contact_name || formData.business_name);
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -246,7 +249,22 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
               </div>
 
               <div className="form-group">
-                <label>Teléfono</label>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <label>Teléfono</label>
+                  {modalWaUrl && (
+                    <a
+                      href={modalWaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-whatsapp-sm"
+                      style={{ margin: 0, padding: '1px 6px', fontSize: '0.75rem' }}
+                      title="Abrir chat en WhatsApp"
+                    >
+                      <MessageCircle size={12} />
+                      <span>Abrir WhatsApp</span>
+                    </a>
+                  )}
+                </div>
                 <input
                   type="tel"
                   name="phone"
@@ -256,6 +274,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
                   className="form-control"
                 />
               </div>
+
 
               <div className="form-group">
                 <label>Tipo de Cliente</label>
