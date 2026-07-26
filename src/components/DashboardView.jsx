@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Phone, Calendar, Award, DollarSign, Target, TrendingUp } from 'lucide-react';
+import { Phone, Calendar, Award, DollarSign, Target, TrendingUp, AlertTriangle, Snowflake, Clock } from 'lucide-react';
+import { getDaysInactive, isDateToday, isDateOverdue } from '../lib/utils';
+import { lostReasonOptions } from './LostReasonModal';
 
 export default function DashboardView({ leads }) {
   const [monthlyGoal, setMonthlyGoal] = useState(30000);
@@ -48,6 +50,46 @@ export default function DashboardView({ leads }) {
 
   // Find max value in funnel to scale the bar lengths
   const maxStageValue = Math.max(...Object.values(stageValues), 1);
+
+  // Parse notes JSON for lost reasons & health metrics
+  const parseNotes = (notesStr) => {
+    try {
+      const obj = JSON.parse(notesStr);
+      if (obj && !Array.isArray(obj) && typeof obj === 'object') {
+        return {
+          lostReason: obj.lost_reason || 'otro',
+          lostReasonLabel: obj.lost_reason_label || 'Otro motivo',
+          actionDate: obj.next_action_date || ''
+        };
+      }
+    } catch (e) {}
+    return { lostReason: 'otro', lostReasonLabel: 'Otro motivo', actionDate: '' };
+  };
+
+  // Lost reasons counts
+  const lostLeads = leads.filter(l => l.status === 'cerrado_perdido');
+  const lostReasonCounts = {};
+  lostLeads.forEach(l => {
+    const { lostReason } = parseNotes(l.notes);
+    const reasonKey = lostReason || 'otro';
+    lostReasonCounts[reasonKey] = (lostReasonCounts[reasonKey] || 0) + 1;
+  });
+
+  // Funnel Health counts
+  const countStale = leads.filter(l => {
+    const days = getDaysInactive(l.last_interaction);
+    return days >= 5 && !['cerrado_ganado', 'cerrado_perdido'].includes(l.status);
+  }).length;
+
+  const countOverdue = leads.filter(l => {
+    const { actionDate } = parseNotes(l.notes);
+    return actionDate && isDateOverdue(actionDate) && !['cerrado_ganado', 'cerrado_perdido'].includes(l.status);
+  }).length;
+
+  const countToday = leads.filter(l => {
+    const { actionDate } = parseNotes(l.notes);
+    return actionDate && isDateToday(actionDate) && !['cerrado_ganado', 'cerrado_perdido'].includes(l.status);
+  }).length;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -108,6 +150,45 @@ export default function DashboardView({ leads }) {
         </div>
       </div>
 
+      {/* Health & Attention Banner */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        <div style={{
+          backgroundColor: 'hsla(35, 100%, 55%, 0.08)',
+          border: '1px solid hsla(35, 100%, 55%, 0.25)',
+          borderRadius: '14px',
+          padding: '16px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '14px'
+        }}>
+          <div style={{ width: '42px', height: '42px', borderRadius: '10px', backgroundColor: 'hsla(35, 100%, 55%, 0.2)', color: '#f97316', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Clock size={22} />
+          </div>
+          <div>
+            <div style={{ fontSize: '1.2rem', fontWeight: 800 }}>{countToday} Tareas para Hoy / {countOverdue} Vencidas</div>
+            <div style={{ fontSize: '0.8rem', color: 'hsl(var(--text-secondary))' }}>Requieren seguimiento en agenda</div>
+          </div>
+        </div>
+
+        <div style={{
+          backgroundColor: 'rgba(56, 189, 248, 0.08)',
+          border: '1px solid rgba(56, 189, 248, 0.25)',
+          borderRadius: '14px',
+          padding: '16px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '14px'
+        }}>
+          <div style={{ width: '42px', height: '42px', borderRadius: '10px', backgroundColor: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Snowflake size={22} />
+          </div>
+          <div>
+            <div style={{ fontSize: '1.2rem', fontWeight: 800 }}>{countStale} Leads Estancados</div>
+            <div style={{ fontSize: '0.8rem', color: 'hsl(var(--text-secondary))' }}>Sin contacto en los últimos 5 días</div>
+          </div>
+        </div>
+      </div>
+
       {/* Goal & Funnel Details Grid */}
       <div className="dashboard-grid">
         
@@ -148,6 +229,29 @@ export default function DashboardView({ leads }) {
               );
             })}
           </div>
+
+          {/* Lost Reasons Breakdown */}
+          {lostLeads.length > 0 && (
+            <div style={{ marginTop: '32px', paddingTop: '20px', borderTop: '1px solid hsl(var(--border-color))' }}>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '14px', color: 'hsl(var(--text-secondary))', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <AlertTriangle size={16} style={{ color: 'hsl(var(--color-perdido))' }} /> Motivos de Pérdida de Clientes ({lostLeads.length})
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {lostReasonOptions.map(opt => {
+                  const count = lostReasonCounts[opt.id] || 0;
+                  const pct = lostLeads.length > 0 ? (count / lostLeads.length) * 100 : 0;
+                  if (count === 0) return null;
+
+                  return (
+                    <div key={opt.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem' }}>
+                      <span style={{ color: 'hsl(var(--text-secondary))' }}>{opt.label}</span>
+                      <span style={{ fontWeight: 700, color: 'hsl(var(--color-perdido))' }}>{count} ({pct.toFixed(0)}%)</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Monthly Goal Progress Card */}

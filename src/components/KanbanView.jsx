@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Phone, Calendar, Target, MessageCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, Calendar, Target, MessageCircle, AlertCircle, Snowflake } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
-import { getWhatsAppUrl } from '../lib/utils';
+import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay } from '../lib/utils';
 
 const columns = [
   { id: 'prospecto', title: 'Prospectos', color: 'hsl(var(--color-prospecto))' },
@@ -32,7 +32,7 @@ const planLabels = {
   premium: 'Plan Premium'
 };
 
-export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
+export default function KanbanView({ leads, onUpdateLead, onSelectLead, onOpenWhatsApp, onRequestLostReason }) {
   
   const getNextStatus = (currentStatus) => {
     const idx = columns.findIndex(col => col.id === currentStatus);
@@ -49,6 +49,11 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
   const handleMove = async (lead, newStatus, e) => {
     e.stopPropagation(); // Prevent opening the detail modal
     if (!newStatus) return;
+
+    if (newStatus === 'cerrado_perdido' && onRequestLostReason) {
+      onRequestLostReason(lead, newStatus);
+      return;
+    }
 
     try {
       const { data, error } = await supabase
@@ -71,6 +76,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
     // Parse notes payload
     let notesList = [];
     let nextActionText = '';
+    let nextActionDate = '';
     try {
       const parsed = JSON.parse(lead.notes || '[]');
       if (Array.isArray(parsed)) {
@@ -78,6 +84,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
       } else if (parsed && typeof parsed === 'object') {
         notesList = parsed.timeline || [];
         nextActionText = parsed.next_action || '';
+        nextActionDate = parsed.next_action_date || '';
       } else {
         notesList = lead.notes ? [{ date: lead.created_at || new Date().toISOString(), text: lead.notes }] : [];
       }
@@ -95,7 +102,8 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
     try {
       const notesPayload = JSON.stringify({
         timeline: updatedNotesList,
-        next_action: nextActionText
+        next_action: nextActionText,
+        next_action_date: nextActionDate
       });
 
       const { data, error } = await supabase
@@ -120,14 +128,18 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
     return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(val);
   };
 
-  const getNextAction = (notesString) => {
+  const parseLeadNotes = (notesString) => {
     try {
       const obj = JSON.parse(notesString);
       if (obj && !Array.isArray(obj) && typeof obj === 'object') {
-        return obj.next_action || '';
+        return {
+          action: obj.next_action || '',
+          actionDate: obj.next_action_date || '',
+          lostReasonLabel: obj.lost_reason_label || ''
+        };
       }
     } catch (e) {}
-    return '';
+    return { action: '', actionDate: '', lostReasonLabel: '' };
   };
 
   return (
@@ -157,16 +169,45 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                 const clientType = clientTypeMapping[lead.client_type] || clientTypeMapping.otro;
                 const nextStatus = getNextStatus(lead.status);
                 const prevStatus = getPrevStatus(lead.status);
-                const action = getNextAction(lead.notes);
+                const { action, actionDate, lostReasonLabel } = parseLeadNotes(lead.notes);
                 const waUrl = getWhatsAppUrl(lead.phone, lead.contact_name || lead.business_name);
+                
+                const daysInactive = getDaysInactive(lead.last_interaction);
+                const isStale = daysInactive >= 5 && !['cerrado_ganado', 'cerrado_perdido'].includes(lead.status);
+                const isOverdue = isDateOverdue(actionDate);
+                const isToday = isDateToday(actionDate);
 
                 return (
                   <div 
                     className="kanban-card" 
                     key={lead.id} 
                     onClick={() => onSelectLead(lead)}
+                    style={{
+                      borderLeft: isStale ? '3px solid #38bdf8' : isOverdue ? '3px solid #ef4444' : undefined
+                    }}
                   >
-                    <div className="card-business-name">{lead.business_name}</div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div className="card-business-name">{lead.business_name}</div>
+                      {isStale && (
+                        <span 
+                          style={{
+                            fontSize: '0.65rem',
+                            backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                            color: '#38bdf8',
+                            border: '1px solid rgba(56, 189, 248, 0.3)',
+                            padding: '1px 6px',
+                            borderRadius: '4px',
+                            fontWeight: 700,
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '3px'
+                          }}
+                          title={`Sin interacción en los últimos ${daysInactive} días`}
+                        >
+                          <Snowflake size={10} /> +{daysInactive}d sin contacto
+                        </span>
+                      )}
+                    </div>
                     <div className="card-contact-name">{lead.contact_name}</div>
                     
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -182,21 +223,41 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                     {action && (
                       <div style={{ 
                         fontSize: '0.75rem', 
-                        color: 'hsl(var(--color-presentacion))', 
+                        color: isOverdue ? '#ef4444' : isToday ? '#f97316' : 'hsl(var(--color-presentacion))', 
                         marginTop: '8px', 
                         padding: '6px 8px', 
-                        backgroundColor: 'hsla(35, 100%, 55%, 0.08)', 
+                        backgroundColor: isOverdue ? 'rgba(239, 68, 68, 0.08)' : isToday ? 'rgba(249, 115, 22, 0.08)' : 'hsla(35, 100%, 55%, 0.08)', 
                         borderRadius: '6px',
-                        border: '1px solid hsla(35, 100%, 55%, 0.15)',
+                        border: isOverdue ? '1px solid rgba(239, 68, 68, 0.2)' : isToday ? '1px solid rgba(249, 115, 22, 0.2)' : '1px solid hsla(35, 100%, 55%, 0.15)',
                         fontWeight: 500,
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px'
+                        flexDirection: 'column',
+                        gap: '2px'
                       }}>
-                        <Target size={12} style={{ flexShrink: 0 }} />
-                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {action}
-                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <Target size={12} style={{ flexShrink: 0 }} />
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {action}
+                          </span>
+                        </div>
+                        {actionDate && (
+                          <div style={{ fontSize: '0.7rem', opacity: 0.85, paddingLeft: '18px', fontWeight: 600 }}>
+                            {isOverdue ? '⚠️ Vencido: ' : isToday ? '⏰ HOY: ' : '📅 '}
+                            {formatDateTimeDisplay(actionDate)}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Display lost reason if in cerrado_perdido */}
+                    {lead.status === 'cerrado_perdido' && lostReasonLabel && (
+                      <div style={{
+                        fontSize: '0.7rem',
+                        color: 'hsl(var(--color-perdido))',
+                        marginTop: '6px',
+                        fontStyle: 'italic'
+                      }}>
+                        Motivo: {lostReasonLabel}
                       </div>
                     )}
 
@@ -204,18 +265,20 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
                       <span className="card-value">{formatCurrency(lead.estimated_value)}</span>
                       
                       <div className="card-actions">
-                        {waUrl && (
-                          <a 
-                            href={waUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        {lead.phone && (
+                          <button 
+                            type="button"
                             className="btn-icon-only btn-whatsapp-icon"
-                            title="Enviar WhatsApp"
-                            onClick={(e) => e.stopPropagation()}
+                            title="Opciones de WhatsApp"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onOpenWhatsApp) onOpenWhatsApp(lead);
+                              else if (waUrl) window.open(waUrl, '_blank', 'noopener,noreferrer');
+                            }}
                             style={{ padding: '4px', borderRadius: '6px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                           >
                             <MessageCircle size={12} />
-                          </a>
+                          </button>
                         )}
 
                         {/* Quick log call button if in 'prospecto' status */}
@@ -278,4 +341,3 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead }) {
     </div>
   );
 }
-

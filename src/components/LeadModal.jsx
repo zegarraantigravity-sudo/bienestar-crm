@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle } from 'lucide-react';
+import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
-import { getWhatsAppUrl } from '../lib/utils';
+import { lostReasonOptions } from './LostReasonModal';
 
 const planValues = {
   plan_30: 300,
@@ -11,7 +11,7 @@ const planValues = {
   plan_1200: 6000,
 };
 
-export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
+export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onOpenWhatsApp }) {
   const isEdit = !!lead;
   
   const [formData, setFormData] = useState({
@@ -28,6 +28,9 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
 
   const [notesList, setNotesList] = useState([]);
   const [nextAction, setNextAction] = useState('');
+  const [nextActionDate, setNextActionDate] = useState('');
+  const [lostReason, setLostReason] = useState('precio_alto');
+  const [lostReasonLabel, setLostReasonLabel] = useState('');
   const [newNote, setNewNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -45,9 +48,13 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
         assigned_to: lead.assigned_to || 'Socio Comercial',
       });
 
-      // Parse JSON notes and next action
+      // Parse JSON notes, next action, next action date, lost reason
       let parsedTimeline = [];
       let parsedNextAction = '';
+      let parsedNextActionDate = '';
+      let parsedLostReason = 'precio_alto';
+      let parsedLostReasonLabel = '';
+
       try {
         const notesData = JSON.parse(lead.notes || '[]');
         if (Array.isArray(notesData)) {
@@ -55,14 +62,21 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
         } else if (notesData && typeof notesData === 'object') {
           parsedTimeline = notesData.timeline || [];
           parsedNextAction = notesData.next_action || '';
+          parsedNextActionDate = notesData.next_action_date || '';
+          parsedLostReason = notesData.lost_reason || 'precio_alto';
+          parsedLostReasonLabel = notesData.lost_reason_label || '';
         } else {
           parsedTimeline = lead.notes ? [{ date: lead.created_at || new Date().toISOString(), text: lead.notes }] : [];
         }
       } catch (e) {
         parsedTimeline = lead.notes ? [{ date: lead.created_at || new Date().toISOString(), text: lead.notes }] : [];
       }
+
       setNotesList(parsedTimeline);
       setNextAction(parsedNextAction);
+      setNextActionDate(parsedNextActionDate);
+      setLostReason(parsedLostReason);
+      setLostReasonLabel(parsedLostReasonLabel);
     } else {
       setFormData({
         business_name: '',
@@ -77,6 +91,9 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
       });
       setNotesList([]);
       setNextAction('');
+      setNextActionDate('');
+      setLostReason('precio_alto');
+      setLostReasonLabel('');
     }
     setNewNote('');
   }, [lead, isOpen]);
@@ -123,10 +140,19 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
 
     setIsSubmitting(true);
     try {
-      // Package timeline and next action in the notes field
+      // Find label for lost reason if applicable
+      const matchedOpt = lostReasonOptions.find(r => r.id === lostReason);
+      const finalLostLabel = formData.status === 'cerrado_perdido' 
+        ? (matchedOpt ? matchedOpt.label : lostReasonLabel || 'Otro motivo')
+        : '';
+
+      // Package timeline, next action, date and lost reason in notes field
       const notesPayload = JSON.stringify({
         timeline: notesList,
-        next_action: nextAction.trim()
+        next_action: nextAction.trim(),
+        next_action_date: nextActionDate,
+        lost_reason: formData.status === 'cerrado_perdido' ? lostReason : '',
+        lost_reason_label: finalLostLabel
       });
 
       const payload = {
@@ -159,7 +185,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
       onClose();
     } catch (error) {
       console.error('Error saving lead:', error);
-      alert('Error al guardar el prospecto: ' + error.message + '\n\nNOTA: Asegúrate de haber quitado la restricción de planes ejecutando el script ALTER TABLE en tu SQL Editor de Supabase.');
+      alert('Error al guardar el prospecto: ' + error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -194,8 +220,6 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
       return isoString;
     }
   };
-
-  const modalWaUrl = getWhatsAppUrl(formData.phone, formData.contact_name || formData.business_name);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -251,18 +275,17 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
               <div className="form-group">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <label>Teléfono</label>
-                  {modalWaUrl && (
-                    <a
-                      href={modalWaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {formData.phone && onOpenWhatsApp && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenWhatsApp(lead ? { ...lead, ...formData } : formData)}
                       className="btn-whatsapp-sm"
-                      style={{ margin: 0, padding: '1px 6px', fontSize: '0.75rem' }}
-                      title="Abrir chat en WhatsApp"
+                      style={{ margin: 0, padding: '1px 6px', fontSize: '0.75rem', border: 'none', cursor: 'pointer' }}
+                      title="Abrir opciones de WhatsApp"
                     >
                       <MessageCircle size={12} />
-                      <span>Abrir WhatsApp</span>
-                    </a>
+                      <span>WhatsApp</span>
+                    </button>
                   )}
                 </div>
                 <input
@@ -274,7 +297,6 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
                   className="form-control"
                 />
               </div>
-
 
               <div className="form-group">
                 <label>Tipo de Cliente</label>
@@ -309,7 +331,6 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
                   <option value="plan_500">Plan 500 (S/. 2700)</option>
                   <option value="plan_1200">Plan 1200 (S/. 6000)</option>
                   
-                  {/* Fallback for legacy plans in db check constraints */}
                   <option value="prueba_30_creditos" style={{ display: 'none' }}>Prueba 30 Créditos</option>
                   <option value="estandar" style={{ display: 'none' }}>Plan Estándar</option>
                   <option value="premium" style={{ display: 'none' }}>Plan Premium</option>
@@ -347,6 +368,24 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
                 />
               </div>
 
+              {formData.status === 'cerrado_perdido' && (
+                <div className="form-group-full" style={{ backgroundColor: 'hsla(0, 75%, 55%, 0.05)', padding: '12px', borderRadius: '10px', border: '1px solid hsla(0, 75%, 55%, 0.2)' }}>
+                  <label style={{ color: 'hsl(var(--color-perdido))', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <AlertTriangle size={14} /> Motivo de Pérdida del Cliente
+                  </label>
+                  <select
+                    value={lostReason}
+                    onChange={e => setLostReason(e.target.value)}
+                    className="form-control"
+                    style={{ width: '100%', marginTop: '6px' }}
+                  >
+                    {lostReasonOptions.map(opt => (
+                      <option key={opt.id} value={opt.id}>{opt.label}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
               <div className="form-group-full">
                 <label>Asignado A</label>
                 <input
@@ -358,18 +397,27 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete }) {
                 />
               </div>
 
-              <div className="form-group-full" style={{ padding: '8px 0', borderTop: '1px solid hsl(var(--border-color))', marginTop: '4px' }}>
-                <label style={{ color: 'hsl(var(--color-presentacion))', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Target size={14} /> Próxima Acción Pendiente (¿Qué toca hacer ahora?)
+              <div className="form-group-full" style={{ padding: '12px 0 0 0', borderTop: '1px solid hsl(var(--border-color))', marginTop: '4px' }}>
+                <label style={{ color: 'hsl(var(--color-presentacion))', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                  <Target size={14} /> Próxima Acción Pendiente & Fecha Programada
                 </label>
-                <input
-                  type="text"
-                  value={nextAction}
-                  onChange={e => setNextAction(e.target.value)}
-                  placeholder="Ej: Llamar el lunes 9am para confirmar demo de software..."
-                  className="form-control"
-                  style={{ border: '1px solid hsla(35, 100%, 55%, 0.25)', backgroundColor: 'hsla(35, 100%, 55%, 0.02)' }}
-                />
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '10px' }}>
+                  <input
+                    type="text"
+                    value={nextAction}
+                    onChange={e => setNextAction(e.target.value)}
+                    placeholder="Ej: Llamar el lunes 9am para confirmar demo..."
+                    className="form-control"
+                    style={{ border: '1px solid hsla(35, 100%, 55%, 0.25)', backgroundColor: 'hsla(35, 100%, 55%, 0.02)' }}
+                  />
+                  <input
+                    type="datetime-local"
+                    value={nextActionDate}
+                    onChange={e => setNextActionDate(e.target.value)}
+                    className="form-control"
+                    style={{ border: '1px solid hsla(35, 100%, 55%, 0.25)', backgroundColor: 'hsla(35, 100%, 55%, 0.02)', fontSize: '0.8rem' }}
+                  />
+                </div>
               </div>
             </div>
 

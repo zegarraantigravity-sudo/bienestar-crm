@@ -50,11 +50,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Autocompletado inteligente de precio estimado según el plan seleccionado.
     *   Eliminación de la restricción antigua de la base de datos para habilitar los nuevos tiers de planes.
 
-### 5. Acciones de Contacto Rápido (WhatsApp)
-*   **Integración Directa de WhatsApp**: Botón verde con enlace directo a WhatsApp (`https://wa.me/51...`) que formatea automáticamente números peruanos (añadiendo código de país +51 si tiene 9 dígitos) e incluye un mensaje inicial personalizado para iniciar chats instantáneamente.
-*   **Ubicación**: Disponible en el Directorio de Leads (columna Contacto Directo), en las tarjetas del Tablero Kanban y en el modal de detalle del lead.
+### 5. Acciones de Contacto Rápido y Plantillas de WhatsApp
+*   **Integración Directa de WhatsApp con Plantillas**: Botón verde con selector de plantillas pre-redactadas (*Primer Contacto*, *Recordatorio de Demo*, *Presentación de Plan*, *Seguimiento Post-Demo*). El sistema inserta dinámicamente el nombre del cliente, su plan y valor en Soles, abriendo WhatsApp Web/App al instante.
+*   **Ubicación**: Disponible en el Directorio de Leads, en las tarjetas del Tablero Kanban y en el modal de detalle del lead.
 
-### 6. Seguridad y Autenticación
+### 6. Seguimiento Inteligente por Agenda (Fechas y Alertas de Tareas)
+*   **Fecha y Hora en Próxima Acción**: Selector de fecha y hora (`datetime-local`) para programar el momento exacto del próximo contacto.
+*   **Pestañas Inteligentes**: Filtros en 1 clic en la Tabla de Leads para ver *"⏰ Tareas de Hoy / Vencidas"* y *"❄️ Leads Estancados (+5 días sin contacto)"*.
+*   **Alertas de Leads Estancados**: Indicador visual (badge azul `❄️ +Xd`) en el Kanban y en la Tabla cuando un prospecto lleva 5 o más días sin actualización en el embudo activo.
+
+### 7. Análisis de Motivos de Pérdida
+*   **Registro de Motivos**: Al mover o guardar un lead en *Cerrado - Perdido*, el sistema solicita registrar la causa (*Precio elevado*, *Sin tiempo/Interés*, *Usa competencia*, *No responde*, *Otro*).
+*   **Panel en Dashboard**: Gráfico y métricas detalladas en el Dashboard con los porcentajes y conteos exactos de por qué se pierden ventas.
+
+### 8. Seguridad y Autenticación
 *   **Acceso Restringido**: Implementación de una pantalla de Login premium antes de cargar la aplicación conectada directamente a Supabase Auth.
 *   **Cierre de Sesión**: Botón en la parte inferior izquierda de la barra lateral para salir de la sesión de forma segura.
 
@@ -65,10 +74,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### Fase 2: Optimización de Seguimiento e Interacciones
 - [ ] **Filtro de Asignación comercial**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado para evaluar el desempeño individual.
 - [ ] **Campos del Lead Personalizados**: Agregar campos adicionales como RUC de la empresa, dirección o enlace de redes sociales al formulario de registro.
-- [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) usando el número registrado en la tarjeta del lead.
+- [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) con plantillas inteligentes.
 
 
 ### Fase 3: Integraciones y Notificaciones
 - [ ] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (como comprobantes de pago o capturas de pantalla) vinculándolo con Supabase Storage.
-- [ ] **Recordatorios de Tareas**: Crear una sección de "Tareas para Hoy" que alerte al comercial de todas las "Próximas Acciones Pendientes" cuya fecha coincida con el día de hoy.
+- [x] **Recordatorios de Tareas y Agenda**: Sección y filtro de "Tareas para Hoy / Vencidas" que alerta al comercial de todas las Próximas Acciones programadas.
 - [ ] **Exportación de Datos**: Añadir un botón en la tabla de leads para exportar los prospectos filtrados en formato Excel/CSV.
+

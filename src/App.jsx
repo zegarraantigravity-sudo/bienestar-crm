@@ -10,6 +10,8 @@ import LoginView from './components/LoginView';
 
 // Modals
 import LeadModal from './components/LeadModal';
+import WhatsAppModal from './components/WhatsAppModal';
+import LostReasonModal from './components/LostReasonModal';
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -20,6 +22,15 @@ export default function App() {
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
+
+  // WhatsApp Modal State
+  const [whatsAppModalLead, setWhatsAppModalLead] = useState(null);
+  const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
+
+  // Lost Reason Modal State
+  const [lostReasonLead, setLostReasonLead] = useState(null);
+  const [isLostReasonModalOpen, setIsLostReasonModalOpen] = useState(false);
+  const [pendingLostStatus, setPendingLostStatus] = useState('cerrado_perdido');
 
   // Monitor Supabase Authentication state
   useEffect(() => {
@@ -76,12 +87,10 @@ export default function App() {
     setLeads(prev => {
       const index = prev.findIndex(l => l.id === savedLead.id);
       if (index >= 0) {
-        // Update existing lead
         const updated = [...prev];
         updated[index] = savedLead;
         return updated;
       } else {
-        // Add new lead at the beginning
         return [savedLead, ...prev];
       }
     });
@@ -100,6 +109,72 @@ export default function App() {
   const handleOpenAddModal = () => {
     setSelectedLead(null);
     setIsModalOpen(true);
+  };
+
+  const handleOpenWhatsAppModal = (lead) => {
+    setWhatsAppModalLead(lead);
+    setIsWhatsAppModalOpen(true);
+  };
+
+  const handleRequestLostReason = (lead, targetStatus) => {
+    setLostReasonLead(lead);
+    setPendingLostStatus(targetStatus || 'cerrado_perdido');
+    setIsLostReasonModalOpen(true);
+  };
+
+  const handleConfirmLostReason = async (fullReasonText, reasonCode) => {
+    if (!lostReasonLead) return;
+
+    let notesList = [];
+    let nextActionText = '';
+    let nextActionDate = '';
+    try {
+      const parsed = JSON.parse(lostReasonLead.notes || '[]');
+      if (Array.isArray(parsed)) {
+        notesList = parsed;
+      } else if (parsed && typeof parsed === 'object') {
+        notesList = parsed.timeline || [];
+        nextActionText = parsed.next_action || '';
+        nextActionDate = parsed.next_action_date || '';
+      } else {
+        notesList = lostReasonLead.notes ? [{ date: lostReasonLead.created_at || new Date().toISOString(), text: lostReasonLead.notes }] : [];
+      }
+    } catch (err) {
+      notesList = lostReasonLead.notes ? [{ date: lostReasonLead.created_at || new Date().toISOString(), text: lostReasonLead.notes }] : [];
+    }
+
+    // Append lost reason note to timeline
+    const lostNote = {
+      date: new Date().toISOString(),
+      text: `❌ Lead marcado como Cerrado Perdido. Motivo: ${fullReasonText}`
+    };
+    const updatedNotesList = [lostNote, ...notesList];
+
+    try {
+      const notesPayload = JSON.stringify({
+        timeline: updatedNotesList,
+        next_action: nextActionText,
+        next_action_date: nextActionDate,
+        lost_reason: reasonCode,
+        lost_reason_label: fullReasonText
+      });
+
+      const { data, error } = await supabase
+        .from('leads')
+        .update({
+          status: pendingLostStatus,
+          notes: notesPayload,
+          last_interaction: new Date().toISOString()
+        })
+        .eq('id', lostReasonLead.id)
+        .select();
+
+      if (error) throw error;
+      handleSaveLead(data[0]);
+    } catch (err) {
+      console.error('Error confirming lost reason:', err);
+      alert('Error al actualizar el lead: ' + err.message);
+    }
   };
 
   // If not logged in, render the Login View
@@ -223,6 +298,8 @@ export default function App() {
                 leads={leads} 
                 onUpdateLead={handleSaveLead}
                 onSelectLead={handleOpenEditModal}
+                onOpenWhatsApp={handleOpenWhatsAppModal}
+                onRequestLostReason={handleRequestLostReason}
               />
             )}
             {activeView === 'table' && (
@@ -230,6 +307,7 @@ export default function App() {
                 leads={leads} 
                 onSelectLead={handleOpenEditModal}
                 onAddNewLead={handleOpenAddModal}
+                onOpenWhatsApp={handleOpenWhatsAppModal}
               />
             )}
           </div>
@@ -243,6 +321,22 @@ export default function App() {
         onClose={() => setIsModalOpen(false)}
         onSave={handleSaveLead}
         onDelete={handleDeleteLead}
+        onOpenWhatsApp={handleOpenWhatsAppModal}
+      />
+
+      {/* WhatsApp Template Selector Modal */}
+      <WhatsAppModal
+        isOpen={isWhatsAppModalOpen}
+        lead={whatsAppModalLead}
+        onClose={() => setIsWhatsAppModalOpen(false)}
+      />
+
+      {/* Lost Reason Prompt Modal */}
+      <LostReasonModal
+        isOpen={isLostReasonModalOpen}
+        lead={lostReasonLead}
+        onClose={() => setIsLostReasonModalOpen(false)}
+        onConfirm={handleConfirmLostReason}
       />
 
       <style>{`
