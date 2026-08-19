@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut, ShieldCheck, UserCheck } from 'lucide-react';
+import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut, ShieldCheck } from 'lucide-react';
 import { supabase } from './lib/supabaseClient';
 import { isSuperAdmin, getUserDisplayName, getUserRoleLabel, canUserViewLead } from './lib/utils';
 
@@ -194,15 +194,24 @@ export default function App() {
   // - Luis (Seller) ONLY sees leads assigned to him
   const allowedLeads = leads.filter(lead => canUserViewLead(lead, userEmail));
 
+  // Count leads for Alberto and Luis accurately
+  const albertoCount = allowedLeads.filter(l => {
+    const assigned = (l.assigned_to || '').toLowerCase().trim();
+    return assigned.includes('alberto') || assigned.includes('zegarra');
+  }).length;
+  const luisCount = allowedLeads.length - albertoCount;
+
   // If Super Admin, apply advisor sub-filter if selected
   const visibleLeads = allowedLeads.filter(lead => {
     if (!isAdmin || adminAdvisorFilter === 'todos') return true;
     const assigned = (lead.assigned_to || '').toLowerCase().trim();
+    const isAlberto = assigned.includes('alberto') || assigned.includes('zegarra');
+    
     if (adminAdvisorFilter === 'alberto') {
-      return assigned.includes('alberto') || (!assigned.includes('luis') && !assigned.includes('hakim'));
+      return isAlberto; // ONLY leads explicitly assigned to Alberto
     }
     if (adminAdvisorFilter === 'luis') {
-      return assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('toro');
+      return !isAlberto; // All other existing leads belong to Luis
     }
     return true;
   });
@@ -315,8 +324,8 @@ export default function App() {
                   style={{ fontSize: '0.8rem', padding: '6px 12px', borderColor: 'hsla(35, 100%, 55%, 0.3)' }}
                 >
                   <option value="todos">👥 Todos los Vendedores ({allowedLeads.length})</option>
-                  <option value="alberto">👤 Mis Leads (Alberto)</option>
-                  <option value="luis">👤 Leads de Luis</option>
+                  <option value="alberto">👤 Mis Leads (Alberto) ({albertoCount})</option>
+                  <option value="luis">👤 Leads de Luis ({luisCount})</option>
                 </select>
               </div>
             )}

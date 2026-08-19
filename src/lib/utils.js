@@ -127,13 +127,10 @@ export const canUserViewLead = (lead, userEmail) => {
   const user = userEmail.toLowerCase().trim();
 
   // If Luis Hakim logs in:
+  // Luis sees everything that does NOT belong to Alberto (including all previous/current leads)
   if (user === 'torohakim@gmail.com') {
-    return (
-      assigned.includes('luis') ||
-      assigned.includes('hakim') ||
-      assigned.includes('toro') ||
-      assigned.includes('torohakim')
-    );
+    const isAlbertoLead = assigned.includes('alberto') || assigned.includes('zegarra');
+    return !isAlbertoLead;
   }
 
   // Any other seller only sees their assigned leads
