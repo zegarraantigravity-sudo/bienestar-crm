@@ -85,3 +85,57 @@ export const formatDateTimeDisplay = (isoStr) => {
     return isoStr;
   }
 };
+
+// Roles, Permissions & Sales Representatives
+export const SUPER_ADMIN_EMAILS = [
+  'albertozbcoach@gmail.com',
+  'zegarraantigravity@gmail.com'
+];
+
+export const SALES_REPRESENTATIVES = [
+  { id: 'alberto', name: 'Alberto Zegarra', email: 'albertozbcoach@gmail.com' },
+  { id: 'luis', name: 'Luis Hakim', email: 'torohakim@gmail.com' }
+];
+
+export const isSuperAdmin = (email) => {
+  if (!email) return false;
+  return SUPER_ADMIN_EMAILS.includes(email.toLowerCase().trim());
+};
+
+export const getUserDisplayName = (email) => {
+  if (!email) return 'Usuario';
+  const cleanEmail = email.toLowerCase().trim();
+  if (cleanEmail === 'albertozbcoach@gmail.com' || cleanEmail === 'zegarraantigravity@gmail.com') {
+    return 'Alberto Zegarra';
+  }
+  if (cleanEmail === 'torohakim@gmail.com') {
+    return 'Luis Hakim';
+  }
+  return email.split('@')[0];
+};
+
+export const getUserRoleLabel = (email) => {
+  if (isSuperAdmin(email)) return 'Super Administrador (Dueño)';
+  return 'Socio Comercial (Vendedor)';
+};
+
+export const canUserViewLead = (lead, userEmail) => {
+  if (!userEmail) return false;
+  if (isSuperAdmin(userEmail)) return true; // Alberto (Super Admin) sees all leads
+
+  const assigned = (lead.assigned_to || '').toLowerCase().trim();
+  const user = userEmail.toLowerCase().trim();
+
+  // If Luis Hakim logs in:
+  if (user === 'torohakim@gmail.com') {
+    return (
+      assigned.includes('luis') ||
+      assigned.includes('hakim') ||
+      assigned.includes('toro') ||
+      assigned.includes('torohakim')
+    );
+  }
+
+  // Any other seller only sees their assigned leads
+  return assigned.includes(user);
+};

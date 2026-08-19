@@ -67,12 +67,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Acceso Restringido**: Implementación de una pantalla de Login premium antes de cargar la aplicación conectada directamente a Supabase Auth.
 *   **Cierre de Sesión**: Botón en la parte inferior izquierda de la barra lateral para salir de la sesión de forma segura.
 
+### 9. Sistema de Roles y Privacidad por Vendedor
+*   **Super Administrador (Alberto - `albertozbcoach@gmail.com`)**:
+    *   Acceso total al 100% de los leads, métricas globales del embudo y bitácoras.
+    *   Selector de vista en la barra superior para alternar entre: *Todos los Vendedores*, *Mis Leads (Alberto)* o *Leads de Luis*.
+    *   Capacidad de asignar o reasignar prospectos a cualquier socio comercial.
+*   **Socio Comercial / Vendedor (Luis - `torohakim@gmail.com`)**:
+    *   Privacidad estricta: Solo puede visualizar, editar y gestionar los prospectos asignados a él o registrados por él.
+    *   No tiene acceso a los prospectos privados ni a las métricas del Super Administrador.
+    *   Las métricas de su Dashboard y tarjetas del Kanban se recalculan automáticamente solo para su cartera.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
 
 ### Fase 2: Optimización de Seguimiento e Interacciones
-- [ ] **Filtro de Asignación comercial**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado para evaluar el desempeño individual.
+- [x] **Filtro de Asignación comercial y Privacidad**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado y restringir visibilidad para vendedores.
 - [ ] **Campos del Lead Personalizados**: Agregar campos adicionales como RUC de la empresa, dirección o enlace de redes sociales al formulario de registro.
 - [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) con plantillas inteligentes.
 
@@ -81,4 +91,5 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - [ ] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (como comprobantes de pago o capturas de pantalla) vinculándolo con Supabase Storage.
 - [x] **Recordatorios de Tareas y Agenda**: Sección y filtro de "Tareas para Hoy / Vencidas" que alerta al comercial de todas las Próximas Acciones programadas.
 - [ ] **Exportación de Datos**: Añadir un botón en la tabla de leads para exportar los prospectos filtrados en formato Excel/CSV.
+
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut } from 'lucide-react';
+import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut, ShieldCheck, UserCheck } from 'lucide-react';
 import { supabase } from './lib/supabaseClient';
+import { isSuperAdmin, getUserDisplayName, getUserRoleLabel, canUserViewLead } from './lib/utils';
 
 // Views
 import DashboardView from './components/DashboardView';
@@ -19,6 +20,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeView, setActiveView] = useState('dashboard');
   
+  // Super Admin view filter (Alberto can filter between seeing all, his own, or Luis's)
+  const [adminAdvisorFilter, setAdminAdvisorFilter] = useState('todos');
+
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
@@ -50,6 +54,9 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
+  const userEmail = session?.user?.email || '';
+  const isAdmin = isSuperAdmin(userEmail);
+
   // Fetch leads from Supabase (only if logged in)
   const fetchLeads = async () => {
     if (!session) return;
@@ -64,7 +71,7 @@ export default function App() {
       setLeads(data || []);
     } catch (error) {
       console.error('Error fetching leads:', error);
-      alert('Error al conectar con la base de datos de Supabase. Revisa tu consola y asegúrate de haber creado la tabla y configurado las credenciales.');
+      alert('Error al conectar con la base de datos de Supabase. Revisa tu consola y conexión.');
     } finally {
       setLoading(false);
     }
@@ -182,6 +189,28 @@ export default function App() {
     return <LoginView />;
   }
 
+  // Filter leads based on user permissions:
+  // - Alberto (Super Admin) can see all leads
+  // - Luis (Seller) ONLY sees leads assigned to him
+  const allowedLeads = leads.filter(lead => canUserViewLead(lead, userEmail));
+
+  // If Super Admin, apply advisor sub-filter if selected
+  const visibleLeads = allowedLeads.filter(lead => {
+    if (!isAdmin || adminAdvisorFilter === 'todos') return true;
+    const assigned = (lead.assigned_to || '').toLowerCase().trim();
+    if (adminAdvisorFilter === 'alberto') {
+      return assigned.includes('alberto') || (!assigned.includes('luis') && !assigned.includes('hakim'));
+    }
+    if (adminAdvisorFilter === 'luis') {
+      return assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('toro');
+    }
+    return true;
+  });
+
+  const displayName = getUserDisplayName(userEmail);
+  const roleLabel = getUserRoleLabel(userEmail);
+  const userInitials = displayName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'US';
+
   return (
     <div className="app-container">
       {/* Sidebar navigation */}
@@ -226,15 +255,17 @@ export default function App() {
         </nav>
 
         <div className="sidebar-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div className="user-avatar">
-              {session.user.email.substring(0, 2).toUpperCase()}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div className="user-avatar" style={{ backgroundColor: isAdmin ? 'hsl(var(--color-presentacion))' : 'hsl(var(--color-cita))' }}>
+              {userInitials}
             </div>
             <div className="user-info">
               <span className="user-name" style={{ maxWidth: '110px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {session.user.email}
+                {displayName}
               </span>
-              <span className="user-role">Administrador</span>
+              <span className="user-role" style={{ color: isAdmin ? 'hsl(var(--color-presentacion))' : 'hsl(var(--text-muted))', fontSize: '0.7rem' }}>
+                {roleLabel}
+              </span>
             </div>
           </div>
           <button 
@@ -254,11 +285,18 @@ export default function App() {
         {/* View Header */}
         <header className="view-header">
           <div className="view-title">
-            <h1>
-              {activeView === 'dashboard' && 'Panel de Controladores'}
-              {activeView === 'kanban' && 'Tablero Kanban'}
-              {activeView === 'table' && 'Directorio de Leads'}
-            </h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <h1>
+                {activeView === 'dashboard' && 'Panel de Controladores'}
+                {activeView === 'kanban' && 'Tablero Kanban'}
+                {activeView === 'table' && 'Directorio de Leads'}
+              </h1>
+              {isAdmin && (
+                <span style={{ fontSize: '0.75rem', backgroundColor: 'hsla(35, 100%, 55%, 0.15)', color: 'hsl(var(--color-presentacion))', padding: '2px 8px', borderRadius: '6px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  <ShieldCheck size={12} /> Super Admin
+                </span>
+              )}
+            </div>
             <p>
               {activeView === 'dashboard' && 'Métricas de rendimiento comercial en tiempo real'}
               {activeView === 'kanban' && 'Flujo visual del embudo de prospección y ventas'}
@@ -266,7 +304,23 @@ export default function App() {
             </p>
           </div>
 
-          <div className="header-actions">
+          <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Super Admin filter dropdown */}
+            {isAdmin && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <select
+                  value={adminAdvisorFilter}
+                  onChange={(e) => setAdminAdvisorFilter(e.target.value)}
+                  className="select-filter"
+                  style={{ fontSize: '0.8rem', padding: '6px 12px', borderColor: 'hsla(35, 100%, 55%, 0.3)' }}
+                >
+                  <option value="todos">👥 Todos los Vendedores ({allowedLeads.length})</option>
+                  <option value="alberto">👤 Mis Leads (Alberto)</option>
+                  <option value="luis">👤 Leads de Luis</option>
+                </select>
+              </div>
+            )}
+
             <button 
               className="btn btn-secondary" 
               onClick={fetchLeads} 
@@ -292,10 +346,10 @@ export default function App() {
           </div>
         ) : (
           <div style={{ flexGrow: 1 }}>
-            {activeView === 'dashboard' && <DashboardView leads={leads} />}
+            {activeView === 'dashboard' && <DashboardView leads={visibleLeads} />}
             {activeView === 'kanban' && (
               <KanbanView 
-                leads={leads} 
+                leads={visibleLeads} 
                 onUpdateLead={handleSaveLead}
                 onSelectLead={handleOpenEditModal}
                 onOpenWhatsApp={handleOpenWhatsAppModal}
@@ -304,7 +358,7 @@ export default function App() {
             )}
             {activeView === 'table' && (
               <LeadTableView 
-                leads={leads} 
+                leads={visibleLeads} 
                 onSelectLead={handleOpenEditModal}
                 onAddNewLead={handleOpenAddModal}
                 onOpenWhatsApp={handleOpenWhatsAppModal}
@@ -318,6 +372,7 @@ export default function App() {
       <LeadModal
         isOpen={isModalOpen}
         lead={selectedLead}
+        userEmail={userEmail}
         onClose={() => setIsModalOpen(false)}
         onSave={handleSaveLead}
         onDelete={handleDeleteLead}

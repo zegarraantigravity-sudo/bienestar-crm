@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle } from 'lucide-react';
+import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { lostReasonOptions } from './LostReasonModal';
+import { isSuperAdmin, SALES_REPRESENTATIVES } from '../lib/utils';
 
 const planValues = {
   plan_30: 300,
@@ -11,8 +12,9 @@ const planValues = {
   plan_1200: 6000,
 };
 
-export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onOpenWhatsApp }) {
+export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onOpenWhatsApp, userEmail }) {
   const isEdit = !!lead;
+  const isAdmin = isSuperAdmin(userEmail);
   
   const [formData, setFormData] = useState({
     business_name: '',
@@ -23,7 +25,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
     target_plan: 'plan_30',
     status: 'prospecto',
     estimated_value: 300,
-    assigned_to: 'Socio Comercial',
+    assigned_to: isAdmin ? 'Alberto Zegarra' : 'Luis Hakim',
   });
 
   const [notesList, setNotesList] = useState([]);
@@ -45,7 +47,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         target_plan: lead.target_plan || 'plan_30',
         status: lead.status || 'prospecto',
         estimated_value: lead.estimated_value || 0,
-        assigned_to: lead.assigned_to || 'Socio Comercial',
+        assigned_to: lead.assigned_to || (isAdmin ? 'Alberto Zegarra' : 'Luis Hakim'),
       });
 
       // Parse JSON notes, next action, next action date, lost reason
@@ -87,7 +89,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         target_plan: 'plan_30',
         status: 'prospecto',
         estimated_value: 300,
-        assigned_to: 'Socio Comercial',
+        assigned_to: isAdmin ? 'Alberto Zegarra' : 'Luis Hakim',
       });
       setNotesList([]);
       setNextAction('');
@@ -96,7 +98,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
       setLostReasonLabel('');
     }
     setNewNote('');
-  }, [lead, isOpen]);
+  }, [lead, isOpen, userEmail]);
 
   if (!isOpen) return null;
 
@@ -387,14 +389,30 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
               )}
 
               <div className="form-group-full">
-                <label>Asignado A</label>
-                <input
-                  type="text"
-                  name="assigned_to"
-                  value={formData.assigned_to}
-                  onChange={handleChange}
-                  className="form-control"
-                />
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <User size={14} /> Asignado A (Vendedor Responsable)
+                </label>
+                {isAdmin ? (
+                  <select
+                    name="assigned_to"
+                    value={formData.assigned_to}
+                    onChange={handleChange}
+                    className="form-control select-filter"
+                    style={{ width: '100%', minWidth: 'auto' }}
+                  >
+                    <option value="Alberto Zegarra">Alberto Zegarra (Tú / Super Admin)</option>
+                    <option value="Luis Hakim">Luis Hakim (Socio Comercial)</option>
+                  </select>
+                ) : (
+                  <input
+                    type="text"
+                    name="assigned_to"
+                    value={formData.assigned_to}
+                    readOnly
+                    className="form-control"
+                    style={{ opacity: 0.8, backgroundColor: 'hsl(var(--bg-sidebar))' }}
+                  />
+                )}
               </div>
 
               <div className="form-group-full" style={{ padding: '12px 0 0 0', borderTop: '1px solid hsl(var(--border-color))', marginTop: '4px' }}>
