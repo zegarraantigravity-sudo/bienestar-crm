@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Lock, Mail, Columns } from 'lucide-react';
+import { Lock, Mail, Columns, Eye, EyeOff } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 
 export default function LoginView() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -26,8 +27,12 @@ export default function LoginView() {
 
       if (error) throw error;
     } catch (error) {
-      console.error('Error loggin in:', error);
-      setErrorMessage('Credenciales inválidas. Revisa tu correo o contraseña.');
+      console.error('Error logging in:', error);
+      if (error.message && error.message.toLowerCase().includes('email not confirmed')) {
+        setErrorMessage('Tu correo requiere confirmación en Supabase. Pídele al administrador o confirma tu correo para ingresar.');
+      } else {
+        setErrorMessage('Credenciales inválidas. Revisa tu correo o contraseña.');
+      }
     } finally {
       setLoading(false);
     }
@@ -110,14 +115,35 @@ export default function LoginView() {
             <div style={{ position: 'relative' }}>
               <Lock size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'hsl(var(--text-muted))' }} />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="form-control"
-                style={{ paddingLeft: '38px', width: '100%' }}
+                style={{ paddingLeft: '38px', paddingRight: '40px', width: '100%' }}
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: 'hsl(var(--text-muted))',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                title={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+              >
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
             </div>
           </div>
 
