@@ -94,7 +94,8 @@ export const SUPER_ADMIN_EMAILS = [
 
 export const SALES_REPRESENTATIVES = [
   { id: 'alberto', name: 'Alberto Zegarra', email: 'albertozbcoach@gmail.com' },
-  { id: 'luis', name: 'Luis Hakim', email: 'torohakim@gmail.com' }
+  { id: 'luis', name: 'Luis Hakim', email: 'torohakim@gmail.com' },
+  { id: 'dario', name: 'Dario Cienfuegos', email: 'dariospaarnold@gmail.com' }
 ];
 
 export const isSuperAdmin = (email) => {
@@ -111,6 +112,9 @@ export const getUserDisplayName = (email) => {
   if (cleanEmail === 'torohakim@gmail.com') {
     return 'Luis Hakim';
   }
+  if (cleanEmail === 'dariospaarnold@gmail.com') {
+    return 'Dario Cienfuegos';
+  }
   return email.split('@')[0];
 };
 
@@ -126,11 +130,16 @@ export const canUserViewLead = (lead, userEmail) => {
   const assigned = (lead.assigned_to || '').toLowerCase().trim();
   const user = userEmail.toLowerCase().trim();
 
+  // If Dario Cienfuegos logs in:
+  if (user === 'dariospaarnold@gmail.com') {
+    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
+  }
+
   // If Luis Hakim logs in:
-  // Luis sees everything that does NOT belong to Alberto (including all previous/current leads)
   if (user === 'torohakim@gmail.com') {
     const isAlbertoLead = assigned.includes('alberto') || assigned.includes('zegarra');
-    return !isAlbertoLead;
+    const isDarioLead = assigned.includes('dario') || assigned.includes('cienfuegos');
+    return !isAlbertoLead && !isDarioLead;
   }
 
   // Any other seller only sees their assigned leads

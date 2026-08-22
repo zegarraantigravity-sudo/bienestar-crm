@@ -20,7 +20,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeView, setActiveView] = useState('dashboard');
   
-  // Super Admin view filter (Alberto can filter between seeing all, his own, or Luis's)
+  // Super Admin view filter (Alberto can filter between seeing all, his own, Luis's or Dario's)
   const [adminAdvisorFilter, setAdminAdvisorFilter] = useState('todos');
 
   // Modal states
@@ -191,28 +191,37 @@ export default function App() {
 
   // Filter leads based on user permissions:
   // - Alberto (Super Admin) can see all leads
-  // - Luis (Seller) ONLY sees leads assigned to him
+  // - Sales Reps (Luis, Dario) ONLY see leads assigned to them
   const allowedLeads = leads.filter(lead => canUserViewLead(lead, userEmail));
 
-  // Count leads for Alberto and Luis accurately
+  // Count leads per sales rep accurately
   const albertoCount = allowedLeads.filter(l => {
     const assigned = (l.assigned_to || '').toLowerCase().trim();
     return assigned.includes('alberto') || assigned.includes('zegarra');
   }).length;
-  const luisCount = allowedLeads.length - albertoCount;
+
+  const darioCount = allowedLeads.filter(l => {
+    const assigned = (l.assigned_to || '').toLowerCase().trim();
+    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
+  }).length;
+
+  const luisCount = allowedLeads.filter(l => {
+    const assigned = (l.assigned_to || '').toLowerCase().trim();
+    const isAlberto = assigned.includes('alberto') || assigned.includes('zegarra');
+    const isDario = assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
+    return !isAlberto && !isDario;
+  }).length;
 
   // If Super Admin, apply advisor sub-filter if selected
   const visibleLeads = allowedLeads.filter(lead => {
     if (!isAdmin || adminAdvisorFilter === 'todos') return true;
     const assigned = (lead.assigned_to || '').toLowerCase().trim();
     const isAlberto = assigned.includes('alberto') || assigned.includes('zegarra');
+    const isDario = assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
     
-    if (adminAdvisorFilter === 'alberto') {
-      return isAlberto; // ONLY leads explicitly assigned to Alberto
-    }
-    if (adminAdvisorFilter === 'luis') {
-      return !isAlberto; // All other existing leads belong to Luis
-    }
+    if (adminAdvisorFilter === 'alberto') return isAlberto;
+    if (adminAdvisorFilter === 'dario') return isDario;
+    if (adminAdvisorFilter === 'luis') return !isAlberto && !isDario;
     return true;
   });
 
@@ -326,6 +335,7 @@ export default function App() {
                   <option value="todos">👥 Todos los Vendedores ({allowedLeads.length})</option>
                   <option value="alberto">👤 Mis Leads (Alberto) ({albertoCount})</option>
                   <option value="luis">👤 Leads de Luis ({luisCount})</option>
+                  <option value="dario">👤 Leads de Dario ({darioCount})</option>
                 </select>
               </div>
             )}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { lostReasonOptions } from './LostReasonModal';
-import { isSuperAdmin, SALES_REPRESENTATIVES } from '../lib/utils';
+import { isSuperAdmin, getUserDisplayName, SALES_REPRESENTATIVES } from '../lib/utils';
 
 const planValues = {
   plan_30: 300,
@@ -15,6 +15,7 @@ const planValues = {
 export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onOpenWhatsApp, userEmail }) {
   const isEdit = !!lead;
   const isAdmin = isSuperAdmin(userEmail);
+  const currentUserDisplayName = getUserDisplayName(userEmail);
   
   const [formData, setFormData] = useState({
     business_name: '',
@@ -25,7 +26,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
     target_plan: 'plan_30',
     status: 'prospecto',
     estimated_value: 300,
-    assigned_to: isAdmin ? 'Alberto Zegarra' : 'Luis Hakim',
+    assigned_to: isAdmin ? 'Alberto Zegarra' : currentUserDisplayName,
   });
 
   const [notesList, setNotesList] = useState([]);
@@ -47,7 +48,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         target_plan: lead.target_plan || 'plan_30',
         status: lead.status || 'prospecto',
         estimated_value: lead.estimated_value || 0,
-        assigned_to: lead.assigned_to || (isAdmin ? 'Alberto Zegarra' : 'Luis Hakim'),
+        assigned_to: lead.assigned_to || (isAdmin ? 'Alberto Zegarra' : currentUserDisplayName),
       });
 
       // Parse JSON notes, next action, next action date, lost reason
@@ -89,7 +90,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         target_plan: 'plan_30',
         status: 'prospecto',
         estimated_value: 300,
-        assigned_to: isAdmin ? 'Alberto Zegarra' : 'Luis Hakim',
+        assigned_to: isAdmin ? 'Alberto Zegarra' : currentUserDisplayName,
       });
       setNotesList([]);
       setNextAction('');
@@ -351,7 +352,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
                   <option value="prospecto">1. Prospecto</option>
                   <option value="llamado">2. Contactado (Llamado)</option>
                   <option value="cita_agendada">3. Cita Agendada</option>
-                  <option value="presentacion_realizada">4. Presentación Realizada</option>
+                  <option value="presentacion_realizada">4. Demo Realizada</option>
                   <option value="cerrado_ganado">5. Cerrado - Ganado</option>
                   <option value="cerrado_perdido">6. Cerrado - Perdido</option>
                 </select>
@@ -400,8 +401,11 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
                     className="form-control select-filter"
                     style={{ width: '100%', minWidth: 'auto' }}
                   >
-                    <option value="Alberto Zegarra">Alberto Zegarra (Tú / Super Admin)</option>
-                    <option value="Luis Hakim">Luis Hakim (Socio Comercial)</option>
+                    {SALES_REPRESENTATIVES.map(rep => (
+                      <option key={rep.id} value={rep.name}>
+                        {rep.name} {rep.id === 'alberto' ? '(Tú / Super Admin)' : '(Vendedor)'}
+                      </option>
+                    ))}
                   </select>
                 ) : (
                   <input

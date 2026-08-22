@@ -70,12 +70,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 9. Sistema de Roles y Privacidad por Vendedor
 *   **Super Administrador (Alberto - `albertozbcoach@gmail.com`)**:
     *   Acceso total al 100% de los leads, métricas globales del embudo y bitácoras.
-    *   Selector de vista en la barra superior para alternar entre: *Todos los Vendedores*, *Mis Leads (Alberto)* o *Leads de Luis*.
+    *   Selector de vista en la barra superior para alternar entre: *Todos los Vendedores*, *Mis Leads (Alberto)*, *Leads de Luis* o *Leads de Dario*.
     *   Capacidad de asignar o reasignar prospectos a cualquier socio comercial.
-*   **Socio Comercial / Vendedor (Luis - `torohakim@gmail.com`)**:
+*   **Vendedor (Luis - `torohakim@gmail.com`)**:
+    *   Privacidad estricta: Solo puede visualizar, editar y gestionar sus propios prospectos.
+*   **Vendedor (Dario Cienfuegos - `dariospaarnold@gmail.com`)**:
     *   Privacidad estricta: Solo puede visualizar, editar y gestionar los prospectos asignados a él o registrados por él.
-    *   No tiene acceso a los prospectos privados ni a las métricas del Super Administrador.
-    *   Las métricas de su Dashboard y tarjetas del Kanban se recalculan automáticamente solo para su cartera.
+    *   No tiene acceso a los prospectos de Alberto ni de Luis.
+
 
 ---
 
