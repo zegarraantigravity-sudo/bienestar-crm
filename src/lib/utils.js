@@ -32,6 +32,19 @@ export const defaultWhatsAppTemplates = [
     id: 'seguimiento_general',
     title: '🔄 Seguimiento Post-Demo',
     getText: (lead) => `Hola ${lead.contact_name || lead.business_name}, ¿qué tal? Te escribo para saber si tuviste oportunidad de revisar lo que conversamos sobre Bienestar Sin Excusas. ¿Tienes alguna consulta?`
+  },
+  {
+    id: 'cierre_sin_respuesta',
+    title: '🤝 Cierre por Sin Respuesta / Despedida',
+    getText: (lead) => `Hola ${lead.contact_name ? lead.contact_name.split(' ')[0] : 'colega'}, ¿cómo estás?
+
+Como no tuve respuesta a mi mensaje anterior, imagino que andas a tope con tus consultas o que ahora mismo no es tu prioridad automatizar dietas ni tener una App propia con tu marca.
+
+Totalmente entendible. Para no insistirte ni saturar tu WhatsApp, cierro tu seguimiento por aquí.
+
+Si en algún momento más adelante te hace sentido atender a más de 100 pacientes sin pasar horas armando planes en Excel, me escribes y lo retomamos con gusto.
+
+¡Muchos éxitos con tus pacientes! 🤝`
   }
 ];
 

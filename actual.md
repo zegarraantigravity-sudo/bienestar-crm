@@ -51,7 +51,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Eliminación de la restricción antigua de la base de datos para habilitar los nuevos tiers de planes.
 
 ### 5. Acciones de Contacto Rápido y Plantillas de WhatsApp
-*   **Integración Directa de WhatsApp con Plantillas**: Botón verde con selector de plantillas pre-redactadas (*Primer Contacto*, *Recordatorio de Demo*, *Presentación de Plan*, *Seguimiento Post-Demo*). El sistema inserta dinámicamente el nombre del cliente, su plan y valor en Soles, abriendo WhatsApp Web/App al instante.
+*   **Integración Directa de WhatsApp con Plantillas**: Botón verde con selector de 5 plantillas pre-redactadas (*Primer Contacto*, *Recordatorio de Demo*, *Presentación de Plan*, *Seguimiento Post-Demo* y *Cierre por Sin Respuesta / Despedida*). El sistema inserta dinámicamente el nombre del cliente, su plan y valor en Soles, abriendo WhatsApp Web/App al instante.
 *   **Ubicación**: Disponible en el Directorio de Leads, en las tarjetas del Tablero Kanban y en el modal de detalle del lead.
 
 ### 6. Seguimiento Inteligente por Agenda (Fechas y Alertas de Tareas)

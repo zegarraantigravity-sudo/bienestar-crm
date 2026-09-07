@@ -34,7 +34,7 @@ export default function WhatsAppModal({ lead, isOpen, onClose }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" style={{ maxWidth: '520px' }} onClick={e => e.stopPropagation()}>
+      <div className="modal-content" style={{ maxWidth: '580px' }} onClick={e => e.stopPropagation()}>
         <div className="modal-header" style={{ borderColor: 'rgba(37, 211, 102, 0.2)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{
@@ -64,7 +64,7 @@ export default function WhatsAppModal({ lead, isOpen, onClose }) {
             <label style={{ fontSize: '0.8rem', fontWeight: 700, color: 'hsl(var(--text-secondary))', textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>
               Selecciona una Plantilla Rápida
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
               {defaultWhatsAppTemplates.map(tpl => (
                 <button
                   key={tpl.id}
@@ -113,14 +113,14 @@ export default function WhatsAppModal({ lead, isOpen, onClose }) {
               </button>
             </div>
             <textarea
-              rows={4}
+              rows={7}
               value={customText}
               onChange={e => setCustomText(e.target.value)}
               className="form-control"
               style={{
                 backgroundColor: 'hsl(var(--bg-sidebar))',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
+                fontSize: '0.88rem',
+                lineHeight: 1.45,
                 resize: 'vertical'
               }}
             />
