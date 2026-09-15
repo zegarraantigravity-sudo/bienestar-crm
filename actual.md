@@ -84,6 +84,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Detecta al prospecto, agrega la nota a la bitácora con fecha/hora actual, programa la próxima acción para la fecha indicada y actualiza Supabase en tiempo real.
 *   **Consultas y Resúmenes Ejecutivos**:
     *   Responde preguntas como: *"Hazme un resumen de Noé Rojas"*, *"¿Qué tareas o llamadas tengo para hoy?"* o *"¿Qué prospectos están estancados?"*.
+*   **Dictado por Voz y Notas de Audio (🎙️)**: Botón de micrófono integrado con reconocimiento de voz en tiempo real (Web Speech API). Permite dictar instrucciones por voz en español que se transcriben automáticamente para enviar notas o programar llamadas sin escribir en el teclado.
 *   **Sincronización en Vivo**: Al actualizar un lead desde el chat, los cambios se reflejan inmediatamente en el Tablero Kanban y en el Directorio de Leads sin necesidad de recargar la página.
 
 

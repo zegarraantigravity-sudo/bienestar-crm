@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Send, X, Sparkles, CheckCircle2, Clock, Calendar, RefreshCw, MessageSquare, ChevronDown } from 'lucide-react';
+import { Bot, Send, X, Sparkles, CheckCircle2, Clock, Calendar, RefreshCw, MessageSquare, ChevronDown, Mic, MicOff } from 'lucide-react';
 import { askAICopilot } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
@@ -16,8 +16,75 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const recognitionRef = useRef(null);
+
+  const startListening = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Tu navegador actual no soporta dictado por voz directo. Te recomendamos usar Google Chrome o Microsoft Edge.');
+      return;
+    }
+
+    try {
+      if (recognitionRef.current) {
+        recognitionRef.current.abort();
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'es-PE';
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onstart = () => {
+        setIsRecording(true);
+      };
+
+      recognition.onresult = (event) => {
+        let transcriptText = '';
+        for (let i = 0; i < event.results.length; ++i) {
+          transcriptText += event.results[i][0].transcript;
+        }
+        if (transcriptText) {
+          setInput(transcriptText);
+        }
+      };
+
+      recognition.onerror = (event) => {
+        console.warn('Speech recognition error:', event.error);
+        setIsRecording(false);
+      };
+
+      recognition.onend = () => {
+        setIsRecording(false);
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch (err) {
+      console.error('Error starting speech recognition:', err);
+      setIsRecording(false);
+    }
+  };
+
+  const stopListening = () => {
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch (e) {}
+      setIsRecording(false);
+    }
+  };
+
+  const toggleListening = () => {
+    if (isRecording) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -31,6 +98,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
   }, [isOpen, messages]);
 
   const handleSend = async (userText = input) => {
+    if (isRecording) {
+      stopListening();
+    }
     const textToSend = typeof userText === 'string' ? userText.trim() : input.trim();
     if (!textToSend || loading) return;
 
@@ -413,16 +483,42 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
-              placeholder="Escribe una instrucción o pregunta..."
+              placeholder={isRecording ? "🎙️ Escuchando... habla ahora..." : "Escribe o dicta una instrucción..."}
               className="form-control"
               style={{
                 flex: 1,
                 fontSize: '0.85rem',
                 padding: '8px 12px',
-                borderRadius: '10px'
+                borderRadius: '10px',
+                border: isRecording ? '1px solid #ef4444' : undefined,
+                backgroundColor: isRecording ? 'rgba(239, 68, 68, 0.08)' : undefined
               }}
               disabled={loading}
             />
+
+            {/* Microphone Button */}
+            <button
+              type="button"
+              onClick={toggleListening}
+              disabled={loading}
+              style={{
+                padding: '8px 12px',
+                borderRadius: '10px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: isRecording ? '#ef4444' : 'hsl(var(--bg-sidebar))',
+                color: isRecording ? 'white' : 'hsl(var(--text-secondary))',
+                border: isRecording ? '1px solid #dc2626' : '1px solid hsl(var(--border-color))',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                animation: isRecording ? 'pulseRecording 1.2s infinite' : 'none'
+              }}
+              title={isRecording ? "Detener dictado por voz" : "Dictar por voz (micrófono)"}
+            >
+              {isRecording ? <MicOff size={16} /> : <Mic size={16} />}
+            </button>
+
             <button
               type="submit"
               disabled={loading || !input.trim()}
@@ -447,6 +543,11 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
           0% { box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4); }
           50% { box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6); }
           100% { box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4); }
+        }
+        @keyframes pulseRecording {
+          0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
         @keyframes slideInUp {
           from { transform: translateY(20px); opacity: 0; }
