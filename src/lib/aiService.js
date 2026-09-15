@@ -3,6 +3,10 @@
  * Client service to communicate with the CRM AI Copilot
  */
 
+const DEFAULT_KEY = 'sk-ws-H.DMLLELE.Ns7U.MEQCIEQeFcXistPzyFJ3JaFIfIwVAvEaxrfhN9E8et6HLLadAiAOEVqQ8dMN1M0bBuZEUdsC-hotw6l_Fm5LUUJ8gR9FOw';
+const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
+const DEFAULT_MODEL = 'qwen-plus';
+
 export async function askAICopilot({ userMessage, leads, userEmail, userDisplayName }) {
   // Extract a lightweight, essential summary of leads to send to the AI
   const leadsSummary = (leads || []).slice(0, 40).map(l => {
@@ -61,23 +65,20 @@ export async function askAICopilot({ userMessage, leads, userEmail, userDisplayN
       return data;
     } else {
       const errorData = await res.json().catch(() => ({}));
-      console.warn('/api/chat responded with error, falling back:', errorData);
+      console.warn('/api/chat responded with status:', res.status, errorData);
     }
   } catch (err) {
-    console.warn('Network error reaching /api/chat, testing fallback:', err);
+    console.warn('Network error reaching /api/chat, testing direct fallback:', err);
   }
 
-  // Fallback: If in local dev or direct client mode with VITE_AI_API_KEY
-  const apiKey = import.meta.env.VITE_AI_API_KEY;
-  const apiUrl = import.meta.env.VITE_AI_API_URL || 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
-  const model = import.meta.env.VITE_AI_MODEL || 'qwen-plus';
+  // Fallback: direct call with apiKey
+  const apiKey = import.meta.env.VITE_AI_API_KEY || DEFAULT_KEY;
+  const apiUrl = import.meta.env.VITE_AI_API_URL || DEFAULT_URL;
+  const model = import.meta.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-  if (!apiKey) {
-    throw new Error('No se pudo conectar con el Asistente IA. Asegúrate de que las variables de entorno estén activadas.');
-  }
-
+  const todayDateStr = new Date().toLocaleDateString('es-PE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   const systemPrompt = `Eres el Copiloto Inteligente de Bienestar CRM.
-Fecha y hora actual: ${new Date().toISOString()}.
+Fecha y hora actual: ${todayDateStr} (${new Date().toISOString()}).
 Usuario conectado: ${userDisplayName} (${userEmail}).
 
 PROSPECTOS ACTIVOS EN CRM:
@@ -113,7 +114,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 
   if (!directRes.ok) {
     const txt = await directRes.text();
-    throw new Error(`Error en el servicio de IA: ${txt}`);
+    throw new Error(`Error en el servicio de IA (${directRes.status}): ${txt}`);
   }
 
   const directJson = await directRes.json();

@@ -1,8 +1,6 @@
-const https = require('https');
-
-module.exports = async (req, res) => {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
+export default async function handler(req, res) {
+  // CORS Headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader(
@@ -11,8 +9,7 @@ module.exports = async (req, res) => {
   );
 
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
@@ -20,19 +17,28 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { userMessage, leadsSummary = [], userContext = {} } = req.body || {};
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        body = {};
+      }
+    }
+
+    const { userMessage, leadsSummary = [], userContext = {} } = body || {};
 
     if (!userMessage) {
       return res.status(400).json({ error: 'userMessage is required' });
     }
 
-    const apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY;
-    const apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
-    const model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || 'qwen-plus';
+    const DEFAULT_KEY = 'sk-ws-H.DMLLELE.Ns7U.MEQCIEQeFcXistPzyFJ3JaFIfIwVAvEaxrfhN9E8et6HLLadAiAOEVqQ8dMN1M0bBuZEUdsC-hotw6l_Fm5LUUJ8gR9FOw';
+    const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
+    const DEFAULT_MODEL = 'qwen-plus';
 
-    if (!apiKey) {
-      return res.status(500).json({ error: 'AI_API_KEY is not configured in environment' });
-    }
+    const apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
+    const apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
+    const model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
     const todayDateStr = new Date().toLocaleDateString('es-PE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const nowIso = new Date().toISOString();
@@ -50,7 +56,7 @@ INSTRUCCIONES CLAVE:
    - Extrae la nota a agregar en la bitácora.
    - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm (calculando a partir de hoy).
    - Establece "intent": "update_lead".
-2. Si el usuario pide un resumen o información de un cliente:
+2. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
    - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones.
    - Establece "intent": "general_chat".
 3. Si el usuario pide crear un nuevo lead:
@@ -69,50 +75,33 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
   "next_action_text": "texto de la próxima acción si aplica",
   "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
   "new_status": "prospecto | llamado | cita_agendada | presentacion_realizada | cerrado_ganado | cerrado_perdido si aplica",
-  "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 } (solo si intent es create_lead),
+  "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
   "reply_message": "Respuesta en español, empática, profesional y directa para el usuario"
 }`;
 
-    const parsedUrl = new URL(apiUrl);
-    const postData = JSON.stringify({
-      model: model,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userMessage }
-      ],
-      temperature: 0.2
+    const aiRes = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userMessage }
+        ],
+        temperature: 0.2
+      })
     });
 
-    const responsePayload = await new Promise((resolve, reject) => {
-      const options = {
-        hostname: parsedUrl.hostname,
-        port: 443,
-        path: parsedUrl.pathname,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Length': Buffer.byteLength(postData)
-        }
-      };
+    if (!aiRes.ok) {
+      const errText = await aiRes.text();
+      console.error('DashScope API returned error:', errText);
+      return res.status(500).json({ error: `DashScope API error: ${errText}` });
+    }
 
-      const aiReq = https.request(options, (aiRes) => {
-        let data = '';
-        aiRes.on('data', (chunk) => data += chunk);
-        aiRes.on('end', () => {
-          try {
-            resolve(JSON.parse(data));
-          } catch (e) {
-            reject(new Error('Failed to parse AI response: ' + data));
-          }
-        });
-      });
-
-      aiReq.on('error', (err) => reject(err));
-      aiReq.write(postData);
-      aiReq.end();
-    });
-
+    const responsePayload = await aiRes.json();
     const rawContent = responsePayload.choices?.[0]?.message?.content || '{}';
     
     // Clean markdown code blocks if present
@@ -137,4 +126,4 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
     console.error('Error in /api/chat:', error);
     return res.status(500).json({ error: error.message || 'Internal server error' });
   }
-};
+}
