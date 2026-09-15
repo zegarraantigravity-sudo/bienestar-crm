@@ -93,6 +93,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "next_action_text": "texto de la proxima accion",
   "next_action_date": "YYYY-MM-DDTHH:mm",
   "new_status": "estado nuevo si aplica",
+  "new_plan": "plan nuevo si aplica",
+  "new_value": null,
   "reply_message": "Respuesta clara y profesional"
 }`;
 

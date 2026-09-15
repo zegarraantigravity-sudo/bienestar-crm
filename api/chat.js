@@ -75,6 +75,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
   "next_action_text": "texto de la próxima acción si aplica",
   "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
   "new_status": "prospecto | llamado | cita_agendada | presentacion_realizada | cerrado_ganado | cerrado_perdido si aplica",
+  "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
+  "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
   "reply_message": "Respuesta en español, empática, profesional y directa para el usuario"
 }`;

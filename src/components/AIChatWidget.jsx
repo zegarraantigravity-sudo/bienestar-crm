@@ -123,6 +123,12 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
           if (aiResponse.new_status) {
             leadUpdateFields.status = aiResponse.new_status;
           }
+          if (aiResponse.new_plan) {
+            leadUpdateFields.target_plan = aiResponse.new_plan;
+          }
+          if (aiResponse.new_value) {
+            leadUpdateFields.estimated_value = parseFloat(aiResponse.new_value) || targetLead.estimated_value;
+          }
 
           // Execute Supabase update
           const { data, error } = await supabase
