@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck, Pencil, Check } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { lostReasonOptions } from './LostReasonModal';
 import { isSuperAdmin, getUserDisplayName, SALES_REPRESENTATIVES } from '../lib/utils';
@@ -36,6 +36,8 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
   const [lostReasonLabel, setLostReasonLabel] = useState('');
   const [newNote, setNewNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editingNoteIndex, setEditingNoteIndex] = useState(null);
+  const [editingNoteText, setEditingNoteText] = useState('');
 
   useEffect(() => {
     if (lead) {
@@ -132,6 +134,38 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
     const updatedNotes = [noteObj, ...notesList];
     setNotesList(updatedNotes);
     setNewNote('');
+  };
+
+  const handleDeleteNote = (indexToDelete) => {
+    if (window.confirm('¿Deseas eliminar esta nota de la bitácora?')) {
+      setNotesList(prev => prev.filter((_, idx) => idx !== indexToDelete));
+      if (editingNoteIndex === indexToDelete) {
+        setEditingNoteIndex(null);
+        setEditingNoteText('');
+      }
+    }
+  };
+
+  const handleStartEditNote = (index, currentText) => {
+    setEditingNoteIndex(index);
+    setEditingNoteText(currentText);
+  };
+
+  const handleSaveEditNote = (index) => {
+    if (!editingNoteText.trim()) return;
+    setNotesList(prev => prev.map((item, idx) => {
+      if (idx === index) {
+        return { ...item, text: editingNoteText.trim() };
+      }
+      return item;
+    }));
+    setEditingNoteIndex(null);
+    setEditingNoteText('');
+  };
+
+  const handleCancelEditNote = () => {
+    setEditingNoteIndex(null);
+    setEditingNoteText('');
   };
 
   const handleSubmit = async (e) => {
@@ -468,12 +502,87 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
                   ) : (
                     notesList.map((item, index) => (
                       <div className={`timeline-item ${index === 0 ? 'recent' : ''}`} key={index}>
-                        <div className="timeline-meta">
+                        <div className="timeline-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span className="timeline-date">{formatLocalDate(item.date)}</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            {editingNoteIndex !== index && (
+                              <>
+                                <button
+                                  type="button"
+                                  onClick={() => handleStartEditNote(index, item.text)}
+                                  style={{
+                                    background: 'transparent',
+                                    border: 'none',
+                                    color: 'hsl(var(--text-muted))',
+                                    cursor: 'pointer',
+                                    padding: '2px 4px',
+                                    borderRadius: '4px',
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                  }}
+                                  title="Editar nota"
+                                  onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--text-primary))'}
+                                  onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
+                                >
+                                  <Pencil size={13} />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteNote(index)}
+                                  style={{
+                                    background: 'transparent',
+                                    border: 'none',
+                                    color: 'hsl(var(--text-muted))',
+                                    cursor: 'pointer',
+                                    padding: '2px 4px',
+                                    borderRadius: '4px',
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                  }}
+                                  title="Eliminar nota"
+                                  onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--color-perdido))'}
+                                  onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </>
+                            )}
+                          </div>
                         </div>
-                        <div className="timeline-content">
-                          {item.text}
-                        </div>
+
+                        {editingNoteIndex === index ? (
+                          <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <textarea
+                              value={editingNoteText}
+                              onChange={e => setEditingNoteText(e.target.value)}
+                              className="form-control"
+                              rows={3}
+                              style={{ fontSize: '0.85rem', width: '100%', resize: 'vertical' }}
+                            />
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                onClick={handleCancelEditNote}
+                                style={{ padding: '3px 8px', fontSize: '0.75rem' }}
+                              >
+                                <X size={12} /> Cancelar
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={() => handleSaveEditNote(index)}
+                                style={{ padding: '3px 8px', fontSize: '0.75rem' }}
+                              >
+                                <Check size={12} /> Guardar
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="timeline-content">
+                            {item.text}
+                          </div>
+                        )}
                       </div>
                     ))
                   )}
