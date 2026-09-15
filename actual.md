@@ -76,7 +76,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Privacidad estricta: Solo puede visualizar, editar y gestionar sus propios prospectos.
 *   **Vendedor (Dario Cienfuegos - `dariospaarnold@gmail.com`)**:
     *   Privacidad estricta: Solo puede visualizar, editar y gestionar los prospectos asignados a él o registrados por él.
-    *   No tiene acceso a los prospectos de Alberto ni de Luis.
+### 10. Copiloto de Inteligencia Artificial Integrado (Asistente Comercial en Vivo)
+*   **Widget Flotante Interactivo**: Botón circular `🤖 Copiloto IA` en la esquina inferior derecha con efecto de brillo y ventana de chat emergente integrada.
+*   **Motor de Inteligencia Artificial**: Conectado a Alibaba Cloud DashScope (`qwen-plus`) a través de un endpoint serverless seguro en Vercel (`api/chat.js`).
+*   **Gestión en Lenguaje Natural de Bitácoras y Tareas**:
+    *   Interpreta comandos como: *"Hablé con Noé y me dijo que lo llame el sábado a las 10 am"*.
+    *   Detecta al prospecto, agrega la nota a la bitácora con fecha/hora actual, programa la próxima acción para la fecha indicada y actualiza Supabase en tiempo real.
+*   **Consultas y Resúmenes Ejecutivos**:
+    *   Responde preguntas como: *"Hazme un resumen de Noé Rojas"*, *"¿Qué tareas o llamadas tengo para hoy?"* o *"¿Qué prospectos están estancados?"*.
+*   **Sincronización en Vivo**: Al actualizar un lead desde el chat, los cambios se reflejan inmediatamente en el Tablero Kanban y en el Directorio de Leads sin necesidad de recargar la página.
 
 
 ---
@@ -85,6 +93,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### Fase 2: Optimización de Seguimiento e Interacciones
 - [x] **Filtro de Asignación comercial y Privacidad**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado y restringir visibilidad para vendedores.
+- [x] **Copiloto de IA Integrado**: Asistente comercial flotante en el CRM con capacidad de lectura de clientes y actualización automática de bitácoras.
 - [ ] **Campos del Lead Personalizados**: Agregar campos adicionales como RUC de la empresa, dirección o enlace de redes sociales al formulario de registro.
 - [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) con plantillas inteligentes.
 

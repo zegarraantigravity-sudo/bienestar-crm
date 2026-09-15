@@ -9,10 +9,11 @@ import KanbanView from './components/KanbanView';
 import LeadTableView from './components/LeadTableView';
 import LoginView from './components/LoginView';
 
-// Modals
+// Modals & Widgets
 import LeadModal from './components/LeadModal';
 import WhatsAppModal from './components/WhatsAppModal';
 import LostReasonModal from './components/LostReasonModal';
+import AIChatWidget from './components/AIChatWidget';
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -411,6 +412,13 @@ export default function App() {
         lead={lostReasonLead}
         onClose={() => setIsLostReasonModalOpen(false)}
         onConfirm={handleConfirmLostReason}
+      />
+
+      {/* Floating AI Copilot Widget */}
+      <AIChatWidget
+        leads={allowedLeads}
+        onUpdateLead={handleSaveLead}
+        userEmail={userEmail}
       />
 
       <style>{`
