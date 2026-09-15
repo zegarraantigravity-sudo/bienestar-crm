@@ -5,8 +5,8 @@ import { lostReasonOptions } from './LostReasonModal';
 import { isSuperAdmin, getUserDisplayName, SALES_REPRESENTATIVES } from '../lib/utils';
 
 const planValues = {
-  plan_30: 300,
-  plan_80: 600,
+  plan_30: 400,
+  plan_80: 700,
   plan_200: 1200,
   plan_500: 2700,
   plan_1200: 6000,
@@ -25,7 +25,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
     client_type: 'coach',
     target_plan: 'plan_30',
     status: 'prospecto',
-    estimated_value: 300,
+    estimated_value: 400,
     assigned_to: isAdmin ? 'Alberto Zegarra' : currentUserDisplayName,
   });
 
@@ -89,7 +89,7 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         client_type: 'coach',
         target_plan: 'plan_30',
         status: 'prospecto',
-        estimated_value: 300,
+        estimated_value: 400,
         assigned_to: isAdmin ? 'Alberto Zegarra' : currentUserDisplayName,
       });
       setNotesList([]);
@@ -328,8 +328,8 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
                   className="form-control select-filter"
                   style={{ width: '100%', minWidth: 'auto' }}
                 >
-                  <option value="plan_30">Plan 30 (S/. 300)</option>
-                  <option value="plan_80">Plan 80 (S/. 600)</option>
+                  <option value="plan_30">Plan 30 (S/. 400)</option>
+                  <option value="plan_80">Plan 80 (S/. 700)</option>
                   <option value="plan_200">Plan 200 (S/. 1200)</option>
                   <option value="plan_500">Plan 500 (S/. 2700)</option>
                   <option value="plan_1200">Plan 1200 (S/. 6000)</option>

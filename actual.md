@@ -46,7 +46,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Bitácora de Seguimiento**: Registro interactivo de notas de interacción pasadas con fecha y hora exacta, mostradas en una línea de tiempo vertical.
     *   **Próxima Acción Pendiente**: Campo específico para registrar la siguiente tarea a realizar. Se muestra a primera vista en las tarjetas de Kanban (badge naranja) y en la tabla del directorio (icono 📌) para no perder el seguimiento.
 *   **Planes y Precios Locales (Soles)**:
-    *   Configuración de los 5 planes oficiales: **Plan 30** (S/. 300), **Plan 80** (S/. 600), **Plan 200** (S/. 1200), **Plan 500** (S/. 2700) y **Plan 1200** (S/. 6000).
+    *   Configuración de los 5 planes oficiales: **Plan 30** (S/. 400), **Plan 80** (S/. 700), **Plan 200** (S/. 1200), **Plan 500** (S/. 2700) y **Plan 1200** (S/. 6000).
     *   Autocompletado inteligente de precio estimado según el plan seleccionado.
     *   Eliminación de la restricción antigua de la base de datos para habilitar los nuevos tiers de planes.
 
