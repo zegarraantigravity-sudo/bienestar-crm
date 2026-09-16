@@ -1,0 +1,601 @@
+import { createClient } from '@supabase/supabase-js';
+
+const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8657118019:AAHZpcgn2tLTHY58FI01nlgV5LDxesEq1SU';
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://fzwfkdamebyzywlqhtes.supabase.co';
+const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_BE8kihWp5Uhg8re4CB3xlA_Ahb-3zWY';
+
+const DEFAULT_KEY = 'sk-ws-H.DMLLELE.Ns7U.MEQCIEQeFcXistPzyFJ3JaFIfIwVAvEaxrfhN9E8et6HLLadAiAOEVqQ8dMN1M0bBuZEUdsC-hotw6l_Fm5LUUJ8gR9FOw';
+const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
+const DEFAULT_MODEL = 'qwen-plus';
+
+const AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
+const AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
+const AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// In-memory cache for recent admin chat ID to send proactive alerts
+let lastAdminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || null;
+
+export default async function handler(req, res) {
+  // Allow GET for webhook registration or manual reminder checks
+  if (req.method === 'GET') {
+    const { action } = req.query || {};
+
+    if (action === 'set_webhook') {
+      const host = req.headers['x-forwarded-host'] || req.headers.host || 'bienestar-crm.vercel.app';
+      const webhookUrl = `https://${host}/api/telegram`;
+      const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/setWebhook?url=${encodeURIComponent(webhookUrl)}`);
+      const tgData = await tgRes.json();
+      return res.status(200).json({ webhookUrl, tgData });
+    }
+
+    if (action === 'webhook_info') {
+      const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getWebhookInfo`);
+      const tgData = await tgRes.json();
+      return res.status(200).json(tgData);
+    }
+
+    if (action === 'reminders') {
+      const result = await checkAndSendReminders();
+      return res.status(200).json(result);
+    }
+
+    return res.status(200).json({ status: 'ok', service: 'Bienestar CRM Telegram Copilot' });
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Telegram webhook payload
+  try {
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch (e) {}
+    }
+
+    const message = body?.message || body?.edited_message;
+    if (!message) {
+      return res.status(200).json({ ok: true, ignored: 'no message' });
+    }
+
+    const chatId = message.chat?.id;
+    const fromUser = message.from || {};
+    const userName = fromUser.first_name || 'Alberto';
+
+    // Update last known admin chatId
+    lastAdminChatId = chatId;
+
+    // Handle /start command
+    if (message.text === '/start') {
+      const welcome = `¡Hola ${userName}! Soy tu <b>Copiloto Ejecutivo de Bienestar CRM</b> en Telegram 🤖✨\n\n` +
+        `Estoy conectado en tiempo real a tu base de datos de prospectos en Supabase.\n\n` +
+        `<b>¿Qué puedes hacer conmigo aquí?</b>\n` +
+        `• 📋 <b>Consultar tu agenda:</b> Pregúntame <i>"¿Qué tareas o llamadas tengo para hoy?"</i>\n` +
+        `• 🎯 <b>Estrategia de clientes:</b> <i>"¿Qué me recomiendas para Yoselin y qué le escribo por WhatsApp?"</i>\n` +
+        `• 🎙️ <b>Dictarme por audio o texto:</b> <i>"Hablé con Claudia, me dijo que le interesa el plan de 30 para su cuñada. Agenda llamada para el viernes a las 11:00 am."</i>\n` +
+        `• ➕ <b>Crear prospectos:</b> <i>"Crea un prospecto para Juan Pérez, coach de gym, cel 999888777, plan 30."</i>\n\n` +
+        `¡Pruébame ahora mismo escribiéndome o enviándome una nota de voz! 👇`;
+
+      await sendTelegramMessage(chatId, welcome);
+      return res.status(200).json({ ok: true });
+    }
+
+    // Handle /agenda command
+    if (message.text === '/agenda' || message.text === '/tareas') {
+      await sendChatAction(chatId, 'typing');
+      const responseText = await processUserQuery('¿Qué tareas o llamadas tengo para hoy?', userName);
+      await sendTelegramMessage(chatId, responseText);
+      return res.status(200).json({ ok: true });
+    }
+
+    let userText = message.text || message.caption || '';
+
+    // If message is a voice note (audio message)
+    if (message.voice) {
+      await sendChatAction(chatId, 'typing');
+      try {
+        const fileId = message.voice.file_id;
+        const fileInfoRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getFile?file_id=${fileId}`);
+        const fileInfo = await fileInfoRes.json();
+
+        if (fileInfo.ok && fileInfo.result?.file_path) {
+          const fileUrl = `https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${fileInfo.result.file_path}`;
+
+          // Transcribe using Qwen omni audio
+          const transcribedText = await transcribeAudioUrl(fileUrl);
+          if (transcribedText) {
+            userText = transcribedText;
+            // Notify user of transcribed audio
+            await sendTelegramMessage(chatId, `🎙️ <i>Audio recibido:</i>\n<blockquote>«${userText}»</blockquote>\n⏳ <i>Procesando con el CRM...</i>`);
+          } else {
+            await sendTelegramMessage(chatId, '⚠️ No pude entender claramente el audio. Por favor intenta grabarlo de nuevo o escríbelo por texto.');
+            return res.status(200).json({ ok: true });
+          }
+        }
+      } catch (err) {
+        console.error('Error handling voice note:', err);
+        await sendTelegramMessage(chatId, '⚠️ Hubo un error procesando el audio. Por favor intenta enviarlo nuevamente.');
+        return res.status(200).json({ ok: true });
+      }
+    }
+
+    if (!userText || userText.trim().length === 0) {
+      return res.status(200).json({ ok: true, ignored: 'empty text' });
+    }
+
+    // Send typing status to Telegram
+    await sendChatAction(chatId, 'typing');
+
+    // Process through Copilot AI
+    const reply = await processUserQuery(userText, userName);
+    await sendTelegramMessage(chatId, reply);
+
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('Fatal error in Telegram webhook handler:', err);
+    return res.status(200).json({ error: err.message });
+  }
+}
+
+// -------------------------------------------------------------
+// Helper: Transcribe audio using Qwen Omni Flash
+// -------------------------------------------------------------
+async function transcribeAudioUrl(audioUrl) {
+  try {
+    const res = await fetch(AI_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${AI_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'qwen3.5-omni-flash',
+        messages: [
+          {
+            role: 'user',
+            content: [
+              { type: 'text', text: 'Transcribe exactamente todo lo que dice este audio en español, palabra por palabra, sin inventar ni agregar nada más:' },
+              { type: 'input_audio', input_audio: { data: audioUrl, format: 'ogg' } }
+            ]
+          }
+        ]
+      })
+    });
+
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content?.trim() || '';
+  } catch (e) {
+    console.error('Transcription error:', e);
+    return '';
+  }
+}
+
+// -------------------------------------------------------------
+// Helper: Process Query with Copilot & Supabase
+// -------------------------------------------------------------
+async function processUserQuery(userMessage, userName = 'Alberto Zegarra') {
+  // 1. Fetch leads from Supabase
+  const { data: leads, error } = await supabase.from('leads').select('*');
+  if (error) {
+    console.error('Supabase fetch error:', error);
+  }
+
+  // 2. Dates calculation (America/Lima)
+  const nowPeru = new Date();
+  const todayDateStr = nowPeru.toLocaleDateString('es-PE', {
+    timeZone: 'America/Lima',
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const currentTimeStr = nowPeru.toLocaleTimeString('es-PE', {
+    timeZone: 'America/Lima',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(nowPeru);
+
+  const tomorrowObj = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
+  tomorrowObj.setDate(tomorrowObj.getDate() + 1);
+  const tomorrowPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(tomorrowObj);
+  const tomorrowDateStr = tomorrowObj.toLocaleDateString('es-PE', {
+    timeZone: 'America/Lima',
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  // Build weekly time reference map
+  const timeRef = [];
+  for (let offset = -1; offset <= 7; offset++) {
+    const d = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
+    d.setDate(d.getDate() + offset);
+    const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(d);
+    const weekdayStr = d.toLocaleDateString('es-PE', { timeZone: 'America/Lima', weekday: 'long', day: 'numeric', month: 'long' });
+    let tag = '';
+    if (offset === -1) tag = 'AYER';
+    else if (offset === 0) tag = 'HOY (DÍA ACTUAL EN CURSO)';
+    else if (offset === 1) tag = 'MAÑANA';
+    else if (offset === 2) tag = 'PASADO MAÑANA';
+    else tag = `EN ${offset} DÍAS`;
+    timeRef.push(`  • ${tag} = ${weekdayStr} (${ymd})`);
+  }
+
+  // Parse leads summary
+  const leadsSummary = (leads || []).map(l => {
+    let timeline = [];
+    let nextAction = '';
+    let nextActionDate = '';
+    try {
+      const p = JSON.parse(l.notes || '{}');
+      if (Array.isArray(p)) timeline = p.map(n => n.text);
+      else if (p && typeof p === 'object') {
+        timeline = (p.timeline || []).map(n => n.text);
+        nextAction = p.next_action || '';
+        nextActionDate = p.next_action_date || '';
+      } else if (l.notes) {
+        timeline = [l.notes];
+      }
+    } catch (e) {
+      if (l.notes) timeline = [l.notes];
+    }
+
+    let categoria_agenda = 'SIN_FECHA';
+    if (nextActionDate) {
+      if (nextActionDate.startsWith(todayPeruYmd)) {
+        categoria_agenda = 'HOY';
+      } else if (nextActionDate > todayPeruYmd) {
+        categoria_agenda = 'FUTURO';
+      } else {
+        categoria_agenda = 'VENCIDA';
+      }
+    }
+
+    const assigned = (l.assigned_to || '').toLowerCase();
+    const contact = (l.contact_name || '').toLowerCase();
+    let advisor = 'Alberto Zegarra';
+    if (assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('socio comercial')) advisor = 'Dario Cienfuegos';
+    else if (assigned.includes('luis') || assigned.includes('hakim')) advisor = 'Luis Hakim';
+    else if (assigned.includes('alberto') || assigned.includes('zegarra') || contact.includes('prima')) advisor = 'Alberto Zegarra';
+
+    const isMyLead = advisor === 'Alberto Zegarra';
+
+    return {
+      id: l.id,
+      name: l.contact_name || l.business_name,
+      business: l.business_name,
+      phone: l.phone,
+      client_type: l.client_type,
+      status: l.status,
+      target_plan: l.target_plan,
+      estimated_value: l.estimated_value,
+      advisor_name: advisor,
+      is_my_lead: isMyLead,
+      next_action: nextAction,
+      next_action_date: nextActionDate,
+      categoria_agenda,
+      timeline: timeline
+    };
+  });
+
+  const myHoyTasks = leadsSummary.filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
+  const otherHoyTasks = leadsSummary.filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
+  const myMananaTasks = leadsSummary.filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
+  const otherMananaTasks = leadsSummary.filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
+  const myVencidas = leadsSummary.filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
+
+  const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS):
+${timeRef.join('\n')}
+
+AGENDA OFICIAL PRECALCULADA POR EL SISTEMA:
+- TAREAS PERSONALES DE ALBERTO ZEGARRA PARA HOY (${todayDateStr}):
+${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
+
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA HOY:
+${otherHoyTasks.length > 0 ? otherHoyTasks.map(t => `  • [Asesor: ${t.advisor_name}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (Ningún otro asesor tiene tareas para hoy)'}
+
+- TAREAS PERSONALES DE ALBERTO ZEGARRA PARA MAÑANA (${tomorrowDateStr}):
+${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
+
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA MAÑANA:
+${otherMananaTasks.length > 0 ? otherMananaTasks.map(t => `  • [Asesor: ${t.advisor_name}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas del equipo para mañana)'}
+
+- TAREAS PERSONALES PENDIENTES CON FECHA ANTERIOR (VENCIDAS):
+${myVencidas.slice(0, 6).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+
+  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de ventas de Bienestar Sin Excusas en Telegram.
+
+FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
+${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
+Usuario conectado: Alberto Zegarra (Dueño / Super Administrador).
+
+${agendaPrecalculada}
+
+BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
+${JSON.stringify(leadsSummary, null, 2)}
+
+INSTRUCCIONES CLAVE:
+1. IDENTIDAD Y PROPIEDAD DE PROSPECTOS:
+   - Responde enfocado prioritariamente en los prospectos personales de Alberto Zegarra (is_my_lead: true).
+   - NUNCA le atribuyas como suyas las tareas de Luis Hakim o Darío Cienfuegos.
+   - Si Alberto no tiene tareas hoy, díselo claramente y menciona que sus llamadas arrancan mañana con sus clientes asignados.
+2. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
+   - Cuando Alberto dice "hoy le mandé...", "hablé hoy con él", o menciona una acción que hizo hoy:
+     * La acción ocurrió HOY (${todayDateStr}).
+     * Cualquier próximo paso o seguimiento se calcula a partir de HOY (mañana a las 24h, o jueves a las 48h).
+3. PROHIBICIÓN ABSOLUTA DE JUSTIFICACIONES ROBÓTICAS:
+   - CERO discursos de IA sobre "no tengo conciencia temporal" o algoritmos.
+   - Si Alberto te corrige, acéptalo en una sola frase corta y entrega la respuesta ejecutiva.
+4. COPYWRITING PARA WHATSAPP:
+   - Mensajes cálidos, naturales al estilo peruano/latino, directos y listos para copiar.
+   - Coloca los mensajes de WhatsApp claramente entre comillas.
+5. REGISTRAR O ACTUALIZAR CLIENTES:
+   - Si Alberto te pide registrar una nota, llamada o acordar una cita/tarea:
+     * Establece "intent": "update_lead".
+     * Extrae target_lead_id, note_text, next_action_text y next_action_date (YYYY-MM-DDTHH:mm).
+6. CREAR PROSPECTOS:
+   - Si Alberto pide crear un prospecto:
+     * Establece "intent": "create_lead".
+     * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
+
+RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
+{
+  "intent": "update_lead" | "create_lead" | "general_chat",
+  "target_lead_id": "id del lead si se identificó, o null",
+  "target_lead_name": "nombre del lead",
+  "note_text": "texto de la nota para la bitácora si aplica",
+  "next_action_text": "texto de la próxima acción si aplica",
+  "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
+  "new_status": "prospecto | llamado | cita_agendada | presentacion_realizada | cerrado_ganado | cerrado_perdido si aplica",
+  "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
+  "new_value": null,
+  "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
+  "reply_message": "Tu respuesta detallada y estratégica para Alberto."
+}`;
+
+  const aiRes = await fetch(AI_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${AI_KEY}`
+    },
+    body: JSON.stringify({
+      model: AI_MODEL,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage }
+      ],
+      temperature: 0.2
+    })
+  });
+
+  const aiJson = await aiRes.json();
+  const rawContent = aiJson.choices?.[0]?.message?.content || '{}';
+  const parsed = parseAIResponse(rawContent);
+
+  let badgePrefix = '';
+
+  // Handle Intent: Update Lead in Supabase
+  if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
+    const targetLead = (leads || []).find(l => {
+      if (parsed.target_lead_id && l.id === parsed.target_lead_id) return true;
+      const searchName = (parsed.target_lead_name || '').toLowerCase().trim();
+      const contact = (l.contact_name || '').toLowerCase();
+      const business = (l.business_name || '').toLowerCase();
+      return contact.includes(searchName) || business.includes(searchName) || searchName.includes(contact);
+    });
+
+    if (targetLead) {
+      let timeline = [];
+      let currentNextAction = '';
+      let currentNextDate = '';
+      let currentLostReason = '';
+      let currentLostLabel = '';
+
+      try {
+        const p = JSON.parse(targetLead.notes || '[]');
+        if (Array.isArray(p)) timeline = p;
+        else if (p && typeof p === 'object') {
+          timeline = p.timeline || [];
+          currentNextAction = p.next_action || '';
+          currentNextDate = p.next_action_date || '';
+          currentLostReason = p.lost_reason || '';
+          currentLostLabel = p.lost_reason_label || '';
+        } else if (targetLead.notes) {
+          timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
+        }
+      } catch (e) {
+        if (targetLead.notes) timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
+      }
+
+      if (parsed.note_text) {
+        timeline = [{ date: new Date().toISOString(), text: parsed.note_text }, ...timeline];
+      }
+
+      const finalNextAction = parsed.next_action_text || currentNextAction;
+      const finalNextDate = parsed.next_action_date || currentNextDate;
+
+      const updatedNotesPayload = JSON.stringify({
+        timeline,
+        next_action: finalNextAction,
+        next_action_date: finalNextDate,
+        lost_reason: currentLostReason,
+        lost_reason_label: currentLostLabel
+      });
+
+      const updateFields = {
+        notes: updatedNotesPayload,
+        last_interaction: new Date().toISOString()
+      };
+      if (parsed.new_status) updateFields.status = parsed.new_status;
+      if (parsed.new_plan) updateFields.target_plan = parsed.new_plan;
+
+      await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
+      badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+    }
+  }
+
+  // Handle Intent: Create Lead in Supabase
+  if (parsed.intent === 'create_lead' && parsed.new_lead_data?.contact_name) {
+    const d = parsed.new_lead_data;
+    const newLeadRecord = {
+      contact_name: d.contact_name,
+      business_name: d.business_name || d.contact_name,
+      phone: d.phone || '',
+      target_plan: d.target_plan || 'plan_30',
+      estimated_value: d.estimated_value || 400,
+      status: 'prospecto',
+      assigned_to: 'Alberto Zegarra',
+      created_at: new Date().toISOString(),
+      last_interaction: new Date().toISOString(),
+      notes: JSON.stringify({
+        timeline: [{ date: new Date().toISOString(), text: 'Prospecto creado vía Copiloto Telegram' }],
+        next_action: 'Enviar mensaje de bienvenida y presentación',
+        next_action_date: new Date(Date.now() + 24 * 3600 * 1000).toISOString().slice(0, 16)
+      })
+    };
+
+    await supabase.from('leads').insert([newLeadRecord]);
+    badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM:</b> <i>${d.contact_name}</i>\n\n`;
+  }
+
+  const finalHtml = badgePrefix + formatForTelegramHtml(parsed.reply_message || 'Listo Alberto.');
+  return finalHtml;
+}
+
+// -------------------------------------------------------------
+// Helper: Send Proactive Reminders (Zoom 60m & Calls 20m)
+// -------------------------------------------------------------
+export async function checkAndSendReminders() {
+  if (!lastAdminChatId) {
+    return { status: 'skipped', reason: 'no active admin chat_id' };
+  }
+
+  const { data: leads } = await supabase.from('leads').select('*');
+  const now = new Date();
+  const nowMs = now.getTime();
+
+  let remindersSent = 0;
+
+  for (const l of leads || []) {
+    let nextAction = '';
+    let nextActionDate = '';
+    try {
+      const p = JSON.parse(l.notes || '{}');
+      if (p && typeof p === 'object') {
+        nextAction = p.next_action || '';
+        nextActionDate = p.next_action_date || '';
+      }
+    } catch (e) {}
+
+    if (!nextActionDate) continue;
+
+    const taskTime = new Date(nextActionDate).getTime();
+    const diffMinutes = Math.round((taskTime - nowMs) / (60 * 1000));
+
+    const isZoom = nextAction.toLowerCase().includes('zoom') || nextAction.toLowerCase().includes('reunion') || nextAction.toLowerCase().includes('demo');
+
+    // 1. Zoom alert between 50 and 65 minutes
+    if (isZoom && diffMinutes >= 50 && diffMinutes <= 65) {
+      const msg = `🚨 <b>¡Recordatorio de Zoom en ~1 hora!</b>\n\n` +
+        `👤 <b>Cliente:</b> ${l.contact_name || l.business_name}\n` +
+        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
+        `📝 <b>Detalle:</b> ${nextAction}\n\n` +
+        `🎯 <i>Prepárate para abrir la sala y tener la app lista para proyectar.</i>`;
+      await sendTelegramMessage(lastAdminChatId, msg);
+      remindersSent++;
+    }
+
+    // 2. Call/Message alert between 15 and 25 minutes
+    if (!isZoom && diffMinutes >= 15 && diffMinutes <= 25) {
+      const msg = `⏰ <b>Recordatorio de Tarea en ~20 minutos</b>\n\n` +
+        `👤 <b>Cliente:</b> ${l.contact_name || l.business_name}\n` +
+        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
+        `📝 <b>Acción:</b> ${nextAction}\n\n` +
+        `📱 <i>Abre WhatsApp o agenda la llamada a tiempo.</i>`;
+      await sendTelegramMessage(lastAdminChatId, msg);
+      remindersSent++;
+    }
+  }
+
+  return { status: 'ok', remindersSent };
+}
+
+// -------------------------------------------------------------
+// Formatting & Telegram API Utils
+// -------------------------------------------------------------
+function parseAIResponse(raw) {
+  if (!raw || typeof raw !== 'string') return { intent: 'general_chat', reply_message: '' };
+  let clean = raw.trim();
+  if (clean.startsWith('```json')) clean = clean.slice(7);
+  else if (clean.startsWith('```')) clean = clean.slice(3);
+  if (clean.endsWith('```')) clean = clean.slice(0, -3);
+  clean = clean.trim();
+
+  try {
+    return JSON.parse(clean);
+  } catch (e) {
+    const firstBrace = clean.indexOf('{');
+    const lastBrace = clean.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      try {
+        return JSON.parse(clean.substring(firstBrace, lastBrace + 1));
+      } catch (err) {}
+    }
+    return { intent: 'general_chat', reply_message: clean };
+  }
+}
+
+function formatForTelegramHtml(text) {
+  if (!text) return '';
+
+  let clean = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // Convert **bold** to <b>bold</b>
+  clean = clean.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+
+  // Convert *italic* to <i>italic</i>
+  clean = clean.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<i>$1</i>');
+
+  // Convert WhatsApp quotes into blockquotes
+  clean = clean.replace(/"([^"]{25,})"/g, '<blockquote>"$1"</blockquote>');
+  clean = clean.replace(/“([^”]{25,})”/g, '<blockquote>“$1”</blockquote>');
+
+  return clean;
+}
+
+async function sendTelegramMessage(chatId, htmlText) {
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: htmlText,
+        parse_mode: 'HTML'
+      })
+    });
+  } catch (err) {
+    console.error('Failed to send Telegram message:', err);
+  }
+}
+
+async function sendChatAction(chatId, action = 'typing') {
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendChatAction`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        action
+      })
+    });
+  } catch (err) {}
+}
