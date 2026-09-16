@@ -122,6 +122,9 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA Y MEMORIA:
 5. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
+6. FORMATO VISUAL LIMPIO:
+   - No satures el texto con asteriscos (**). Úsalos solo con moderación para títulos clave.
+   - Los mensajes propuestos para WhatsApp colócalos entre comillas en su propio bloque o párrafo para que resalten.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 {

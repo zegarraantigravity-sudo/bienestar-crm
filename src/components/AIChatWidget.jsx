@@ -43,12 +43,81 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
 
   const copyToClipboard = async (text, idx) => {
     try {
-      await navigator.clipboard.writeText(text);
+      // Format double asterisks into single asterisks for WhatsApp bold standard
+      const cleanForWhatsApp = text.replace(/\*\*([^*]+)\*\*/g, '*$1*');
+      await navigator.clipboard.writeText(cleanForWhatsApp);
       setCopiedIdx(idx);
       setTimeout(() => setCopiedIdx(null), 2200);
     } catch (err) {
       console.warn('Clipboard write failed:', err);
     }
+  };
+
+  const renderFormattedContent = (text) => {
+    if (!text) return null;
+    const lines = text.split('\n');
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        {lines.map((line, lineIdx) => {
+          const trimmed = line.trim();
+          if (!trimmed) {
+            return <div key={lineIdx} style={{ height: '4px' }} />;
+          }
+
+          // WhatsApp quote box (starts and ends with quotes)
+          const isQuoteBlock = (trimmed.startsWith('"') && trimmed.endsWith('"') && trimmed.length > 25) ||
+                               (trimmed.startsWith('“') && trimmed.endsWith('”') && trimmed.length > 25);
+
+          // Split line by bold (**text**) and italics (*text*)
+          const parts = line.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+
+          const renderedLine = parts.map((part, partIdx) => {
+            if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+              return (
+                <strong key={partIdx} style={{ fontWeight: 700, color: 'inherit' }}>
+                  {part.slice(2, -2)}
+                </strong>
+              );
+            }
+            if (part.startsWith('*') && part.endsWith('*') && part.length >= 2) {
+              return (
+                <em key={partIdx} style={{ fontStyle: 'italic', color: 'inherit' }}>
+                  {part.slice(1, -1)}
+                </em>
+              );
+            }
+            return part;
+          });
+
+          if (isQuoteBlock) {
+            return (
+              <div
+                key={lineIdx}
+                style={{
+                  backgroundColor: 'rgba(34, 197, 94, 0.08)',
+                  borderLeft: '3px solid #22c55e',
+                  borderRadius: '4px 10px 10px 4px',
+                  padding: '10px 14px',
+                  margin: '4px 0',
+                  color: 'inherit',
+                  fontSize: '0.94rem',
+                  lineHeight: '1.5'
+                }}
+              >
+                {renderedLine}
+              </div>
+            );
+          }
+
+          return (
+            <div key={lineIdx} style={{ lineHeight: '1.55' }}>
+              {renderedLine}
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   const handleResetConversation = () => {
@@ -515,10 +584,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
                   fontSize: isExpanded ? '0.96rem' : '0.88rem',
                   lineHeight: '1.55',
                   border: m.role === 'user' ? 'none' : '1px solid hsl(var(--border-color))',
-                  whiteSpace: 'pre-line',
                   boxShadow: m.role === 'user' ? '0 2px 10px rgba(245, 158, 11, 0.25)' : '0 2px 8px rgba(0, 0, 0, 0.15)'
                 }}>
-                  {m.text}
+                  {renderFormattedContent(m.text)}
                 </div>
 
                 {m.actionBadge && (
