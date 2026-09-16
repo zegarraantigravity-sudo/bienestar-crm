@@ -69,7 +69,8 @@ export default function App() {
         .order('last_interaction', { ascending: false });
 
       if (error) throw error;
-      setLeads(data || []);
+      const cleanLeads = (data || []).filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION' && l.client_type !== 'system_internal');
+      setLeads(cleanLeads);
     } catch (error) {
       console.error('Error fetching leads:', error);
       alert('Error al conectar con la base de datos de Supabase. Revisa tu consola y conexión.');

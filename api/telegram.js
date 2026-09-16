@@ -69,24 +69,37 @@ export default async function handler(req, res) {
 
     // Handle /start command
     if (message.text === '/start') {
+      await saveTelegramHistory([]);
       const welcome = `¡Hola ${userName}! Soy tu <b>Copiloto Ejecutivo de Bienestar CRM</b> en Telegram 🤖✨\n\n` +
         `Estoy conectado en tiempo real a tu base de datos de prospectos en Supabase.\n\n` +
         `<b>¿Qué puedes hacer conmigo aquí?</b>\n` +
         `• 📋 <b>Consultar tu agenda:</b> Pregúntame <i>"¿Qué tareas o llamadas tengo para hoy?"</i>\n` +
         `• 🎯 <b>Estrategia de clientes:</b> <i>"¿Qué me recomiendas para Yoselin y qué le escribo por WhatsApp?"</i>\n` +
         `• 🎙️ <b>Dictarme por audio o texto:</b> <i>"Hablé con Claudia, me dijo que le interesa el plan de 30 para su cuñada. Agenda llamada para el viernes a las 11:00 am."</i>\n` +
-        `• ➕ <b>Crear prospectos:</b> <i>"Crea un prospecto para Juan Pérez, coach de gym, cel 999888777, plan 30."</i>\n\n` +
+        `• ➕ <b>Crear prospectos:</b> <i>"Crea un prospecto para Juan Pérez, coach de gym, cel 999888777, plan 30."</i>\n` +
+        `• 🔄 <b>Reiniciar conversación:</b> Escribe <code>/nuevo</code> o <code>/reset</code> para empezar un nuevo tema.\n\n` +
         `¡Pruébame ahora mismo escribiéndome o enviándome una nota de voz! 👇`;
 
       await sendTelegramMessage(chatId, welcome);
       return res.status(200).json({ ok: true });
     }
 
+    // Handle /reset or /nuevo command
+    if (message.text === '/reset' || message.text === '/nuevo' || message.text === '/clear') {
+      await saveTelegramHistory([]);
+      await sendTelegramMessage(chatId, '🔄 <b>Conversación reiniciada.</b>\n\n¿En qué cliente o tarea nos enfocamos ahora?');
+      return res.status(200).json({ ok: true });
+    }
+
     // Handle /agenda command
     if (message.text === '/agenda' || message.text === '/tareas') {
       await sendChatAction(chatId, 'typing');
-      const responseText = await processUserQuery('¿Qué tareas o llamadas tengo para hoy?', userName);
-      await sendTelegramMessage(chatId, responseText);
+      const history = await getTelegramHistory();
+      const { replyText, rawReply } = await processUserQuery('¿Qué tareas o llamadas tengo para hoy?', userName, history);
+      await sendTelegramMessage(chatId, replyText);
+      history.push({ role: 'user', content: '¿Qué tareas o llamadas tengo para hoy?' });
+      history.push({ role: 'assistant', content: rawReply });
+      await saveTelegramHistory(history);
       return res.status(200).json({ ok: true });
     }
 
@@ -128,9 +141,17 @@ export default async function handler(req, res) {
     // Send typing status to Telegram
     await sendChatAction(chatId, 'typing');
 
-    // Process through Copilot AI
-    const reply = await processUserQuery(userText, userName);
-    await sendTelegramMessage(chatId, reply);
+    // Retrieve previous conversation history for multi-turn context
+    const history = await getTelegramHistory();
+
+    // Process through Copilot AI with conversation history
+    const { replyText, rawReply } = await processUserQuery(userText, userName, history);
+    await sendTelegramMessage(chatId, replyText);
+
+    // Persist updated conversation history
+    history.push({ role: 'user', content: userText });
+    history.push({ role: 'assistant', content: rawReply });
+    await saveTelegramHistory(history);
 
     return res.status(200).json({ ok: true });
   } catch (err) {
@@ -173,14 +194,54 @@ async function transcribeAudioUrl(audioUrl) {
 }
 
 // -------------------------------------------------------------
+// Helper: Get / Save Telegram Conversation History in Supabase
+// -------------------------------------------------------------
+async function getTelegramHistory() {
+  try {
+    const { data } = await supabase
+      .from('leads')
+      .select('notes')
+      .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
+      .maybeSingle();
+
+    if (data?.notes) {
+      const parsed = JSON.parse(data.notes);
+      if (Array.isArray(parsed.history)) return parsed.history;
+    }
+  } catch (e) {
+    console.warn('Error reading telegram history:', e);
+  }
+  return [];
+}
+
+async function saveTelegramHistory(history) {
+  try {
+    const { data } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
+      .maybeSingle();
+
+    if (data?.id) {
+      await supabase.from('leads').update({
+        notes: JSON.stringify({ history: history.slice(-12), updated_at: new Date().toISOString() })
+      }).eq('id', data.id);
+    }
+  } catch (e) {
+    console.warn('Error saving telegram history:', e);
+  }
+}
+
+// -------------------------------------------------------------
 // Helper: Process Query with Copilot & Supabase
 // -------------------------------------------------------------
-async function processUserQuery(userMessage, userName = 'Alberto Zegarra') {
-  // 1. Fetch leads from Supabase
-  const { data: leads, error } = await supabase.from('leads').select('*');
+async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conversationHistory = []) {
+  // 1. Fetch leads from Supabase (excluding system internal records)
+  const { data: rawLeads, error } = await supabase.from('leads').select('*');
   if (error) {
     console.error('Supabase fetch error:', error);
   }
+  const leads = (rawLeads || []).filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION' && l.client_type !== 'system_internal');
 
   // 2. Dates calculation (America/Lima)
   const nowPeru = new Date();
@@ -335,21 +396,34 @@ INSTRUCCIONES CLAVE:
    - NUNCA le atribuyas como suyas las tareas de Luis Hakim.
    - Si Alberto no tiene tareas hoy, díselo claramente y menciona que sus llamadas arrancan mañana con sus clientes asignados.
    - Si Alberto te pregunta por Darío Cienfuegos, recuerda que Darío es un contacto de Alberto (embajador), no un vendedor con leads.
-2. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
+
+2. FECHAS Y HORARIOS CLAVE (NO CONFUNDIR HOY CON MAÑANA):
+   - HOY es martes 15 de setiembre de 2026. "Esta noche" se refiere ÚNICAMENTE a hoy martes 15 en la noche.
+   - MAÑANA es miércoles 16 de setiembre de 2026.
+   - Carmina Badillo:
+     * Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
+     * NUNCA le digas a Alberto que el zoom de Carmina es "hoy" o "esta noche". Es MAÑANA miércoles en la noche.
+     * Si Alberto te pide redactar un mensaje de confirmación para Carmina, recomienda enviarlo MAÑANA en la tarde (alrededor de las 6:00 o 7:00 p.m.).
+
+3. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
    - Cuando Alberto dice "hoy le mandé...", "hablé hoy con él", o menciona una acción que hizo hoy:
      * La acción ocurrió HOY (${todayDateStr}).
      * Cualquier próximo paso o seguimiento se calcula a partir de HOY (mañana a las 24h, o jueves a las 48h).
-3. PROHIBICIÓN ABSOLUTA DE JUSTIFICACIONES ROBÓTICAS:
-   - CERO discursos de IA sobre "no tengo conciencia temporal" o algoritmos.
-   - Si Alberto te corrige, acéptalo en una sola frase corta y entrega la respuesta ejecutiva.
-4. COPYWRITING PARA WHATSAPP:
+
+4. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS Y DISCULPAS ROBÓTICAS:
+   - CERO frases como "mi error fue grave y no justificable", "lo siento sinceramente por la confusión", "revisé mal la base de datos", etc.
+   - Si Alberto te hace una corrección o detecta un malentendido, acéptalo en UNA SOLA frase corta y sobria ("Entendido, tienes toda la razón; ajusto la fecha de inmediato") y entrega la información ejecutiva correcta.
+
+5. COPYWRITING PARA WHATSAPP:
    - Mensajes cálidos, naturales al estilo peruano/latino, directos y listos para copiar.
    - Coloca los mensajes de WhatsApp claramente entre comillas.
-5. REGISTRAR O ACTUALIZAR CLIENTES:
+
+6. REGISTRAR O ACTUALIZAR CLIENTES:
    - Si Alberto te pide registrar una nota, llamada o acordar una cita/tarea:
      * Establece "intent": "update_lead".
      * Extrae target_lead_id, note_text, next_action_text y next_action_date (YYYY-MM-DDTHH:mm).
-6. CREAR PROSPECTOS:
+
+7. CREAR PROSPECTOS:
    - Si Alberto pide crear un prospecto:
      * Establece "intent": "create_lead".
      * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
@@ -369,6 +443,14 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "reply_message": "Tu respuesta detallada y estratégica para Alberto."
 }`;
 
+  const formattedHistory = (conversationHistory || [])
+    .slice(-10)
+    .map(m => ({
+      role: m.role === 'assistant' ? 'assistant' : 'user',
+      content: m.content || m.text || ''
+    }))
+    .filter(m => m.content && m.content.trim().length > 0);
+
   const aiRes = await fetch(AI_URL, {
     method: 'POST',
     headers: {
@@ -379,6 +461,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       model: AI_MODEL,
       messages: [
         { role: 'system', content: systemPrompt },
+        ...formattedHistory,
         { role: 'user', content: userMessage }
       ],
       temperature: 0.2
@@ -476,7 +559,10 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   }
 
   const finalHtml = badgePrefix + formatForTelegramHtml(parsed.reply_message || 'Listo Alberto.');
-  return finalHtml;
+  return {
+    replyText: finalHtml,
+    rawReply: parsed.reply_message || 'Listo Alberto.'
+  };
 }
 
 // -------------------------------------------------------------
