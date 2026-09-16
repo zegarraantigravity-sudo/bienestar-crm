@@ -14,6 +14,24 @@ const AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MO
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// Commercial Advisors Configuration
+export const ADVISORS = {
+  alberto: {
+    key: 'alberto',
+    name: 'Alberto Zegarra',
+    email: 'albertozbcoach@gmail.com',
+    role: 'Super Administrador (Dueño)',
+    aliasTerms: ['alberto', 'zegarra', 'admin', 'dueño']
+  },
+  luis: {
+    key: 'luis',
+    name: 'Luis Hakim',
+    email: 'torohakim@gmail.com',
+    role: 'Socio Comercial',
+    aliasTerms: ['luis', 'hakim', 'toro']
+  }
+};
+
 // In-memory cache for recent admin chat ID to send proactive alerts
 let lastAdminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || null;
 
@@ -41,7 +59,7 @@ export default async function handler(req, res) {
       return res.status(200).json(result);
     }
 
-    return res.status(200).json({ status: 'ok', service: 'Bienestar CRM Telegram Copilot' });
+    return res.status(200).json({ status: 'ok', service: 'Bienestar CRM Telegram Copilot Multi-Advisor' });
   }
 
   if (req.method !== 'POST') {
@@ -62,22 +80,71 @@ export default async function handler(req, res) {
 
     const chatId = message.chat?.id;
     const fromUser = message.from || {};
-    const userName = fromUser.first_name || 'Alberto';
 
-    // Update last known admin chatId
-    lastAdminChatId = chatId;
+    // Retrieve or auto-detect user session & assigned advisor
+    const { advisor, history } = await getTelegramUserSession(chatId, fromUser);
+
+    // Keep admin cache updated
+    if (advisor.key === 'alberto') {
+      lastAdminChatId = chatId;
+    }
+
+    const rawCommand = (message.text || '').trim();
+
+    // Command: Link/Switch profile to Luis Hakim
+    if (rawCommand === '/soy_luis' || rawCommand === '/vincular_luis') {
+      await saveTelegramUserSession(chatId, 'luis', [], fromUser);
+      const welcome = `✅ <b>¡Identidad vinculada con éxito como Luis Hakim!</b>\n\n` +
+        `¡Hola Luis! Bienvenido a tu <b>Copiloto Ejecutivo de Bienestar CRM</b> 🤖🚀\n\n` +
+        `Desde ahora este chat está configurado exclusivamente para tu perfil de <b>Socio Comercial</b> y tus <b>27 prospectos</b> asignados.\n\n` +
+        `<b>¿Qué puedes hacer conmigo aquí?</b>\n` +
+        `• 📋 <code>/agenda</code> - Consulta tus llamadas y tareas agendadas.\n` +
+        `• 🎯 <b>Consultas de prospectos:</b> <i>"¿Qué me recomiendas para el Amigo del culturismo?"</i>\n` +
+        `• 🎙️ <b>Dictar notas por audio o texto:</b> <i>"Hablé con Silmed, quedamos en llamarlo el viernes."</i>\n` +
+        `• ➕ <b>Crear prospectos:</b> Se te asignarán automáticamente a ti en el CRM.\n` +
+        `• 🔔 <b>Alertas automáticas:</b> Recibirás aquí recordatorios antes de tus llamadas.\n\n` +
+        `¡Pruébame ahora mismo escribiéndome o enviándome una nota de voz! 👇`;
+      await sendTelegramMessage(chatId, welcome);
+      return res.status(200).json({ ok: true });
+    }
+
+    // Command: Link/Switch profile to Alberto Zegarra
+    if (rawCommand === '/soy_alberto' || rawCommand === '/vincular_alberto') {
+      await saveTelegramUserSession(chatId, 'alberto', [], fromUser);
+      const welcome = `✅ <b>¡Identidad vinculada con éxito como Alberto Zegarra!</b>\n\n` +
+        `¡Hola Alberto! Este chat está configurado para tu cuenta de <b>Super Administrador (Dueño)</b> y tus prospectos personales en Bienestar CRM.\n\n` +
+        `Puedes consultar tu agenda con <code>/agenda</code> o dictarme notas en cualquier momento.`;
+      await sendTelegramMessage(chatId, welcome);
+      return res.status(200).json({ ok: true });
+    }
+
+    // Command: Check current profile identity
+    if (rawCommand === '/quiensoy' || rawCommand === '/perfil') {
+      const msg = `👤 <b>Perfil vinculado en este chat de Telegram:</b>\n\n` +
+        `• <b>Asesor:</b> ${advisor.name}\n` +
+        `• <b>Rol:</b> ${advisor.role}\n` +
+        `• <b>Email CRM:</b> ${advisor.email}\n` +
+        `• <b>Telegram Chat ID:</b> <code>${chatId}</code>\n\n` +
+        `🔄 <i>Para cambiar de asesor en este chat, escribe:</i>\n` +
+        `• <code>/soy_luis</code> si eres Luis Hakim\n` +
+        `• <code>/soy_alberto</code> si eres Alberto Zegarra`;
+      await sendTelegramMessage(chatId, msg);
+      return res.status(200).json({ ok: true });
+    }
 
     // Handle /start command
-    if (message.text === '/start') {
-      await saveTelegramHistory([], chatId);
-      const welcome = `¡Hola ${userName}! Soy tu <b>Copiloto Ejecutivo de Bienestar CRM</b> en Telegram 🤖✨\n\n` +
-        `Estoy conectado en tiempo real a tu base de datos de prospectos en Supabase.\n\n` +
+    if (rawCommand === '/start') {
+      await saveTelegramUserSession(chatId, advisor.key, [], fromUser);
+      const welcome = `¡Hola ${fromUser.first_name || advisor.name.split(' ')[0]}! Soy tu <b>Copiloto Ejecutivo de Bienestar CRM</b> en Telegram 🤖✨\n\n` +
+        `Estás conectado como <b>${advisor.name}</b> (${advisor.role}).\n\n` +
         `<b>¿Qué puedes hacer conmigo aquí?</b>\n` +
-        `• 📋 <b>Consultar tu agenda:</b> Pregúntame <i>"¿Qué tareas o llamadas tengo para hoy?"</i>\n` +
-        `• 🎯 <b>Estrategia de clientes:</b> <i>"¿Qué me recomiendas para Yoselin y qué le escribo por WhatsApp?"</i>\n` +
-        `• 🎙️ <b>Dictarme por audio o texto:</b> <i>"Hablé con Claudia, me dijo que le interesa el plan de 30 para su cuñada. Agenda llamada para el viernes a las 11:00 am."</i>\n` +
-        `• ➕ <b>Crear prospectos:</b> <i>"Crea un prospecto para Juan Pérez, coach de gym, cel 999888777, plan 30."</i>\n` +
-        `• 🔄 <b>Reiniciar conversación:</b> Escribe <code>/nuevo</code> o <code>/reset</code> para empezar un nuevo tema.\n\n` +
+        `• 📋 <b>Consultar tu agenda:</b> Escribe <code>/agenda</code> o pregúntame <i>"¿Qué llamadas tengo para hoy?"</i>\n` +
+        `• 🎯 <b>Estrategia de clientes:</b> <i>"¿Qué me recomiendas para mi cliente y qué le escribo por WhatsApp?"</i>\n` +
+        `• 🎙️ <b>Dictarme por audio o texto:</b> <i>"Hablé con [Cliente], quedamos en llamarlo el viernes..."</i>\n` +
+        `• ➕ <b>Crear prospectos:</b> <i>"Crea un prospecto para Juan Pérez, cel 999888777, plan 30."</i>\n` +
+        `• 🔔 <b>Recordatorios automáticos:</b> Te avisaré 1h antes de zooms y 20m antes de llamadas.\n` +
+        `• 🔄 <b>Reiniciar tema:</b> Escribe <code>/nuevo</code> o <code>/reset</code>\n` +
+        `• 👤 <b>Perfil y cambio de asesor:</b> Escribe <code>/quiensoy</code> | <code>/soy_luis</code> | <code>/soy_alberto</code>\n\n` +
         `¡Pruébame ahora mismo escribiéndome o enviándome una nota de voz! 👇`;
 
       await sendTelegramMessage(chatId, welcome);
@@ -85,21 +152,20 @@ export default async function handler(req, res) {
     }
 
     // Handle /reset or /nuevo command
-    if (message.text === '/reset' || message.text === '/nuevo' || message.text === '/clear') {
-      await saveTelegramHistory([], chatId);
+    if (rawCommand === '/reset' || rawCommand === '/nuevo' || rawCommand === '/clear') {
+      await saveTelegramUserSession(chatId, advisor.key, [], fromUser);
       await sendTelegramMessage(chatId, '🔄 <b>Conversación reiniciada.</b>\n\n¿En qué cliente o tarea nos enfocamos ahora?');
       return res.status(200).json({ ok: true });
     }
 
     // Handle /agenda command
-    if (message.text === '/agenda' || message.text === '/tareas') {
+    if (rawCommand === '/agenda' || rawCommand === '/tareas') {
       await sendChatAction(chatId, 'typing');
-      const history = await getTelegramHistory();
-      const { replyText, rawReply } = await processUserQuery('¿Qué tareas o llamadas tengo para hoy?', userName, history);
+      const { replyText, rawReply } = await processUserQuery('¿Qué tareas o llamadas tengo para hoy?', advisor, history);
       await sendTelegramMessage(chatId, replyText);
       history.push({ role: 'user', content: '¿Qué tareas o llamadas tengo para hoy?' });
       history.push({ role: 'assistant', content: rawReply });
-      await saveTelegramHistory(history, chatId);
+      await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
       return res.status(200).json({ ok: true });
     }
 
@@ -120,7 +186,6 @@ export default async function handler(req, res) {
           const transcribedText = await transcribeAudioUrl(fileUrl);
           if (transcribedText) {
             userText = transcribedText;
-            // Notify user of transcribed audio
             await sendTelegramMessage(chatId, `🎙️ <i>Audio recibido:</i>\n<blockquote>«${userText}»</blockquote>\n⏳ <i>Procesando con el CRM...</i>`);
           } else {
             await sendTelegramMessage(chatId, '⚠️ No pude entender claramente el audio. Por favor intenta grabarlo de nuevo o escríbelo por texto.');
@@ -141,17 +206,14 @@ export default async function handler(req, res) {
     // Send typing status to Telegram
     await sendChatAction(chatId, 'typing');
 
-    // Retrieve previous conversation history for multi-turn context
-    const history = await getTelegramHistory();
-
-    // Process through Copilot AI with conversation history
-    const { replyText, rawReply } = await processUserQuery(userText, userName, history);
+    // Process through Copilot AI with user's advisor profile and conversation history
+    const { replyText, rawReply } = await processUserQuery(userText, advisor, history);
     await sendTelegramMessage(chatId, replyText);
 
     // Persist updated conversation history
     history.push({ role: 'user', content: userText });
     history.push({ role: 'assistant', content: rawReply });
-    await saveTelegramHistory(history, chatId);
+    await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
 
     return res.status(200).json({ ok: true });
   } catch (err) {
@@ -194,27 +256,9 @@ async function transcribeAudioUrl(audioUrl) {
 }
 
 // -------------------------------------------------------------
-// Helper: Get / Save Telegram Conversation History in Supabase
+// Helper: Get / Save Multi-Advisor Telegram Session in Supabase
 // -------------------------------------------------------------
-async function getTelegramHistory() {
-  try {
-    const { data } = await supabase
-      .from('leads')
-      .select('notes')
-      .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
-      .maybeSingle();
-
-    if (data?.notes) {
-      const parsed = JSON.parse(data.notes);
-      if (Array.isArray(parsed.history)) return parsed.history;
-    }
-  } catch (e) {
-    console.warn('Error reading telegram history:', e);
-  }
-  return [];
-}
-
-async function saveTelegramHistory(history, chatId = null) {
+async function getTelegramUserSession(chatId, fromUser = {}) {
   try {
     const { data } = await supabase
       .from('leads')
@@ -222,28 +266,107 @@ async function saveTelegramHistory(history, chatId = null) {
       .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
       .maybeSingle();
 
-    if (data?.id) {
-      let existing = {};
-      try { existing = JSON.parse(data.notes || '{}'); } catch (e) {}
-      const resolvedChatId = chatId || existing.chat_id || lastAdminChatId;
-
-      await supabase.from('leads').update({
-        notes: JSON.stringify({
-          history: history.slice(-12),
-          chat_id: resolvedChatId,
-          updated_at: new Date().toISOString()
-        })
-      }).eq('id', data.id);
+    let parsed = {};
+    if (data?.notes) {
+      try { parsed = JSON.parse(data.notes); } catch (e) {}
     }
+
+    const strChatId = String(chatId);
+    const users = parsed.users || {};
+    let userEntry = users[strChatId];
+
+    if (!userEntry) {
+      // Auto-detect based on telegram fromUser name / username
+      const nameStr = `${fromUser.first_name || ''} ${fromUser.last_name || ''} ${fromUser.username || ''}`.toLowerCase();
+      let detectedKey = 'alberto';
+      if (nameStr.includes('luis') || nameStr.includes('hakim') || nameStr.includes('toro')) {
+        detectedKey = 'luis';
+      }
+
+      // If user wasn't stored, but history existed at top level and it matches legacy Alberto
+      const legacyHistory = Array.isArray(parsed.history) ? parsed.history : [];
+
+      userEntry = {
+        advisorKey: detectedKey,
+        history: detectedKey === 'alberto' ? legacyHistory : [],
+        first_name: fromUser.first_name || '',
+        last_name: fromUser.last_name || '',
+        username: fromUser.username || '',
+        updated_at: new Date().toISOString()
+      };
+    }
+
+    const advisor = ADVISORS[userEntry.advisorKey] || ADVISORS.alberto;
+    return {
+      advisor,
+      history: Array.isArray(userEntry.history) ? userEntry.history : [],
+      sessionRecordId: data?.id,
+      sessionData: parsed
+    };
   } catch (e) {
-    console.warn('Error saving telegram history:', e);
+    console.warn('Error reading telegram user session:', e);
+    return { advisor: ADVISORS.alberto, history: [], sessionRecordId: null, sessionData: {} };
+  }
+}
+
+async function saveTelegramUserSession(chatId, advisorKey, history, fromUser = {}) {
+  try {
+    const { data } = await supabase
+      .from('leads')
+      .select('id, notes')
+      .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
+      .maybeSingle();
+
+    if (!data?.id) return;
+
+    let parsed = {};
+    try { parsed = JSON.parse(data.notes || '{}'); } catch (e) {}
+
+    const strChatId = String(chatId);
+    parsed.users = parsed.users || {};
+
+    const existingUser = parsed.users[strChatId] || {};
+    parsed.users[strChatId] = {
+      ...existingUser,
+      advisorKey: advisorKey || existingUser.advisorKey || 'alberto',
+      history: (history || []).slice(-12),
+      first_name: fromUser.first_name || existingUser.first_name || '',
+      last_name: fromUser.last_name || existingUser.last_name || '',
+      username: fromUser.username || existingUser.username || '',
+      updated_at: new Date().toISOString()
+    };
+
+    if (advisorKey === 'alberto') parsed.alberto_chat_id = strChatId;
+    if (advisorKey === 'luis') parsed.luis_chat_id = strChatId;
+    parsed.last_active_chat_id = strChatId;
+    // Keep backwards compatibility
+    parsed.chat_id = strChatId;
+    parsed.history = (history || []).slice(-12);
+    parsed.updated_at = new Date().toISOString();
+
+    await supabase.from('leads').update({
+      notes: JSON.stringify(parsed)
+    }).eq('id', data.id);
+  } catch (e) {
+    console.warn('Error saving telegram user session:', e);
   }
 }
 
 // -------------------------------------------------------------
 // Helper: Process Query with Copilot & Supabase
 // -------------------------------------------------------------
-async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conversationHistory = []) {
+async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, conversationHistory = []) {
+  // Resolve advisor profile
+  let advisor = ADVISORS.alberto;
+  if (typeof advisorProfile === 'object' && advisorProfile.key) {
+    advisor = advisorProfile;
+  } else if (typeof advisorProfile === 'string') {
+    const clean = advisorProfile.toLowerCase();
+    if (clean.includes('luis') || clean.includes('hakim')) {
+      advisor = ADVISORS.luis;
+    }
+  }
+
   // 1. Fetch leads from Supabase (excluding system internal records)
   const { data: rawLeads, error } = await supabase.from('leads').select('*');
   if (error) {
@@ -294,7 +417,7 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conve
     timeRef.push(`  • ${tag} = ${weekdayStr} (${ymd})`);
   }
 
-  // Parse leads summary
+  // Parse leads summary and associate ownership
   const leadsSummary = (leads || []).map(l => {
     let timeline = [];
     let nextAction = '';
@@ -325,14 +448,15 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conve
     }
 
     const assigned = (l.assigned_to || '').toLowerCase();
-    let advisor = 'Alberto Zegarra';
+    let leadAdvisor = 'Alberto Zegarra';
     if (assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('socio comercial')) {
-      advisor = 'Luis Hakim';
+      leadAdvisor = 'Luis Hakim';
     } else {
-      advisor = 'Alberto Zegarra';
+      leadAdvisor = 'Alberto Zegarra';
     }
 
-    const isMyLead = advisor === 'Alberto Zegarra';
+    // Lead belongs to the active advisor connected in this chat
+    const isMyLead = (leadAdvisor === advisor.name);
 
     return {
       id: l.id,
@@ -343,7 +467,7 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conve
       status: l.status,
       target_plan: l.target_plan,
       estimated_value: l.estimated_value,
-      advisor_name: advisor,
+      advisor_name: leadAdvisor,
       is_my_lead: isMyLead,
       next_action: nextAction,
       next_action_date: nextActionDate,
@@ -358,37 +482,50 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conve
   const otherMananaTasks = leadsSummary.filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
   const myVencidas = leadsSummary.filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
 
+  const myLeadCount = leadsSummary.filter(l => l.is_my_lead).length;
+  const isLuis = advisor.key === 'luis';
+
   const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS):
 ${timeRef.join('\n')}
 
-AGENDA OFICIAL PRECALCULADA POR EL SISTEMA:
-- TAREAS PERSONALES DE ALBERTO ZEGARRA PARA HOY (${todayDateStr}):
-${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
+AGENDA OFICIAL PRECALCULADA POR EL SISTEMA PARA ${advisor.name.toUpperCase()}:
+- TAREAS PERSONALES DE ${advisor.name.toUpperCase()} PARA HOY (${todayDateStr}):
+${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : `  (No tienes tareas personales agendadas para hoy en tus ${myLeadCount} prospectos)`}
 
 - TAREAS DEL EQUIPO / OTROS ASESORES PARA HOY:
 ${otherHoyTasks.length > 0 ? otherHoyTasks.map(t => `  • [Asesor: ${t.advisor_name}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (Ningún otro asesor tiene tareas para hoy)'}
 
-- TAREAS PERSONALES DE ALBERTO ZEGARRA PARA MAÑANA (${tomorrowDateStr}):
+- TAREAS PERSONALES DE ${advisor.name.toUpperCase()} PARA MAÑANA (${tomorrowDateStr}):
 ${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
 
 - TAREAS DEL EQUIPO / OTROS ASESORES PARA MAÑANA:
 ${otherMananaTasks.length > 0 ? otherMananaTasks.map(t => `  • [Asesor: ${t.advisor_name}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas del equipo para mañana)'}
 
 - TAREAS PERSONALES PENDIENTES CON FECHA ANTERIOR (VENCIDAS):
-${myVencidas.slice(0, 6).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+${myVencidas.slice(0, 8).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
 
-  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de ventas de Bienestar Sin Excusas en Telegram.
+  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para ${advisor.name} y el equipo de ventas de Bienestar Sin Excusas en Telegram.
 
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
-Usuario conectado: Alberto Zegarra (Dueño / Super Administrador).
+Usuario conectado en este chat: ${advisor.name} (${advisor.role}, email: ${advisor.email}).
 
 ESTRUCTURA REAL DEL EQUIPO COMERCIAL EN EL CRM:
-- Hay 2 vendedores en el CRM:
-  1. Alberto Zegarra (Dueño / Super Admin): Tiene 24 prospectos personales asignados (is_my_lead: true). Uno de sus prospectos y contactos estratégicos se llama Darío Cienfuegos (embajador de gimnasios a quien Alberto asesora).
-  2. Luis Hakim ('Socio Comercial'): Tiene 27 prospectos asignados a su cargo (incluyendo 'Amigo del culturismo', 'Profesor de entrenamientos', etc.).
-- Darío Cienfuegos NO es un vendedor con cartera propia asignada en el CRM; es un PROSPECTO/contacto en la cartera de Alberto Zegarra.
-- Por tanto, las llamadas del equipo de hoy (como 'Amigo del culturismo' a las 18:30 y 'Profesor de entrenamientos' a las 18:30) son responsabilidad exclusiva del vendedor Luis Hakim.
+- Hay 2 asesores de ventas principales en el CRM:
+  1. Alberto Zegarra (Dueño / Super Admin): Tiene 24 prospectos personales asignados (is_my_lead: true cuando Alberto está conectado). Darío Cienfuegos (embajador de gimnasios a quien Alberto asesora) es un PROSPECTO y contacto estratégico en la cartera personal de Alberto Zegarra, NO un vendedor con leads.
+  2. Luis Hakim ('Socio Comercial'): Tiene 27 prospectos asignados a su cargo (is_my_lead: true cuando Luis está conectado), incluyendo 'Amigo del culturismo', 'Profesor de entrenamientos', 'Silmed', 'Labnutritión', 'C40 Juliaca', etc.
+${isLuis ? `
+CONTEXTO ESPECÍFICO PARA LUIS HAKIM:
+- Estás interactuando directamente con LUIS HAKIM (Socio Comercial).
+- Sus prospectos asignados son los marcados con is_my_lead: true (${myLeadCount} prospectos).
+- Cuando Luis pregunte por su agenda, qué le toca hoy o pida recomendaciones, enfócate 100% en SUS prospectos y en cómo reactivarlos o cerrarlos.
+- Los prospectos de Alberto Zegarra (Rosario López, Carmina Badillo, Claudia Advincula, Darío Cienfuegos, etc.) tienen is_my_lead: false y pertenecen a Alberto. No se los atribuyas a Luis.
+` : `
+CONTEXTO ESPECÍFICO PARA ALBERTO ZEGARRA:
+- Estás interactuando directamente con ALBERTO ZEGARRA (Dueño / Super Administrador).
+- Sus prospectos personales son los marcados con is_my_lead: true (${myLeadCount} prospectos).
+- Las llamadas y tareas de Luis Hakim (como 'Amigo del culturismo', 'Profesor de entrenamientos', etc.) tienen is_my_lead: false y pertenecen a Luis Hakim. No se las atribuyas como suyas a Alberto.
+`}
 
 ${agendaPrecalculada}
 
@@ -397,70 +534,49 @@ ${JSON.stringify(leadsSummary, null, 2)}
 
 INSTRUCCIONES CLAVE:
 1. IDENTIDAD Y PROPIEDAD DE PROSPECTOS:
-   - Responde enfocado prioritariamente en los prospectos personales de Alberto Zegarra (is_my_lead: true).
-   - NUNCA le atribuyas como suyas las tareas de Luis Hakim.
-   - Si Alberto no tiene tareas hoy, díselo claramente y menciona que sus llamadas arrancan mañana con sus clientes asignados.
-   - Si Alberto te pregunta por Darío Cienfuegos, recuerda que Darío es un contacto de Alberto (embajador), no un vendedor con leads.
+   - Responde enfocado prioritariamente en los prospectos del usuario conectado (${advisor.name}, con is_my_lead: true).
+   - NUNCA le atribuyas como suyas las tareas de otro asesor.
+   - Si no tiene tareas hoy, díselo claramente y sugiere revisar sus tareas pendientes o próximos pasos.
 
 2. PROHIBICIÓN ABSOLUTA DE MOSTRAR IDs, UUIDs O DETALLES TÉCNICOS:
-   - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en el texto de tu respuesta a Alberto (reply_message).
-   - Para ti y para Alberto los clientes se identifican ÚNICA Y EXCLUSIVAMENTE por su nombre comercial o de contacto (ej: 'Rosario López', 'Carmina Badillo').
-   - El campo 'id' de la base de datos es exclusivamente para uso interno de la máquina en 'target_lead_id' si vas a actualizar el registro, NUNCA para el texto visible.
+   - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en el texto visible de tu respuesta (reply_message).
+   - Para ti y para el usuario los clientes se identifican ÚNICA Y EXCLUSIVAMENTE por su nombre comercial o de contacto (ej: 'Rosario López', 'Silmed', 'Amigo del culturismo').
 
 3. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
-   - Si Alberto está preguntando o hablando sobre un cliente específico (ej: Rosario López), CONCÉNTRATE AL 100% EN ESE CLIENTE.
-   - NUNCA menciones a otros clientes de su cartera (como Darío Cienfuegos, Carmina Badillo, etc.) a menos que Alberto te pregunte explícitamente por ellos o pida un resumen de su agenda completa.
-   - Cada cliente es totalmente independiente: no mezcles sus historiales, tareas ni agendas.
-   - Si Alberto te cuestiona por qué mencionaste a otro cliente o qué pasó, NO des discursos de IA sobre errores de asociación. Responde con sobriedad y en una sola frase breve: "Disculpa la confusión, Alberto. Enfocándonos 100% en [Nombre del cliente]:" y entrega inmediatamente la información exacta de ese cliente y el copy propuesto.
+   - Si el usuario está preguntando o hablando sobre un cliente específico, CONCÉNTRATE AL 100% EN ESE CLIENTE.
+   - NUNCA menciones a otros clientes ni mezcles historiales de otros prospectos.
+   - Cada cliente es totalmente independiente.
+   - Si el usuario te corrige o reclama una confusión, acéptalo en UNA SOLA frase corta y sobria ("Disculpa la confusión. Enfocándonos en [Nombre]:") y entrega la información exacta.
 
 4. FIDELIDAD ABSOLUTA A LAS HORAS Y FECHAS AGENDADAS (CERO HORAS INVENTADAS):
-   - Lee con exactitud quirúrgica el campo next_action_date de cada cliente:
-     * Rosario López: Su tarea está programada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 11:00 A.M. (next_action_date: 2026-09-16T11:00). NUNCA inventes horas ficticias como "18:59" ni "al cierre". Su hora oficial registrada es 11:00 a.m.
-     * Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
-     * Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
+   - Lee con exactitud quirúrgica el campo next_action_date de cada cliente.
    - Solo reporta las horas exactas que figuran en el registro.
 
 5. FECHAS Y HORARIOS CLAVE (NO CONFUNDIR HOY CON MAÑANA):
-   - HOY es martes 15 de setiembre de 2026. "Esta noche" se refiere ÚNICAMENTE a hoy martes 15 en la noche.
-   - MAÑANA es miércoles 16 de setiembre de 2026.
-   - Carmina Badillo: Su reunión por ZOOM es MAÑANA MIÉRCOLES 16 a las 22:00 (10:00 p.m.). NUNCA le digas a Alberto que el zoom de Carmina es "hoy" o "esta noche". Es MAÑANA miércoles en la noche. Si pide mensaje de confirmación, sugiere enviarlo mañana por la tarde (hacia las 6:00 o 7:00 p.m.).
+   - Presta rigurosa atención a la fecha actual (${todayDateStr}) y el mapa de tiempo.
 
-6. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
-   - Cuando Alberto dice "hoy le mandé...", "hablé hoy con él", o menciona una acción que hizo hoy:
-     * La acción ocurrió HOY (${todayDateStr}).
-     * Cualquier próximo paso o seguimiento se calcula a partir de HOY (mañana a las 24h, o jueves a las 48h).
+6. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS, DISCULPAS ROBÓTICAS Y JUSTIFICACIONES DE IA:
+   - CERO frases como "mi error fue grave y no justificable", "tienes toda la razón — mi error", "yo interpreté mal", etc.
+   - Respuestas sobrias, directas, profesionales y enfocadas en la acción comercial.
 
-7. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS, DISCULPAS ROBÓTICAS Y JUSTIFICACIONES DE IA:
-   - CERO frases como "mi error fue grave y no justificable", "tienes toda la razón — mi error", "yo interpreté mal y asocié a...", "falla de mi modelo", "revisé mal la base de datos", etc.
-   - CERO explicaciones introspectivas sobre algoritmos o lecturas apresuradas.
-   - Si Alberto te hace una corrección o detecta un malentendido, acéptalo en UNA SOLA frase corta y sobria ("Disculpa la confusión, Alberto. Enfocándonos en [Cliente]:") y entrega la información ejecutiva correcta.
-
-8. COPYWRITING PARA WHATSAPP:
-   - Mensajes cálidos, naturales al estilo peruano/latino, directos y listos para copiar.
+7. COPYWRITING PARA WHATSAPP:
+   - Mensajes cálidos, profesionales, directos al estilo peruano/latino, listos para copiar.
    - Coloca los mensajes de WhatsApp claramente entre comillas.
 
-9. REGLA ESTRICTA DE ACTUALIZACIÓN DEL CRM (PROHIBICIÓN TOTAL DE INVENTAR DATOS):
+8. REGLA ESTRICTA DE ACTUALIZACIÓN DEL CRM (PROHIBICIÓN TOTAL DE INVENTAR DATOS):
    - En el 95% de las interacciones, tu intención DEBE SER "general_chat".
-   - ÚNICAMENTE genera "intent": "update_lead" si Alberto te da una orden DIRECTA, EXPLÍCITA E INEQUÍVOCA para modificar el CRM (ej: "Anota en la bitácora de Rosario...", "Registra llamada con...", "Cambia la fecha de...", "Agenda cita para...").
-   - Si Alberto hace preguntas como "¿qué hago con Rosario?", "no modificar el crm?", "¿puedes modificar?", o solo está conversando o discutiendo, TU INTENCIÓN ES OBLIGATORIAMENTE "general_chat".
-   - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS O CONVERSACIONES: NUNCA jamás inventes una llamada, una hora ficticia ("hablé a las 23:20"), ni inventes que un cliente dijo algo ("dijo que comprará el plan 30"). Si Alberto no te dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
+   - ÚNICAMENTE genera "intent": "update_lead" si el usuario te da una orden DIRECTA, EXPLÍCITA E INEQUÍVOCA para modificar el CRM (ej: "Anota en la bitácora...", "Registra llamada...", "Agenda cita...").
+   - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS: Si el usuario no dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
 
-10. VERDAD SOBRE TU ACCESO AL CRM (CERO GASLIGHTING / CERO MENTIRAS):
-   - Tú SÍ estás conectado al CRM real de Bienestar Sin Excusas a través de Supabase. Cuando emites un intent "update_lead", el backend lo guarda de verdad en la base de datos de Alberto.
-   - Por eso, NUNCA mientas diciendo "no tengo acceso a tu CRM real" ni digas "no puedo modificar nada".
-   - Y precisamente porque tienes acceso real y tus cambios modifican datos verdaderos, TIENES TOTALMENTE PROHIBIDO modificar nada a menos que Alberto te lo ordene explícitamente.
-   - Si Alberto te pregunta o reclama sobre un cambio no deseado, no niegues tener acceso: di con sinceridad y sobriedad: "Tienes razón Alberto, hubo un error de interpretación; no modificaré nada sin tu orden explícita".
+9. VERDAD SOBRE TU ACCESO AL CRM:
+   - Sí estás conectado al CRM en tiempo real a través de Supabase.
+   - Solo modificas datos cuando el usuario te lo ordena expresamente.
 
-11. CREAR PROSPECTOS:
-   - Si Alberto pide expresamente crear un prospecto:
-     * Establece "intent": "create_lead".
-     * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
+10. CREAR PROSPECTOS:
+   - Si el usuario pide crear un prospecto: "intent": "create_lead". Extrae contact_name, business_name, phone, target_plan, estimated_value.
 
-12. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
-   - Si Alberto te pregunta si puedes enviarle notificaciones o recordatorios en Telegram (ej: avisarle antes de un Zoom o llamada):
-     * Respóndele que SÍ, el sistema puede enviarle notificaciones automáticas y proactivas aquí mismo en Telegram.
-     * Explica con claridad cómo funciona: El sistema revisa la agenda del CRM y le envía automáticamente una alerta 1 hora antes de cada Zoom (entre 50 y 65 min previos) y 20 minutos antes de cada llamada o tarea.
-     * NUNCA prometas enviar mensajes de prueba a una hora arbitraria inventada ("te escribiré a las 23:27") ni pretendas que tienes un cronómetro interno para chatear por iniciativa propia. Las alertas se disparan para las reuniones y tareas registradas en la base de datos del CRM.
+11. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
+   - Si preguntan si el bot puede enviar recordatorios: Confirma que SÍ. El sistema envía notificaciones automáticas en Telegram 1h antes de zooms y 20m antes de llamadas registradas en la agenda.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
@@ -474,7 +590,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
   "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
-  "reply_message": "Tu respuesta detallada y estratégica para Alberto."
+  "reply_message": "Tu respuesta detallada y estratégica para ${advisor.name}."
 }`;
 
   const formattedHistory = (conversationHistory || [])
@@ -546,7 +662,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 
       // Only add to timeline if the user actually stated note details
       if (parsed.note_text && parsed.note_text.trim().length > 0) {
-        timeline = [{ date: new Date().toISOString(), text: parsed.note_text }, ...timeline];
+        const noteWithAuthor = `${parsed.note_text.trim()} [Registrado por ${advisor.name} vía Telegram]`;
+        timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
       }
 
       const finalNextAction = parsed.next_action_text || currentNextAction;
@@ -582,24 +699,24 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       target_plan: d.target_plan || 'plan_30',
       estimated_value: d.estimated_value || 400,
       status: 'prospecto',
-      assigned_to: 'Alberto Zegarra',
+      assigned_to: advisor.name,
       created_at: new Date().toISOString(),
       last_interaction: new Date().toISOString(),
       notes: JSON.stringify({
-        timeline: [{ date: new Date().toISOString(), text: 'Prospecto creado vía Copiloto Telegram' }],
+        timeline: [{ date: new Date().toISOString(), text: `Prospecto creado vía Copiloto Telegram por ${advisor.name}` }],
         next_action: 'Enviar mensaje de bienvenida y presentación',
         next_action_date: new Date(Date.now() + 24 * 3600 * 1000).toISOString().slice(0, 16)
       })
     };
 
     await supabase.from('leads').insert([newLeadRecord]);
-    badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM:</b> <i>${d.contact_name}</i>\n\n`;
+    badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM (asignado a ${advisor.name}):</b> <i>${d.contact_name}</i>\n\n`;
   }
 
-  const finalHtml = badgePrefix + formatForTelegramHtml(parsed.reply_message || 'Listo Alberto.');
+  const finalHtml = badgePrefix + formatForTelegramHtml(parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`);
   return {
     replyText: finalHtml,
-    rawReply: parsed.reply_message || 'Listo Alberto.'
+    rawReply: parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`
   };
 }
 
@@ -607,35 +724,35 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 // Helper: Send Proactive Reminders (Zoom 60m & Calls 20m)
 // -------------------------------------------------------------
 export async function checkAndSendReminders() {
-  let targetChatId = lastAdminChatId;
-  if (!targetChatId) {
-    try {
-      const { data } = await supabase
-        .from('leads')
-        .select('notes')
-        .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
-        .maybeSingle();
+  const { data: sessionData } = await supabase
+    .from('leads')
+    .select('notes')
+    .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
+    .maybeSingle();
 
-      if (data?.notes) {
-        const p = JSON.parse(data.notes);
-        if (p.chat_id) targetChatId = p.chat_id;
-      }
-    } catch (e) {
-      console.warn('Error fetching admin chat_id from DB:', e);
-    }
+  let sessionObj = {};
+  try {
+    sessionObj = JSON.parse(sessionData?.notes || '{}');
+  } catch (e) {}
+
+  const users = sessionObj.users || {};
+  let albertoChatId = sessionObj.alberto_chat_id || sessionObj.chat_id || lastAdminChatId;
+  let luisChatId = sessionObj.luis_chat_id || null;
+
+  for (const [cId, u] of Object.entries(users)) {
+    if (u.advisorKey === 'alberto' && !albertoChatId) albertoChatId = cId;
+    if (u.advisorKey === 'luis' && !luisChatId) luisChatId = cId;
   }
 
-  if (!targetChatId) {
-    return { status: 'skipped', reason: 'no active admin chat_id found in memory or database' };
-  }
+  const { data: rawLeads } = await supabase.from('leads').select('*');
+  const leads = (rawLeads || []).filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION' && l.client_type !== 'system_internal');
 
-  const { data: leads } = await supabase.from('leads').select('*');
   const now = new Date();
   const nowMs = now.getTime();
 
   let remindersSent = 0;
 
-  for (const l of leads || []) {
+  for (const l of leads) {
     let nextAction = '';
     let nextActionDate = '';
     let parsedNotes = {};
@@ -654,6 +771,13 @@ export async function checkAndSendReminders() {
 
     const taskTime = new Date(nextActionDate).getTime();
     const diffMinutes = Math.round((taskTime - nowMs) / (60 * 1000));
+
+    // Determine target recipient based on lead assignment
+    const assigned = (l.assigned_to || '').toLowerCase();
+    const isLuisLead = assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('socio comercial');
+    const targetChatId = isLuisLead ? (luisChatId || albertoChatId) : (albertoChatId || luisChatId);
+
+    if (!targetChatId) continue;
 
     const isZoom = nextAction.toLowerCase().includes('zoom') || nextAction.toLowerCase().includes('reunion') || nextAction.toLowerCase().includes('demo');
 
@@ -684,7 +808,6 @@ export async function checkAndSendReminders() {
     }
 
     if (sentThis) {
-      // Mark as sent in DB to prevent duplicates
       parsedNotes.last_reminder_sent_for = nextActionDate;
       await supabase.from('leads').update({
         notes: JSON.stringify(parsedNotes)
@@ -692,7 +815,7 @@ export async function checkAndSendReminders() {
     }
   }
 
-  return { status: 'ok', remindersSent, targetChatId };
+  return { status: 'ok', remindersSent, albertoChatId, luisChatId };
 }
 
 // -------------------------------------------------------------
