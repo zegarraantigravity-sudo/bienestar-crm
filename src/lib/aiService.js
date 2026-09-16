@@ -153,13 +153,32 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
 
   const userName = userDisplayName || 'Alberto Zegarra';
 
+  // Build complete weekly calendar reference to avoid any date confusion
+  const timeRef = [];
+  for (let offset = -1; offset <= 7; offset++) {
+    const d = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
+    d.setDate(d.getDate() + offset);
+    const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(d);
+    const weekdayStr = d.toLocaleDateString('es-PE', { timeZone: 'America/Lima', weekday: 'long', day: 'numeric', month: 'long' });
+    let tag = '';
+    if (offset === -1) tag = 'AYER';
+    else if (offset === 0) tag = 'HOY (DÍA ACTUAL EN CURSO)';
+    else if (offset === 1) tag = 'MAÑANA';
+    else if (offset === 2) tag = 'PASADO MAÑANA';
+    else tag = `EN ${offset} DÍAS`;
+    timeRef.push(`  • ${tag} = ${weekdayStr} (${ymd})`);
+  }
+
   const myHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
   const otherHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
   const myMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
   const otherMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
   const myVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
 
-  const agendaPrecalculada = `CALENDARIO Y AGENDA OFICIAL PRECALCULADA POR EL SISTEMA (VERDAD ABSOLUTA):
+  const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS):
+${timeRef.join('\n')}
+
+AGENDA OFICIAL PRECALCULADA POR EL SISTEMA:
 - TAREAS PERSONALES DE ${userName.toUpperCase()} PARA HOY (${clientLocalDate}):
 ${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
 
@@ -198,11 +217,24 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
      * Y de inmediato preséntale sus próximas llamadas que arrancan mañana: "Tus llamadas personales empiezan mañana ${tomorrowDateStr.split(',')[0]}: ..."
    - Si ${userName} pregunta por un cliente específico por su nombre (ej: "Dime sobre Claudia" o "Qué pasa con Yocelin"), respóndele con todo el detalle de ese cliente sin importar el asesor asignado (aunque puedes precisar de quién es si no es suyo).
 2. MEMORIA CONTINUA DE CONVERSACIÓN: Mantén el contexto de la conversación reciente sin pedirle al usuario que repita de quién habla.
-3. ASESORÍA Y REDACCIÓN PARA WHATSAPP:
+3. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
+   - Cuando ${userName} dice "hoy le mandé...", "hoy hablé con él", "lo acabo de llamar", o menciona cualquier acción que hizo "hoy":
+     * La acción ocurrió HOY (${clientLocalDate}).
+     * Cualquier seguimiento futuro, recordatorio o próximo paso se calcula tomando como punto de partida HOY.
+     * Ejemplo: si el usuario envió hoy martes un plan de prueba o propuesta, un check-in de 24h es mañana miércoles, y un mensaje de cierre a 48h es el jueves.
+     * NUNCA asumas que lo que el usuario dice que hizo "hoy" ocurrió en el pasado o antes de hoy.
+4. PROHIBICIÓN ABSOLUTA DE JUSTIFICACIONES ROBÓTICAS, EXCUSAS O DISERTACIONES META-TÉCNICAS DE IA:
+   - NUNCA des explicaciones sobre cómo funciona tu modelo de lenguaje, redes neuronales, tokens, algoritmos, sesgos o "falta de conciencia temporal o subjetiva".
+   - NUNCA digas frases como "como asistente de inteligencia artificial no tengo conciencia...", "mi error ocurrió por lectura apresurada...", "no tengo memoria subjetiva", "falla de priorización de mi sistema", etc. Al usuario le resulta frustrante, incómodo y poco profesional recibir discursos técnicos sobre IA.
+   - Si el usuario te corrige una fecha, un dato o te aclara que ya hizo algo (ej: "te dije que se lo mandé hoy", "la cita es el jueves", "no digas ayer"):
+     * Acéptalo con naturalidad, humildad y total sobriedad en UNA SOLA frase corta (máximo 12 palabras):
+       Ejemplo: "Entendido perfectamente, ajusto la fecha de inmediato."
+     * E inmediatamente entrega la respuesta concreta: la fecha exacta calculada, la justificación estratégica de ventas y el mensaje de WhatsApp redactado listo para copiar.
+5. ASESORÍA Y REDACCIÓN PARA WHATSAPP:
    - Revisa todo el historial (timeline) del prospecto y su objetivo comercial.
    - Redacta el mensaje exacto para copiar y pegar en WhatsApp con tono peruano/latino natural, empático y persuasivo.
    - Recomienda el día y hora exacta más estratégica para enviarlo.
-4. REGLA ESTRICTA DE FECHAS:
+6. REGLA ESTRICTA DE FECHAS:
    - Para tareas de HOY menciona única y exclusivamente los que tienen categoria_agenda "HOY".
    - Tareas de mañana ponlas claramente en una sección separada abajo.
 

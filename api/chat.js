@@ -69,6 +69,22 @@ export default async function handler(req, res) {
 
     const userName = userContext.displayName || 'Alberto Zegarra';
 
+    // Build complete weekly calendar reference to avoid any date confusion
+    const timeRef = [];
+    for (let offset = -1; offset <= 7; offset++) {
+      const d = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
+      d.setDate(d.getDate() + offset);
+      const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(d);
+      const weekdayStr = d.toLocaleDateString('es-PE', { timeZone: 'America/Lima', weekday: 'long', day: 'numeric', month: 'long' });
+      let tag = '';
+      if (offset === -1) tag = 'AYER';
+      else if (offset === 0) tag = 'HOY (DÍA ACTUAL EN CURSO)';
+      else if (offset === 1) tag = 'MAÑANA';
+      else if (offset === 2) tag = 'PASADO MAÑANA';
+      else tag = `EN ${offset} DÍAS`;
+      timeRef.push(`  • ${tag} = ${weekdayStr} (${ymd})`);
+    }
+
     const myHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
     const otherHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
     const myMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
@@ -76,7 +92,10 @@ export default async function handler(req, res) {
     const myVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
     const otherVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && !l.is_my_lead);
 
-    const agendaPrecalculada = `CALENDARIO Y AGENDA OFICIAL PRECALCULADA POR EL SISTEMA (VERDAD ABSOLUTA):
+    const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS):
+${timeRef.join('\n')}
+
+AGENDA OFICIAL PRECALCULADA POR EL SISTEMA:
 - TAREAS PERSONALES DE ${userName.toUpperCase()} PARA HOY (${todayDateStr}):
 ${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
 
@@ -127,7 +146,22 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
    - Tienes acceso al historial reciente de mensajes de esta sesión de chat.
    - Si el usuario hace preguntas de seguimiento ("¿y qué le digo a él?", "¿a qué hora?", "¿y de quién me hablabas?"), MANTÉN el hilo de la conversación y el cliente del que venían hablando. NUNCA le pidas que te repita o vuelva a explicar de quién habla si ya fue mencionado en los mensajes anteriores.
 
-3. ASESORÍA ESTRATÉGICA Y REDACCIÓN DE MENSAJES (COPYWRITING PARA WHATSAPP):
+3. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
+   - Cuando ${userName} dice "hoy le mandé...", "hoy hablé con él", "lo acabo de llamar", o menciona cualquier acción que hizo "hoy":
+     * La acción ocurrió HOY (${todayDateStr}, ${todayPeruYmd}).
+     * Cualquier seguimiento futuro, recordatorio o próximo paso se calcula tomando como punto de partida HOY.
+     * Ejemplo: si el usuario envió hoy martes un plan de prueba o propuesta, un check-in de 24h es mañana miércoles, y un mensaje de cierre a 48h es el jueves.
+     * NUNCA asumas que lo que el usuario dice que hizo "hoy" ocurrió en el pasado o antes de hoy.
+
+4. PROHIBICIÓN ABSOLUTA DE JUSTIFICACIONES ROBÓTICAS, EXCUSAS O DISERTACIONES META-TÉCNICAS DE IA:
+   - NUNCA des explicaciones sobre cómo funciona tu modelo de lenguaje, redes neuronales, tokens, algoritmos, sesgos o "falta de conciencia temporal o subjetiva".
+   - NUNCA digas frases como "como asistente de inteligencia artificial no tengo conciencia...", "mi error ocurrió por lectura apresurada...", "no tengo memoria subjetiva", "falla de priorización de mi sistema", etc. Al usuario le resulta frustrante, incómodo y poco profesional recibir discursos técnicos sobre IA.
+   - Si el usuario te corrige una fecha, un dato o te aclara que ya hizo algo (ej: "te dije que se lo mandé hoy", "la cita es el jueves", "no digas ayer"):
+     * Acéptalo con naturalidad, humildad y total sobriedad en UNA SOLA frase corta (máximo 12 palabras):
+       Ejemplo: "Entendido perfectamente, ajusto la fecha de inmediato."
+     * E inmediatamente entrega la respuesta concreta: la fecha exacta calculada, la justificación estratégica de ventas y el mensaje de WhatsApp redactado listo para copiar.
+
+5. ASESORÍA ESTRATÉGICA Y REDACCIÓN DE MENSAJES (COPYWRITING PARA WHATSAPP):
    - Cuando ${userName} pregunte qué escribirle a un cliente, cómo responderle, cuándo escribirle o pida un consejo considerando lo que se ha conversado:
      a) Revisa TODA la bitácora/timeline del cliente: qué le dijo a ${userName}, qué dudas u objeciones puso, qué acuerdos hicieron y qué se busca lograr con él.
      b) Redacta el MENSAJE EXACTO listo para copiar y pegar en WhatsApp:
@@ -137,19 +171,19 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
      c) RECOMIENDA EL DÍA Y HORA EXACTA PARA ENVIARLO y explica brevemente por qué es el momento más estratégico.
      d) Explica en 1 o 2 líneas el porqué psicológico/comercial de la estrategia elegida.
 
-4. REGLA ESTRICTA DE FECHAS (HOY vs MAÑANA):
+6. REGLA ESTRICTA DE FECHAS (HOY vs MAÑANA):
    - NUNCA mezcles las tareas de mañana con las de hoy.
 
-5. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
+7. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
    - Identifica al prospecto (por nombre o aproximación).
    - Extrae la nota para la bitácora y la próxima acción calculando fecha/hora YYYY-MM-DDTHH:mm.
    - Establece "intent": "update_lead".
 
-6. Si el usuario pide crear un nuevo lead:
+8. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
 
-7. FORMATO VISUAL LIMPIO:
+9. FORMATO VISUAL LIMPIO:
    - No satures el texto con asteriscos (**). Úsalos solo con moderación para títulos clave.
    - Los mensajes propuestos para WhatsApp colócalos entre comillas en su propio bloque o párrafo para que resalten.
 
