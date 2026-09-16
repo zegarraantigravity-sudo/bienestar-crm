@@ -4,6 +4,18 @@ import { askAICopilot, robustParseAIResponse } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
 
+function isExplicitUpdateCommand(userText) {
+  if (!userText || typeof userText !== 'string') return false;
+  const t = userText.toLowerCase().trim();
+  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres)\b/i.test(t)) {
+    return false;
+  }
+  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza)\b/i.test(t)) {
+    return false;
+  }
+  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en)\b/i.test(t);
+}
+
 export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdvisorFilter = 'todos' }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(() => {
@@ -282,8 +294,10 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
 
       let actionBadge = null;
 
-      // Handle intent: update_lead
-      if (aiResponse.intent === 'update_lead' && (aiResponse.target_lead_id || aiResponse.target_lead_name)) {
+      const isUserExplicitUpdate = isExplicitUpdateCommand(textToSend);
+
+      // Handle intent: update_lead ONLY IF user explicitly commanded it
+      if (aiResponse.intent === 'update_lead' && isUserExplicitUpdate && (aiResponse.target_lead_id || aiResponse.target_lead_name)) {
         const targetLead = leads.find(l => {
           if (aiResponse.target_lead_id && l.id === aiResponse.target_lead_id) return true;
           const searchName = (aiResponse.target_lead_name || '').toLowerCase().trim();

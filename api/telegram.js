@@ -439,17 +439,24 @@ INSTRUCCIONES CLAVE:
    - Mensajes cálidos, naturales al estilo peruano/latino, directos y listos para copiar.
    - Coloca los mensajes de WhatsApp claramente entre comillas.
 
-9. REGISTRAR O ACTUALIZAR CLIENTES:
-   - Si Alberto te pide registrar una nota, llamada o acordar una cita/tarea:
-     * Establece "intent": "update_lead".
-     * Extrae target_lead_id, note_text, next_action_text y next_action_date (YYYY-MM-DDTHH:mm).
+9. REGLA ESTRICTA DE ACTUALIZACIÓN DEL CRM (PROHIBICIÓN TOTAL DE INVENTAR DATOS):
+   - En el 95% de las interacciones, tu intención DEBE SER "general_chat".
+   - ÚNICAMENTE genera "intent": "update_lead" si Alberto te da una orden DIRECTA, EXPLÍCITA E INEQUÍVOCA para modificar el CRM (ej: "Anota en la bitácora de Rosario...", "Registra llamada con...", "Cambia la fecha de...", "Agenda cita para...").
+   - Si Alberto hace preguntas como "¿qué hago con Rosario?", "no modificar el crm?", "¿puedes modificar?", o solo está conversando o discutiendo, TU INTENCIÓN ES OBLIGATORIAMENTE "general_chat".
+   - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS O CONVERSACIONES: NUNCA jamás inventes una llamada, una hora ficticia ("hablé a las 23:20"), ni inventes que un cliente dijo algo ("dijo que comprará el plan 30"). Si Alberto no te dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
 
-10. CREAR PROSPECTOS:
-   - Si Alberto pide crear un prospecto:
+10. VERDAD SOBRE TU ACCESO AL CRM (CERO GASLIGHTING / CERO MENTIRAS):
+   - Tú SÍ estás conectado al CRM real de Bienestar Sin Excusas a través de Supabase. Cuando emites un intent "update_lead", el backend lo guarda de verdad en la base de datos de Alberto.
+   - Por eso, NUNCA mientas diciendo "no tengo acceso a tu CRM real" ni digas "no puedo modificar nada".
+   - Y precisamente porque tienes acceso real y tus cambios modifican datos verdaderos, TIENES TOTALMENTE PROHIBIDO modificar nada a menos que Alberto te lo ordene explícitamente.
+   - Si Alberto te pregunta o reclama sobre un cambio no deseado, no niegues tener acceso: di con sinceridad y sobriedad: "Tienes razón Alberto, hubo un error de interpretación; no modificaré nada sin tu orden explícita".
+
+11. CREAR PROSPECTOS:
+   - Si Alberto pide expresamente crear un prospecto:
      * Establece "intent": "create_lead".
      * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
 
-11. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
+12. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
    - Si Alberto te pregunta si puedes enviarle notificaciones o recordatorios en Telegram (ej: avisarle antes de un Zoom o llamada):
      * Respóndele que SÍ, el sistema puede enviarle notificaciones automáticas y proactivas aquí mismo en Telegram.
      * Explica con claridad cómo funciona: El sistema revisa la agenda del CRM y le envía automáticamente una alerta 1 hora antes de cada Zoom (entre 50 y 65 min previos) y 20 minutos antes de cada llamada o tarea.
@@ -501,8 +508,11 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 
   let badgePrefix = '';
 
-  // Handle Intent: Update Lead in Supabase
-  if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
+  const isUserExplicitUpdate = isExplicitUpdateCommand(userMessage);
+  const isUserExplicitCreate = isExplicitCreateCommand(userMessage);
+
+  // Handle Intent: Update Lead in Supabase ONLY IF user explicitly commanded it
+  if (parsed.intent === 'update_lead' && isUserExplicitUpdate && (parsed.target_lead_id || parsed.target_lead_name)) {
     const targetLead = (leads || []).find(l => {
       if (parsed.target_lead_id && l.id === parsed.target_lead_id) return true;
       const searchName = (parsed.target_lead_name || '').toLowerCase().trim();
@@ -534,7 +544,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
         if (targetLead.notes) timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
       }
 
-      if (parsed.note_text) {
+      // Only add to timeline if the user actually stated note details
+      if (parsed.note_text && parsed.note_text.trim().length > 0) {
         timeline = [{ date: new Date().toISOString(), text: parsed.note_text }, ...timeline];
       }
 
@@ -561,8 +572,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     }
   }
 
-  // Handle Intent: Create Lead in Supabase
-  if (parsed.intent === 'create_lead' && parsed.new_lead_data?.contact_name) {
+  // Handle Intent: Create Lead in Supabase ONLY IF user explicitly commanded it
+  if (parsed.intent === 'create_lead' && isUserExplicitCreate && parsed.new_lead_data?.contact_name) {
     const d = parsed.new_lead_data;
     const newLeadRecord = {
       contact_name: d.contact_name,
@@ -682,6 +693,34 @@ export async function checkAndSendReminders() {
   }
 
   return { status: 'ok', remindersSent, targetChatId };
+}
+
+// -------------------------------------------------------------
+// Intent Validation Guardrails
+// -------------------------------------------------------------
+function isExplicitUpdateCommand(userText) {
+  if (!userText || typeof userText !== 'string') return false;
+  const t = userText.toLowerCase().trim();
+
+  // If user explicitly says not to modify or asks a negative question
+  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres)\b/i.test(t)) {
+    return false;
+  }
+
+  // If user is just asking a question without an action verb
+  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza)\b/i.test(t)) {
+    return false;
+  }
+
+  // Must have clear trigger verbs or actions:
+  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en)\b/i.test(t);
+}
+
+function isExplicitCreateCommand(userText) {
+  if (!userText || typeof userText !== 'string') return false;
+  const t = userText.toLowerCase().trim();
+  if (/\bno\s+(crees|agregues|registres)\b/i.test(t)) return false;
+  return /\b(crea|crear|agrega|agregar|nuevo prospecto|nuevo cliente|registra nuevo)\b/i.test(t);
 }
 
 // -------------------------------------------------------------
