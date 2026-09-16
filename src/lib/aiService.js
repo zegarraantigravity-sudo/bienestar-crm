@@ -41,12 +41,28 @@ export async function askAICopilot({ userMessage, leads, userEmail, userDisplayN
     };
   });
 
+  const nowPeru = new Date();
+  const clientLocalDate = nowPeru.toLocaleDateString('es-PE', {
+    timeZone: 'America/Lima',
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const clientLocalTime = nowPeru.toLocaleTimeString('es-PE', {
+    timeZone: 'America/Lima',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
   const payload = {
     userMessage,
     leadsSummary,
     userContext: {
       userEmail,
-      displayName: userDisplayName
+      displayName: userDisplayName,
+      clientLocalDate,
+      clientLocalTime
     }
   };
 

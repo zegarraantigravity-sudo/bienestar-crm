@@ -40,24 +40,42 @@ export default async function handler(req, res) {
     const apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
     const model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-    const todayDateStr = new Date().toLocaleDateString('es-PE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    const nowIso = new Date().toISOString();
+    // Precise Peru (America/Lima) timezone calculation
+    const nowPeru = new Date();
+    const todayDateStr = userContext.clientLocalDate || nowPeru.toLocaleDateString('es-PE', { 
+      timeZone: 'America/Lima', 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+    const currentTimeStr = userContext.clientLocalTime || nowPeru.toLocaleTimeString('es-PE', { 
+      timeZone: 'America/Lima', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
 
     const systemPrompt = `Eres el Copiloto Inteligente de Bienestar CRM para Alberto Zegarra y su equipo comercial de Bienestar Sin Excusas.
-Fecha y hora actual: ${todayDateStr} (${nowIso}).
+
+FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
+${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
 Usuario conectado: ${userContext.displayName || 'Alberto Zegarra'} (${userContext.userEmail || ''}).
 
 TIENES ACCESO A LA LISTA DE PROSPECTOS ACTIVOS EN EL CRM:
 ${JSON.stringify(leadsSummary, null, 2)}
 
 INSTRUCCIONES CLAVE:
-1. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
+1. TEN MUCHO CUIDADO CON LAS FECHAS Y DÍAS:
+   - La fecha actual en Perú es EXACTAMENTE: ${todayDateStr}.
+   - Si hoy es martes, mañana es miércoles, el sábado es el sábado más próximo, etc.
+   - Calcula siempre las fechas de próximas acciones tomando como base que hoy es ${todayDateStr}.
+2. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
    - Identifica a qué prospecto se refiere (por nombre, empresa o aproximación).
    - Extrae la nota a agregar en la bitácora.
-   - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm (calculando a partir de hoy).
+   - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm.
    - Establece "intent": "update_lead".
-2. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
-   - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones.
+3. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
+   - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones. Sé conciso y directo.
    - Establece "intent": "general_chat".
 3. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
