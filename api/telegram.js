@@ -69,7 +69,7 @@ export default async function handler(req, res) {
 
     // Handle /start command
     if (message.text === '/start') {
-      await saveTelegramHistory([]);
+      await saveTelegramHistory([], chatId);
       const welcome = `¡Hola ${userName}! Soy tu <b>Copiloto Ejecutivo de Bienestar CRM</b> en Telegram 🤖✨\n\n` +
         `Estoy conectado en tiempo real a tu base de datos de prospectos en Supabase.\n\n` +
         `<b>¿Qué puedes hacer conmigo aquí?</b>\n` +
@@ -86,7 +86,7 @@ export default async function handler(req, res) {
 
     // Handle /reset or /nuevo command
     if (message.text === '/reset' || message.text === '/nuevo' || message.text === '/clear') {
-      await saveTelegramHistory([]);
+      await saveTelegramHistory([], chatId);
       await sendTelegramMessage(chatId, '🔄 <b>Conversación reiniciada.</b>\n\n¿En qué cliente o tarea nos enfocamos ahora?');
       return res.status(200).json({ ok: true });
     }
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
       await sendTelegramMessage(chatId, replyText);
       history.push({ role: 'user', content: '¿Qué tareas o llamadas tengo para hoy?' });
       history.push({ role: 'assistant', content: rawReply });
-      await saveTelegramHistory(history);
+      await saveTelegramHistory(history, chatId);
       return res.status(200).json({ ok: true });
     }
 
@@ -151,7 +151,7 @@ export default async function handler(req, res) {
     // Persist updated conversation history
     history.push({ role: 'user', content: userText });
     history.push({ role: 'assistant', content: rawReply });
-    await saveTelegramHistory(history);
+    await saveTelegramHistory(history, chatId);
 
     return res.status(200).json({ ok: true });
   } catch (err) {
@@ -214,17 +214,25 @@ async function getTelegramHistory() {
   return [];
 }
 
-async function saveTelegramHistory(history) {
+async function saveTelegramHistory(history, chatId = null) {
   try {
     const { data } = await supabase
       .from('leads')
-      .select('id')
+      .select('id, notes')
       .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
       .maybeSingle();
 
     if (data?.id) {
+      let existing = {};
+      try { existing = JSON.parse(data.notes || '{}'); } catch (e) {}
+      const resolvedChatId = chatId || existing.chat_id || lastAdminChatId;
+
       await supabase.from('leads').update({
-        notes: JSON.stringify({ history: history.slice(-12), updated_at: new Date().toISOString() })
+        notes: JSON.stringify({
+          history: history.slice(-12),
+          chat_id: resolvedChatId,
+          updated_at: new Date().toISOString()
+        })
       }).eq('id', data.id);
     }
   } catch (e) {
@@ -441,6 +449,12 @@ INSTRUCCIONES CLAVE:
      * Establece "intent": "create_lead".
      * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
 
+11. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
+   - Si Alberto te pregunta si puedes enviarle notificaciones o recordatorios en Telegram (ej: avisarle antes de un Zoom o llamada):
+     * Respóndele que SÍ, el sistema puede enviarle notificaciones automáticas y proactivas aquí mismo en Telegram.
+     * Explica con claridad cómo funciona: El sistema revisa la agenda del CRM y le envía automáticamente una alerta 1 hora antes de cada Zoom (entre 50 y 65 min previos) y 20 minutos antes de cada llamada o tarea.
+     * NUNCA prometas enviar mensajes de prueba a una hora arbitraria inventada ("te escribiré a las 23:27") ni pretendas que tienes un cronómetro interno para chatear por iniciativa propia. Las alertas se disparan para las reuniones y tareas registradas en la base de datos del CRM.
+
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
   "intent": "update_lead" | "create_lead" | "general_chat",
@@ -582,8 +596,26 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 // Helper: Send Proactive Reminders (Zoom 60m & Calls 20m)
 // -------------------------------------------------------------
 export async function checkAndSendReminders() {
-  if (!lastAdminChatId) {
-    return { status: 'skipped', reason: 'no active admin chat_id' };
+  let targetChatId = lastAdminChatId;
+  if (!targetChatId) {
+    try {
+      const { data } = await supabase
+        .from('leads')
+        .select('notes')
+        .eq('business_name', 'SYSTEM_TELEGRAM_SESSION')
+        .maybeSingle();
+
+      if (data?.notes) {
+        const p = JSON.parse(data.notes);
+        if (p.chat_id) targetChatId = p.chat_id;
+      }
+    } catch (e) {
+      console.warn('Error fetching admin chat_id from DB:', e);
+    }
+  }
+
+  if (!targetChatId) {
+    return { status: 'skipped', reason: 'no active admin chat_id found in memory or database' };
   }
 
   const { data: leads } = await supabase.from('leads').select('*');
@@ -595,20 +627,26 @@ export async function checkAndSendReminders() {
   for (const l of leads || []) {
     let nextAction = '';
     let nextActionDate = '';
+    let parsedNotes = {};
     try {
-      const p = JSON.parse(l.notes || '{}');
-      if (p && typeof p === 'object') {
-        nextAction = p.next_action || '';
-        nextActionDate = p.next_action_date || '';
+      parsedNotes = JSON.parse(l.notes || '{}');
+      if (parsedNotes && typeof parsedNotes === 'object') {
+        nextAction = parsedNotes.next_action || '';
+        nextActionDate = parsedNotes.next_action_date || '';
       }
     } catch (e) {}
 
     if (!nextActionDate) continue;
 
+    // Deduplication: skip if reminder was already sent for this exact scheduled time
+    if (parsedNotes.last_reminder_sent_for === nextActionDate) continue;
+
     const taskTime = new Date(nextActionDate).getTime();
     const diffMinutes = Math.round((taskTime - nowMs) / (60 * 1000));
 
     const isZoom = nextAction.toLowerCase().includes('zoom') || nextAction.toLowerCase().includes('reunion') || nextAction.toLowerCase().includes('demo');
+
+    let sentThis = false;
 
     // 1. Zoom alert between 50 and 65 minutes
     if (isZoom && diffMinutes >= 50 && diffMinutes <= 65) {
@@ -617,8 +655,9 @@ export async function checkAndSendReminders() {
         `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
         `📝 <b>Detalle:</b> ${nextAction}\n\n` +
         `🎯 <i>Prepárate para abrir la sala y tener la app lista para proyectar.</i>`;
-      await sendTelegramMessage(lastAdminChatId, msg);
+      await sendTelegramMessage(targetChatId, msg);
       remindersSent++;
+      sentThis = true;
     }
 
     // 2. Call/Message alert between 15 and 25 minutes
@@ -628,12 +667,21 @@ export async function checkAndSendReminders() {
         `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
         `📝 <b>Acción:</b> ${nextAction}\n\n` +
         `📱 <i>Abre WhatsApp o agenda la llamada a tiempo.</i>`;
-      await sendTelegramMessage(lastAdminChatId, msg);
+      await sendTelegramMessage(targetChatId, msg);
       remindersSent++;
+      sentThis = true;
+    }
+
+    if (sentThis) {
+      // Mark as sent in DB to prevent duplicates
+      parsedNotes.last_reminder_sent_for = nextActionDate;
+      await supabase.from('leads').update({
+        notes: JSON.stringify(parsedNotes)
+      }).eq('id', l.id);
     }
   }
 
-  return { status: 'ok', remindersSent };
+  return { status: 'ok', remindersSent, targetChatId };
 }
 
 // -------------------------------------------------------------
