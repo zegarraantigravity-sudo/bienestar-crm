@@ -120,15 +120,38 @@ export default async function handler(req, res) {
 
     // Command: Check current profile identity
     if (rawCommand === '/quiensoy' || rawCommand === '/perfil') {
+      await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
       const msg = `👤 <b>Perfil vinculado en este chat de Telegram:</b>\n\n` +
         `• <b>Asesor:</b> ${advisor.name}\n` +
         `• <b>Rol:</b> ${advisor.role}\n` +
         `• <b>Email CRM:</b> ${advisor.email}\n` +
         `• <b>Telegram Chat ID:</b> <code>${chatId}</code>\n\n` +
+        `🔔 <i>Para probar tus notificaciones ahora mismo, escribe:</i>\n` +
+        `• <code>/test_alerta</code>\n\n` +
         `🔄 <i>Para cambiar de asesor en este chat, escribe:</i>\n` +
         `• <code>/soy_luis</code> si eres Luis Hakim\n` +
         `• <code>/soy_alberto</code> si eres Alberto Zegarra`;
       await sendTelegramMessage(chatId, msg);
+      return res.status(200).json({ ok: true });
+    }
+
+    // Command: Instant test notification
+    if (rawCommand === '/test_alerta' || rawCommand === '/test' || rawCommand === '/probar_alertas') {
+      await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+      const testMsg1 = `🚨 <b>¡PRUEBA DE ALERTA: Recordatorio de Zoom en ~1 hora!</b>\n\n` +
+        `👤 <b>Cliente:</b> Carmina Badillo\n` +
+        `⏰ <b>Hora programada:</b> 22:00 (hora Perú)\n` +
+        `📝 <b>Detalle:</b> Reunión de presentación por Zoom\n\n` +
+        `🎯 <i>Así sonará y vibrará tu teléfono 1 hora antes de cada Zoom para que prepares la sala con tiempo.</i>`;
+      await sendTelegramMessage(chatId, testMsg1);
+
+      const testMsg2 = `⏰ <b>¡PRUEBA DE ALERTA: Recordatorio de Tarea en ~20 minutos!</b>\n\n` +
+        `👤 <b>Cliente:</b> Karol Rios\n` +
+        `⏰ <b>Hora programada:</b> 18:30 (hora Perú)\n` +
+        `📝 <b>Acción:</b> Enviar mensaje de confirmación de cita para mañana\n\n` +
+        `📱 <i>Así sonará tu teléfono 20 minutos antes de cada llamada o tarea agendada en tu CRM.</i>\n\n` +
+        `✅ <b>¡Tu Chat ID (<code>${chatId}</code>) quedó registrado con éxito!</b> Las alertas reales de tu agenda se enviarán automáticamente a este chat.`;
+      await sendTelegramMessage(chatId, testMsg2);
       return res.status(200).json({ ok: true });
     }
 
