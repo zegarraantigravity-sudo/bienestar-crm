@@ -568,14 +568,21 @@ INSTRUCCIONES CLAVE:
    - ÚNICAMENTE genera "intent": "update_lead" si el usuario te da una orden DIRECTA, EXPLÍCITA E INEQUÍVOCA para modificar el CRM (ej: "Anota en la bitácora...", "Registra llamada...", "Agenda cita...").
    - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS: Si el usuario no dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
 
-9. VERDAD SOBRE TU ACCESO AL CRM:
+9. REGLA ESTRICTA PARA BORRAR O DEJAR EN BLANCO LA PRÓXIMA ACCIÓN:
+   - Si el usuario te pide borrar, eliminar, quitar o dejar en blanco la próxima acción o fecha (o si el cliente se marca como 'cerrado_perdido' o concluido y no tendrá más seguimiento):
+     * "intent": "update_lead"
+     * "clear_next_action": true
+     * "next_action_text": ""
+     * "next_action_date": ""
+
+10. VERDAD SOBRE TU ACCESO AL CRM:
    - Sí estás conectado al CRM en tiempo real a través de Supabase.
    - Solo modificas datos cuando el usuario te lo ordena expresamente.
 
-10. CREAR PROSPECTOS:
+11. CREAR PROSPECTOS:
    - Si el usuario pide crear un prospecto: "intent": "create_lead". Extrae contact_name, business_name, phone, target_plan, estimated_value.
 
-11. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
+12. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
    - Si preguntan si el bot puede enviar recordatorios: Confirma que SÍ. El sistema envía notificaciones automáticas en Telegram 1h antes de zooms y 20m antes de llamadas registradas en la agenda.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
@@ -583,6 +590,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "intent": "update_lead" | "create_lead" | "general_chat",
   "target_lead_id": "id del lead si se identificó, o null",
   "target_lead_name": "nombre del lead",
+  "clear_next_action": false,
   "note_text": "texto de la nota para la bitácora si aplica",
   "next_action_text": "texto de la próxima acción si aplica",
   "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
@@ -666,8 +674,27 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
         timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
       }
 
-      const finalNextAction = parsed.next_action_text || currentNextAction;
-      const finalNextDate = parsed.next_action_date || currentNextDate;
+      // Check if user or AI wants to clear/delete the scheduled next action
+      const wantsToClearNextAction =
+        parsed.clear_next_action === true ||
+        (parsed.next_action_text !== undefined && ['borrar', 'eliminar', 'ninguna', 'ninguno', 'vacio', 'vacío', 'clear', 'none', ''].includes(String(parsed.next_action_text).toLowerCase().trim()) && parsed.clear_next_action !== false) ||
+        (/\b(borra|borrar|elimina|eliminar|quita|quitar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco|sin pr[oó]xima acci[oó]n|limpia|limpiar)\b/i.test(userMessage) &&
+         /\b(pr[oó]xima acci[oó]n|acci[oó]n pendiente|fecha|tarea|alarma|recordatorio)\b/i.test(userMessage));
+
+      let finalNextAction = currentNextAction;
+      let finalNextDate = currentNextDate;
+
+      if (wantsToClearNextAction) {
+        finalNextAction = '';
+        finalNextDate = '';
+      } else {
+        if (parsed.next_action_text !== undefined && parsed.next_action_text !== null && parsed.next_action_text !== '') {
+          finalNextAction = parsed.next_action_text;
+        }
+        if (parsed.next_action_date !== undefined && parsed.next_action_date !== null && parsed.next_action_date !== '') {
+          finalNextDate = parsed.next_action_date;
+        }
+      }
 
       const updatedNotesPayload = JSON.stringify({
         timeline,
@@ -831,12 +858,12 @@ function isExplicitUpdateCommand(userText) {
   }
 
   // If user is just asking a question without an action verb
-  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza)\b/i.test(t)) {
+  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza|borra|elimina|limpia|quita)\b/i.test(t)) {
     return false;
   }
 
   // Must have clear trigger verbs or actions:
-  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en)\b/i.test(t);
+  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en|borra|borrar|elimina|eliminar|quita|quitar|limpia|limpiar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco)\b/i.test(t);
 }
 
 function isExplicitCreateCommand(userText) {

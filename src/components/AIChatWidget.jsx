@@ -7,13 +7,13 @@ import { getUserDisplayName } from '../lib/utils';
 function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
   const t = userText.toLowerCase().trim();
-  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres)\b/i.test(t)) {
+  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(t)) {
     return false;
   }
-  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza)\b/i.test(t)) {
+  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza|borra|elimina|limpia|quita)\b/i.test(t)) {
     return false;
   }
-  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en)\b/i.test(t);
+  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en|borra|borrar|elimina|eliminar|quita|quitar|limpia|limpiar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco)\b/i.test(t);
 }
 
 export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdvisorFilter = 'todos' }) {
@@ -342,8 +342,27 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
             ];
           }
 
-          const finalNextAction = aiResponse.next_action_text || currentNextAction;
-          const finalNextDate = aiResponse.next_action_date || currentNextDate;
+          // Check if user or AI wants to clear/delete the scheduled next action
+          const wantsToClearNextAction =
+            aiResponse.clear_next_action === true ||
+            (aiResponse.next_action_text !== undefined && ['borrar', 'eliminar', 'ninguna', 'ninguno', 'vacio', 'vacío', 'clear', 'none', ''].includes(String(aiResponse.next_action_text).toLowerCase().trim()) && aiResponse.clear_next_action !== false) ||
+            (/\b(borra|borrar|elimina|eliminar|quita|quitar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco|sin pr[oó]xima acci[oó]n|limpia|limpiar)\b/i.test(textToSend) &&
+             /\b(pr[oó]xima acci[oó]n|acci[oó]n pendiente|fecha|tarea|alarma|recordatorio)\b/i.test(textToSend));
+
+          let finalNextAction = currentNextAction;
+          let finalNextDate = currentNextDate;
+
+          if (wantsToClearNextAction) {
+            finalNextAction = '';
+            finalNextDate = '';
+          } else {
+            if (aiResponse.next_action_text !== undefined && aiResponse.next_action_text !== null && aiResponse.next_action_text !== '') {
+              finalNextAction = aiResponse.next_action_text;
+            }
+            if (aiResponse.next_action_date !== undefined && aiResponse.next_action_date !== null && aiResponse.next_action_date !== '') {
+              finalNextDate = aiResponse.next_action_date;
+            }
+          }
 
           const updatedNotesPayload = JSON.stringify({
             timeline,

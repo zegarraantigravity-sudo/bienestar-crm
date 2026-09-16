@@ -82,6 +82,32 @@ export default function App() {
   useEffect(() => {
     if (session) {
       fetchLeads();
+
+      // Realtime subscription: sync CRM screen automatically when updates happen (via Telegram or other tabs)
+      const channel = supabase
+        .channel('leads_realtime_sync')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'leads' }, () => {
+          supabase
+            .from('leads')
+            .select('*')
+            .order('last_interaction', { ascending: false })
+            .then(({ data, error }) => {
+              if (!error && data) {
+                const cleanLeads = data.filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION' && l.client_type !== 'system_internal');
+                setLeads(cleanLeads);
+                setSelectedLead(prev => {
+                  if (!prev) return null;
+                  const updated = cleanLeads.find(l => l.id === prev.id);
+                  return updated || prev;
+                });
+              }
+            });
+        })
+        .subscribe();
+
+      return () => {
+        supabase.removeChannel(channel);
+      };
     }
   }, [session]);
 
