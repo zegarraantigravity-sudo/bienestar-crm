@@ -7,26 +7,29 @@ const DEFAULT_KEY = 'sk-ws-H.DMLLELE.Ns7U.MEQCIEQeFcXistPzyFJ3JaFIfIwVAvEaxrfhN9
 const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
 const DEFAULT_MODEL = 'qwen-plus';
 
-export async function askAICopilot({ userMessage, leads, userEmail, userDisplayName }) {
-  // Extract a lightweight, essential summary of leads to send to the AI
+export async function askAICopilot({ userMessage, conversationHistory = [], leads, userEmail, userDisplayName }) {
+  const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(new Date());
+
+  // Extract full, rich context of leads including complete timeline and business stage
   const leadsSummary = (leads || []).map(l => {
-    let lastNotes = [];
+    let timeline = [];
     let nextAction = '';
     let nextActionDate = '';
+    let lostReason = '';
     try {
       const parsed = JSON.parse(l.notes || '[]');
       if (Array.isArray(parsed)) {
-        lastNotes = parsed.slice(0, 3).map(n => `[${n.date ? n.date.split('T')[0] : ''}] ${n.text}`);
+        timeline = parsed.map(n => `[${n.date ? n.date.split('T')[0] : ''}] ${n.text}`);
       } else if (parsed && typeof parsed === 'object') {
-        lastNotes = (parsed.timeline || []).slice(0, 3).map(n => `[${n.date ? n.date.split('T')[0] : ''}] ${n.text}`);
+        timeline = (parsed.timeline || []).map(n => `[${n.date ? n.date.split('T')[0] : ''}] ${n.text}`);
         nextAction = parsed.next_action || '';
         nextActionDate = parsed.next_action_date || '';
+        lostReason = parsed.lost_reason_label || parsed.lost_reason || '';
       }
     } catch (e) {
-      lastNotes = l.notes ? [l.notes] : [];
+      timeline = l.notes ? [l.notes] : [];
     }
 
-    const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(new Date());
     let categoria_agenda = 'SIN_FECHA';
     if (nextActionDate) {
       const datePart = nextActionDate.split('T')[0];
@@ -39,11 +42,22 @@ export async function askAICopilot({ userMessage, leads, userEmail, userDisplayN
       }
     }
 
+    // Commercial goal depending on current funnel status
+    const stageGoals = {
+      prospecto: 'Romper el hielo, descubrir modelo de negocio y agendar demo de 15 min en Zoom.',
+      llamado: 'Agendar fecha y hora para demostración de la app por Zoom.',
+      cita_agendada: 'Confirmar asistencia y realizar demostración de la app en vivo.',
+      presentacion_realizada: 'Cerrar venta de Plan 30 (S/. 400) o Plan 80 (S/. 700), resolver objeciones o activar prueba de 3 días.',
+      cerrado_ganado: 'Fidelización, satisfacción y solicitud de referidos.',
+      cerrado_perdido: 'Seguimiento empático sin presionar para reactivar a futuro.'
+    };
+
     return {
       id: l.id,
       name: l.contact_name || l.business_name,
       business: l.business_name,
       phone: l.phone,
+      client_type: l.client_type,
       plan: l.target_plan,
       value: l.estimated_value,
       status: l.status,
@@ -51,7 +65,9 @@ export async function askAICopilot({ userMessage, leads, userEmail, userDisplayN
       next_action: nextAction,
       next_action_date: nextActionDate,
       categoria_agenda,
-      recent_notes: lastNotes
+      lost_reason: lostReason,
+      stage_goal: stageGoals[l.status] || '',
+      timeline: timeline
     };
   });
 
@@ -77,6 +93,7 @@ export async function askAICopilot({ userMessage, leads, userEmail, userDisplayN
 
   const payload = {
     userMessage,
+    conversationHistory,
     leadsSummary,
     userContext: {
       userEmail,
@@ -137,34 +154,25 @@ ${mananaTasks.length > 0 ? mananaTasks.map(t => `  • ${t.name} a las ${t.next_
 - Tareas pendientes con fecha anterior (VENCIDAS):
 ${vencidasTasks.slice(0, 6).map(t => `  • ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
 
-  const systemPrompt = `Eres el Copiloto Inteligente de Bienestar CRM para Alberto Zegarra y su equipo comercial de Bienestar Sin Excusas.
+  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de Bienestar Sin Excusas.
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${clientLocalDate} a las ${clientLocalTime} (Zona horaria: America/Lima, UTC-5).
 Usuario conectado: ${userDisplayName || 'Alberto Zegarra'} (${userEmail || ''}).
 
 ${agendaPrecalculada}
 
-TIENES ACCESO A LA LISTA DE PROSPECTOS ACTIVOS EN EL CRM:
+BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
 ${JSON.stringify(leadsSummary, null, 2)}
 
-INSTRUCCIONES CLAVE:
-1. TEN MUCHO CUIDADO CON LAS FECHAS Y DÍAS:
-   - La fecha actual en Perú es EXACTAMENTE: ${clientLocalDate}.
-   - Si hoy es ${clientLocalDate.split(',')[0]}, mañana es ${tomorrowDateStr.split(',')[0]}.
-2. REGLA ESTRICTA PARA PREGUNTAS DE TAREAS ("¿Qué tareas o llamadas tengo para hoy?"):
-   - Guíate DIRECTAMENTE por la sección "Tareas programadas estrictamente para HOY" del bloque precalculado.
-   - Para las tareas de HOY: menciona ÚNICA Y EXCLUSIVAMENTE los prospectos programados para HOY.
-   - NUNCA incluyas a un prospecto de MAÑANA (como Claudia Advincula u Oscar Fara) dentro de las tareas de hoy.
-   - NUNCA digas cosas como "hoy no hay llamada pero debes prepararla". Si su fecha es mañana, es para mañana.
-   - Si deseas mencionar tareas futuras, ponlas abajo en una sección claramente separada: "📅 Para mañana (${tomorrowDateStr.split(',')[0]}):".
-3. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
-   - Identifica a qué prospecto se refiere (por nombre, empresa o aproximación).
-   - Extrae la nota a agregar en la bitácora.
-   - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm.
-   - Establece "intent": "update_lead".
-4. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
-   - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones. Sé conciso y directo.
-   - Establece "intent": "general_chat".
+INSTRUCCIONES CLAVE DE INTELIGENCIA Y MEMORIA:
+1. MEMORIA CONTINUA DE CONVERSACIÓN: Mantén el contexto de la conversación reciente sin pedirle a Alberto que repita de quién habla.
+2. ASESORÍA Y REDACCIÓN PARA WHATSAPP:
+   - Revisa todo el historial (timeline) del prospecto y su objetivo comercial.
+   - Redacta el mensaje exacto para copiar y pegar en WhatsApp con tono peruano/latino natural, empático y persuasivo.
+   - Recomienda el día y hora exacta más estratégica para enviarlo.
+3. REGLA ESTRICTA DE HOY:
+   - Para tareas de HOY menciona única y exclusivamente los que tienen categoria_agenda "HOY".
+   - Tareas de mañana ponlas claramente en una sección separada abajo.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
@@ -177,8 +185,16 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "new_status": "estado nuevo si aplica",
   "new_plan": "plan nuevo si aplica",
   "new_value": null,
-  "reply_message": "Respuesta clara y profesional"
+  "reply_message": "Respuesta clara, estructurada y profesional"
 }`;
+
+  const formattedHistory = (conversationHistory || [])
+    .slice(-12)
+    .map(m => ({
+      role: m.role === 'assistant' ? 'assistant' : 'user',
+      content: m.content || m.text || ''
+    }))
+    .filter(m => m.content && m.content.trim().length > 0);
 
   const directRes = await fetch(apiUrl, {
     method: 'POST',
@@ -190,9 +206,10 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       model: model,
       messages: [
         { role: 'system', content: systemPrompt },
+        ...formattedHistory,
         { role: 'user', content: userMessage }
       ],
-      temperature: 0.2
+      temperature: 0.3
     })
   });
 

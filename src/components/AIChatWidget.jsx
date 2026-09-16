@@ -1,15 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Send, X, Sparkles, CheckCircle2, RefreshCw, Mic, MicOff } from 'lucide-react';
+import { Bot, Send, X, Sparkles, CheckCircle2, RefreshCw, Mic, MicOff, Maximize2, Minimize2, Copy, Check, RotateCcw } from 'lucide-react';
 import { askAICopilot } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
 
 export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(() => {
+    try {
+      const stored = localStorage.getItem('crm_copilot_expanded');
+      return stored !== null ? stored === 'true' : true; // Default to wide/comfortable!
+    } catch (e) {
+      return true;
+    }
+  });
+  const [copiedIdx, setCopiedIdx] = useState(null);
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      text: `¡Hola ${getUserDisplayName(userEmail)}! Soy tu copiloto de ventas de Bienestar CRM. 🤖✨\n\nPuedes escribirme o presionar el micrófono 🎙️ para dictar notas de clientes, registrar llamadas o programar tareas en lenguaje natural.`,
+      text: `¡Hola ${getUserDisplayName(userEmail)}! Soy tu copiloto de ventas de Bienestar CRM. 🤖✨\n\nPuedes consultarme sobre tus clientes, pedirme consejos comerciales, qué responderles por WhatsApp, o registrar notas y tareas en lenguaje natural.`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       actionBadge: null
     }
@@ -21,6 +30,39 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const recognitionRef = useRef(null);
+
+  const toggleExpanded = () => {
+    setIsExpanded(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem('crm_copilot_expanded', String(next));
+      } catch (e) {}
+      return next;
+    });
+  };
+
+  const copyToClipboard = async (text, idx) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedIdx(idx);
+      setTimeout(() => setCopiedIdx(null), 2200);
+    } catch (err) {
+      console.warn('Clipboard write failed:', err);
+    }
+  };
+
+  const handleResetConversation = () => {
+    if (window.confirm('¿Deseas reiniciar la conversación con el copiloto? Se borrará el historial de esta sesión.')) {
+      setMessages([
+        {
+          role: 'assistant',
+          text: `¡Hola ${getUserDisplayName(userEmail)}! Conversación reiniciada. 🤖✨\n\n¿En qué cliente o tarea comercial nos enfocamos ahora?`,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          actionBadge: null
+        }
+      ]);
+    }
+  };
 
   // Single dictation logic (Speech to Text)
   const startListening = () => {
@@ -125,8 +167,16 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
 
     try {
       const displayName = getUserDisplayName(userEmail);
+      const historyForAI = messages
+        .slice(-12)
+        .map(m => ({
+          role: m.role,
+          content: m.text
+        }));
+
       const aiResponse = await askAICopilot({
         userMessage: textToSend,
+        conversationHistory: historyForAI,
         leads,
         userEmail,
         userDisplayName: displayName
@@ -252,12 +302,13 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
 
   const quickPrompts = [
     '¿Qué tareas o llamadas tengo para hoy?',
-    'Hazme un resumen de Noé Rojas',
-    '¿Qué prospectos llevan más de 5 días estancados?'
+    '¿Qué le puedo escribir a Claudia para su llamada?',
+    'Analiza a Noé Rojas y qué le puedo responder',
+    '¿Qué prospectos están estancados?'
   ];
 
   return (
-    <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999, fontFamily: 'inherit' }}>
+    <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 9999, fontFamily: 'inherit' }}>
       {/* Floating Launcher Button */}
       {!isOpen && (
         <button
@@ -270,11 +321,11 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
             color: 'white',
             border: 'none',
             borderRadius: '50px',
-            padding: '12px 20px',
-            fontSize: '0.95rem',
+            padding: '14px 22px',
+            fontSize: '1rem',
             fontWeight: 700,
             cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(59, 130, 246, 0.45)',
+            boxShadow: '0 8px 26px rgba(59, 130, 246, 0.45)',
             transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
             animation: 'pulseGlow 3s infinite'
           }}
@@ -287,10 +338,10 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
             justifyContent: 'center',
             backgroundColor: 'rgba(255, 255, 255, 0.2)',
             borderRadius: '50%',
-            width: '28px',
-            height: '28px'
+            width: '30px',
+            height: '30px'
           }}>
-            <Bot size={18} />
+            <Bot size={20} />
           </div>
           <span>Copiloto IA</span>
           <Sparkles size={16} style={{ color: '#FDE047' }} />
@@ -300,90 +351,143 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
       {/* Floating Widget Container */}
       {isOpen && (
         <div style={{
-          width: '395px',
-          height: '550px',
-          maxHeight: 'calc(100vh - 80px)',
+          width: isExpanded ? 'min(900px, calc(100vw - 32px))' : 'min(540px, calc(100vw - 32px))',
+          height: isExpanded ? 'min(860px, calc(100vh - 36px))' : 'min(680px, calc(100vh - 44px))',
+          maxHeight: isExpanded ? 'calc(100vh - 32px)' : 'calc(100vh - 44px)',
           maxWidth: 'calc(100vw - 32px)',
           backgroundColor: 'hsl(var(--bg-card))',
           border: '1px solid hsl(var(--border-color))',
-          borderRadius: '20px',
-          boxShadow: '0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.15)',
+          borderRadius: '22px',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(59, 130, 246, 0.2)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
+          transition: 'width 0.25s cubic-bezier(0.4, 0, 0.2, 1), height 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
           animation: 'slideInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
         }}>
 
           {/* Header */}
           <div style={{
-            padding: '12px 16px',
-            background: 'linear-gradient(to right, hsla(215, 90%, 55%, 0.12), hsla(270, 85%, 60%, 0.12))',
+            padding: '14px 18px',
+            background: 'linear-gradient(to right, hsla(215, 90%, 55%, 0.14), hsla(270, 85%, 60%, 0.14))',
             borderBottom: '1px solid hsl(var(--border-color))',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div style={{
-                width: '34px',
-                height: '34px',
-                borderRadius: '10px',
+                width: '38px',
+                height: '38px',
+                borderRadius: '12px',
                 background: 'linear-gradient(135deg, hsl(215, 90%, 55%), hsl(270, 85%, 60%))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'white',
-                boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
+                boxShadow: '0 2px 10px rgba(59, 130, 246, 0.35)'
               }}>
-                <Bot size={18} />
+                <Bot size={20} />
               </div>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: 800, margin: 0 }}>Copiloto IA</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 800, margin: 0, color: 'hsl(var(--text-primary))' }}>Copiloto IA</h3>
                   <span style={{
-                    fontSize: '0.65rem',
+                    fontSize: '0.68rem',
                     backgroundColor: 'rgba(34, 197, 94, 0.15)',
                     color: '#22c55e',
-                    padding: '2px 6px',
+                    padding: '2px 8px',
                     borderRadius: '6px',
                     fontWeight: 700
                   }}>
-                    Qwen Plus
+                    Estratega Comercial
                   </span>
                 </div>
-                <span style={{ fontSize: '0.72rem', color: 'hsl(var(--text-muted))' }}>
-                  Conectado a tu CRM en vivo
+                <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
+                  Conectado con memoria y contexto a tu CRM
                 </span>
               </div>
             </div>
 
-            <button
-              onClick={() => setIsOpen(false)}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'hsl(var(--text-muted))',
-                cursor: 'pointer',
-                padding: '4px',
-                borderRadius: '6px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-              title="Minimizar Asistente"
-            >
-              <X size={18} />
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {/* Reset conversation */}
+              <button
+                type="button"
+                onClick={handleResetConversation}
+                style={{
+                  background: 'hsl(var(--bg-sidebar))',
+                  border: '1px solid hsl(var(--border-color))',
+                  color: 'hsl(var(--text-secondary))',
+                  cursor: 'pointer',
+                  padding: '6px 10px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  transition: 'all 0.15s ease'
+                }}
+                title="Reiniciar conversación y limpiar historial"
+              >
+                <RotateCcw size={14} />
+                <span style={{ display: isExpanded ? 'inline' : 'none' }}>Nuevo chat</span>
+              </button>
+
+              {/* Maximize / Minimize toggle */}
+              <button
+                type="button"
+                onClick={toggleExpanded}
+                style={{
+                  background: 'hsl(var(--bg-sidebar))',
+                  border: '1px solid hsl(var(--border-color))',
+                  color: 'hsl(var(--text-secondary))',
+                  cursor: 'pointer',
+                  padding: '6px 10px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  transition: 'all 0.15s ease'
+                }}
+                title={isExpanded ? "Reducir ventana" : "Ampliar chat como espacio de trabajo"}
+              >
+                {isExpanded ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+                <span style={{ display: isExpanded ? 'inline' : 'none' }}>Reducir</span>
+              </button>
+
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'hsl(var(--text-muted))',
+                  cursor: 'pointer',
+                  padding: '6px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                title="Minimizar Copiloto"
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
           {/* Messages Body */}
           <div style={{
             flex: 1,
             overflowY: 'auto',
-            padding: '16px',
+            padding: isExpanded ? '20px 24px' : '16px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px'
+            gap: isExpanded ? '16px' : '12px'
           }}>
             {messages.map((m, idx) => (
               <div
@@ -396,49 +500,75 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
                 }}
               >
                 <div style={{
-                  maxWidth: '85%',
-                  padding: '10px 14px',
-                  borderRadius: m.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+                  maxWidth: isExpanded ? '90%' : '88%',
+                  padding: isExpanded ? '14px 18px' : '11px 15px',
+                  borderRadius: m.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
                   backgroundColor: m.role === 'user' ? 'hsl(var(--color-presentacion))' : 'hsl(var(--bg-sidebar))',
                   color: m.role === 'user' ? '#000' : 'hsl(var(--text-primary))',
                   fontWeight: m.role === 'user' ? 600 : 400,
-                  fontSize: '0.85rem',
-                  lineHeight: '1.45',
+                  fontSize: isExpanded ? '0.96rem' : '0.88rem',
+                  lineHeight: '1.55',
                   border: m.role === 'user' ? 'none' : '1px solid hsl(var(--border-color))',
                   whiteSpace: 'pre-line',
-                  boxShadow: m.role === 'user' ? '0 2px 8px rgba(245, 158, 11, 0.2)' : 'none'
+                  boxShadow: m.role === 'user' ? '0 2px 10px rgba(245, 158, 11, 0.25)' : '0 2px 8px rgba(0, 0, 0, 0.15)'
                 }}>
                   {m.text}
                 </div>
 
                 {m.actionBadge && (
                   <div style={{
-                    fontSize: '0.72rem',
+                    fontSize: '0.75rem',
                     backgroundColor: 'rgba(34, 197, 94, 0.12)',
                     color: '#22c55e',
                     border: '1px solid rgba(34, 197, 94, 0.3)',
                     borderRadius: '6px',
-                    padding: '3px 8px',
+                    padding: '4px 10px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '4px',
-                    fontWeight: 600
+                    gap: '6px',
+                    fontWeight: 600,
+                    marginTop: '2px'
                   }}>
-                    <CheckCircle2 size={12} />
+                    <CheckCircle2 size={14} />
                     <span>{m.actionBadge}</span>
                   </div>
                 )}
 
-                <span style={{ fontSize: '0.68rem', color: 'hsl(var(--text-muted))', padding: '0 4px' }}>
-                  {m.timestamp}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0 4px', marginTop: '2px' }}>
+                  {m.role === 'assistant' && (
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard(m.text, idx)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: copiedIdx === idx ? '#22c55e' : 'hsl(var(--text-muted))',
+                        cursor: 'pointer',
+                        fontSize: '0.72rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                        fontWeight: 600
+                      }}
+                      title="Copiar texto de la respuesta"
+                    >
+                      {copiedIdx === idx ? <Check size={12} /> : <Copy size={12} />}
+                      <span>{copiedIdx === idx ? 'Copiado' : 'Copiar'}</span>
+                    </button>
+                  )}
+                  <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))' }}>
+                    {m.timestamp}
+                  </span>
+                </div>
               </div>
             ))}
 
             {loading && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', color: 'hsl(var(--text-muted))', fontSize: '0.8rem' }}>
-                <RefreshCw size={14} className="spin-animation" />
-                <span>El Asistente está pensando y consultando el CRM...</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', color: 'hsl(var(--text-muted))', fontSize: '0.85rem' }}>
+                <RefreshCw size={16} className="spin-animation" />
+                <span>Analizando historial del cliente y consultando CRM...</span>
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -446,9 +576,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
 
           {/* Quick Prompts Chips */}
           <div style={{
-            padding: '6px 12px',
+            padding: '8px 16px',
             display: 'flex',
-            gap: '6px',
+            gap: '8px',
             overflowX: 'auto',
             whiteSpace: 'nowrap',
             borderTop: '1px solid hsl(var(--border-color))',
@@ -461,15 +591,18 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
                 onClick={() => handleSend(p)}
                 disabled={loading}
                 style={{
-                  fontSize: '0.72rem',
-                  padding: '4px 10px',
-                  borderRadius: '12px',
+                  fontSize: '0.75rem',
+                  padding: '5px 12px',
+                  borderRadius: '14px',
                   backgroundColor: 'hsl(var(--bg-sidebar))',
                   border: '1px solid hsl(var(--border-color))',
                   color: 'hsl(var(--text-secondary))',
                   cursor: 'pointer',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  transition: 'all 0.15s ease'
                 }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'hsl(var(--color-presentacion))'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'hsl(var(--border-color))'}
               >
                 {p}
               </button>
@@ -480,27 +613,37 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
           <form
             onSubmit={(e) => { e.preventDefault(); handleSend(); }}
             style={{
-              padding: '12px 14px',
+              padding: isExpanded ? '14px 18px' : '12px 14px',
               borderTop: '1px solid hsl(var(--border-color))',
               display: 'flex',
-              gap: '8px',
+              gap: '10px',
+              alignItems: 'center',
               backgroundColor: 'hsl(var(--bg-card))'
             }}
           >
-            <input
+            <textarea
               ref={inputRef}
-              type="text"
+              rows={isExpanded ? 2 : 1}
               value={input}
               onChange={e => setInput(e.target.value)}
-              placeholder={isRecording ? "🎙️ Escuchando... habla ahora..." : "Escribe o dicta una instrucción..."}
+              onKeyDown={e => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+                }
+              }}
+              placeholder={isRecording ? "🎙️ Escuchando... habla ahora..." : "Escribe o dicta tu consulta (Enter para enviar)..."}
               className="form-control"
               style={{
                 flex: 1,
-                fontSize: '0.85rem',
-                padding: '8px 12px',
-                borderRadius: '10px',
-                border: isRecording ? '1px solid #ef4444' : undefined,
-                backgroundColor: isRecording ? 'rgba(239, 68, 68, 0.08)' : undefined
+                fontSize: isExpanded ? '0.94rem' : '0.88rem',
+                padding: '10px 14px',
+                borderRadius: '12px',
+                resize: 'none',
+                border: isRecording ? '1px solid #ef4444' : '1px solid hsl(var(--border-color))',
+                backgroundColor: isRecording ? 'rgba(239, 68, 68, 0.08)' : 'hsl(var(--bg-sidebar))',
+                color: 'hsl(var(--text-primary))',
+                lineHeight: '1.4'
               }}
               disabled={loading}
             />
@@ -511,8 +654,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
               onClick={toggleListening}
               disabled={loading}
               style={{
-                padding: '8px 12px',
-                borderRadius: '10px',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -521,11 +665,12 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
                 border: isRecording ? '1px solid #dc2626' : '1px solid hsl(var(--border-color))',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
+                flexShrink: 0,
                 animation: isRecording ? 'pulseRecording 1.2s infinite' : 'none'
               }}
               title={isRecording ? "Detener dictado por voz" : "Dictar por voz (micrófono)"}
             >
-              {isRecording ? <MicOff size={16} /> : <Mic size={16} />}
+              {isRecording ? <MicOff size={18} /> : <Mic size={18} />}
             </button>
 
             <button
@@ -533,15 +678,17 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
               disabled={loading || !input.trim()}
               className="btn btn-primary"
               style={{
-                padding: '8px 14px',
-                borderRadius: '10px',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                flexShrink: 0
               }}
-              title="Enviar instrucción"
+              title="Enviar mensaje"
             >
-              <Send size={15} />
+              <Send size={18} />
             </button>
           </form>
         </div>

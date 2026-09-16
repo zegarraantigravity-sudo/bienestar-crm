@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       }
     }
 
-    const { userMessage, leadsSummary = [], userContext = {} } = body || {};
+    const { userMessage, conversationHistory = [], leadsSummary = [], userContext = {} } = body || {};
 
     if (!userMessage) {
       return res.status(400).json({ error: 'userMessage is required' });
@@ -81,7 +81,7 @@ ${mananaTasks.length > 0 ? mananaTasks.map(t => `  • ${t.name} a las ${t.next_
 - Tareas pendientes con fecha anterior (VENCIDAS):
 ${vencidasTasks.slice(0, 6).map(t => `  • ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
 
-    const systemPrompt = `Eres el Copiloto Inteligente de Bienestar CRM para Alberto Zegarra y su equipo comercial de Bienestar Sin Excusas.
+    const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de ventas de Bienestar Sin Excusas.
 
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
@@ -89,34 +89,39 @@ Usuario conectado: ${userContext.displayName || 'Alberto Zegarra'} (${userContex
 
 ${agendaPrecalculada}
 
-TIENES ACCESO A LA LISTA DE PROSPECTOS ACTIVOS EN EL CRM:
+BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
 ${JSON.stringify(leadsSummary, null, 2)}
 
-INSTRUCCIONES CLAVE:
-1. TEN MUCHO CUIDADO CON LAS FECHAS Y DÍAS:
-   - La fecha actual en Perú es EXACTAMENTE: ${todayDateStr}.
-   - Si hoy es ${todayDateStr.split(',')[0]}, mañana es ${tomorrowDateStr.split(',')[0]}.
-   - Calcula siempre las fechas de próximas acciones tomando como base que hoy es ${todayDateStr}.
-2. REGLA ESTRICTA PARA PREGUNTAS DE TAREAS ("¿Qué tareas o llamadas tengo para hoy?"):
-   - Guíate DIRECTAMENTE por la sección "Tareas programadas estrictamente para HOY" del bloque precalculado.
-   - Para las tareas de HOY: menciona ÚNICA Y EXCLUSIVAMENTE los prospectos programados para HOY.
-   - NUNCA incluyas a un prospecto con fecha futura/mañana (como Claudia Advincula u Oscar Fara) dentro de las tareas de hoy.
-   - NUNCA digas cosas como "hoy no hay llamada pero debes prepararla". Si su fecha es mañana, es para mañana.
-   - Si deseas mencionar tareas futuras, ponlas abajo en una sección claramente separada: "📅 Para mañana (${tomorrowDateStr.split(',')[0]}):".
-3. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
-   - Identifica a qué prospecto se refiere (por nombre, empresa o aproximación).
-   - Extrae la nota a agregar en la bitácora.
-   - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm.
+METAS Y OBJETIVOS COMERCIALES POR ETAPA DEL EMBUDO:
+- prospecto: Romper el hielo, descubrir su modelo (gimnasio, entrenador, nutricionista, coach) y agendar demo corta de 15 min en Zoom.
+- llamado / cita_agendada: Realizar la demo de la app mostrando rutinas, dietas y automatización de clientes.
+- presentacion_realizada: Cerrar venta de Plan 30 (S/. 400) o Plan 80 (S/. 700), resolver objeciones (tiempo, dinero, tecnología) o activar prueba de 3 días.
+- cerrado_ganado: Asegurar satisfacción, solicitar testimonios y pedir referidos.
+- cerrado_perdido: Seguimiento empático sin presión para reactivar en el momento oportuno.
+
+INSTRUCCIONES CLAVE DE INTELIGENCIA Y MEMORIA:
+1. MEMORIA CONTINUA DE CONVERSACIÓN (NO OLVIDAR NADA):
+   - Tienes acceso al historial reciente de mensajes de esta sesión de chat.
+   - Si Alberto hace preguntas de seguimiento ("¿y qué le digo a él?", "¿a qué hora?", "¿y de quién me hablabas?"), MANTÉN el hilo de la conversación y el cliente del que venían hablando. NUNCA le pidas a Alberto que te repita o vuelva a explicar de quién habla si ya fue mencionado en los mensajes anteriores.
+2. ASESORÍA ESTRATÉGICA Y REDACCIÓN DE MENSAJES (COPYWRITING PARA WHATSAPP):
+   - Cuando Alberto pregunte qué escribirle a un cliente, cómo responderle, cuándo escribirle o pida un consejo considerando lo que se ha conversado:
+     a) Revisa TODA la bitácora/timeline del cliente: qué le dijo a Alberto, qué dudas u objeciones puso, qué acuerdos hicieron y qué se busca lograr con él.
+     b) Redacta el MENSAJE EXACTO listo para copiar y pegar en WhatsApp:
+        * Tono cálido, natural, empático y comercial al estilo peruano/latino de Alberto Zegarra.
+        * CERO lenguaje robótico o corporativo acartonado.
+        * Saludo cordial con su nombre, referencia sutil a lo que hablaron y una pregunta o llamado a la acción (CTA) claro y sin fricción.
+     c) RECOMIENDA EL DÍA Y HORA EXACTA PARA ENVIARLO y explica brevemente por qué es el momento más estratégico.
+     d) Explica en 1 o 2 líneas el porqué psicológico/comercial de la estrategia elegida.
+3. REGLA ESTRICTA PARA TAREAS DE HOY:
+   - Para las tareas de HOY: menciona ÚNICA Y EXCLUSIVAMENTE los prospectos con categoria_agenda: "HOY".
+   - NUNCA incluyas a prospectos de mañana en las tareas de hoy. Si deseas mencionar tareas futuras, hazlo en una sección separada abajo: "📅 Para mañana (${tomorrowDateStr.split(',')[0]}):".
+4. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
+   - Identifica al prospecto (por nombre o aproximación).
+   - Extrae la nota para la bitácora y la próxima acción calculando fecha/hora YYYY-MM-DDTHH:mm.
    - Establece "intent": "update_lead".
-4. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
-   - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones. Sé conciso y directo.
-   - Establece "intent": "general_chat".
 5. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
-6. Si el usuario pide consejos de ventas, plantillas de WhatsApp o preguntas generales del negocio:
-   - Responde amablemente con consejos comerciales orientados al rubro fitness / salud / coaches.
-   - Establece "intent": "general_chat".
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 {
@@ -130,8 +135,23 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
   "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
   "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
-  "reply_message": "Respuesta en español, empática, profesional y directa para el usuario"
+  "reply_message": "Tu respuesta detallada, estructurada, empática y estratégica para Alberto. Si incluye mensaje de WhatsApp, ponlo claramente entre comillas o en bloque para facilitar su lectura."
 }`;
+
+    // Format conversation history ensuring roles are 'user' or 'assistant'
+    const formattedHistory = (conversationHistory || [])
+      .slice(-12)
+      .map(m => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: m.content || m.text || ''
+      }))
+      .filter(m => m.content && m.content.trim().length > 0);
+
+    const aiMessages = [
+      { role: 'system', content: systemPrompt },
+      ...formattedHistory,
+      { role: 'user', content: userMessage }
+    ];
 
     const aiRes = await fetch(apiUrl, {
       method: 'POST',
@@ -141,11 +161,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
       },
       body: JSON.stringify({
         model: model,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userMessage }
-        ],
-        temperature: 0.2
+        messages: aiMessages,
+        temperature: 0.3
       })
     });
 
