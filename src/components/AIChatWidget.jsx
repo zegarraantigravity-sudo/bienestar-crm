@@ -4,16 +4,27 @@ import { askAICopilot, robustParseAIResponse } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
 
+function normalizeText(str) {
+  if (!str || typeof str !== 'string') return '';
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
 function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
-  const t = userText.toLowerCase().trim();
+  const t = normalizeText(userText);
+
   if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(t)) {
     return false;
   }
-  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza|borra|elimina|limpia|quita)\b/i.test(t)) {
-    return false;
-  }
-  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en|borra|borrar|elimina|eliminar|quita|quitar|limpia|limpiar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco)\b/i.test(t);
+
+  const actionPattern = /\b(cambia(r|s|do|da)?(lo|le|me|la|les|los)?|cambies|pon(ga)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|mover|pasa(r)?(lo|le|me|la|les|los)?|pasar|agenda(r)?(lo|le|me|la|les|los)?|registra(r)?(lo|le|me|la|les|los)?|anota(r)?(lo|le|me|la|les|los)?|guarda(r)?(lo|le|me|la|les|los)?|actualiza(r)?(lo|le|me|la|les|los)?|modifica(r)?(lo|le|me|la|les|los)?|reprograma(r)?(lo|le|me|la|les|los)?|programa(r)?(lo|le|me|la|les|los)?|borra(r)?(lo|le|me|la|les|los)?|elimina(r)?(lo|le|me|la|les|los)?|quita(r)?(lo|le|me|la|les|los)?|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco)\b/i;
+
+  const isPureQuestion = (userText.includes('?') || userText.includes('¿') || /^(que|cual|quien|cuando|donde|a que hora|como)\b/i.test(t))
+    && !actionPattern.test(t);
+
+  if (isPureQuestion) return false;
+
+  return actionPattern.test(t) || /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|sin proxima accion)\b/i.test(t);
 }
 
 export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdvisorFilter = 'todos' }) {

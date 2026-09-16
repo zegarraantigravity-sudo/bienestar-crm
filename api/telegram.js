@@ -1,5 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
+// Vercel Serverless Function Timeout Configuration (allow up to 60s for audio transcription & LLM)
+export const maxDuration = 60;
+
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8657118019:AAHZpcgn2tLTHY58FI01nlgV5LDxesEq1SU';
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://fzwfkdamebyzywlqhtes.supabase.co';
 const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_BE8kihWp5Uhg8re4CB3xlA_Ahb-3zWY';
@@ -230,15 +233,21 @@ export default async function handler(req, res) {
     await sendChatAction(chatId, 'typing');
 
     // Process through Copilot AI with user's advisor profile and conversation history
-    const { replyText, rawReply } = await processUserQuery(userText, advisor, history);
-    await sendTelegramMessage(chatId, replyText);
+    try {
+      const { replyText, rawReply } = await processUserQuery(userText, advisor, history);
+      await sendTelegramMessage(chatId, replyText);
 
-    // Persist updated conversation history
-    history.push({ role: 'user', content: userText });
-    history.push({ role: 'assistant', content: rawReply });
-    await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+      // Persist updated conversation history
+      history.push({ role: 'user', content: userText });
+      history.push({ role: 'assistant', content: rawReply });
+      await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+    } catch (procErr) {
+      console.error('Error in processUserQuery:', procErr);
+      await sendTelegramMessage(chatId, `⚠️ Disculpa, ocurrió un inconveniente temporal al conectar con el CRM (${procErr.message || 'Error de procesamiento'}). Por favor vuelve a dictarme o escribir tu mensaje.`);
+    }
 
     return res.status(200).json({ ok: true });
+
   } catch (err) {
     console.error('Fatal error in Telegram webhook handler:', err);
     return res.status(200).json({ error: err.message });
@@ -495,7 +504,7 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       next_action: nextAction,
       next_action_date: nextActionDate,
       categoria_agenda,
-      timeline: timeline
+      timeline: (timeline || []).slice(0, 2).map(t => typeof t === 'string' && t.length > 250 ? t.slice(0, 250) + '...' : t)
     };
   });
 
@@ -659,7 +668,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   const isUserExplicitCreate = isExplicitCreateCommand(userMessage);
 
   // Handle Intent: Update Lead in Supabase ONLY IF user explicitly commanded it
-  if (parsed.intent === 'update_lead' && isUserExplicitUpdate && (parsed.target_lead_id || parsed.target_lead_name)) {
+  let updatePerformed = false;
+  if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
     const targetLead = (leads || []).find(l => {
       if (parsed.target_lead_id && l.id === parsed.target_lead_id) return true;
       const searchName = (parsed.target_lead_name || '').toLowerCase().trim();
@@ -668,7 +678,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       return contact.includes(searchName) || business.includes(searchName) || searchName.includes(contact);
     });
 
-    if (targetLead) {
+    if (targetLead && isUserExplicitUpdate) {
       let timeline = [];
       let currentNextAction = '';
       let currentNextDate = '';
@@ -734,8 +744,18 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       if (parsed.new_status) updateFields.status = parsed.new_status;
       if (parsed.new_plan) updateFields.target_plan = parsed.new_plan;
 
-      await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
-      badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+      const { error: updateErr } = await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
+      if (!updateErr) {
+        updatePerformed = true;
+        badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+      } else {
+        console.error('Error updating lead in supabase:', updateErr);
+        badgePrefix = `⚠️ <i>Hubo un error al guardar en el CRM: ${updateErr.message}</i>\n\n`;
+      }
+    } else if (!targetLead && isUserExplicitUpdate) {
+      badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
+    } else if (parsed.intent === 'update_lead' && !isUserExplicitUpdate) {
+      badgePrefix = `ℹ️ <i>(Consulta informativa: no se modificó el CRM)</i>\n\n`;
     }
   }
 
@@ -888,29 +908,38 @@ export async function checkAndSendReminders() {
 // -------------------------------------------------------------
 // Intent Validation Guardrails
 // -------------------------------------------------------------
+// Helper: Normalize text removing diacritics / accents
+function normalizeText(str) {
+  if (!str || typeof str !== 'string') return '';
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
 function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
-  const t = userText.toLowerCase().trim();
+  const t = normalizeText(userText);
 
-  // If user explicitly says not to modify or asks a negative question
-  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres)\b/i.test(t)) {
+  // If user explicitly says not to modify
+  if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(t)) {
     return false;
   }
 
-  // If user is just asking a question without an action verb
-  if ((t.includes('?') || t.includes('¿')) && !/\b(registra|anota|agenda|guarda|cambia|actualiza|borra|elimina|limpia|quita)\b/i.test(t)) {
-    return false;
-  }
+  // Broad action pattern matching imperative/infinitive verbs with optional clitic object pronouns (-lo, -le, -me, etc.)
+  const actionPattern = /\b(cambia(r|s|do|da)?(lo|le|me|la|les|los)?|cambies|pon(ga)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|mover|pasa(r)?(lo|le|me|la|les|los)?|pasar|agenda(r)?(lo|le|me|la|les|los)?|registra(r)?(lo|le|me|la|les|los)?|anota(r)?(lo|le|me|la|les|los)?|guarda(r)?(lo|le|me|la|les|los)?|actualiza(r)?(lo|le|me|la|les|los)?|modifica(r)?(lo|le|me|la|les|los)?|reprograma(r)?(lo|le|me|la|les|los)?|programa(r)?(lo|le|me|la|les|los)?|borra(r)?(lo|le|me|la|les|los)?|elimina(r)?(lo|le|me|la|les|los)?|quita(r)?(lo|le|me|la|les|los)?|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco)\b/i;
 
-  // Must have clear trigger verbs or actions:
-  return /\b(registra|anota|guarda|agenda|actualiza|agrega|cambia|programa|ponle|marca|anótale|agéndale|escribe en|bitácora|hablé con|conversé con|llamé a|reuní con|quedamos en|borra|borrar|elimina|eliminar|quita|quitar|limpia|limpiar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco)\b/i.test(t);
+  // Pure informational questions without action verb:
+  const isPureQuestion = (userText.includes('?') || userText.includes('¿') || /^(que|cual|quien|cuando|donde|a que hora|como)\b/i.test(t))
+    && !actionPattern.test(t);
+
+  if (isPureQuestion) return false;
+
+  return actionPattern.test(t) || /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|sin proxima accion)\b/i.test(t);
 }
 
 function isExplicitCreateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
-  const t = userText.toLowerCase().trim();
+  const t = normalizeText(userText);
   if (/\bno\s+(crees|agregues|registres)\b/i.test(t)) return false;
-  return /\b(crea|crear|agrega|agregar|nuevo prospecto|nuevo cliente|registra nuevo)\b/i.test(t);
+  return /\b(crea(r)?(lo|le|me)?|agrega(r)?(lo|le|me)?|nuevo prospecto|nuevo cliente|nuevo lead|crear lead|registra nuevo)\b/i.test(t);
 }
 
 // -------------------------------------------------------------
