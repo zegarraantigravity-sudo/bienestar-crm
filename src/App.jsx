@@ -419,6 +419,7 @@ export default function App() {
         leads={allowedLeads}
         onUpdateLead={handleSaveLead}
         userEmail={userEmail}
+        activeAdvisorFilter={adminAdvisorFilter}
       />
 
       <style>{`

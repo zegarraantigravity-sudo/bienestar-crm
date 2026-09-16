@@ -7,10 +7,12 @@ const DEFAULT_KEY = 'sk-ws-H.DMLLELE.Ns7U.MEQCIEQeFcXistPzyFJ3JaFIfIwVAvEaxrfhN9
 const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
 const DEFAULT_MODEL = 'qwen-plus';
 
-export async function askAICopilot({ userMessage, conversationHistory = [], leads, userEmail, userDisplayName }) {
+import { getLeadAdvisorName, isLeadAssignedToUser, isSuperAdmin } from './utils';
+
+export async function askAICopilot({ userMessage, conversationHistory = [], leads, userEmail, userDisplayName, activeAdvisorFilter = 'todos' }) {
   const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(new Date());
 
-  // Extract full, rich context of leads including complete timeline and business stage
+  // Extract full, rich context of leads including complete timeline, advisor assignment, and ownership
   const leadsSummary = (leads || []).map(l => {
     let timeline = [];
     let nextAction = '';
@@ -52,6 +54,9 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
       cerrado_perdido: 'Seguimiento empático sin presionar para reactivar a futuro.'
     };
 
+    const advisorName = getLeadAdvisorName(l.assigned_to, l.contact_name);
+    const isMyLead = isLeadAssignedToUser(l, userEmail);
+
     return {
       id: l.id,
       name: l.contact_name || l.business_name,
@@ -61,7 +66,8 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
       plan: l.target_plan,
       value: l.estimated_value,
       status: l.status,
-      assigned_to: l.assigned_to,
+      assigned_to: advisorName,
+      is_my_lead: isMyLead,
       next_action: nextAction,
       next_action_date: nextActionDate,
       categoria_agenda,
@@ -71,8 +77,11 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
     };
   });
 
-  // Sort leads: HOY first, then FUTURO, then VENCIDA, then SIN_FECHA
+  // Sort leads: User's own leads first, then by agenda (HOY, FUTURO, VENCIDA, SIN_FECHA)
   leadsSummary.sort((a, b) => {
+    if (a.is_my_lead !== b.is_my_lead) {
+      return a.is_my_lead ? -1 : 1;
+    }
     const order = { 'HOY': 0, 'FUTURO': 1, 'VENCIDA': 2, 'SIN_FECHA': 3 };
     return (order[a.categoria_agenda] ?? 3) - (order[b.categoria_agenda] ?? 3);
   });
@@ -98,6 +107,8 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
     userContext: {
       userEmail,
       displayName: userDisplayName,
+      isSuperAdmin: isSuperAdmin(userEmail),
+      activeAdvisorFilter,
       clientLocalDate,
       clientLocalTime
     }
@@ -140,37 +151,58 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
     day: 'numeric'
   });
 
-  const hoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY');
-  const mananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd));
-  const vencidasTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA');
+  const userName = userDisplayName || 'Alberto Zegarra';
+
+  const myHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
+  const otherHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
+  const myMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
+  const otherMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
+  const myVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
 
   const agendaPrecalculada = `CALENDARIO Y AGENDA OFICIAL PRECALCULADA POR EL SISTEMA (VERDAD ABSOLUTA):
-- Tareas programadas estrictamente para HOY (${clientLocalDate}):
-${hoyTasks.length > 0 ? hoyTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para hoy)'}
+- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA HOY (${clientLocalDate}):
+${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
 
-- Tareas programadas para MAÑANA (${tomorrowDateStr}):
-${mananaTasks.length > 0 ? mananaTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para mañana)'}
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA HOY:
+${otherHoyTasks.length > 0 ? otherHoyTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (Ningún otro asesor tiene tareas para hoy)'}
 
-- Tareas pendientes con fecha anterior (VENCIDAS):
-${vencidasTasks.slice(0, 6).map(t => `  • ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA MAÑANA (${tomorrowDateStr}):
+${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
 
-  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de Bienestar Sin Excusas.
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA MAÑANA:
+${otherMananaTasks.length > 0 ? otherMananaTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas del equipo para mañana)'}
+
+- TAREAS PERSONALES PENDIENTES CON FECHA ANTERIOR (VENCIDAS):
+${myVencidas.slice(0, 6).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+
+  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para ${userName} y su equipo de Bienestar Sin Excusas.
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${clientLocalDate} a las ${clientLocalTime} (Zona horaria: America/Lima, UTC-5).
-Usuario conectado: ${userDisplayName || 'Alberto Zegarra'} (${userEmail || ''}).
+Usuario conectado: ${userName} (${userEmail || ''}).
+${isSuperAdmin(userEmail) ? 'Rol: Super Administrador / Dueño' : 'Rol: Asesor Comercial'}
 
 ${agendaPrecalculada}
 
 BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
 ${JSON.stringify(leadsSummary, null, 2)}
 
-INSTRUCCIONES CLAVE DE INTELIGENCIA Y MEMORIA:
-1. MEMORIA CONTINUA DE CONVERSACIÓN: Mantén el contexto de la conversación reciente sin pedirle a Alberto que repita de quién habla.
-2. ASESORÍA Y REDACCIÓN PARA WHATSAPP:
+INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
+1. IDENTIDAD DEL USUARIO Y PROPIEDAD DE PROSPECTOS:
+   - Estás hablando DIRECTAMENTE con ${userName} (${userEmail || ''}).
+   - Cada prospecto en la base de datos tiene "advisor_name" y "is_my_lead".
+   - Cuando ${userName} pregunte en primera persona por "mis tareas", "mis llamadas", "qué tengo hoy", "a quién llamo hoy", "mis clientes", o pregunte en general "¿qué tareas hay hoy?", responde PRIORITARIAMENTE Y ENFOCÁNDOTE EN SUS PROPIOS PROSPECTOS (donde is_my_lead: true).
+   - NUNCA le atribuyas como suyas las tareas de otros asesores (como Luis Hakim o Darío Cienfuegos).
+   - Si ${userName} NO tiene tareas personales para hoy (es decir, la lista de tareas personales de hoy está vacía):
+     * Indícalo con total transparencia: "${userName}, en tu cartera personal no tienes tareas agendadas para hoy ${clientLocalDate.split(',')[0]}."
+     * Puedes mencionar brevemente las tareas de sus compañeros de equipo solo a modo informativo: "Como referencia de tu equipo: Luis Hakim tiene a... y Darío Cienfuegos tiene a..."
+     * Y de inmediato preséntale sus próximas llamadas que arrancan mañana: "Tus llamadas personales empiezan mañana ${tomorrowDateStr.split(',')[0]}: ..."
+   - Si ${userName} pregunta por un cliente específico por su nombre (ej: "Dime sobre Claudia" o "Qué pasa con Yocelin"), respóndele con todo el detalle de ese cliente sin importar el asesor asignado (aunque puedes precisar de quién es si no es suyo).
+2. MEMORIA CONTINUA DE CONVERSACIÓN: Mantén el contexto de la conversación reciente sin pedirle al usuario que repita de quién habla.
+3. ASESORÍA Y REDACCIÓN PARA WHATSAPP:
    - Revisa todo el historial (timeline) del prospecto y su objetivo comercial.
    - Redacta el mensaje exacto para copiar y pegar en WhatsApp con tono peruano/latino natural, empático y persuasivo.
    - Recomienda el día y hora exacta más estratégica para enviarlo.
-3. REGLA ESTRICTA DE HOY:
+4. REGLA ESTRICTA DE FECHAS:
    - Para tareas de HOY menciona única y exclusivamente los que tienen categoria_agenda "HOY".
    - Tareas de mañana ponlas claramente en una sección separada abajo.
 

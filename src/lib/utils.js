@@ -145,16 +145,45 @@ export const canUserViewLead = (lead, userEmail) => {
 
   // If Dario Cienfuegos logs in:
   if (user === 'dariospaarnold@gmail.com') {
-    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
+    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold') || assigned.includes('socio comercial');
   }
 
   // If Luis Hakim logs in:
   if (user === 'torohakim@gmail.com') {
     const isAlbertoLead = assigned.includes('alberto') || assigned.includes('zegarra');
-    const isDarioLead = assigned.includes('dario') || assigned.includes('cienfuegos');
+    const isDarioLead = assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('socio comercial');
     return !isAlbertoLead && !isDarioLead;
   }
 
   // Any other seller only sees their assigned leads
   return assigned.includes(user);
+};
+
+export const getLeadAdvisorName = (assignedToRaw, contactName = '') => {
+  if (!assignedToRaw) {
+    if ((contactName || '').toLowerCase().includes('prima')) return 'Alberto Zegarra';
+    return 'Alberto Zegarra';
+  }
+  const a = assignedToRaw.toLowerCase().trim();
+  if (a.includes('alberto') || a.includes('zegarra') || a.includes('mostré la plata')) return 'Alberto Zegarra';
+  if (a.includes('dario') || a.includes('cienfuegos') || a.includes('socio comercial') || a.includes('dariospaarnold')) return 'Dario Cienfuegos';
+  if (a.includes('luis') || a.includes('hakim')) return 'Luis Hakim';
+  return assignedToRaw;
+};
+
+export const isLeadAssignedToUser = (lead, userEmail) => {
+  if (!userEmail) return false;
+  const user = userEmail.toLowerCase().trim();
+  const advisor = getLeadAdvisorName(lead.assigned_to, lead.contact_name);
+
+  if (user === 'albertozbcoach@gmail.com' || user === 'zegarraantigravity@gmail.com') {
+    return advisor === 'Alberto Zegarra';
+  }
+  if (user === 'torohakim@gmail.com') {
+    return advisor === 'Luis Hakim';
+  }
+  if (user === 'dariospaarnold@gmail.com') {
+    return advisor === 'Dario Cienfuegos';
+  }
+  return advisor.toLowerCase().includes(user) || (lead.assigned_to || '').toLowerCase().includes(user);
 };

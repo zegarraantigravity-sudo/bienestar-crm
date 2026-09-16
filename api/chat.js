@@ -67,25 +67,37 @@ export default async function handler(req, res) {
       day: 'numeric'
     });
 
-    const hoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY');
-    const mananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd));
-    const vencidasTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA');
+    const userName = userContext.displayName || 'Alberto Zegarra';
+
+    const myHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
+    const otherHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
+    const myMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
+    const otherMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
+    const myVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
+    const otherVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && !l.is_my_lead);
 
     const agendaPrecalculada = `CALENDARIO Y AGENDA OFICIAL PRECALCULADA POR EL SISTEMA (VERDAD ABSOLUTA):
-- Tareas programadas estrictamente para HOY (${todayDateStr}):
-${hoyTasks.length > 0 ? hoyTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para hoy)'}
+- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA HOY (${todayDateStr}):
+${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
 
-- Tareas programadas para MAÑANA (${tomorrowDateStr}):
-${mananaTasks.length > 0 ? mananaTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para mañana)'}
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA HOY:
+${otherHoyTasks.length > 0 ? otherHoyTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (Ningún otro asesor tiene tareas para hoy)'}
 
-- Tareas pendientes con fecha anterior (VENCIDAS):
-${vencidasTasks.slice(0, 6).map(t => `  • ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA MAÑANA (${tomorrowDateStr}):
+${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
 
-    const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para Alberto Zegarra y su equipo de ventas de Bienestar Sin Excusas.
+- TAREAS DEL EQUIPO / OTROS ASESORES PARA MAÑANA:
+${otherMananaTasks.length > 0 ? otherMananaTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas del equipo para mañana)'}
+
+- TAREAS PERSONALES PENDIENTES CON FECHA ANTERIOR (VENCIDAS):
+${myVencidas.slice(0, 6).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+
+    const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para ${userName} y su equipo de ventas de Bienestar Sin Excusas.
 
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
-Usuario conectado: ${userContext.displayName || 'Alberto Zegarra'} (${userContext.userEmail || ''}).
+Usuario conectado: ${userName} (${userContext.userEmail || ''}).
+${userContext.isSuperAdmin ? 'Rol: Super Administrador / Dueño' : 'Rol: Asesor Comercial'}
 
 ${agendaPrecalculada}
 
@@ -99,30 +111,45 @@ METAS Y OBJETIVOS COMERCIALES POR ETAPA DEL EMBUDO:
 - cerrado_ganado: Asegurar satisfacción, solicitar testimonios y pedir referidos.
 - cerrado_perdido: Seguimiento empático sin presión para reactivar en el momento oportuno.
 
-INSTRUCCIONES CLAVE DE INTELIGENCIA Y MEMORIA:
-1. MEMORIA CONTINUA DE CONVERSACIÓN (NO OLVIDAR NADA):
+INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
+1. IDENTIDAD DEL USUARIO Y PROPIEDAD DE PROSPECTOS (REGLA FUNDAMENTAL):
+   - Estás hablando DIRECTAMENTE con ${userName} (${userContext.userEmail || ''}).
+   - Cada prospecto en la base de datos tiene "advisor_name" y "is_my_lead".
+   - Cuando ${userName} pregunte en primera persona por "mis tareas", "mis llamadas", "qué tengo hoy", "a quién llamo hoy", "mis clientes", o pregunte en general "¿qué tareas hay hoy?", responde PRIORITARIAMENTE Y ENFOCÁNDOTE EN SUS PROPIOS PROSPECTOS (donde is_my_lead: true).
+   - NUNCA le atribuyas como suyas las tareas de otros asesores (como Luis Hakim o Darío Cienfuegos).
+   - Si ${userName} NO tiene tareas personales para hoy (es decir, la lista de tareas personales de hoy está vacía):
+     * Indícalo con total transparencia: "${userName}, en tu cartera personal no tienes tareas agendadas para hoy ${todayDateStr.split(',')[0]}."
+     * Puedes mencionar brevemente las tareas de sus compañeros de equipo solo a modo informativo: "Como referencia de tu equipo: Luis Hakim tiene a... y Darío Cienfuegos tiene a..."
+     * Y de inmediato preséntale sus próximas llamadas que arrancan mañana: "Tus llamadas personales empiezan mañana ${tomorrowDateStr.split(',')[0]}: ..."
+   - Si ${userName} pregunta por un cliente específico por su nombre (ej: "Dime sobre Claudia" o "Qué pasa con Yocelin"), respóndele con todo el detalle de ese cliente sin importar el asesor asignado (aunque puedes precisar de quién es si no es suyo).
+
+2. MEMORIA CONTINUA DE CONVERSACIÓN (NO OLVIDAR NADA):
    - Tienes acceso al historial reciente de mensajes de esta sesión de chat.
-   - Si Alberto hace preguntas de seguimiento ("¿y qué le digo a él?", "¿a qué hora?", "¿y de quién me hablabas?"), MANTÉN el hilo de la conversación y el cliente del que venían hablando. NUNCA le pidas a Alberto que te repita o vuelva a explicar de quién habla si ya fue mencionado en los mensajes anteriores.
-2. ASESORÍA ESTRATÉGICA Y REDACCIÓN DE MENSAJES (COPYWRITING PARA WHATSAPP):
-   - Cuando Alberto pregunte qué escribirle a un cliente, cómo responderle, cuándo escribirle o pida un consejo considerando lo que se ha conversado:
-     a) Revisa TODA la bitácora/timeline del cliente: qué le dijo a Alberto, qué dudas u objeciones puso, qué acuerdos hicieron y qué se busca lograr con él.
+   - Si el usuario hace preguntas de seguimiento ("¿y qué le digo a él?", "¿a qué hora?", "¿y de quién me hablabas?"), MANTÉN el hilo de la conversación y el cliente del que venían hablando. NUNCA le pidas que te repita o vuelva a explicar de quién habla si ya fue mencionado en los mensajes anteriores.
+
+3. ASESORÍA ESTRATÉGICA Y REDACCIÓN DE MENSAJES (COPYWRITING PARA WHATSAPP):
+   - Cuando ${userName} pregunte qué escribirle a un cliente, cómo responderle, cuándo escribirle o pida un consejo considerando lo que se ha conversado:
+     a) Revisa TODA la bitácora/timeline del cliente: qué le dijo a ${userName}, qué dudas u objeciones puso, qué acuerdos hicieron y qué se busca lograr con él.
      b) Redacta el MENSAJE EXACTO listo para copiar y pegar en WhatsApp:
-        * Tono cálido, natural, empático y comercial al estilo peruano/latino de Alberto Zegarra.
+        * Tono cálido, natural, empático y comercial al estilo peruano/latino.
         * CERO lenguaje robótico o corporativo acartonado.
         * Saludo cordial con su nombre, referencia sutil a lo que hablaron y una pregunta o llamado a la acción (CTA) claro y sin fricción.
      c) RECOMIENDA EL DÍA Y HORA EXACTA PARA ENVIARLO y explica brevemente por qué es el momento más estratégico.
      d) Explica en 1 o 2 líneas el porqué psicológico/comercial de la estrategia elegida.
-3. REGLA ESTRICTA PARA TAREAS DE HOY:
-   - Para las tareas de HOY: menciona ÚNICA Y EXCLUSIVAMENTE los prospectos con categoria_agenda: "HOY".
-   - NUNCA incluyas a prospectos de mañana en las tareas de hoy. Si deseas mencionar tareas futuras, hazlo en una sección separada abajo: "📅 Para mañana (${tomorrowDateStr.split(',')[0]}):".
-4. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
+
+4. REGLA ESTRICTA DE FECHAS (HOY vs MAÑANA):
+   - NUNCA mezcles las tareas de mañana con las de hoy.
+
+5. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
    - Identifica al prospecto (por nombre o aproximación).
    - Extrae la nota para la bitácora y la próxima acción calculando fecha/hora YYYY-MM-DDTHH:mm.
    - Establece "intent": "update_lead".
-5. Si el usuario pide crear un nuevo lead:
+
+6. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
-6. FORMATO VISUAL LIMPIO:
+
+7. FORMATO VISUAL LIMPIO:
    - No satures el texto con asteriscos (**). Úsalos solo con moderación para títulos clave.
    - Los mensajes propuestos para WhatsApp colócalos entre comillas en su propio bloque o párrafo para que resalten.
 
@@ -138,7 +165,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
   "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
   "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
-  "reply_message": "Tu respuesta detallada, estructurada, empática y estratégica para Alberto. Si incluye mensaje de WhatsApp, ponlo claramente entre comillas o en bloque para facilitar su lectura."
+  "reply_message": "Tu respuesta detallada, estructurada, empática y estratégica para ${userName}. Si incluye mensaje de WhatsApp, ponlo claramente entre comillas o en bloque para facilitar su lectura."
 }`;
 
     // Format conversation history ensuring roles are 'user' or 'assistant'

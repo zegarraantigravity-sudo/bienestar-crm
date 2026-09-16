@@ -4,7 +4,7 @@ import { askAICopilot, robustParseAIResponse } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
 
-export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
+export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdvisorFilter = 'todos' }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(() => {
     try {
@@ -248,7 +248,8 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
         conversationHistory: historyForAI,
         leads,
         userEmail,
-        userDisplayName: displayName
+        userDisplayName: displayName,
+        activeAdvisorFilter
       });
 
       let actionBadge = null;
