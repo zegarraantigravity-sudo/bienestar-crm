@@ -15,17 +15,40 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
     }
   });
   const [copiedIdx, setCopiedIdx] = useState(null);
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      text: `¡Hola ${getUserDisplayName(userEmail)}! Soy tu copiloto de ventas de Bienestar CRM. 🤖✨\n\nPuedes consultarme sobre tus clientes, pedirme consejos comerciales, qué responderles por WhatsApp, o registrar notas y tareas en lenguaje natural.`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      actionBadge: null
+  const [messages, setMessages] = useState(() => {
+    try {
+      const storageKey = `crm_copilot_messages_${userEmail || 'default'}`;
+      const stored = localStorage.getItem(storageKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.warn('Failed to parse saved copilot messages:', e);
     }
-  ]);
+    return [
+      {
+        role: 'assistant',
+        text: `¡Hola ${getUserDisplayName(userEmail)}! Soy tu copiloto de ventas de Bienestar CRM. 🤖✨\n\nPuedes consultarme sobre tus clientes, pedirme consejos comerciales, qué responderles por WhatsApp, o registrar notas y tareas en lenguaje natural.`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        actionBadge: null
+      }
+    ];
+  });
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+
+  // Automatically save messages to localStorage whenever they update
+  useEffect(() => {
+    if (!userEmail) return;
+    try {
+      const storageKey = `crm_copilot_messages_${userEmail}`;
+      localStorage.setItem(storageKey, JSON.stringify(messages.slice(-40)));
+    } catch (e) {
+      console.warn('Failed to persist copilot messages:', e);
+    }
+  }, [messages, userEmail]);
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -122,14 +145,19 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
 
   const handleResetConversation = () => {
     if (window.confirm('¿Deseas reiniciar la conversación con el copiloto? Se borrará el historial de esta sesión.')) {
-      setMessages([
+      const resetMsg = [
         {
           role: 'assistant',
           text: `¡Hola ${getUserDisplayName(userEmail)}! Conversación reiniciada. 🤖✨\n\n¿En qué cliente o tarea comercial nos enfocamos ahora?`,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           actionBadge: null
         }
-      ]);
+      ];
+      setMessages(resetMsg);
+      try {
+        const storageKey = `crm_copilot_messages_${userEmail || 'default'}`;
+        localStorage.removeItem(storageKey);
+      } catch (e) {}
     }
   };
 
