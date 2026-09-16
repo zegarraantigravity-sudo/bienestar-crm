@@ -55,11 +55,39 @@ export default async function handler(req, res) {
       minute: '2-digit' 
     });
 
+    const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(nowPeru);
+    const tomorrowObj = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
+    tomorrowObj.setDate(tomorrowObj.getDate() + 1);
+    const tomorrowPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(tomorrowObj);
+    const tomorrowDateStr = tomorrowObj.toLocaleDateString('es-PE', {
+      timeZone: 'America/Lima',
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    const hoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY');
+    const mananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd));
+    const vencidasTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA');
+
+    const agendaPrecalculada = `CALENDARIO Y AGENDA OFICIAL PRECALCULADA POR EL SISTEMA (VERDAD ABSOLUTA):
+- Tareas programadas estrictamente para HOY (${todayDateStr}):
+${hoyTasks.length > 0 ? hoyTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para hoy)'}
+
+- Tareas programadas para MAÑANA (${tomorrowDateStr}):
+${mananaTasks.length > 0 ? mananaTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas programadas para mañana)'}
+
+- Tareas pendientes con fecha anterior (VENCIDAS):
+${vencidasTasks.slice(0, 6).map(t => `  • ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+
     const systemPrompt = `Eres el Copiloto Inteligente de Bienestar CRM para Alberto Zegarra y su equipo comercial de Bienestar Sin Excusas.
 
 FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
 Usuario conectado: ${userContext.displayName || 'Alberto Zegarra'} (${userContext.userEmail || ''}).
+
+${agendaPrecalculada}
 
 TIENES ACCESO A LA LISTA DE PROSPECTOS ACTIVOS EN EL CRM:
 ${JSON.stringify(leadsSummary, null, 2)}
@@ -67,20 +95,26 @@ ${JSON.stringify(leadsSummary, null, 2)}
 INSTRUCCIONES CLAVE:
 1. TEN MUCHO CUIDADO CON LAS FECHAS Y DÍAS:
    - La fecha actual en Perú es EXACTAMENTE: ${todayDateStr}.
-   - Si hoy es martes, mañana es miércoles, el sábado es el sábado más próximo, etc.
+   - Si hoy es ${todayDateStr.split(',')[0]}, mañana es ${tomorrowDateStr.split(',')[0]}.
    - Calcula siempre las fechas de próximas acciones tomando como base que hoy es ${todayDateStr}.
-2. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
+2. REGLA ESTRICTA PARA PREGUNTAS DE TAREAS ("¿Qué tareas o llamadas tengo para hoy?"):
+   - Guíate DIRECTAMENTE por la sección "Tareas programadas estrictamente para HOY" del bloque precalculado.
+   - Para las tareas de HOY: menciona ÚNICA Y EXCLUSIVAMENTE los prospectos programados para HOY.
+   - NUNCA incluyas a un prospecto con fecha futura/mañana (como Claudia Advincula u Oscar Fara) dentro de las tareas de hoy.
+   - NUNCA digas cosas como "hoy no hay llamada pero debes prepararla". Si su fecha es mañana, es para mañana.
+   - Si deseas mencionar tareas futuras, ponlas abajo en una sección claramente separada: "📅 Para mañana (${tomorrowDateStr.split(',')[0]}):".
+3. Si el usuario te pide registrar una nota, llamada o acordar una cita/tarea:
    - Identifica a qué prospecto se refiere (por nombre, empresa o aproximación).
    - Extrae la nota a agregar en la bitácora.
    - Extrae la próxima acción y calcula la fecha y hora exacta en formato YYYY-MM-DDTHH:mm.
    - Establece "intent": "update_lead".
-3. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
+4. Si el usuario pide un resumen o información de un cliente (ej: "¿quién es Noé?", "resumen de Noé Rojas"):
    - Responde con datos precisos de su historial, teléfono, plan, valor estimado y próximas acciones. Sé conciso y directo.
    - Establece "intent": "general_chat".
-3. Si el usuario pide crear un nuevo lead:
+5. Si el usuario pide crear un nuevo lead:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
-4. Si el usuario pide consejos de ventas, plantillas de WhatsApp o preguntas generales del negocio:
+6. Si el usuario pide consejos de ventas, plantillas de WhatsApp o preguntas generales del negocio:
    - Responde amablemente con consejos comerciales orientados al rubro fitness / salud / coaches.
    - Establece "intent": "general_chat".
 
