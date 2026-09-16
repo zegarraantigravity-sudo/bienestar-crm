@@ -1,0 +1,15 @@
+name: CRM Automated Reminders
+
+on:
+  schedule:
+    # Run every 10 minutes, 24/7 in GitHub cloud
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check-reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Bienestar CRM Telegram Reminders
+        run: |
+          curl -s -f "https://bienestar-crm.vercel.app/api/telegram?action=reminders" || echo "Reminder check finished"

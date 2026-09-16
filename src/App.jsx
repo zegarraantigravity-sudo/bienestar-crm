@@ -105,8 +105,16 @@ export default function App() {
         })
         .subscribe();
 
+      // Proactive Telegram reminder checks (runs silently on app open and every 3 minutes)
+      const triggerReminders = () => {
+        fetch('/api/telegram?action=reminders').catch(() => {});
+      };
+      triggerReminders();
+      const reminderTimer = setInterval(triggerReminders, 3 * 60 * 1000);
+
       return () => {
         supabase.removeChannel(channel);
+        clearInterval(reminderTimer);
       };
     }
   }, [session]);

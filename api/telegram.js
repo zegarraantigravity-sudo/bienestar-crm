@@ -747,6 +747,20 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   };
 }
 
+// Helper: Parse date in Peru Timezone (UTC-5)
+function parsePeruDateTime(dateStr) {
+  if (!dateStr) return 0;
+  const clean = String(dateStr).trim();
+  if (!clean.includes('Z') && !/[+-]\d{2}:?\d{2}$/.test(clean)) {
+    const parts = clean.split('T');
+    if (parts.length === 2) {
+      const timePart = parts[1].length === 5 ? parts[1] + ':00' : parts[1];
+      return new Date(`${parts[0]}T${timePart}-05:00`).getTime();
+    }
+  }
+  return new Date(clean).getTime();
+}
+
 // -------------------------------------------------------------
 // Helper: Send Proactive Reminders (Zoom 60m & Calls 20m)
 // -------------------------------------------------------------
@@ -796,7 +810,10 @@ export async function checkAndSendReminders() {
     // Deduplication: skip if reminder was already sent for this exact scheduled time
     if (parsedNotes.last_reminder_sent_for === nextActionDate) continue;
 
-    const taskTime = new Date(nextActionDate).getTime();
+    // Parse scheduled time in Peru timezone (UTC-5)
+    const taskTime = parsePeruDateTime(nextActionDate);
+    if (!taskTime || isNaN(taskTime)) continue;
+
     const diffMinutes = Math.round((taskTime - nowMs) / (60 * 1000));
 
     // Determine target recipient based on lead assignment
@@ -810,11 +827,11 @@ export async function checkAndSendReminders() {
 
     let sentThis = false;
 
-    // 1. Zoom alert between 50 and 65 minutes
-    if (isZoom && diffMinutes >= 50 && diffMinutes <= 65) {
+    // 1. Zoom alert between 45 and 75 minutes (~1 hora antes)
+    if (isZoom && diffMinutes >= 45 && diffMinutes <= 75) {
       const msg = `🚨 <b>¡Recordatorio de Zoom en ~1 hora!</b>\n\n` +
         `👤 <b>Cliente:</b> ${l.contact_name || l.business_name}\n` +
-        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
+        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''} (hora Perú)\n` +
         `📝 <b>Detalle:</b> ${nextAction}\n\n` +
         `🎯 <i>Prepárate para abrir la sala y tener la app lista para proyectar.</i>`;
       await sendTelegramMessage(targetChatId, msg);
@@ -822,11 +839,11 @@ export async function checkAndSendReminders() {
       sentThis = true;
     }
 
-    // 2. Call/Message alert between 15 and 25 minutes
-    if (!isZoom && diffMinutes >= 15 && diffMinutes <= 25) {
+    // 2. Call/Message alert between 10 and 30 minutes (~20 minutos antes)
+    if (!isZoom && diffMinutes >= 10 && diffMinutes <= 30) {
       const msg = `⏰ <b>Recordatorio de Tarea en ~20 minutos</b>\n\n` +
         `👤 <b>Cliente:</b> ${l.contact_name || l.business_name}\n` +
-        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''}\n` +
+        `⏰ <b>Hora:</b> ${nextActionDate.split('T')[1] || ''} (hora Perú)\n` +
         `📝 <b>Acción:</b> ${nextAction}\n\n` +
         `📱 <i>Abre WhatsApp o agenda la llamada a tiempo.</i>`;
       await sendTelegramMessage(targetChatId, msg);
