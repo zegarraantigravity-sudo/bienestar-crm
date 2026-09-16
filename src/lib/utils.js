@@ -143,16 +143,14 @@ export const canUserViewLead = (lead, userEmail) => {
   const assigned = (lead.assigned_to || '').toLowerCase().trim();
   const user = userEmail.toLowerCase().trim();
 
-  // If Dario Cienfuegos logs in:
-  if (user === 'dariospaarnold@gmail.com') {
-    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold') || assigned.includes('socio comercial');
-  }
-
   // If Luis Hakim logs in:
   if (user === 'torohakim@gmail.com') {
-    const isAlbertoLead = assigned.includes('alberto') || assigned.includes('zegarra');
-    const isDarioLead = assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('socio comercial');
-    return !isAlbertoLead && !isDarioLead;
+    return assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('socio comercial');
+  }
+
+  // If Dario Cienfuegos logs in:
+  if (user === 'dariospaarnold@gmail.com') {
+    return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
   }
 
   // Any other seller only sees their assigned leads
@@ -166,8 +164,8 @@ export const getLeadAdvisorName = (assignedToRaw, contactName = '') => {
   }
   const a = assignedToRaw.toLowerCase().trim();
   if (a.includes('alberto') || a.includes('zegarra') || a.includes('mostré la plata')) return 'Alberto Zegarra';
-  if (a.includes('dario') || a.includes('cienfuegos') || a.includes('socio comercial') || a.includes('dariospaarnold')) return 'Dario Cienfuegos';
-  if (a.includes('luis') || a.includes('hakim')) return 'Luis Hakim';
+  if (a.includes('luis') || a.includes('hakim') || a.includes('socio comercial')) return 'Luis Hakim';
+  if (a.includes('dario') || a.includes('cienfuegos') || a.includes('dariospaarnold')) return 'Dario Cienfuegos';
   return assignedToRaw;
 };
 

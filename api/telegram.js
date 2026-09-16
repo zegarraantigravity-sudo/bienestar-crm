@@ -258,9 +258,13 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra') {
     const assigned = (l.assigned_to || '').toLowerCase();
     const contact = (l.contact_name || '').toLowerCase();
     let advisor = 'Alberto Zegarra';
-    if (assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('socio comercial')) advisor = 'Dario Cienfuegos';
-    else if (assigned.includes('luis') || assigned.includes('hakim')) advisor = 'Luis Hakim';
-    else if (assigned.includes('alberto') || assigned.includes('zegarra') || contact.includes('prima')) advisor = 'Alberto Zegarra';
+    if (assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('socio comercial')) {
+      advisor = 'Luis Hakim';
+    } else if (assigned.includes('dario') || assigned.includes('cienfuegos')) {
+      advisor = 'Dario Cienfuegos';
+    } else if (assigned.includes('alberto') || assigned.includes('zegarra') || contact.includes('prima')) {
+      advisor = 'Alberto Zegarra';
+    }
 
     const isMyLead = advisor === 'Alberto Zegarra';
 
@@ -313,6 +317,13 @@ FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
 ${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
 Usuario conectado: Alberto Zegarra (Dueño / Super Administrador).
 
+ESTRUCTURA REAL DEL EQUIPO COMERCIAL EN EL CRM:
+- Hay 2 vendedores en el CRM:
+  1. Alberto Zegarra (Dueño / Super Admin): Tiene 24 prospectos personales asignados (is_my_lead: true). Uno de sus prospectos y contactos estratégicos se llama Darío Cienfuegos (embajador de gimnasios a quien Alberto asesora).
+  2. Luis Hakim ('Socio Comercial'): Tiene 27 prospectos asignados a su cargo (incluyendo 'Amigo del culturismo', 'Profesor de entrenamientos', etc.).
+- Darío Cienfuegos NO es un vendedor con cartera propia asignada en el CRM; es un PROSPECTO/contacto en la cartera de Alberto Zegarra.
+- Por tanto, las llamadas del equipo de hoy (como 'Amigo del culturismo' a las 18:30 y 'Profesor de entrenamientos' a las 18:30) son responsabilidad exclusiva del vendedor Luis Hakim.
+
 ${agendaPrecalculada}
 
 BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
@@ -321,8 +332,9 @@ ${JSON.stringify(leadsSummary, null, 2)}
 INSTRUCCIONES CLAVE:
 1. IDENTIDAD Y PROPIEDAD DE PROSPECTOS:
    - Responde enfocado prioritariamente en los prospectos personales de Alberto Zegarra (is_my_lead: true).
-   - NUNCA le atribuyas como suyas las tareas de Luis Hakim o Darío Cienfuegos.
+   - NUNCA le atribuyas como suyas las tareas de Luis Hakim.
    - Si Alberto no tiene tareas hoy, díselo claramente y menciona que sus llamadas arrancan mañana con sus clientes asignados.
+   - Si Alberto te pregunta por Darío Cienfuegos, recuerda que Darío es un contacto de Alberto (embajador), no un vendedor con leads.
 2. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
    - Cuando Alberto dice "hoy le mandé...", "hablé hoy con él", o menciona una acción que hizo hoy:
      * La acción ocurrió HOY (${todayDateStr}).
