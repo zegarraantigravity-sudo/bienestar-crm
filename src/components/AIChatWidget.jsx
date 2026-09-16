@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Send, X, Sparkles, CheckCircle2, RefreshCw, Mic, MicOff, Maximize2, Minimize2, Copy, Check, RotateCcw } from 'lucide-react';
-import { askAICopilot } from '../lib/aiService';
+import { askAICopilot, robustParseAIResponse } from '../lib/aiService';
 import { supabase } from '../lib/supabaseClient';
 import { getUserDisplayName } from '../lib/utils';
 
@@ -271,7 +271,13 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail }) {
         }
       }
 
-      const replyText = aiResponse.reply_message || 'Entendido. Procesé tu solicitud.';
+      let replyText = aiResponse.reply_message || 'Entendido. Procesé tu solicitud.';
+      if (typeof replyText === 'string' && replyText.trim().startsWith('{') && replyText.includes('"reply_message"')) {
+        const cleaned = robustParseAIResponse(replyText);
+        if (cleaned.reply_message) {
+          replyText = cleaned.reply_message;
+        }
+      }
 
       setMessages(prev => [
         ...prev,

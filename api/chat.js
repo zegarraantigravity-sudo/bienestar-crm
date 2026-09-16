@@ -174,27 +174,86 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 
     const responsePayload = await aiRes.json();
     const rawContent = responsePayload.choices?.[0]?.message?.content || '{}';
-    
-    // Clean markdown code blocks if present
-    let jsonStr = rawContent.trim();
-    if (jsonStr.startsWith('```json')) {
-      jsonStr = jsonStr.replace(/^```json\s*/, '').replace(/\s*```$/, '');
-    } else if (jsonStr.startsWith('```')) {
-      jsonStr = jsonStr.replace(/^```\s*/, '').replace(/\s*```$/, '');
-    }
-
-    try {
-      const parsedAiData = JSON.parse(jsonStr);
-      return res.status(200).json(parsedAiData);
-    } catch (parseError) {
-      return res.status(200).json({
-        intent: 'general_chat',
-        reply_message: rawContent
-      });
-    }
-
+    const parsedAiData = robustParseAIResponse(rawContent);
+    return res.status(200).json(parsedAiData);
   } catch (error) {
     console.error('Error in /api/chat:', error);
     return res.status(500).json({ error: error.message || 'Internal server error' });
   }
+}
+
+function robustParseAIResponse(raw) {
+  if (!raw || typeof raw !== 'string') return { intent: 'general_chat', reply_message: '' };
+  let clean = raw.trim();
+  if (clean.startsWith('```json')) {
+    clean = clean.replace(/^```json\s*/, '').replace(/\s*```$/, '').trim();
+  } else if (clean.startsWith('```')) {
+    clean = clean.replace(/^```\s*/, '').replace(/\s*```$/, '').trim();
+  }
+
+  // 1. Try standard JSON.parse
+  try {
+    const parsed = JSON.parse(clean);
+    if (parsed && typeof parsed === 'object') {
+      return parsed;
+    }
+  } catch (e) {}
+
+  // 2. Try JSON.parse with sanitized control characters
+  try {
+    const sanitized = clean.replace(/[\u0000-\u001F]+/g, (match) => {
+      if (match === '\n') return '\\n';
+      if (match === '\r') return '\\r';
+      if (match === '\t') return '\\t';
+      return '';
+    });
+    const parsed = JSON.parse(sanitized);
+    if (parsed && typeof parsed === 'object') {
+      return parsed;
+    }
+  } catch (e) {}
+
+  // 3. Robust regex extraction for reply_message
+  const replyMatch = clean.match(/"reply_message"\s*:\s*"([\s\S]*)/);
+  if (replyMatch) {
+    let content = replyMatch[1];
+    const lastQuoteIdx = content.lastIndexOf('"');
+    if (lastQuoteIdx !== -1) {
+      content = content.slice(0, lastQuoteIdx);
+    }
+    content = content
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\r')
+      .replace(/\\t/g, '\t')
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, '\\');
+
+    const intentMatch = clean.match(/"intent"\s*:\s*"([^"]+)"/);
+    const targetIdMatch = clean.match(/"target_lead_id"\s*:\s*"([^"]+)"/);
+    const targetNameMatch = clean.match(/"target_lead_name"\s*:\s*"([^"]+)"/);
+    const noteTextMatch = clean.match(/"note_text"\s*:\s*"([^"]*)"/);
+    const nextActionMatch = clean.match(/"next_action_text"\s*:\s*"([^"]*)"/);
+    const nextDateMatch = clean.match(/"next_action_date"\s*:\s*"([^"]*)"/);
+
+    return {
+      intent: intentMatch ? intentMatch[1] : 'general_chat',
+      target_lead_id: targetIdMatch ? targetIdMatch[1] : null,
+      target_lead_name: targetNameMatch ? targetNameMatch[1] : null,
+      note_text: noteTextMatch ? noteTextMatch[1] : '',
+      next_action_text: nextActionMatch ? nextActionMatch[1] : '',
+      next_action_date: nextDateMatch ? nextDateMatch[1] : '',
+      reply_message: content
+    };
+  }
+
+  // Fallback: strip outer brackets if present
+  let fallbackText = clean;
+  if (fallbackText.startsWith('{') && fallbackText.endsWith('}')) {
+    fallbackText = fallbackText.slice(1, -1).trim();
+  }
+
+  return {
+    intent: 'general_chat',
+    reply_message: fallbackText
+  };
 }
