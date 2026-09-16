@@ -85,6 +85,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Consultas y Resúmenes Ejecutivos**:
     *   Responde preguntas como: *"Hazme un resumen de Noé Rojas"*, *"¿Qué tareas o llamadas tengo para hoy?"* o *"¿Qué prospectos están estancados?"*.
 *   **Dictado por Voz y Notas de Audio (🎙️)**: Botón de micrófono integrado con reconocimiento de voz en tiempo real (Web Speech API). Permite dictar instrucciones por voz en español que se transcriben automáticamente para enviar notas o programar llamadas sin escribir en el teclado.
+*   **Modo Conversación en Vivo / Llamada Manos Libres (Estilo ChatGPT) 📞**: Botón de "Llamada" con un orbe brillante y pulsante. Permite una conversación continua y bidireccional: el usuario habla, la IA responde hablando con voz natural (Text-to-Speech) y reactiva el micrófono automáticamente para seguir conversando como en una llamada telefónica real.
 *   **Sincronización en Vivo**: Al actualizar un lead desde el chat, los cambios se reflejan inmediatamente en el Tablero Kanban y en el Directorio de Leads sin necesidad de recargar la página.
 
 
