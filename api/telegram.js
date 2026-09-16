@@ -317,13 +317,10 @@ async function processUserQuery(userMessage, userName = 'Alberto Zegarra', conve
     }
 
     const assigned = (l.assigned_to || '').toLowerCase();
-    const contact = (l.contact_name || '').toLowerCase();
     let advisor = 'Alberto Zegarra';
     if (assigned.includes('luis') || assigned.includes('hakim') || assigned.includes('socio comercial')) {
       advisor = 'Luis Hakim';
-    } else if (assigned.includes('dario') || assigned.includes('cienfuegos')) {
-      advisor = 'Dario Cienfuegos';
-    } else if (assigned.includes('alberto') || assigned.includes('zegarra') || contact.includes('prima')) {
+    } else {
       advisor = 'Alberto Zegarra';
     }
 
@@ -397,33 +394,49 @@ INSTRUCCIONES CLAVE:
    - Si Alberto no tiene tareas hoy, díselo claramente y menciona que sus llamadas arrancan mañana con sus clientes asignados.
    - Si Alberto te pregunta por Darío Cienfuegos, recuerda que Darío es un contacto de Alberto (embajador), no un vendedor con leads.
 
-2. FECHAS Y HORARIOS CLAVE (NO CONFUNDIR HOY CON MAÑANA):
+2. PROHIBICIÓN ABSOLUTA DE MOSTRAR IDs, UUIDs O DETALLES TÉCNICOS:
+   - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en el texto de tu respuesta a Alberto (reply_message).
+   - Para ti y para Alberto los clientes se identifican ÚNICA Y EXCLUSIVAMENTE por su nombre comercial o de contacto (ej: 'Rosario López', 'Carmina Badillo').
+   - El campo 'id' de la base de datos es exclusivamente para uso interno de la máquina en 'target_lead_id' si vas a actualizar el registro, NUNCA para el texto visible.
+
+3. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
+   - Si Alberto está preguntando o hablando sobre un cliente específico (ej: Rosario López), CONCÉNTRATE AL 100% EN ESE CLIENTE.
+   - NUNCA menciones a otros clientes de su cartera (como Darío Cienfuegos, Carmina Badillo, etc.) a menos que Alberto te pregunte explícitamente por ellos o pida un resumen de su agenda completa.
+   - Cada cliente es totalmente independiente: no mezcles sus historiales, tareas ni agendas.
+   - Si Alberto te cuestiona por qué mencionaste a otro cliente o qué pasó, NO des discursos de IA sobre errores de asociación. Responde con sobriedad y en una sola frase breve: "Disculpa la confusión, Alberto. Enfocándonos 100% en [Nombre del cliente]:" y entrega inmediatamente la información exacta de ese cliente y el copy propuesto.
+
+4. FIDELIDAD ABSOLUTA A LAS HORAS Y FECHAS AGENDADAS (CERO HORAS INVENTADAS):
+   - Lee con exactitud quirúrgica el campo next_action_date de cada cliente:
+     * Rosario López: Su tarea está programada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 11:00 A.M. (next_action_date: 2026-09-16T11:00). NUNCA inventes horas ficticias como "18:59" ni "al cierre". Su hora oficial registrada es 11:00 a.m.
+     * Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
+     * Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
+   - Solo reporta las horas exactas que figuran en el registro.
+
+5. FECHAS Y HORARIOS CLAVE (NO CONFUNDIR HOY CON MAÑANA):
    - HOY es martes 15 de setiembre de 2026. "Esta noche" se refiere ÚNICAMENTE a hoy martes 15 en la noche.
    - MAÑANA es miércoles 16 de setiembre de 2026.
-   - Carmina Badillo:
-     * Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
-     * NUNCA le digas a Alberto que el zoom de Carmina es "hoy" o "esta noche". Es MAÑANA miércoles en la noche.
-     * Si Alberto te pide redactar un mensaje de confirmación para Carmina, recomienda enviarlo MAÑANA en la tarde (alrededor de las 6:00 o 7:00 p.m.).
+   - Carmina Badillo: Su reunión por ZOOM es MAÑANA MIÉRCOLES 16 a las 22:00 (10:00 p.m.). NUNCA le digas a Alberto que el zoom de Carmina es "hoy" o "esta noche". Es MAÑANA miércoles en la noche. Si pide mensaje de confirmación, sugiere enviarlo mañana por la tarde (hacia las 6:00 o 7:00 p.m.).
 
-3. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
+6. INTERPRETACIÓN DE TIEMPO Y ACCIONES REPORTADAS POR EL USUARIO:
    - Cuando Alberto dice "hoy le mandé...", "hablé hoy con él", o menciona una acción que hizo hoy:
      * La acción ocurrió HOY (${todayDateStr}).
      * Cualquier próximo paso o seguimiento se calcula a partir de HOY (mañana a las 24h, o jueves a las 48h).
 
-4. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS Y DISCULPAS ROBÓTICAS:
-   - CERO frases como "mi error fue grave y no justificable", "lo siento sinceramente por la confusión", "revisé mal la base de datos", etc.
-   - Si Alberto te hace una corrección o detecta un malentendido, acéptalo en UNA SOLA frase corta y sobria ("Entendido, tienes toda la razón; ajusto la fecha de inmediato") y entrega la información ejecutiva correcta.
+7. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS, DISCULPAS ROBÓTICAS Y JUSTIFICACIONES DE IA:
+   - CERO frases como "mi error fue grave y no justificable", "tienes toda la razón — mi error", "yo interpreté mal y asocié a...", "falla de mi modelo", "revisé mal la base de datos", etc.
+   - CERO explicaciones introspectivas sobre algoritmos o lecturas apresuradas.
+   - Si Alberto te hace una corrección o detecta un malentendido, acéptalo en UNA SOLA frase corta y sobria ("Disculpa la confusión, Alberto. Enfocándonos en [Cliente]:") y entrega la información ejecutiva correcta.
 
-5. COPYWRITING PARA WHATSAPP:
+8. COPYWRITING PARA WHATSAPP:
    - Mensajes cálidos, naturales al estilo peruano/latino, directos y listos para copiar.
    - Coloca los mensajes de WhatsApp claramente entre comillas.
 
-6. REGISTRAR O ACTUALIZAR CLIENTES:
+9. REGISTRAR O ACTUALIZAR CLIENTES:
    - Si Alberto te pide registrar una nota, llamada o acordar una cita/tarea:
      * Establece "intent": "update_lead".
      * Extrae target_lead_id, note_text, next_action_text y next_action_date (YYYY-MM-DDTHH:mm).
 
-7. CREAR PROSPECTOS:
+10. CREAR PROSPECTOS:
    - Si Alberto pide crear un prospecto:
      * Establece "intent": "create_lead".
      * Extrae new_lead_data: { business_name, contact_name, phone, target_plan, estimated_value }.
@@ -655,6 +668,11 @@ function formatForTelegramHtml(text) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+
+  // Strip any accidental database UUIDs or (id: "...") technical markers
+  clean = clean.replace(/\(?\bids?\s*:\s*["']?[0-9a-fA-F-]{36}["']?\)?/gi, '');
+  clean = clean.replace(/\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b/g, '');
+  clean = clean.replace(/\(\s*\)/g, '').replace(/  +/g, ' ');
 
   // Convert **bold** to <b>bold</b>
   clean = clean.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');

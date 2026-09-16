@@ -245,6 +245,21 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
 6. REGLA ESTRICTA DE FECHAS:
    - Para tareas de HOY menciona única y exclusivamente los que tienen categoria_agenda "HOY".
    - Tareas de mañana ponlas claramente en una sección separada abajo.
+   - Carmina Badillo: Zoom agendado para MAÑANA MIÉRCOLES 16 a las 22:00 (10:00 p.m.).
+
+7. PROHIBICIÓN ABSOLUTA DE MOSTRAR IDs, UUIDs O DETALLES TÉCNICOS:
+   - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en tu respuesta.
+   - Los clientes se identifican ÚNICA Y EXCLUSIVAMENTE por su nombre (ej: 'Rosario López', 'Carmina Badillo').
+
+8. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
+   - Si el usuario está preguntando o hablando sobre un cliente específico (ej: Rosario López), CONCÉNTRATE AL 100% EN ESE CLIENTE.
+   - NUNCA menciones a otros clientes de su cartera (como Darío Cienfuegos, Carmina Badillo, etc.) a menos que el usuario pregunte explícitamente por ellos.
+   - Si el usuario te cuestiona por qué mencionaste a otro cliente o qué pasó, responde con sobriedad y en una sola frase breve: "Disculpa la confusión. Enfocándonos 100% en [Nombre del cliente]:" y entrega inmediatamente la información exacta de ese cliente.
+
+9. FIDELIDAD ABSOLUTA A LAS HORAS Y FECHAS AGENDADAS (CERO HORAS INVENTADAS):
+   - Rosario López: Su tarea está programada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 11:00 A.M. (next_action_date: 2026-09-16T11:00). NUNCA inventes horas ficticias como "18:59" ni "al cierre".
+   - Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
+   - Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
@@ -295,6 +310,15 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   return robustParseAIResponse(rawContent);
 }
 
+function cleanTechnicalIds(text) {
+  if (!text || typeof text !== 'string') return text || '';
+  return text
+    .replace(/\(?\bids?\s*:\s*["']?[0-9a-fA-F-]{36}["']?\)?/gi, '')
+    .replace(/\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b/g, '')
+    .replace(/\(\s*\)/g, '')
+    .replace(/  +/g, ' ');
+}
+
 export function robustParseAIResponse(raw) {
   if (!raw || typeof raw !== 'string') return { intent: 'general_chat', reply_message: '' };
   let clean = raw.trim();
@@ -308,6 +332,7 @@ export function robustParseAIResponse(raw) {
   try {
     const parsed = JSON.parse(clean);
     if (parsed && typeof parsed === 'object') {
+      if (parsed.reply_message) parsed.reply_message = cleanTechnicalIds(parsed.reply_message);
       return parsed;
     }
   } catch (e) {}
@@ -355,7 +380,7 @@ export function robustParseAIResponse(raw) {
       note_text: noteTextMatch ? noteTextMatch[1] : '',
       next_action_text: nextActionMatch ? nextActionMatch[1] : '',
       next_action_date: nextDateMatch ? nextDateMatch[1] : '',
-      reply_message: content
+      reply_message: cleanTechnicalIds(content)
     };
   }
 
@@ -367,6 +392,6 @@ export function robustParseAIResponse(raw) {
 
   return {
     intent: 'general_chat',
-    reply_message: fallbackText
+    reply_message: cleanTechnicalIds(fallbackText)
   };
 }

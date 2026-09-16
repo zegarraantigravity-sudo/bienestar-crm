@@ -191,9 +191,23 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
    - Extrae nombre, teléfono, plan, valor estimado.
    - Establece "intent": "create_lead".
 
-9. FORMATO VISUAL LIMPIO:
-   - No satures el texto con asteriscos (**). Úsalos solo con moderación para títulos clave.
-   - Los mensajes propuestos para WhatsApp colócalos entre comillas en su propio bloque o párrafo para que resalten.
+10. PROHIBICIÓN ABSOLUTA DE MOSTRAR IDs, UUIDs O DETALLES TÉCNICOS:
+    - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en el texto de tu respuesta a ${userName} (reply_message).
+    - Para ti y para ${userName} los clientes se identifican ÚNICA Y EXCLUSIVAMENTE por su nombre comercial o de contacto (ej: 'Rosario López', 'Carmina Badillo').
+    - El campo 'id' de la base de datos es exclusivamente para uso interno de la máquina en 'target_lead_id' si vas a actualizar el registro, NUNCA para el texto visible.
+
+11. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
+    - Si ${userName} está preguntando o hablando sobre un cliente específico (ej: Rosario López), CONCÉNTRATE AL 100% EN ESE CLIENTE.
+    - NUNCA menciones a otros clientes de su cartera (como Darío Cienfuegos, Carmina Badillo, etc.) a menos que ${userName} te pregunte explícitamente por ellos o pida un resumen de su agenda completa.
+    - Cada cliente es totalmente independiente: no mezcles sus historiales, tareas ni agendas.
+    - Si ${userName} te cuestiona por qué mencionaste a otro cliente o qué pasó, NO des discursos de IA sobre errores de asociación. Responde con sobriedad y en una sola frase breve: "Disculpa la confusión, ${userName}. Enfocándonos 100% en [Nombre del cliente]:" y entrega inmediatamente la información exacta de ese cliente y el copy propuesto.
+
+12. FIDELIDAD ABSOLUTA A LAS HORAS Y FECHAS AGENDADAS (CERO HORAS INVENTADAS):
+    - Lee con exactitud quirúrgica el campo next_action_date de cada cliente:
+      * Rosario López: Su tarea está programada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 11:00 A.M. (next_action_date: 2026-09-16T11:00). NUNCA inventes horas ficticias como "18:59" ni "al cierre". Su hora oficial registrada es 11:00 a.m.
+      * Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
+      * Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
+    - Solo reporta las horas exactas que figuran en el registro.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 {
@@ -247,11 +261,23 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
     const responsePayload = await aiRes.json();
     const rawContent = responsePayload.choices?.[0]?.message?.content || '{}';
     const parsedAiData = robustParseAIResponse(rawContent);
+    if (parsedAiData.reply_message) {
+      parsedAiData.reply_message = sanitizeReplyText(parsedAiData.reply_message);
+    }
     return res.status(200).json(parsedAiData);
   } catch (error) {
     console.error('Error in /api/chat:', error);
     return res.status(500).json({ error: error.message || 'Internal server error' });
   }
+}
+
+function sanitizeReplyText(text) {
+  if (!text || typeof text !== 'string') return text || '';
+  return text
+    .replace(/\(?\bids?\s*:\s*["']?[0-9a-fA-F-]{36}["']?\)?/gi, '')
+    .replace(/\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b/g, '')
+    .replace(/\(\s*\)/g, '')
+    .replace(/  +/g, ' ');
 }
 
 function robustParseAIResponse(raw) {
