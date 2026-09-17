@@ -597,8 +597,9 @@ INSTRUCCIONES CLAVE:
 
 8. REGLA ESTRICTA DE ACTUALIZACIÓN DEL CRM (PROHIBICIÓN TOTAL DE INVENTAR DATOS):
    - En el 95% de las interacciones, tu intención DEBE SER "general_chat".
-   - ÚNICAMENTE genera "intent": "update_lead" si el usuario te da una orden DIRECTA, EXPLÍCITA E INEQUÍVOCA para modificar el CRM (ej: "Anota en la bitácora...", "Registra llamada...", "Agenda cita...").
+   - ÚNICAMENTE genera "intent": "update_lead" si el usuario te da una orden para modificar el CRM o dicta notas/fechas de seguimiento sobre un cliente.
    - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS: Si el usuario no dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
+   - CERO FALSAS CONFIRMACIONES EN reply_message: Si tu intención es "general_chat" o el usuario está haciendo una consulta o pregunta ("¿Revisaste la bitácora?", "¿En qué estado está?", "¿Qué tareas tengo?"), NUNCA comiences tu reply_message diciendo "Bitácora actualizada" ni uses "✅" para afirmar que guardaste algo. Responde con la verdad exacta de lo que dice la base de datos de prospectos arriba.
 
 9. REGLA ESTRICTA PARA BORRAR O DEJAR EN BLANCO LA PRÓXIMA ACCIÓN:
    - Si el usuario te pide borrar, eliminar, quitar o dejar en blanco la próxima acción o fecha (o si el cliente se marca como 'cerrado_perdido' o concluido y no tendrá más seguimiento):
@@ -667,7 +668,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   const isUserExplicitUpdate = isExplicitUpdateCommand(userMessage);
   const isUserExplicitCreate = isExplicitCreateCommand(userMessage);
 
-  // Handle Intent: Update Lead in Supabase ONLY IF user explicitly commanded it
+  // Handle Intent: Update Lead in Supabase
   let updatePerformed = false;
   if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
     const targetLead = (leads || []).find(l => {
@@ -678,7 +679,20 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       return contact.includes(searchName) || business.includes(searchName) || searchName.includes(contact);
     });
 
-    if (targetLead && isUserExplicitUpdate) {
+    const hasConcreteUpdate = Boolean(
+      (parsed.note_text && parsed.note_text.trim().length > 0) ||
+      (parsed.next_action_date && parsed.next_action_date.trim().length > 0) ||
+      (parsed.next_action_text && parsed.next_action_text.trim().length > 0) ||
+      parsed.clear_next_action === true ||
+      parsed.new_status ||
+      parsed.new_plan
+    );
+
+    const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(userMessage);
+
+    const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (isUserExplicitUpdate || hasConcreteUpdate);
+
+    if (shouldPerformUpdate) {
       let timeline = [];
       let currentNextAction = '';
       let currentNextDate = '';
@@ -754,8 +768,6 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       }
     } else if (!targetLead && isUserExplicitUpdate) {
       badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
-    } else if (parsed.intent === 'update_lead' && !isUserExplicitUpdate) {
-      badgePrefix = `ℹ️ <i>(Consulta informativa: no se modificó el CRM)</i>\n\n`;
     }
   }
 
@@ -783,10 +795,21 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM (asignado a ${advisor.name}):</b> <i>${d.contact_name}</i>\n\n`;
   }
 
-  const finalHtml = badgePrefix + formatForTelegramHtml(parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`);
+  let cleanReply = parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`;
+  if (!updatePerformed) {
+    // Sanitize any false claims of CRM update if no write occurred in database
+    cleanReply = cleanReply
+      .replace(/^(\s*✅\s*)?(bit[aá]cora.*actualizada[^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(actualizado en el crm[^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(ya actualic[eé][^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(ya qued[oó] registrado[^\n]*\n*)/i, '')
+      .trim();
+  }
+
+  const finalHtml = badgePrefix + formatForTelegramHtml(cleanReply);
   return {
     replyText: finalHtml,
-    rawReply: parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`
+    rawReply: cleanReply
   };
 }
 
@@ -923,17 +946,20 @@ function isExplicitUpdateCommand(userText) {
     return false;
   }
 
-  // Broad action pattern matching imperative/infinitive verbs with optional clitic object pronouns (-lo, -le, -me, etc.)
-  const actionPattern = /\b(cambia(r|s|do|da)?(lo|le|me|la|les|los)?|cambies|pon(ga)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|mover|pasa(r)?(lo|le|me|la|les|los)?|pasar|agenda(r)?(lo|le|me|la|les|los)?|registra(r)?(lo|le|me|la|les|los)?|anota(r)?(lo|le|me|la|les|los)?|guarda(r)?(lo|le|me|la|les|los)?|actualiza(r)?(lo|le|me|la|les|los)?|modifica(r)?(lo|le|me|la|les|los)?|reprograma(r)?(lo|le|me|la|les|los)?|programa(r)?(lo|le|me|la|les|los)?|borra(r)?(lo|le|me|la|les|los)?|elimina(r)?(lo|le|me|la|les|los)?|quita(r)?(lo|le|me|la|les|los)?|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco)\b/i;
+  // Pure query questions at the start of sentence without action verbs:
+  const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna)\b/i.test(t)
+    && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines|deja en blanco|dejes en blanco)\b/i.test(t);
 
-  // Pure informational questions without action verb:
-  const isPureQuestion = (userText.includes('?') || userText.includes('¿') || /^(que|cual|quien|cuando|donde|a que hora|como)\b/i.test(t))
-    && !actionPattern.test(t);
+  if (isQueryQuestion) return false;
 
-  if (isPureQuestion) return false;
+  // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
+  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  return actionPattern.test(t) || /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|sin proxima accion)\b/i.test(t);
+  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion)\b/i;
+
+  return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
+
 
 function isExplicitCreateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;

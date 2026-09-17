@@ -13,18 +13,23 @@ function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
   const t = normalizeText(userText);
 
+  // If user explicitly says not to modify
   if (/\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(t)) {
     return false;
   }
 
-  const actionPattern = /\b(cambia(r|s|do|da)?(lo|le|me|la|les|los)?|cambies|pon(ga)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|mover|pasa(r)?(lo|le|me|la|les|los)?|pasar|agenda(r)?(lo|le|me|la|les|los)?|registra(r)?(lo|le|me|la|les|los)?|anota(r)?(lo|le|me|la|les|los)?|guarda(r)?(lo|le|me|la|les|los)?|actualiza(r)?(lo|le|me|la|les|los)?|modifica(r)?(lo|le|me|la|les|los)?|reprograma(r)?(lo|le|me|la|les|los)?|programa(r)?(lo|le|me|la|les|los)?|borra(r)?(lo|le|me|la|les|los)?|elimina(r)?(lo|le|me|la|les|los)?|quita(r)?(lo|le|me|la|les|los)?|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco)\b/i;
+  // Pure query questions at the start of sentence without action verbs:
+  const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna)\b/i.test(t)
+    && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines|deja en blanco|dejes en blanco)\b/i.test(t);
 
-  const isPureQuestion = (userText.includes('?') || userText.includes('¿') || /^(que|cual|quien|cuando|donde|a que hora|como)\b/i.test(t))
-    && !actionPattern.test(t);
+  if (isQueryQuestion) return false;
 
-  if (isPureQuestion) return false;
+  // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
+  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  return actionPattern.test(t) || /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|sin proxima accion)\b/i.test(t);
+  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion)\b/i;
+
+  return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
 
 export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdvisorFilter = 'todos' }) {
@@ -307,8 +312,18 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
 
       const isUserExplicitUpdate = isExplicitUpdateCommand(textToSend);
 
-      // Handle intent: update_lead ONLY IF user explicitly commanded it
-      if (aiResponse.intent === 'update_lead' && isUserExplicitUpdate && (aiResponse.target_lead_id || aiResponse.target_lead_name)) {
+      const hasConcreteUpdate = Boolean(
+        (aiResponse.note_text && aiResponse.note_text.trim().length > 0) ||
+        (aiResponse.next_action_date && aiResponse.next_action_date.trim().length > 0) ||
+        (aiResponse.next_action_text && aiResponse.next_action_text.trim().length > 0) ||
+        aiResponse.clear_next_action === true ||
+        aiResponse.new_status ||
+        aiResponse.new_plan
+      );
+      const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(textToSend);
+
+      // Handle intent: update_lead
+      if (aiResponse.intent === 'update_lead' && !isUserExplicitDoNotModify && (isUserExplicitUpdate || hasConcreteUpdate) && (aiResponse.target_lead_id || aiResponse.target_lead_name)) {
         const targetLead = leads.find(l => {
           if (aiResponse.target_lead_id && l.id === aiResponse.target_lead_id) return true;
           const searchName = (aiResponse.target_lead_name || '').toLowerCase().trim();
@@ -419,6 +434,15 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
         if (cleaned.reply_message) {
           replyText = cleaned.reply_message;
         }
+      }
+
+      if (!actionBadge) {
+        replyText = replyText
+          .replace(/^(\s*✅\s*)?(bit[aá]cora.*actualizada[^\n]*\n*)/i, '')
+          .replace(/^(\s*✅\s*)?(actualizado en el crm[^\n]*\n*)/i, '')
+          .replace(/^(\s*✅\s*)?(ya actualic[eé][^\n]*\n*)/i, '')
+          .replace(/^(\s*✅\s*)?(ya qued[oó] registrado[^\n]*\n*)/i, '')
+          .trim();
       }
 
       setMessages(prev => [
