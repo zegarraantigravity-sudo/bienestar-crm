@@ -655,7 +655,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
         ...formattedHistory,
         { role: 'user', content: userMessage }
       ],
-      temperature: 0.2
+      temperature: 0.2,
+      max_tokens: 3500
     })
   });
 
@@ -796,6 +797,13 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   }
 
   let cleanReply = parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`;
+
+  // Fail-safe: If cleanReply STILL looks like raw JSON, parse it to extract reply_message
+  if (typeof cleanReply === 'string' && cleanReply.trim().startsWith('{') && (cleanReply.includes('"reply_message"') || cleanReply.includes('"intent"'))) {
+    const re = parseAIResponse(cleanReply);
+    if (re.reply_message) cleanReply = re.reply_message;
+  }
+
   if (!updatePerformed) {
     // Sanitize any false claims of CRM update if no write occurred in database
     cleanReply = cleanReply
@@ -979,18 +987,78 @@ function parseAIResponse(raw) {
   if (clean.endsWith('```')) clean = clean.slice(0, -3);
   clean = clean.trim();
 
+  // 1. Try standard JSON.parse first
   try {
-    return JSON.parse(clean);
-  } catch (e) {
-    const firstBrace = clean.indexOf('{');
-    const lastBrace = clean.lastIndexOf('}');
-    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-      try {
-        return JSON.parse(clean.substring(firstBrace, lastBrace + 1));
-      } catch (err) {}
-    }
-    return { intent: 'general_chat', reply_message: clean };
+    const p = JSON.parse(clean);
+    if (p && typeof p === 'object') return p;
+  } catch (e) {}
+
+  // 2. Try JSON.parse with sanitized control characters
+  try {
+    const sanitized = clean.replace(/[\u0000-\u001F]+/g, (match) => {
+      if (match === '\n') return '\\n';
+      if (match === '\r') return '\\r';
+      if (match === '\t') return '\\t';
+      return '';
+    });
+    const p = JSON.parse(sanitized);
+    if (p && typeof p === 'object') return p;
+  } catch (e) {}
+
+  // 3. Try appending missing closing braces if incomplete JSON
+  if (clean.startsWith('{') && !clean.endsWith('}')) {
+    try {
+      const p = JSON.parse(clean + '}');
+      if (p && typeof p === 'object') return p;
+    } catch (e) {}
+    try {
+      const p = JSON.parse(clean + '"}');
+      if (p && typeof p === 'object') return p;
+    } catch (e) {}
   }
+
+  // 4. Robust regex extraction fallback for all fields
+  const intentMatch = clean.match(/"intent"\s*:\s*"([^"]+)"/);
+  const targetIdMatch = clean.match(/"target_lead_id"\s*:\s*"([^"]*)"/);
+  const targetNameMatch = clean.match(/"target_lead_name"\s*:\s*"([^"]*)"/);
+  const noteTextMatch = clean.match(/"note_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action/);
+  const nextActionMatch = clean.match(/"next_action_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action_date/);
+  const nextDateMatch = clean.match(/"next_action_date"\s*:\s*"([^"]*)"/);
+
+  const replyMatch = clean.match(/"reply_message"\s*:\s*"([\s\S]*)/);
+  let replyContent = '';
+  if (replyMatch) {
+    replyContent = replyMatch[1];
+    const lastQuoteIdx = replyContent.lastIndexOf('"');
+    if (lastQuoteIdx !== -1) {
+      replyContent = replyContent.slice(0, lastQuoteIdx);
+    }
+    replyContent = replyContent
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\r')
+      .replace(/\\t/g, '\t')
+      .replace(/\\"/g, '"')
+      .replace(/\\'/g, "'");
+  } else {
+    // If no reply_message field, remove outer braces and raw JSON structure
+    replyContent = clean
+      .replace(/^[{\s]*/, '')
+      .replace(/[}\s]*$/, '')
+      .replace(/"intent"\s*:\s*"[^"]*",?/g, '')
+      .replace(/"target_lead_\w+"\s*:\s*"[^"]*",?/g, '')
+      .replace(/"(clear_next_action|new_\w+)"\s*:\s*[^,\n]+,?/g, '')
+      .trim();
+  }
+
+  return {
+    intent: intentMatch ? intentMatch[1] : 'general_chat',
+    target_lead_id: targetIdMatch ? targetIdMatch[1] : null,
+    target_lead_name: targetNameMatch ? targetNameMatch[1] : null,
+    note_text: noteTextMatch ? noteTextMatch[1] : '',
+    next_action_text: nextActionMatch ? nextActionMatch[1] : '',
+    next_action_date: nextDateMatch ? nextDateMatch[1] : '',
+    reply_message: replyContent
+  };
 }
 
 function formatForTelegramHtml(text) {
