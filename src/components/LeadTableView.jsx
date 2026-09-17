@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Phone, Mail, Plus, Target, MessageCircle, Calendar, Snowflake, Clock, AlertCircle } from 'lucide-react';
-import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay } from '../lib/utils';
+import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay, getLeadAdvisorName } from '../lib/utils';
 
 const clientTypeLabels = {
   coach: 'Entrenador (Coach)',
@@ -258,7 +258,22 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead, onOpe
                             </span>
                           )}
                         </div>
-                        <div className="td-subtitle">{lead.contact_name}</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
+                          <span className="td-subtitle">{lead.contact_name}</span>
+                          <span 
+                            style={{ 
+                              fontSize: '0.68rem', 
+                              fontWeight: 600,
+                              padding: '1px 6px',
+                              borderRadius: '4px',
+                              backgroundColor: (lead.assigned_to || '').toLowerCase().includes('luis') ? 'rgba(168, 85, 247, 0.12)' : 'rgba(59, 130, 246, 0.12)',
+                              color: (lead.assigned_to || '').toLowerCase().includes('luis') ? '#c084fc' : '#60a5fa',
+                              border: `1px solid ${(lead.assigned_to || '').toLowerCase().includes('luis') ? 'rgba(168, 85, 247, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`
+                            }}
+                          >
+                            {getLeadAdvisorName(lead.assigned_to, lead.contact_name)}
+                          </span>
+                        </div>
                         {action && (
                           <div style={{ 
                             display: 'flex', 

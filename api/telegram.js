@@ -619,6 +619,12 @@ INSTRUCCIONES CLAVE:
 12. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
    - Si preguntan si el bot puede enviar recordatorios: Confirma que SÍ. El sistema envía notificaciones automáticas en Telegram 1h antes de zooms y 20m antes de llamadas registradas en la agenda.
 
+13. REASIGNACIÓN O TRANSFERENCIA DE PROSPECTOS ENTRE ASESORES:
+   - Si el usuario (especialmente Alberto Zegarra como Super Administrador) pide transferir, pasar, reasignar o derivar un prospecto a Luis Hakim o a Alberto Zegarra (ej: "Pásale este lead a Luis Hakim", "Asigna a Carmina a Luis", "Pásalo a Luis", "Transfiere este prospecto a Luis"):
+     * "intent": "update_lead"
+     * "new_assigned_to": "Luis Hakim" (o "Alberto Zegarra")
+     * En "reply_message" confirma con claridad que el prospecto quedó transferido a [Nombre del Asesor] en el CRM, y que las próximas alarmas y recordatorios automáticos de Telegram ahora le llegarán a él.
+
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
   "intent": "update_lead" | "create_lead" | "general_chat",
@@ -630,6 +636,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
   "new_status": "prospecto | llamado | cita_agendada | presentacion_realizada | cerrado_ganado | cerrado_perdido si aplica",
   "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
+  "new_assigned_to": "Luis Hakim | Alberto Zegarra si el usuario pidió transferir/reasignar, o null",
   "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
   "reply_message": "Tu respuesta detallada y estratégica para ${advisor.name}."
@@ -681,7 +688,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       (parsed.next_action_text && parsed.next_action_text.trim().length > 0) ||
       parsed.clear_next_action === true ||
       parsed.new_status ||
-      parsed.new_plan
+      parsed.new_plan ||
+      parsed.new_assigned_to
     );
 
     const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(userMessage);
@@ -739,6 +747,23 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
         }
       }
 
+      // Handle Reassignment / Lead Transfer
+      let newlyAssignedAdvisor = null;
+      if (parsed.new_assigned_to) {
+        const rawTarget = String(parsed.new_assigned_to).toLowerCase();
+        if (rawTarget.includes('luis') || rawTarget.includes('hakim') || rawTarget.includes('socio')) {
+          newlyAssignedAdvisor = 'Luis Hakim';
+        } else if (rawTarget.includes('alberto') || rawTarget.includes('zegarra') || rawTarget.includes('admin')) {
+          newlyAssignedAdvisor = 'Alberto Zegarra';
+        }
+        if (newlyAssignedAdvisor) {
+          const reassignNote = `Lead transferido/reasignado a ${newlyAssignedAdvisor} por ${advisor.name} vía Telegram`;
+          if (!timeline.some(n => n.text && n.text.includes(`reasignado a ${newlyAssignedAdvisor}`))) {
+            timeline = [{ date: new Date().toISOString(), text: reassignNote }, ...timeline];
+          }
+        }
+      }
+
       const updatedNotesPayload = JSON.stringify({
         timeline,
         next_action: finalNextAction,
@@ -753,11 +778,16 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       };
       if (parsed.new_status) updateFields.status = parsed.new_status;
       if (parsed.new_plan) updateFields.target_plan = parsed.new_plan;
+      if (newlyAssignedAdvisor) updateFields.assigned_to = newlyAssignedAdvisor;
 
       const { error: updateErr } = await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
       if (!updateErr) {
         updatePerformed = true;
-        badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+        if (newlyAssignedAdvisor) {
+          badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+        } else {
+          badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+        }
       } else {
         console.error('Error updating lead in supabase:', updateErr);
         badgePrefix = `⚠️ <i>Hubo un error al guardar en el CRM: ${updateErr.message}</i>\n\n`;
@@ -1020,9 +1050,9 @@ function isExplicitUpdateCommand(userText) {
   if (isQueryQuestion) return false;
 
   // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
-  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
+  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|asigna(r)?(lo|le|me|la|les|los)?|asignes|reasigna(r)?(lo|le|me|la|les|los)?|reasignes|transfiere|transferir|deriva(r)?(lo|le|me|la|les|los)?|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion)\b/i;
+  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim)\b/i;
 
   return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
@@ -1083,6 +1113,7 @@ function parseAIResponse(raw) {
   const noteTextMatch = clean.match(/"note_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action/);
   const nextActionMatch = clean.match(/"next_action_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action_date/);
   const nextDateMatch = clean.match(/"next_action_date"\s*:\s*"([^"]*)"/);
+  const newAssignedMatch = clean.match(/"new_assigned_to"\s*:\s*"([^"]*)"/);
 
   const replyMatch = clean.match(/"reply_message"\s*:\s*"([\s\S]*)/);
   let replyContent = '';
@@ -1116,6 +1147,7 @@ function parseAIResponse(raw) {
     note_text: noteTextMatch ? noteTextMatch[1] : '',
     next_action_text: nextActionMatch ? nextActionMatch[1] : '',
     next_action_date: nextDateMatch ? nextDateMatch[1] : '',
+    new_assigned_to: newAssignedMatch ? newAssignedMatch[1] : null,
     reply_message: replyContent
   };
 }

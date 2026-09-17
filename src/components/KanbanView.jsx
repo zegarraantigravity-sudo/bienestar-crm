@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight, Phone, Calendar, Target, MessageCircle, AlertCircle, Snowflake } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
-import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay } from '../lib/utils';
+import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay, getLeadAdvisorName } from '../lib/utils';
 
 const columns = [
   { id: 'prospecto', title: 'Prospectos', color: 'hsl(var(--color-prospecto))' },
@@ -210,12 +210,26 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead, onOpenWh
                     </div>
                     <div className="card-contact-name">{lead.contact_name}</div>
                     
-                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
                       <span className={`badge badge-client ${clientType.cssClass}`}>
                         {clientType.label}
                       </span>
                       <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
                         {planLabels[lead.target_plan] || lead.target_plan}
+                      </span>
+                      <span 
+                        style={{ 
+                          fontSize: '0.68rem', 
+                          fontWeight: 600,
+                          padding: '1px 6px',
+                          borderRadius: '4px',
+                          backgroundColor: (lead.assigned_to || '').toLowerCase().includes('luis') ? 'rgba(168, 85, 247, 0.12)' : 'rgba(59, 130, 246, 0.12)',
+                          color: (lead.assigned_to || '').toLowerCase().includes('luis') ? '#c084fc' : '#60a5fa',
+                          border: `1px solid ${(lead.assigned_to || '').toLowerCase().includes('luis') ? 'rgba(168, 85, 247, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`
+                        }}
+                        title={`Asesor: ${getLeadAdvisorName(lead.assigned_to, lead.contact_name)}`}
+                      >
+                        {getLeadAdvisorName(lead.assigned_to, lead.contact_name).split(' ')[0]}
                       </span>
                     </div>
 

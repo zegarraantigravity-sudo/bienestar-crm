@@ -261,6 +261,12 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
    - Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
    - Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
 
+10. REASIGNACIÓN O TRANSFERENCIA DE PROSPECTOS ENTRE ASESORES:
+   - Si el usuario solicita transferir, reasignar o pasar un cliente a Luis Hakim o a Alberto Zegarra (ej: 'Pásale este lead a Luis', 'Asigna a Carmina a Luis'):
+     * "intent": "update_lead"
+     * "new_assigned_to": "Luis Hakim" (o "Alberto Zegarra")
+     * En "reply_message" confirma que el prospecto fue transferido y a partir de ahora sus recordatorios y gestión le pertenecen al nuevo asesor.
+
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
   "intent": "update_lead" | "create_lead" | "general_chat",
@@ -271,6 +277,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   "next_action_date": "YYYY-MM-DDTHH:mm",
   "new_status": "estado nuevo si aplica",
   "new_plan": "plan nuevo si aplica",
+  "new_assigned_to": "Luis Hakim | Alberto Zegarra si aplica, o null",
   "new_value": null,
   "reply_message": "Respuesta clara, estructurada y profesional"
 }`;
@@ -372,6 +379,7 @@ export function robustParseAIResponse(raw) {
     const noteTextMatch = clean.match(/"note_text"\s*:\s*"([^"]*)"/);
     const nextActionMatch = clean.match(/"next_action_text"\s*:\s*"([^"]*)"/);
     const nextDateMatch = clean.match(/"next_action_date"\s*:\s*"([^"]*)"/);
+    const newAssignedMatch = clean.match(/"new_assigned_to"\s*:\s*"([^"]*)"/);
 
     return {
       intent: intentMatch ? intentMatch[1] : 'general_chat',
@@ -380,6 +388,7 @@ export function robustParseAIResponse(raw) {
       note_text: noteTextMatch ? noteTextMatch[1] : '',
       next_action_text: nextActionMatch ? nextActionMatch[1] : '',
       next_action_date: nextDateMatch ? nextDateMatch[1] : '',
+      new_assigned_to: newAssignedMatch ? newAssignedMatch[1] : null,
       reply_message: cleanTechnicalIds(content)
     };
   }

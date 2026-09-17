@@ -83,9 +83,9 @@ function isExplicitUpdateCommand(userText) {
   if (isQueryQuestion) return false;
 
   // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
-  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
+  const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|asigna(r)?(lo|le|me|la|les|los)?|asignes|reasigna(r)?(lo|le|me|la|les|los)?|reasignes|transfiere|transferir|deriva(r)?(lo|le|me|la|les|los)?|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion)\b/i;
+  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim)\b/i;
 
   return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
@@ -376,7 +376,8 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
         (aiResponse.next_action_text && aiResponse.next_action_text.trim().length > 0) ||
         aiResponse.clear_next_action === true ||
         aiResponse.new_status ||
-        aiResponse.new_plan
+        aiResponse.new_plan ||
+        aiResponse.new_assigned_to
       );
       const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(textToSend);
 
@@ -442,6 +443,23 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
             }
           }
 
+          // Handle Reassignment / Lead Transfer
+          let newlyAssignedAdvisor = null;
+          if (aiResponse.new_assigned_to) {
+            const rawTarget = String(aiResponse.new_assigned_to).toLowerCase();
+            if (rawTarget.includes('luis') || rawTarget.includes('hakim') || rawTarget.includes('socio')) {
+              newlyAssignedAdvisor = 'Luis Hakim';
+            } else if (rawTarget.includes('alberto') || rawTarget.includes('zegarra') || rawTarget.includes('admin')) {
+              newlyAssignedAdvisor = 'Alberto Zegarra';
+            }
+            if (newlyAssignedAdvisor) {
+              const reassignNote = `Lead transferido/reasignado a ${newlyAssignedAdvisor} por ${displayName} vía Copiloto Web`;
+              if (!timeline.some(n => n.text && n.text.includes(`reasignado a ${newlyAssignedAdvisor}`))) {
+                timeline = [{ date: new Date().toISOString(), text: reassignNote }, ...timeline];
+              }
+            }
+          }
+
           const updatedNotesPayload = JSON.stringify({
             timeline,
             next_action: finalNextAction,
@@ -464,6 +482,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
           if (aiResponse.new_value) {
             leadUpdateFields.estimated_value = parseFloat(aiResponse.new_value) || targetLead.estimated_value;
           }
+          if (newlyAssignedAdvisor) {
+            leadUpdateFields.assigned_to = newlyAssignedAdvisor;
+          }
 
           const { data, error } = await supabase
             .from('leads')
@@ -475,7 +496,9 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
 
           if (data && data[0]) {
             onUpdateLead(data[0]);
-            actionBadge = `✅ Lead "${targetLead.contact_name || targetLead.business_name}" actualizado en Supabase`;
+            actionBadge = newlyAssignedAdvisor
+              ? `✅ Lead "${targetLead.contact_name || targetLead.business_name}" reasignado a ${newlyAssignedAdvisor}`
+              : `✅ Lead "${targetLead.contact_name || targetLead.business_name}" actualizado en Supabase`;
           }
         }
       }
