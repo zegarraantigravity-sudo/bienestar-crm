@@ -73,6 +73,7 @@ export const getDaysInactive = (lastInteractionIso) => {
 export const isDateToday = (dateIsoStr) => {
   if (!dateIsoStr) return false;
   const date = new Date(dateIsoStr);
+  if (isNaN(date.getTime())) return false;
   const today = new Date();
   return date.getDate() === today.getDate() &&
     date.getMonth() === today.getMonth() &&
@@ -82,6 +83,11 @@ export const isDateToday = (dateIsoStr) => {
 export const isDateOverdue = (dateIsoStr) => {
   if (!dateIsoStr) return false;
   const date = new Date(dateIsoStr);
+  if (isNaN(date.getTime())) return false;
+  const now = new Date();
+  if (dateIsoStr.includes('T') || dateIsoStr.includes(':')) {
+    return date < now;
+  }
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return date < today;

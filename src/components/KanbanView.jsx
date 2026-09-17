@@ -256,7 +256,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead, onOpenWh
                         </div>
                         {actionDate && (
                           <div style={{ fontSize: '0.7rem', opacity: 0.85, paddingLeft: '18px', fontWeight: 600 }}>
-                            {isOverdue ? '⚠️ Vencido: ' : isToday ? '⏰ HOY: ' : '📅 '}
+                            {isOverdue && isToday ? '⚠️ Retrasada hoy: ' : isOverdue ? '⚠️ Vencido: ' : isToday ? '⏰ HOY: ' : '📅 '}
                             {formatDateTimeDisplay(actionDate)}
                           </div>
                         )}

@@ -85,31 +85,90 @@ export default async function handler(req, res) {
       timeRef.push(`  • ${tag} = ${weekdayStr} (${ymd})`);
     }
 
-    const myHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && l.is_my_lead);
-    const otherHoyTasks = (leadsSummary || []).filter(l => l.categoria_agenda === 'HOY' && !l.is_my_lead);
-    const myMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
-    const otherMananaTasks = (leadsSummary || []).filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
-    const myVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && l.is_my_lead);
-    const otherVencidas = (leadsSummary || []).filter(l => l.categoria_agenda === 'VENCIDA' && !l.is_my_lead);
+    const nowMs = nowPeru.getTime();
 
-    const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS):
+    function formatMinsDiff(mins) {
+      if (mins === null || isNaN(mins)) return '';
+      const absMins = Math.abs(mins);
+      const hours = Math.floor(absMins / 60);
+      const m = absMins % 60;
+      const timeStr = hours > 0 ? `${hours}h ${m}m` : `${m}m`;
+      if (mins < 0) return `⚠️ HACE ${timeStr} (HORA YA PASÓ HOY, ESTÁ RETRASADA)`;
+      return `⏳ EN ${timeStr} (MÁS TARDE HOY)`;
+    }
+
+    function parsePeruDateTime(dateStr) {
+      if (!dateStr) return 0;
+      const clean = String(dateStr).trim();
+      if (!clean.includes('Z') && !/[+-]\d{2}:?\d{2}$/.test(clean)) {
+        const parts = clean.split('T');
+        if (parts.length === 2) {
+          const timePart = parts[1].length === 5 ? parts[1] + ':00' : parts[1];
+          return new Date(`${parts[0]}T${timePart}-05:00`).getTime();
+        }
+      }
+      return new Date(clean).getTime();
+    }
+
+    const processedLeadsSummary = (leadsSummary || []).map(l => {
+      let minutos_diferencia = null;
+      let categoria = l.categoria_agenda;
+      if (l.next_action_date) {
+        const taskTime = parsePeruDateTime(l.next_action_date);
+        if (taskTime && !isNaN(taskTime)) {
+          minutos_diferencia = Math.round((taskTime - nowMs) / (60 * 1000));
+        }
+        if (l.next_action_date.startsWith(todayPeruYmd)) {
+          if (minutos_diferencia !== null && minutos_diferencia < 0) {
+            categoria = 'VENCIDA_HOY';
+          } else {
+            categoria = 'HOY_PENDIENTE';
+          }
+        } else if (l.next_action_date > todayPeruYmd) {
+          categoria = 'FUTURO';
+        } else {
+          categoria = 'VENCIDA_PREVIA';
+        }
+      }
+      return {
+        ...l,
+        categoria_agenda: categoria,
+        minutos_diferencia
+      };
+    });
+
+    const myHoyRetrasadas = processedLeadsSummary.filter(l => l.categoria_agenda === 'VENCIDA_HOY' && l.is_my_lead);
+    const myHoyPendientes = processedLeadsSummary.filter(l => l.categoria_agenda === 'HOY_PENDIENTE' && l.is_my_lead);
+    const myVencidasPrevias = processedLeadsSummary.filter(l => l.categoria_agenda === 'VENCIDA_PREVIA' && l.is_my_lead);
+
+    const otherHoyRetrasadas = processedLeadsSummary.filter(l => l.categoria_agenda === 'VENCIDA_HOY' && !l.is_my_lead);
+    const otherHoyPendientes = processedLeadsSummary.filter(l => l.categoria_agenda === 'HOY_PENDIENTE' && !l.is_my_lead);
+
+    const myMananaTasks = processedLeadsSummary.filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && l.is_my_lead);
+    const otherMananaTasks = processedLeadsSummary.filter(l => l.next_action_date && l.next_action_date.startsWith(tomorrowPeruYmd) && !l.is_my_lead);
+
+    const agendaPrecalculada = `CALENDARIO Y MAPA DE TIEMPO EXACTO (VERDAD ABSOLUTA PARA INTERPRETAR FECHAS Y HORAS):
 ${timeRef.join('\n')}
 
+HORA EXACTA ACTUAL EN PERÚ: ${currentTimeStr} (${todayDateStr}).
+TODO HORARIO MENOR A LAS ${currentTimeStr} YA OCURRIÓ Y PERTENECE AL PASADO. SI NO SE HA COMPLETADO, ESTÁ RETRASADO.
+
 AGENDA OFICIAL PRECALCULADA POR EL SISTEMA:
-- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA HOY (${todayDateStr}):
-${myHoyTasks.length > 0 ? myHoyTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para hoy)'}
+🚨 TAREAS DE HOY (${todayDateStr}) CUYA HORA YA PASÓ (¡ESTÁN RETRASADAS / VENCIDAS HOY!):
+${myHoyRetrasadas.length > 0 ? myHoyRetrasadas.map(t => `  • [TU LEAD RETRASADO HOY] ${t.name} a las ${t.next_action_date.split('T')[1] || ''} (${formatMinsDiff(t.minutos_diferencia)}): "${t.next_action}"`).join('\n') : '  (Ninguna tarea de hoy está retrasada)'}
 
-- TAREAS DEL EQUIPO / OTROS ASESORES PARA HOY:
-${otherHoyTasks.length > 0 ? otherHoyTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (Ningún otro asesor tiene tareas para hoy)'}
+⏳ TAREAS DE HOY (${todayDateStr}) PROGRAMADAS PARA MÁS TARDE (PENDIENTES EN HORARIOS FUTUROS DE HOY):
+${myHoyPendientes.length > 0 ? myHoyPendientes.map(t => `  • [TU LEAD PENDIENTE HOY] ${t.name} a las ${t.next_action_date.split('T')[1] || ''} (${formatMinsDiff(t.minutos_diferencia)}): "${t.next_action}"`).join('\n') : '  (No tienes más tareas programadas para más tarde hoy)'}
 
-- TAREAS PERSONALES DE ${userName.toUpperCase()} PARA MAÑANA (${tomorrowDateStr}):
-${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
+⚠️ TAREAS PENDIENTES DE DÍAS ANTERIORES (VENCIDAS ANTES DE HOY):
+${myVencidasPrevias.slice(0, 8).map(t => `  • [TU LEAD VENCIDO PREVIO] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}
 
-- TAREAS DEL EQUIPO / OTROS ASESORES PARA MAÑANA:
-${otherMananaTasks.length > 0 ? otherMananaTasks.map(t => `  • [Asesor asignado: ${t.advisor_name || 'Otro asesor'}] ${t.name} a las ${t.next_action_date.split('T')[1] || 'hora no especificada'}: "${t.next_action}"`).join('\n') : '  (No hay tareas del equipo para mañana)'}
+📅 TAREAS DE MAÑANA (${tomorrowDateStr}):
+${myMananaTasks.length > 0 ? myMananaTasks.map(t => `  • [TU LEAD MAÑANA] ${t.name} a las ${t.next_action_date.split('T')[1] || ''}: "${t.next_action}"`).join('\n') : '  (No tienes tareas personales agendadas para mañana)'}
 
-- TAREAS PERSONALES PENDIENTES CON FECHA ANTERIOR (VENCIDAS):
-${myVencidas.slice(0, 6).map(t => `  • [TU LEAD] ${t.name} (${t.next_action_date}): "${t.next_action}"`).join('\n')}`;
+RESUMEN DEL EQUIPO HOY:
+- Tareas del equipo que ya pasaron su hora hoy: ${otherHoyRetrasadas.length}
+- Tareas del equipo para más tarde hoy: ${otherHoyPendientes.length}`;
 
     const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para ${userName} y su equipo de ventas de Bienestar Sin Excusas.
 
@@ -210,12 +269,12 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
     - Cada cliente es totalmente independiente: no mezcles sus historiales, tareas ni agendas.
     - Si ${userName} te cuestiona por qué mencionaste a otro cliente o qué pasó, NO des discursos de IA sobre errores de asociación. Responde con sobriedad y en una sola frase breve: "Disculpa la confusión, ${userName}. Enfocándonos 100% en [Nombre del cliente]:" y entrega inmediatamente la información exacta de ese cliente y el copy propuesto.
 
-12. FIDELIDAD ABSOLUTA A LAS HORAS Y FECHAS AGENDADAS (CERO HORAS INVENTADAS):
-    - Lee con exactitud quirúrgica el campo next_action_date de cada cliente:
-      * Rosario López: Su tarea está programada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 11:00 A.M. (next_action_date: 2026-09-16T11:00). NUNCA inventes horas ficticias como "18:59" ni "al cierre". Su hora oficial registrada es 11:00 a.m.
-      * Darío Cienfuegos: Su tarea está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 16:00 (4:00 p.m.).
-      * Carmina Badillo: Su reunión por ZOOM está agendada para MAÑANA MIÉRCOLES 16 DE SETIEMBRE A LAS 22:00 (10:00 p.m.).
-    - Solo reporta las horas exactas que figuran en el registro.
+12. LÓGICA TEMPORAL EXACTA Y CERO CONTRADICCIONES HORARIAS:
+    - HORA EXACTA ACTUAL EN PERÚ: ${currentTimeStr} (${todayDateStr}).
+    - Cualquier hora menor a las ${currentTimeStr} de hoy (ejemplo: 12:00 o 16:00 cuando son las 17:36) YA OCURRIÓ Y PERTENECE AL PASADO.
+    - PROHIBICIÓN TERMINANTE DE LLAMAR "FUTURAS" A HORAS QUE YA PASARON: NUNCA digas que las tareas de hoy con hora anterior a las ${currentTimeStr} son "futuras", que "aún no llegan" o que "están a tiempo sin retraso". Decir eso es una falsedad matemática inadmisible.
+    - Si la hora de una tarea ya pasó hoy y no se ha marcado como realizada o reprogramada, ESTÁ RETRASADA / VENCIDA HOY.
+    - Reporta con total exactitud y transparencia qué tareas de hoy ya pasaron su hora y cuáles son para más tarde.
 
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 {

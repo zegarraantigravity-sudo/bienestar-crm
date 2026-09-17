@@ -10,6 +10,7 @@ const DEFAULT_MODEL = 'qwen-plus';
 import { getLeadAdvisorName, isLeadAssignedToUser, isSuperAdmin } from './utils';
 
 export async function askAICopilot({ userMessage, conversationHistory = [], leads, userEmail, userDisplayName, activeAdvisorFilter = 'todos' }) {
+  const nowMs = Date.now();
   const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(new Date());
 
   // Extract full, rich context of leads including complete timeline, advisor assignment, and ownership
@@ -33,11 +34,15 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
     }
 
     let categoria_agenda = 'SIN_FECHA';
+    let minutos_diferencia = null;
     if (nextActionDate) {
-      const datePart = nextActionDate.split('T')[0];
-      if (datePart === todayPeruYmd) {
-        categoria_agenda = 'HOY';
-      } else if (datePart < todayPeruYmd) {
+      const taskTime = new Date(nextActionDate).getTime();
+      if (!isNaN(taskTime)) {
+        minutos_diferencia = Math.round((taskTime - nowMs) / (60 * 1000));
+      }
+      if (nextActionDate.startsWith(todayPeruYmd)) {
+        categoria_agenda = (minutos_diferencia !== null && minutos_diferencia < 0) ? 'VENCIDA_HOY' : 'HOY_PENDIENTE';
+      } else if (nextActionDate < todayPeruYmd) {
         categoria_agenda = 'VENCIDA';
       } else {
         categoria_agenda = 'FUTURO';
@@ -77,13 +82,13 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
     };
   });
 
-  // Sort leads: User's own leads first, then by agenda (HOY, FUTURO, VENCIDA, SIN_FECHA)
+  // Sort leads: User's own leads first, then by agenda (VENCIDA_HOY, HOY_PENDIENTE, VENCIDA, FUTURO, SIN_FECHA)
   leadsSummary.sort((a, b) => {
     if (a.is_my_lead !== b.is_my_lead) {
       return a.is_my_lead ? -1 : 1;
     }
-    const order = { 'HOY': 0, 'FUTURO': 1, 'VENCIDA': 2, 'SIN_FECHA': 3 };
-    return (order[a.categoria_agenda] ?? 3) - (order[b.categoria_agenda] ?? 3);
+    const order = { 'VENCIDA_HOY': 0, 'HOY_PENDIENTE': 1, 'VENCIDA': 2, 'FUTURO': 3, 'SIN_FECHA': 4 };
+    return (order[a.categoria_agenda] ?? 4) - (order[b.categoria_agenda] ?? 4);
   });
 
   const nowPeru = new Date();
@@ -242,10 +247,11 @@ INSTRUCCIONES CLAVE DE INTELIGENCIA, IDENTIDAD Y MEMORIA:
    - Revisa todo el historial (timeline) del prospecto y su objetivo comercial.
    - Redacta el mensaje exacto para copiar y pegar en WhatsApp con tono peruano/latino natural, empático y persuasivo.
    - Recomienda el día y hora exacta más estratégica para enviarlo.
-6. REGLA ESTRICTA DE FECHAS:
-   - Para tareas de HOY menciona única y exclusivamente los que tienen categoria_agenda "HOY".
-   - Tareas de mañana ponlas claramente en una sección separada abajo.
-   - Carmina Badillo: Zoom agendado para MAÑANA MIÉRCOLES 16 a las 22:00 (10:00 p.m.).
+6. LÓGICA TEMPORAL EXACTA Y CERO CONTRADICCIONES HORARIAS:
+   - HORA ACTUAL EXACTA EN PERÚ: ${clientLocalTime} (${clientLocalDate}).
+   - Cualquier hora menor a las ${clientLocalTime} de hoy (ejemplo: 12:00 o 16:00 cuando son las 17:36) YA PASÓ Y ESTÁ RETRASADA / VENCIDA HOY.
+   - PROHIBICIÓN TERMINANTE: NUNCA digas que tareas con hora anterior a las ${clientLocalTime} son "futuras", que "aún no llegan" o que "están a tiempo sin retraso".
+   - Distingue siempre con total honestidad entre tareas cuya hora ya pasó hoy (retrasadas hoy) y tareas programadas para más tarde hoy (pendientes futuras).
 
 7. PROHIBICIÓN ABSOLUTA DE MOSTRAR IDs, UUIDs O DETALLES TÉCNICOS:
    - NUNCA jamás escribas identificadores numéricos o alfanuméricos de base de datos (como id: "1310426b-...", UUIDs, nombres de tablas o campos) en tu respuesta.

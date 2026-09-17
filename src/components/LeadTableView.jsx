@@ -290,7 +290,7 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead, onOpe
                             </div>
                             {actionDate && (
                               <div style={{ fontSize: '0.72rem', opacity: 0.85, paddingLeft: '18px', fontWeight: 600 }}>
-                                {isOverdue ? '⚠️ Vencido: ' : isToday ? '⏰ HOY: ' : '📅 '}
+                                {isOverdue && isToday ? '⚠️ Retrasada hoy: ' : isOverdue ? '⚠️ Vencido: ' : isToday ? '⏰ HOY: ' : '📅 '}
                                 {formatDateTimeDisplay(actionDate)}
                               </div>
                             )}
