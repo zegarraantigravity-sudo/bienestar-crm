@@ -9,6 +9,64 @@ function normalizeText(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 }
 
+function normalizeStr(str) {
+  if (!str) return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function findMatchingLead(leads, targetId, targetName) {
+  if (!leads || leads.length === 0) return null;
+
+  if (targetId && typeof targetId === 'string' && targetId.trim().length > 10) {
+    const byId = leads.find(l => l.id === targetId.trim());
+    if (byId) return byId;
+  }
+
+  if (!targetName || typeof targetName !== 'string') return null;
+  const cleanTarget = normalizeStr(targetName);
+  if (!cleanTarget) return null;
+  const targetWords = cleanTarget.split(' ').filter(w => w.length > 1);
+
+  let bestLead = null;
+  let bestScore = 0;
+
+  for (const l of leads) {
+    const contact = normalizeStr(l.contact_name);
+    const business = normalizeStr(l.business_name);
+    const combined = contact + ' ' + business;
+
+    if (contact === cleanTarget || business === cleanTarget) {
+      return l;
+    }
+
+    if (contact.includes(cleanTarget) || business.includes(cleanTarget) || cleanTarget.includes(contact) || cleanTarget.includes(business)) {
+      const score = Math.max(contact.length, business.length) > 0 ? 100 : 0;
+      if (score > bestScore) {
+        bestScore = score;
+        bestLead = l;
+      }
+    }
+
+    let matchCount = 0;
+    for (const w of targetWords) {
+      if (combined.includes(w)) matchCount++;
+    }
+    const tokenScore = (matchCount / Math.max(targetWords.length, 1)) * 90;
+    if (tokenScore > bestScore && matchCount >= Math.min(targetWords.length, 2)) {
+      bestScore = tokenScore;
+      bestLead = l;
+    }
+  }
+
+  return bestScore >= 50 ? bestLead : null;
+}
+
 function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
   const t = normalizeText(userText);
@@ -324,13 +382,7 @@ export default function AIChatWidget({ leads, onUpdateLead, userEmail, activeAdv
 
       // Handle intent: update_lead
       if (aiResponse.intent === 'update_lead' && !isUserExplicitDoNotModify && (isUserExplicitUpdate || hasConcreteUpdate) && (aiResponse.target_lead_id || aiResponse.target_lead_name)) {
-        const targetLead = leads.find(l => {
-          if (aiResponse.target_lead_id && l.id === aiResponse.target_lead_id) return true;
-          const searchName = (aiResponse.target_lead_name || '').toLowerCase().trim();
-          const contact = (l.contact_name || '').toLowerCase();
-          const business = (l.business_name || '').toLowerCase();
-          return contact.includes(searchName) || business.includes(searchName) || searchName.includes(contact);
-        });
+        const targetLead = findMatchingLead(leads, aiResponse.target_lead_id, aiResponse.target_lead_name);
 
         if (targetLead) {
           let timeline = [];

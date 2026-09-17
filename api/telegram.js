@@ -197,11 +197,12 @@ export default async function handler(req, res) {
 
     let userText = message.text || message.caption || '';
 
-    // If message is a voice note (audio message)
-    if (message.voice) {
+    // If message is a voice note or audio file
+    const voiceOrAudio = message.voice || message.audio;
+    if (voiceOrAudio) {
       await sendChatAction(chatId, 'typing');
       try {
-        const fileId = message.voice.file_id;
+        const fileId = voiceOrAudio.file_id;
         const fileInfoRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getFile?file_id=${fileId}`);
         const fileInfo = await fileInfoRes.json();
 
@@ -672,13 +673,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   // Handle Intent: Update Lead in Supabase
   let updatePerformed = false;
   if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
-    const targetLead = (leads || []).find(l => {
-      if (parsed.target_lead_id && l.id === parsed.target_lead_id) return true;
-      const searchName = (parsed.target_lead_name || '').toLowerCase().trim();
-      const contact = (l.contact_name || '').toLowerCase();
-      const business = (l.business_name || '').toLowerCase();
-      return contact.includes(searchName) || business.includes(searchName) || searchName.includes(contact);
-    });
+    const targetLead = findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name);
 
     const hasConcreteUpdate = Boolean(
       (parsed.note_text && parsed.note_text.trim().length > 0) ||
@@ -937,13 +932,77 @@ export async function checkAndSendReminders() {
 }
 
 // -------------------------------------------------------------
-// Intent Validation Guardrails
+// Intent Validation Guardrails & Lead Matching
 // -------------------------------------------------------------
 // Helper: Normalize text removing diacritics / accents
 function normalizeText(str) {
   if (!str || typeof str !== 'string') return '';
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 }
+
+function normalizeStr(str) {
+  if (!str) return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Helper: Resilient Fuzzy Lead Matching
+function findMatchingLead(leads, targetId, targetName) {
+  if (!leads || leads.length === 0) return null;
+
+  // 1. Direct ID match
+  if (targetId && typeof targetId === 'string' && targetId.trim().length > 10) {
+    const byId = leads.find(l => l.id === targetId.trim());
+    if (byId) return byId;
+  }
+
+  if (!targetName || typeof targetName !== 'string') return null;
+  const cleanTarget = normalizeStr(targetName);
+  if (!cleanTarget) return null;
+  const targetWords = cleanTarget.split(' ').filter(w => w.length > 1);
+
+  let bestLead = null;
+  let bestScore = 0;
+
+  for (const l of leads) {
+    const contact = normalizeStr(l.contact_name);
+    const business = normalizeStr(l.business_name);
+    const combined = contact + ' ' + business;
+
+    // Exact full match
+    if (contact === cleanTarget || business === cleanTarget) {
+      return l;
+    }
+
+    // Substring inclusion with normalized spaces
+    if (contact.includes(cleanTarget) || business.includes(cleanTarget) || cleanTarget.includes(contact) || cleanTarget.includes(business)) {
+      const score = Math.max(contact.length, business.length) > 0 ? 100 : 0;
+      if (score > bestScore) {
+        bestScore = score;
+        bestLead = l;
+      }
+    }
+
+    // Token overlap match (handles transposed words or speech-to-text slips like "Claudia Vincula")
+    let matchCount = 0;
+    for (const w of targetWords) {
+      if (combined.includes(w)) matchCount++;
+    }
+    const tokenScore = (matchCount / Math.max(targetWords.length, 1)) * 90;
+    if (tokenScore > bestScore && matchCount >= Math.min(targetWords.length, 2)) {
+      bestScore = tokenScore;
+      bestLead = l;
+    }
+  }
+
+  return bestScore >= 50 ? bestLead : null;
+}
+
 
 function isExplicitUpdateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
