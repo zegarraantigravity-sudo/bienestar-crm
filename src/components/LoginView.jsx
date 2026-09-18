@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Lock, Mail, Columns, Eye, EyeOff } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 
-export default function LoginView() {
+export default function LoginView({ isModal = false, onClose = null }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -38,33 +38,76 @@ export default function LoginView() {
     }
   };
 
+  const containerStyle = isModal ? {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 10000,
+    backgroundColor: 'rgba(5, 8, 16, 0.82)',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px'
+  } : {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    width: '100vw',
+    background: 'hsl(var(--bg-main))',
+    backgroundImage: `
+      radial-gradient(at 0% 0%, hsla(215, 90%, 55%, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(270, 85%, 60%, 0.06) 0px, transparent 50%)
+    `,
+    padding: '20px'
+  };
+
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      width: '100vw',
-      background: 'hsl(var(--bg-main))',
-      backgroundImage: `
-        radial-gradient(at 0% 0%, hsla(215, 90%, 55%, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, hsla(270, 85%, 60%, 0.06) 0px, transparent 50%)
-      `,
-      padding: '20px'
-    }}>
+    <div style={containerStyle} onClick={isModal ? (e) => { if (e.target === e.currentTarget && onClose) onClose(); } : undefined}>
       <div style={{
+        position: 'relative',
         width: '100%',
-        maxWidth: '400px',
+        maxWidth: '420px',
         backgroundColor: 'hsl(var(--bg-card))',
         border: '1px solid hsl(var(--border-color))',
         borderRadius: '20px',
-        padding: '40px 32px',
-        boxShadow: 'var(--shadow-lg)',
+        padding: '36px 30px',
+        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px hsla(215, 90%, 55%, 0.1)',
         display: 'flex',
         flexDirection: 'column',
-        gap: '24px',
-        animation: 'slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        gap: '22px',
+        animation: 'slideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
       }}>
+        {isModal && onClose && (
+          <button
+            onClick={onClose}
+            type="button"
+            style={{
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              background: 'hsla(0, 0%, 100%, 0.07)',
+              border: '1px solid hsl(var(--border-color))',
+              color: 'hsl(var(--text-secondary))',
+              borderRadius: '50%',
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              fontSize: '16px',
+              transition: 'var(--transition)'
+            }}
+            aria-label="Cerrar"
+          >
+            ✕
+          </button>
+        )}
         {/* Branding header */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
           <div className="logo-icon" style={{ width: '48px', height: '48px' }}>

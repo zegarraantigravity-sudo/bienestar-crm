@@ -8,6 +8,7 @@ import DashboardView from './components/DashboardView';
 import KanbanView from './components/KanbanView';
 import LeadTableView from './components/LeadTableView';
 import LoginView from './components/LoginView';
+import LandingPageView from './components/LandingPageView';
 
 // Modals & Widgets
 import LeadModal from './components/LeadModal';
@@ -220,9 +221,9 @@ export default function App() {
     }
   };
 
-  // If not logged in, render the Login View
+  // If not logged in, render the SaaS Landing Page View (with Login and Demo request modals)
   if (!session) {
-    return <LoginView />;
+    return <LandingPageView />;
   }
 
   // Filter leads based on user permissions:
