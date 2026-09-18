@@ -652,8 +652,15 @@ INSTRUCCIONES CLAVE:
    - Sí estás conectado al CRM en tiempo real a través de Supabase.
    - Solo modificas datos cuando el usuario te lo ordena expresamente.
 
-11. CREAR PROSPECTOS:
-   - Si el usuario pide crear un prospecto: "intent": "create_lead". Extrae contact_name, business_name, phone, target_plan, estimated_value.
+11. CREAR O REGISTRAR NUEVOS PROSPECTOS / REUNIONES / CITAS:
+   - Si el usuario (${advisor.name}) pide crear un prospecto O pide anotar, agendar o registrar una reunión, llamada o tarea con una persona que no está en la base de datos (ej: "Anota en mi crm reunión con Kevin Dextre...", "Agendar que hablé con Dr. Jean Paulo Sures...", "Poner en mi crm que tengo que agendar presentación con Louis Tristán"):
+     * "intent": "create_lead"
+     * "new_lead_data": { "contact_name": "Nombre de la persona", "business_name": "Nombre o empresa", "phone": "teléfono si lo dio", "target_plan": "plan_30", "estimated_value": 400 }
+     * "target_lead_name": "Nombre de la persona"
+     * "note_text": detalle de la llamada, relación con entrenadores/gimnasios o lo conversado
+     * "next_action_text": próxima acción agendada (ej: "Reunión de demostración", "Seguimiento tras llamada inicial")
+     * "next_action_date": "YYYY-MM-DDTHH:mm" con la fecha y hora coordinada
+     * "new_status": "cita_agendada" si agendó reunión/cita/zoom, "llamado" si ya conversó por teléfono, o "prospecto"
 
 12. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
    - Si preguntan si el bot puede enviar recordatorios: Confirma que SÍ. El sistema envía notificaciones automáticas en Telegram 1h antes de zooms y 20m antes de llamadas registradas en la agenda.
@@ -716,148 +723,205 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   const isUserExplicitUpdate = isExplicitUpdateCommand(userMessage);
   const isUserExplicitCreate = isExplicitCreateCommand(userMessage);
 
-  // Handle Intent: Update Lead in Supabase
+  // Handle Intent: Update or Create Lead in Supabase
   let updatePerformed = false;
-  if (parsed.intent === 'update_lead' && (parsed.target_lead_id || parsed.target_lead_name)) {
-    const targetLead = findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name);
+  const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines|crees|agregues)\b/i.test(userMessage);
 
-    const hasConcreteUpdate = Boolean(
-      (parsed.note_text && parsed.note_text.trim().length > 0) ||
-      (parsed.next_action_date && parsed.next_action_date.trim().length > 0) ||
-      (parsed.next_action_text && parsed.next_action_text.trim().length > 0) ||
+  const hasConcreteUpdate = Boolean(
+    (parsed.note_text && parsed.note_text.trim().length > 0) ||
+    (parsed.next_action_date && parsed.next_action_date.trim().length > 0) ||
+    (parsed.next_action_text && parsed.next_action_text.trim().length > 0) ||
+    parsed.clear_next_action === true ||
+    parsed.new_status ||
+    parsed.new_plan ||
+    parsed.new_assigned_to
+  );
+
+  let targetLead = null;
+  if (parsed.target_lead_id || parsed.target_lead_name) {
+    targetLead = findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name);
+  }
+
+  const candidateContactName = (parsed.new_lead_data?.contact_name || parsed.target_lead_name || '').trim();
+  if (!targetLead && candidateContactName) {
+    targetLead = findMatchingLead(leads, null, candidateContactName);
+  }
+
+  // 1. UPDATE EXISTING LEAD IN CRM
+  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (
+    isUserExplicitUpdate ||
+    isUserExplicitCreate ||
+    hasConcreteUpdate ||
+    parsed.intent === 'update_lead' ||
+    parsed.intent === 'create_lead'
+  );
+
+  if (shouldPerformUpdate) {
+    let timeline = [];
+    let currentNextAction = '';
+    let currentNextDate = '';
+    let currentLostReason = '';
+    let currentLostLabel = '';
+
+    try {
+      const p = JSON.parse(targetLead.notes || '[]');
+      if (Array.isArray(p)) timeline = p;
+      else if (p && typeof p === 'object') {
+        timeline = p.timeline || [];
+        currentNextAction = p.next_action || '';
+        currentNextDate = p.next_action_date || '';
+        currentLostReason = p.lost_reason || '';
+        currentLostLabel = p.lost_reason_label || '';
+      } else if (targetLead.notes) {
+        timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
+      }
+    } catch (e) {
+      if (targetLead.notes) timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
+    }
+
+    // Only add to timeline if the user or AI actually stated note details
+    const noteContent = parsed.note_text || parsed.new_lead_data?.notes || '';
+    if (noteContent && noteContent.trim().length > 0) {
+      const noteWithAuthor = `${noteContent.trim()} [Registrado por ${advisor.name} vía Telegram]`;
+      timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
+    }
+
+    // Check if user or AI wants to clear/delete the scheduled next action
+    const wantsToClearNextAction =
       parsed.clear_next_action === true ||
-      parsed.new_status ||
-      parsed.new_plan ||
-      parsed.new_assigned_to
-    );
+      (parsed.next_action_text !== undefined && ['borrar', 'eliminar', 'ninguna', 'ninguno', 'vacio', 'vacío', 'clear', 'none', ''].includes(String(parsed.next_action_text).toLowerCase().trim()) && parsed.clear_next_action !== false) ||
+      (/\b(borra|borrar|elimina|eliminar|quita|quitar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco|sin pr[oó]xima acci[oó]n|limpia|limpiar)\b/i.test(userMessage) &&
+       /\b(pr[oó]xima acci[oó]n|acci[oó]n pendiente|fecha|tarea|alarma|recordatorio)\b/i.test(userMessage));
 
-    const isUserExplicitDoNotModify = /\bno\s+(modificar|modifiques|cambies|actualices|toques|hagas|guardes|anotes|registres|borres|elimines)\b/i.test(userMessage);
+    let finalNextAction = currentNextAction;
+    let finalNextDate = currentNextDate;
 
-    const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (isUserExplicitUpdate || hasConcreteUpdate);
+    if (wantsToClearNextAction) {
+      finalNextAction = '';
+      finalNextDate = '';
+    } else {
+      if (parsed.next_action_text !== undefined && parsed.next_action_text !== null && parsed.next_action_text !== '') {
+        finalNextAction = parsed.next_action_text;
+      }
+      if (parsed.next_action_date !== undefined && parsed.next_action_date !== null && parsed.next_action_date !== '') {
+        finalNextDate = parsed.next_action_date;
+      }
+    }
 
-    if (shouldPerformUpdate) {
-      let timeline = [];
-      let currentNextAction = '';
-      let currentNextDate = '';
-      let currentLostReason = '';
-      let currentLostLabel = '';
-
-      try {
-        const p = JSON.parse(targetLead.notes || '[]');
-        if (Array.isArray(p)) timeline = p;
-        else if (p && typeof p === 'object') {
-          timeline = p.timeline || [];
-          currentNextAction = p.next_action || '';
-          currentNextDate = p.next_action_date || '';
-          currentLostReason = p.lost_reason || '';
-          currentLostLabel = p.lost_reason_label || '';
-        } else if (targetLead.notes) {
-          timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
+    // Handle Reassignment / Lead Transfer
+    let newlyAssignedAdvisor = null;
+    if (parsed.new_assigned_to) {
+      const rawTarget = String(parsed.new_assigned_to).toLowerCase();
+      if (rawTarget.includes('luis') || rawTarget.includes('hakim') || rawTarget.includes('socio')) {
+        newlyAssignedAdvisor = 'Luis Hakim';
+      } else if (rawTarget.includes('alberto') || rawTarget.includes('zegarra') || rawTarget.includes('admin')) {
+        newlyAssignedAdvisor = 'Alberto Zegarra';
+      }
+      if (newlyAssignedAdvisor) {
+        const reassignNote = `Lead transferido/reasignado a ${newlyAssignedAdvisor} por ${advisor.name} vía Telegram`;
+        if (!timeline.some(n => n.text && n.text.includes(`reasignado a ${newlyAssignedAdvisor}`))) {
+          timeline = [{ date: new Date().toISOString(), text: reassignNote }, ...timeline];
         }
-      } catch (e) {
-        if (targetLead.notes) timeline = [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }];
       }
+    }
 
-      // Only add to timeline if the user actually stated note details
-      if (parsed.note_text && parsed.note_text.trim().length > 0) {
-        const noteWithAuthor = `${parsed.note_text.trim()} [Registrado por ${advisor.name} vía Telegram]`;
-        timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
-      }
+    const updatedNotesPayload = JSON.stringify({
+      timeline,
+      next_action: finalNextAction,
+      next_action_date: finalNextDate,
+      lost_reason: currentLostReason,
+      lost_reason_label: currentLostLabel
+    });
 
-      // Check if user or AI wants to clear/delete the scheduled next action
-      const wantsToClearNextAction =
-        parsed.clear_next_action === true ||
-        (parsed.next_action_text !== undefined && ['borrar', 'eliminar', 'ninguna', 'ninguno', 'vacio', 'vacío', 'clear', 'none', ''].includes(String(parsed.next_action_text).toLowerCase().trim()) && parsed.clear_next_action !== false) ||
-        (/\b(borra|borrar|elimina|eliminar|quita|quitar|deja en blanco|dejar en blanco|dejarlo en blanco|d[eé]jalo en blanco|sin pr[oó]xima acci[oó]n|limpia|limpiar)\b/i.test(userMessage) &&
-         /\b(pr[oó]xima acci[oó]n|acci[oó]n pendiente|fecha|tarea|alarma|recordatorio)\b/i.test(userMessage));
+    const updateFields = {
+      notes: updatedNotesPayload,
+      last_interaction: new Date().toISOString()
+    };
+    if (parsed.new_status) updateFields.status = parsed.new_status;
+    if (parsed.new_plan || parsed.new_lead_data?.target_plan) updateFields.target_plan = parsed.new_plan || parsed.new_lead_data?.target_plan;
+    if (newlyAssignedAdvisor) updateFields.assigned_to = newlyAssignedAdvisor;
 
-      let finalNextAction = currentNextAction;
-      let finalNextDate = currentNextDate;
-
-      if (wantsToClearNextAction) {
-        finalNextAction = '';
-        finalNextDate = '';
+    const { error: updateErr } = await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
+    if (!updateErr) {
+      updatePerformed = true;
+      if (newlyAssignedAdvisor) {
+        badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
       } else {
-        if (parsed.next_action_text !== undefined && parsed.next_action_text !== null && parsed.next_action_text !== '') {
-          finalNextAction = parsed.next_action_text;
-        }
-        if (parsed.next_action_date !== undefined && parsed.next_action_date !== null && parsed.next_action_date !== '') {
-          finalNextDate = parsed.next_action_date;
-        }
+        badgePrefix = `✅ <b>CRM actualizado</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
       }
-
-      // Handle Reassignment / Lead Transfer
-      let newlyAssignedAdvisor = null;
-      if (parsed.new_assigned_to) {
-        const rawTarget = String(parsed.new_assigned_to).toLowerCase();
-        if (rawTarget.includes('luis') || rawTarget.includes('hakim') || rawTarget.includes('socio')) {
-          newlyAssignedAdvisor = 'Luis Hakim';
-        } else if (rawTarget.includes('alberto') || rawTarget.includes('zegarra') || rawTarget.includes('admin')) {
-          newlyAssignedAdvisor = 'Alberto Zegarra';
-        }
-        if (newlyAssignedAdvisor) {
-          const reassignNote = `Lead transferido/reasignado a ${newlyAssignedAdvisor} por ${advisor.name} vía Telegram`;
-          if (!timeline.some(n => n.text && n.text.includes(`reasignado a ${newlyAssignedAdvisor}`))) {
-            timeline = [{ date: new Date().toISOString(), text: reassignNote }, ...timeline];
-          }
-        }
-      }
-
-      const updatedNotesPayload = JSON.stringify({
-        timeline,
-        next_action: finalNextAction,
-        next_action_date: finalNextDate,
-        lost_reason: currentLostReason,
-        lost_reason_label: currentLostLabel
-      });
-
-      const updateFields = {
-        notes: updatedNotesPayload,
-        last_interaction: new Date().toISOString()
-      };
-      if (parsed.new_status) updateFields.status = parsed.new_status;
-      if (parsed.new_plan) updateFields.target_plan = parsed.new_plan;
-      if (newlyAssignedAdvisor) updateFields.assigned_to = newlyAssignedAdvisor;
-
-      const { error: updateErr } = await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
-      if (!updateErr) {
-        updatePerformed = true;
-        if (newlyAssignedAdvisor) {
-          badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
-        } else {
-          badgePrefix = `✅ <b>Bitácora actualizada en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
-        }
-      } else {
-        console.error('Error updating lead in supabase:', updateErr);
-        badgePrefix = `⚠️ <i>Hubo un error al guardar en el CRM: ${updateErr.message}</i>\n\n`;
-      }
-    } else if (!targetLead && isUserExplicitUpdate) {
-      badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
+    } else {
+      console.error('Error updating lead in supabase:', updateErr);
+      badgePrefix = `⚠️ <i>Hubo un error al guardar en el CRM: ${updateErr.message}</i>\n\n`;
     }
   }
 
-  // Handle Intent: Create Lead in Supabase ONLY IF user explicitly commanded it
-  if (parsed.intent === 'create_lead' && isUserExplicitCreate && parsed.new_lead_data?.contact_name) {
-    const d = parsed.new_lead_data;
+  // 2. CREATE NEW LEAD IN CRM (IF NOT FOUND AND INTENT OR USER COMMAND DIRECTS TO CREATE/SCHEDULE)
+  const isInvalidContactName = !candidateContactName ||
+    candidateContactName.length < 2 ||
+    ['crm', 'sistema', 'bot', 'copilot', 'bitacora', 'prospecto', 'cliente', 'lead', 'null', 'undefined', 'nada', 'ninguno'].includes(candidateContactName.toLowerCase());
+
+  const shouldCreateNewLead = !targetLead && !isUserExplicitDoNotModify && !isInvalidContactName && (
+    parsed.intent === 'create_lead' ||
+    isUserExplicitCreate ||
+    ((isUserExplicitUpdate || hasConcreteUpdate) && (parsed.note_text || parsed.next_action_text || parsed.next_action_date))
+  );
+
+  if (shouldCreateNewLead) {
+    const d = parsed.new_lead_data || {};
+    const contactName = candidateContactName;
+    const businessName = d.business_name || contactName;
+
+    // Detect status smartly if not explicitly given
+    const initialStatus = parsed.new_status || (
+      /\b(zoom|reuni[oó]n|cita|demo)\b/i.test(`${parsed.next_action_text || ''} ${userMessage}`) ? 'cita_agendada' :
+      /\b(habl[eé]|llam[eé]|convers[eé]|llamada)\b/i.test(userMessage) ? 'llamado' : 'prospecto'
+    );
+
+    let initialTimeline = [];
+    const noteText = parsed.note_text || d.notes || '';
+    if (noteText && noteText.trim().length > 0) {
+      initialTimeline.push({
+        date: new Date().toISOString(),
+        text: `${noteText.trim()} [Registrado por ${advisor.name} vía Telegram]`
+      });
+    } else {
+      initialTimeline.push({
+        date: new Date().toISOString(),
+        text: `Prospecto creado vía Copiloto Telegram por ${advisor.name}`
+      });
+    }
+
+    const defaultAction = initialStatus === 'cita_agendada' ? 'Reunión agendada' : 'Enviar mensaje de bienvenida y presentación';
+    const nextAction = parsed.next_action_text || defaultAction;
+    const nextActionDate = parsed.next_action_date || (initialStatus === 'cita_agendada' ? '' : new Date(Date.now() + 24 * 3600 * 1000).toISOString().slice(0, 16));
+
     const newLeadRecord = {
-      contact_name: d.contact_name,
-      business_name: d.business_name || d.contact_name,
+      contact_name: contactName,
+      business_name: businessName,
       phone: d.phone || '',
-      target_plan: d.target_plan || 'plan_30',
-      estimated_value: d.estimated_value || 400,
-      status: 'prospecto',
+      target_plan: d.target_plan || parsed.new_plan || 'plan_30',
+      estimated_value: d.estimated_value || parsed.new_value || 400,
+      status: initialStatus,
       assigned_to: advisor.name,
       created_at: new Date().toISOString(),
       last_interaction: new Date().toISOString(),
       notes: JSON.stringify({
-        timeline: [{ date: new Date().toISOString(), text: `Prospecto creado vía Copiloto Telegram por ${advisor.name}` }],
-        next_action: 'Enviar mensaje de bienvenida y presentación',
-        next_action_date: new Date(Date.now() + 24 * 3600 * 1000).toISOString().slice(0, 16)
+        timeline: initialTimeline,
+        next_action: nextAction,
+        next_action_date: nextActionDate
       })
     };
 
-    await supabase.from('leads').insert([newLeadRecord]);
-    badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM (asignado a ${advisor.name}):</b> <i>${d.contact_name}</i>\n\n`;
+    const { data: insertedData, error: insertErr } = await supabase.from('leads').insert([newLeadRecord]).select();
+    if (!insertErr && insertedData?.[0]) {
+      updatePerformed = true;
+      badgePrefix = `🎉 <b>Nuevo prospecto creado en CRM para ${advisor.name}:</b> <i>${contactName}</i>\n\n`;
+    } else {
+      console.error('Error inserting new lead in supabase:', insertErr);
+      badgePrefix = `⚠️ <i>Hubo un error al crear el prospecto en el CRM: ${insertErr?.message || 'Error desconocido'}</i>\n\n`;
+    }
+  } else if (!targetLead && isUserExplicitUpdate && !updatePerformed) {
+    badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
   }
 
   let cleanReply = parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`;
@@ -869,8 +933,12 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   }
 
   if (!updatePerformed) {
-    // Sanitize any false claims of CRM update if no write occurred in database
+    // Sanitize any false claims of CRM update or creation if no write occurred in database
     cleanReply = cleanReply
+      .replace(/^(\s*✅\s*)?(prospecto\s+(creado|registrado|agendado)[^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(nuevo\s+prospecto[^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(.*ha\s+sido\s+registrado[^\n]*\n*)/i, '')
+      .replace(/^(\s*✅\s*)?(.*ya\s+est[aá]\s+(registrado|actualizado|agendado)[^\n]*\n*)/i, '')
       .replace(/^(\s*✅\s*)?(bit[aá]cora.*actualizada[^\n]*\n*)/i, '')
       .replace(/^(\s*✅\s*)?(actualizado en el crm[^\n]*\n*)/i, '')
       .replace(/^(\s*✅\s*)?(ya actualic[eé][^\n]*\n*)/i, '')
@@ -1100,8 +1168,8 @@ function isExplicitUpdateCommand(userText) {
 function isExplicitCreateCommand(userText) {
   if (!userText || typeof userText !== 'string') return false;
   const t = normalizeText(userText);
-  if (/\bno\s+(crees|agregues|registres)\b/i.test(t)) return false;
-  return /\b(crea(r)?(lo|le|me)?|agrega(r)?(lo|le|me)?|nuevo prospecto|nuevo cliente|nuevo lead|crear lead|registra nuevo)\b/i.test(t);
+  if (/\bno\s+(crees|agregues|registres|guardes|pongas|anotes)\b/i.test(t)) return false;
+  return /\b(crea(r)?(lo|le|me)?|agrega(r)?(lo|le|me)?|nuevo\s+(prospecto|cliente|lead|contacto)|nueva\s+(cita|reuni[oó]n)|crear\s+lead|registra(r)?(\s+(nuevo|a|al))?|anota(r)?\s+(en\s+(el|mi)\s+crm\s+)?(reuni[oó]n|cita|llamada|seguimiento|habl[eé]|con)|agenda(r)?\s+(en\s+(el|mi)\s+crm\s+)?(reuni[oó]n|cita|llamada|seguimiento|habl[eé]|que|con)|pon(er)?\s+en\s+(el|mi)\s+crm|ingresa(r)?|apunta(r)?)\b/i.test(t);
 }
 
 // -------------------------------------------------------------
@@ -1152,7 +1220,10 @@ function parseAIResponse(raw) {
   const noteTextMatch = clean.match(/"note_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action/);
   const nextActionMatch = clean.match(/"next_action_text"\s*:\s*"([\s\S]*?)"\s*,\s*"next_action_date/);
   const nextDateMatch = clean.match(/"next_action_date"\s*:\s*"([^"]*)"/);
+  const newStatusMatch = clean.match(/"new_status"\s*:\s*"([^"]*)"/);
+  const newPlanMatch = clean.match(/"new_plan"\s*:\s*"([^"]*)"/);
   const newAssignedMatch = clean.match(/"new_assigned_to"\s*:\s*"([^"]*)"/);
+  const contactNameMatch = clean.match(/"contact_name"\s*:\s*"([^"]*)"/);
 
   const replyMatch = clean.match(/"reply_message"\s*:\s*"([\s\S]*)/);
   let replyContent = '';
@@ -1182,11 +1253,14 @@ function parseAIResponse(raw) {
   return {
     intent: intentMatch ? intentMatch[1] : 'general_chat',
     target_lead_id: targetIdMatch ? targetIdMatch[1] : null,
-    target_lead_name: targetNameMatch ? targetNameMatch[1] : null,
+    target_lead_name: targetNameMatch ? targetNameMatch[1] : (contactNameMatch ? contactNameMatch[1] : null),
     note_text: noteTextMatch ? noteTextMatch[1] : '',
     next_action_text: nextActionMatch ? nextActionMatch[1] : '',
     next_action_date: nextDateMatch ? nextDateMatch[1] : '',
+    new_status: newStatusMatch ? newStatusMatch[1] : null,
+    new_plan: newPlanMatch ? newPlanMatch[1] : null,
     new_assigned_to: newAssignedMatch ? newAssignedMatch[1] : null,
+    new_lead_data: contactNameMatch ? { contact_name: contactNameMatch[1] } : null,
     reply_message: replyContent
   };
 }
