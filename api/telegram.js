@@ -467,13 +467,24 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
     let timeline = [];
     let nextAction = '';
     let nextActionDate = '';
+    let lostReason = '';
     try {
       const p = JSON.parse(l.notes || '{}');
-      if (Array.isArray(p)) timeline = p.map(n => n.text);
-      else if (p && typeof p === 'object') {
-        timeline = (p.timeline || []).map(n => n.text);
+      if (Array.isArray(p)) {
+        timeline = p.map(n => {
+          if (!n) return '';
+          const d = n.date ? `[${n.date.slice(0, 16).replace('T', ' ')}] ` : '';
+          return `${d}${n.text || String(n)}`;
+        }).filter(Boolean);
+      } else if (p && typeof p === 'object') {
+        timeline = (p.timeline || []).map(n => {
+          if (!n) return '';
+          const d = n.date ? `[${n.date.slice(0, 16).replace('T', ' ')}] ` : '';
+          return `${d}${n.text || String(n)}`;
+        }).filter(Boolean);
         nextAction = p.next_action || '';
         nextActionDate = p.next_action_date || '';
+        lostReason = p.lost_reason_label || p.lost_reason || '';
       } else if (l.notes) {
         timeline = [l.notes];
       }
@@ -519,8 +530,9 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       id: l.id,
       name: l.contact_name || l.business_name,
       business: l.business_name,
-      phone: l.phone,
-      client_type: l.client_type,
+      phone: l.phone || '',
+      email: l.email || '',
+      client_type: l.client_type || 'otro',
       status: l.status,
       target_plan: l.target_plan,
       estimated_value: l.estimated_value,
@@ -528,9 +540,10 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       is_my_lead: isMyLead,
       next_action: nextAction,
       next_action_date: nextActionDate,
+      lost_reason: lostReason,
       categoria_agenda,
       minutos_diferencia,
-      timeline: (timeline || []).slice(0, 2).map(t => typeof t === 'string' && t.length > 250 ? t.slice(0, 250) + '...' : t)
+      timeline: (timeline || []).slice(0, 8)
     };
   });
 
@@ -610,6 +623,7 @@ INSTRUCCIONES CLAVE:
 
 3. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
    - Si el usuario está preguntando o hablando sobre un cliente específico, CONCÉNTRATE AL 100% EN ESE CLIENTE.
+   - Si te piden información, la bitácora o el historial de un cliente, reporta fielmente todo lo que está en su ficha: su historial de notas en "timeline" (con fechas y qué se habló), su estado actual en el embudo, su próxima acción con fecha/hora, su plan objetivo y valor estimado, y el asesor asignado.
    - NUNCA menciones a otros clientes ni mezcles historiales de otros prospectos.
    - Cada cliente es totalmente independiente.
    - Si el usuario te corrige o reclama una confusión, acéptalo en UNA SOLA frase corta y sobria ("Disculpa la confusión. Enfocándonos en [Nombre]:") y entrega la información exacta.
