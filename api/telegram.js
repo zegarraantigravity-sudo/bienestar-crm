@@ -1279,21 +1279,20 @@ function formatForTelegramHtml(text) {
   clean = clean.replace(/\(\s*\)/g, '').replace(/  +/g, ' ');
 
   // Convert **bold** to <b>bold</b>
-  clean = clean.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+  clean = clean.replace(/\*\*([^*]+?)\*\*/g, '<b>$1</b>');
 
-  // Convert *italic* to <i>italic</i>
-  clean = clean.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<i>$1</i>');
+  // Convert `code` to <code>code</code>
+  clean = clean.replace(/`([^`]+?)`/g, '<code>$1</code>');
 
-  // Convert WhatsApp quotes into blockquotes
-  clean = clean.replace(/"([^"]{25,})"/g, '<blockquote>"$1"</blockquote>');
-  clean = clean.replace(/“([^”]{25,})”/g, '<blockquote>“$1”</blockquote>');
+  // Convert *italic* to <i>italic</i> only for clean single phrases without newlines
+  clean = clean.replace(/(?<!\*)\*([^*\n]{1,80})\*(?!\*)/g, '<i>$1</i>');
 
   return clean;
 }
 
 async function sendTelegramMessage(chatId, htmlText) {
   try {
-    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1302,6 +1301,29 @@ async function sendTelegramMessage(chatId, htmlText) {
         parse_mode: 'HTML'
       })
     });
+    const data = await res.json();
+    if (!data.ok) {
+      console.warn('Telegram sendMessage with HTML failed:', data.description, '- Falling back to plain text');
+      // If Telegram rejects HTML parsing, strip tags and deliver immediately as plain text
+      const plainText = htmlText
+        .replace(/<b>(.*?)<\/b>/gi, '$1')
+        .replace(/<i>(.*?)<\/i>/gi, '$1')
+        .replace(/<code>(.*?)<\/code>/gi, '$1')
+        .replace(/<blockquote>(.*?)<\/blockquote>/gis, '$1')
+        .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>');
+
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: plainText
+        })
+      });
+    }
   } catch (err) {
     console.error('Failed to send Telegram message:', err);
   }
