@@ -103,7 +103,7 @@ export default function LandingPageView() {
     );
 
     setTimeout(() => {
-      window.open(`https://wa.me/51922447982?text=${msg}`, '_blank');
+      window.open(`https://wa.me/51978438246?text=${msg}`, '_blank');
     }, 400);
   };
 
@@ -1397,8 +1397,8 @@ export default function LandingPageView() {
 
           <div style={{ display: 'flex', gap: '24px' }}>
             <span style={{ cursor: 'pointer' }} onClick={() => setShowLoginModal(true)}>Acceso Asesores</span>
-            <a href="https://wa.me/51922447982" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-              WhatsApp: +51 922 447 982
+            <a href="https://wa.me/51978438246" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+              WhatsApp: +51 978 438 246
             </a>
           </div>
         </div>
