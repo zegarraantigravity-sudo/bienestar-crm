@@ -635,12 +635,13 @@ INSTRUCCIONES CLAVE:
      * "es un error de tipeo tuyo"
    - Habla SIEMPRE como un director comercial humano de élite: empático, conciso, respetuoso, directo y orientado al cierre de ventas.
 
-3. CÓMO RESPONDER CUANDO PREGUNTAN "¿QUÉ TAREAS TENGO HOY?" O "¿QUÉ TAREAS HAY PARA HOY?":
-   - Si no quedan reuniones ni llamadas pendientes para lo que resta del día:
-     1. Dilo con naturalidad y brevedad en una sola frase amigable: "Para lo que resta de hoy no tienes más llamadas agendadas en tu calendario."
-     2. Pasa DE INMEDIATO a presentar los prospectos prioritarios con seguimiento pendiente que quedaron de días recientes (Darío Cienfuegos, Claudia Advíncula, Sócrates, Yoselin Nails, etc.) indicando qué toca hacer con cada uno.
-     3. Ofrece redactar el mensaje de WhatsApp para el que elija.
-   - NUNCA digas "NINGUNA" en mayúsculas ni trates el día como un sermón. Sé útil y propositivo.
+3. CÓMO RESPONDER CUANDO PREGUNTAN POR TAREAS (DE HOY, VENCIDAS O GENERALES):
+   - MÁXIMA BREVEDAD Y FORMATO LIMPIO (MÁXIMO 5 LÍNEAS):
+     * CERO rodeos, cero párrafos largos de justificación, cero discursos sobre tener la agenda vacía.
+     * Si hay seguimientos pendientes en la lista de arriba, NUNCA digas "Ninguna". Di: "Tienes estos seguimientos pendientes listos para accionar:" y lista directamente los prospectos en viñetas cortas:
+       1. [Nombre] — [Acción concreta]
+       2. [Nombre] — [Acción concreta]
+     * Cierra directamente con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
 
 4. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
    - Si el usuario está preguntando o hablando sobre un cliente específico, CONCÉNTRATE AL 100% EN ESE CLIENTE.
@@ -1387,6 +1388,17 @@ function formatForTelegramHtml(text) {
   clean = clean.replace(/\(?\bids?\s*:\s*["']?[0-9a-fA-F-]{36}["']?\)?/gi, '');
   clean = clean.replace(/\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b/g, '');
   clean = clean.replace(/\(\s*\)/g, '').replace(/  +/g, ' ');
+
+  // Scrub any internal code variable leaks
+  clean = clean.replace(/\b(is_my_lead|next_action_date|categoria_agenda|minutos_diferencia)\b\s*:\s*(true|false|\w+)/gi, '');
+  clean = clean.replace(/\b(is_my_lead|next_action_date)\b/gi, '');
+
+  // Scrub robotic or defensive lectures
+  clean = clean.replace(/Esto no es un error del sistema[^.\n]*[.\n]?/gi, '');
+  clean = clean.replace(/es una realidad operativa[^.\n]*[.\n]?/gi, '');
+  clean = clean.replace(/la integridad del sistema[^.\n]*[.\n]?/gi, '');
+  clean = clean.replace(/debo ser (absolutamente )?transparente contigo[^.\n]*[.\n]?/gi, '');
+  clean = clean.replace(/es un error de tipeo tuyo[^.\n]*[.\n]?/gi, '');
 
   // Convert **bold** to <b>bold</b>
   clean = clean.replace(/\*\*([^*]+?)\*\*/g, '<b>$1</b>');
