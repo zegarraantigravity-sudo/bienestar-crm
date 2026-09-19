@@ -230,9 +230,10 @@ export default function LeadTableView({ leads, onSelectLead, onAddNewLead, onOpe
                   const waUrl = getWhatsAppUrl(lead.phone, lead.contact_name || lead.business_name);
                   
                   const daysInactive = getDaysInactive(lead.last_interaction);
-                  const isStale = daysInactive >= 5 && !['cerrado_ganado', 'cerrado_perdido'].includes(lead.status);
-                  const isOverdue = isDateOverdue(actionDate);
-                  const isToday = isDateToday(actionDate);
+                  const isClosed = ['cerrado_ganado', 'cerrado_perdido'].includes(lead.status);
+                  const isStale = daysInactive >= 5 && !isClosed;
+                  const isOverdue = !isClosed && isDateOverdue(actionDate);
+                  const isToday = !isClosed && isDateToday(actionDate);
 
                   return (
                     <tr key={lead.id} onClick={() => onSelectLead(lead)}>
