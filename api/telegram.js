@@ -694,6 +694,11 @@ INSTRUCCIONES CLAVE:
      * "new_assigned_to": "Luis Hakim" (o "Alberto Zegarra")
      * En "reply_message" confirma con claridad que el prospecto quedó transferido a [Nombre del Asesor] en el CRM, y que las próximas alarmas y recordatorios automáticos de Telegram ahora le llegarán a él.
 
+14. COMPRENSIÓN FONÉTICA INTELIGENTE (PROHIBICIÓN ABSOLUTA DE DISCUTIR O RECLAMAR SOBRE NOMBRES):
+   - Los audios y notas de voz son transcritos por el micrófono y frecuentemente tienen pequeñas variaciones fonéticas (ej: "Luis Kulki" o "Luis Kulkin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula).
+   - NUNCA discutas, corrijas ni des sermones técnicos al usuario sobre cómo está escrito un nombre en la base de datos (PROHIBIDO decir "no existe ningún Luis Kulki", "es un error tuyo", "debo ser transparente contigo", etc.). Esas respuestas están TERMINANTEMENTE PROHIBIDAS.
+   - Si el usuario dice "Luis Kulki", "Kulkin", "Culqui" o menciona un lead con variación fonética, asócialo DE INMEDIATO al lead real (Luis Culqui) en "target_lead_name", define "intent": "update_lead", y ejecuta la orden (bitácora, estado cerrado_ganado, etc.) con rapidez y eficacia.
+
 RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
 {
   "intent": "update_lead" | "create_lead" | "general_chat",
@@ -768,6 +773,11 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   const candidateContactName = (parsed.new_lead_data?.contact_name || parsed.target_lead_name || '').trim();
   if (!targetLead && candidateContactName) {
     targetLead = findMatchingLead(leads, null, candidateContactName);
+  }
+
+  // Fallback: search lead name directly inside the raw user prompt
+  if (!targetLead && userMessage) {
+    targetLead = findMatchingLead(leads, null, userMessage);
   }
 
   // 1. UPDATE EXISTING LEAD IN CRM
@@ -1123,13 +1133,31 @@ function normalizeStr(str) {
     .trim();
 }
 
-// Helper: Resilient Fuzzy Lead Matching
+function phoneticNormalize(str) {
+  if (!str) return '';
+  return normalizeStr(str)
+    .replace(/qu/g, 'k')
+    .replace(/c(?=[aou\s]|$)/g, 'k')
+    .replace(/c(?=[ei])/g, 's')
+    .replace(/z/g, 's')
+    .replace(/v/g, 'b')
+    .replace(/y/g, 'i')
+    .replace(/ll/g, 'i')
+    .replace(/h/g, '')
+    .replace(/(.)\1+/g, '$1')
+    .trim();
+}
+
+// Helper: Resilient Fuzzy & Phonetic Lead Matching (handles speech-to-text slips like Kulki/Culqui)
 function findMatchingLead(leads, targetId, targetName) {
   if (!leads || leads.length === 0) return null;
 
+  // Filter out system session records
+  const realLeads = leads.filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION');
+
   // 1. Direct ID match
   if (targetId && typeof targetId === 'string' && targetId.trim().length > 10) {
-    const byId = leads.find(l => l.id === targetId.trim());
+    const byId = realLeads.find(l => l.id === targetId.trim());
     if (byId) return byId;
   }
 
@@ -1137,17 +1165,27 @@ function findMatchingLead(leads, targetId, targetName) {
   const cleanTarget = normalizeStr(targetName);
   if (!cleanTarget) return null;
   const targetWords = cleanTarget.split(' ').filter(w => w.length > 1);
+  const targetPhonetic = phoneticNormalize(cleanTarget);
+  const targetPhoneticWords = targetPhonetic.split(' ').filter(w => w.length > 1);
 
   let bestLead = null;
   let bestScore = 0;
 
-  for (const l of leads) {
+  for (const l of realLeads) {
     const contact = normalizeStr(l.contact_name);
     const business = normalizeStr(l.business_name);
     const combined = contact + ' ' + business;
+    const contactPhonetic = phoneticNormalize(l.contact_name);
+    const businessPhonetic = phoneticNormalize(l.business_name);
+    const combinedPhonetic = contactPhonetic + ' ' + businessPhonetic;
 
     // Exact full match
     if (contact === cleanTarget || business === cleanTarget) {
+      return l;
+    }
+
+    // Exact phonetic full match (e.g. "Luis Kulki" === "Luis Culqui")
+    if (contactPhonetic === targetPhonetic || businessPhonetic === targetPhonetic) {
       return l;
     }
 
@@ -1160,19 +1198,48 @@ function findMatchingLead(leads, targetId, targetName) {
       }
     }
 
-    // Token overlap match (handles transposed words or speech-to-text slips like "Claudia Vincula")
-    let matchCount = 0;
-    for (const w of targetWords) {
-      if (combined.includes(w)) matchCount++;
+    // Phonetic substring inclusion (e.g. "kulkin" in target matches "kulki" in phonetic contact)
+    if (contactPhonetic.includes(targetPhonetic) || businessPhonetic.includes(targetPhonetic) ||
+        targetPhonetic.includes(contactPhonetic) || targetPhonetic.includes(businessPhonetic)) {
+      const score = 95;
+      if (score > bestScore) {
+        bestScore = score;
+        bestLead = l;
+      }
     }
-    const tokenScore = (matchCount / Math.max(targetWords.length, 1)) * 90;
-    if (tokenScore > bestScore && matchCount >= Math.min(targetWords.length, 2)) {
+
+    // Word-level phonetic matching
+    let phoneticMatches = 0;
+    for (const pw of targetPhoneticWords) {
+      if (combinedPhonetic.includes(pw) ||
+          (pw.startsWith('kulki') && combinedPhonetic.includes('kulki')) ||
+          (combinedPhonetic.includes(pw.slice(0, 4)) && pw.length >= 4)) {
+        phoneticMatches++;
+      }
+    }
+    const tokenScore = (phoneticMatches / Math.max(targetPhoneticWords.length, 1)) * 90;
+    if (tokenScore > bestScore && phoneticMatches >= 1) {
       bestScore = tokenScore;
       bestLead = l;
     }
   }
 
-  return bestScore >= 50 ? bestLead : null;
+  // Fallback: single unique lead match by key phonetic word
+  if (!bestLead || bestScore < 40) {
+    for (const pw of targetPhoneticWords) {
+      if (pw.length >= 4) {
+        const uniqueMatches = realLeads.filter(l => {
+          const ph = phoneticNormalize(l.contact_name + ' ' + l.business_name);
+          return ph.includes(pw) || pw.includes(ph) || (pw.startsWith('kulki') && ph.includes('kulki'));
+        });
+        if (uniqueMatches.length === 1) {
+          return uniqueMatches[0];
+        }
+      }
+    }
+  }
+
+  return bestScore >= 40 ? bestLead : null;
 }
 
 
