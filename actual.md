@@ -9,7 +9,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Repositorio GitHub**: [zegarraantigravity-sudo/bienestar-crm](https://github.com/zegarraantigravity-sudo/bienestar-crm)
 *   **Servidor de Base de Datos**: Supabase (Proyecto: `Bienestar-CRM`)
 *   **Hosting Frontend & Serverless**: Vercel (Producción: `https://bienestar-crm.vercel.app`)
-*   **Motor de Inteligencia Artificial**: Google Gemini (`gemini-flash-latest` / **Gemini 3.8 Flash**) vía Google AI Studio. 100% gratuito (1,500 peticiones/día), sin tarjeta bancaria asociada y con latencia ultrarrápida (~1.2s).
+*   **Motor de Inteligencia Artificial**: Google Gemini (**Gemini 3.5 Flash Lite** con cascada de contingencia a **Gemini 3.1 Flash Lite**) vía Google AI Studio. 100% gratuito (1,500 peticiones/día), sin tarjeta bancaria asociada y con latencia ultrarrápida (~1.2s).
 *   **Bot de Mensajería**: Telegram Bot Oficial (`@bienestar_crm_bot` / Copiloto Multi-Asesor con notas de voz e imágenes).
 *   **Moneda Oficial**: Soles Peruanos (`S/.`)
 
@@ -80,7 +80,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### 10. Copiloto de Inteligencia Artificial Integrado (CRM Web)
 *   **Widget Flotante Interactivo**: Botón circular `🤖 Copiloto IA` en la esquina inferior derecha con ventana de chat emergente integrada.
-*   **Motor Oficial Google Gemini**: Migrado al modelo **Gemini 3.8 Flash** (`gemini-flash-latest`), garantizando 1,500 peticiones gratuitas diarias sin costo y tiempo de respuesta en ~1.2 segundos.
+*   **Motor Oficial Google Gemini**: Migrado al modelo **Gemini 3.5 Flash Lite** con failover automático a **Gemini 3.1 Flash Lite**, garantizando 1,500 peticiones gratuitas diarias sin costo, cero errores 503 por saturación y tiempo de respuesta en ~1 segundo.
 *   **Gestión en Lenguaje Natural de Bitácoras y Tareas**:
     *   Interpreta comandos como: *"Hablé con Noé y me dijo que lo llame el sábado a las 10 am"*.
     *   Detecta al prospecto, agrega la nota a la bitácora con fecha/hora actual, programa la próxima acción y actualiza Supabase en tiempo real.
