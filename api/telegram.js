@@ -16,9 +16,9 @@ const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || decodeToken('ODY1NzExOD
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://fzwfkdamebyzywlqhtes.supabase.co';
 const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_BE8kihWp5Uhg8re4CB3xlA_Ahb-3zWY';
 
-const DEFAULT_KEY = decodeToken('c2std3MtSC5ETUxMRUxFLk5zN1UuTUVRQ0lFUWVGY1hpc3RQenlGSjNKYUZJZkl3VkF2RWF4cmZoTjlFOGV0NkhMTGFkQWlBT0VWcVE4ZE1OMU0wYkJ1WkVVZHNDLWhvdHc2bF9GbTVMVVVKOGdSOUZPdw==');
-const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
-const DEFAULT_MODEL = 'qwen-plus';
+const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
+const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
 
 const AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 const AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
@@ -396,34 +396,36 @@ export default async function handler(req, res) {
 }
 
 // -------------------------------------------------------------
-// Helper: Transcribe audio using Qwen Omni Flash
+// Helper: Transcribe audio using Google Gemini Multimodal
 // -------------------------------------------------------------
 async function transcribeAudioUrl(audioUrl) {
   try {
-    const res = await fetch(AI_URL, {
+    const audioRes = await fetch(audioUrl);
+    const arrayBuffer = await audioRes.arrayBuffer();
+    const base64Audio = Buffer.from(arrayBuffer).toString('base64');
+
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${AI_KEY}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${AI_KEY}`
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'qwen3.5-omni-flash',
-        messages: [
-          {
-            role: 'user',
-            content: [
-              { type: 'text', text: 'Transcribe exactamente todo lo que dice este audio en español, palabra por palabra, sin inventar ni agregar nada más:' },
-              { type: 'input_audio', input_audio: { data: audioUrl, format: 'ogg' } }
-            ]
-          }
-        ]
+        contents: [{
+          parts: [
+            { text: 'Transcribe exactamente palabra por palabra lo que dice este audio en español. Devuelve ÚNICAMENTE el texto transcrito tal cual, sin introducciones, sin notas y sin comillas:' },
+            {
+              inlineData: {
+                mimeType: 'audio/ogg',
+                data: base64Audio
+              }
+            }
+          ]
+        }]
       })
     });
 
     const data = await res.json();
-    return data.choices?.[0]?.message?.content?.trim() || '';
+    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
   } catch (e) {
-    console.error('Transcription error:', e);
+    console.error('Transcription error with Gemini:', e);
     return '';
   }
 }

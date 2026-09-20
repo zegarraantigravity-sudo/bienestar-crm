@@ -35,9 +35,9 @@ export default async function handler(req, res) {
     const decodeToken = (b64) => {
       try { return Buffer.from(b64, 'base64').toString('utf8'); } catch (e) { return ''; }
     };
-    const DEFAULT_KEY = decodeToken('c2std3MtSC5ETUxMRUxFLk5zN1UuTUVRQ0lFUWVGY1hpc3RQenlGSjNKYUZJZkl3VkF2RWF4cmZoTjlFOGV0NkhMTGFkQWlBT0VWcVE4ZE1OMU0wYkJ1WkVVZHNDLWhvdHc2bF9GbTVMVVVKOGdSOUZPdw==');
-    const DEFAULT_URL = 'https://ws-4obirdagiy942cl5.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
-    const DEFAULT_MODEL = 'qwen-plus';
+    const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
+    const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+    const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
 
     const apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
     const apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
