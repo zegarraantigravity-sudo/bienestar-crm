@@ -37,6 +37,7 @@ export default async function handler(req, res) {
     };
     const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
     const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+    const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
     let apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
     let apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
     let model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
