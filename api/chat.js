@@ -37,11 +37,16 @@ export default async function handler(req, res) {
     };
     const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
     const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-    const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
+    let apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
+    let apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
+    let model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-    const apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
-    const apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
-    const model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
+    // Discard any stale Alibaba Cloud credentials leftover in Vercel environment variables
+    if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen')) {
+      apiKey = DEFAULT_KEY;
+      apiUrl = DEFAULT_URL;
+      model = DEFAULT_MODEL;
+    }
 
     // Precise Peru (America/Lima) timezone calculation
     const nowPeru = new Date();
@@ -324,8 +329,8 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
 
     if (!aiRes.ok) {
       const errText = await aiRes.text();
-      console.error('DashScope API returned error:', errText);
-      return res.status(500).json({ error: `DashScope API error: ${errText}` });
+      console.error('Google Gemini API returned error:', errText);
+      return res.status(500).json({ error: `Google Gemini API error: ${errText}` });
     }
 
     const responsePayload = await aiRes.json();

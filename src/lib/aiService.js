@@ -148,9 +148,16 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
   }
 
   // Fallback: direct call with apiKey
-  const apiKey = import.meta.env.VITE_AI_API_KEY || DEFAULT_KEY;
-  const apiUrl = import.meta.env.VITE_AI_API_URL || DEFAULT_URL;
-  const model = import.meta.env.VITE_AI_MODEL || DEFAULT_MODEL;
+  let apiKey = import.meta.env.VITE_AI_API_KEY || DEFAULT_KEY;
+  let apiUrl = import.meta.env.VITE_AI_API_URL || DEFAULT_URL;
+  let model = import.meta.env.VITE_AI_MODEL || DEFAULT_MODEL;
+
+  // Discard any stale Alibaba Cloud credentials leftover in environment variables
+  if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen')) {
+    apiKey = DEFAULT_KEY;
+    apiUrl = DEFAULT_URL;
+    model = DEFAULT_MODEL;
+  }
 
   const tomorrowObj = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
   tomorrowObj.setDate(tomorrowObj.getDate() + 1);
