@@ -204,7 +204,138 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
-    let userText = message.text || message.caption || '';
+    // If message contains a photo or document (vouchers, payments, contracts)
+    const isPhoto = Boolean(message.photo && message.photo.length > 0);
+    const isDoc = Boolean(message.document);
+
+    if (isPhoto || isDoc) {
+      await sendChatAction(chatId, 'upload_document');
+      try {
+        let fileId = '';
+        let fileName = '';
+        let mimeType = '';
+
+        if (isPhoto) {
+          const photoSizes = message.photo;
+          // Grab the best resolution photo (last item in array)
+          const bestPhoto = photoSizes[photoSizes.length - 1];
+          fileId = bestPhoto.file_id;
+          fileName = `comprobante_${Date.now()}.jpg`;
+          mimeType = 'image/jpeg';
+        } else if (isDoc) {
+          fileId = message.document.file_id;
+          fileName = message.document.file_name || `documento_${Date.now()}.pdf`;
+          mimeType = message.document.mime_type || (fileName.toLowerCase().endsWith('.pdf') ? 'application/pdf' : 'application/octet-stream');
+        }
+
+        // Retrieve file metadata from Telegram
+        const fileInfoRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getFile?file_id=${fileId}`);
+        const fileInfo = await fileInfoRes.json();
+
+        if (fileInfo.ok && fileInfo.result?.file_path) {
+          const fileUrl = `https://api.telegram.org/file/bot${TELEGRAM_TOKEN}/${fileInfo.result.file_path}`;
+          const fileDownloadRes = await fetch(fileUrl);
+          const arrayBuffer = await fileDownloadRes.arrayBuffer();
+          const base64Buffer = Buffer.from(arrayBuffer);
+          const dataUri = `data:${mimeType};base64,${base64Buffer.toString('base64')}`;
+          const fileKb = Math.round(base64Buffer.length / 1024);
+
+          const caption = (message.caption || '').trim();
+
+          // Fetch leads to find the matching prospect
+          const { data: rawLeads } = await supabase.from('leads').select('*');
+          const leads = (rawLeads || []).filter(l => l.business_name !== 'SYSTEM_TELEGRAM_SESSION' && l.client_type !== 'system_internal');
+
+          // Match lead from caption
+          let targetLead = null;
+          if (caption) {
+            targetLead = findMatchingLead(leads, null, caption);
+          }
+
+          // Fallback: check recent conversation history for last discussed lead
+          if (!targetLead && history.length > 0) {
+            for (let i = history.length - 1; i >= 0; i--) {
+              const prevContent = history[i].content || '';
+              targetLead = findMatchingLead(leads, null, prevContent);
+              if (targetLead) break;
+            }
+          }
+
+          if (targetLead) {
+            let notesData = { timeline: [], documents: [] };
+            try {
+              notesData = JSON.parse(targetLead.notes || '{}');
+              if (Array.isArray(notesData)) notesData = { timeline: notesData, documents: [] };
+            } catch (e) {
+              if (targetLead.notes) notesData = { timeline: [{ date: targetLead.created_at || new Date().toISOString(), text: targetLead.notes }], documents: [] };
+            }
+            notesData.timeline = notesData.timeline || [];
+            notesData.documents = notesData.documents || [];
+
+            const noteDesc = caption || (isPhoto ? 'Comprobante / imagen adjunta vía Telegram' : `Documento adjunto vía Telegram: ${fileName}`);
+            const noteText = `${noteDesc} [Registrado por ${advisor.name} vía Telegram]`;
+
+            const newAttachment = {
+              name: fileName,
+              type: mimeType,
+              data: dataUri,
+              size: `${fileKb} KB`
+            };
+
+            const newTimelineItem = {
+              date: new Date().toISOString(),
+              text: noteText,
+              file: newAttachment
+            };
+
+            notesData.timeline = [newTimelineItem, ...notesData.timeline];
+            notesData.documents = [
+              {
+                id: `tg_doc_${Date.now()}`,
+                name: fileName,
+                type: mimeType,
+                data: dataUri,
+                size: `${fileKb} KB`,
+                date: new Date().toISOString(),
+                noteText: noteDesc
+              },
+              ...notesData.documents
+            ];
+
+            await supabase.from('leads').update({
+              notes: JSON.stringify(notesData),
+              last_interaction: new Date().toISOString()
+            }).eq('id', targetLead.id);
+
+            const confirmationMsg = `✅ <b>¡Archivo guardado con éxito en el CRM!</b>\n\n` +
+              `👤 <b>Prospecto:</b> ${targetLead.contact_name || targetLead.business_name}\n` +
+              `📎 <b>Archivo:</b> <code>${fileName}</code> (${fileKb} KB)\n` +
+              `📝 <b>Bitácora:</b> <i>«${noteDesc}»</i>\n\n` +
+              `🌐 <i>Ya puedes ver la imagen y el registro en el CRM web.</i>`;
+
+            await sendTelegramMessage(chatId, confirmationMsg);
+
+            history.push({ role: 'user', content: `[Archivo adjunto]: ${fileName} - ${caption}` });
+            history.push({ role: 'assistant', content: confirmationMsg });
+            await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+            return res.status(200).json({ ok: true });
+          } else {
+            const askMsg = `📸 <b>Recibí tu ${isPhoto ? 'comprobante / imagen' : 'documento'}</b> (<code>${fileName}</code>, ${fileKb} KB), pero no pude identificar a qué cliente corresponde.\n\n` +
+              `💡 <i>Para adjuntarlo a su bitácora, envíalo con un pie de foto con el nombre del cliente, por ejemplo:</i>\n` +
+              `• <i>"Comprobante de depósito de Yoselin Nails"</i>\n` +
+              `• <i>"Contrato de Luis Culqui"</i>`;
+            await sendTelegramMessage(chatId, askMsg);
+            return res.status(200).json({ ok: true });
+          }
+        }
+      } catch (fileErr) {
+        console.error('Error handling Telegram file upload:', fileErr);
+        await sendTelegramMessage(chatId, '⚠️ Hubo un inconveniente al procesar el archivo. Por favor intenta enviarlo nuevamente.');
+        return res.status(200).json({ ok: true });
+      }
+    }
+
+    let userText = (message.text || message.caption || '').trim();
 
     // If message is a voice note or audio file
     const voiceOrAudio = message.voice || message.audio;

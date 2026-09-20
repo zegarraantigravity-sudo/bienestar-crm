@@ -1,8 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck, Pencil, Check } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { X, Save, Trash2, Plus, Phone, Calendar, User, Mail, Briefcase, DollarSign, Target, MessageCircle, AlertTriangle, ShieldCheck, Pencil, Check, Paperclip, FileText, Image as ImageIcon, Download, Eye, ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { lostReasonOptions } from './LostReasonModal';
 import { isSuperAdmin, getUserDisplayName, SALES_REPRESENTATIVES } from '../lib/utils';
+
+// Helper: Compress and resize uploaded image for lightweight storage in database
+const compressImage = (file, maxWidth = 1200, quality = 0.75) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxWidth || height > maxWidth) {
+          if (width > height) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          } else {
+            width = Math.round((width * maxWidth) / height);
+            height = maxWidth;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        const approxKb = Math.round((dataUrl.length * 3) / 4 / 1024);
+        resolve({
+          name: file.name,
+          type: 'image/jpeg',
+          data: dataUrl,
+          size: `${approxKb} KB`
+        });
+      };
+      img.onerror = (err) => reject(err);
+    };
+    reader.onerror = (err) => reject(err);
+  });
+};
+
+// Helper: Read document / PDF as Base64 Data URL (up to 3.5MB)
+const readFileAsBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    if (file.size > 3.5 * 1024 * 1024) {
+      reject(new Error('El documento no debe exceder los 3.5 MB para garantizar fluidez.'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const approxKb = Math.round(file.size / 1024);
+      resolve({
+        name: file.name,
+        type: file.type || 'application/pdf',
+        data: reader.result,
+        size: `${approxKb} KB`
+      });
+    };
+    reader.onerror = (err) => reject(err);
+  });
+};
 
 const planValues = {
   plan_30: 400,
@@ -38,6 +99,13 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingNoteIndex, setEditingNoteIndex] = useState(null);
   const [editingNoteText, setEditingNoteText] = useState('');
+
+  // File & Document Attachments state
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isCompressing, setIsCompressing] = useState(false);
+  const [lightboxFile, setLightboxFile] = useState(null);
+  const [activeTimelineTab, setActiveTimelineTab] = useState('timeline');
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (lead) {
@@ -101,9 +169,54 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
       setLostReasonLabel('');
     }
     setNewNote('');
+    setSelectedFile(null);
+    setLightboxFile(null);
+    setActiveTimelineTab('timeline');
+    if (fileInputRef.current) fileInputRef.current.value = '';
   }, [lead, isOpen, userEmail]);
 
   if (!isOpen) return null;
+
+  // Extract all documents across timeline notes for quick gallery access
+  const allDocuments = notesList
+    .filter(item => item.file && item.file.data)
+    .map((item, idx) => ({
+      id: `tl_doc_${idx}`,
+      date: item.date,
+      noteText: item.text,
+      name: item.file.name || 'Archivo',
+      type: item.file.type || 'image/jpeg',
+      data: item.file.data,
+      size: item.file.size || ''
+    }));
+
+  const handleFileSelect = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsCompressing(true);
+    try {
+      if (file.type.startsWith('image/')) {
+        const processed = await compressImage(file);
+        setSelectedFile(processed);
+      } else if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+        const processed = await readFileAsBase64(file);
+        setSelectedFile(processed);
+      } else {
+        alert('Por favor selecciona una imagen (JPG, PNG, WEBP) o un documento PDF.');
+      }
+    } catch (err) {
+      console.error('File process error:', err);
+      alert(err.message || 'Error al procesar el archivo');
+    } finally {
+      setIsCompressing(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
+
+  const handleRemoveSelectedFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -124,16 +237,26 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
 
   const handleAddNote = (e) => {
     e.preventDefault();
-    if (!newNote.trim()) return;
+    if (!newNote.trim() && !selectedFile) return;
+
+    let defaultText = '';
+    if (selectedFile) {
+      defaultText = selectedFile.type?.startsWith('image/')
+        ? `Comprobante / imagen adjunta: ${selectedFile.name}`
+        : `Documento adjunto: ${selectedFile.name}`;
+    }
 
     const noteObj = {
       date: new Date().toISOString(),
-      text: newNote.trim()
+      text: newNote.trim() || defaultText,
+      file: selectedFile ? { ...selectedFile } : null
     };
 
     const updatedNotes = [noteObj, ...notesList];
     setNotesList(updatedNotes);
     setNewNote('');
+    setSelectedFile(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleDeleteNote = (indexToDelete) => {
@@ -189,7 +312,8 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
         next_action: nextAction.trim(),
         next_action_date: nextActionDate,
         lost_reason: formData.status === 'cerrado_perdido' ? lostReason : '',
-        lost_reason_label: finalLostLabel
+        lost_reason_label: finalLostLabel,
+        documents: allDocuments
       });
 
       const payload = {
@@ -479,114 +603,301 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
 
             {isEdit && (
               <div className="timeline-section">
-                <div className="timeline-header">
-                  <h3>Bitácora de Seguimiento (Historial)</h3>
-                </div>
-                <div className="timeline-add-box">
-                  <input
-                    type="text"
-                    value={newNote}
-                    onChange={e => setNewNote(e.target.value)}
-                    placeholder="Escribe lo que acaba de suceder (ej: 'Se llamó, no contestó')..."
-                  />
-                  <button type="button" className="btn btn-secondary" onClick={handleAddNote}>
-                    <Plus size={16} /> Agregar
+                <div className="timeline-nav-tabs">
+                  <button
+                    type="button"
+                    className={`timeline-tab-btn ${activeTimelineTab === 'timeline' ? 'active' : ''}`}
+                    onClick={() => setActiveTimelineTab('timeline')}
+                  >
+                    📝 Bitácora ({notesList.length})
+                  </button>
+                  <button
+                    type="button"
+                    className={`timeline-tab-btn ${activeTimelineTab === 'documents' ? 'active' : ''}`}
+                    onClick={() => setActiveTimelineTab('documents')}
+                  >
+                    📎 Comprobantes & Archivos {allDocuments.length > 0 && <span className="tab-badge">{allDocuments.length}</span>}
                   </button>
                 </div>
 
-                <div className="timeline-list">
-                  {notesList.length === 0 ? (
-                    <div style={{ color: 'hsl(var(--text-muted))', fontSize: '0.85rem', paddingLeft: '8px' }}>
-                      No hay interacciones registradas. Escribe tu primera nota arriba.
+                {activeTimelineTab === 'timeline' ? (
+                  <>
+                    <div className="timeline-add-box">
+                      <div className="timeline-input-wrapper">
+                        <input
+                          type="text"
+                          value={newNote}
+                          onChange={e => setNewNote(e.target.value)}
+                          placeholder={selectedFile ? `Nota para ${selectedFile.name}...` : "Escribe lo que acaba de suceder (ej: 'Pago de S/ 200')..."}
+                        />
+                        <input
+                          type="file"
+                          ref={fileInputRef}
+                          onChange={handleFileSelect}
+                          accept="image/*,.pdf"
+                          style={{ display: 'none' }}
+                        />
+                        <button
+                          type="button"
+                          className={`btn-attach-clip ${selectedFile ? 'has-file' : ''}`}
+                          onClick={() => fileInputRef.current?.click()}
+                          title="Adjuntar comprobante o documento (Imagen o PDF)"
+                          disabled={isCompressing}
+                        >
+                          <Paperclip size={16} />
+                        </button>
+                      </div>
+
+                      <button 
+                        type="button" 
+                        className="btn btn-secondary" 
+                        onClick={handleAddNote}
+                        disabled={isCompressing || (!newNote.trim() && !selectedFile)}
+                      >
+                        <Plus size={16} /> Agregar
+                      </button>
                     </div>
-                  ) : (
-                    notesList.map((item, index) => (
-                      <div className={`timeline-item ${index === 0 ? 'recent' : ''}`} key={index}>
-                        <div className="timeline-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span className="timeline-date">{formatLocalDate(item.date)}</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            {editingNoteIndex !== index && (
-                              <>
-                                <button
-                                  type="button"
-                                  onClick={() => handleStartEditNote(index, item.text)}
-                                  style={{
-                                    background: 'transparent',
-                                    border: 'none',
-                                    color: 'hsl(var(--text-muted))',
-                                    cursor: 'pointer',
-                                    padding: '2px 4px',
-                                    borderRadius: '4px',
-                                    display: 'flex',
-                                    alignItems: 'center'
-                                  }}
-                                  title="Editar nota"
-                                  onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--text-primary))'}
-                                  onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
-                                >
-                                  <Pencil size={13} />
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => handleDeleteNote(index)}
-                                  style={{
-                                    background: 'transparent',
-                                    border: 'none',
-                                    color: 'hsl(var(--text-muted))',
-                                    cursor: 'pointer',
-                                    padding: '2px 4px',
-                                    borderRadius: '4px',
-                                    display: 'flex',
-                                    alignItems: 'center'
-                                  }}
-                                  title="Eliminar nota"
-                                  onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--color-perdido))'}
-                                  onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
-                                >
-                                  <Trash2 size={13} />
-                                </button>
-                              </>
+
+                    {/* Pre-upload chip if file is selected */}
+                    {selectedFile && (
+                      <div className="selected-file-chip">
+                        {selectedFile.type?.startsWith('image/') ? (
+                          <img src={selectedFile.data} alt="Vista previa" className="chip-preview-img" />
+                        ) : (
+                          <FileText size={16} style={{ color: 'hsl(var(--color-llamado))' }} />
+                        )}
+                        <div className="chip-file-meta">
+                          <span className="chip-file-name">{selectedFile.name}</span>
+                          <span className="chip-file-size">({selectedFile.size})</span>
+                        </div>
+                        <button
+                          type="button"
+                          className="chip-remove-btn"
+                          onClick={handleRemoveSelectedFile}
+                          title="Quitar archivo adjunto"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
+                    )}
+
+                    {isCompressing && (
+                      <div className="optimizing-hint">
+                        ⏳ Optimizando y comprimiendo archivo...
+                      </div>
+                    )}
+
+                    <div className="timeline-list">
+                      {notesList.length === 0 ? (
+                        <div style={{ color: 'hsl(var(--text-muted))', fontSize: '0.85rem', paddingLeft: '8px' }}>
+                          No hay interacciones registradas. Escribe tu primera nota arriba o adjunta un comprobante.
+                        </div>
+                      ) : (
+                        notesList.map((item, index) => (
+                          <div className={`timeline-item ${index === 0 ? 'recent' : ''}`} key={index}>
+                            <div className="timeline-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <span className="timeline-date">{formatLocalDate(item.date)}</span>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                {editingNoteIndex !== index && (
+                                  <>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleStartEditNote(index, item.text)}
+                                      style={{
+                                        background: 'transparent',
+                                        border: 'none',
+                                        color: 'hsl(var(--text-muted))',
+                                        cursor: 'pointer',
+                                        padding: '2px 4px',
+                                        borderRadius: '4px',
+                                        display: 'flex',
+                                        alignItems: 'center'
+                                      }}
+                                      title="Editar nota"
+                                      onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--text-primary))'}
+                                      onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
+                                    >
+                                      <Pencil size={13} />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleDeleteNote(index)}
+                                      style={{
+                                        background: 'transparent',
+                                        border: 'none',
+                                        color: 'hsl(var(--text-muted))',
+                                        cursor: 'pointer',
+                                        padding: '2px 4px',
+                                        borderRadius: '4px',
+                                        display: 'flex',
+                                        alignItems: 'center'
+                                      }}
+                                      title="Eliminar nota"
+                                      onMouseEnter={e => e.currentTarget.style.color = 'hsl(var(--color-perdido))'}
+                                      onMouseLeave={e => e.currentTarget.style.color = 'hsl(var(--text-muted))'}
+                                    >
+                                      <Trash2 size={13} />
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+
+                            {editingNoteIndex === index ? (
+                              <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <textarea
+                                  value={editingNoteText}
+                                  onChange={e => setEditingNoteText(e.target.value)}
+                                  className="form-control"
+                                  rows={3}
+                                  style={{ fontSize: '0.85rem', width: '100%', resize: 'vertical' }}
+                                />
+                                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                                  <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    onClick={handleCancelEditNote}
+                                    style={{ padding: '3px 8px', fontSize: '0.75rem' }}
+                                  >
+                                    <X size={12} /> Cancelar
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick={() => handleSaveEditNote(index)}
+                                    style={{ padding: '3px 8px', fontSize: '0.75rem' }}
+                                  >
+                                    <Check size={12} /> Guardar
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="timeline-content">
+                                <div className="timeline-text">{item.text}</div>
+
+                                {/* Attached File Preview inside Timeline Entry */}
+                                {item.file && item.file.data && (
+                                  item.file.type?.startsWith('image/') || item.file.data?.startsWith('data:image/') ? (
+                                    <div
+                                      className="timeline-attachment-card image-card"
+                                      onClick={() => setLightboxFile(item.file)}
+                                      title="Clic para ampliar comprobante en pantalla completa"
+                                    >
+                                      <img src={item.file.data} alt={item.file.name || 'Comprobante'} className="attachment-thumb" />
+                                      <div className="attachment-details">
+                                        <div className="attachment-title">
+                                          <ImageIcon size={13} />
+                                          <span className="truncate">{item.file.name || 'Comprobante'}</span>
+                                        </div>
+                                        <div className="attachment-sub">
+                                          <span>{item.file.size}</span>
+                                          <span className="attachment-zoom-hint"><Eye size={12} /> Ampliar</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div className="timeline-attachment-card doc-card">
+                                      <div className="doc-icon-box">
+                                        <FileText size={20} />
+                                      </div>
+                                      <div className="attachment-details">
+                                        <span className="attachment-title truncate">{item.file.name || 'Documento PDF'}</span>
+                                        <span className="attachment-sub">{item.file.size}</span>
+                                      </div>
+                                      <a
+                                        href={item.file.data}
+                                        download={item.file.name || 'documento.pdf'}
+                                        className="btn-download-attachment"
+                                        title="Descargar archivo"
+                                        onClick={e => e.stopPropagation()}
+                                      >
+                                        <Download size={14} /> Descargar
+                                      </a>
+                                    </div>
+                                  )
+                                )}
+                              </div>
                             )}
                           </div>
-                        </div>
+                        ))
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  /* Documents Gallery Tab */
+                  <div className="documents-gallery-view">
+                    <div className="documents-upload-bar">
+                      <p style={{ margin: 0, fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
+                        Comprobantes y contratos adjuntos para este cliente:
+                      </p>
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        style={{ fontSize: '0.8rem', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                        onClick={() => {
+                          setActiveTimelineTab('timeline');
+                          setTimeout(() => fileInputRef.current?.click(), 100);
+                        }}
+                      >
+                        <Paperclip size={14} /> Subir Nuevo Archivo
+                      </button>
+                    </div>
 
-                        {editingNoteIndex === index ? (
-                          <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                            <textarea
-                              value={editingNoteText}
-                              onChange={e => setEditingNoteText(e.target.value)}
-                              className="form-control"
-                              rows={3}
-                              style={{ fontSize: '0.85rem', width: '100%', resize: 'vertical' }}
-                            />
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
-                              <button
-                                type="button"
-                                className="btn btn-secondary"
-                                onClick={handleCancelEditNote}
-                                style={{ padding: '3px 8px', fontSize: '0.75rem' }}
+                    {allDocuments.length === 0 ? (
+                      <div className="empty-docs-box">
+                        <FileText size={36} style={{ opacity: 0.3, marginBottom: '8px' }} />
+                        <p style={{ margin: 0, fontWeight: 500 }}>No hay comprobantes ni archivos adjuntos aún.</p>
+                        <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
+                          Puedes adjuntar fotos de transferencias o contratos en cualquier momento desde la bitácora o aquí.
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="docs-grid">
+                        {allDocuments.map((doc, idx) => (
+                          <div key={idx} className="doc-grid-card">
+                            {doc.type?.startsWith('image/') || doc.data?.startsWith('data:image/') ? (
+                              <div
+                                className="doc-grid-thumb"
+                                onClick={() => setLightboxFile(doc)}
+                                title="Clic para ampliar"
                               >
-                                <X size={12} /> Cancelar
-                              </button>
-                              <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={() => handleSaveEditNote(index)}
-                                style={{ padding: '3px 8px', fontSize: '0.75rem' }}
-                              >
-                                <Check size={12} /> Guardar
-                              </button>
+                                <img src={doc.data} alt={doc.name} />
+                                <div className="thumb-hover-overlay">
+                                  <Eye size={18} />
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="doc-grid-pdf-icon">
+                                <FileText size={32} />
+                                <span>PDF</span>
+                              </div>
+                            )}
+
+                            <div className="doc-grid-info">
+                              <span className="doc-grid-name" title={doc.name}>{doc.name}</span>
+                              <span className="doc-grid-date">{formatLocalDate(doc.date)}</span>
+                              {doc.noteText && (
+                                <span className="doc-grid-note" title={doc.noteText}>
+                                  «{doc.noteText}»
+                                </span>
+                              )}
+                              <div className="doc-grid-actions">
+                                <a
+                                  href={doc.data}
+                                  download={doc.name}
+                                  className="btn-doc-download"
+                                  title="Descargar"
+                                >
+                                  <Download size={13} /> {doc.size || 'Descargar'}
+                                </a>
+                              </div>
                             </div>
                           </div>
-                        ) : (
-                          <div className="timeline-content">
-                            {item.text}
-                          </div>
-                        )}
+                        ))}
                       </div>
-                    ))
-                  )}
-                </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -620,6 +931,42 @@ export default function LeadModal({ lead, isOpen, onClose, onSave, onDelete, onO
             </button>
           </div>
         </form>
+
+        {/* Lightbox Fullscreen Preview for Images */}
+        {lightboxFile && (
+          <div className="lightbox-overlay" onClick={() => setLightboxFile(null)}>
+            <div className="lightbox-modal" onClick={e => e.stopPropagation()}>
+              <div className="lightbox-header">
+                <div className="lightbox-title-box">
+                  <ImageIcon size={16} />
+                  <span className="lightbox-filename">{lightboxFile.name || 'Comprobante'}</span>
+                  {lightboxFile.size && <span className="lightbox-size">({lightboxFile.size})</span>}
+                </div>
+                <div className="lightbox-buttons">
+                  <a
+                    href={lightboxFile.data}
+                    download={lightboxFile.name || 'comprobante.jpg'}
+                    className="btn-lightbox-download"
+                    title="Descargar imagen"
+                  >
+                    <Download size={15} /> Descargar
+                  </a>
+                  <button
+                    type="button"
+                    className="btn-lightbox-close"
+                    onClick={() => setLightboxFile(null)}
+                    title="Cerrar vista"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="lightbox-image-container">
+                <img src={lightboxFile.data} alt={lightboxFile.name || 'Comprobante'} className="lightbox-main-img" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
