@@ -18,7 +18,7 @@ const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_
 
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
+const DEFAULT_MODEL = 'gemini-flash-latest';
 
 let AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 let AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
@@ -411,7 +411,7 @@ async function transcribeAudioUrl(audioUrl) {
     const arrayBuffer = await audioRes.arrayBuffer();
     const base64Audio = Buffer.from(arrayBuffer).toString('base64');
 
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${AI_KEY}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${AI_KEY}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -12,7 +12,7 @@ const decodeToken = (b64) => {
 };
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
+const DEFAULT_MODEL = 'gemini-flash-latest';
 
 import { getLeadAdvisorName, isLeadAssignedToUser, isSuperAdmin } from './utils';
 
