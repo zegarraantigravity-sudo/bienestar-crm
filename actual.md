@@ -8,7 +8,9 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 *   **Repositorio GitHub**: [zegarraantigravity-sudo/bienestar-crm](https://github.com/zegarraantigravity-sudo/bienestar-crm)
 *   **Servidor de Base de Datos**: Supabase (Proyecto: `Bienestar-CRM`)
-*   **Hosting Frontend**: Vercel (Producción)
+*   **Hosting Frontend & Serverless**: Vercel (Producción: `https://bienestar-crm.vercel.app`)
+*   **Motor de Inteligencia Artificial**: Google Gemini (`gemini-flash-latest` / **Gemini 3.8 Flash**) vía Google AI Studio. 100% gratuito (1,500 peticiones/día), sin tarjeta bancaria asociada y con latencia ultrarrápida (~1.2s).
+*   **Bot de Mensajería**: Telegram Bot Oficial (`@bienestar_crm_bot` / Copiloto Multi-Asesor con notas de voz e imágenes).
 *   **Moneda Oficial**: Soles Peruanos (`S/.`)
 
 ---
@@ -18,76 +20,105 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 1. Infraestructura y Base de Datos
 *   **Inicialización**: Configuración inicial de la aplicación usando React con Vite y herramientas de compilación modernas.
 *   **Base de Datos**: Diseño y creación de la tabla `leads` en Supabase con políticas RLS (Row Level Security) para el acceso seguro.
-*   **Variables de Entorno**: Configuración de seguridad en el archivo `.env` y exclusión segura en `.gitignore` para no filtrar claves de Supabase.
+*   **Variables de Entorno**: Configuración de seguridad en `.env` y exclusión segura en `.gitignore` para no filtrar claves sensibles.
 *   **Conexión**: Implementación del cliente de Supabase (`supabaseClient.js`) para consultas en tiempo real.
 
 ### 2. Diseño e Interfaz Premium (Modo Oscuro)
-*   **Estilo Visual**: Creación de un sistema de diseño propio en `index.css` con variables de color HSL, sombras neón sutiles, efectos glassmorphism en tarjetas y paneles, y micro-animaciones fluidas al pasar el cursor o interactuar.
-*   **Diseño Adaptable**: Estructura lateral fija (Sidebar) y panel central fluido, optimizado para uso en computadoras y pantallas móviles.
+*   **Estilo Visual**: Creación de un sistema de diseño propio en `index.css` con variables de color HSL, sombras neón sutiles, efectos glassmorphism en tarjetas y paneles, y micro-animaciones fluidas al interactuar.
+*   **Diseño Adaptable**: Estructura lateral fija (Sidebar) y panel central fluido, optimizado para computadoras y dispositivos móviles.
 
 ### 3. Vistas Principales del CRM
 *   **Panel de Controladores (Dashboard)**:
     *   Cálculo automático de tasas clave: Tasa de Contacto (Llamados/Total), Tasa de Citas (Citas/Llamados) y Tasa de Cierre (Cerrados/Demos).
     *   Métrica del valor total del embudo (pipeline proyectado en cartera).
     *   Visualizador gráfico de volumen financiero en Soles por cada una de las 6 fases de venta.
-    *   Tarjeta interactiva de "Meta del Mes" con un control numérico y gráfico circular cónico que calcula el porcentaje completado en tiempo real.
+    *   Tarjeta interactiva de "Meta del Mes" con control numérico y gráfico circular cónico en tiempo real.
 *   **Tablero Kanban**:
     *   6 columnas de flujo comercial vertical (`Prospecto`, `Llamado`, `Cita Agendada`, `Presentación Realizada`, `Cerrado Ganado`, `Cerrado Perdido`).
     *   Tarjetas con color identificativo y badge dinámico por tipo de cliente (Coach, Nutricionista, Gimnasio, Tienda, Herbalife, Otro).
     *   Botón rápido de **Llamar 📞** en 1 clic que actualiza el estado y escribe en la bitácora automáticamente.
     *   Botones de navegación rápidos `<-` y `->` en cada tarjeta para deslizar prospectos sin arrastrar.
 *   **Directorio de Leads (Tabla)**:
-    *   Tabla interactiva y searchable por nombre de empresa, contacto, teléfono, correo o incluso por tareas pendientes.
+    *   Tabla interactiva y searchable por nombre de empresa, contacto, teléfono, correo o tareas pendientes.
     *   Filtros dinámicos en cascada por Estado, Plan y Tipo de Cliente en simultáneo.
 
 ### 4. Flujo de Seguimiento y Datos Locales
 *   **Modal de Prospecto**:
     *   Formulario completo para crear y editar leads.
-    *   **Bitácora de Seguimiento**: Registro interactivo de notas de interacción pasadas con fecha y hora exacta, mostradas en una línea de tiempo vertical. Ahora cada nota incluye botones para **Editar (✏️)** el contenido directamente y **Eliminar (🗑️)** notas duplicadas o accidentales.
-    *   **Próxima Acción Pendiente**: Campo específico para registrar la siguiente tarea a realizar. Se muestra a primera vista en las tarjetas de Kanban (badge naranja) y en la tabla del directorio (icono 📌) para no perder el seguimiento.
+    *   **Bitácora de Seguimiento**: Registro interactivo de notas de interacción pasadas con fecha y hora exacta, mostradas en una línea de tiempo vertical. Cada nota incluye botones para **Editar (✏️)** el contenido directamente y **Eliminar (🗑️)** notas duplicadas o accidentales.
+    *   **Próxima Acción Pendiente**: Campo específico para registrar la siguiente tarea a realizar, visible en Kanban (badge naranja) y en la tabla (icono 📌).
 *   **Planes y Precios Locales (Soles)**:
     *   Configuración de los 5 planes oficiales: **Plan 30** (S/. 400), **Plan 80** (S/. 700), **Plan 200** (S/. 1200), **Plan 500** (S/. 2700) y **Plan 1200** (S/. 6000).
     *   Autocompletado inteligente de precio estimado según el plan seleccionado.
-    *   Eliminación de la restricción antigua de la base de datos para habilitar los nuevos tiers de planes.
 
 ### 5. Acciones de Contacto Rápido y Plantillas de WhatsApp
-*   **Integración Directa de WhatsApp con Plantillas**: Botón verde con selector de 5 plantillas pre-redactadas (*Primer Contacto*, *Recordatorio de Demo*, *Presentación de Plan*, *Seguimiento Post-Demo* y *Cierre por Sin Respuesta / Despedida*). El sistema inserta dinámicamente el nombre del cliente, su plan y valor en Soles, abriendo WhatsApp Web/App al instante.
-*   **Ubicación**: Disponible en el Directorio de Leads, en las tarjetas del Tablero Kanban y en el modal de detalle del lead.
+*   **Integración Directa de WhatsApp con Plantillas**: Botón verde con selector de 5 plantillas pre-redactadas (*Primer Contacto*, *Recordatorio de Demo*, *Presentación de Plan*, *Seguimiento Post-Demo* y *Cierre por Sin Respuesta / Despedida*). El sistema inserta dinámicamente el nombre del cliente, plan y valor en Soles, abriendo WhatsApp Web/App al instante.
+*   **Ubicación**: Disponible en el Directorio de Leads, Tablero Kanban y Modal de detalle.
 
 ### 6. Seguimiento Inteligente por Agenda (Fechas y Alertas de Tareas)
 *   **Fecha y Hora en Próxima Acción**: Selector de fecha y hora (`datetime-local`) para programar el momento exacto del próximo contacto.
 *   **Pestañas Inteligentes**: Filtros en 1 clic en la Tabla de Leads para ver *"⏰ Tareas de Hoy / Vencidas"* y *"❄️ Leads Estancados (+5 días sin contacto)"*.
-*   **Alertas de Leads Estancados**: Indicador visual (badge azul `❄️ +Xd`) en el Kanban y en la Tabla cuando un prospecto lleva 5 o más días sin actualización en el embudo activo.
+*   **Alertas de Leads Estancados**: Indicador visual (badge azul `❄️ +Xd`) en Kanban y Tabla cuando un prospecto lleva 5 o más días sin actualización.
 
 ### 7. Análisis de Motivos de Pérdida
-*   **Registro de Motivos**: Al mover o guardar un lead en *Cerrado - Perdido*, el sistema solicita registrar la causa (*Precio elevado*, *Sin tiempo/Interés*, *Usa competencia*, *No responde*, *Otro*).
-*   **Panel en Dashboard**: Gráfico y métricas detalladas en el Dashboard con los porcentajes y conteos exactos de por qué se pierden ventas.
+*   **Registro de Motivos**: Al mover un lead a *Cerrado - Perdido*, el sistema solicita registrar la causa (*Precio elevado*, *Sin tiempo/Interés*, *Usa competencia*, *No responde*, *Otro*).
+*   **Panel en Dashboard**: Gráfico y métricas detalladas en el Dashboard con porcentajes y conteos exactos de causas de pérdida.
 
 ### 8. Seguridad y Autenticación
-*   **Acceso Restringido**: Implementación de una pantalla de Login premium antes de cargar la aplicación conectada directamente a Supabase Auth.
-*   **Cierre de Sesión**: Botón en la parte inferior izquierda de la barra lateral para salir de la sesión de forma segura.
+*   **Acceso Restringido**: Pantalla de Login premium conectada a Supabase Auth.
+*   **Cierre de Sesión**: Botón en la barra lateral para salir de la sesión de forma segura.
 
 ### 9. Sistema de Roles y Privacidad por Vendedor
 *   **Super Administrador (Alberto - `albertozbcoach@gmail.com`)**:
     *   Acceso total al 100% de los leads, métricas globales del embudo y bitácoras.
-    *   Selector de vista en la barra superior para alternar entre: *Todos los Vendedores*, *Mis Leads (Alberto)*, *Leads de Luis* o *Leads de Dario*.
-    *   Capacidad de asignar o reasignar prospectos a cualquier socio comercial.
+    *   Selector de vista para alternar entre: *Todos los Vendedores*, *Mis Leads (Alberto)*, *Leads de Luis* o *Leads de Dario*.
+    *   Capacidad de reasignar prospectos a cualquier socio comercial.
 *   **Vendedor (Luis - `torohakim@gmail.com`)**:
     *   Privacidad estricta: Solo puede visualizar, editar y gestionar sus propios prospectos.
 *   **Vendedor (Dario Cienfuegos - `dariospaarnold@gmail.com`)**:
-    *   Privacidad estricta: Solo puede visualizar, editar y gestionar los prospectos asignados a él o registrados por él.
-### 10. Copiloto de Inteligencia Artificial Integrado (Asistente Comercial en Vivo)
-*   **Widget Flotante Interactivo**: Botón circular `🤖 Copiloto IA` en la esquina inferior derecha con efecto de brillo y ventana de chat emergente integrada.
-*   **Motor de Inteligencia Artificial**: Conectado a Alibaba Cloud DashScope (`qwen-plus`) a través de un endpoint serverless seguro en Vercel (`api/chat.js`).
+    *   Privacidad estricta: Solo visualiza y gestiona sus prospectos asignados.
+
+### 10. Copiloto de Inteligencia Artificial Integrado (CRM Web)
+*   **Widget Flotante Interactivo**: Botón circular `🤖 Copiloto IA` en la esquina inferior derecha con ventana de chat emergente integrada.
+*   **Motor Oficial Google Gemini**: Migrado al modelo **Gemini 3.8 Flash** (`gemini-flash-latest`), garantizando 1,500 peticiones gratuitas diarias sin costo y tiempo de respuesta en ~1.2 segundos.
 *   **Gestión en Lenguaje Natural de Bitácoras y Tareas**:
     *   Interpreta comandos como: *"Hablé con Noé y me dijo que lo llame el sábado a las 10 am"*.
-    *   Detecta al prospecto, agrega la nota a la bitácora con fecha/hora actual, programa la próxima acción para la fecha indicada y actualiza Supabase en tiempo real.
-*   **Consultas y Resúmenes Ejecutivos**:
-    *   Responde preguntas como: *"Hazme un resumen de Noé Rojas"*, *"¿Qué tareas o llamadas tengo para hoy?"* o *"¿Qué prospectos están estancados?"*.
-*   **Dictado por Voz y Notas de Audio (🎙️)**: Botón de micrófono integrado con reconocimiento de voz en tiempo real (Web Speech API). Permite dictar instrucciones por voz en español que se transcriben automáticamente para enviar notas o programar llamadas sin escribir en el teclado.
-*   **Modo Conversación en Vivo / Llamada Manos Libres (Estilo ChatGPT) 📞**: Botón de "Llamada" con un orbe brillante y pulsante. Permite una conversación continua y bidireccional: el usuario habla, la IA responde hablando con voz natural (Text-to-Speech) y reactiva el micrófono automáticamente para seguir conversando como en una llamada telefónica real.
-*   **Sincronización en Vivo**: Al actualizar un lead desde el chat, los cambios se reflejan inmediatamente en el Tablero Kanban y en el Directorio de Leads sin necesidad de recargar la página.
+    *   Detecta al prospecto, agrega la nota a la bitácora con fecha/hora actual, programa la próxima acción y actualiza Supabase en tiempo real.
+*   **Consultas y Resúmenes Ejecutivos**: Responde preguntas estratégicas sobre el estado de la cartera, leads vencidos y próximos pasos.
+*   **Dictado por Voz (🎙️)**: Reconocimiento de voz en tiempo real con Web Speech API para dictar instrucciones en español.
+*   **Modo Conversación en Vivo / Manos Libres 📞**: Modo llamada continua bidireccional con síntesis de voz (Text-to-Speech).
+*   **Sincronización en Tiempo Real**: Refleja cambios en el Kanban y en el Directorio al instante.
 
+### 11. Copiloto Ejecutivo Multi-Asesor en Telegram (`api/telegram.js`)
+*   **Soporte Multi-Asesor con Identidad Independiente**:
+    *   Comandos de vinculación: `/soy_alberto`, `/soy_luis`, `/quiensoy`.
+    *   Cada asesor maneja su propio historial de conversación y contexto de prospectos asignados.
+*   **Transcripción y Multimodalidad con Gemini**:
+    *   Recepción de audios y notas de voz con transcripción automática mediante la API multimodal de Gemini.
+    *   Procesamiento inmediato del dictado para agendar tareas, llamadas y notas en la bitácora del prospecto.
+*   **Alertas y Recordatorios Proactivos**:
+    *   Avisos automáticos 1 hora antes de reuniones por Zoom.
+    *   Avisos automáticos 20 minutos antes de llamadas o tareas programadas.
+    *   Comandos `/agenda`, `/tareas` y `/test_alerta`.
+
+### 12. Sistema de Comprobantes, Contratos & Galería en Bitácora
+*   **Carga en Modal de Prospecto (CRM Web)**:
+    *   Selector de archivos adjuntos (`image/*`, `.pdf`) integrado en el formulario de nueva nota.
+    *   Compresión automática de imágenes en el cliente (canvas a máx 1200px, compresión inteligente ~80KB) para cargas rápidas sin saturar el almacenamiento.
+    *   Visor Lightbox en pantalla completa con soporte para zoom, visor de PDF nativo y botón de descarga.
+    *   Pestaña dedicada **"Comprobantes & Archivos"** en el detalle del prospecto con galería en cuadrícula y fechas.
+*   **Carga Vía Telegram Copilot**:
+    *   Permite enviar fotos de comprobantes (Yape, Plin, transferencias) o documentos PDF directamente al bot con el nombre del cliente en el pie de foto (ej. *"Comprobante de abono de Silmed"*).
+    *   El bot descarga el archivo, lo asocia al prospecto en Supabase y lo registra en su bitácora.
+
+### 13. Landing Page Comercial B2B SaaS
+*   Transformación de la vista pública de Bienestar CRM (`https://bienestar-crm.vercel.app`) en una página comercial de alto impacto estilo Pipedrive / Bitrix24.
+*   Navbar sticky, Hero persuasivo enfocado en *Voice-to-CRM*, showcase interactivo (Kanban en vivo + mockup de smartphone con Telegram), tabla comparativa vs competidores y formulario interactivo de solicitud de demo.
+
+### 14. Blindaje Financiero y Desconexión de Alibaba Cloud
+*   Cancelación y revocación exitosa del acuerdo de facturación automática en PayPal con Alibaba Cloud Singapore (`INACTIVO`).
+*   Eliminación de dependencias de pago: la cuenta bancaria y el saldo de PayPal están completamente desvinculados y protegidos contra débitos automáticos.
+*   Sustitución de todas las credenciales heredadas por Google AI Studio (Free Tier sin tarjeta de crédito).
 
 ---
 
@@ -96,13 +127,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### Fase 2: Optimización de Seguimiento e Interacciones
 - [x] **Filtro de Asignación comercial y Privacidad**: Permitir filtrar el Dashboard y el Kanban por el socio comercial asignado y restringir visibilidad para vendedores.
 - [x] **Copiloto de IA Integrado**: Asistente comercial flotante en el CRM con capacidad de lectura de clientes y actualización automática de bitácoras.
+- [x] **Copiloto en Telegram**: Asistente multi-asesor por chat y notas de voz con recordatorios de agenda.
 - [ ] **Campos del Lead Personalizados**: Agregar campos adicionales como RUC de la empresa, dirección o enlace de redes sociales al formulario de registro.
 - [x] **Acciones de Contacto Rápido**: Integrar botones para abrir directamente chats de WhatsApp (`https://wa.me/...`) con plantillas inteligentes.
 
-
 ### Fase 3: Integraciones y Notificaciones
-- [ ] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (como comprobantes de pago o capturas de pantalla) vinculándolo con Supabase Storage.
-- [x] **Recordatorios de Tareas y Agenda**: Sección y filtro de "Tareas para Hoy / Vencidas" que alerta al comercial de todas las Próximas Acciones programadas.
+- [x] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (comprobantes de pago, contratos) y galería con visor lightbox.
+- [x] **Recordatorios de Tareas y Agenda**: Notificaciones automáticas por Telegram antes de llamadas y Zooms.
 - [ ] **Exportación de Datos**: Añadir un botón en la tabla de leads para exportar los prospectos filtrados en formato Excel/CSV.
-
-
