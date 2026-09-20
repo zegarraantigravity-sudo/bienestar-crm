@@ -18,14 +18,14 @@ const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_
 
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-flash-latest';
+const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
 
 let AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 let AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
 let AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-// Discard any stale Alibaba Cloud credentials leftover in Vercel environment variables
-if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen')) {
+// Discard any stale Alibaba Cloud credentials leftover in Vercel environment variables, or congested quota models
+if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash') {
   AI_KEY = DEFAULT_KEY;
   AI_URL = DEFAULT_URL;
   AI_MODEL = DEFAULT_MODEL;
@@ -408,29 +408,46 @@ export default async function handler(req, res) {
 async function transcribeAudioUrl(audioUrl) {
   try {
     const audioRes = await fetch(audioUrl);
+    if (!audioRes.ok) {
+      console.error(`Failed to download audio from Telegram: ${audioRes.status}`);
+      return '';
+    }
     const arrayBuffer = await audioRes.arrayBuffer();
     const base64Audio = Buffer.from(arrayBuffer).toString('base64');
 
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${AI_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{
-          parts: [
-            { text: 'Transcribe exactamente palabra por palabra lo que dice este audio en español. Devuelve ÚNICAMENTE el texto transcrito tal cual, sin introducciones, sin notas y sin comillas:' },
-            {
-              inlineData: {
-                mimeType: 'audio/ogg',
-                data: base64Audio
-              }
-            }
-          ]
-        }]
-      })
-    });
+    // Cascade try: gemini-3.5-flash-lite (full quota), then gemini-3.1-flash-lite
+    const modelsToTry = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+    for (const modelName of modelsToTry) {
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${AI_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [
+                { text: 'Transcribe exactamente palabra por palabra lo que dice este audio en español. Devuelve ÚNICAMENTE el texto transcrito tal cual, sin introducciones, sin notas y sin comillas:' },
+                {
+                  inlineData: {
+                    mimeType: 'audio/ogg',
+                    data: base64Audio
+                  }
+                }
+              ]
+            }]
+          })
+        });
 
-    const data = await res.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+        const data = await res.json();
+        const transcribed = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        if (transcribed && transcribed.length > 0) {
+          return transcribed;
+        }
+        console.warn(`Model ${modelName} returned no candidate for audio:`, data.error?.message || data);
+      } catch (mErr) {
+        console.warn(`Error attempting transcription with ${modelName}:`, mErr);
+      }
+    }
+    return '';
   } catch (e) {
     console.error('Transcription error with Gemini:', e);
     return '';
@@ -873,7 +890,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     }))
     .filter(m => m.content && m.content.trim().length > 0);
 
-  const aiRes = await fetch(AI_URL, {
+  let aiRes = await fetch(AI_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -891,7 +908,39 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     })
   });
 
-  const aiJson = await aiRes.json();
+  let aiJson = {};
+  try { aiJson = await aiRes.json(); } catch (e) { aiJson = {}; }
+
+  // Automatic Failover: If primary model encounters high demand (503), rate limit (429) or empty choices, retry with fallback model
+  if (!aiRes.ok || !aiJson.choices?.[0]?.message?.content) {
+    const fallbackModel = (AI_MODEL === 'gemini-3.1-flash-lite') ? 'gemini-3.5-flash-lite' : 'gemini-3.1-flash-lite';
+    console.warn(`Primary model ${AI_MODEL} failed or empty (status ${aiRes.status}), retrying with fallback model ${fallbackModel}`);
+    try {
+      const retryRes = await fetch(AI_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${AI_KEY}`
+        },
+        body: JSON.stringify({
+          model: fallbackModel,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            ...formattedHistory,
+            { role: 'user', content: userMessage }
+          ],
+          temperature: 0.2,
+          max_tokens: 3500
+        })
+      });
+      if (retryRes.ok) {
+        aiJson = await retryRes.json();
+      }
+    } catch (retryErr) {
+      console.error('Fallback model retry error:', retryErr);
+    }
+  }
+
   const rawContent = aiJson.choices?.[0]?.message?.content || '{}';
   const parsed = parseAIResponse(rawContent);
 
@@ -1106,7 +1155,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
   }
 
-  let cleanReply = parsed.reply_message || `Listo ${advisor.name.split(' ')[0]}.`;
+  let cleanReply = parsed.reply_message || '';
 
   // Fail-safe: If cleanReply STILL looks like raw JSON, parse it to extract reply_message
   if (typeof cleanReply === 'string' && cleanReply.trim().startsWith('{') && (cleanReply.includes('"reply_message"') || cleanReply.includes('"intent"'))) {
@@ -1126,6 +1175,20 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       .replace(/^(\s*✅\s*)?(ya actualic[eé][^\n]*\n*)/i, '')
       .replace(/^(\s*✅\s*)?(ya qued[oó] registrado[^\n]*\n*)/i, '')
       .trim();
+  }
+
+  // Guaranteed contextual answer if AI returned empty or failed
+  if (!cleanReply || cleanReply.trim().length === 0 || cleanReply.trim() === `Listo ${advisor.name.split(' ')[0]}.`) {
+    if (/\b(tarea|tareas|agenda|pendiente|pendientes|vencida|vencidas|hoy|llamada|llamadas|seguimiento|seguimientos)\b/i.test(userMessage)) {
+      if (allActiveWorkload.length === 0) {
+        cleanReply = `En tu cartera personal no tienes tareas pendientes ni vencidas para hoy. Tu agenda está al día.`;
+      } else {
+        const listStr = allActiveWorkload.map((t) => `• <b>${t.name}</b> (${t.next_action_date ? t.next_action_date.replace('T', ' ') : 'Sin fecha'}) — ${t.next_action || 'Seguimiento'}`).join('\n');
+        cleanReply = `Tienes estos seguimientos pendientes listos para accionar en tu cartera:\n\n${listStr}\n\n¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?`;
+      }
+    } else {
+      cleanReply = `Hola ${advisor.name.split(' ')[0]}, recibí tu mensaje. ¿En qué prospecto o gestión nos enfocamos ahora?`;
+    }
   }
 
   const finalHtml = badgePrefix + formatForTelegramHtml(cleanReply);

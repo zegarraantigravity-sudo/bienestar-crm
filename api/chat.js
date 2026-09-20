@@ -37,13 +37,13 @@ export default async function handler(req, res) {
     };
     const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
     const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-    const DEFAULT_MODEL = 'gemini-flash-latest';
+    const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
     let apiKey = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
     let apiUrl = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
     let model = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-    // Discard any stale Alibaba Cloud credentials leftover in Vercel environment variables
-    if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen')) {
+    // Discard any stale Alibaba Cloud credentials or congested quota models
+    if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen') || model === 'gemini-flash-latest' || model === 'gemini-3.8-flash') {
       apiKey = DEFAULT_KEY;
       apiUrl = DEFAULT_URL;
       model = DEFAULT_MODEL;
@@ -315,7 +315,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
       { role: 'user', content: userMessage }
     ];
 
-    const aiRes = await fetch(apiUrl, {
+    let aiRes = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -328,13 +328,41 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO con esta estructura:
       })
     });
 
-    if (!aiRes.ok) {
-      const errText = await aiRes.text();
+    let responsePayload = {};
+    if (aiRes.ok) {
+      try { responsePayload = await aiRes.json(); } catch (e) { responsePayload = {}; }
+    }
+
+    if (!aiRes.ok || !responsePayload.choices?.[0]?.message?.content) {
+      const fallbackModel = (model === 'gemini-3.1-flash-lite') ? 'gemini-3.5-flash-lite' : 'gemini-3.1-flash-lite';
+      console.warn(`Primary model ${model} failed (status ${aiRes.status}), attempting fallback to ${fallbackModel}`);
+      try {
+        const retryRes = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: fallbackModel,
+            messages: aiMessages,
+            temperature: 0.3
+          })
+        });
+        if (retryRes.ok) {
+          responsePayload = await retryRes.json();
+          aiRes = retryRes;
+        }
+      } catch (retryErr) {
+        console.error('Fallback error in /api/chat:', retryErr);
+      }
+    }
+
+    if (!aiRes.ok && !responsePayload.choices?.[0]?.message?.content) {
+      const errText = await aiRes.text().catch(() => 'Unknown error');
       console.error('Google Gemini API returned error:', errText);
       return res.status(500).json({ error: `Google Gemini API error: ${errText}` });
     }
-
-    const responsePayload = await aiRes.json();
     const rawContent = responsePayload.choices?.[0]?.message?.content || '{}';
     const parsedAiData = robustParseAIResponse(rawContent);
     if (parsedAiData.reply_message) {
