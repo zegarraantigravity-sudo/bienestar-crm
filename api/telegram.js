@@ -18,14 +18,14 @@ const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_
 
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
+const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
 
 let AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 let AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
 let AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-// Discard any stale Alibaba Cloud credentials leftover in Vercel environment variables, or congested quota models
-if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash') {
+// Prefer ultra-stable gemini-3.1-flash-lite over preview models that experience temporary 503 demand spikes
+if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash' || AI_MODEL === 'gemini-3.5-flash-lite') {
   AI_KEY = DEFAULT_KEY;
   AI_URL = DEFAULT_URL;
   AI_MODEL = DEFAULT_MODEL;
@@ -415,8 +415,8 @@ async function transcribeAudioUrl(audioUrl) {
     const arrayBuffer = await audioRes.arrayBuffer();
     const base64Audio = Buffer.from(arrayBuffer).toString('base64');
 
-    // Cascade try: gemini-3.5-flash-lite (full quota), then gemini-3.1-flash-lite
-    const modelsToTry = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+    // Cascade try: gemini-3.1-flash-lite (high reliability), then gemini-3.5-flash-lite
+    const modelsToTry = ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'];
     for (const modelName of modelsToTry) {
       try {
         const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${AI_KEY}`, {
@@ -1183,7 +1183,12 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       if (allActiveWorkload.length === 0) {
         cleanReply = `En tu cartera personal no tienes tareas pendientes ni vencidas para hoy. Tu agenda está al día.`;
       } else {
-        const listStr = allActiveWorkload.map((t) => `• <b>${t.name}</b> (${t.next_action_date ? t.next_action_date.replace('T', ' ') : 'Sin fecha'}) — ${t.next_action || 'Seguimiento'}`).join('\n');
+        const listStr = allActiveWorkload.map((t) => {
+          const timeStr = formatFriendlyTime(t.next_action_date);
+          const timeBadge = timeStr ? ` (${timeStr})` : '';
+          const actionText = summarizeTaskAction(t.next_action);
+          return `• **${t.name}**${timeBadge} — ${actionText}`;
+        }).join('\n');
         cleanReply = `Tienes estos seguimientos pendientes listos para accionar en tu cartera:\n\n${listStr}\n\n¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?`;
       }
     } else {
@@ -1196,6 +1201,42 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     replyText: finalHtml,
     rawReply: cleanReply
   };
+}
+
+// Helper: Format date/time to human friendly Peruvian time format (e.g. "11:30 a. m.")
+function formatFriendlyTime(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const raw = String(dateStr).trim();
+    const timeMatch = raw.match(/(\d{1,2}):(\d{2})/);
+    if (timeMatch) {
+      let h = parseInt(timeMatch[1], 10);
+      const m = timeMatch[2];
+      const ampm = h >= 12 ? 'p. m.' : 'a. m.';
+      h = h % 12;
+      if (h === 0) h = 12;
+      return `${h}:${m} ${ampm}`;
+    }
+  } catch (e) {}
+  return dateStr;
+}
+
+// Helper: Summarize verbose drafted messages into concise task summaries
+function summarizeTaskAction(actionText) {
+  if (!actionText || typeof actionText !== 'string') return 'Seguimiento comercial';
+  const clean = actionText.trim();
+  if (/^(¡?hola|buenos\s+días|buenas\s+tardes|estimad|solo\s+paso|espero\s+que)/i.test(clean) || clean.length > 70) {
+    if (/página|web|logo|texto/i.test(clean)) return 'Enviar avance de página modificada';
+    if (/video|app|panel|se\.comer/i.test(clean)) return 'Seguimiento sobre video y panel de la app';
+    if (/zoom|reunión|cita|demo/i.test(clean)) return 'Confirmar reunión de demostración';
+    if (/material\s+gráfico|imágenes|videos/i.test(clean)) return 'Enviar material gráfico (imágenes y videos)';
+    if (/aplicativo|app|instal/i.test(clean)) return 'Consultar si instaló el aplicativo';
+    if (/cierre/i.test(clean)) return 'Coordinar llamada de cierre';
+    const firstSentence = clean.split(/[.!?\n]/)[0].trim();
+    if (firstSentence.length > 10 && firstSentence.length <= 60) return firstSentence;
+    return clean.slice(0, 55).trim() + '...';
+  }
+  return clean;
 }
 
 // Helper: Parse date in Peru Timezone (UTC-5)
@@ -1582,10 +1623,29 @@ function parseAIResponse(raw) {
 function formatForTelegramHtml(text) {
   if (!text) return '';
 
-  let clean = text
+  // 1. Temporarily protect valid allowed Telegram HTML tags (<b>, <i>, <code>, <blockquote>, etc.)
+  const validTags = [];
+  let clean = text.replace(/<\/?(b|strong|i|em|code|pre|blockquote|a(\s+href="[^"]*")?)>/gi, (match) => {
+    const placeholder = `__TG_TAG_${validTags.length}__`;
+    validTags.push(match);
+    return placeholder;
+  });
+
+  // 2. Escape raw HTML entities to prevent malformed tags
+  clean = clean
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+
+  // 3. Restore valid protected tags
+  validTags.forEach((tag, idx) => {
+    let normalized = tag
+      .replace(/<strong\b/gi, '<b')
+      .replace(/<\/strong>/gi, '</b>')
+      .replace(/<em\b/gi, '<i')
+      .replace(/<\/em>/gi, '</i>');
+    clean = clean.replace(`__TG_TAG_${idx}__`, normalized);
+  });
 
   // Strip any accidental database UUIDs or (id: "...") technical markers
   clean = clean.replace(/\(?\bids?\s*:\s*["']?[0-9a-fA-F-]{36}["']?\)?/gi, '');

@@ -12,7 +12,7 @@ const decodeToken = (b64) => {
 };
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
+const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
 
 import { getLeadAdvisorName, isLeadAssignedToUser, isSuperAdmin } from './utils';
 
@@ -152,8 +152,8 @@ export async function askAICopilot({ userMessage, conversationHistory = [], lead
   let apiUrl = import.meta.env.VITE_AI_API_URL || DEFAULT_URL;
   let model = import.meta.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-  // Discard any stale Alibaba Cloud credentials or congested quota models
-  if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen') || model === 'gemini-flash-latest' || model === 'gemini-3.8-flash') {
+  // Prefer ultra-stable gemini-3.1-flash-lite over preview models that experience temporary 503 demand spikes
+  if (apiUrl.includes('aliyuncs.com') || apiKey.startsWith('sk-ws-') || model.includes('qwen') || model === 'gemini-flash-latest' || model === 'gemini-3.8-flash' || model === 'gemini-3.5-flash-lite') {
     apiKey = DEFAULT_KEY;
     apiUrl = DEFAULT_URL;
     model = DEFAULT_MODEL;
