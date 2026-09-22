@@ -120,6 +120,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   Eliminación de dependencias de pago: la cuenta bancaria y el saldo de PayPal están completamente desvinculados y protegidos contra débitos automáticos.
 *   Sustitución de todas las credenciales heredadas por Google AI Studio (Free Tier sin tarjeta de crédito).
 
+### 15. Formateo Ejecutivo de Telegram, Transcripción de Audio y Estabilidad de IA
+*   **Corrección de Etiquetas HTML en Telegram**: Rediseño del formateador `formatForTelegramHtml` para proteger etiquetas nativas de Telegram (`<b>`, `<i>`, `<code>`, `<blockquote>`, `<a>`) con tokens temporales antes de sanitizar entidades. Se eliminó por completo el escape indebido que mostraba `<b>Nombre</b>` como texto crudo.
+*   **Horarios Amigables Peruanos (12h am/pm)**: Implementación de `formatFriendlyTime` para convertir marcas de tiempo de base de datos (`2026-09-22 11:59`, `16:00`) en horarios comerciales legibles (`11:59 a. m.`, `4:00 p. m.`).
+*   **Síntesis de Acciones en Agenda**: Creación de `summarizeTaskAction` para detectar borradores o cartas extensas de WhatsApp guardadas en la próxima acción y transformarlas en viñetas ejecutivas concisas (ej: *"Enviar avance de página modificada"*, *"Seguimiento sobre video y panel de la app"*).
+*   **Estabilidad del Motor de Audio e IA**: Configuración de **Gemini 3.1 Flash Lite** como motor principal de chat y transcripción multimodal de audio. Este modelo elimina las caídas por saturación (`503 High Demand`), responde en ~1 segundo y cuenta con 1,500 peticiones gratuitas diarias sin costo.
+*   **Saneamiento de Registros en Supabase**: Limpieza de las próximas acciones de Noé Rojas y Lic Sandra para mantener un pipeline impecable.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

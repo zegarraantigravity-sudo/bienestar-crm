@@ -551,6 +551,42 @@ async function saveTelegramUserSession(chatId, advisorKey, history, fromUser = {
   }
 }
 
+// Helper: Format date/time to human friendly Peruvian time format (e.g. "11:30 a. m.")
+function formatFriendlyTime(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const raw = String(dateStr).trim();
+    const timeMatch = raw.match(/(\d{1,2}):(\d{2})/);
+    if (timeMatch) {
+      let h = parseInt(timeMatch[1], 10);
+      const m = timeMatch[2];
+      const ampm = h >= 12 ? 'p. m.' : 'a. m.';
+      h = h % 12;
+      if (h === 0) h = 12;
+      return `${h}:${m} ${ampm}`;
+    }
+  } catch (e) {}
+  return dateStr;
+}
+
+// Helper: Summarize verbose drafted messages into concise task summaries
+function summarizeTaskAction(actionText) {
+  if (!actionText || typeof actionText !== 'string') return 'Seguimiento comercial';
+  const clean = actionText.trim();
+  if (/^(¡?hola|buenos\s+días|buenas\s+tardes|estimad|solo\s+paso|espero\s+que)/i.test(clean) || clean.length > 70) {
+    if (/página|web|logo|texto/i.test(clean)) return 'Enviar avance de página modificada';
+    if (/video|app|panel|se\.comer/i.test(clean)) return 'Seguimiento sobre video y panel de la app';
+    if (/zoom|reunión|cita|demo/i.test(clean)) return 'Confirmar reunión de demostración';
+    if (/material\s+gráfico|imágenes|videos/i.test(clean)) return 'Enviar material gráfico (imágenes y videos)';
+    if (/aplicativo|app|instal/i.test(clean)) return 'Consultar si instaló el aplicativo';
+    if (/cierre/i.test(clean)) return 'Coordinar llamada de cierre';
+    const firstSentence = clean.split(/[.!?\n]/)[0].trim();
+    if (firstSentence.length > 10 && firstSentence.length <= 60) return firstSentence;
+    return clean.slice(0, 55).trim() + '...';
+  }
+  return clean;
+}
+
 // -------------------------------------------------------------
 // Helper: Process Query with Copilot & Supabase
 // -------------------------------------------------------------
@@ -706,8 +742,10 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       estimated_value: l.estimated_value,
       advisor_name: leadAdvisor,
       is_my_lead: isMyLead,
-      next_action: nextAction,
+      next_action: summarizeTaskAction(nextAction),
+      raw_next_action: nextAction,
       next_action_date: nextActionDate,
+      hora_am_pm: formatFriendlyTime(nextActionDate),
       lost_reason: lostReason,
       categoria_agenda,
       minutos_diferencia,
@@ -740,10 +778,10 @@ FECHA Y HORA ACTUAL: ${currentTimeStr} (${todayDateStr}).
 📌 TOTAL DE TAREAS Y SEGUIMIENTOS ACTIVOS QUE REQUIEREN ATENCIÓN HOY: ${allActiveWorkload.length}
 
 ${allActiveWorkload.length > 0 ? `🔥 TAREAS Y SEGUIMIENTOS ACTIVOS PARA ${advisor.name.toUpperCase()} (EN ORDEN DE PRIORIDAD):
-${allActiveWorkload.map((t, idx) => `  ${idx + 1}. [${t.origen}] ${t.name} (Programada: ${t.next_action_date ? t.next_action_date.replace('T', ' ') : 'Sin fecha'}): "${t.next_action}"`).join('\n')}` : `  (No tienes ninguna tarea ni seguimiento pendiente para hoy)`}
+${allActiveWorkload.map((t, idx) => `  ${idx + 1}. [${t.origen}] ${t.name} (${formatFriendlyTime(t.next_action_date) || 'Sin hora'}): "${summarizeTaskAction(t.next_action)}"`).join('\n')}` : `  (No tienes ninguna tarea ni seguimiento pendiente para hoy)`}
 
 ${myMananaTasks.length > 0 ? `📅 TAREAS DE MAÑANA (${tomorrowDateStr}):
-${myMananaTasks.map(t => `  • ${t.name} a las ${t.next_action_date.split('T')[1] || ''}: "${t.next_action}"`).join('\n')}` : ''}
+${myMananaTasks.map(t => `  • ${t.name} (${formatFriendlyTime(t.next_action_date) || 'Sin hora'}): "${summarizeTaskAction(t.next_action)}"`).join('\n')}` : ''}
 
 RESUMEN DEL EQUIPO / OTROS ASESORES HOY:
 - Tareas del equipo que ya pasaron su hora hoy: ${otherHoyRetrasadas.length}
@@ -795,9 +833,11 @@ INSTRUCCIONES CLAVE:
 3. CÓMO RESPONDER CUANDO PREGUNTAN POR TAREAS (DE HOY, VENCIDAS O GENERALES):
    - MÁXIMA BREVEDAD Y FORMATO LIMPIO (MÁXIMO 5 LÍNEAS):
      * CERO rodeos, cero párrafos largos de justificación, cero discursos sobre tener la agenda vacía.
+     * CERO cartas o borradores completos de WhatsApp dentro de las viñetas de tareas. En la lista de tareas coloca ÚNICAMENTE una acción ejecutiva y breve (ej: "Enviar avance de página modificada", "Consultar si instaló el aplicativo").
+     * Si la tarea tiene hora, preséntala en formato amigable de 12 horas en Perú: ej. "(11:30 a. m.)" o "(4:00 p. m.)". NUNCA pongas fechas o formatos de base de datos como "(2026-09-22 11:30)".
      * Si hay seguimientos pendientes en la lista de arriba, NUNCA digas "Ninguna". Di: "Tienes estos seguimientos pendientes listos para accionar:" y lista directamente los prospectos en viñetas cortas:
-       1. [Nombre] — [Acción concreta]
-       2. [Nombre] — [Acción concreta]
+       • [Nombre] ([Hora a. m./p. m.]) — [Acción ejecutiva breve]
+       • [Nombre] ([Hora a. m./p. m.]) — [Acción ejecutiva breve]
      * Cierra directamente con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
 
 4. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
@@ -1201,42 +1241,6 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     replyText: finalHtml,
     rawReply: cleanReply
   };
-}
-
-// Helper: Format date/time to human friendly Peruvian time format (e.g. "11:30 a. m.")
-function formatFriendlyTime(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const raw = String(dateStr).trim();
-    const timeMatch = raw.match(/(\d{1,2}):(\d{2})/);
-    if (timeMatch) {
-      let h = parseInt(timeMatch[1], 10);
-      const m = timeMatch[2];
-      const ampm = h >= 12 ? 'p. m.' : 'a. m.';
-      h = h % 12;
-      if (h === 0) h = 12;
-      return `${h}:${m} ${ampm}`;
-    }
-  } catch (e) {}
-  return dateStr;
-}
-
-// Helper: Summarize verbose drafted messages into concise task summaries
-function summarizeTaskAction(actionText) {
-  if (!actionText || typeof actionText !== 'string') return 'Seguimiento comercial';
-  const clean = actionText.trim();
-  if (/^(¡?hola|buenos\s+días|buenas\s+tardes|estimad|solo\s+paso|espero\s+que)/i.test(clean) || clean.length > 70) {
-    if (/página|web|logo|texto/i.test(clean)) return 'Enviar avance de página modificada';
-    if (/video|app|panel|se\.comer/i.test(clean)) return 'Seguimiento sobre video y panel de la app';
-    if (/zoom|reunión|cita|demo/i.test(clean)) return 'Confirmar reunión de demostración';
-    if (/material\s+gráfico|imágenes|videos/i.test(clean)) return 'Enviar material gráfico (imágenes y videos)';
-    if (/aplicativo|app|instal/i.test(clean)) return 'Consultar si instaló el aplicativo';
-    if (/cierre/i.test(clean)) return 'Coordinar llamada de cierre';
-    const firstSentence = clean.split(/[.!?\n]/)[0].trim();
-    if (firstSentence.length > 10 && firstSentence.length <= 60) return firstSentence;
-    return clean.slice(0, 55).trim() + '...';
-  }
-  return clean;
 }
 
 // Helper: Parse date in Peru Timezone (UTC-5)
