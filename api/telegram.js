@@ -415,36 +415,47 @@ async function transcribeAudioUrl(audioUrl) {
     const arrayBuffer = await audioRes.arrayBuffer();
     const base64Audio = Buffer.from(arrayBuffer).toString('base64');
 
-    // Cascade try: gemini-3.5-transcribe (dedicated audio engine, zero 503 errors), then gemini-3.6-flash, gemini-flash-latest
-    const modelsToTry = ['gemini-3.5-transcribe', 'gemini-3.6-flash', 'gemini-flash-latest'];
-    for (const modelName of modelsToTry) {
-      try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${AI_KEY}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [
-                { text: 'Transcribe exactamente palabra por palabra lo que dice este audio en español. Devuelve ÚNICAMENTE el texto transcrito tal cual, sin introducciones, sin notas y sin comillas:' },
-                {
-                  inlineData: {
-                    mimeType: 'audio/ogg',
-                    data: base64Audio
+    // Multi-Model Audio Cascade: gemini-3.6-flash, gemini-flash-latest, gemini-3.8-flash, gemini-3.7-flash with auto-retry
+    const modelsToTry = ['gemini-3.6-flash', 'gemini-flash-latest', 'gemini-3.8-flash', 'gemini-3.7-flash'];
+    for (let attempt = 0; attempt < 2; attempt++) {
+      if (attempt > 0) {
+        await new Promise(r => setTimeout(r, 1200));
+      }
+      for (const modelName of modelsToTry) {
+        try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${AI_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{
+                parts: [
+                  { text: 'Transcribe exactamente palabra por palabra lo que dice este audio en español. Devuelve ÚNICAMENTE el texto transcrito tal cual, sin introducciones, sin notas y sin comillas:' },
+                  {
+                    inlineData: {
+                      mimeType: 'audio/ogg',
+                      data: base64Audio
+                    }
                   }
-                }
-              ]
-            }]
-          })
-        });
+                ]
+              }]
+            })
+          });
 
-        const data = await res.json();
-        const transcribed = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (transcribed && transcribed.length > 0 && !transcribed.toLowerCase().includes('parece que no has') && !transcribed.toLowerCase().includes('adjuntado ningún')) {
-          return transcribed;
+          const data = await res.json();
+          const parts = data.candidates?.[0]?.content?.parts || [];
+          const textPart = parts.find(p => p.text && p.text.trim().length > 0);
+          const transcribed = textPart ? textPart.text.trim() : '';
+
+          const isRefusal = /parece\s+que\s+no|adjuntado\s+ning[uú]n|no\s+se\s+ha\s+proporcionado|no\s+puedo\s+escuchar/i.test(transcribed);
+          if (transcribed && transcribed.length > 0 && !isRefusal) {
+            return transcribed;
+          }
+          if (data.error?.message) {
+            console.warn(`Model ${modelName} returned status ${res.status}:`, data.error.message.slice(0, 70));
+          }
+        } catch (mErr) {
+          console.warn(`Error attempting transcription with ${modelName}:`, mErr.message);
         }
-        console.warn(`Model ${modelName} returned no candidate for audio:`, data.error?.message || data);
-      } catch (mErr) {
-        console.warn(`Error attempting transcription with ${modelName}:`, mErr);
       }
     }
     return '';
