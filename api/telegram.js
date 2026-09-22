@@ -18,14 +18,14 @@ const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_
 
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
+const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
 
 let AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 let AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
 let AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-// Prefer ultra-stable gemini-3.1-flash-lite over preview models that experience temporary 503 demand spikes
-if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash' || AI_MODEL === 'gemini-3.5-flash-lite') {
+// Clean up any stale Alibaba Cloud credentials leftover in Vercel environment variables
+if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash' || AI_MODEL === 'gemini-3.1-flash-lite') {
   AI_KEY = DEFAULT_KEY;
   AI_URL = DEFAULT_URL;
   AI_MODEL = DEFAULT_MODEL;
@@ -415,8 +415,8 @@ async function transcribeAudioUrl(audioUrl) {
     const arrayBuffer = await audioRes.arrayBuffer();
     const base64Audio = Buffer.from(arrayBuffer).toString('base64');
 
-    // Cascade try: gemini-3.1-flash-lite (high reliability), then gemini-3.5-flash-lite
-    const modelsToTry = ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'];
+    // Cascade try: gemini-3.5-transcribe (dedicated audio engine, zero 503 errors), then gemini-3.6-flash, gemini-flash-latest
+    const modelsToTry = ['gemini-3.5-transcribe', 'gemini-3.6-flash', 'gemini-flash-latest'];
     for (const modelName of modelsToTry) {
       try {
         const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${AI_KEY}`, {
@@ -439,7 +439,7 @@ async function transcribeAudioUrl(audioUrl) {
 
         const data = await res.json();
         const transcribed = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (transcribed && transcribed.length > 0) {
+        if (transcribed && transcribed.length > 0 && !transcribed.toLowerCase().includes('parece que no has') && !transcribed.toLowerCase().includes('adjuntado ningún')) {
           return transcribed;
         }
         console.warn(`Model ${modelName} returned no candidate for audio:`, data.error?.message || data);
@@ -930,40 +930,19 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     }))
     .filter(m => m.content && m.content.trim().length > 0);
 
-  let aiRes = await fetch(AI_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${AI_KEY}`
-    },
-    body: JSON.stringify({
-      model: AI_MODEL,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        ...formattedHistory,
-        { role: 'user', content: userMessage }
-      ],
-      temperature: 0.2,
-      max_tokens: 3500
-    })
-  });
-
+  // Multi-Model Cascade: Try gemini-3.5-flash-lite, gemini-flash-lite-latest, gemini-3-flash-preview, gemini-3.1-flash-lite
+  const chatModelsToTry = ['gemini-3.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-3-flash-preview', 'gemini-3.1-flash-lite'];
   let aiJson = {};
-  try { aiJson = await aiRes.json(); } catch (e) { aiJson = {}; }
-
-  // Automatic Failover: If primary model encounters high demand (503), rate limit (429) or empty choices, retry with fallback model
-  if (!aiRes.ok || !aiJson.choices?.[0]?.message?.content) {
-    const fallbackModel = (AI_MODEL === 'gemini-3.1-flash-lite') ? 'gemini-3.5-flash-lite' : 'gemini-3.1-flash-lite';
-    console.warn(`Primary model ${AI_MODEL} failed or empty (status ${aiRes.status}), retrying with fallback model ${fallbackModel}`);
+  for (const modelName of chatModelsToTry) {
     try {
-      const retryRes = await fetch(AI_URL, {
+      const res = await fetch(AI_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${AI_KEY}`
         },
         body: JSON.stringify({
-          model: fallbackModel,
+          model: modelName,
           messages: [
             { role: 'system', content: systemPrompt },
             ...formattedHistory,
@@ -973,11 +952,16 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
           max_tokens: 3500
         })
       });
-      if (retryRes.ok) {
-        aiJson = await retryRes.json();
+      if (res.ok) {
+        const j = await res.json();
+        if (j.choices?.[0]?.message?.content) {
+          aiJson = j;
+          break;
+        }
       }
-    } catch (retryErr) {
-      console.error('Fallback model retry error:', retryErr);
+      console.warn(`Model ${modelName} returned status ${res.status} or empty choices, trying next fallback...`);
+    } catch (err) {
+      console.warn(`Error calling model ${modelName}:`, err.message);
     }
   }
 
@@ -985,6 +969,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   const parsed = parseAIResponse(rawContent);
 
   let badgePrefix = '';
+  let cleanReply = parsed.reply_message || '';
 
   const isUserExplicitUpdate = isExplicitUpdateCommand(userMessage);
   const isUserExplicitCreate = isExplicitCreateCommand(userMessage);
@@ -1013,7 +998,17 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     targetLead = findMatchingLead(leads, null, candidateContactName);
   }
 
-  // Fallback: search lead name directly inside the raw user prompt
+  // 1. Direct scan: check if user explicitly mentioned a lead in their message
+  if (!targetLead && userMessage) {
+    targetLead = findLeadInSentence(leads, userMessage, advisor.name);
+  }
+
+  // 2. Contextual scan: if user is updating/responding without naming the lead (e.g. "me respondio esto...", "pon en bitacora...", "le envie el mensaje")
+  if (!targetLead && (isUserExplicitUpdate || /^(me\s+respondi[oó]|respondi[oó]|contest[oó]|dijo\s+que|escribi[oó]|le\s+escrib[ií]|le\s+mand[eé]|habl[eé]\s+con\s+[eé]l|habl[eé]\s+con\s+ella|pon\s+en\s+bit[aá]cora)/i.test(userMessage))) {
+    targetLead = findLeadFromHistory(leads, conversationHistory, advisor.name);
+  }
+
+  // 3. Fallback: fuzzy phonetic match on full message
   if (!targetLead && userMessage) {
     targetLead = findMatchingLead(leads, null, userMessage);
   }
@@ -1051,7 +1046,16 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     }
 
     // Only add to timeline if the user or AI actually stated note details
-    const noteContent = parsed.note_text || parsed.new_lead_data?.notes || '';
+    let noteContent = parsed.note_text || parsed.new_lead_data?.notes || '';
+    if (!noteContent || noteContent.trim().length === 0) {
+      if (/mensaje\s+que\s+le\s+envi[eé]|se\s+le\s+envi[oó]\s+mensaje|le\s+escrib[ií]\s+por\s+whatsapp|le\s+escrib[ií]|le\s+mand[eé]/i.test(userMessage)) {
+        noteContent = `Mensaje de seguimiento enviado por WhatsApp`;
+      } else if (/me\s+respondi[oó]|dijo\s+que|contest[oó]/i.test(userMessage)) {
+        noteContent = `Respuesta del cliente por WhatsApp: «${userMessage.replace(/^(me\s+respondi[oó]|dijo\s+que|contest[oó])\s*(esto:?)?\s*/i, '').trim()}»`;
+      } else if (isUserExplicitUpdate) {
+        noteContent = userMessage;
+      }
+    }
     if (noteContent && noteContent.trim().length > 0) {
       const noteWithAuthor = `${noteContent.trim()} [Registrado por ${advisor.name} vía Telegram]`;
       timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
@@ -1076,6 +1080,15 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       }
       if (parsed.next_action_date !== undefined && parsed.next_action_date !== null && parsed.next_action_date !== '') {
         finalNextDate = parsed.next_action_date;
+      }
+      if (!finalNextAction || !finalNextDate) {
+        if (/por la noche|en la noche/i.test(userMessage)) {
+          finalNextAction = 'Hacer seguimiento tras revisión nocturna';
+          finalNextDate = `${todayPeruYmd}T20:00`;
+        } else if (/mañana/i.test(userMessage)) {
+          finalNextAction = 'Hacer seguimiento al cliente';
+          finalNextDate = `${tomorrowPeruYmd}T10:00`;
+        }
       }
     }
 
@@ -1118,7 +1131,10 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       if (newlyAssignedAdvisor) {
         badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
       } else {
-        badgePrefix = `✅ <b>CRM actualizado</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+        badgePrefix = `✅ <b>CRM actualizado para ${targetLead.contact_name || targetLead.business_name}</b>\n\n`;
+      }
+      if (!cleanReply || cleanReply.length === 0 || cleanReply.startsWith('Hola ') || cleanReply.includes('¿En qué prospecto')) {
+        cleanReply = `Listo ${advisor.name.split(' ')[0]}. Registré en la bitácora de ${targetLead.contact_name || targetLead.business_name}: «${noteContent || 'Gestión comercial'}».`;
       }
     } else {
       console.error('Error updating lead in supabase:', updateErr);
@@ -1192,10 +1208,17 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       badgePrefix = `⚠️ <i>Hubo un error al crear el prospecto en el CRM: ${insertErr?.message || 'Error desconocido'}</i>\n\n`;
     }
   } else if (!targetLead && isUserExplicitUpdate && !updatePerformed) {
-    badgePrefix = `⚠️ <i>No encontré al prospecto "${parsed.target_lead_name || ''}" en el CRM para actualizarlo.</i>\n\n`;
+    const rawTarget = (parsed.target_lead_name || candidateContactName || '').trim();
+    if (rawTarget && rawTarget.length > 1) {
+      badgePrefix = `⚠️ <i>No encontré al prospecto "${rawTarget}" en el CRM para actualizarlo.</i>\n\n`;
+    } else {
+      badgePrefix = `⚠️ <i>¿A qué prospecto te refieres para registrar esta gestión en el CRM?</i>\n\n`;
+    }
   }
 
-  let cleanReply = parsed.reply_message || '';
+  if (!cleanReply) {
+    cleanReply = parsed.reply_message || '';
+  }
 
   // Fail-safe: If cleanReply STILL looks like raw JSON, parse it to extract reply_message
   if (typeof cleanReply === 'string' && cleanReply.trim().startsWith('{') && (cleanReply.includes('"reply_message"') || cleanReply.includes('"intent"'))) {
@@ -1218,8 +1241,10 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
   }
 
   // Guaranteed contextual answer if AI returned empty or failed
-  if (!cleanReply || cleanReply.trim().length === 0 || cleanReply.trim() === `Listo ${advisor.name.split(' ')[0]}.`) {
-    if (/\b(tarea|tareas|agenda|pendiente|pendientes|vencida|vencidas|hoy|llamada|llamadas|seguimiento|seguimientos)\b/i.test(userMessage)) {
+  if (!cleanReply || cleanReply.trim().length === 0 || cleanReply.trim() === `Listo ${advisor.name.split(' ')[0]}.` || (updatePerformed && cleanReply.includes('¿En qué prospecto'))) {
+    if (updatePerformed && targetLead) {
+      cleanReply = `Listo ${advisor.name.split(' ')[0]}. Ya registré la gestión en la bitácora de **${targetLead.contact_name || targetLead.business_name}**.`;
+    } else if (/\b(tarea|tareas|agenda|pendiente|pendientes|vencida|vencidas|hoy|llamada|llamadas|seguimiento|seguimientos)\b/i.test(userMessage)) {
       if (allActiveWorkload.length === 0) {
         cleanReply = `En tu cartera personal no tienes tareas pendientes ni vencidas para hoy. Tu agenda está al día.`;
       } else {
@@ -1405,6 +1430,74 @@ function phoneticNormalize(str) {
     .trim();
 }
 
+// Helper: Scan a full sentence to detect if any lead name or key name token is mentioned
+function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
+  if (!text || !leads || leads.length === 0) return null;
+  const cleanText = ' ' + normalizeStr(text) + ' ';
+  const stopWords = new Set([
+    'lic', 'licenciada', 'licenciado', 'dr', 'dra', 'doctor', 'doctora', 'ing', 'ingeniero', 'coach',
+    'sr', 'sra', 'senor', 'senora', 'amigo', 'amiga', 'de', 'del', 'la', 'el', 'los', 'las', 'un',
+    'una', 'en', 'por', 'para', 'con', 'que', 'le', 'al', 'se', 'lo', 'los', 'las', 'les', 'me',
+    'te', 'nos', 'mi', 'mis', 'su', 'sus', 'hoy', 'ayer', 'manana', 'crm', 'bot', 'lead', 'prospecto',
+    'cliente', 'mensaje', 'bitacora', 'llamada', 'tarea', 'agenda', 'contacto'
+  ]);
+
+  let candidates = [];
+  for (const l of leads) {
+    if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
+    const isMyLead = (l.assigned_to || '').toLowerCase().includes(advisorName.split(' ')[0].toLowerCase());
+    const cNorm = normalizeStr(l.contact_name);
+    const bNorm = normalizeStr(l.business_name);
+
+    // Exact full name match in text (e.g. 'david godoy', 'luis culqui', 'lic sandra')
+    if (cNorm && cleanText.includes(' ' + cNorm + ' ')) {
+      candidates.push({ lead: l, score: 100, isMyLead });
+      continue;
+    }
+    if (bNorm && cleanText.includes(' ' + bNorm + ' ')) {
+      candidates.push({ lead: l, score: 95, isMyLead });
+      continue;
+    }
+
+    // Check individual significant tokens (e.g. 'sandra', 'culqui', 'godoy', 'monica', 'noe', 'yoselin')
+    const tokens = [...cNorm.split(' '), ...bNorm.split(' ')].filter(t => t.length >= 3 && !stopWords.has(t));
+    for (const token of tokens) {
+      if (cleanText.includes(' ' + token + ' ')) {
+        let score = token.length >= 4 ? 80 : 50;
+        if (cNorm.startsWith(token) || cNorm.endsWith(token)) score += 20;
+        candidates.push({ lead: l, score, isMyLead, token });
+      }
+    }
+  }
+
+  if (candidates.length > 0) {
+    // Sort by isMyLead first, then score descending
+    candidates.sort((a, b) => {
+      if (a.isMyLead !== b.isMyLead) return a.isMyLead ? -1 : 1;
+      return b.score - a.score;
+    });
+    return candidates[0].lead;
+  }
+  return null;
+}
+
+// Helper: Scan recent conversation history to inherit the last referenced lead
+function findLeadFromHistory(leads, history, advisorName = 'Alberto Zegarra') {
+  if (!history || history.length === 0 || !leads || leads.length === 0) return null;
+  for (let i = history.length - 1; i >= Math.max(0, history.length - 6); i--) {
+    const raw = history[i]?.content || '';
+    const clean = ' ' + normalizeStr(raw) + ' ';
+    for (const l of leads) {
+      if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
+      const cNorm = normalizeStr(l.contact_name);
+      if (cNorm && cNorm.length >= 3 && clean.includes(' ' + cNorm + ' ')) return l;
+      const bNorm = normalizeStr(l.business_name);
+      if (bNorm && bNorm.length >= 3 && clean.includes(' ' + bNorm + ' ')) return l;
+    }
+  }
+  return null;
+}
+
 // Helper: Resilient Fuzzy & Phonetic Lead Matching (handles speech-to-text slips like Kulki/Culqui)
 function findMatchingLead(leads, targetId, targetName) {
   if (!leads || leads.length === 0) return null;
@@ -1518,7 +1611,7 @@ function isExplicitUpdateCommand(userText) {
   // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
   const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|asigna(r)?(lo|le|me|la|les|los)?|asignes|reasigna(r)?(lo|le|me|la|les|los)?|reasignes|transfiere|transferir|deriva(r)?(lo|le|me|la|les|los)?|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim)\b/i;
+  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim|respondio|contesto|dijo que|escribio|mando mensaje|mensaje que le envie|le envie el mensaje|me dijo)\b/i;
 
   return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
