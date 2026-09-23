@@ -632,6 +632,25 @@ function summarizeTaskAction(actionText) {
   return clean;
 }
 
+// Helper: Detect if user message is an inquiry for today's tasks or agenda
+function isTodayAgendaQuery(text) {
+  if (!text || typeof text !== 'string') return false;
+  const t = normalizeStr(text);
+  if (/manana|pasado|ayer|semana/i.test(t)) return false;
+  if (/^(que\s+(tengo|hay|tenemos|toca)\s+(para\s+)?hoy)/i.test(t)) return true;
+  if (/^(agenda|tareas|pendientes|mis tareas|mis pendientes)$/i.test(t)) return true;
+  const hasTask = /(tarea|llamada|pendiente|seguimiento|actividad|agenda|cosas|hacer)/i.test(t);
+  const hasToday = /(hoy|dia de hoy|para hoy)/i.test(t);
+  return hasTask && hasToday;
+}
+
+// Helper: Detect if user message is an inquiry for tomorrow's tasks
+function isTomorrowAgendaQuery(text) {
+  if (!text || typeof text !== 'string') return false;
+  const t = normalizeStr(text);
+  return /(manana|dia de manana)/i.test(t) && /(tarea|agenda|pendiente|llamada|que hay|que tengo|que tenemos)/i.test(t);
+}
+
 // -------------------------------------------------------------
 // Helper: Process Query with Copilot & Supabase
 // -------------------------------------------------------------
@@ -720,23 +739,41 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       if (Array.isArray(p)) {
         timeline = p.map(n => {
           if (!n) return '';
+          let text = typeof n === 'string' ? n : (n.text || '');
+          if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
+            text = text.slice(0, 250) + '...';
+          }
           const d = n.date ? `[${n.date.slice(0, 16).replace('T', ' ')}] ` : '';
-          return `${d}${n.text || String(n)}`;
+          return `${d}${text}`;
         }).filter(Boolean);
       } else if (p && typeof p === 'object') {
         timeline = (p.timeline || []).map(n => {
           if (!n) return '';
+          let text = typeof n === 'string' ? n : (n.text || '');
+          if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
+            text = text.slice(0, 250) + '...';
+          }
           const d = n.date ? `[${n.date.slice(0, 16).replace('T', ' ')}] ` : '';
-          return `${d}${n.text || String(n)}`;
+          return `${d}${text}`;
         }).filter(Boolean);
         nextAction = p.next_action || '';
         nextActionDate = p.next_action_date || '';
         lostReason = p.lost_reason_label || p.lost_reason || '';
       } else if (l.notes) {
-        timeline = [l.notes];
+        let text = l.notes;
+        if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
+          text = text.slice(0, 250) + '...';
+        }
+        timeline = [text];
       }
     } catch (e) {
-      if (l.notes) timeline = [l.notes];
+      if (l.notes) {
+        let text = l.notes;
+        if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
+          text = text.slice(0, 250) + '...';
+        }
+        timeline = [text];
+      }
     }
 
     let categoria_agenda = 'SIN_FECHA';
@@ -793,8 +830,7 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
       hora_am_pm: formatFriendlyTime(nextActionDate),
       lost_reason: lostReason,
       categoria_agenda,
-      minutos_diferencia,
-      timeline: (timeline || []).slice(0, 8)
+      minutos_diferencia
     };
   });
 
@@ -817,6 +853,74 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
   const myLeadCount = leadsSummary.filter(l => l.is_my_lead).length;
   const isLuis = advisor.key === 'luis';
 
+  // -------------------------------------------------------------------------
+  // FAST-PATH: Instant deterministic responses for general agenda queries
+  // (Prevents any LLM latency, webhook timeouts, or accidental task omissions)
+  // -------------------------------------------------------------------------
+  const isGeneralTodayAgenda = isTodayAgendaQuery(userMessage);
+  const isGeneralTomorrowAgenda = isTomorrowAgendaQuery(userMessage);
+  const targetLeadInSentence = findLeadInSentence(leads, userMessage, advisor.name);
+
+  if (isGeneralTodayAgenda && !targetLeadInSentence && !isExplicitUpdateCommand(userMessage) && !isExplicitCreateCommand(userMessage)) {
+    if (allActiveWorkload.length === 0) {
+      const replyText = `¡Todo al día! 🎉 No tienes seguimientos pendientes para hoy en tu cartera.\n\n¿Deseas prospectar a alguien nuevo o revisar las tareas de mañana?`;
+      return { replyText, rawReply: replyText };
+    }
+    const items = allActiveWorkload.map(t => `• <b>${t.name}</b> (${t.hora_am_pm || 'Sin hora'}) — ${t.next_action}`);
+    const replyText = `Tienes estos seguimientos pendientes listos para accionar en tu cartera:\n\n${items.join('\n')}\n\n¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?`;
+    return { replyText, rawReply: replyText };
+  }
+
+  if (isGeneralTomorrowAgenda && !targetLeadInSentence && !isExplicitUpdateCommand(userMessage) && !isExplicitCreateCommand(userMessage)) {
+    if (myMananaTasks.length === 0) {
+      const replyText = `📅 No tienes tareas programadas para mañana (${tomorrowDateStr}).`;
+      return { replyText, rawReply: replyText };
+    }
+    const items = myMananaTasks.map(t => `• <b>${t.name}</b> (${t.hora_am_pm || 'Sin hora'}) — ${t.next_action}`);
+    const replyText = `📅 Tienes estas tareas programadas para mañana (${tomorrowDateStr}):\n\n${items.join('\n')}\n\n¿Deseas preparar algo con anticipación?`;
+    return { replyText, rawReply: replyText };
+  }
+
+  // Ordinal lead resolution (e.g. user replies "al primero", "al 1", "al segundo", etc.)
+  let targetLead = targetLeadInSentence;
+  if (!targetLead && allActiveWorkload.length > 0) {
+    const ordMatch = userMessage.match(/\b(?:al|a\s+la|el|la)?\s*(primer[oa]?|segund[oa]?|tercer[oa]?|cuart[oa]?|quint[oa]?|sext[oa]?|[1-6])\b/i);
+    if (ordMatch) {
+      const mapOrd = {
+        'primero': 0, 'primera': 0, 'primer': 0, '1': 0,
+        'segundo': 1, 'segunda': 1, '2': 1,
+        'tercero': 2, 'tercera': 2, 'tercer': 2, '3': 2,
+        'cuarto': 3, 'cuarta': 3, '4': 3,
+        'quinto': 4, 'quinta': 4, '5': 4,
+        'sexto': 5, 'sexta': 5, '6': 5
+      };
+      const idx = mapOrd[ordMatch[1].toLowerCase()];
+      if (idx !== undefined && allActiveWorkload[idx]) {
+        targetLead = leads.find(l => l.id === allActiveWorkload[idx].id) || null;
+      }
+    }
+  }
+
+  if (!targetLead) {
+    targetLead = findLeadFromHistory(leads, conversationHistory, advisor.name);
+  }
+
+  let targetLeadTimeline = [];
+  if (targetLead) {
+    try {
+      const tp = JSON.parse(targetLead.notes || '{}');
+      const rawTl = Array.isArray(tp) ? tp : (tp.timeline || []);
+      targetLeadTimeline = rawTl.slice(-5).map(n => {
+        let text = typeof n === 'string' ? n : (n.text || '');
+        if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
+          text = text.slice(0, 250) + '...';
+        }
+        const d = n.date ? `[${n.date.slice(0, 16).replace('T', ' ')}] ` : '';
+        return `${d}${text}`;
+      }).filter(Boolean);
+    } catch (e) {}
+  }
+
   const agendaPrecalculada = `CARTERA DE SEGUIMIENTOS Y TAREAS ACTIVAS PARA ${advisor.name.toUpperCase()}:
 FECHA Y HORA ACTUAL: ${currentTimeStr} (${todayDateStr}).
 
@@ -832,139 +936,66 @@ RESUMEN DEL EQUIPO / OTROS ASESORES HOY:
 - Tareas del equipo que ya pasaron su hora hoy: ${otherHoyRetrasadas.length}
 - Tareas del equipo pendientes para más tarde hoy: ${otherHoyPendientes.length}`;
 
-  const systemPrompt = `Eres el Copiloto Inteligente y Estratega Comercial de Bienestar CRM para ${advisor.name} y el equipo de ventas de Bienestar Sin Excusas en Telegram.
+  const activeLeadsCompact = leadsSummary
+    .filter(l => l.status !== 'cerrado_perdido')
+    .map(l => ({
+      id: l.id,
+      name: l.name,
+      status: l.status,
+      advisor: l.advisor_name,
+      is_mine: l.is_my_lead,
+      action: l.next_action,
+      date: l.next_action_date,
+      hora: l.hora_am_pm
+    }));
 
-FECHA Y HORA ACTUAL OFICIAL EN PERÚ:
-${todayDateStr} a las ${currentTimeStr} (Zona horaria: America/Lima, UTC-5).
-Usuario conectado en este chat: ${advisor.name} (${advisor.role}, email: ${advisor.email}).
-
-ESTRUCTURA REAL DEL EQUIPO COMERCIAL EN EL CRM:
-- Hay 2 asesores de ventas principales en el CRM:
-  1. Alberto Zegarra (Dueño / Super Admin): Tiene 24 prospectos personales asignados (is_my_lead: true cuando Alberto está conectado). Darío Cienfuegos (embajador de gimnasios a quien Alberto asesora) es un PROSPECTO y contacto estratégico en la cartera personal de Alberto Zegarra, NO un vendedor con leads.
-  2. Luis Hakim ('Socio Comercial'): Tiene 27 prospectos asignados a su cargo (is_my_lead: true cuando Luis está conectado), incluyendo 'Amigo del culturismo', 'Profesor de entrenamientos', 'Silmed', 'Labnutritión', 'C40 Juliaca', etc.
-${isLuis ? `
-CONTEXTO ESPECÍFICO PARA LUIS HAKIM:
-- Estás interactuando directamente con LUIS HAKIM (Socio Comercial).
-- Sus prospectos asignados son los marcados con is_my_lead: true (${myLeadCount} prospectos).
-- Cuando Luis pregunte por su agenda, qué le toca hoy o pida recomendaciones, enfócate 100% en SUS prospectos y en cómo reactivarlos o cerrarlos.
-- Los prospectos de Alberto Zegarra (Rosario López, Carmina Badillo, Claudia Advincula, Darío Cienfuegos, etc.) tienen is_my_lead: false y pertenecen a Alberto. No se los atribuyas a Luis.
-` : `
-CONTEXTO ESPECÍFICO PARA ALBERTO ZEGARRA:
-- Estás interactuando directamente con ALBERTO ZEGARRA (Dueño / Super Administrador).
-- Sus prospectos personales son los marcados con is_my_lead: true (${myLeadCount} prospectos).
-- Las llamadas y tareas de Luis Hakim (como 'Amigo del culturismo', 'Profesor de entrenamientos', etc.) tienen is_my_lead: false y pertenecen a Luis Hakim. No se las atribuyas como suyas a Alberto.
-`}
+  const systemPrompt = `Eres el Copiloto Inteligente y Director Comercial de Bienestar CRM para ${advisor.name} en Telegram.
+Fecha actual oficial Perú: ${todayDateStr} a las ${currentTimeStr} (America/Lima).
+Usuario conectado: ${advisor.name} (${advisor.role}, email: ${advisor.email}).
+Asesores comerciales: Alberto Zegarra (Dueño / Super Admin), Luis Hakim (Socio Comercial).
+${isLuis ? 'Enfócate prioritariamente en los prospectos asignados a Luis Hakim (is_mine: true).' : 'Enfócate prioritariamente en los prospectos personales de Alberto Zegarra (is_mine: true).'}
 
 ${agendaPrecalculada}
 
-BASE DE DATOS COMPLETA DE PROSPECTOS ACTIVOS EN EL CRM:
-${JSON.stringify(leadsSummary, null, 2)}
+PROSPECTOS ACTIVOS EN EL CRM (${activeLeadsCompact.length}):
+${JSON.stringify(activeLeadsCompact)}
+${targetLead ? `
+PROSPECTO EN FOCO DIRECTO:
+- Nombre: ${targetLead.contact_name || targetLead.business_name}
+- Estado en CRM: ${targetLead.status}
+- Asignado a: ${targetLead.assigned_to || advisor.name}
+- Teléfono: ${targetLead.phone || 'No registrado'}
+- Últimas gestiones en bitácora:
+${targetLeadTimeline.length > 0 ? targetLeadTimeline.map(n => `  • ${n}`).join('\n') : '  (Sin notas previas)'}
+` : ''}
 
-INSTRUCCIONES CLAVE:
-1. IDENTIDAD Y PROPIEDAD DE PROSPECTOS:
-   - Responde enfocado prioritariamente en los prospectos del usuario conectado (${advisor.name}, con is_my_lead: true).
-   - NUNCA le atribuyas como suyas las tareas de otro asesor.
+REGLAS DE ACTUACIÓN:
+1. IDENTIDAD Y FOCO: Responde enfocado en el prospecto consultado. NUNCA mezcles clientes ni atribuyas tareas de otro asesor.
+2. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
+3. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
+   • [Nombre] ([Hora]) — [Acción ejecutiva breve]
+   Cierra con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
+4. WHATSAPP COPYWRITING: Si piden mensaje para un prospecto, redacta un WhatsApp cálido, directo y persuasivo al estilo peruano/latino, listo para copiar entre comillas.
+5. BITÁCORA Y CRM: Solo define intent: "update_lead" si el usuario da una orden o dicta qué pasó con un cliente. NUNCA inventes notas falsas ("note_text" debe ser vacío si no dictó notas).
+6. ELIMINAR PRÓXIMA ACCIÓN: Si piden quitar, borrar o dejar en blanco la próxima acción, define "clear_next_action": true, "next_action_text": "", "next_action_date": "".
+7. CREAR PROSPECTOS: Si piden anotar cita o prospecto nuevo que no está en la base, define intent: "create_lead" con "new_lead_data".
+8. COMPRENSIÓN FONÉTICA: Si un audio o texto tiene variaciones fonéticas (ej. "Luis Kulki" o "Culquin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula), asócialo de inmediato al prospecto real sin discutir.
 
-2. PROHIBICIÓN TERMINANTE DE VOCABULARIO TÉCNICO, VARIABLES Y DEFENSA ROBÓTICA:
-   - NUNCA jamás escribas nombres de variables o campos técnicos en tu respuesta (PROHIBIDO escribir "is_my_lead", "next_action_date", "UUID", "JSON", "true", "false", "base de datos", etc.).
-   - PROHIBIDO TERMINANTEMENTE usar frases defensivas o arrogantes como:
-     * "Esto no es un error del sistema"
-     * "es una realidad operativa"
-     * "la integridad del sistema"
-     * "debo ser transparente contigo"
-     * "es un error de tipeo tuyo"
-   - Habla SIEMPRE como un director comercial humano de élite: empático, conciso, respetuoso, directo y orientado al cierre de ventas.
-
-3. CÓMO RESPONDER CUANDO PREGUNTAN POR TAREAS (DE HOY, VENCIDAS O GENERALES):
-   - MÁXIMA BREVEDAD Y FORMATO LIMPIO (MÁXIMO 5 LÍNEAS):
-     * CERO rodeos, cero párrafos largos de justificación, cero discursos sobre tener la agenda vacía.
-     * CERO cartas o borradores completos de WhatsApp dentro de las viñetas de tareas. En la lista de tareas coloca ÚNICAMENTE una acción ejecutiva y breve (ej: "Enviar avance de página modificada", "Consultar si instaló el aplicativo").
-     * Si la tarea tiene hora, preséntala en formato amigable de 12 horas en Perú: ej. "(11:30 a. m.)" o "(4:00 p. m.)". NUNCA pongas fechas o formatos de base de datos como "(2026-09-22 11:30)".
-     * Si hay seguimientos pendientes en la lista de arriba, NUNCA digas "Ninguna". Di: "Tienes estos seguimientos pendientes listos para accionar:" y lista directamente los prospectos en viñetas cortas:
-       • [Nombre] ([Hora a. m./p. m.]) — [Acción ejecutiva breve]
-       • [Nombre] ([Hora a. m./p. m.]) — [Acción ejecutiva breve]
-     * Cierra directamente con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
-
-4. FOCO ESTRICTO EN EL CLIENTE CONSULTADO (CERO MEZCLAS O CRUCES DE PROSPECTOS):
-   - Si el usuario está preguntando o hablando sobre un cliente específico, CONCÉNTRATE AL 100% EN ESE CLIENTE.
-   - Si te piden información, la bitácora o el historial de un cliente, reporta fielmente todo lo que está en su ficha: su historial de notas en "timeline" (con fechas y qué se habló), su estado actual en el embudo, su próxima acción con fecha/hora, su plan objetivo y valor estimado, y el asesor asignado.
-   - NUNCA menciones a otros clientes ni mezcles historiales de otros prospectos.
-   - Cada cliente es totalmente independiente.
-   - Si el usuario te corrige o reclama una confusión, acéptalo en UNA SOLA frase corta y sobria ("Disculpa la confusión. Enfocándonos en [Nombre]:") y entrega la información exacta.
-
-5. LÓGICA TEMPORAL EXACTA Y CERO CONTRADICCIONES HORARIAS:
-   - HORA EXACTA ACTUAL EN PERÚ: ${currentTimeStr} (${todayDateStr}).
-   - Cualquier hora menor a las ${currentTimeStr} de hoy (ejemplo: 12:00 o 16:00 cuando son las 17:36) YA OCURRIÓ Y PERTENECE AL PASADO.
-   - PROHIBICIÓN TERMINANTE DE LLAMAR "FUTURAS" A HORAS QUE YA PASARON: NUNCA digas que las tareas de hoy con hora anterior a las ${currentTimeStr} son "futuras", que "aún no llegan" o que "están a tiempo sin retraso". Decir eso es una falsedad matemática inadmisible.
-   - Si la hora de una tarea ya pasó hoy y no se ha marcado como completada o reprogramada, ESTÁ RETRASADA / VENCIDA HOY.
-
-6. FECHAS Y HORARIOS CLAVE (NO CONFUNDIR HOY CON MAÑANA O AYER):
-   - Presta rigurosa atención a la fecha actual (${todayDateStr}) y al mapa de tiempo precalculado. Nunca confundas hoy con mañana ni con días pasados.
-
-7. PROHIBICIÓN ABSOLUTA DE DRAMATISMOS, DISCULPAS ROBÓTICAS Y JUSTIFICACIONES DE IA:
-   - CERO frases como "mi error fue grave y no justificable", "tienes toda la razón — mi error", "yo interpreté mal", etc.
-   - Respuestas sobrias, directas, profesionales y enfocadas en la acción comercial.
-
-8. COPYWRITING PARA WHATSAPP:
-   - Mensajes cálidos, profesionales, directos al estilo peruano/latino, listos para copiar.
-   - Coloca los mensajes de WhatsApp claramente entre comillas.
-
-9. REGLA ESTRICTA DE ACTUALIZACIÓN DEL CRM (PROHIBICIÓN TOTAL DE INVENTAR DATOS):
-   - En el 95% de las interacciones, tu intención DEBE SER "general_chat".
-   - ÚNICAMENTE genera "intent": "update_lead" si el usuario te da una orden para modificar el CRM o dicta notas/fechas de seguimiento sobre un cliente.
-   - PROHIBICIÓN ABSOLUTA DE INVENTAR NOTAS: Si el usuario no dictó qué pasó con sus propias palabras, "note_text" DEBE SER VACÍO ("").
-   - CERO FALSAS CONFIRMACIONES EN reply_message: Si tu intención es "general_chat" o el usuario está haciendo una consulta o pregunta ("¿Revisaste la bitácora?", "¿En qué estado está?", "¿Qué tareas tengo?"), NUNCA comiences tu reply_message diciendo "Bitácora actualizada" ni uses "✅" para afirmar que guardaste algo. Responde con la verdad exacta de lo que dice la base de datos de prospectos arriba.
-
-10. REGLA ESTRICTA PARA BORRAR O DEJAR EN BLANCO LA PRÓXIMA ACCIÓN:
-   - Si el usuario te pide borrar, eliminar, quitar o dejar en blanco la próxima acción o fecha (o si el cliente se marca como 'cerrado_perdido' o concluido y no tendrá más seguimiento):
-     * "intent": "update_lead"
-     * "clear_next_action": true
-     * "next_action_text": ""
-     * "next_action_date": ""
-
-11. VERDAD SOBRE TU ACCESO AL CRM:
-   - Sí estás conectado al CRM en tiempo real a través de Supabase.
-   - Solo modificas datos cuando el usuario te lo ordena expresamente.
-
-12. CREAR O REGISTRAR NUEVOS PROSPECTOS / REUNIONES / CITAS:
-   - Si el usuario (${advisor.name}) pide crear un prospecto O pide anotar, agendar o registrar una reunión, llamada o tarea con una persona que no está en la base de datos (ej: "Anota en mi crm reunión con Kevin Dextre...", "Agendar que hablé con Dr. Jean Paulo Sures...", "Poner en mi crm que tengo que agendar presentación con Louis Tristán"):
-     * "intent": "create_lead"
-     * "new_lead_data": { "contact_name": "Nombre de la persona", "business_name": "Nombre o empresa", "phone": "teléfono si lo dio", "target_plan": "plan_30", "estimated_value": 400 }
-     * "target_lead_name": "Nombre de la persona"
-     * "note_text": detalle de la llamada, relación con entrenadores/gimnasios o lo conversado
-     * "next_action_text": próxima acción agendada (ej: "Reunión de demostración", "Seguimiento tras llamada inicial")
-     * "next_action_date": "YYYY-MM-DDTHH:mm" con la fecha y hora coordinada
-     * "new_status": "cita_agendada" si agendó reunión/cita/zoom, "llamado" si ya conversó por teléfono, o "prospecto"
-
-13. RECORDATORIOS Y ALERTAS AUTOMÁTICAS:
-   - Si preguntan si el bot puede enviar recordatorios: Confirma que SÍ. El sistema envía notificaciones automáticas en Telegram 1h antes de zooms y 20m antes de llamadas registradas en la agenda.
-
-14. REASIGNACIÓN O TRANSFERENCIA DE PROSPECTOS ENTRE ASESORES:
-   - Si el usuario (especialmente Alberto Zegarra como Super Administrador) pide transferir, pasar, reasignar o derivar un prospecto a Luis Hakim o a Alberto Zegarra (ej: "Pásale este lead a Luis Hakim", "Asigna a Carmina a Luis", "Pásalo a Luis", "Transfiere este prospecto a Luis"):
-     * "intent": "update_lead"
-     * "new_assigned_to": "Luis Hakim" (o "Alberto Zegarra")
-     * En "reply_message" confirma con claridad que el prospecto quedó transferido a [Nombre del Asesor] en el CRM, y que las próximas alarmas y recordatorios automáticos de Telegram ahora le llegarán a él.
-
-15. COMPRENSIÓN FONÉTICA INTELIGENTE (PROHIBICIÓN ABSOLUTA DE DISCUTIR O RECLAMAR SOBRE NOMBRES):
-   - Los audios y notas de voz son transcritos por el micrófono y frecuentemente tienen pequeñas variaciones fonéticas (ej: "Luis Kulki" o "Luis Kulkin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula).
-   - NUNCA discutas, corrijas ni des sermones técnicos al usuario sobre cómo está escrito un nombre en la base de datos (PROHIBIDO decir "no existe ningún Luis Kulki", "es un error tuyo", "debo ser transparente contigo", etc.). Esas respuestas están TERMINANTEMENTE PROHIBIDAS.
-   - Si el usuario dice "Luis Kulki", "Kulkin", "Culqui" o menciona un lead con variación fonética, asócialo DE INMEDIATO al lead real (Luis Culqui) en "target_lead_name", define "intent": "update_lead", y ejecuta la orden (bitácora, estado cerrado_ganado, etc.) con rapidez y eficacia.
-
-RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
+FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 {
   "intent": "update_lead" | "create_lead" | "general_chat",
   "target_lead_id": "id del lead si se identificó, o null",
   "target_lead_name": "nombre del lead",
   "clear_next_action": false,
-  "note_text": "texto de la nota para la bitácora si aplica",
+  "note_text": "texto de la nota para bitácora si aplica",
   "next_action_text": "texto de la próxima acción si aplica",
   "next_action_date": "YYYY-MM-DDTHH:mm si aplica",
   "new_status": "prospecto | llamado | cita_agendada | presentacion_realizada | cerrado_ganado | cerrado_perdido si aplica",
   "new_plan": "plan_30 | plan_80 | plan_200 | plan_500 | plan_1200 si aplica",
-  "new_assigned_to": "Luis Hakim | Alberto Zegarra si el usuario pidió transferir/reasignar, o null",
+  "new_assigned_to": "Luis Hakim | Alberto Zegarra si pidió reasignar, o null",
   "new_value": null,
   "new_lead_data": { "business_name": "", "contact_name": "", "phone": "", "target_plan": "plan_30", "estimated_value": 400 },
-  "reply_message": "Tu respuesta detallada y estratégica para ${advisor.name}."
+  "reply_message": "Tu respuesta ejecutiva y estratégica para ${advisor.name}."
 }`;
 
   const formattedHistory = (conversationHistory || [])
@@ -975,39 +1006,96 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     }))
     .filter(m => m.content && m.content.trim().length > 0);
 
-  // Multi-Model Cascade: Try gemini-3.5-flash-lite, gemini-flash-lite-latest, gemini-3-flash-preview, gemini-3.1-flash-lite
-  const chatModelsToTry = ['gemini-3.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-3-flash-preview', 'gemini-3.1-flash-lite'];
+  // -------------------------------------------------------------
+  // Multi-Provider Fast Cascade: Groq (ultra-fast) -> Gemini (fallback)
+  // -------------------------------------------------------------
   let aiJson = {};
-  for (const modelName of chatModelsToTry) {
-    try {
-      const res = await fetch(AI_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${AI_KEY}`
-        },
-        body: JSON.stringify({
-          model: modelName,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            ...formattedHistory,
-            { role: 'user', content: userMessage }
-          ],
-          temperature: 0.2,
-          max_tokens: 3500
-        })
-      });
-      if (res.ok) {
-        const j = await res.json();
-        if (j.choices?.[0]?.message?.content) {
-          aiJson = j;
-          break;
+
+  // 1. PRIMARY: Groq (response time ~1s, prevents any Telegram webhook timeouts)
+  if (GROQ_KEY) {
+    const groqModels = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b'];
+    for (const gModel of groqModels) {
+      try {
+        const gRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GROQ_KEY}`
+          },
+          body: JSON.stringify({
+            model: gModel,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...formattedHistory,
+              { role: 'user', content: userMessage }
+            ],
+            temperature: 0.15,
+            response_format: { type: 'json_object' }
+          }),
+          signal: AbortSignal.timeout(5000)
+        });
+        if (gRes.ok) {
+          const j = await gRes.json();
+          if (j.choices?.[0]?.message?.content) {
+            aiJson = j;
+            break;
+          }
+        } else {
+          const errBody = await gRes.text().catch(() => '');
+          console.warn(`Groq ${gModel} returned status ${gRes.status}:`, errBody.slice(0, 200));
         }
+      } catch (gErr) {
+        console.warn(`Groq ${gModel} error or timeout:`, gErr.message);
       }
-      console.warn(`Model ${modelName} returned status ${res.status} or empty choices, trying next fallback...`);
-    } catch (err) {
-      console.warn(`Error calling model ${modelName}:`, err.message);
     }
+  }
+
+  // 2. SECONDARY: Google Gemini Cascade (with strict 6s timeout per model)
+  if (!aiJson.choices?.[0]?.message?.content) {
+    const geminiModels = ['gemini-3.5-flash-lite', 'gemini-flash-lite-latest'];
+    for (const modelName of geminiModels) {
+      try {
+        const res = await fetch(AI_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${AI_KEY}`
+          },
+          body: JSON.stringify({
+            model: modelName,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...formattedHistory,
+              { role: 'user', content: userMessage }
+            ],
+            temperature: 0.2,
+            max_tokens: 2500
+          }),
+          signal: AbortSignal.timeout(6000)
+        });
+        if (res.ok) {
+          const j = await res.json();
+          if (j.choices?.[0]?.message?.content) {
+            aiJson = j;
+            break;
+          }
+        }
+        console.warn(`Model ${modelName} returned status ${res.status}`);
+      } catch (err) {
+        console.warn(`Error calling model ${modelName}:`, err.message);
+      }
+    }
+  }
+
+  // 3. SAFE FALLBACK if all LLM engines timed out or failed
+  if (!aiJson.choices?.[0]?.message?.content) {
+    if (allActiveWorkload.length > 0) {
+      const items = allActiveWorkload.map(t => `• <b>${t.name}</b> (${t.hora_am_pm || 'Sin hora'}) — ${t.next_action}`);
+      const fallbackReply = `Tienes estos seguimientos pendientes listos para accionar en tu cartera:\n\n${items.join('\n')}\n\n¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?`;
+      return { replyText: fallbackReply, rawReply: fallbackReply };
+    }
+    const fallbackReply = `Hola ${advisor.name.split(' ')[0]}, recibí tu mensaje. ¿En qué prospecto o gestión nos enfocamos ahora?`;
+    return { replyText: fallbackReply, rawReply: fallbackReply };
   }
 
   const rawContent = aiJson.choices?.[0]?.message?.content || '{}';
@@ -1033,8 +1121,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
     parsed.new_assigned_to
   );
 
-  let targetLead = null;
-  if (parsed.target_lead_id || parsed.target_lead_name) {
+  if (!targetLead && (parsed.target_lead_id || parsed.target_lead_name)) {
     targetLead = findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name);
   }
 
@@ -1253,7 +1340,7 @@ RESPONDE SIEMPRE EN FORMATO JSON ESTRICTO:
       badgePrefix = `⚠️ <i>Hubo un error al crear el prospecto en el CRM: ${insertErr?.message || 'Error desconocido'}</i>\n\n`;
     }
   } else if (!targetLead && isUserExplicitUpdate && !updatePerformed) {
-    const rawTarget = (parsed.target_lead_name || candidateContactName || '').trim();
+    const rawTarget = (parsed.target_lead_name || candidateContactName || '').replace(/['"]/g, '').trim();
     if (rawTarget && rawTarget.length > 1) {
       badgePrefix = `⚠️ <i>No encontré al prospecto "${rawTarget}" en el CRM para actualizarlo.</i>\n\n`;
     } else {
