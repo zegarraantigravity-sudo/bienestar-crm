@@ -883,6 +883,7 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
 
   // Ordinal lead resolution (e.g. user replies "al primero", "al 1", "al segundo", etc.)
   let targetLead = targetLeadInSentence;
+  let targetLeadFromHistory = false;
   if (!targetLead && allActiveWorkload.length > 0) {
     const ordMatch = userMessage.match(/\b(?:al|a\s+la|el|la)?\s*(primer[oa]?|segund[oa]?|tercer[oa]?|cuart[oa]?|quint[oa]?|sext[oa]?|[1-6])\b/i);
     if (ordMatch) {
@@ -903,6 +904,9 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
 
   if (!targetLead) {
     targetLead = findLeadFromHistory(leads, conversationHistory, advisor.name);
+    if (targetLead) {
+      targetLeadFromHistory = true;
+    }
   }
 
   let targetLeadTimeline = [];
@@ -1122,32 +1126,43 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     parsed.new_assigned_to
   );
 
-  if (!targetLead && (parsed.target_lead_id || parsed.target_lead_name)) {
-    targetLead = findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name);
+  // 1. If LLM explicitly recognized a lead, prioritize it over stale history
+  const llmCandidateLead = (parsed.target_lead_id || parsed.target_lead_name)
+    ? findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name)
+    : null;
+
+  if (llmCandidateLead) {
+    if (!targetLead || targetLeadFromHistory || targetLead.id !== llmCandidateLead.id) {
+      targetLead = llmCandidateLead;
+      targetLeadFromHistory = false;
+    }
   }
 
-  const candidateContactName = (parsed.new_lead_data?.contact_name || parsed.target_lead_name || '').trim();
+  const candidateContactName = (parsed.new_lead_data?.contact_name || '').trim();
   if (!targetLead && candidateContactName) {
     targetLead = findMatchingLead(leads, null, candidateContactName);
   }
 
-  // 1. Direct scan: check if user explicitly mentioned a lead in their message
+  // 2. Direct scan: check if user explicitly mentioned a lead in their message
   if (!targetLead && userMessage) {
     targetLead = findLeadInSentence(leads, userMessage, advisor.name);
   }
 
-  // 2. Contextual scan: if user is updating/responding without naming the lead (e.g. "me respondio esto...", "pon en bitacora...", "le envie el mensaje")
+  // 3. Contextual scan: if user is updating/responding without naming the lead
   if (!targetLead && (isUserExplicitUpdate || /^(me\s+respondi[oó]|respondi[oó]|contest[oó]|dijo\s+que|escribi[oó]|le\s+escrib[ií]|le\s+mand[eé]|habl[eé]\s+con\s+[eé]l|habl[eé]\s+con\s+ella|pon\s+en\s+bit[aá]cora)/i.test(userMessage))) {
     targetLead = findLeadFromHistory(leads, conversationHistory, advisor.name);
   }
 
-  // 3. Fallback: fuzzy phonetic match on full message
+  // 4. Fallback: fuzzy phonetic match on full message
   if (!targetLead && userMessage) {
     targetLead = findMatchingLead(leads, null, userMessage);
   }
 
+  const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(normalizeStr(userMessage))
+    || /\?$/.test((userMessage || '').trim());
+
   // 1. UPDATE EXISTING LEAD IN CRM
-  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (
+  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && (
     isUserExplicitUpdate ||
     isUserExplicitCreate ||
     hasConcreteUpdate ||
@@ -1181,15 +1196,20 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     // Only add to timeline if the user or AI actually stated note details
     let noteContent = parsed.note_text || parsed.new_lead_data?.notes || '';
     if (!noteContent || noteContent.trim().length === 0) {
-      if (/mensaje\s+que\s+le\s+envi[eé]|se\s+le\s+envi[oó]\s+mensaje|le\s+escrib[ií]\s+por\s+whatsapp|le\s+escrib[ií]|le\s+mand[eé]/i.test(userMessage)) {
-        noteContent = `Mensaje de seguimiento enviado por WhatsApp`;
-      } else if (/me\s+respondi[oó]|dijo\s+que|contest[oó]/i.test(userMessage)) {
-        noteContent = `Respuesta del cliente por WhatsApp: «${userMessage.replace(/^(me\s+respondi[oó]|dijo\s+que|contest[oó])\s*(esto:?)?\s*/i, '').trim()}»`;
-      } else if (isUserExplicitUpdate) {
-        noteContent = userMessage;
+      const isSchedulingOnly = /\b(pr[oó]xima\s+acci[oó]n|agenda|agendar|para\s+el\s+(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)|el\s+d[ií]a\s+viernes|mañana|para\s+mañana)\b/i.test(userMessage);
+
+      if (!isSchedulingOnly) {
+        if (/^(nota|bit[aá]cora|agrega\s+nota|pon\s+nota|apunta\s+nota):?\s*(.+)$/i.test(userMessage)) {
+          noteContent = userMessage.replace(/^(nota|bit[aá]cora|agrega\s+nota|pon\s+nota|apunta\s+nota):?\s*/i, '').trim();
+        } else if (/me\s+respondi[oó]|dijo\s+que|contest[oó]/i.test(userMessage)) {
+          noteContent = `Respuesta del cliente por WhatsApp: «${userMessage.replace(/^(me\s+respondi[oó]|dijo\s+que|contest[oó])\s*(esto:?)?\s*/i, '').trim()}»`;
+        } else if (/se\s+le\s+envi[oó]\s+mensaje|le\s+escrib[ií]\s+por\s+whatsapp|le\s+mand[eé]\s+mensaje/i.test(userMessage)) {
+          noteContent = `Mensaje de seguimiento enviado por WhatsApp`;
+        }
       }
     }
-    if (noteContent && noteContent.trim().length > 0) {
+    // Never dump raw conversational questions, bot instructions or status checks into timeline!
+    if (noteContent && noteContent.trim().length > 0 && !/^(quiero\s+que\s+revis|revisa|ya\s+has\s+puesto|ya\s+pusiste|como\s+va|qu[eé]\s+pas[oó])/i.test(noteContent)) {
       const noteWithAuthor = `${noteContent.trim()} [Registrado por ${advisor.name} vía Telegram]`;
       timeline = [{ date: new Date().toISOString(), text: noteWithAuthor }, ...timeline];
     }
@@ -1563,19 +1583,41 @@ function phoneticNormalize(str) {
     .trim();
 }
 
+// Helper: Compute Levenshtein distance between two strings
+function levenshteinDistance(a, b) {
+  if (!a || !b) return (a || '').length + (b || '').length;
+  const m = a.length, n = b.length;
+  const d = [];
+  for (let i = 0; i <= m; i++) d[i] = [i];
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      d[i][j] = a[i - 1] === b[j - 1]
+        ? d[i - 1][j - 1]
+        : Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + 1);
+    }
+  }
+  return d[m][n];
+}
+
 // Helper: Scan a full sentence to detect if any lead name or key name token is mentioned
 function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
   if (!text || !leads || leads.length === 0) return null;
-  const cleanText = ' ' + normalizeStr(text) + ' ';
+  const cleanText = ' ' + normalizeStr(text).replace(/[^a-z0-9]/g, ' ') + ' ';
   const stopWords = new Set([
     'lic', 'licenciada', 'licenciado', 'dr', 'dra', 'doctor', 'doctora', 'ing', 'ingeniero', 'coach',
     'sr', 'sra', 'senor', 'senora', 'amigo', 'amiga', 'de', 'del', 'la', 'el', 'los', 'las', 'un',
-    'una', 'en', 'por', 'para', 'con', 'que', 'le', 'al', 'se', 'lo', 'los', 'las', 'les', 'me',
+    'una', 'unos', 'unas', 'en', 'por', 'para', 'con', 'que', 'le', 'al', 'se', 'lo', 'los', 'las', 'les', 'me',
     'te', 'nos', 'mi', 'mis', 'su', 'sus', 'hoy', 'ayer', 'manana', 'crm', 'bot', 'lead', 'prospecto',
-    'cliente', 'mensaje', 'bitacora', 'llamada', 'tarea', 'agenda', 'contacto'
+    'cliente', 'mensaje', 'bitacora', 'llamada', 'tarea', 'agenda', 'contacto', 'interes', 'responder',
+    'responde', 'enviar', 'enviamos', 'saber', 'quiero', 'parece', 'entonces', 'definir', 'hola', 'saludos',
+    'favor', 'gracias', 'buenas', 'tardes', 'noches', 'dias', 'como', 'dia', 'semana', 'mes', 'ano', 'cita',
+    'accion', 'proxima'
   ]);
 
-  let candidates = [];
+  const userWords = cleanText.split(/\s+/).filter(w => w.length >= 3 && !stopWords.has(w));
+  const candidates = [];
+
   for (const l of leads) {
     if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
     const isMyLead = (l.assigned_to || '').toLowerCase().includes(advisorName.split(' ')[0].toLowerCase());
@@ -1592,22 +1634,35 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
       continue;
     }
 
-    // Check individual significant tokens (e.g. 'sandra', 'culqui', 'godoy', 'monica', 'noe', 'yoselin')
-    const tokens = [...cNorm.split(' '), ...bNorm.split(' ')].filter(t => t.length >= 3 && !stopWords.has(t));
-    for (const token of tokens) {
-      if (cleanText.includes(' ' + token + ' ')) {
-        let score = token.length >= 4 ? 80 : 50;
-        if (cNorm.startsWith(token) || cNorm.endsWith(token)) score += 20;
-        candidates.push({ lead: l, score, isMyLead, token });
+    // Significant tokens of the lead (e.g. 'sandra', 'culqui', 'godoy', 'rosanna', 'bravo')
+    const lTokens = [...cNorm.split(/\s+/), ...bNorm.split(/\s+/)].filter(t => t.length >= 3 && !stopWords.has(t));
+    for (const uw of userWords) {
+      for (const lt of lTokens) {
+        if (uw === lt) {
+          let score = lt.length >= 4 ? 80 : 50;
+          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
+          candidates.push({ lead: l, score, isMyLead, token: uw });
+        } else if (phoneticNormalize(uw) === phoneticNormalize(lt)) {
+          // Phonetic match: e.g. "rosana" === "rosanna", "kulki" === "culqui"
+          let score = lt.length >= 4 ? 75 : 45;
+          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
+          candidates.push({ lead: l, score, isMyLead, token: uw });
+        } else if (Math.min(uw.length, lt.length) >= 4 && levenshteinDistance(uw, lt) <= 1) {
+          // Fuzzy edit distance <= 1
+          let score = 70;
+          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 15;
+          candidates.push({ lead: l, score, isMyLead, token: uw });
+        }
       }
     }
   }
 
   if (candidates.length > 0) {
-    // Sort by isMyLead first, then score descending
+    // Sort by highest score first, then by assigned to current advisor
     candidates.sort((a, b) => {
+      if (a.score !== b.score) return b.score - a.score;
       if (a.isMyLead !== b.isMyLead) return a.isMyLead ? -1 : 1;
-      return b.score - a.score;
+      return 0;
     });
     return candidates[0].lead;
   }
@@ -1735,16 +1790,16 @@ function isExplicitUpdateCommand(userText) {
     return false;
   }
 
-  // Pure query questions at the start of sentence without action verbs:
-  const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna)\b/i.test(t)
-    && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines|deja en blanco|dejes en blanco)\b/i.test(t);
+  // Pure query questions or inspection requests:
+  const isQueryQuestion = /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(t)
+    || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t));
 
   if (isQueryQuestion) return false;
 
   // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
   const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|asigna(r)?(lo|le|me|la|les|los)?|asignes|reasigna(r)?(lo|le|me|la|les|los)?|reasignes|transfiere|transferir|deriva(r)?(lo|le|me|la|les|los)?|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
-  const contextPattern = /\b(bitacora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim|respondio|contesto|dijo que|escribio|mando mensaje|mensaje que le envie|le envie el mensaje|me dijo)\b/i;
+  const contextPattern = /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim|respondio|contesto|dijo que|escribio|mando mensaje|mensaje que le envie|le envie el mensaje|me dijo)\b/i;
 
   return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
