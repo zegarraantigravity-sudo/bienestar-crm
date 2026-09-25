@@ -128,6 +128,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Detección Contextual y Memoria Conversacional**: Implementación de `findLeadInSentence` (para detectar nombres de prospectos dentro de frases naturales completas como *"pon en bitácora el mensaje que le envié a Sandra"*) y `findLeadFromHistory` (para heredar el prospecto en seguimiento en mensajes como *"me respondió esto: ..."* sin necesidad de repetir su nombre).
 *   **Saneamiento de Registros en Supabase**: Limpieza y registro de las gestiones en tiempo real en las bitácoras correspondientes.
 
+### 16. Blindaje de Carteras Multi-Asesor, Integridad de Bitácora y Filtro Antierrores (25 de Septiembre de 2026)
+*   **Aislamiento Estricto de Carteras Comerciales en Telegram**: Prohibición absoluta de que el bot de un asesor asocie o modifique leads asignados a otro socio comercial (Luis Hakim) mediante coincidencias difusas, palabras sueltas o historial de conversación. Solo se permite interacción si se menciona el nombre exacto al 100%.
+*   **Eliminación de Falsos Positivos por Similitud Difusa (Levenshtein)**: Prohibición del cálculo de distancia de Levenshtein en palabras de menos de 6 caracteres. Esto corrigió el error crítico donde palabras cotidianas en español como `"pero"` coincidían erróneamente con `"pezo"` (*Referido de Julizza Pezo*).
+*   **Corrección de Lectura Cronológica de Bitácora (Reverse Timeline Bug)**: Corrección del orden de extracción en Supabase (`timeline`). Ahora siempre se ordenan las notas de forma descendente por fecha (`sort desc`) tomando las 10 más recientes, solucionando la ceguera del bot que ignoraba interacciones recientes (ej. Sandra, 23 de septiembre).
+*   **Protección Antiactualizaciones ante Debates, Consultas y Quejas**: Blindaje de las funciones `isExplicitUpdateCommand` y `shouldPerformUpdate` para impedir escrituras en base de datos cuando el usuario está debatiendo la redacción de un mensaje (*"no sé si suene bien"*, *"qué opinas"*), haciendo consultas de inspección o expresando frustración / quejas (*"para qué me lo muestras de nuevo"*, *"no seas imbécil"*).
+*   **Mapeo Fonético de Nombres y Tareas de Cuentas Ganadas**: Incorporación de la regla fonética `J` $\to$ `I` / `Y` para que *"Jocelyn"* vincule inmediatamente a *"Yoselin Nails"*, e inclusión de prospectos con estado `cerrado_ganado` en la agenda cuando tienen tareas o seguimientos activos programados.
+*   **Saneamiento y Verificación de Registros en Supabase**: Restauración y verificación de integridad en tiempo real para `Lic Sandra` (estado `llamado` con seguimiento activo y bitácora intacta), `Rosanna Bravo` (`cerrado_perdido`), `Yoselin Nails` (`cerrado_ganado` con tarea para el lunes), `David Godoy` (tarea de hoy) y los prospectos de Luis Hakim (`Louis Tristán`, `Kevin Dextre`, `Referido de Julizza Pezo`).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
