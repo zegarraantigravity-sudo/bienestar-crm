@@ -779,7 +779,7 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
     let categoria_agenda = 'SIN_FECHA';
     let minutos_diferencia = null;
 
-    if (['cerrado_ganado', 'cerrado_perdido'].includes(l.status)) {
+    if (l.status === 'cerrado_perdido' && !nextActionDate) {
       categoria_agenda = 'CERRADO';
     } else if (nextActionDate) {
       const taskTime = parsePeruDateTime(nextActionDate);
@@ -914,7 +914,13 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
     try {
       const tp = JSON.parse(targetLead.notes || '{}');
       const rawTl = Array.isArray(tp) ? tp : (tp.timeline || []);
-      targetLeadTimeline = rawTl.slice(-5).map(n => {
+      // Sort by date descending so the newest interactions (today, yesterday) appear first
+      const sortedTl = [...rawTl].sort((a, b) => {
+        const da = a.date ? new Date(a.date).getTime() : 0;
+        const db = b.date ? new Date(b.date).getTime() : 0;
+        return db - da;
+      });
+      targetLeadTimeline = sortedTl.slice(0, 10).map(n => {
         let text = typeof n === 'string' ? n : (n.text || '');
         if (text.includes(';base64,') || text.includes('data:') || text.length > 250) {
           text = text.slice(0, 250) + '...';
@@ -1126,13 +1132,13 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     parsed.new_assigned_to
   );
 
-  // 1. If LLM explicitly recognized a lead, prioritize it over stale history
+  // 1. If LLM explicitly recognized a lead, prioritize it only over stale history or when no lead was found
   const llmCandidateLead = (parsed.target_lead_id || parsed.target_lead_name)
     ? findMatchingLead(leads, parsed.target_lead_id, parsed.target_lead_name)
     : null;
 
   if (llmCandidateLead) {
-    if (!targetLead || targetLeadFromHistory || targetLead.id !== llmCandidateLead.id) {
+    if (!targetLead || targetLeadFromHistory) {
       targetLead = llmCandidateLead;
       targetLeadFromHistory = false;
     }
@@ -1161,13 +1167,12 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
   const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(normalizeStr(userMessage))
     || /\?$/.test((userMessage || '').trim());
 
+  const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|para\s+qu[eé]|por\s+qu[eé]|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(normalizeStr(userMessage));
+
   // 1. UPDATE EXISTING LEAD IN CRM
-  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && (
+  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && !isComplaintOrDebate && (
     isUserExplicitUpdate ||
-    isUserExplicitCreate ||
-    hasConcreteUpdate ||
-    parsed.intent === 'update_lead' ||
-    parsed.intent === 'create_lead'
+    isUserExplicitCreate
   );
 
   if (shouldPerformUpdate) {
@@ -1577,6 +1582,7 @@ function phoneticNormalize(str) {
     .replace(/z/g, 's')
     .replace(/v/g, 'b')
     .replace(/y/g, 'i')
+    .replace(/j/g, 'i') // Maps Jocelyn/Joselyn -> Iocelin, Yoselin -> Ioselin
     .replace(/ll/g, 'i')
     .replace(/h/g, '')
     .replace(/(.)\1+/g, '$1')
@@ -1612,7 +1618,8 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
     'cliente', 'mensaje', 'bitacora', 'llamada', 'tarea', 'agenda', 'contacto', 'interes', 'responder',
     'responde', 'enviar', 'enviamos', 'saber', 'quiero', 'parece', 'entonces', 'definir', 'hola', 'saludos',
     'favor', 'gracias', 'buenas', 'tardes', 'noches', 'dias', 'como', 'dia', 'semana', 'mes', 'ano', 'cita',
-    'accion', 'proxima'
+    'accion', 'proxima', 'pero', 'bien', 'bueno', 'esta', 'este', 'esto', 'lista', 'seguimiento', 'decirle',
+    'suene', 'suena', 'borrar', 'quitar', 'poner', 'cambiar'
   ]);
 
   const userWords = cleanText.split(/\s+/).filter(w => w.length >= 3 && !stopWords.has(w));
@@ -1634,6 +1641,13 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
       continue;
     }
 
+    // STRICT MULTI-ADVISOR CARTERA PROTECTION:
+    // If this lead belongs to another advisor, ONLY match if the user said the exact full name!
+    // NEVER match another advisor's lead on single tokens or fuzzy words!
+    if (!isMyLead) {
+      continue;
+    }
+
     // Significant tokens of the lead (e.g. 'sandra', 'culqui', 'godoy', 'rosanna', 'bravo')
     const lTokens = [...cNorm.split(/\s+/), ...bNorm.split(/\s+/)].filter(t => t.length >= 3 && !stopWords.has(t));
     for (const uw of userWords) {
@@ -1643,12 +1657,12 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
           if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
           candidates.push({ lead: l, score, isMyLead, token: uw });
         } else if (phoneticNormalize(uw) === phoneticNormalize(lt)) {
-          // Phonetic match: e.g. "rosana" === "rosanna", "kulki" === "culqui"
+          // Phonetic match: e.g. "rosana" === "rosanna", "kulki" === "culqui", "jocelyn" === "yoselin"
           let score = lt.length >= 4 ? 75 : 45;
           if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
           candidates.push({ lead: l, score, isMyLead, token: uw });
-        } else if (Math.min(uw.length, lt.length) >= 4 && levenshteinDistance(uw, lt) <= 1) {
-          // Fuzzy edit distance <= 1
+        } else if (Math.min(uw.length, lt.length) >= 6 && levenshteinDistance(uw, lt) <= 1) {
+          // Fuzzy edit distance <= 1 only on long words (6+ characters)
           let score = 70;
           if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 15;
           candidates.push({ lead: l, score, isMyLead, token: uw });
@@ -1674,9 +1688,11 @@ function findLeadFromHistory(leads, history, advisorName = 'Alberto Zegarra') {
   if (!history || history.length === 0 || !leads || leads.length === 0) return null;
   for (let i = history.length - 1; i >= Math.max(0, history.length - 6); i--) {
     const raw = history[i]?.content || '';
-    const clean = ' ' + normalizeStr(raw) + ' ';
+    const clean = ' ' + normalizeStr(raw).replace(/[^a-z0-9]/g, ' ') + ' ';
     for (const l of leads) {
       if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
+      const isMyLead = (l.assigned_to || '').toLowerCase().includes(advisorName.split(' ')[0].toLowerCase());
+      if (!isMyLead) continue; // STRICT: Never pull another advisor's lead from history!
       const cNorm = normalizeStr(l.contact_name);
       if (cNorm && cNorm.length >= 3 && clean.includes(' ' + cNorm + ' ')) return l;
       const bNorm = normalizeStr(l.business_name);
@@ -1790,9 +1806,15 @@ function isExplicitUpdateCommand(userText) {
     return false;
   }
 
+  // Debates, hesitation, asking for advice on copy or phrasing, rhetorical questions, and complaints:
+  if (/\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+le\s+digo|para\s+qu[eé]|por\s+qu[eé]|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(t)) {
+    return false;
+  }
+
   // Pure query questions or inspection requests:
   const isQueryQuestion = /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(t)
-    || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t));
+    || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t))
+    || /\b(qu[eé]\s+otra|qu[eé]\s+tareas?|solamente\s+es[oa]s?|hay\s+alg[uú]n\s+otro|est[aá]n\s+pendientes?|est[aá]n\s+vencidas?|vencidos?|vencidas?)\b/i.test(t);
 
   if (isQueryQuestion) return false;
 
