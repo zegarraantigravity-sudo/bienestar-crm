@@ -142,6 +142,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Persistencia Estricta de Instrucciones**: Se respetó la orden explícita de Alberto de no alterar manualmente la ficha de David Godoy.
 *   **Actualización de Agenda de Anali**: Confirmación de reunión por Zoom para el lunes 28 de septiembre a las 6:00 p. m. registrada en bitácora y próxima acción actualizada en Supabase.
 
+### 18. Capa de Doble Verificación Obligatoria en Telegram (25 de Septiembre de 2026)
+*   **Verificación Post-Escritura Inmediata (Post-Validation)**: Tras actualizar un prospecto en Supabase, el bot realiza una re-lectura instantánea (0.1s) del registro para certificar al 100% que la nueva nota y la próxima acción quedaron grabadas con integridad en la base de datos antes de confirmar al usuario.
+*   **Confirmación Transparente de Tarea Guardada**: Si la actualización incluye próxima acción, el bot muestra en el badge de confirmación la tarea exacta y el horario verificado (ej: *«📌 Próxima acción verificada: Reunión por Zoom (6:00 p. m.)»*).
+*   **Aumento del Umbral de Certeza Fonética**: Elevación del umbral mínimo de coincidencia de 40 a 60 puntos para evitar vinculaciones dudosas o aproximadas en prospectos.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

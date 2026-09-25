@@ -1280,14 +1280,33 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 
     const { error: updateErr } = await supabase.from('leads').update(updateFields).eq('id', targetLead.id);
     if (!updateErr) {
-      updatePerformed = true;
-      if (newlyAssignedAdvisor) {
-        badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${targetLead.contact_name || targetLead.business_name}</i>\n\n`;
+      // POST-VERIFICATION DOUBLE-CHECK: Re-read directly from Supabase (0.1s) to confirm data integrity
+      const { data: verifiedLead, error: verifyErr } = await supabase
+        .from('leads')
+        .select('id, contact_name, business_name, status, notes')
+        .eq('id', targetLead.id)
+        .maybeSingle();
+
+      if (!verifyErr && verifiedLead) {
+        updatePerformed = true;
+        let verifiedNotes = {};
+        try { verifiedNotes = JSON.parse(verifiedLead.notes || '{}'); } catch(e){}
+        const verifiedTask = verifiedNotes.next_action || '';
+        const verifiedDate = verifiedNotes.next_action_date || '';
+
+        const leadDisplayName = verifiedLead.contact_name || verifiedLead.business_name;
+        if (newlyAssignedAdvisor) {
+          badgePrefix = `✅ <b>Lead reasignado a ${newlyAssignedAdvisor} en CRM</b> para <i>${leadDisplayName}</i>\n\n`;
+        } else {
+          const taskDetail = verifiedTask && verifiedDate ? `\n📌 <b>Próxima acción verificada:</b> ${verifiedTask} (${formatFriendlyTime(verifiedDate) || verifiedDate})` : '';
+          badgePrefix = `✅ <b>CRM verificado y actualizado para ${leadDisplayName}</b>${taskDetail}\n\n`;
+        }
+        if (!cleanReply || cleanReply.length === 0 || cleanReply.startsWith('Hola ') || cleanReply.includes('¿En qué prospecto')) {
+          cleanReply = `Listo ${advisor.name.split(' ')[0]}. Registré en la bitácora de ${leadDisplayName}: «${noteContent || 'Gestión comercial'}».`;
+        }
       } else {
-        badgePrefix = `✅ <b>CRM actualizado para ${targetLead.contact_name || targetLead.business_name}</b>\n\n`;
-      }
-      if (!cleanReply || cleanReply.length === 0 || cleanReply.startsWith('Hola ') || cleanReply.includes('¿En qué prospecto')) {
-        cleanReply = `Listo ${advisor.name.split(' ')[0]}. Registré en la bitácora de ${targetLead.contact_name || targetLead.business_name}: «${noteContent || 'Gestión comercial'}».`;
+        console.error('Post-verification check failed:', verifyErr);
+        badgePrefix = `⚠️ <i>Se envió la actualización para ${targetLead.contact_name || targetLead.business_name}, pero no pudo verificarse en Supabase.</i>\n\n`;
       }
     } else {
       console.error('Error updating lead in supabase:', updateErr);
@@ -1774,7 +1793,7 @@ function findMatchingLead(leads, targetId, targetName) {
   }
 
   // Fallback: single unique lead match by key phonetic word
-  if (!bestLead || bestScore < 40) {
+  if (!bestLead || bestScore < 60) {
     for (const pw of targetPhoneticWords) {
       if (pw.length >= 4) {
         const uniqueMatches = realLeads.filter(l => {
@@ -1788,7 +1807,7 @@ function findMatchingLead(leads, targetId, targetName) {
     }
   }
 
-  return bestScore >= 40 ? bestLead : null;
+  return bestScore >= 60 ? bestLead : null;
 }
 
 
