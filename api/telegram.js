@@ -19,14 +19,14 @@ const GROQ_KEY = process.env.GROQ_API_KEY || ['gsk', '_ebi4Ohr8', 'g9PfmXCa', 'z
 
 const DEFAULT_KEY = decodeToken('QVEuQWI4Uk42SkJIdl9JZlhLeUZfRElNYzc5WVUzbzR1cDhqZ3lZTExfM29Ca2Y3cW1mbUE=');
 const DEFAULT_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
-const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
+const DEFAULT_MODEL = 'gemini-3.8-flash';
 
 let AI_KEY = process.env.AI_API_KEY || process.env.VITE_AI_API_KEY || DEFAULT_KEY;
 let AI_URL = process.env.AI_API_URL || process.env.VITE_AI_API_URL || DEFAULT_URL;
 let AI_MODEL = process.env.AI_MODEL || process.env.VITE_AI_MODEL || DEFAULT_MODEL;
 
-// Clean up any stale Alibaba Cloud credentials leftover in Vercel environment variables
-if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL === 'gemini-flash-latest' || AI_MODEL === 'gemini-3.8-flash' || AI_MODEL === 'gemini-3.1-flash-lite') {
+// Clean up any stale credentials or deprecated model names leftover in Vercel environment variables
+if (AI_URL.includes('aliyuncs.com') || AI_KEY.startsWith('sk-ws-') || AI_MODEL.includes('qwen') || AI_MODEL.includes('3.5-flash-lite')) {
   AI_KEY = DEFAULT_KEY;
   AI_URL = DEFAULT_URL;
   AI_MODEL = DEFAULT_MODEL;
@@ -1061,9 +1061,9 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     }
   }
 
-  // 2. SECONDARY: Google Gemini Cascade (with strict 6s timeout per model)
+  // 2. SECONDARY: Google Gemini Cascade (with strict 7s timeout per model)
   if (!aiJson.choices?.[0]?.message?.content) {
-    const geminiModels = ['gemini-3.5-flash-lite', 'gemini-flash-lite-latest'];
+    const geminiModels = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.8-pro', 'gemini-3.1-flash-lite'];
     for (const modelName of geminiModels) {
       try {
         const res = await fetch(AI_URL, {
@@ -1082,7 +1082,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
             temperature: 0.2,
             max_tokens: 2500
           }),
-          signal: AbortSignal.timeout(6000)
+          signal: AbortSignal.timeout(7000)
         });
         if (res.ok) {
           const j = await res.json();
@@ -1100,12 +1100,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 
   // 3. SAFE FALLBACK if all LLM engines timed out or failed
   if (!aiJson.choices?.[0]?.message?.content) {
-    if (allActiveWorkload.length > 0) {
-      const items = allActiveWorkload.map(t => `• <b>${t.name}</b> (${t.hora_am_pm || 'Sin hora'}) — ${t.next_action}`);
-      const fallbackReply = `Tienes estos seguimientos pendientes listos para accionar en tu cartera:\n\n${items.join('\n')}\n\n¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?`;
-      return { replyText: fallbackReply, rawReply: fallbackReply };
-    }
-    const fallbackReply = `Hola ${advisor.name.split(' ')[0]}, recibí tu mensaje. ¿En qué prospecto o gestión nos enfocamos ahora?`;
+    const fallbackReply = `⚠️ Disculpa ${advisor.name.split(' ')[0]}, hubo una intermitencia temporal de conexión con el motor de IA. Por favor, reenvíame o vuelve a dictarme tu mensaje para procesarlo de inmediato.`;
     return { replyText: fallbackReply, rawReply: fallbackReply };
   }
 

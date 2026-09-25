@@ -136,6 +136,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Mapeo Fonético de Nombres y Tareas de Cuentas Ganadas**: Incorporación de la regla fonética `J` $\to$ `I` / `Y` para que *"Jocelyn"* vincule inmediatamente a *"Yoselin Nails"*, e inclusión de prospectos con estado `cerrado_ganado` en la agenda cuando tienen tareas o seguimientos activos programados.
 *   **Saneamiento y Verificación de Registros en Supabase**: Restauración y verificación de integridad en tiempo real para `Lic Sandra` (estado `llamado` con seguimiento activo y bitácora intacta), `Rosanna Bravo` (`cerrado_perdido`), `Yoselin Nails` (`cerrado_ganado` con tarea para el lunes), `David Godoy` (tarea de hoy) y los prospectos de Luis Hakim (`Louis Tristán`, `Kevin Dextre`, `Referido de Julizza Pezo`).
 
+### 17. Migración a Gemini 3.8 Flash y Eliminación del Bucle de Fallback Repetitivo (25 de Septiembre de 2026)
+*   **Actualización a Modelos de Gama Alta (Gemini 3.8 Flash)**: Reemplazo del modelo obsoleto/saturado `gemini-3.5-flash-lite` por el modelo insignia **`gemini-3.8-flash`** con cascada de contingencia a **`gemini-flash-latest`**, **`gemini-3.8-pro`** y **`gemini-3.1-flash-lite`**. Cero saturación (503) y latencia ultrarrápida.
+*   **Eliminación Radical del Bucle de Fallback Repetitivo**: Se eliminó por completo el bloque de código de respaldo que, ante cualquier fallo de red o caída de la IA, disparaba de forma rígida la lista de tareas de la agenda (*"Tienes estos seguimientos pendientes..."*). Si hubiese una intermitencia, el sistema reintenta con los modelos de respaldo o avisa con honestidad, eliminando el comportamiento donde el bot ignoraba instrucciones de voz y repetía la agenda.
+*   **Persistencia Estricta de Instrucciones**: Se respetó la orden explícita de Alberto de no alterar manualmente la ficha de David Godoy.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
