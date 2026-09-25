@@ -140,6 +140,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización a Modelos de Gama Alta (Gemini 3.8 Flash)**: Reemplazo del modelo obsoleto/saturado `gemini-3.5-flash-lite` por el modelo insignia **`gemini-3.8-flash`** con cascada de contingencia a **`gemini-flash-latest`**, **`gemini-3.8-pro`** y **`gemini-3.1-flash-lite`**. Cero saturación (503) y latencia ultrarrápida.
 *   **Eliminación Radical del Bucle de Fallback Repetitivo**: Se eliminó por completo el bloque de código de respaldo que, ante cualquier fallo de red o caída de la IA, disparaba de forma rígida la lista de tareas de la agenda (*"Tienes estos seguimientos pendientes..."*). Si hubiese una intermitencia, el sistema reintenta con los modelos de respaldo o avisa con honestidad, eliminando el comportamiento donde el bot ignoraba instrucciones de voz y repetía la agenda.
 *   **Persistencia Estricta de Instrucciones**: Se respetó la orden explícita de Alberto de no alterar manualmente la ficha de David Godoy.
+*   **Actualización de Agenda de Anali**: Confirmación de reunión por Zoom para el lunes 28 de septiembre a las 6:00 p. m. registrada en bitácora y próxima acción actualizada en Supabase.
 
 ---
 
