@@ -386,10 +386,12 @@ export default async function handler(req, res) {
       const { replyText, rawReply } = await processUserQuery(userText, advisor, history);
       await sendTelegramMessage(chatId, replyText);
 
-      // Persist updated conversation history
-      history.push({ role: 'user', content: userText });
-      history.push({ role: 'assistant', content: rawReply });
-      await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+      // Persist updated conversation history (Do NOT persist connection errors to prevent poisoned loops)
+      if (!rawReply.includes('⚠️ Disculpa') && !rawReply.includes('intermitencia temporal')) {
+        history.push({ role: 'user', content: userText });
+        history.push({ role: 'assistant', content: rawReply });
+        await saveTelegramUserSession(chatId, advisor.key, history, fromUser);
+      }
     } catch (procErr) {
       console.error('Error in processUserQuery:', procErr);
       await sendTelegramMessage(chatId, `⚠️ Disculpa, ocurrió un inconveniente temporal al conectar con el CRM (${procErr.message || 'Error de procesamiento'}). Por favor vuelve a dictarme o escribir tu mensaje.`);
@@ -910,9 +912,11 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
   }
 
   let targetLeadTimeline = [];
+  let targetLeadNotes = {};
   if (targetLead) {
     try {
       const tp = JSON.parse(targetLead.notes || '{}');
+      targetLeadNotes = (tp && typeof tp === 'object' && !Array.isArray(tp)) ? tp : {};
       const rawTl = Array.isArray(tp) ? tp : (tp.timeline || []);
       // Sort by date descending so the newest interactions (today, yesterday) appear first
       const sortedTl = [...rawTl].sort((a, b) => {
@@ -975,22 +979,33 @@ PROSPECTO EN FOCO DIRECTO:
 - Estado en CRM: ${targetLead.status}
 - Asignado a: ${targetLead.assigned_to || advisor.name}
 - Teléfono: ${targetLead.phone || 'No registrado'}
-- Últimas gestiones en bitácora:
+- Próxima acción en CRM: ${targetLeadNotes.next_action || 'Ninguna programada'} (Fecha: ${targetLeadNotes.next_action_date ? (formatFriendlyTime(targetLeadNotes.next_action_date) || targetLeadNotes.next_action_date) : 'Sin fecha'})
+- Últimas gestiones registradas en bitácora:
 ${targetLeadTimeline.length > 0 ? targetLeadTimeline.map(n => `  • ${n}`).join('\n') : '  (Sin notas previas)'}
 ` : ''}
+
+ADN Y PRODUCTO QUE VENDE ALBERTO (MUY IMPORTANTE):
+- Producto: Software SaaS / Web App PWA de Marca Blanca (Portal Web y App instalable en smartphone con logo, colores y nombre exclusivo del nutricionista, coach o gimnasio). Ejemplo demo: https://nutri-alberto.bienestarsinexcusas.site/.
+- Qué incluye la App para sus pacientes: Plan nutricional completo de 28 días con fotos reales de comidas y porciones; recálculo inteligente de macros si el paciente cambia un alimento; lista de compras de supermercado organizada por semanas; rutina de ejercicios con GIFs y técnica; registro de evolución de peso y medidas; asistente virtual Lucas 24/7.
+- Qué problema resuelve: Las nutricionistas pierden horas armando dietas en Excel y mandando PDFs que los pacientes no leen ni siguen. Con la App, automatizan la entrega y pueden atender a más de 100 pacientes sin colapsar.
+- Beneficio económico para la nutricionista: Pasan de cobrar una consulta suelta de S/. 70-90 a vender programas de acompañamiento de S/. 250 a S/. 400 mensuales. Retienen a sus pacientes por meses y se ven con tecnología de primer nivel sin gastar miles de dólares en desarrollo.
+- QUÉ NO ES: NO es una agencia de marketing ni vende publicidad de Facebook. NO es una app genérica de cocina.
+- MODELO DE COBRO: Paquetes de créditos (Plan 30 por S/. 400, Plan 80 por S/. 700, Plan 200 por S/. 1200, etc.), donde 1 crédito = 1 paciente activo durante 28 días.
+- MANEJO DE OBJECIONES: Si una nutricionista dice "yo ya tengo marketing", "yo quiero venderte a ti y no comprarte", etc., responde con categoría, desarmando la objeción: aclarar que NO vendemos marketing ni publicidad (ella ya tiene pacientes), sino la herramienta para que sus pacientes paguen más y no abandonen.
 
 REGLAS DE ACTUACIÓN:
 1. DIÁLOGO DIRECTO CON ${advisor.name.toUpperCase()}: Tú eres el Director Comercial de Bienestar y socio estratégico de ${advisor.name}. Siempre que el usuario hable, reflexione, cuente una situación o pregunte sobre un cliente, HÁBLALE A ÉL (${advisor.name.split(' ')[0]}). Analiza la psicología del prospecto, valida su perspectiva comercial, dale tu recomendación estratégica táctica y, si corresponde, dale un borrador de mensaje sugerido entre comillas para que él lo copie y envíe por WhatsApp. NUNCA le hables en primera persona al prospecto como si fueras el usuario.
 2. CONSULTAS VS ÓRDENES: Si el usuario te consulta una opinión ("¿cómo interpreto esto?", "¿qué opinas?", "¿crees que tiene interés?"), tu respuesta es un diálogo estratégico de socio ("intent": "general_chat"). NUNCA actualices la bitácora ("intent": "update_lead") a menos que te dé una orden explícita ("anota esto", "guarda en bitácora", "cambia a perdido", "pon próxima acción").
-3. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
-4. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
+3. CONSULTAS DE VERIFICACIÓN / INSPECCIÓN: Si ${advisor.name.split(' ')[0]} te pregunta "¿Registraste lo que te dije?", "¿Revisaste su perfil y confirma?", o "¿Qué tiene guardado?", NUNCA digas que "no tienes acceso visual" ni inventes que algo está registrado si no lo ves en 'Últimas gestiones registradas en bitácora' del PROSPECTO EN FOCO DIRECTO. Revisa los datos reales de arriba y dile con honestidad y precisión lo que realmente figura en el CRM.
+4. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
+5. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
    • [Nombre] ([Hora]) — [Acción ejecutiva breve]
    Cierra con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
-5. WHATSAPP COPYWRITING: Si piden mensaje para un prospecto, redacta un WhatsApp cálido, directo y persuasivo al estilo peruano/latino, listo para copiar entre comillas.
-6. BITÁCORA Y CRM: Solo define intent: "update_lead" si el usuario da una orden o dicta qué pasó con un cliente. NUNCA inventes notas falsas ("note_text" debe ser vacío si no dictó notas).
-7. ELIMINAR PRÓXIMA ACCIÓN: Si piden quitar, borrar o dejar en blanco la próxima acción, define "clear_next_action": true, "next_action_text": "", "next_action_date": "".
-8. CREAR PROSPECTOS: Si piden anotar cita o prospecto nuevo que no está en la base, define intent: "create_lead" con "new_lead_data".
-9. COMPRENSIÓN FONÉTICA: Si un audio o texto tiene variaciones fonéticas (ej. "Luis Kulki" o "Culquin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula), asócialo de inmediato al prospecto real sin discutir.
+6. WHATSAPP COPYWRITING: Si piden mensaje para un prospecto, redacta un WhatsApp cálido, directo y persuasivo al estilo peruano/latino, listo para copiar entre comillas.
+7. BITÁCORA Y CRM: Solo define intent: "update_lead" si el usuario da una orden o dicta qué pasó con un cliente. NUNCA inventes notas falsas ("note_text" debe ser vacío si no dictó notas).
+8. ELIMINAR PRÓXIMA ACCIÓN: Si piden quitar, borrar o dejar en blanco la próxima acción, define "clear_next_action": true, "next_action_text": "", "next_action_date": "".
+9. CREAR PROSPECTOS: Si piden anotar cita o prospecto nuevo que no está en la base, define intent: "create_lead" con "new_lead_data".
+10. COMPRENSIÓN FONÉTICA: Si un audio o texto tiene variaciones fonéticas (ej. "Luis Kulki" o "Culquin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula; "Jocelyn" / "Yoselin" = Yoselin Nails Parra Calixto), asócialo de inmediato al prospecto real sin discutir.
 
 FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 {
@@ -1149,8 +1164,8 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     targetLead = findLeadInSentence(leads, userMessage, advisor.name);
   }
 
-  // 3. Contextual scan: if user is updating/responding without naming the lead
-  if (!targetLead && (isUserExplicitUpdate || /^(me\s+respondi[oó]|respondi[oó]|contest[oó]|dijo\s+que|escribi[oó]|le\s+escrib[ií]|le\s+mand[eé]|habl[eé]\s+con\s+[eé]l|habl[eé]\s+con\s+ella|pon\s+en\s+bit[aá]cora)/i.test(userMessage))) {
+  // 3. Contextual scan: if user did not name the lead, fallback to lead from recent history
+  if (!targetLead) {
     targetLead = findLeadFromHistory(leads, conversationHistory, advisor.name);
   }
 
@@ -1159,15 +1174,21 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     targetLead = findMatchingLead(leads, null, userMessage);
   }
 
-  const isQueryQuestion = /^¿?\s*(que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|revisa|revisaste|consultaste|consulta|dime|ver|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(normalizeStr(userMessage))
-    || /\?$/.test((userMessage || '').trim());
+  const hasStrongUpdateCommand = /\b(pon|pongas|poner|anota|anotes|anotar|registra|registres|registrar|guarda|guardes|guardar|actualiza|actualices|actualizar|cambia|cambies|cambiar)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(normalizeStr(userMessage))
+    || /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|en\s+su\s+bit[aá]cora)\b/i.test(normalizeStr(userMessage));
+
+  const isQueryQuestion = !hasStrongUpdateCommand && (
+    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda))\b/i.test(normalizeStr(userMessage))
+    || (/\?$/.test((userMessage || '').trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(normalizeStr(userMessage)))
+  );
 
   const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|para\s+qu[eé]|por\s+qu[eé]|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(normalizeStr(userMessage));
 
   // 1. UPDATE EXISTING LEAD IN CRM
   const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && !isComplaintOrDebate && (
     isUserExplicitUpdate ||
-    isUserExplicitCreate
+    isUserExplicitCreate ||
+    hasStrongUpdateCommand
   );
 
   if (shouldPerformUpdate) {
@@ -1400,6 +1421,24 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 
   if (!updatePerformed) {
     // Sanitize any false claims of CRM update or creation if no write occurred in database
+    const falseClaimRegex = /\b(he\s+(registrado|actualizado|guardado|anotado|programado|agendado)|ya\s+(registr[eé]|actualic[eé]|guard[eé]|anot[eé]|qued[oó]\s+registrad[oa]|est[aá]\s+registrad[oa])|nota\s+y\s+pr[oó]xima\s+acci[oó]n\s+registradas?|qued[oó]\s+registrad[oa]|dej[eé]\s+registrad[oa]|he\s+guardado|registrad[oa]\s+en\s+la\s+bit[aá]cora)\b/i;
+
+    if (falseClaimRegex.test(cleanReply)) {
+      if (isExplicitUpdateCommand(userMessage) || hasStrongUpdateCommand) {
+        if (!targetLead) {
+          cleanReply = `No encontré el prospecto en el CRM para registrar la gestión. Por favor indícame su nombre exacto.`;
+        } else {
+          cleanReply = `No se pudo registrar la gestión en la bitácora de ${targetLead.contact_name || targetLead.business_name} debido a un inconveniente con el CRM.`;
+        }
+      } else {
+        cleanReply = cleanReply
+          .split('\n')
+          .filter(line => !falseClaimRegex.test(line))
+          .join('\n')
+          .trim();
+      }
+    }
+
     cleanReply = cleanReply
       .replace(/^(\s*✅\s*)?(prospecto\s+(creado|registrado|agendado)[^\n]*\n*)/i, '')
       .replace(/^(\s*✅\s*)?(nuevo\s+prospecto[^\n]*\n*)/i, '')
@@ -1416,6 +1455,10 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
   if (!cleanReply || cleanReply.trim().length === 0 || cleanReply.trim() === `Listo ${advisor.name.split(' ')[0]}.` || (updatePerformed && cleanReply.includes('¿En qué prospecto'))) {
     if (updatePerformed && targetLead) {
       cleanReply = `Listo ${advisor.name.split(' ')[0]}. Ya registré la gestión en la bitácora de **${targetLead.contact_name || targetLead.business_name}**.`;
+    } else if (targetLead && /^(revisa|revisaste|consultaste|consulta|confirmas?|ya\s+est[aá]|qued[oó]|qu[eé]\s+tiene)/i.test(normalizeStr(userMessage))) {
+      const lastNote = targetLeadTimeline[0] ? `Última nota: «${targetLeadTimeline[0]}»` : 'Sin notas previas registradas';
+      const pAction = targetLeadNotes.next_action ? `Próxima acción: «${targetLeadNotes.next_action}» (${formatFriendlyTime(targetLeadNotes.next_action_date) || targetLeadNotes.next_action_date || 'Sin fecha'})` : 'Sin próxima acción programada';
+      cleanReply = `Revisé el perfil de **${targetLead.contact_name || targetLead.business_name}** en el CRM:\n• ${lastNote}\n• ${pAction}`;
     } else if (/\b(tarea|tareas|agenda|pendiente|pendientes|vencida|vencidas|hoy|llamada|llamadas|seguimiento|seguimientos)\b/i.test(userMessage)) {
       if (allActiveWorkload.length === 0) {
         cleanReply = `En tu cartera personal no tienes tareas pendientes ni vencidas para hoy. Tu agenda está al día.`;
@@ -1700,18 +1743,11 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
 // Helper: Scan recent conversation history to inherit the last referenced lead
 function findLeadFromHistory(leads, history, advisorName = 'Alberto Zegarra') {
   if (!history || history.length === 0 || !leads || leads.length === 0) return null;
-  for (let i = history.length - 1; i >= Math.max(0, history.length - 6); i--) {
+  for (let i = history.length - 1; i >= Math.max(0, history.length - 8); i--) {
     const raw = history[i]?.content || '';
-    const clean = ' ' + normalizeStr(raw).replace(/[^a-z0-9]/g, ' ') + ' ';
-    for (const l of leads) {
-      if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
-      const isMyLead = (l.assigned_to || '').toLowerCase().includes(advisorName.split(' ')[0].toLowerCase());
-      if (!isMyLead) continue; // STRICT: Never pull another advisor's lead from history!
-      const cNorm = normalizeStr(l.contact_name);
-      if (cNorm && cNorm.length >= 3 && clean.includes(' ' + cNorm + ' ')) return l;
-      const bNorm = normalizeStr(l.business_name);
-      if (bNorm && bNorm.length >= 3 && clean.includes(' ' + bNorm + ' ')) return l;
-    }
+    if (!raw || raw.includes('⚠️ Disculpa')) continue;
+    const found = findLeadInSentence(leads, raw, advisorName);
+    if (found) return found;
   }
   return null;
 }
@@ -1825,10 +1861,16 @@ function isExplicitUpdateCommand(userText) {
     return false;
   }
 
+  // Strong update command override: If user explicitly commands to put in bitacora or set next action/status, it is an update order
+  const hasStrongUpdateCommand = /\b(pon|pongas|poner|anota|anotes|anotar|registra|registres|registrar|guarda|guardes|guardar|actualiza|actualices|actualizar|cambia|cambies|cambiar)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(t)
+    || /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|en\s+su\s+bit[aá]cora)\b/i.test(t);
+
   // Pure query questions or inspection requests:
-  const isQueryQuestion = /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|que|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste))\b/i.test(t)
+  const isQueryQuestion = !hasStrongUpdateCommand && (
+    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda))\b/i.test(t)
     || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t))
-    || /\b(qu[eé]\s+otra|qu[eé]\s+tareas?|solamente\s+es[oa]s?|hay\s+alg[uú]n\s+otro|est[aá]n\s+pendientes?|est[aá]n\s+vencidas?|vencidos?|vencidas?)\b/i.test(t);
+    || /\b(qu[eé]\s+otra|qu[eé]\s+tareas?|solamente\s+es[oa]s?|hay\s+alg[uú]n\s+otro|est[aá]n\s+pendientes?|est[aá]n\s+vencidas?|vencidos?|vencidas?)\b/i.test(t)
+  );
 
   if (isQueryQuestion) return false;
 
@@ -1837,7 +1879,7 @@ function isExplicitUpdateCommand(userText) {
 
   const contextPattern = /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim|respondio|contesto|dijo que|escribio|mando mensaje|mensaje que le envie|le envie el mensaje|me dijo)\b/i;
 
-  return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
+  return hasStrongUpdateCommand || actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
 
 
