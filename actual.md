@@ -198,6 +198,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   `Estado de la próxima acción: TAREA PENDIENTE POR REALIZAR A FUTURO (AÚN NO SE HA ENVIADO)`.
 *   **Regla 4 en Reglas de Actuación**: Si el usuario pregunta cuándo es la próxima acción, qué dice o para cuándo es, el Copiloto cita con precisión milimétrica la fecha completa futura y el texto exacto guardado, con prohibición estricta de afirmar que ya se envió.
 
+### 24. Algoritmo de Coincidencia de Prospectos con Acumulación Multi-Token y Super-Prioridad de Apellidos Únicos (28 de Septiembre de 2026)
+*   **Diagnóstico del Bug de Homónimos (Caso Nancy Flores vs Nancy Tafoya)**: Alberto dictó un audio indicando: *«...mañana Zoom, una y media con Nancy. ¡Tafoya!»*, pero el bot actualizó la ficha de **Nancy Flores** en Supabase, a pesar de que el texto de la respuesta y la tarea mencionaban a Nancy Tafoya.
+*   **Causa Raíz Identificada**:
+    *   La función `findLeadInSentence` evaluaba cada coincidencia de palabra de forma atómica e inconexa, insertando un elemento en un arreglo de candidatos por cada token encontrado.
+    *   Nancy Flores tenía un elemento de 100 puntos (por *"Nancy"*).
+    *   Nancy Tafoya tenía dos elementos de 100 puntos (uno por *"Nancy"* y otro por *"Tafoya"*), pero el código no acumulaba el puntaje en un solo perfil.
+    *   Al ordenar los candidatos empatados en 100 puntos, Javascript devolvió a Nancy Flores por haber aparecido primero en el listado de la base de datos.
+    *   Tampoco existía diferenciación entre palabras comunes y apellidos raros o únicos.
+*   **Solución Implementada**:
+    *   **Acumulación de Puntajes por Lead (`leadScores Map`)**: Todas las palabras detectadas para un mismo prospecto en la oración ahora se suman en un único perfil acumulativo.
+    *   **Bonus Multi-Token (+150 pts)**: Si el usuario menciona dos o más palabras pertenecientes al mismo prospecto (ej: nombre + apellido, *"Nancy"* y *"Tafoya"*), recibe un bonus multiplicador de +150 puntos por cada palabra adicional coincidente.
+    *   **Super-Bonus de Apellidos y Tokens Únicos (+200 pts)**: El sistema precalcula la frecuencia de cada palabra en toda la base de datos de leads. Si el usuario menciona un término que solo pertenece a UN solo prospecto en todo el CRM (ej: *"Tafoya"*, *"Badani"*, *"Godoy"*, *"Culqui"*, *"Flores"*), ese lead recibe de inmediato +200 puntos adicionales de exclusividad.
+    *   **Resultado de Validación**: Para la frase con *"Nancy... ¡Tafoya!"*, Nancy Tafoya obtuvo **550 puntos** frente a 100 puntos de Nancy Flores, garantizando una victoria indiscutible e infalible en prospectos con nombres compartidos.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

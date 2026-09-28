@@ -1743,8 +1743,21 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
     'suene', 'suena', 'borrar', 'quitar', 'poner', 'cambiar'
   ]);
 
+  // Precompute token frequencies across the CRM to identify unique tokens (e.g. rare surnames like 'tafoya', 'culqui')
+  const tokenFreq = new Map();
+  for (const l of leads) {
+    if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
+    const tokens = new Set([
+      ...normalizeStr(l.contact_name).split(/\s+/),
+      ...normalizeStr(l.business_name).split(/\s+/)
+    ].filter(t => t.length >= 3 && !stopWords.has(t)));
+    for (const t of tokens) {
+      tokenFreq.set(t, (tokenFreq.get(t) || 0) + 1);
+    }
+  }
+
   const userWords = cleanText.split(/\s+/).filter(w => w.length >= 3 && !stopWords.has(w));
-  const candidates = [];
+  const leadScores = new Map();
 
   for (const l of leads) {
     if (l.business_name === 'SYSTEM_TELEGRAM_SESSION') continue;
@@ -1752,13 +1765,13 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
     const cNorm = normalizeStr(l.contact_name);
     const bNorm = normalizeStr(l.business_name);
 
-    // Exact full name match in text (e.g. 'david godoy', 'luis culqui', 'lic sandra')
+    // Exact full name match in text (e.g. 'david godoy', 'luis culqui', 'nancy tafoya')
     if (cNorm && cleanText.includes(' ' + cNorm + ' ')) {
-      candidates.push({ lead: l, score: 100, isMyLead });
+      leadScores.set(l.id, { lead: l, score: 500, matchedTokens: new Set(cNorm.split(/\s+/)), isMyLead });
       continue;
     }
     if (bNorm && cleanText.includes(' ' + bNorm + ' ')) {
-      candidates.push({ lead: l, score: 95, isMyLead });
+      leadScores.set(l.id, { lead: l, score: 450, matchedTokens: new Set(bNorm.split(/\s+/)), isMyLead });
       continue;
     }
 
@@ -1769,37 +1782,75 @@ function findLeadInSentence(leads, text, advisorName = 'Alberto Zegarra') {
       continue;
     }
 
-    // Significant tokens of the lead (e.g. 'sandra', 'culqui', 'godoy', 'rosanna', 'bravo')
-    const lTokens = [...cNorm.split(/\s+/), ...bNorm.split(/\s+/)].filter(t => t.length >= 3 && !stopWords.has(t));
+    // Significant tokens of the lead (e.g. 'nancy', 'tafoya', 'flores', 'culqui')
+    const lTokens = [...new Set([...cNorm.split(/\s+/), ...bNorm.split(/\s+/)])].filter(t => t.length >= 3 && !stopWords.has(t));
+    const matchedTokens = new Set();
+    let leadScore = 0;
+
     for (const uw of userWords) {
       for (const lt of lTokens) {
+        let isMatch = false;
+        let tokenBaseScore = 0;
+
         if (uw === lt) {
-          let score = lt.length >= 4 ? 80 : 50;
-          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
-          candidates.push({ lead: l, score, isMyLead, token: uw });
+          isMatch = true;
+          tokenBaseScore = lt.length >= 4 ? 80 : 50;
         } else if (phoneticNormalize(uw) === phoneticNormalize(lt)) {
           // Phonetic match: e.g. "rosana" === "rosanna", "kulki" === "culqui", "jocelyn" === "yoselin"
-          let score = lt.length >= 4 ? 75 : 45;
-          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 20;
-          candidates.push({ lead: l, score, isMyLead, token: uw });
+          isMatch = true;
+          tokenBaseScore = lt.length >= 4 ? 75 : 45;
         } else if (Math.min(uw.length, lt.length) >= 6 && levenshteinDistance(uw, lt) <= 1) {
           // Fuzzy edit distance <= 1 only on long words (6+ characters)
-          let score = 70;
-          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) score += 15;
-          candidates.push({ lead: l, score, isMyLead, token: uw });
+          isMatch = true;
+          tokenBaseScore = 70;
+        }
+
+        if (isMatch && !matchedTokens.has(lt)) {
+          matchedTokens.add(lt);
+          let itemScore = tokenBaseScore;
+
+          if (cNorm.startsWith(lt) || cNorm.endsWith(lt)) itemScore += 20;
+
+          // UNIQUE TOKEN / SURNAME SUPER-BONUS (+200 pts):
+          // If this token appears on only 1 lead in the whole CRM (e.g. 'tafoya', 'culqui', 'badani'),
+          // it is a definitive identifier that must immediately dominate over common first names!
+          if (tokenFreq.get(lt) === 1 && lt.length >= 4) {
+            itemScore += 200;
+          }
+
+          leadScore += itemScore;
         }
       }
     }
+
+    if (matchedTokens.size > 0) {
+      // MULTI-TOKEN BONUS (+150 pts per additional token matched):
+      // If user mentioned first name AND last name (e.g. "Nancy" and "Tafoya"), reward heavily!
+      if (matchedTokens.size >= 2) {
+        leadScore += (matchedTokens.size - 1) * 150;
+      }
+
+      leadScores.set(l.id, {
+        lead: l,
+        score: leadScore,
+        matchedTokens,
+        isMyLead
+      });
+    }
   }
 
-  if (candidates.length > 0) {
-    // Sort by highest score first, then by assigned to current advisor
+  if (leadScores.size > 0) {
+    const candidates = Array.from(leadScores.values());
     candidates.sort((a, b) => {
       if (a.score !== b.score) return b.score - a.score;
+      if (a.matchedTokens.size !== b.matchedTokens.size) return b.matchedTokens.size - a.matchedTokens.size;
       if (a.isMyLead !== b.isMyLead) return a.isMyLead ? -1 : 1;
       return 0;
     });
-    return candidates[0].lead;
+
+    if (candidates[0].score >= 60) {
+      return candidates[0].lead;
+    }
   }
   return null;
 }
