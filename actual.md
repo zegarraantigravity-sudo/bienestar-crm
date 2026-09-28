@@ -156,6 +156,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Saneamiento de Sesión ante Errores de Conexión**: Las respuestas temporales de error ("⚠️ Disculpa...") ya no se guardan en el historial de sesión, evitando envenenar turnos posteriores del asistente.
 *   **Respeto Estricto de Datos**: Se mantuvo 100% intacta la ficha de Yoselin en Supabase tal como solicitó Alberto (quien la gestionó manualmente).
 
+### 20. Matriz de Psicología Comercial B2B y Motor Táctico de Copywriting para WhatsApp (28 de Septiembre de 2026)
+*   **Motor Táctico de Cierre B2B en Telegram**: Cada vez que Alberto consulta qué responder a un prospecto o pega una conversación de WhatsApp, el bot responde obligatoriamente bajo una estructura táctica de 3 partes:
+    1. 💡 **Lectura de la jugada:** Diagnóstico psicológico de la respuesta del prospecto (qué asumió, qué objeción tiene y por qué respondemos así).
+    2. 💬 **Mensaje listo para copiar:** El texto exacto entre comillas («...») para copiar y pegar directamente en WhatsApp, redactado con tono humano, cálido, conversacional peruano/latino, profesional y sin sonar agresivo.
+    3. 🎯 **Siguiente paso:** La jugada estratégica a seguir según la respuesta del cliente.
+*   **Matriz de Situaciones Reales para Nutricionistas y Coaches**:
+    1. *Mensajes automáticos / Creyó que somos pacientes (ej. consultorio de Sandra):* Desarmar el malentendido con diplomacia y empatía, validar la reputación del consultorio y abrir curiosidad hacia la App propia con micro-compromisos de bajísima fricción (video de 30s o demo interactiva).
+    2. *¿Cuánto cuesta? / Piden precio de entrada:* Anclar el retorno de inversión (pasar de consultas sueltas de S/. 70-90 a programas de S/. 250 - S/. 400), explicar el esquema de créditos y dirigir a la demo previa antes de hablar de costos.
+    3. *Yo ya tengo marketing / redes / vendo y no compro:* Desarmar aclarando que no somos agencia ni publicidad, sino la herramienta operativa para no desgastarse en PDFs de Excel y evitar que sus pacientes abandonen.
+    4. *Mándame información por aquí / no tengo tiempo:* Evitar PDFs pesados y enviar la demo interactiva en vivo con un gancho visual de 2 líneas.
+    5. *No me interesa / No gracias:* Salida elegante y profesional que deja la puerta abierta sin discutir ni rogar.
+*   **Blindaje Antiescritura en Consultas de Copywriting**: Se añadieron disparadores específicos en `isComplaintOrDebate` e `isExplicitUpdateCommand` (`qué le respondo`, `cómo le respondo`, `dime qué responderle`, `qué le pongo`, `qué le digo`) para garantizar que consultar qué responder jamás modifique por accidente el CRM en Supabase.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
