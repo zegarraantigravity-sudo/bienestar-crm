@@ -173,6 +173,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Reordenamiento del Motor Primario en Groq (`qwen/qwen3.8-27b`)**: Se identificó que el modelo pesado `openai/gpt-oss-120b` agotó su cuota diaria gratuita de 200,000 tokens en Groq a las 10:52 a. m., y que Google Gemini sufría una saturación mundial (Error 503: High demand). Se reconfiguró la cascada para priorizar a **`qwen/qwen3.8-27b`** como motor #1 (tiempo de respuesta de **0.3 segundos**, excelente comprensión en español y sin cuotas restrictivas), seguido de **`openai/gpt-oss-20b`** (1 segundo) y dejando al modelo pesado al final.
 *   **Reducción de Timeouts de Red (4s)**: Se redujo el tiempo máximo de espera por intento a 4000 ms (4 segundos), evitando que solicitudes lentas consuman la ventana de ejecución de Vercel y garantizando respuestas inmediatas en Telegram.
 
+### 22. Dieta Extrema de Tokens (84% menos), Regla Clínica Profesional y Blindaje Vercel (28 de Septiembre de 2026)
+*   **Diagnóstico del Límite de Entrada (ITPM 8k en Groq)**: Se identificó que la capa gratuita de Groq aplica una restricción estricta de 8,000 tokens de entrada por minuto (ITPM). Dado que el sistema volcaba en cada consulta los 51 leads del CRM (~5,000 tokens) más 10 turnos de historial y la agenda precalculada, enviar dos mensajes seguidos en menos de un minuto saturaba el cupo de tokens y provocaba el error 413 / intermitencia temporal en Telegram.
+*   **Aislamiento Radical del Prospecto en Foco (`targetLead`)**:
+    *   Cuando Alberto consulta o interactúa sobre un prospecto concreto (ej. Patricia Badani), el sistema **omite al 100% los otros 50 prospectos** y la agenda general del prompt. Solo inyecta la ficha comercial y las últimas gestiones registradas de ese cliente.
+    *   Si no hay prospecto en foco (consulta global), solo se envían los 28 prospectos activos de la cartera personal de Alberto en formato resumido ultracompacto (nombre, estado, próxima tarea), sin incluir leads de otros asesores ni cerrados perdidos.
+    *   El consumo por mensaje descendió de ~5,000 tokens a **~780 tokens** (reducción del 84%), permitiendo enviar 8 a 10 mensajes continuos por minuto sin rozar el límite de Groq.
+*   **Regla Clínica de Perfil (Prohibido asumir que el cliente está enfermo o es paciente)**:
+    *   Se incorporó la **Regla 2 en Reglas de Actuación**: se establece formalmente que todos los contactos de Bienestar CRM son profesionales de la salud (médicos cirujanos, nutricionistas, especialistas).
+    *   Si un prospecto indica *"estoy entrando a una cirugía"*, *"voy a operar"* o *"estoy en consulta"*, la IA reconoce que es el cirujano/médico realizando su labor. Queda terminantemente prohibido desearle *"pronta recuperación"* o asumir enfermedad; se le desea éxito en la cirugía y se le deja el camino abierto sin presión para coordinar al salir de quirófano.
+*   **Compactación del Historial de Turnos**:
+    *   Se redujo el historial remitido al motor IA de 10 a 4 turnos y se truncaron las respuestas anteriores del asistente a un máximo de 350 caracteres, evitando acumulaciones innecesarias de tokens.
+*   **Timeouts Extendidos y Configuración de Vercel (`vercel.json`)**:
+    *   Se aumentó el timeout del motor Groq a 8 segundos (`AbortSignal.timeout(8000)`) para dar margen holgado a la respuesta.
+    *   Se creó el archivo de infraestructura `vercel.json` con `"maxDuration": 60` para `api/telegram.js`, evitando cualquier desconexión por tiempo límite en la nube de Vercel.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
@@ -188,3 +203,4 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - [x] **Gestión de Archivos Adjuntos**: Permitir subir imágenes o PDFs en la bitácora del lead (comprobantes de pago, contratos) y galería con visor lightbox.
 - [x] **Recordatorios de Tareas y Agenda**: Notificaciones automáticas por Telegram antes de llamadas y Zooms.
 - [ ] **Exportación de Datos**: Añadir un botón en la tabla de leads para exportar los prospectos filtrados en formato Excel/CSV.
+
