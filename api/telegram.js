@@ -616,6 +616,42 @@ function formatFriendlyTime(dateStr) {
   return dateStr;
 }
 
+// Helper: Format date/time to comprehensive human friendly Peruvian format including day and time
+function formatFriendlyDateTime(dateStr, todayYmd, tomorrowYmd) {
+  if (!dateStr) return 'Sin fecha programada';
+  try {
+    const raw = String(dateStr).trim();
+    const timeMatch = raw.match(/(\d{1,2}):(\d{2})/);
+    let timeStr = '';
+    if (timeMatch) {
+      let h = parseInt(timeMatch[1], 10);
+      const m = timeMatch[2];
+      const ampm = h >= 12 ? 'p. m.' : 'a. m.';
+      h = h % 12;
+      if (h === 0) h = 12;
+      timeStr = ` a las ${h}:${m} ${ampm}`;
+    }
+
+    const ymdMatch = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
+    if (ymdMatch) {
+      const ymd = ymdMatch[0];
+      const day = parseInt(ymdMatch[3], 10);
+      const month = parseInt(ymdMatch[2], 10);
+      const monthsEs = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      const monthName = monthsEs[month] || month;
+
+      if (todayYmd && ymd === todayYmd) {
+        return `HOY (${day} de ${monthName})${timeStr}`;
+      }
+      if (tomorrowYmd && ymd === tomorrowYmd) {
+        return `MAÑANA (${day} de ${monthName})${timeStr}`;
+      }
+      return `${day} de ${monthName} de ${ymdMatch[1]}${timeStr}`;
+    }
+  } catch (e) {}
+  return dateStr;
+}
+
 // Helper: Summarize verbose drafted messages into concise task summaries
 function summarizeTaskAction(actionText) {
   if (!actionText || typeof actionText !== 'string') return 'Seguimiento comercial';
@@ -957,6 +993,10 @@ RESUMEN DEL EQUIPO / OTROS ASESORES HOY:
     : `\nPROSPECTOS ACTIVOS EN TU CARTERA PERSONAL (${myActiveLeads.length}):\n` +
       myActiveLeads.map((l, idx) => `  ${idx + 1}. ${l.name} [${l.status}] (Próx: ${l.next_action || 'Sin tarea'})`).join('\n') + '\n';
 
+  const leadNextAction = (targetLeadNotes && targetLeadNotes.next_action) || (targetLead && targetLead.next_action) || '';
+  const leadNextActionDate = (targetLeadNotes && targetLeadNotes.next_action_date) || (targetLead && targetLead.next_action_date) || '';
+  const leadFriendlyDate = formatFriendlyDateTime(leadNextActionDate, todayPeruYmd, tomorrowPeruYmd);
+
   const systemPrompt = `Eres el Copiloto Inteligente y Director Comercial de Bienestar CRM para ${advisor.name} en Telegram.
 Fecha actual oficial Perú: ${todayDateStr} a las ${currentTimeStr} (America/Lima).
 Usuario conectado: ${advisor.name} (${advisor.role}, email: ${advisor.email}).
@@ -970,7 +1010,9 @@ PROSPECTO EN FOCO DIRECTO (ATENCIÓN EXCLUSIVA EN ESTE CLIENTE):
 - Estado en CRM: ${targetLead.status}
 - Asignado a: ${targetLead.assigned_to || advisor.name}
 - Teléfono: ${targetLead.phone || 'No registrado'}
-- Próxima acción en CRM: ${targetLeadNotes.next_action || 'Ninguna programada'} (Fecha: ${targetLeadNotes.next_action_date ? (formatFriendlyTime(targetLeadNotes.next_action_date) || targetLeadNotes.next_action_date) : 'Sin fecha'})
+- Próxima acción en CRM (TAREA PROGRAMADA PENDIENTE DE EJECUTAR): ${leadNextAction ? `"${leadNextAction}"` : 'Ninguna programada'}
+- Fecha y hora programada: ${leadFriendlyDate}
+- Estado de la próxima acción: ${leadNextAction ? 'TAREA PENDIENTE POR REALIZAR A FUTURO (AÚN NO SE HA ENVIADO)' : 'Sin tarea pendiente'}
 - Últimas gestiones registradas en bitácora:
 ${targetLeadTimeline.slice(0, 6).map(n => `  • ${n}`).join('\n')}
 ` : carteraText}
@@ -1008,7 +1050,10 @@ REGLAS DE ACTUACIÓN:
    - Si un prospecto dice "estoy entrando a una cirugía", "voy a operar", "estoy en quirófano", "tengo pacientes" o "estoy en consulta", ÉL/ELLA ES EL DOCTOR / CIRUJANO QUE VA A REALIZAR LA OPERACIÓN O ATENDER PACIENTES.
    - PROHIBIDO TERMINANTEMENTE desearle "pronta recuperación", asumir que está enfermo o que lo van a operar a él. Se le desea éxito en la cirugía o en su jornada quirúrgica, felicitaciones por su trabajo, y se le deja espacio sin presionar para coordinar después de que salga del quirófano.
 3. CONSULTAS VS ÓRDENES: Si el usuario te consulta una opinión ("¿cómo interpreto esto?", "¿qué opinas?", "¿crees que tiene interés?", "qué le respondo", "dime qué le pongo"), tu respuesta es un diálogo estratégico de socio ("intent": "general_chat"). NUNCA actualices la bitácora ("intent": "update_lead") a menos que te dé una orden explícita ("anota esto", "guarda en bitácora", "cambia a perdido", "pon próxima acción").
-4. CONSULTAS DE VERIFICACIÓN / INSPECCIÓN: Si ${advisor.name.split(' ')[0]} te pregunta "¿Registraste lo que te dije?", "¿Revisaste su perfil y confirma?", o "¿Qué tiene guardado?", NUNCA digas que "no tienes acceso visual" ni inventes que algo está registrado si no lo ves en 'Últimas gestiones registradas en bitácora' del PROSPECTO EN FOCO DIRECTO. Revisa los datos reales de arriba y dile con honestidad y precisión lo que realmente figura en el CRM.
+4. CONSULTAS DE PRÓXIMA ACCIÓN / INSPECCIÓN DE PERFIL: Si ${advisor.name.split(' ')[0]} te pregunta "¿cuándo es su próxima acción?", "¿qué dice su próxima acción?", "¿para cuándo es?" o "¿qué tiene guardado en su perfil?":
+   - Cita textualmente la fecha y hora completa programada (ej. "Mañana martes 29 de septiembre a las 10:00 a. m.") y el texto exacto de la próxima acción guardada.
+   - La Próxima Acción en CRM es SIEMPRE una tarea programada a futuro pendiente de realizarse; NUNCA digas que "ya se envió" ni que es una acción pasada.
+   - NUNCA digas que "no tienes acceso visual" ni inventes datos que no figuran en el PROSPECTO EN FOCO DIRECTO.
 5. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
 6. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
    • [Nombre] ([Hora]) — [Acción ejecutiva breve]

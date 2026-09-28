@@ -188,6 +188,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se aumentó el timeout del motor Groq a 8 segundos (`AbortSignal.timeout(8000)`) para dar margen holgado a la respuesta.
     *   Se creó el archivo de infraestructura `vercel.json` con `"maxDuration": 60` para `api/telegram.js`, evitando cualquier desconexión por tiempo límite en la nube de Vercel.
 
+### 23. Corrección Crítica de Formato de Fechas en Próxima Acción e Inspección de Perfil (28 de Septiembre de 2026)
+*   **Diagnóstico del Bug de Fecha Truncada (`formatFriendlyTime`)**: Al consultar en Telegram por la próxima acción de un cliente (ej. Patricia Badani), el bot respondía erróneamente que la acción era un mensaje pasado ya enviado hoy a las 10:00 a. m., a pesar de que en Supabase la tarea estaba programada para mañana 29 de septiembre a las 10:00 a. m.
+*   **Causa Raíz Identificada**: La función auxiliar `formatFriendlyTime` en `api/telegram.js` solo extraía las horas y minutos (ej. `10:00 a. m.`), amputando por completo el día y mes (`2026-09-29`). Al recibir solo la hora `10:00 a. m.` y comparar contra la hora actual de Perú (11:40 a. m.), el modelo asumía que la tarea ya había pasado hoy y alucinaba que era un mensaje ya enviado.
+*   **Implementación de `formatFriendlyDateTime`**: Se creó un formateador comprensivo que incluye día de la semana, día del mes, nombre del mes y hora en formato am/pm (ej: `MAÑANA (29 de septiembre) a las 10:00 a. m.` u `HOY (28 de septiembre) a las 10:00 a. m.`).
+*   **Blindaje en el Prompt del Prospecto en Foco**:
+    *   Se inyecta explícitamente: `Próxima acción en CRM (TAREA PROGRAMADA PENDIENTE DE EJECUTAR): "[Texto exacto]"`.
+    *   `Fecha y hora programada: MAÑANA (29 de septiembre) a las 10:00 a. m.`.
+    *   `Estado de la próxima acción: TAREA PENDIENTE POR REALIZAR A FUTURO (AÚN NO SE HA ENVIADO)`.
+*   **Regla 4 en Reglas de Actuación**: Si el usuario pregunta cuándo es la próxima acción, qué dice o para cuándo es, el Copiloto cita con precisión milimétrica la fecha completa futura y el texto exacto guardado, con prohibición estricta de afirmar que ya se envió.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
