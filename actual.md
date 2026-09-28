@@ -169,6 +169,10 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     5. *No me interesa / No gracias:* Salida elegante y profesional que deja la puerta abierta sin discutir ni rogar.
 *   **Blindaje Antiescritura en Consultas de Copywriting**: Se añadieron disparadores específicos en `isComplaintOrDebate` e `isExplicitUpdateCommand` (`qué le respondo`, `cómo le respondo`, `dime qué responderle`, `qué le pongo`, `qué le digo`) para garantizar que consultar qué responder jamás modifique por accidente el CRM en Supabase.
 
+### 21. Optimización de Motores IA: Priorización de Qwen 3.8 y OpenAI 20b sobre Groq y Reducción de Latencia (28 de Septiembre de 2026)
+*   **Reordenamiento del Motor Primario en Groq (`qwen/qwen3.8-27b`)**: Se identificó que el modelo pesado `openai/gpt-oss-120b` agotó su cuota diaria gratuita de 200,000 tokens en Groq a las 10:52 a. m., y que Google Gemini sufría una saturación mundial (Error 503: High demand). Se reconfiguró la cascada para priorizar a **`qwen/qwen3.8-27b`** como motor #1 (tiempo de respuesta de **0.3 segundos**, excelente comprensión en español y sin cuotas restrictivas), seguido de **`openai/gpt-oss-20b`** (1 segundo) y dejando al modelo pesado al final.
+*   **Reducción de Timeouts de Red (4s)**: Se redujo el tiempo máximo de espera por intento a 4000 ms (4 segundos), evitando que solicitudes lentas consuman la ventana de ejecución de Vercel y garantizando respuestas inmediatas en Telegram.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

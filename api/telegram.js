@@ -1057,9 +1057,9 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
   // -------------------------------------------------------------
   let aiJson = {};
 
-  // 1. PRIMARY: Groq (response time ~1s, prevents any Telegram webhook timeouts)
+  // 1. PRIMARY: Groq (ultra-fast, response time ~0.3s-1s, prevents any Telegram webhook timeouts)
   if (GROQ_KEY) {
-    const groqModels = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b'];
+    const groqModels = ['qwen/qwen3.8-27b', 'openai/gpt-oss-20b', 'openai/gpt-oss-120b'];
     for (const gModel of groqModels) {
       try {
         const gRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -1078,7 +1078,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
             temperature: 0.15,
             response_format: { type: 'json_object' }
           }),
-          signal: AbortSignal.timeout(5000)
+          signal: AbortSignal.timeout(4000)
         });
         if (gRes.ok) {
           const j = await gRes.json();
@@ -1096,9 +1096,9 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     }
   }
 
-  // 2. SECONDARY: Google Gemini Cascade (with strict 7s timeout per model)
+  // 2. SECONDARY: Google Gemini Cascade (with strict 4s timeout per model)
   if (!aiJson.choices?.[0]?.message?.content) {
-    const geminiModels = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.8-pro', 'gemini-3.1-flash-lite'];
+    const geminiModels = ['gemini-3.8-flash', 'gemini-3.1-flash-lite', 'gemini-flash-latest'];
     for (const modelName of geminiModels) {
       try {
         const res = await fetch(AI_URL, {
@@ -1117,7 +1117,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
             temperature: 0.2,
             max_tokens: 2500
           }),
-          signal: AbortSignal.timeout(7000)
+          signal: AbortSignal.timeout(4000)
         });
         if (res.ok) {
           const j = await res.json();
