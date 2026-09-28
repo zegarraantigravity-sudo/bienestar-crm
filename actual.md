@@ -212,6 +212,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Super-Bonus de Apellidos y Tokens Únicos (+200 pts)**: El sistema precalcula la frecuencia de cada palabra en toda la base de datos de leads. Si el usuario menciona un término que solo pertenece a UN solo prospecto en todo el CRM (ej: *"Tafoya"*, *"Badani"*, *"Godoy"*, *"Culqui"*, *"Flores"*), ese lead recibe de inmediato +200 puntos adicionales de exclusividad.
     *   **Resultado de Validación**: Para la frase con *"Nancy... ¡Tafoya!"*, Nancy Tafoya obtuvo **550 puntos** frente a 100 puntos de Nancy Flores, garantizando una victoria indiscutible e infalible en prospectos con nombres compartidos.
 
+### 25. Cálculo Matemático Determinista de Horas Relativas, Bloqueo Anti-Pasado y Regla de Humildad Ejecutiva (28 de Septiembre de 2026)
+*   **Diagnóstico del Bug Horario y Conducta Robótica (Caso Lisbeth a las 18:21)**:
+    *   Alberto dictó por audio: *«...pon una próxima acción en una hora si no ha respondido...»* a las 18:21 (6:21 p. m.).
+    *   El bot registró la tarea para las **5:21 p. m.** (1 hora en el pasado) en vez de las 7:21 p. m. (+1 hora en el futuro).
+    *   Al ser confrontado por Alberto (*«si son las 6:23 cómo sería para las 5:21?»* / *«¿por qué la registraste a esa hora?»*), el bot adoptó una actitud de chatbot corporativo defensivo, justificando el error diciendo que *"la hora correspondía a la tarea que ya tenías en el CRM"* y repitiendo la misma respuesta 3 veces seguidas sin admitir el error de cálculo.
+*   **Causa Raíz Identificada**:
+    *   El cálculo de expresiones relativas como *"en una hora"* se delegaba al modelo de lenguaje (LLM). El modelo, al recibir `06:21 p. m.`, restó una hora (18 - 1 = 17) en vez de sumar (18 + 1 = 19).
+    *   El Copiloto carecía de una directiva de humildad y autocrítica ante errores señalados por el usuario, cayendo en bucles automáticos de justificación burocrática.
+*   **Solución Implementada**:
+    *   **Cálculo Matemático Determinista (`parseRelativeTimeExpression`)**: El backend en JavaScript ahora intercepta expresiones como *"en una hora"*, *"en 2 horas"*, *"en media hora"*, *"en 30 minutos"*, etc., y calcula matemáticamente en tiempo real la hora exacta en zona horaria America/Lima (sumando los milisegundos exactos), anulando cualquier error aritmético de la IA.
+    *   **Filtro Anti-Pasado para Tareas de Hoy**: Si cualquier próxima acción para el día en curso queda programada con una hora anterior a la hora actual de Perú, el sistema detecta la incongruencia y la desplaza automáticamente hacia el futuro.
+    *   **Claridad Horaria Dual (24h y 12h)**: El prompt ahora inyecta explícitamente tanto el formato 24h como el 12h (ej: `18:21 (hora militar 24h) / 06:21 p. m. (hora 12h)`).
+    *   **Regla 5 de Humildad Ejecutiva y Cero Robot**: Ante cualquier reclamo, contradicción o confrontación por parte de Alberto, queda terminantemente prohibido dar explicaciones robóticas o justificar el error culpando al CRM. El asistente debe reconocer la equivocación en una sola frase honesta de socio (*«Tienes toda la razón Alberto, fue un error mío de cálculo al sumar la hora»*), corregir la hora en la base de datos de inmediato y hablar con naturalidad humana.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

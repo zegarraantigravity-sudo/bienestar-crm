@@ -652,6 +652,40 @@ function formatFriendlyDateTime(dateStr, todayYmd, tomorrowYmd) {
   return dateStr;
 }
 
+// Helper: Calculate deterministic ISO date/time for relative time expressions like "en una hora", "en 30 minutos"
+function parseRelativeTimeExpression(text, nowPeru) {
+  if (!text || typeof text !== 'string') return null;
+  const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+  let minutesToAdd = 0;
+
+  // Patterns like "en una hora", "en 1 hora", "en dos horas", "en 2 horas", "en 3 horas"
+  const hourMatch = t.match(/\ben\s+(un[ao]?|1|dos|2|tres|3|cuatro|4|cinco|5)\s+horas?\b/i);
+  if (hourMatch) {
+    const numMap = { 'una': 1, 'uno': 1, 'un': 1, '1': 1, 'dos': 2, '2': 2, 'tres': 3, '3': 3, 'cuatro': 4, '4': 4, 'cinco': 5, '5': 5 };
+    const h = numMap[hourMatch[1].toLowerCase()] || 1;
+    minutesToAdd = h * 60;
+  } else if (/\ben\s+media\s+hora\b/i.test(t)) {
+    minutesToAdd = 30;
+  } else {
+    const minMatch = t.match(/\ben\s+(\d+|quince|veinte|treinta|cuarenta|cuarenta y cinco)\s+minutos?\b/i);
+    if (minMatch) {
+      const numMap = { 'quince': 15, 'veinte': 20, 'treinta': 30, 'cuarenta': 40, 'cuarenta y cinco': 45 };
+      const m = parseInt(minMatch[1], 10) || numMap[minMatch[1].toLowerCase()] || 0;
+      if (m > 0) minutesToAdd = m;
+    }
+  }
+
+  if (minutesToAdd > 0) {
+    const targetMs = (nowPeru ? nowPeru.getTime() : Date.now()) + (minutesToAdd * 60 * 1000);
+    const targetDate = new Date(targetMs);
+    const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(targetDate);
+    const hm = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Lima', hour: '2-digit', minute: '2-digit', hour12: false }).format(targetDate);
+    return `${ymd}T${hm}`;
+  }
+  return null;
+}
+
 // Helper: Summarize verbose drafted messages into concise task summaries
 function summarizeTaskAction(actionText) {
   if (!actionText || typeof actionText !== 'string') return 'Seguimiento comercial';
@@ -725,6 +759,12 @@ async function processUserQuery(userMessage, advisorProfile = ADVISORS.alberto, 
     hour: '2-digit',
     minute: '2-digit'
   });
+  const currentTime24Str = new Intl.DateTimeFormat('es-PE', {
+    timeZone: 'America/Lima',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).format(nowPeru);
   const todayPeruYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(nowPeru);
 
   const tomorrowObj = new Date(nowPeru.toLocaleString('en-US', { timeZone: 'America/Lima' }));
@@ -998,7 +1038,7 @@ RESUMEN DEL EQUIPO / OTROS ASESORES HOY:
   const leadFriendlyDate = formatFriendlyDateTime(leadNextActionDate, todayPeruYmd, tomorrowPeruYmd);
 
   const systemPrompt = `Eres el Copiloto Inteligente y Director Comercial de Bienestar CRM para ${advisor.name} en Telegram.
-Fecha actual oficial Perú: ${todayDateStr} a las ${currentTimeStr} (America/Lima).
+Fecha actual oficial Perú: ${todayDateStr} a las ${currentTime24Str} (hora militar 24h) / ${currentTimeStr} (hora 12h) (America/Lima).
 Usuario conectado: ${advisor.name} (${advisor.role}, email: ${advisor.email}).
 Asesores comerciales: Alberto Zegarra (Dueño / Super Admin), Luis Hakim (Socio Comercial).
 ${isLuis ? 'Enfócate prioritariamente en los prospectos asignados a Luis Hakim (is_mine: true).' : 'Enfócate prioritariamente en los prospectos personales de Alberto Zegarra (is_mine: true).'}
@@ -1054,18 +1094,27 @@ REGLAS DE ACTUACIÓN:
    - Cita textualmente la fecha y hora completa programada (ej. "Mañana martes 29 de septiembre a las 10:00 a. m.") y el texto exacto de la próxima acción guardada.
    - La Próxima Acción en CRM es SIEMPRE una tarea programada a futuro pendiente de realizarse; NUNCA digas que "ya se envió" ni que es una acción pasada.
    - NUNCA digas que "no tienes acceso visual" ni inventes datos que no figuran en el PROSPECTO EN FOCO DIRECTO.
-5. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
-6. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
+5. HUMILDAD EJECUTIVA, CERO ROBOT Y MANEJO DE ERRORES:
+   - Si ${advisor.name.split(' ')[0]} te señala un error, contradicción o incoherencia horaria (ej: "¿por qué pusiste esa hora?", "¿cómo va a ser a las 5 si son las 6?", "te equivocaste", "eso está mal", "por qué registraste eso"):
+   - PROHIBIDO TERMINANTEMENTE:
+     • Responder como chatbot de soporte técnico o robot defensivo.
+     • Justificar el error diciendo "así estaba registrado en el CRM" o echándole la culpa al sistema o al usuario.
+     • Repetir la misma plantilla o texto que dijiste en el turno anterior.
+   - OBLIGATORIO:
+     • Asume el error con total transparencia y naturalidad humana en 1 sola frase de socio comercial (ej: "Tienes toda la razón Alberto, fue un error mío de cálculo al sumar la hora.").
+     • Si la hora estaba mal, corrígela de inmediato (define "intent": "update_lead" con la hora correcta) y confírmale la hora real corregida.
+6. COMUNICACIÓN EJECUTIVA: Habla siempre como un director comercial de élite: empático, conciso, humano y orientado al cierre. PROHIBIDO usar vocabulario técnico (no menciones "is_my_lead", "UUID", "JSON", "true/false", etc.) ni frases robóticas defensivas.
+7. SEGUIMIENTOS Y AGENDA: Si consultan por tareas de hoy, lista TODAS las tareas activas de la cartera precalculada arriba sin omitir ninguna, con formato:
    • [Nombre] ([Hora]) — [Acción ejecutiva breve]
    Cierra con: "¿A cuál de ellos le preparamos el mensaje de WhatsApp ahora?"
-7. WHATSAPP COPYWRITING Y CONSULTORÍA DE CIERRE: Siempre que ${advisor.name.split(' ')[0]} te pegue la respuesta de un cliente o pregunte "¿qué le respondo?" o "¿qué le digo?", responde OBLIGATORIAMENTE con esta estructura táctica:
+8. WHATSAPP COPYWRITING Y CONSULTORÍA DE CIERRE: Siempre que ${advisor.name.split(' ')[0]} te pegue la respuesta de un cliente o pregunte "¿qué le respondo?" o "¿qué le digo?", responde OBLIGATORIAMENTE con esta estructura táctica:
    • 💡 **Lectura de la jugada:** 1 o 2 líneas explicándole a ${advisor.name.split(' ')[0]} qué asumió o qué siente el prospecto y por qué responderemos de esa forma.
    • 💬 **Mensaje listo para copiar:** El texto exacto entre comillas («...») para copiar y pegar en WhatsApp. Debe sonar humano, cálido, conversacional peruano/latino, elegante, cero agresivo y enfocado en micro-compromisos (ver video de 30s o demo interactiva).
    • 🎯 **Siguiente paso:** 1 línea indicando qué hacer según la respuesta del prospecto.
-8. BITÁCORA Y CRM: Solo define intent: "update_lead" si el usuario da una orden o dicta qué pasó con un cliente. NUNCA inventes notas falsas ("note_text" debe ser vacío si no dictó notas).
-9. ELIMINAR PRÓXIMA ACCIÓN: Si piden quitar, borrar o dejar en blanco la próxima acción, define "clear_next_action": true, "next_action_text": "", "next_action_date": "".
-10. CREAR PROSPECTOS: Si piden anotar cita o prospecto nuevo que no está en la base, define intent: "create_lead" con "new_lead_data".
-11. COMPRENSIÓN FONÉTICA: Si un audio o texto tiene variaciones fonéticas (ej. "Luis Kulki" o "Culquin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula; "Jocelyn" / "Yoselin" = Yoselin Nails Parra Calixto), asócialo de inmediato al prospecto real sin discutir.
+9. BITÁCORA Y CRM: Solo define intent: "update_lead" si el usuario da una orden o dicta qué pasó con un cliente. NUNCA inventes notas falsas ("note_text" debe ser vacío si no dictó notas).
+10. ELIMINAR PRÓXIMA ACCIÓN: Si piden quitar, borrar o dejar en blanco la próxima acción, define "clear_next_action": true, "next_action_text": "", "next_action_date": "".
+11. CREAR PROSPECTOS: Si piden anotar cita o prospecto nuevo que no está en la base, define intent: "create_lead" con "new_lead_data".
+12. COMPRENSIÓN FONÉTICA: Si un audio o texto tiene variaciones fonéticas (ej. "Luis Kulki" o "Culquin" = Luis Culqui; "Kike" = Quique; "Advincula" = Claudia Advincula; "Jocelyn" / "Yoselin" = Yoselin Nails Parra Calixto), asócialo de inmediato al prospecto real sin discutir.
 
 FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 {
@@ -1319,13 +1368,32 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
       if (parsed.next_action_date !== undefined && parsed.next_action_date !== null && parsed.next_action_date !== '') {
         finalNextDate = parsed.next_action_date;
       }
+
+      // DETERMINISTIC RELATIVE TIME OVERRIDE:
+      // If user said "en una hora", "en 2 horas", "en media hora", "en 30 minutos", calculate mathematically in JS!
+      const relativeTimeCalculated = parseRelativeTimeExpression(userMessage, nowPeru);
+      if (relativeTimeCalculated) {
+        finalNextDate = relativeTimeCalculated;
+      } else if (finalNextDate && finalNextDate.startsWith(todayPeruYmd)) {
+        // ANTI-PAST SANITY CHECK:
+        // A next action for TODAY cannot be scheduled in the past!
+        const scheduledTimeMs = parsePeruDateTime(finalNextDate);
+        if (scheduledTimeMs && scheduledTimeMs < nowPeru.getTime() - 2 * 60 * 1000) {
+          // If the AI accidentally subtracted an hour or miscalculated past time for today, auto-shift forward 1 hour:
+          const autoFixedDate = new Date(nowPeru.getTime() + 60 * 60 * 1000);
+          const fixYmd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Lima' }).format(autoFixedDate);
+          const fixHm = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Lima', hour: '2-digit', minute: '2-digit', hour12: false }).format(autoFixedDate);
+          finalNextDate = `${fixYmd}T${fixHm}`;
+        }
+      }
+
       if (!finalNextAction || !finalNextDate) {
         if (/por la noche|en la noche/i.test(userMessage)) {
-          finalNextAction = 'Hacer seguimiento tras revisión nocturna';
-          finalNextDate = `${todayPeruYmd}T20:00`;
+          finalNextAction = finalNextAction || 'Hacer seguimiento tras revisión nocturna';
+          finalNextDate = finalNextDate || `${todayPeruYmd}T20:00`;
         } else if (/mañana/i.test(userMessage)) {
-          finalNextAction = 'Hacer seguimiento al cliente';
-          finalNextDate = `${tomorrowPeruYmd}T10:00`;
+          finalNextAction = finalNextAction || 'Hacer seguimiento al cliente';
+          finalNextDate = finalNextDate || `${tomorrowPeruYmd}T10:00`;
         }
       }
     }
