@@ -275,6 +275,30 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     4.  **Validación Exitosa**:
         *   Al ejecutarse la prueba en tiempo real con la misma consulta sobre Mónica, el Copiloto concluyó de inmediato que no debía insistir en la venta del Plan 30 por haber sido el último mensaje enviado, identificó la fase real de prueba y redactó un mensaje quirúrgico, breve y empático de soporte técnico: *«Hola Mónica, ¿cómo va? Te escribo cortito solo para asegurarme de que no te haya saltado ningún error técnico al intentar entrar o recalcular macros con tus pacientes... Si tienes alguna duda puntual, dime y la resolvemos al toque. ¡Un abrazo!»*.
 
+### 28. Blindaje Absoluto Contra Escrituras No Autorizadas en Base de Datos y Restauración de Patricia Badani (29 de Septiembre de 2026)
+*   **Diagnóstico del Fallo Crítico (Caso Patricia Badani - Sobreescritura Indebida de Tarea)**:
+    *   Alberto le pidió al Copiloto: *«dame un resumen de patricia»*.
+    *   El bot respondió con el cartel: *«✅ CRM verificado y actualizado para Patricia Badani / 📌 Próxima acción verificada: ¡Hola Patricia, buen día!... (5:12 p. m.)»*, sobreescribiendo la tarea real que tenía en el CRM con todo el borrador del WhatsApp.
+    *   Al reclamarle Alberto (*«solo te pedi un resumen de patrica no que hicieras una proxima accion»*), el bot se disculpó textualmente pero volvió a incluir la tarea en el JSON, provocando que el backend actualizara la base de datos por segunda vez consecutiva.
+*   **Causa Raíz Identificada**:
+    *   En `api/telegram.js`, la variable `shouldPerformUpdate` contenía una condición residual:
+        `const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (hasExplicitOrder || (!isQueryQuestion && !isComplaintOrDebate && hasConcreteUpdate));`
+    *   Cuando el usuario no usaba signos de interrogación `?` (como en *"dame un resumen"*), `isQueryQuestion` evaluaba a `false`.
+    *   Si el modelo LLM intentaba ser "proactivo" o alucinaba un campo `next_action_text` o `next_action_date` en su JSON, la condición residual `hasConcreteUpdate` evaluaba a `true`, disparando un `UPDATE` en Supabase a espaldas del usuario a pesar de que este solo pidió un resumen.
+*   **Soluciones Implementadas**:
+    1.  **Exigencia Obligatoria e Incondicional de Orden Explícita (`hasExplicitOrder`)**:
+        *   Se eliminó por completo el fallback permisivo. La condición en `shouldPerformUpdate` ahora exige estrictamente:
+            `const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && !isComplaintOrDebate && hasExplicitOrder;`
+        *   Si el usuario no dio una orden imperativa directa (*«anota»*, *«registra»*, *«pon en bitácora»*, *«cambia estado»*, *«agenda»*), la base de datos queda **100% bloqueada contra escritura**, ignorando cualquier campo inventado o proactivo que devuelva la IA.
+    2.  **Ampliación del Diccionario de Consultas (`isQueryQuestion`)**:
+        *   Se incluyeron formalmente expresiones de consulta como `dame`, `hazme`, `pasame`, `muestrame`, `cuentame`, `resumen`, `estado`, `ficha`, `reporte`, `historial`, `datos`.
+    3.  **Ampliación del Diccionario de Reclamos y Debates (`isComplaintOrDebate`)**:
+        *   Se agregaron expresiones de confrontación y corrección: `solo te pedi`, `no te pedi`, `te dije que`, `por que hiciste`, `por que registraste`, `quien te dijo`, `te equivocaste`, `eso esta mal`, `no hagas`, `no pongas`, `no registres`.
+    4.  **Restauración Inmediata del Perfil de Patricia Badani en Supabase**:
+        *   Se limpió el texto del mensaje de WhatsApp incrustado y se restauró su próxima acción original: *"Mensaje de seguimiento para coordinar el Plan 30"* con fecha programada `2026-09-29T10:00`.
+    5.  **Validación en Vivo**:
+        *   Al enviar nuevamente *"dame un resumen de patricia"* y *"solo te pedi un resumen..."*, el bot entregó la respuesta limpia sin tocar la base de datos, sin generar badges verdes y manteniendo la ficha intacta.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

@@ -1298,19 +1298,16 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     || /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|en\s+su\s+bit[aá]cora)\b/i.test(normalizeStr(userMessage));
 
   const isQueryQuestion = !hasStrongUpdateCommand && (
-    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda))\b/i.test(normalizeStr(userMessage))
+    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|dame|hazme|pasame|muestrame|muestra|cuentame|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda)|resumen|estado|ficha|reporte|historial|datos)\b/i.test(normalizeStr(userMessage))
     || (/\?$/.test((userMessage || '').trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(normalizeStr(userMessage)))
   );
 
-  const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(normalizeStr(userMessage));
+  const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido|solo\s+te\s+ped[ií]|no\s+te\s+ped[ií]|te\s+dije\s+que|por\s+qu[eé]\s+(hiciste|registraste|pusiste|cambiaste|agendaste)|qui[eé]n\s+te\s+dijo|te\s+equivocaste|eso\s+est[aá]\s+mal|no\s+hagas|no\s+pongas|no\s+registres)\b/i.test(normalizeStr(userMessage));
 
   const hasExplicitOrder = isUserExplicitUpdate || hasStrongUpdateCommand || isUserExplicitCreate;
 
-  // 1. UPDATE EXISTING LEAD IN CRM
-  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (
-    hasExplicitOrder ||
-    (!isQueryQuestion && !isComplaintOrDebate && hasConcreteUpdate)
-  );
+  // 1. UPDATE EXISTING LEAD IN CRM (Mandatory explicit user order required: never allow LLM proactivity to write DB without user order)
+  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && !isComplaintOrDebate && hasExplicitOrder;
 
   if (shouldPerformUpdate) {
     let timeline = [];
@@ -2056,7 +2053,7 @@ function isExplicitUpdateCommand(userText) {
 
   // Pure query questions or inspection requests:
   const isQueryQuestion = (
-    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda))\b/i.test(t)
+    /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|dame|hazme|pasame|muestrame|muestra|cuentame|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda)|resumen|estado|ficha|reporte|historial|datos)\b/i.test(t)
     || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t))
     || /\b(qu[eé]\s+otra|qu[eé]\s+tareas?|solamente\s+es[oa]s?|hay\s+alg[uú]n\s+otro|est[aá]n\s+pendientes?|est[aá]n\s+vencidas?|vencidos?|vencidas?)\b/i.test(t)
   );
@@ -2064,7 +2061,7 @@ function isExplicitUpdateCommand(userText) {
   if (isQueryQuestion) return false;
 
   // Debates, hesitation, asking for advice on copy or phrasing, rhetorical questions, and complaints:
-  if (/\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(t)) {
+  if (/\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido|solo\s+te\s+ped[ií]|no\s+te\s+ped[ií]|te\s+dije\s+que|por\s+qu[eé]\s+(hiciste|registraste|pusiste|cambiaste|agendaste)|qui[eé]n\s+te\s+dijo|te\s+equivocaste|eso\s+est[aá]\s+mal|no\s+hagas|no\s+pongas|no\s+registres)\b/i.test(t)) {
     return false;
   }
 
