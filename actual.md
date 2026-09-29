@@ -255,6 +255,26 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     5.  **Actualización Inmediata del Registro de Nancy Tafoya en Supabase**:
         *   Se actualizó directamente en Supabase el perfil de Nancy Tafoya (`9ecbf0ec-a16a-46bf-aca3-276a7dec26b4`): estado cambiado a `presentacion_realizada`, se insertó en la bitácora la realización del Zoom y el envío de enlaces y código para el plan de 28 días, y se programó la próxima acción: *"Seguimiento sobre prueba de app y plan de 28 días"* para el jueves 1 de octubre de 2026 a las 10:00 a. m.
 
+### 27. Pensamiento Deductivo Cronológico Libre y Eliminación del Corsé de Plantillas en WhatsApp Copywriting (29 de Septiembre de 2026)
+*   **Diagnóstico del Problema (Caso Mónica - Sugerencia Robótica y Desconectada)**:
+    *   Alberto le pidió al Copiloto: *«Ya, según el resumen de Mónica y el contexto, dime qué mensaje le envío.»*
+    *   El bot le sugirió un mensaje de WhatsApp genérico y corporativo ofreciéndole ver el enlace de la demo web interactiva de Nutrialberto: *«Si te interesa ver en 2 minutos cómo funciona la vista de paciente... te paso el enlace de la demo interactiva aquí: https://nutri-alberto...»*.
+    *   **Incoherencia Grave**: Mónica ya había tenido el Zoom el 22 de septiembre, ya tenía el código de activación y ya había confirmado que estaba probando la app instalada. Además, llevaba 2 mensajes sin responder (25 y 27 de septiembre). Mandarle el enlace de la demo web era un retroceso de 3 pasos en el embudo y mandarle un tercer texto largo de venta era invasivo.
+*   **Causa Raíz Identificada**:
+    *   El prompt del sistema contenía plantillas rígidas con enlaces fijos y la regla: *«enfocado en micro-compromisos (ver video de 30s o demo interactiva)»*.
+    *   Al tener esa orden fija, los modelos de IA se volvían perezosos y caían en la plantilla genérica de "nutricionista con dietas en Excel", ignorando la historia real registrada en la bitácora.
+    *   Además, el bot no contaba con una etapa de "Scratchpad / Razonamiento Deductivo previo" en el JSON, viéndose forzado a escribir directamente `reply_message` sin antes deducir la línea de tiempo.
+*   **Solución Implementada**:
+    1.  **Campo de Deducción Estratégica Obligatorio (`deduccion_estrategica`)**:
+        *   Se añadió en el esquema JSON un paso de razonamiento previo antes de generar el texto de respuesta: *`"deduccion_estrategica": "1. Estado real según bitácora. 2. Quién habló último y cuántos mensajes sin respuesta hay. 3. Qué sería absurdo decirle y cuál es el único movimiento inteligente ahora."`*
+        *   Dado que los LLMs generan tokens de forma secuencial, este campo obliga al modelo a concluir lógicamente qué pasó y qué NO debe decirse antes de escribir la primera palabra del mensaje.
+    2.  **Matriz de Fases de Embudo y Prohibición de Redundancia**:
+        *   Si el cliente está en Etapa 3 (Presentación Realizada / App en prueba), queda **terminantemente prohibido** enviar enlaces de demo web o actuar como si el cliente no conociera el sistema.
+    3.  **Regla de Oro de Silencio (Descompresión Psicológica ante +2 toques sin respuesta)**:
+        *   Si el cliente ya recibió 2 mensajes de seguimiento sin responder, queda **terminantemente prohibido** enviar otro discurso largo o insistir en la venta. Se debe usar la pregunta de descarte técnico (fricción cero) o el desenganche suave (cierre de puerta abierta).
+    4.  **Validación Exitosa**:
+        *   Al ejecutarse la prueba en tiempo real con la misma consulta sobre Mónica, el Copiloto concluyó de inmediato que no debía insistir en la venta del Plan 30 por haber sido el último mensaje enviado, identificó la fase real de prueba y redactó un mensaje quirúrgico, breve y empático de soporte técnico: *«Hola Mónica, ¿cómo va? Te escribo cortito solo para asegurarme de que no te haya saltado ningún error técnico al intentar entrar o recalcular macros con tus pacientes... Si tienes alguna duda puntual, dime y la resolvemos al toque. ¡Un abrazo!»*.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
