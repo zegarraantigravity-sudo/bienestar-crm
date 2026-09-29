@@ -226,6 +226,35 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Claridad Horaria Dual (24h y 12h)**: El prompt ahora inyecta explícitamente tanto el formato 24h como el 12h (ej: `18:21 (hora militar 24h) / 06:21 p. m. (hora 12h)`).
     *   **Regla 5 de Humildad Ejecutiva y Cero Robot**: Ante cualquier reclamo, contradicción o confrontación por parte de Alberto, queda terminantemente prohibido dar explicaciones robóticas o justificar el error culpando al CRM. El asistente debe reconocer la equivocación en una sola frase honesta de socio (*«Tienes toda la razón Alberto, fue un error mío de cálculo al sumar la hora»*), corregir la hora en la base de datos de inmediato y hablar con naturalidad humana.
 
+### 26. Prioridad Absoluta a Órdenes Explícitas de Bitácora, Desactivación de Falso Positivo "Para Qué" y Blindaje del Guardián Anti-Alucinación (29 de Septiembre de 2026)
+*   **Diagnóstico del Fallo Crítico (Caso Nancy Tafoya - Zoom Realizado)**:
+    *   Alberto envió el siguiente mensaje de voz y texto: *«Tuve el Zoom con Nancy Tafoya, registra eso en su bitácora. Se interesó bastante, entonces lo que he hecho es le he enviado la página de Nutrialberto y también le he enviado un código de activación y un video para que se guíe. Ya le envié todo para que lo pueda probar. Pon todo eso en bitácora y yo creo que ya para el día jueves ponle una próxima acción para ver cómo le ha ido y si es que ya está haciendo el plan de 28 días. Gracias.»*
+    *   En el primer intento el bot respondió con error: *«No se pudo registrar la gestión en la bitácora de Nancy Tafoya debido a un inconveniente con el CRM.»*
+    *   En el segundo intento el bot alucinó una actualización ficticia: *«¡Excelente trabajo, Alberto!... Ya actualicé su perfil en el CRM: 1. Bitácora: Registré... 2. Estado: Lo cambié a 'presentacion_realizada'... 3. Próxima Acción: Programé un seguimiento para el jueves 30 de septiembre a las 10:00 a. m.»*, pero en Supabase el registro permaneció intacto (estado "llamado" / Contactado y la tarea antigua del Zoom vencida).
+*   **Causas Raíces Identificadas**:
+    1.  **Falso Positivo Devastador de `isComplaintOrDebate` por normalización de acentos**:
+        *   `isComplaintOrDebate` y `isExplicitUpdateCommand` contenían el patrón `\bpara\s+qu[eé]\b`.
+        *   Al ejecutarse `normalizeStr()` (que remueve tildes para uniformizar búsquedas), frases perfectamente naturales como *"para que se guíe"* y *"para que lo pueda probar"* se convirtieron en `para que`, activando falsamente `isComplaintOrDebate = true`.
+        *   La condición `shouldPerformUpdate` requería `!isComplaintOrDebate`, anulando la orden de actualización a pesar de que el usuario ordenó explícitamente *"registra eso en su bitácora"* y *"pon todo eso en bitácora"*.
+    2.  **Omisión de Pronombres Enclíticos en Verbos Imperativos (`ponle`, `anótale`, `regístralo`)**:
+        *   `hasStrongUpdateCommand` evaluaba `\b(pon|pongas|poner|anota|...)\b`, el cual fallaba ante conjugaciones con pronombres enclíticos como `ponle una próxima acción`.
+    3.  **Falla del Guardián Anti-Alucinación (`falseClaimRegex`) con Límite de Palabra ASCII (`\b`)**:
+        *   La expresión `\bya\s+(actualic[eé]|registr[eé])\b` utilizaba `\b` en una cadena sin normalizar.
+        *   En JavaScript RegExp, la letra con tilde `é` es clasificada como carácter no alfanumérico (`\W`), al igual que el espacio en blanco (` `). Por definición matemática de regex, entre dos caracteres `\W` no existe frontera de palabra (`\b`), haciendo que `falseClaimRegex` evaluara a `false` y dejara pasar afirmaciones falsas del modelo sin haber escrito en la base de datos.
+*   **Soluciones Implementadas**:
+    1.  **Prioridad Absoluta a Órdenes Explícitas de Bitácora (`hasExplicitOrder`)**:
+        *   Se definió `hasExplicitOrder = isUserExplicitUpdate || hasStrongUpdateCommand || isUserExplicitCreate`.
+        *   Si el usuario da una orden imperativa directa de registrar en bitácora, cambiar estado o agendar próxima acción, la actualización se ejecuta **siempre**, sin que pueda ser bloqueada por detectores de consultas o debates.
+        *   En `isExplicitUpdateCommand`, `hasStrongUpdateCommand` ahora se evalúa en primer lugar como condición de retorno inmediato.
+    2.  **Eliminación del Falso Positivo `para qué / por qué`**:
+        *   Se retiraron `para\s+qu[eé]` y `por\s+qu[eé]` de las expresiones de debate para evitar colisiones con conjunciones normales del español.
+    3.  **Soporte Total para Pronombres Enclíticos**:
+        *   Se expandieron los patrones de comandos fuertes para capturar `pon(le|lo|me)?`, `anota(le|lo)?`, `registra(le|lo)?`, `guarda(le|lo)?`, `actualiza(le|lo)?`.
+    4.  **Blindaje y Normalización del Guardián Anti-Alucinación**:
+        *   Se normaliza `cleanReply` (`normalizeStr(cleanReply)`) antes de validar con `falseClaimRegex` sin acentos (`registre`, `actualice`, `actualice su perfil`), asegurando que ninguna afirmación falsa de guardado pueda burlar la intercepción si la base de datos no fue modificada.
+    5.  **Actualización Inmediata del Registro de Nancy Tafoya en Supabase**:
+        *   Se actualizó directamente en Supabase el perfil de Nancy Tafoya (`9ecbf0ec-a16a-46bf-aca3-276a7dec26b4`): estado cambiado a `presentacion_realizada`, se insertó en la bitácora la realización del Zoom y el envío de enlaces y código para el plan de 28 días, y se programó la próxima acción: *"Seguimiento sobre prueba de app y plan de 28 días"* para el jueves 1 de octubre de 2026 a las 10:00 a. m.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

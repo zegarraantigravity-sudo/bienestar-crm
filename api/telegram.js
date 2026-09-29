@@ -1287,7 +1287,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     targetLead = findMatchingLead(leads, null, userMessage);
   }
 
-  const hasStrongUpdateCommand = /\b(pon|pongas|poner|anota|anotes|anotar|registra|registres|registrar|guarda|guardes|guardar|actualiza|actualices|actualizar|cambia|cambies|cambiar)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(normalizeStr(userMessage))
+  const hasStrongUpdateCommand = /\b(pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|registra(r)?(lo|le|me|la|les|los)?|registres|registre|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|cambia(r)?(lo|le|me|la|les|los)?|cambies|cambie)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(normalizeStr(userMessage))
     || /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|en\s+su\s+bit[aá]cora)\b/i.test(normalizeStr(userMessage));
 
   const isQueryQuestion = !hasStrongUpdateCommand && (
@@ -1295,13 +1295,14 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
     || (/\?$/.test((userMessage || '').trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(normalizeStr(userMessage)))
   );
 
-  const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|para\s+qu[eé]|por\s+qu[eé]|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(normalizeStr(userMessage));
+  const isComplaintOrDebate = /\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(normalizeStr(userMessage));
+
+  const hasExplicitOrder = isUserExplicitUpdate || hasStrongUpdateCommand || isUserExplicitCreate;
 
   // 1. UPDATE EXISTING LEAD IN CRM
-  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && !isQueryQuestion && !isComplaintOrDebate && (
-    isUserExplicitUpdate ||
-    isUserExplicitCreate ||
-    hasStrongUpdateCommand
+  const shouldPerformUpdate = targetLead && !isUserExplicitDoNotModify && (
+    hasExplicitOrder ||
+    (!isQueryQuestion && !isComplaintOrDebate && hasConcreteUpdate)
   );
 
   if (shouldPerformUpdate) {
@@ -1553,9 +1554,10 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 
   if (!updatePerformed) {
     // Sanitize any false claims of CRM update or creation if no write occurred in database
-    const falseClaimRegex = /\b(he\s+(registrado|actualizado|guardado|anotado|programado|agendado)|ya\s+(registr[eé]|actualic[eé]|guard[eé]|anot[eé]|qued[oó]\s+registrad[oa]|est[aá]\s+registrad[oa])|nota\s+y\s+pr[oó]xima\s+acci[oó]n\s+registradas?|qued[oó]\s+registrad[oa]|dej[eé]\s+registrad[oa]|he\s+guardado|registrad[oa]\s+en\s+la\s+bit[aá]cora)\b/i;
+    const normalizedCleanReply = normalizeStr(cleanReply);
+    const falseClaimRegex = /\b(he\s+(registrado|actualizado|guardado|anotado|programado|agendado)|ya\s+(registre|actualice|guarde|anote|quedo\s+registrad[oa]|esta\s+registrad[oa])|nota\s+y\s+proxima\s+accion\s+registradas?|quedo\s+registrad[oa]|deje\s+registrad[oa]|he\s+guardado|registrad[oa]\s+en\s+la\s+bitacora|actualice\s+su\s+perfil|perfil\s+actualizado)\b/i;
 
-    if (falseClaimRegex.test(cleanReply)) {
+    if (falseClaimRegex.test(normalizedCleanReply)) {
       if (isExplicitUpdateCommand(userMessage) || hasStrongUpdateCommand) {
         if (!targetLead) {
           cleanReply = `No encontré el prospecto en el CRM para registrar la gestión. Por favor indícame su nombre exacto.`;
@@ -1565,7 +1567,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
       } else {
         cleanReply = cleanReply
           .split('\n')
-          .filter(line => !falseClaimRegex.test(line))
+          .filter(line => !falseClaimRegex.test(normalizeStr(line)))
           .join('\n')
           .trim();
       }
@@ -2039,17 +2041,14 @@ function isExplicitUpdateCommand(userText) {
     return false;
   }
 
-  // Debates, hesitation, asking for advice on copy or phrasing, rhetorical questions, and complaints:
-  if (/\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|para\s+qu[eé]|por\s+qu[eé]|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(t)) {
-    return false;
-  }
-
   // Strong update command override: If user explicitly commands to put in bitacora or set next action/status, it is an update order
-  const hasStrongUpdateCommand = /\b(pon|pongas|poner|anota|anotes|anotar|registra|registres|registrar|guarda|guardes|guardar|actualiza|actualices|actualizar|cambia|cambies|cambiar)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(t)
+  const hasStrongUpdateCommand = /\b(pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|registra(r)?(lo|le|me|la|les|los)?|registres|registre|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|cambia(r)?(lo|le|me|la|les|los)?|cambies|cambie)\b.*\b(bit[aá]cora|proxima accion|estado|fecha)\b/i.test(t)
     || /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|en\s+su\s+bit[aá]cora)\b/i.test(t);
 
+  if (hasStrongUpdateCommand) return true;
+
   // Pure query questions or inspection requests:
-  const isQueryQuestion = !hasStrongUpdateCommand && (
+  const isQueryQuestion = (
     /^¿?\s*(quiero\s+que\s+(revis|leas|veas|consultes)|revisa(r|s)?|revises|mira(r)?|ver|cual|cuales|quien|quienes|cuando|donde|a que hora|como|consultaste|consulta|dime|muestra|hay alguna|tengo alguna|ya\s+(has|pusiste|quedo|agendaste|actualizaste|registraste|guardaste|cambiaste)|qu[eé]\s+(es|son|hay|tengo|paso|tareas|otra|llamadas|seguimientos|hora|opinas|dijo|pas[oó]|agenda))\b/i.test(t)
     || (/\?$/.test(userText.trim()) && !/\b(registra|registres|anota|anotes|guarda|guardes|pon|pongas|cambia|cambies|agenda|agendes|actualiza|actualices|borra|borres|elimina|elimines)\s+(a|en|para)\b/i.test(t))
     || /\b(qu[eé]\s+otra|qu[eé]\s+tareas?|solamente\s+es[oa]s?|hay\s+alg[uú]n\s+otro|est[aá]n\s+pendientes?|est[aá]n\s+vencidas?|vencidos?|vencidas?)\b/i.test(t)
@@ -2057,12 +2056,17 @@ function isExplicitUpdateCommand(userText) {
 
   if (isQueryQuestion) return false;
 
+  // Debates, hesitation, asking for advice on copy or phrasing, rhetorical questions, and complaints:
+  if (/\b(no\s+s[eé]\s+si|crees\s+que|qu[eé]\s+opinas|te\s+parece|suene\s+bien|suena\s+bien|c[oó]mo\s+(le\s+)?(decimos|respondo|digo)|qu[eé]\s+(le\s+)?(respondo|responder|responderle|digo|pongo|escribo)|dime\s+(urgente\s+)?qu[eé]\s+responder|qu[eé]\s+le\s+digo|no\s+seas|carajo|imb[eé]cil|mierda|hijo\s+de\s+puta|idiota|est[uú]pido)\b/i.test(t)) {
+    return false;
+  }
+
   // Broad action pattern matching imperative/subjunctive/infinitive verbs with optional clitic object pronouns
   const actionPattern = /\b(cambia(r|s|do|da|ron)?(lo|le|me|la|les|los)?|cambies|cambie(mos)?|pon(ga|gas|gan)?(lo|le|me|la|les|los)?|poner|mueve(lo|le|me|la|les|los)?|muevas|mover|pasa(r)?(lo|le|me|la|les|los)?|pases|pasar|asigna(r)?(lo|le|me|la|les|los)?|asignes|reasigna(r)?(lo|le|me|la|les|los)?|reasignes|transfiere|transferir|deriva(r)?(lo|le|me|la|les|los)?|agenda(r)?(lo|le|me|la|les|los)?|agendes|agende|registra(r)?(lo|le|me|la|les|los)?|registres|registre|anota(r)?(lo|le|me|la|les|los)?|anotes|anote|guarda(r)?(lo|le|me|la|les|los)?|guardes|guarde|actualiza(r)?(lo|le|me|la|les|los)?|actualices|actualice|modifica(r)?(lo|le|me|la|les|los)?|modifiques|modifique|reprograma(r)?(lo|le|me|la|les|los)?|reprogrames|programa(r)?(lo|le|me|la|les|los)?|programes|borra(r)?(lo|le|me|la|les|los)?|borres|elimina(r)?(lo|le|me|la|les|los)?|elimines|quita(r)?(lo|le|me|la|les|los)?|quites|limpia(r)?(lo|le|me|la|les|los)?|marca(r)?(lo|le|me|la|les|los)?|marques|deja(r)?(lo|le|me|la|les|los)?\s+en\s+blanco|dejes\s+en\s+blanco)\b/i;
 
   const contextPattern = /\b(en\s+(la\s+)?bit[aá]cora|a\s+la\s+bit[aá]cora|hable con|converse con|llame a|reuni con|quedamos en|tuve (el )?zoom con|hicimos (el )?zoom con|sin proxima accion|proxima accion|a luis|a alberto|a hakim|respondio|contesto|dijo que|escribio|mando mensaje|mensaje que le envie|le envie el mensaje|me dijo)\b/i;
 
-  return hasStrongUpdateCommand || actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
+  return actionPattern.test(t) || (contextPattern.test(t) && !isQueryQuestion);
 }
 
 
