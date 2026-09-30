@@ -354,6 +354,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se envió mensaje anticipado a mediodía para confirmar la reunión de Zoom programada para hoy a las 6:00 p. m. (presentación de la app y plataforma para nutricionistas), solicitándole un micro-compromiso ("pulgar arriba") para preparar la sala.
     *   Se registró en la bitácora de Supabase y se mantuvo la próxima acción de Zoom para hoy **30 de septiembre de 2026 a las 6:00 p. m.**
 
+### 36. Resolución de Duda de Intercambio de Alimentos - Mónica (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Mónica envió nota de voz consultando si en la plataforma se pueden intercambiar alimentos que no se consiguen o causan inflamación en México (yuca o calabaza por chayote o ejote).
+    *   Alberto le respondió explicando las dos vías disponibles (directo en el plato o mediante el chat de la app) con recálculo automático de gramos y macros, ofreciéndole un video de 30 segundos o un Zoom de 5 minutos.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **jueves 1 de octubre de 2026 a las 4:00 p. m.** con el objetivo: *«Verificar respuesta sobre intercambio de alimentos; si no responde, enviar video demo de 30s»*.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
