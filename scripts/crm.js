@@ -58,7 +58,20 @@ async function main() {
     return;
   }
 
-  console.log('Usage: node scripts/crm.js [get <name> | update <name> --note "..." --action "..." --date "..."]');
+  if (command === 'create') {
+    const jsonStr = args[1];
+    const payload = JSON.parse(jsonStr);
+    const postRes = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      headers: { ...headers, 'Prefer': 'return=representation' },
+      body: JSON.stringify(payload)
+    });
+    const result = await postRes.json();
+    console.log(JSON.stringify({ success: true, inserted: result }, null, 2));
+    return;
+  }
+
+  console.log('Usage: node scripts/crm.js [get <name> | update <name> ... | create <json>]');
 }
 
 main().catch(err => {

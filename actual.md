@@ -360,6 +360,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto le respondió explicando las dos vías disponibles (directo en el plato o mediante el chat de la app) con recálculo automático de gramos y macros, ofreciéndole un video de 30 segundos o un Zoom de 5 minutos.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **jueves 1 de octubre de 2026 a las 4:00 p. m.** con el objetivo: *«Verificar respuesta sobre intercambio de alimentos; si no responde, enviar video demo de 30s»*.
 
+### 37. Alta de Nuevo Lead Calificado - Coach Catrina (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Catrina (Médico y Coach en México) respondió a prospección en frío indicando que mañana tiene guardia hospitalaria y solicitando espacio de reunión para este viernes por la tarde.
+    *   Alberto le propuso coordinar para las 4:00 p. m. o 5:00 p. m. (hora de México).
+    *   Se dio de alta formalmente en Supabase como lead en estado **`cita_agendada`** asignado a Alberto Zegarra con Plan 30 ($400 USD), registrando su próxima acción para el **viernes 2 de octubre de 2026 a las 4:00 p. m.** con el fin de confirmar la hora exacta y realizar la presentación.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
