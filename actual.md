@@ -393,6 +393,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **6:00 p. m.**: **Anali** — **Reunión confirmada por Zoom** (presentación de plataforma).
     *   **7:30 p. m.**: **David Godoy** — **Llamada confirmada** para definir cobro de S/ 200 y activación en octubre.
 
+### 41. Cancelación de Demostración y Cierre como Perdido - Anali (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Anali rechazó la reunión por Zoom agendada para hoy a las 6:00 p. m. (*«Tendré dificultad para conectarme... No podré verlo por Zoom. Gracias por su comprensión»*).
+    *   Ante la evidente falta de interés en conocer el funcionamiento de la app, Alberto le envió mensaje de despedida cordial y se procedió a descalificarla.
+    *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«Rechazó reunión por Zoom y no mostró interés real»*, liberando la agenda de las 6:00 p. m.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
