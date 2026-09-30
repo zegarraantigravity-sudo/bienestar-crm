@@ -299,6 +299,28 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     5.  **Validación en Vivo**:
         *   Al enviar nuevamente *"dame un resumen de patricia"* y *"solo te pedi un resumen..."*, el bot entregó la respuesta limpia sin tocar la base de datos, sin generar badges verdes y manteniendo la ficha intacta.
 
+### 29. Resolución Dinámica de Especialidad Médica (`resolveLeadProfession`), Erradicación del Sesgo de "Recuperación" y Priorización de Modelo 120B (30 de Septiembre de 2026)
+*   **Diagnóstico del Problema (Caso Patricia Badani - Alucinación de Paciente Convaleciente)**:
+    *   Alberto consultó: *«no respondio el mensaje de ayer, que mensaje le envio?»*.
+    *   El Copiloto redactó un mensaje inapropiado asumiendo que Patricia estaba enferma o internada recuperándose de una operación: *«Sé que ayer estabas ocupada con la cirugía... desearte que estés recuperándote bien...»*.
+    *   A pesar de las quejas de Alberto, el bot insistió en decir que estaba en *«recuperación post-quirúrgica»* o le deseó *«que tu cirugía haya salido bien»*.
+*   **Causas Raíces Identificadas**:
+    1.  **Etiqueta Inexacta en Base de Datos**: En la ficha de Supabase (`client_type`), Patricia estaba registrada como `nutricionista` debido a los valores permitidos del constraint enum (`nutricionista`, `coach`, `gimnasio`, `tienda_suplementos`, `otro`), a pesar de que en sus notas figuraba que es Médico Ginecóloga y Cirujana. El modelo razonó: *"Como las nutricionistas no operan, si dijo que entraba a una cirugía debe ser una paciente que fue operada"*.
+    2.  **Modelo Débil 20B en Cascada de Groq**: `openai/gpt-oss-20b` estaba ubicado en segundo lugar de la lista de modelos de Groq. Los modelos pequeños de 20B sufren de sesgo semántico donde la palabra "cirugía" activa automáticamente el patrón de "paciente en cama recuperándose", ignorando las directivas negativas.
+    3.  **Anacronismo Temporal**: La cirugía de Patricia fue el lunes 28 a las 10:54 a. m. Que el bot siguiera hablando de la cirugía el miércoles 30 (48 horas después) era un sinsentido comercial.
+*   **Soluciones Implementadas**:
+    1.  **Resolución Dinámica de Profesión Médica (`resolveLeadProfession`)**:
+        *   Se implementó una función que inspecciona los metadatos y notas del lead para detectar especialidades reales (`ginecología`, `cirugía`, `medicina`). Para Patricia Badani ahora inyecta en el prompt: *`Médico Ginecóloga y Cirujana (Opera a sus pacientes) (IMPORTANTE: Es quien opera o atiende a sus pacientes, NUNCA es un paciente enfermo)`*.
+    2.  **Regla Clínica y Temporal Reforzada (Regla 2)**:
+        *   Se prohibió terminantemente cualquier uso de palabras como *«recuperación»*, *«convaleciente»* o *«modo sobrevivencia»*.
+        *   Se prohibió tratar eventos laborales ocurridos hace más de 24 horas como limitaciones activas del día en curso.
+    3.  **Priorización de Modelo de Alta Capacidad en Groq**:
+        *   Se eliminó `openai/gpt-oss-20b` de la lista de Groq y se dejó al mando el modelo de 120B (`openai/gpt-oss-120b`).
+    4.  **Actualización en Supabase**:
+        *   Se grabó en el campo `profession` de las notas de Patricia Badani: `Médico Ginecóloga y Cirujana`.
+    5.  **Validación en Tiempo Real**:
+        *   Al consultar nuevamente qué mensaje enviar a Patricia tras el mensaje de anoche, el Copiloto respondió con precisión quirúrgica, cero menciones a cirugías ni recuperaciones, y un mensaje impecable de soporte técnico para verificar el acceso a la app.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

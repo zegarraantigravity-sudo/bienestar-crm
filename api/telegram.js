@@ -723,6 +723,26 @@ function isTomorrowAgendaQuery(text) {
   return /(manana|dia de manana)/i.test(t) && /(tarea|agenda|pendiente|llamada|que hay|que tengo|que tenemos)/i.test(t);
 }
 
+// Helper: Accurately resolve lead profession from lead metadata and notes
+function resolveLeadProfession(lead) {
+  if (!lead) return 'Profesional de la Salud';
+  try {
+    const notesParsed = typeof lead.notes === 'string' && lead.notes.startsWith('{') ? JSON.parse(lead.notes) : {};
+    if (notesParsed.profession) return notesParsed.profession;
+  } catch (e) {}
+  const rawNotes = (lead.notes || '').toLowerCase();
+  if (rawNotes.includes('ginecolog') || rawNotes.includes('cirujan')) {
+    return 'Médico Ginecóloga y Cirujana (Opera a sus pacientes)';
+  }
+  if (rawNotes.includes('medico') || rawNotes.includes('doctor')) {
+    return 'Médico Cirujano (Atiende y opera a sus pacientes)';
+  }
+  if (lead.client_type === 'nutricionista') return 'Nutricionista';
+  if (lead.client_type === 'coach') return 'Coach Deportivo';
+  if (lead.client_type === 'gimnasio') return 'Dueño de Gimnasio';
+  return lead.client_type || 'Profesional de la Salud';
+}
+
 // -------------------------------------------------------------
 // Helper: Process Query with Copilot & Supabase
 // -------------------------------------------------------------
@@ -1046,7 +1066,7 @@ ${targetLead ? '' : '\n' + agendaPrecalculada}
 ${targetLead ? `
 PROSPECTO EN FOCO DIRECTO (ATENCIÓN EXCLUSIVA EN ESTE CLIENTE):
 - Nombre: ${targetLead.contact_name || targetLead.business_name}
-- Profesión / Perfil: ${targetLead.client_type || 'Médico Cirujano / Nutricionista / Profesional de la Salud'} (CLIENTE DE BIENESTAR CRM, NO PACIENTE)
+- Profesión / Especialidad: ${resolveLeadProfession(targetLead)} (IMPORTANTE: Es quien opera o atiende a sus pacientes, NUNCA es un paciente enfermo)
 - Estado en CRM: ${targetLead.status}
 - Asignado a: ${targetLead.assigned_to || advisor.name}
 - Teléfono: ${targetLead.phone || 'No registrado'}
@@ -1091,10 +1111,13 @@ Tú NO eres un bot de respuestas automáticas ni un repartidor de plantillas. Er
 
 REGLAS DE ACTUACIÓN:
 1. DIÁLOGO DIRECTO CON ${advisor.name.toUpperCase()}: Tú eres el Director Comercial de Bienestar y socio estratégico de ${advisor.name}. Siempre que el usuario hable, reflexione, cuente una situación o pegue lo que le dijo un cliente, HÁBLALE A ÉL (${advisor.name.split(' ')[0]}). Analiza la psicología del prospecto, dale tu lectura táctica y entrégale el mensaje sugerido entre comillas para WhatsApp. NUNCA le hables en primera persona al prospecto como si fueras el usuario.
-2. REGLA CLÍNICA DE PERFIL (PROHIBIDO ASUMIR QUE EL CLIENTE ESTÁ ENFERMO O ES PACIENTE):
-   - TODOS los clientes y prospectos de Bienestar CRM son PROFESIONALES DE LA SALUD (Médicos Cirujanos, Nutricionistas, Ginecólogos, Endocrinólogos, Entrenadores).
-   - Si un prospecto dice "estoy entrando a una cirugía", "voy a operar", "estoy en quirófano", "tengo pacientes" o "estoy en consulta", ÉL/ELLA ES EL DOCTOR / CIRUJANO QUE VA A REALIZAR LA OPERACIÓN O ATENDER PACIENTES.
-   - PROHIBIDO TERMINANTEMENTE desearle "pronta recuperación", asumir que está enfermo o que lo van a operar a él. Se le desea éxito en la cirugía o en su jornada quirúrgica, felicitaciones por su trabajo, y se le deja espacio sin presionar para coordinar después de que salga del quirófano.
+2. REGLA CLÍNICA Y TEMPORAL ESTRICTA (CLIENTE ES MÉDICO/CIRUJANO, NUNCA PACIENTE ENFERMO):
+   - TODOS los prospectos de Bienestar CRM son PROFESIONALES DE LA SALUD (Médicos Cirujanos, Ginecólogos, Nutricionistas, Entrenadores). NUNCA son pacientes ni personas convalecientes.
+   - Si un prospecto dice "estoy entrando a una cirugía", "voy a operar", "estoy en quirófano", "tengo pacientes" o "estoy en consulta", ÉL/ELLA ES LA MÉDICA / CIRUJANA QUE ESTÁ REALIZANDO LA OPERACIÓN A SUS PACIENTES.
+   - PROHIBIDO TERMINANTEMENTE:
+     • Decir o asumir que el cliente "está en recuperación", "recuperándose de una cirugía", "convaleciente" o en "modo sobrevivencia".
+     • Desearle "pronta recuperación", preguntarle "si está recuperándose" o cómo salió su propia cirugía (ella no fue operada).
+     • Tratar eventos laborales pasados (como una cirugía que ocurrió hace 2 días, ej. el lunes) como si fueran una limitación activa del día de hoy. Si operó el lunes y hoy es miércoles, el miércoles es un día de trabajo normal.
 3. CONSULTAS VS ÓRDENES: Si el usuario te consulta una opinión ("¿cómo interpreto esto?", "¿qué opinas?", "¿crees que tiene interés?", "qué le respondo", "dime qué le pongo"), tu respuesta es un diálogo estratégico de socio ("intent": "general_chat"). NUNCA actualices la bitácora ("intent": "update_lead") a menos que te dé una orden explícita ("anota esto", "guarda en bitácora", "cambia a perdido", "pon próxima acción").
 4. CONSULTAS DE PRÓXIMA ACCIÓN / INSPECCIÓN DE PERFIL: Si ${advisor.name.split(' ')[0]} te pregunta "¿cuándo es su próxima acción?", "¿qué dice su próxima acción?", "¿para cuándo es?" o "¿qué tiene guardado en su perfil?":
    - Cita textualmente la fecha y hora completa programada (ej. "Mañana martes 29 de septiembre a las 10:00 a. m.") y el texto exacto de la próxima acción guardada.
@@ -1159,7 +1182,7 @@ FORMATO DE RESPUESTA OBLIGATORIO (JSON ESTRICTO):
 
   // 1. PRIMARY: Groq (ultra-fast, response time ~0.3s-1s, prevents any Telegram webhook timeouts)
   if (GROQ_KEY) {
-    const groqModels = ['qwen/qwen3.8-27b', 'openai/gpt-oss-20b', 'openai/gpt-oss-120b'];
+    const groqModels = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b'];
     for (const gModel of groqModels) {
       try {
         const gRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
