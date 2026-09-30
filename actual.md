@@ -338,6 +338,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se le envió mensaje vía WhatsApp notificando los cambios, solicitando su visto bueno y explorando adelantar la coordinación del lanzamiento oficial antes de mediados de octubre.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 3:00 p. m.** para seguimiento en caso de no recibir respuesta.
 
+### 33. Segundo Toque de Reprogramación y Estrategia de Cierre - Mirian (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Se envió el segundo toque suave tras su inasistencia al Zoom de ayer, quitándole la culpa y ofreciéndole reprogramar una llamada breve o revisar la app a su ritmo en su celular.
+    *   Se actualizó la bitácora en Supabase y se reprogramó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:00 a. m.** con el objetivo: *«Si no responde, enviar mensaje de descalificación/cierre para definir si se archiva o reactiva»*.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
