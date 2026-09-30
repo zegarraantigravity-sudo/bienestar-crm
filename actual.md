@@ -332,6 +332,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se constató que David Godoy no ha respondido llamadas ni mensajes previos para el pago del saldo pendiente de S/ 200 para la activación de su plataforma en octubre.
     *   Se actualizó su bitácora en Supabase y se reprogramó la llamada para hoy **30 de septiembre de 2026 a las 5:00 p. m.** con el fin de exigir la definición del cobro y arranque del servicio.
 
+### 32. Envío de Ajustes de Página y Exploración de Lanzamiento - Noé Rojas (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Alberto completó los ajustes solicitados en la página de Noé (reducción y depuración de textos para lectura óptima en móviles).
+    *   Se le envió mensaje vía WhatsApp notificando los cambios, solicitando su visto bueno y explorando adelantar la coordinación del lanzamiento oficial antes de mediados de octubre.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 3:00 p. m.** para seguimiento en caso de no recibir respuesta.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
