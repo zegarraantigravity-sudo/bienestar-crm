@@ -369,7 +369,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 38. Mensaje Formal de Cobro de Fin de Mes y Definición - David Godoy (30 de Septiembre de 2026)
 *   **Acción Realizada**:
     *   Alberto envió mensaje formal y sin opciones de dilatación a David Godoy recordándole que el 1 de octubre (mañana) es la fecha pactada de inicio, que su web y app están terminadas y exigiendo la liquidación del saldo pendiente de S/ 200 hoy para cargar los créditos de sus alumnos y habilitar los accesos de administración.
-    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para **mañana jueves 1 de octubre de 2026 a las 10:00 a. m.** con el objetivo: *«Llamada directa de cobro a primera hora (saldo S/ 200) y definición de inicio»*.
+
+### 39. Confirmación de Llamada para Cobro y Activación - David Godoy (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   David Godoy respondió de inmediato con nota de voz disculpándose por inconvenientes serios y comprometiéndose a llamar hoy para coordinar.
+    *   Alberto le propuso llamarlo a partir de las 7:30 p. m. para hablar con calma sin cruzarse con el Zoom de Anali.
+    *   David confirmó con audio expreso: *«Ya mi brother, listo, listo, queda»*.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la llamada definitiva para **hoy miércoles 30 de septiembre de 2026 a las 7:30 p. m.** para coordinar la activación y cobro de los S/ 200 restantes.
 
 ---
 
