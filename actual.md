@@ -349,6 +349,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó con total calidez y cordialidad.
     *   Se actualizó la bitácora en Supabase y se agendó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:00 a. m.** con el objetivo: *«Escribir a Nancy para coordinar inicio del Plan 30 según lo acordado»*.
 
+### 35. Confirmación Previa de Zoom - Anali (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Se envió mensaje anticipado a mediodía para confirmar la reunión de Zoom programada para hoy a las 6:00 p. m. (presentación de la app y plataforma para nutricionistas), solicitándole un micro-compromiso ("pulgar arriba") para preparar la sala.
+    *   Se registró en la bitácora de Supabase y se mantuvo la próxima acción de Zoom para hoy **30 de septiembre de 2026 a las 6:00 p. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
