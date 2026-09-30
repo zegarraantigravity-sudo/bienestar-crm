@@ -327,6 +327,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se registró en la bitácora del lead en Supabase el texto exacto enviado por WhatsApp.
     *   Se reprogramó la próxima acción para el **viernes 2 de octubre de 2026 a las 5:00 p. m.** con el objetivo: *«Toque suave de seguimiento si no responde al soporte técnico»*, dándole un respiro de 48 horas tras sus cirugías y consultas semanales.
 
+### 31. Reprogramación de Cobro y Activación - David Godoy (30 de Septiembre de 2026)
+*   **Acción Realizada**:
+    *   Se constató que David Godoy no ha respondido llamadas ni mensajes previos para el pago del saldo pendiente de S/ 200 para la activación de su plataforma en octubre.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la llamada para hoy **30 de septiembre de 2026 a las 5:00 p. m.** con el fin de exigir la definición del cobro y arranque del servicio.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
