@@ -440,6 +440,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto le reenvió el enlace de su página web (`godoy-fitness.bienestarsinexcusas.site`) para revisión y feedback de diseño.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:00 a. m.** para verificar la recepción del comprobante de S/ 200 y sus comentarios de la web.
 
+### 49. Descalificación y Cierre como Perdido por Silencio Continuo - Karla Dueñas (1 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Karla Dueñas no respondió al mensaje de desenganche final enviado el 30 de septiembre, acumulando 5 mensajes de seguimiento sin respuesta tras haber faltado a la reunión de Zoom pactada el 24 de septiembre.
+    *   En cumplimiento de la postura profesional y cierre de ciclo, se decidió no enviar más mensajes.
+    *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No asistió a Zoom y no respondió a 5 seguimientos ni al desenganche final»*, liberando la oportunidad del embudo activo.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
