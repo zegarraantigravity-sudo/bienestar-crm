@@ -446,6 +446,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   En cumplimiento de la postura profesional y cierre de ciclo, se decidió no enviar más mensajes.
     *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No asistió a Zoom y no respondió a 5 seguimientos ni al desenganche final»*, liberando la oportunidad del embudo activo.
 
+### 50. Seguimiento Directo de Soporte sobre Intercambio de Alimentos - Mónica (1 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Alberto envió mensaje de soporte directo a Mónica (sin solicitar redundancias de Zoom ya que ella cuenta con la app instalada y el código de prueba activo) para verificar si logró probar la sustitución de alimentos en su celular y el recálculo automático de gramos/macros, consultando si le funcionó bien o si tiene dudas técnicas.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 5:00 p. m.** para verificar respuesta o evaluar el paso al Plan 30 al cierre de semana.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
