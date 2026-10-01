@@ -423,6 +423,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje táctico de inicio de mes a Darío Cienfuegos consultando por sus proyectos de consultoría y explorando si tiene gimnasios en cartera interesados en digitalizarse este trimestre con la app y web propia, ofreciéndole Zoom demostrativo de 10 min o dejarlo en pausa con total confianza.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 10:00 a. m.** para evaluar archivar o dar por cerrada la alianza si no responde.
 
+### 46. Seguimiento Post-Zoom y Verificación de Experiencia - Nancy Tafoya (1 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 48 horas de la reunión demostrativa por Zoom, Alberto envió mensaje de seguimiento a Nancy Tafoya enfocado en soporte técnico: consultando cómo le fue ingresando con su código de activación en la app, resolviendo posibles dudas y proponiendo coordinar el arranque de octubre para sus alumnos.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 4:00 p. m.** para verificar respuesta o realizar toque de cierre de semana.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
