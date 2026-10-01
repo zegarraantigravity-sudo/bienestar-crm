@@ -433,6 +433,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje cordial de inicio de mes a Deysi disculpando su inasistencia de ayer por alta carga de consultas y proponiendo coordinar un Zoom rápido de 10 minutos hoy o mañana (mañana o tarde) para mostrarle la app en vivo en pantalla.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:30 a. m.** para verificar respuesta o aplicar cierre de puerta abierta si no responde.
 
+### 48. Llamada Efectiva, Compromiso de Pago de Saldo y Arranque en Enero - David Godoy (1 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Alberto llamó directamente a David Godoy. David confirmó que transferirá el saldo pendiente de S/ 200 mañana viernes 2 de octubre (completando los S/ 400 del acuerdo comercial).
+    *   Aclaró que arrancará el consumo de los 30 planes en enero de 2027, ya que aún no pudo colocarlos todos entre sus alumnos y el público de su zona no está tan habituado al uso de apps, pero ratificó su interés firme en la plataforma.
+    *   Alberto le reenvió el enlace de su página web (`godoy-fitness.bienestarsinexcusas.site`) para revisión y feedback de diseño.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:00 a. m.** para verificar la recepción del comprobante de S/ 200 y sus comentarios de la web.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
