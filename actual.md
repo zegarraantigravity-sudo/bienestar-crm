@@ -411,6 +411,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Por criterio comercial, se decidió no saturarla con mensajes nocturnos y darle espacio de descompresión.
     *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para **mañana jueves 1 de octubre de 2026 a las 10:00 a. m.** con el objetivo: *«Verificar respuesta de Deysi; si no responde, enviar toque suave de reprogramación de Zoom»*.
 
+### 44. Regla Comercial Estricta: Prohibición Total de Ofrecer Videos Demo y Enfoque Exclusivo en Zoom (30 de Septiembre de 2026)
+*   **Directiva Obligatoria y Permanente**:
+    1.  **NO existen videos demo pregrabados** de la aplicación móvil.
+    2.  **PROHIBIDO TERMINANTEMENTE** ofrecer, prometer, sugerir o mencionar el envío de videos de demostración a cualquier prospecto o lead.
+    3.  El **ÚNICO canal y objetivo comercial** para mostrar el funcionamiento del aplicativo móvil a un cliente potencial es coordinar y concretar una **reunión por ZOOM en vivo** (de 10 a 15 minutos), donde Alberto comparte pantalla y demuestra la plataforma en tiempo real.
+    4.  Cualquier guion, sugerencia o mensaje de WhatsApp generado por el asistente debe conducir única y exclusivamente a agendar el Zoom demostrativo.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

@@ -12,3 +12,8 @@
 ## 3. Protocolo de Confirmación: Esperar la palabra "DALE"
 - Después de responder o dar un resumen con la propuesta de acción, para poder ejecutar cualquier cambio o modificación, se le debe preguntar directamente a Alberto y pedirle que diga la palabra "DALE".
 - Si Alberto no ha dicho la palabra "DALE" (o una confirmación explícita equivalente), NO se ejecuta ninguna acción sobre el código ni la base de datos.
+
+## 4. Regla Comercial: Cero Videos Demo (Solo Zoom en Vivo)
+- NO existen videos demo pregrabados de la aplicación móvil.
+- NUNCA ofrecer, prometer, sugerir ni mencionar enviar videos de demostración a ningún prospecto o lead.
+- El ÚNICO objetivo y canal comercial oficial para mostrar el funcionamiento del aplicativo móvil a un cliente potencial es coordinar y agendar una reunión por ZOOM en vivo para mostrar la plataforma en pantalla.
