@@ -428,6 +428,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 48 horas de la reunión demostrativa por Zoom, Alberto envió mensaje de seguimiento a Nancy Tafoya enfocado en soporte técnico: consultando cómo le fue ingresando con su código de activación en la app, resolviendo posibles dudas y proponiendo coordinar el arranque de octubre para sus alumnos.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 4:00 p. m.** para verificar respuesta o realizar toque de cierre de semana.
 
+### 47. Segundo Toque de Reprogramación para Zoom - Deysi (1 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Alberto envió mensaje cordial de inicio de mes a Deysi disculpando su inasistencia de ayer por alta carga de consultas y proponiendo coordinar un Zoom rápido de 10 minutos hoy o mañana (mañana o tarde) para mostrarle la app en vivo en pantalla.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 11:30 a. m.** para verificar respuesta o aplicar cierre de puerta abierta si no responde.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
