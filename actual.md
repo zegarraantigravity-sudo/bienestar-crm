@@ -498,6 +498,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Cumpliendo exactamente la fecha solicitada por la prospecto el miércoles (*«¿Te parece si me escribes el viernes? Ahí te aviso cualquier cosa»*), Alberto le envió un mensaje de seguimiento cálido y sin fricción consultando qué decidió sobre el inicio del Plan 30 para sus pacientes este mes.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 5:00 p. m.** para monitorear su respuesta al cierre de la tarde.
 
+### 59. Capacitación Exitosa de Vinces Fight y Seguimiento de Saldo y Comisión - Luis Culqui (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   La capacitación del personal de la academia Vinces Fight a cargo de Luis Hakim se llevó a cabo exitosamente a la 1:00 p. m.
+    *   Alberto envió mensaje a Luis Culqui recordándole la transferencia del abono restante de S/ 200 para proceder con la liquidación de sus S/ 60 de comisión.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **sábado 3 de octubre de 2026 a las 10:00 a. m.** para verificar el ingreso del comprobante y transferir la comisión.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
