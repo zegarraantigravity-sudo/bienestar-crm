@@ -487,6 +487,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Regla Comercial y de CRM Establecida**: Se ratificó formalmente en el protocolo (`AGENTS.md` y `GEMINI.md`) que **SOLO se registran leads en Supabase cuando confirmen interés y agenden una reunión de Zoom**. Las prospecciones en frío no se ingresan al CRM para mantener el embudo 100% limpio y libre de contactos fríos o inciertos.
     *   **Regla de Veracidad de Producto**: Se prohibió terminantemente inventar disponibilidad en tiendas (Play Store / App Store bajo marcas individuales) que no haya sido validada por Alberto.
 
+### 57. Efectividad de Desenganche, Reactivación y Soporte de Acceso - Lisbeth (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Tras enviarle el mensaje de desenganche comunicándole la pausa de su acceso para no saturarla, Lisbeth reaccionó de inmediato y rompió su silencio: *«Gracias, sí estuve ocupada»*.
+    *   Alberto le respondió con total empatía validando la alta carga que implica la consulta de nutrición y ofreciéndole con calidez mantenerle el acceso activo a la app durante el fin de semana para que lo pruebe a su ritmo, o retomarlo más adelante.
+    *   Se reactivó su estado en Supabase a **`presentacion_realizada`**, se limpiaron los campos de pérdida y se programó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 3:00 p. m.** para verificar su decisión sobre la prueba.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

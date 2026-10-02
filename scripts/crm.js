@@ -54,8 +54,8 @@ async function main() {
     }
     if (actionText !== null) notes.next_action = actionText;
     if (dateText !== null) notes.next_action_date = dateText;
-    if (lostReasonVal) notes.lost_reason = lostReasonVal;
-    if (lostLabelVal) notes.lost_reason_label = lostLabelVal;
+    if (lostReasonVal !== null) notes.lost_reason = lostReasonVal;
+    if (lostLabelVal !== null) notes.lost_reason_label = lostLabelVal;
 
     const patchBody = { notes: JSON.stringify(notes) };
     if (statusVal) patchBody.status = statusVal;
