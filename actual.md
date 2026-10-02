@@ -523,6 +523,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje de desenganche elegante con puerta abierta, retirando la presión de seguimiento y dejando abierta la posibilidad de coordinar un Zoom en el futuro si decide digitalizar su consultorio.
     *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No respondió a 3 intentos de coordinación de Zoom; se cierra con puerta abierta»*, liberando la oportunidad del embudo activo.
 
+### 63. Cierre Ganado Vinces Fight, Liquidación de Comisión y Reglas de Alianza Comercial - Luis Culqui (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Vinces Fight completó la transferencia del saldo restante de S/ 200, cancelando al 100% el contrato del Plan 30 (S/ 400 total).
+    *   **Vigencia del Plan**: El servicio para Vinces Fight queda formalmente activo hasta el **20 de noviembre de 2026**.
+    *   **Liquidación de Comisión**: Alberto liquidó a Luis Culqui su comisión del 15% de venta nueva (S/ 60.00) vía Yape (Op. 05279264 a las 04:43 p. m.).
+    *   **Comprobante Adjunto**: Se adjuntó la imagen del voucher de Yape de S/ 60 directamente en la bitácora y galería de documentos en Supabase con soporte para visor lightbox y descarga.
+    *   **Estructura y Reglas del Acuerdo de Alianza con Culqui**:
+        1.  **Venta Nueva**: Culqui comisiona el **15%** por cada nuevo plan vendido (ej: S/ 60 por Plan 30).
+        2.  **Renovación Mensual**: Culqui comisiona el **10%** por renovación mensual de cada cliente activo.
+        3.  **Condición Obligatoria**: Para acceder al cobro de comisión por renovación, Culqui debe mantener un **mínimo obligatorio de 2 clientes activos simultáneamente**.
+    *   Se actualizó su estado en Supabase a **`cerrado_ganado`** (S/ 400) y se programó la próxima acción para el **viernes 9 de octubre de 2026 a las 11:00 a. m.** para seguimiento de nuevos prospectos de academias.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
