@@ -517,6 +517,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se aplicó la regla táctica de no presionar con reuniones y permitirle experimentar la plataforma a su ritmo.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para verificar su experiencia en la app e inicio con alumnos.
 
+### 62. Descalificación, Desenganche y Cierre como Perdido - Deysi (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Deysi acumuló 3 silencios consecutivos tras haber manifestado interés inicial el 29 de septiembre en conocer el funcionamiento de la app.
+    *   Alberto envió mensaje de desenganche elegante con puerta abierta, retirando la presión de seguimiento y dejando abierta la posibilidad de coordinar un Zoom en el futuro si decide digitalizar su consultorio.
+    *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No respondió a 3 intentos de coordinación de Zoom; se cierra con puerta abierta»*, liberando la oportunidad del embudo activo.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
