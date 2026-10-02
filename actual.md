@@ -559,6 +559,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se adaptó la redacción al tono auténtico de Alberto (directo, peruano, sin modismos corporativos forzados).
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 8:00 p. m.** para monitorear su respuesta y verificar el ingreso del pago.
 
+### 68. Reprogramación de Lanzamiento para Mediados de Octubre - Noé Rojas (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Dado que Noé Rojas confirmó previamente que proyecta iniciar operaciones con su tienda de suplementos (`nrsports.mx`) para mediados de octubre y que los cambios de su página web ya fueron entregados, se acordó darle holgura y no interrumpirlo en el cierre de semana.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **miércoles 7 de octubre de 2026 a las 11:00 a. m.** para coordinar el lanzamiento y la vinculación con el aplicativo.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
