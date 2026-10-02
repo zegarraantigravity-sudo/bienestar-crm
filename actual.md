@@ -451,6 +451,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje de soporte directo a Mónica (sin solicitar redundancias de Zoom ya que ella cuenta con la app instalada y el código de prueba activo) para verificar si logró probar la sustitución de alimentos en su celular y el recálculo automático de gramos/macros, consultando si le funcionó bien o si tiene dudas técnicas.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a las 5:00 p. m.** para verificar respuesta o evaluar el paso al Plan 30 al cierre de semana.
 
+### 51. Coordinación de Capacitación Vinces Fight, Cobro de Saldo y Comisión - Luis Culqui (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Alberto informó y registró que hoy viernes 2 de octubre a la 1:00 p. m. se llevará a cabo la capacitación del personal de la academia Vinces Fight a cargo de su socio Luis Hakim.
+    *   En dicha sesión completarán el abono del saldo pendiente de S/ 200, del cual se destinarán S/ 60 de comisión a Luis Culqui.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a la 1:00 p. m.** para monitorear el cobro del saldo y liquidación de comisión.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
