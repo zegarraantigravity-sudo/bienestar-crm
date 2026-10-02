@@ -31,13 +31,20 @@ async function main() {
     let notes = typeof lead.notes === 'string' && lead.notes.startsWith('{') ? JSON.parse(lead.notes) : { timeline: [] };
     if (!Array.isArray(notes.timeline)) notes.timeline = [];
 
-    const noteIndex = args.indexOf('--note');
-    const actionIndex = args.indexOf('--action');
-    const dateIndex = args.indexOf('--date');
+    function getArg(flag) {
+      const idx = args.indexOf(flag);
+      if (idx === -1) return null;
+      const val = args[idx + 1];
+      if (val === undefined || val.startsWith('--')) return '';
+      return val;
+    }
 
-    const noteText = noteIndex !== -1 ? args[noteIndex + 1] : null;
-    const actionText = actionIndex !== -1 ? args[actionIndex + 1] : null;
-    const dateText = dateIndex !== -1 ? args[dateIndex + 1] : null;
+    const noteText = getArg('--note');
+    const actionText = getArg('--action');
+    const dateText = getArg('--date');
+    const statusVal = getArg('--status');
+    const lostReasonVal = getArg('--lost-reason');
+    const lostLabelVal = getArg('--lost-label');
 
     if (noteText) {
       notes.timeline.unshift({
@@ -45,16 +52,28 @@ async function main() {
         text: noteText
       });
     }
-    if (actionText) notes.next_action = actionText;
-    if (dateText) notes.next_action_date = dateText;
+    if (actionText !== null) notes.next_action = actionText;
+    if (dateText !== null) notes.next_action_date = dateText;
+    if (lostReasonVal) notes.lost_reason = lostReasonVal;
+    if (lostLabelVal) notes.lost_reason_label = lostLabelVal;
+
+    const patchBody = { notes: JSON.stringify(notes) };
+    if (statusVal) patchBody.status = statusVal;
 
     const patchRes = await fetch(`${SUPABASE_URL}/rest/v1/leads?id=eq.${lead.id}`, {
       method: 'PATCH',
       headers: { ...headers, 'Prefer': 'return=representation' },
-      body: JSON.stringify({ notes: JSON.stringify(notes) })
+      body: JSON.stringify(patchBody)
     });
     const updated = await patchRes.json();
-    console.log(JSON.stringify({ success: true, lead: updated[0].contact_name, next_action: notes.next_action, next_action_date: notes.next_action_date }, null, 2));
+    console.log(JSON.stringify({
+      success: true,
+      lead: updated[0].contact_name,
+      status: updated[0].status,
+      next_action: notes.next_action,
+      next_action_date: notes.next_action_date,
+      lost_reason: notes.lost_reason
+    }, null, 2));
     return;
   }
 

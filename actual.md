@@ -463,6 +463,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Aplicando la regla táctica de no presionar al prospecto cuando ya estableció su propio compromiso de inicio, se respetó su fecha sin insistencias comerciales.
     *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para verificar su arranque en la app.
 
+### 53. Descalificación, Pausa de Acceso y Cierre como Perdido - Lisbeth (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Lisbeth acumuló 4 mensajes sin respuesta tras la reunión por Zoom del 25 de septiembre y entrega de código de prueba.
+    *   Alberto envió mensaje de desenganche elegante comunicándole la pausa de su código de acceso de prueba para no saturarla, dejando la puerta abierta para cuando decida retomar el proyecto.
+    *   En cumplimiento de la disciplina de embudo activo, se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No respondió a 4 seguimientos tras Zoom y entrega de prueba de app; se pausó código de acceso»*, liberando la oportunidad de la agenda activa.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
