@@ -469,6 +469,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje de desenganche elegante comunicándole la pausa de su código de acceso de prueba para no saturarla, dejando la puerta abierta para cuando decida retomar el proyecto.
     *   En cumplimiento de la disciplina de embudo activo, se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No respondió a 4 seguimientos tras Zoom y entrega de prueba de app; se pausó código de acceso»*, liberando la oportunidad de la agenda activa.
 
+### 54. Descalificación, Desenganche y Cierre como Perdido - Mirian (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Mirian no asistió a la reunión por Zoom del martes 29 de septiembre a las 4:00 p. m. y no respondió a los toques de reprogramación del 29 y 30 de septiembre.
+    *   Alberto envió mensaje de desenganche con puerta abierta, retirando la presión comercial y dejando abierta la opción de reagendar en el futuro si decide digitalizar su consultorio.
+    *   Se actualizó su estado en Supabase a **`cerrado_perdido`** con motivo *«No asistió a Zoom del 29/09 y no respondió a 2 seguimientos; se cierra con puerta abierta»*, limpiando el embudo activo.
+
+### 55. Monitoreo de Transferencia de Saldo y Holgura Operativa - David Godoy (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Dado que David Godoy comprometió verbalmente en llamada ayer transferir hoy viernes el saldo de S/ 200, se decidió darle holgura operativa durante toda la jornada laboral y no presionarlo temprano en la mañana.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 6:00 p. m.** para verificar el ingreso bancario o contactarlo por llamada/WhatsApp al término de la tarde.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
