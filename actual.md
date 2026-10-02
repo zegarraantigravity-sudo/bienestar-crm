@@ -457,6 +457,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   En dicha sesión completarán el abono del saldo pendiente de S/ 200, del cual se destinarán S/ 60 de comisión a Luis Culqui.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 2 de octubre de 2026 a la 1:00 p. m.** para monitorear el cobro del saldo y liquidación de comisión.
 
+### 52. Respeto de Ritmo de Prueba y Reprogramación de Inicio - Carmina Badillo (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Carmina Badillo informó vía WhatsApp que aún no había ingresado a la app y que iniciará el lunes (semana del 5 de octubre), indicando que avisará cuando empiece.
+    *   Aplicando la regla táctica de no presionar al prospecto cuando ya estableció su propio compromiso de inicio, se respetó su fecha sin insistencias comerciales.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para verificar su arranque en la app.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
