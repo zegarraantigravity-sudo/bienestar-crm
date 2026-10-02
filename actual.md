@@ -480,6 +480,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Dado que David Godoy comprometió verbalmente en llamada ayer transferir hoy viernes el saldo de S/ 200, se decidió darle holgura operativa durante toda la jornada laboral y no presionarlo temprano en la mañana.
     *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 6:00 p. m.** para verificar el ingreso bancario o contactarlo por llamada/WhatsApp al término de la tarde.
 
+### 56. Criterio Estricto de Admisión al CRM y Táctica de Marca Blanca - Caso Antonella (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   En prospección en frío, una nueva prospecto (Antonella, nutrióloga en Miraflores, `+51 951 939 214`) respondió: *«Gracias!! Pero estamos por lanzar un app pronto»*.
+    *   Alberto identificó la oportunidad de no dar por perdida la conversación y disparar de inmediato una propuesta de valor de **marca blanca** lista para operar, ahorrándole meses de desarrollo y costos pesados en programadores, e invitándola a un Zoom de 10 min para hoy o el lunes.
+    *   **Regla Comercial y de CRM Establecida**: Se ratificó formalmente en el protocolo (`AGENTS.md` y `GEMINI.md`) que **SOLO se registran leads en Supabase cuando confirmen interés y agenden una reunión de Zoom**. Las prospecciones en frío no se ingresan al CRM para mantener el embudo 100% limpio y libre de contactos fríos o inciertos.
+    *   **Regla de Veracidad de Producto**: Se prohibió terminantemente inventar disponibilidad en tiendas (Play Store / App Store bajo marcas individuales) que no haya sido validada por Alberto.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)

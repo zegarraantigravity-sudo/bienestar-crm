@@ -17,3 +17,12 @@
 - NO existen videos demo pregrabados de la aplicación móvil.
 - NUNCA ofrecer, prometer, sugerir ni mencionar enviar videos de demostración a ningún prospecto o lead.
 - El ÚNICO objetivo y canal comercial oficial para mostrar el funcionamiento del aplicativo móvil a un cliente potencial es coordinar y agendar una reunión por ZOOM en vivo para mostrar la plataforma en pantalla.
+
+## 5. Regla de Admisión al CRM (Solo Leads con Interés y Zoom Agendado)
+- SOLO registrar a un nuevo prospecto en la base de datos de Supabase cuando confirme interés real y se coordine o agende una reunión por ZOOM en vivo.
+- Las conversaciones iniciales de prospección en frío o respuestas tentativas NO se ingresan al CRM hasta que se concrete el compromiso formal de un Zoom demostrativo.
+
+## 6. Información Veraz de Producto (Cero Invenciones)
+- NUNCA inventar características o estados de la plataforma (por ejemplo, afirmar que ya está publicada en Play Store o App Store bajo marcas individuales).
+- Ceñirse estrictamente a la realidad del producto validada por Alberto.
+
