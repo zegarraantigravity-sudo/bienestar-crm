@@ -564,6 +564,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Dado que Noé Rojas confirmó previamente que proyecta iniciar operaciones con su tienda de suplementos (`nrsports.mx`) para mediados de octubre y que los cambios de su página web ya fueron entregados, se acordó darle holgura y no interrumpirlo en el cierre de semana.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **miércoles 7 de octubre de 2026 a las 11:00 a. m.** para coordinar el lanzamiento y la vinculación con el aplicativo.
 
+### 69. Alta de Nuevo Lead y Zoom Agendado para el Lunes - Consuelo Naranjo (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   En prospección en frío por WhatsApp, Consuelo Naranjo (`+593 96 251 9793`, Nutricionista de Ecuador) revisó la web de muestra y manifestó interés explícito en conocer el funcionamiento de la app.
+    *   Acordó coordinar una reunión demostrativa por Zoom para el **lunes 5 de octubre por la tarde**. Alberto le consultó preferencia de horario entre 4:00 p. m. o 5:00 p. m.
+    *   Cumpliendo estrictamente la **Regla 5 de Admisión al CRM** (confirmación de interés y pacto de Zoom), se dio de alta su ficha en Supabase bajo el estado **`cita_agendada`** (Plan 30 - S/ 400).
+    *   Se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para confirmar la hora exacta de la tarde y pasarle el enlace de Zoom.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
