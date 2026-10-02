@@ -511,6 +511,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Aclaración de Precios**: Se ratificó que el valor del Plan 30 es estrictamente en **Soles Peruanos (S/ 400/mes)**, nunca en dólares.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **viernes 2 de octubre de 2026 a las 7:00 p. m.** para verificar si se desocupó de sus compromisos hospitalarios.
 
+### 61. Micro-Toque de Fin de Semana y Soporte de Prueba - Nancy Tafoya (2 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Ante la ausencia de respuesta al seguimiento técnico de ayer, Alberto envió un micro-mensaje cordial y ligero deseándole un excelente fin de semana y recordándole disponibilidad de apoyo técnico si revisa la app en sus ratos libres.
+    *   Se aplicó la regla táctica de no presionar con reuniones y permitirle experimentar la plataforma a su ritmo.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para verificar su experiencia en la app e inicio con alumnos.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
