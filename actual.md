@@ -571,6 +571,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Cumpliendo estrictamente la **Regla 5 de Admisión al CRM** (confirmación de interés y pacto de Zoom), se dio de alta su ficha en Supabase bajo el estado **`cita_agendada`** (Plan 30 - S/ 400).
     *   Se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 11:00 a. m.** para confirmar la hora exacta de la tarde y pasarle el enlace de Zoom.
 
+### 70. Confirmación de Hora de Zoom (5:00 p. m.) - Consuelo Naranjo (3 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Consuelo Naranjo respondió confirmando la reunión demostrativa por Zoom para el **lunes 5 de octubre a las 5:00 p. m.** (misma zona horaria UTC-5 entre Perú y Ecuador continental).
+    *   Alberto envió mensaje de confirmación ratificando la cita e indicando que 10 minutos antes (4:50 p. m.) le pasará el enlace de la sala.
+    *   Se actualizó su bitácora y próxima acción en Supabase, fijando la fecha exacta para el **lunes 5 de octubre de 2026 a las 5:00 p. m.** para activar la alerta automática de 1 hora antes en Telegram.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
