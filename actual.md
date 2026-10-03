@@ -577,6 +577,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje de confirmación ratificando la cita e indicando que 10 minutos antes (4:50 p. m.) le pasará el enlace de la sala.
     *   Se actualizó su bitácora y próxima acción en Supabase, fijando la fecha exacta para el **lunes 5 de octubre de 2026 a las 5:00 p. m.** para activar la alerta automática de 1 hora antes en Telegram.
 
+### 71. Escalada Progresiva de Cobro de Saldo S/ 200 - David Godoy (3 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Tras verificar que el saldo de S/ 200 no ingresó el viernes por la noche, Alberto implementó una estrategia de cobro progresivo en dos pasos.
+    *   **Paso 1 (Mañana del sábado)**: A las 08:55 a. m. envió un mensaje directo, relajado y respetuoso consultando a qué hora podría realizar la transferencia de los S/ 200 coordinados ayer.
+    *   **Paso 2 (Tarde del sábado)**: Se fijó el plazo límite para las **2:00 p. m.**; en caso de no recibir el abono ni confirmación por WhatsApp, se procederá a realizar una llamada telefónica directa.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **sábado 3 de octubre de 2026 a las 2:00 p. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
