@@ -590,6 +590,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto respondió ratificando el compromiso para hoy: *"Dale David, genial. Quedo atento entonces más tarde o en la noche para dejarlo registrado hoy. ¡Un abrazo y buen sábado!"*
     *   Se actualizó la bitácora en Supabase, cancelando la necesidad de llamada a las 2:00 p. m. y reprogramando la próxima acción de verificación de abono de S/ 200 para hoy **sábado 3 de octubre de 2026 a las 8:00 p. m.**
 
+### 73. Postura Comercial de Fin de Semana y Reprogramación - David Godoy (3 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 8:23 p. m. se verificó que el saldo de S/ 200 no ingresó a la cuenta bancaria.
+    *   Para mantener una alta postura comercial y no interrumpir un sábado por la noche, Alberto decidió no enviar mensajes de noche ni utilizar excusas artificiales. Se acordó darle margen hasta el día siguiente.
+    *   Se definió el mensaje de recordatorio directo y limpio (Opción 2) para el domingo a las 11:00 a. m. en caso de no recibir abono previo: *«Hola David, buen domingo. Te consultaba si hoy me llegas a transferir los 200 soles para dejar cerrado tu registro. Me avisas porfa.»*
+    *   Se actualizó la bitácora en Supabase y se reprogramó la alarma y próxima acción para el **domingo 4 de octubre de 2026 a las 11:00 a. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
