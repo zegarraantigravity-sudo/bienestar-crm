@@ -614,6 +614,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 09:42 a. m., Alberto decidió enviar un mensaje directo de inicio de semana por WhatsApp antes de marcarle por teléfono: *«Hola David, ¿qué tal? Buen inicio de semana. Te consultaba a qué hora me llegas a pasar hoy la transferencia de los 200 soles del saldo para dejar cerrado tu registro. Me avisas porfa.»*
     *   Se actualizó la bitácora en Supabase y se programó la próxima acción para hoy **lunes 5 de octubre de 2026 a las 12:00 p. m.** para verificar respuesta o realizar llamada telefónica directa si no contesta.
 
+### 77. Reactivación y Entrega de Accesos al CRM para Prueba - Darío Cienfuegos (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:50 a. m., Alberto conversó con Darío Cienfuegos (consultor de gimnasios). Darío confirmó su interés activo y aceptó probar el CRM para evaluar sinergias y ofrecerlo a sus clientes de gimnasios.
+    *   Alberto le entregó sus credenciales de acceso para iniciar su periodo de prueba.
+    *   Se actualizó su estado en Supabase pasando de `llamado` a **`presentacion_realizada`** *(sistema en prueba)*.
+    *   Se acordó darle 3 días completos de exploración y se programó la próxima acción para el **jueves 8 de octubre de 2026 a las 11:00 a. m.** para evaluar impresiones y definir el modelo de alianza comercial.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
