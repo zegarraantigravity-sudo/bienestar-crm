@@ -602,6 +602,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Al no registrarse abono previo durante la mañana del domingo, Alberto envió a las 12:09 p. m. el mensaje acordado consultando si hoy realiza la transferencia de los S/ 200 de saldo para dejar cerrado su registro.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **domingo 4 de octubre de 2026 a las 7:00 p. m.** para monitorear respuesta o confirmación bancaria.
 
+### 75. Verificación de Visto No Abierto y Programación de Llamada de Cobro - David Godoy (4 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 7:38 p. m. se constató que el mensaje de WhatsApp permaneció con doble check plomo (no abrió el chat deliberadamente para postergar el cobro).
+    *   Se mantuvo postura comercial sin enviar mensajes adicionales el domingo por la noche.
+    *   Considerando que el saldo de S/ 200 lleva pendiente un mes y que el contacto evade por mensajería pero atiende de inmediato por vía telefónica, se acordó realizar una llamada directa de cobranza el lunes por la mañana.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 10:30 a. m.** para ejecutar la llamada telefónica directa.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
