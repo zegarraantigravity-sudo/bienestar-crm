@@ -651,6 +651,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:52 a. m., Alberto envió un mensaje de cortesía matutino ratificando con entusiasmo la cita de Zoom programada para hoy a las 5:00 p. m. e indicándole que 10 minutos antes (4:50 p. m.) le pasará el enlace de la sala por WhatsApp.
     *   Se actualizó la bitácora en Supabase manteniendo la próxima acción y la alerta para las **5:00 p. m. de hoy** (notificación previa por Telegram a las 4:00 p. m.).
 
+### 84. Seguimiento Empático y Consulta de Agenda para Zoom - Coach Catrina (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:15 a. m., Alberto envió mensaje empático consultando cómo andan sus horarios esta semana tras su guardia médica hospitalaria previa para reprogramar el Zoom demostrativo.
+    *   Tomando en cuenta sus silencios anteriores, se programó un límite de 48 horas: si no responde, se procederá con desenganche y cierre con puerta abierta.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **miércoles 7 de octubre de 2026 a las 12:30 p. m.**
+
+### 85. Consulta Comercial Directa de Implementación - Lisbeth (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:15 a. m., tras haber roto su silencio el viernes, Alberto envió mensaje 100% comercial consultando si implementará la plataforma para sus pacientes este mes o si prefiere dejar el proyecto en pausa por ahora.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **miércoles 7 de octubre de 2026 a la 1:00 p. m.** para evaluar respuesta.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
