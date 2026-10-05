@@ -621,6 +621,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se actualizó su estado en Supabase pasando de `llamado` a **`presentacion_realizada`** *(sistema en prueba)*.
     *   Se acordó darle 3 días completos de exploración y se programó la próxima acción para el **jueves 8 de octubre de 2026 a las 11:00 a. m.** para evaluar impresiones y definir el modelo de alianza comercial.
 
+### 78. Seguimiento Cálido de Inicio en la App - Carmina Badillo (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:58 a. m., Alberto envió el mensaje de inicio de semana acordado el viernes, saludándola con calidez y consultando si pudo ingresar a la app o si requiere asistencia con sus accesos.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **martes 6 de octubre de 2026 a las 11:00 a. m.** para esperar sus impresiones iniciales.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
