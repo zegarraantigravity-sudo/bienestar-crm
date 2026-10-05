@@ -609,6 +609,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Considerando que el saldo de S/ 200 lleva pendiente un mes y que el contacto evade por mensajería pero atiende de inmediato por vía telefónica, se acordó realizar una llamada directa de cobranza el lunes por la mañana.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 5 de octubre de 2026 a las 10:30 a. m.** para ejecutar la llamada telefónica directa.
 
+### 76. Envío de Mensaje de Inicio de Semana - David Godoy (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:42 a. m., Alberto decidió enviar un mensaje directo de inicio de semana por WhatsApp antes de marcarle por teléfono: *«Hola David, ¿qué tal? Buen inicio de semana. Te consultaba a qué hora me llegas a pasar hoy la transferencia de los 200 soles del saldo para dejar cerrado tu registro. Me avisas porfa.»*
+    *   Se actualizó la bitácora en Supabase y se programó la próxima acción para hoy **lunes 5 de octubre de 2026 a las 12:00 p. m.** para verificar respuesta o realizar llamada telefónica directa si no contesta.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
