@@ -668,6 +668,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto validó su decisión con total comprensión y postura profesional, agradeciendo su franqueza y dejándole la puerta abierta para reactivar cuando decida implementar la plataforma para sus pacientes.
     *   Se actualizó su ficha en Supabase pasando su estado a **`cerrado_perdido`** *(Motivo: Prospecto solicitó dejar en pausa por ahora; puerta abierta)*, liberando el embudo de seguimiento activo y limpiando las tareas pendientes.
 
+### 87. Reprogramación de Llamada Directa de Cobranza para la Noche - David Godoy (5 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Dado que David no respondió al mensaje de la mañana ni transfirió al mediodía, Alberto optó por darle todo el día de holgura para transferir voluntariamente y programar la llamada telefónica directa de cobranza para la noche.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción y alarma para hoy **lunes 5 de octubre de 2026 a las 8:00 p. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
