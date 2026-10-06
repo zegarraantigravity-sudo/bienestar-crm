@@ -697,6 +697,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 09:05 a. m., Alberto le confirmó que sí y le brindó una instrucción sencilla paso a paso para instalar la PWA como acceso directo en el escritorio vía Chrome o usarla directo en la web.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para mañana **miércoles 7 de octubre de 2026 a las 11:30 a. m.** para verificar su experiencia en la PC y retomar la prueba en la app móvil cuando reactive su celular.
 
+### 92. Reactivación de Temporada y Consulta de Cobros/Videos - Machy (6 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:14 a. m., cumpliendo el acuerdo de pausa estratégica de septiembre por la vuelta al cole y arranque de temporada en España, Alberto envió mensaje de reactivación consultando si resolvió sus dudas de cobros internacionales y si desea retomar con calma la implementación de la plataforma y sus videos de clases para sus alumnas.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **jueves 8 de octubre de 2026 a las 10:00 a. m.** para esperar su respuesta.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
