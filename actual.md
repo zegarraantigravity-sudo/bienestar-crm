@@ -691,6 +691,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Consuelo Naranjo**: Al no responder en la noche del lunes, se aplicó la opción de reprogramación que ya se le había dejado planteada, fijando el seguimiento para el **martes 6 de octubre a las 11:00 a. m.** para concretar nueva fecha y hora del Zoom demostrativo.
     *   Se actualizaron las 3 fichas en Supabase con sus respectivas fechas y alarmas.
 
+### 91. Soporte de Instalación de App en Escritorio PC - Mónica (6 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Mónica escribió en la madrugada desde su computadora aclarando que estuvo sin celular desde el viernes hasta el miércoles, y consultó si es posible instalar la app en la computadora.
+    *   A las 09:05 a. m., Alberto le confirmó que sí y le brindó una instrucción sencilla paso a paso para instalar la PWA como acceso directo en el escritorio vía Chrome o usarla directo en la web.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para mañana **miércoles 7 de octubre de 2026 a las 11:30 a. m.** para verificar su experiencia en la PC y retomar la prueba en la app móvil cuando reactive su celular.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
