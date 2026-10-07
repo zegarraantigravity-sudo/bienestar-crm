@@ -720,6 +720,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se acordó otorgar 48 horas de plazo: en caso de no responder para el viernes 9 de octubre a las 11:00 a. m., se le enviará un mensaje de desenganche definitivo y se pasará a **`cerrado_perdido`** con puerta abierta para limpiar el embudo.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 9 de octubre de 2026 a las 11:00 a. m.**
 
+### 96. Seguimiento de Pre-Campaña de Quincena - Noé Rojas (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:36 a. m., Alberto envió mensaje cordial a Noé Rojas consultando por los avances en NR Sports y fecha tentativa para la vinculación final de la página con el aplicativo de cara al arranque de mediados de octubre acordado previamente.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 12 de octubre de 2026 a las 11:30 a. m.** para afinar detalles antes de la quincena.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
