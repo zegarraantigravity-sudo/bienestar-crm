@@ -756,6 +756,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto ratificó la reserva formal de la sala de Zoom, comprometiéndose a remitirle el enlace de acceso 10 minutos antes de la reunión.
     *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`cita_agendada`** y programando la próxima acción con alarma para el **jueves 8 de octubre de 2026 a las 5:00 p. m.** (`17:00`) para la realización del Zoom demostrativo.
 
+### 102. Desenganche Empático por Carga Médica y Cierre con Puerta Abierta - Coach Catrina (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:54 p. m., cumplidas las 48 horas de holgura tras el mensaje de inicio de semana y acumulando silencios posteriores a su inasistencia al Zoom del viernes por guardias hospitalarias, Alberto envió mensaje de desenganche empático (break-up).
+    *   Se reconoció la alta demanda de su labor médica con pacientes en el hospital, retirando toda presión comercial sobre la reunión y dejando la puerta abierta para cuando decida sistematizar el coaching de sus asesorados.
+    *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Falta a Zoom y silencio / Desenganche por carga médica con puerta abierta»*), depurando el embudo comercial y liberando la tarea activa.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
