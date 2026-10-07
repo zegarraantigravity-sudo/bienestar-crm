@@ -725,6 +725,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:36 a. m., Alberto envió mensaje cordial a Noé Rojas consultando por los avances en NR Sports y fecha tentativa para la vinculación final de la página con el aplicativo de cara al arranque de mediados de octubre acordado previamente.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **lunes 12 de octubre de 2026 a las 11:30 a. m.** para afinar detalles antes de la quincena.
 
+### 97. Gestión de Assets Web y Coordinación de Lanzamiento para Noviembre - Noé Rojas (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:56 a. m., Noé respondió por audio informando que está migrando su tienda online (`nrsports.mx`) a otra plataforma debido a problemas técnicos con su pasarela de pagos anterior, proyectando que la migración tardará de 10 a 15 días y postergando el lanzamiento oficial de su tienda para principios de noviembre.
+    *   Reiteró su gran interés en la plataforma (*«Ya vi el tema de la plataforma, está genial»*) y solicitó los recursos gráficos del banner principal (hombre sentado con celular) para colocarlo en la portada de su nueva web con un enlace/botón que dirija hacia el aplicativo móvil.
+    *   Alberto le respondió por texto validando el proceso de migración y enviándole un audio explicándole técnicamente que la sección de la web está compuesta por capas superpuestas (video de fondo + mockup de smartphone con carrusel de imágenes y textos dinámicos sincronizados), acordando facilitarle el material gráfico en alta calidad.
+    *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para el **lunes 26 de octubre de 2026 a las 11:30 a. m.** para verificar la conclusión de la migración y coordinar la vinculación técnica del aplicativo antes de arrancar noviembre.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
