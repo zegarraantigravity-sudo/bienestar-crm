@@ -743,6 +743,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Considerando que la prospecto notificó explícitamente haber estado sin celular desde el viernes hasta hoy miércoles, se aplicó la regla de paciencia estratégica de no duplicar mensajes en la misma jornada para no saturarla mientras restablece su línea y se pone al día con sus pendientes.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **jueves 8 de octubre de 2026 a las 11:00 a. m.** para evaluar respuesta o realizar un toque suave de acompañamiento técnico.
 
+### 100. Cierre por Silencio Post-Desenganche con Puerta Abierta - Nancy Flores (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:31 p. m., cumplidas las 48 horas tras el mensaje de desenganche con puerta abierta enviado el lunes 5 a las 10:35 a. m., se constató la ausencia de respuesta.
+    *   Entendiendo que el silencio confirma su decisión de pausar la implementación del sistema debido a sus actividades docentes y de consulta, se dio por concluido el ciclo de seguimiento sin emitir mensajes adicionales para mantener la postura profesional.
+    *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `no_responde` (*«Silencio post-desenganche / Pausa con puerta abierta»*), depurando el pipeline comercial y liberando la tarea activa.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
