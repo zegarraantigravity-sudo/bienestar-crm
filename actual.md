@@ -737,6 +737,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 11:27 a. m., tras cumplirse las 48 horas de espera del mensaje del lunes y acumular 3 silencios consecutivos tras la reunión de demostración por Zoom del 29/09, Alberto envió mensaje de desenganche definitivo (break-up) retirando la presión comercial, liberando el cupo de prueba de la plataforma y dejando la puerta abierta con total cordialidad para cuando decida sistematizar los planes de sus alumnos.
     *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `no_responde` (*«Silencio post-Zoom / Cupo liberado con puerta abierta»*), liberando la tarea activa para depurar el embudo.
 
+### 99. Paciencia Estratégica y Holgura por Recuperación de Celular - Mónica (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:23 p. m., se constató la ausencia de respuesta tras las instrucciones de instalación de la PWA en PC enviadas el martes a las 09:05 a. m.
+    *   Considerando que la prospecto notificó explícitamente haber estado sin celular desde el viernes hasta hoy miércoles, se aplicó la regla de paciencia estratégica de no duplicar mensajes en la misma jornada para no saturarla mientras restablece su línea y se pone al día con sus pendientes.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **jueves 8 de octubre de 2026 a las 11:00 a. m.** para evaluar respuesta o realizar un toque suave de acompañamiento técnico.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
