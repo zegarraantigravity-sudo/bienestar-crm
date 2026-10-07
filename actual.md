@@ -714,6 +714,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se acordó evaluar llamada únicamente en la tarde si no responde ni abona.
     *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **miércoles 7 de octubre de 2026 a las 3:30 p. m.**
 
+### 95. Mensaje de Reprogramación de Zoom y Plazo Límite de 48h - Consuelo Naranjo (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:17 a. m., tras dejar un día de holgura el martes, Alberto envió mensaje de reprogramación consultando si le acomoda coordinar el Zoom demostrativo de 10 minutos para hoy en la tarde o mañana jueves.
+    *   Se acordó otorgar 48 horas de plazo: en caso de no responder para el viernes 9 de octubre a las 11:00 a. m., se le enviará un mensaje de desenganche definitivo y se pasará a **`cerrado_perdido`** con puerta abierta para limpiar el embudo.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para el **viernes 9 de octubre de 2026 a las 11:00 a. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
