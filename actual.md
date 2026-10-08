@@ -800,6 +800,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A su vez, Alberto introdujo con sutileza el producto comercial principal: la App móvil con planes de nutrición y alimentación personalizada bajo marca propia del gimnasio, planteándole la posibilidad de coordinar un esquema de comisiones por recomendación si alguno de sus clientes desea brindar nutrición digital a sus socios.
     *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **lunes 12 de octubre de 2026 a las 12:00 p. m.** para esperar su respuesta y evaluar sinergias comerciales.
 
+### 109. Micro-Toque de Soporte Técnico en PC y Descompresión - Mónica (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:31 a. m., tras cumplirse 48 horas de las instrucciones de instalación de la PWA en PC y la holgura del miércoles por su recuperación de línea telefónica, Alberto envió un micro-toque ligero de acompañamiento técnico para chequear si logró abrir la app en la computadora o si requería asistencia, otorgándole total tranquilidad ante sus tiempos de consulta.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y fijando un plazo de 48 horas hasta el **sábado 10 de octubre de 2026 a las 11:00 a. m.** para monitorear respuesta o proceder con desenganche de puerta abierta si persiste el silencio.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
