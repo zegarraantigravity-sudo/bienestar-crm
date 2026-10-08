@@ -762,6 +762,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se reconoció la alta demanda de su labor médica con pacientes en el hospital, retirando toda presión comercial sobre la reunión y dejando la puerta abierta para cuando decida sistematizar el coaching de sus asesorados.
     *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Falta a Zoom y silencio / Desenganche por carga médica con puerta abierta»*), depurando el embudo comercial y liberando la tarea activa.
 
+### 103. Verificación de Silencio en WhatsApp y Programación de Llamada Matutina - David Godoy (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:32 p. m., se constató mediante captura de pantalla que David mantuvo el mensaje de WhatsApp enviado a las 09:53 a. m. sin abrir durante toda la jornada (dos checks plomos), incumpliendo nuevamente su compromiso telefónico del martes de abonar los S/ 200 de saldo.
+    *   Para cortar la evasiva sin desgaste por chat, Alberto acordó realizar una llamada telefónica directa en horario operativo de su centro fitness para exigir la regularización inmediata del pago o definir una fecha inamovible.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **jueves 8 de octubre de 2026 a las 10:30 a. m.** para la llamada directa de cobranza.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
