@@ -781,6 +781,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió mensaje de desenganche elegante retirando la presión comercial, dejando el proyecto en pausa y las puertas abiertas si en el futuro decide sistematizar sus clases para sus alumnas.
     *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Sin respuesta tras reactivación de octubre / Desinterés con puerta abierta»*), depurando el embudo activo y liberando la tarea.
 
+### 106. Mensaje Firme de Cobranza en Tiempo Real - David Godoy (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:06 a. m., al constatarse en WhatsApp que David se encontraba «en línea» tras haber ignorado el mensaje del día anterior, Alberto optó por evitar el desgaste de una llamada telefónica y le envió un mensaje directo, firme y de alta postura.
+    *   Se le requirió una confirmación franca sobre si realizará hoy la transferencia de los S/ 200 de saldo para cuadrar formalmente su cuenta para su inicio de enero y cortar de raíz los seguimientos repetitivos.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y reprogramando la próxima acción para hoy **jueves 8 de octubre de 2026 a las 2:00 p. m.** para monitorear respuesta o abono.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
