@@ -768,6 +768,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Para cortar la evasiva sin desgaste por chat, Alberto acordó realizar una llamada telefónica directa en horario operativo de su centro fitness para exigir la regularización inmediata del pago o definir una fecha inamovible.
     *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **jueves 8 de octubre de 2026 a las 10:30 a. m.** para la llamada directa de cobranza.
 
+### 104. Alta de Nuevo Lead Calificado y Zoom Agendado para Mañana - Eva Álvarez (7 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:38 p. m., en prospección en frío por WhatsApp, Eva Álvarez (`+52 1 442 754 5575`, Nutricionista de Querétaro, México) respondió con alto interés solicitando conocer el funcionamiento de la app y la estructura de costos.
+    *   Alberto validó el modelo accesible por créditos y propuso una sesión demostrativa de 10 minutos por Zoom. Eva indicó tener agenda llena hasta el domingo, pero reservó su única ventana disponible para mañana jueves de 3:00 a 4:00 p. m. horario México.
+    *   Alberto confirmó formalmente la reunión para mañana **jueves 8 de octubre a las 3:00 p. m. México (4:00 p. m. Perú)**, presentándose profesionalmente. Eva confirmó su nombre (*Eva Álvarez*) y ratificó estar pendiente de la sesión.
+    *   Cumpliendo la **Regla 5 (Admisión al CRM)**, se dio de alta como nuevo lead en Supabase en estado **`cita_agendada`** (Plan 30 — S/ 400) y se programó la alarma de reunión para el **jueves 8 de octubre de 2026 a las 4:00 p. m.** (`16:00` hora Perú).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
