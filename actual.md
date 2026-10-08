@@ -841,6 +841,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se acordó enviarle hoy a las 6:00 p. m. la cotización formal y un código de activación de 28 días para que pruebe el sistema como paciente.
     *   Se actualizó su ficha en Supabase pasando al estado **`presentacion_realizada`** con un valor estimado de S/ 400 (Plan 30) y programando la próxima acción para hoy **jueves 8 de octubre de 2026 a las 6:00 p. m.** (`18:00`).
 
+### 116. Inasistencia a Zoom Demostrativo y Mensaje de Alta Postura - Consuelo Naranjo (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 04:56 p. m., Alberto envió el enlace de la sala de Zoom a Consuelo Naranjo para la cita acordada a las 5:00 p. m.
+    *   A las 05:03 p. m., al no registrarse ingreso, Alberto realizó una llamada por WhatsApp sin respuesta (se constató que su última conexión figuraba a las 4:05 p. m., sin haber abierto WhatsApp).
+    *   A las 05:15 p. m., tras cumplir 15 minutos de cortesía, Alberto cerró la sala de Zoom y envió mensaje de alta postura empática reconociendo que seguramente se le complicó con consultas o pacientes de última hora, dejando la puerta abierta y la pelota en su cancha.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** y programando la próxima acción para el **viernes 9 de octubre de 2026 a las 5:00 p. m.** para evaluar respuesta espontánea sin insistir.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
