@@ -793,6 +793,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto le respondió confirmando recepción con tranquilidad y quedando a la espera de la constancia para dejar su registro cuadrado al 100% en el sistema.
     *   Se actualizó su bitácora en Supabase y se reprogramó la próxima acción para hoy **jueves 8 de octubre de 2026 a las 12:00 p. m.** para verificar el ingreso de los S/ 200 a la cuenta bancaria.
 
+### 108. Sinceramiento de CRM y Propuesta Sutil de App de Nutrición - Darío Cienfuegos (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:22 a. m., cumplidos los 3 días de prueba pactados, Alberto envió mensaje de seguimiento a Darío Cienfuegos. Darío respondió a los pocos minutos indicando que revisó el CRM, consultando por una comparativa frente a *AppsFit* y pidiendo un planteamiento de inversión y ganancias/comisiones para sus clientes de gimnasios.
+    *   Alberto le aclaró con total transparencia que Bienestar CRM fue desarrollado exclusivamente como herramienta interna de prospección y ventas para uso de él y su socio, sin intención de competir con sistemas de gestión operativa de gimnasios (torniquetes, asistencias o caja).
+    *   A su vez, Alberto introdujo con sutileza el producto comercial principal: la App móvil con planes de nutrición y alimentación personalizada bajo marca propia del gimnasio, planteándole la posibilidad de coordinar un esquema de comisiones por recomendación si alguno de sus clientes desea brindar nutrición digital a sus socios.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **lunes 12 de octubre de 2026 a las 12:00 p. m.** para esperar su respuesta y evaluar sinergias comerciales.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
