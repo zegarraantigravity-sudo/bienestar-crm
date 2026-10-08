@@ -811,6 +811,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto le respondió con afecto y respeto por sus tiempos, validando su carga por arranque de temporada y reiterándole que las puertas quedan abiertas para cuando decida implementarlo.
     *   Se actualizó su ficha en Supabase registrando su nombre completo (**Machy Flores**), manteniendo su estado en **`cerrado_perdido`** con puerta abierta y la relación comercial en el punto más alto de confianza.
 
+### 111. Reprogramación de Verificación de Saldo para Cierre de Tarde - David Godoy (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:25 p. m., considerando los horarios habituales de cierre de caja y movimiento de su centro fitness, y para priorizar el enfoque absoluto en los Zooms demostrativos de la tarde, Alberto programó la verificación final del abono de los S/ 200 de saldo para las 6:00 p. m.
+    *   En caso de que no figure la transferencia en la cuenta bancaria para esa hora, se evaluará enviar un mensaje directo de cierre o realizar la llamada de cobranza.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y reprogramando la próxima acción para hoy **jueves 8 de octubre de 2026 a las 6:00 p. m.** (`18:00`).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
