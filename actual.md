@@ -775,6 +775,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó formalmente la reunión para mañana **jueves 8 de octubre a las 3:00 p. m. México (4:00 p. m. Perú)**, presentándose profesionalmente. Eva confirmó su nombre (*Eva Álvarez*) y ratificó estar pendiente de la sesión.
     *   Cumpliendo la **Regla 5 (Admisión al CRM)**, se dio de alta como nuevo lead en Supabase en estado **`cita_agendada`** (Plan 30 — S/ 400) y se programó la alarma de reunión para el **jueves 8 de octubre de 2026 a las 4:00 p. m.** (`16:00` hora Perú).
 
+### 105. Desenganche Elegante y Cierre con Puerta Abierta - Machy (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:55 a. m., tras cumplirse las 48 horas de espera del mensaje de reactivación de octubre pactado previamente y constatarse que solo respondió un bot automatizado de WhatsApp Business sin respuesta humana posterior, se confirmó la ausencia de interés y prioridad comercial.
+    *   Alberto envió mensaje de desenganche elegante retirando la presión comercial, dejando el proyecto en pausa y las puertas abiertas si en el futuro decide sistematizar sus clases para sus alumnas.
+    *   Se actualizó su ficha en Supabase pasando a estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Sin respuesta tras reactivación de octubre / Desinterés con puerta abierta»*), depurando el embudo activo y liberando la tarea.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
