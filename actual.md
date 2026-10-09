@@ -880,6 +880,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Nutrióloga Michoacán**: A las 3:40 p. m. se verificó que el mensaje de filtro matutino mantiene dos checks plomos (el contacto no abrió el chat de WhatsApp por encontrarse en consultas). En cumplimiento estricto del compromiso de honor y profesionalismo acordado el día previo (*«Unos 10 minutos antes te comparto el enlace»*), se programó el envío del enlace de la sala de Zoom para las **4:50 p. m. Perú (3:50 p. m. México)** para la sesión de las 5:00 p. m., otorgándole 10-12 minutos de cortesía en sala antes de dar por concluida la cita si no asiste.
     *   **David Godoy**: Al constatarse que a las 3:40 p. m. aún no se registraba la transferencia de los S/ 200 de saldo, se acordó otorgarle holgura operativa hasta el cierre de la jornada laboral (6:00 p. m.). De no ingresar el comprobante para dicha hora, se procederá con una llamada telefónica directa de definición para cuadrar la cuenta o pausar el proyecto hasta su inicio formal en enero de 2027. Se reprogramó la próxima acción en Supabase para hoy **viernes 9 de octubre de 2026 a las 6:00 p. m.** (`18:00`).
 
+### 122. Entrega de Video de Fondo Web para Migración - Noé Rojas (9 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 04:34 p. m., en cumplimiento del acuerdo de soporte técnico del miércoles, Alberto envió a Noé Rojas el recurso gráfico en alta calidad (video de fondo solicitado para el banner de la portada de su tienda `nrsports.mx`).
+    *   Se facilitó el material técnico para que su equipo de programación y diseño pueda avanzar en la integración de la web sin presionar los tiempos de su migración (10 a 15 días).
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y ratificando la próxima acción para el **lunes 26 de octubre de 2026 a las 11:30 a. m.** para evaluar el término de la migración y coordinar la vinculación técnica del aplicativo antes del lanzamiento oficial de noviembre.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
