@@ -868,6 +868,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Cumpliendo estrictamente la **Regla 5 (Admisión al CRM)**, se dio de alta en Supabase bajo el identificador provisional **`Nutrióloga Michoacán`** en estado **`cita_agendada`**, con plan proyectado Plan 30 ($114 USD / S/ 400).
     *   Se programó la próxima acción para hoy **viernes 9 de octubre de 2026 a las 4:00 p. m. Perú** (`16:00` / `15:00` México) para el envío del recordatorio asertivo de 1 hora previa y posterior enlace de Zoom.
 
+### 120. Filtro Matutino de Compromiso y Reconfirmación de Cita - Nutrióloga Michoacán (9 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:42 a. m., aplicando el protocolo de protección de agenda y filtrado de prospectos en frío, Alberto envió mensaje directo de reconfirmación y solicitud de nombre vía WhatsApp a la profesional de Michoacán (`+52 1 715 120 5933`).
+    *   Con alta postura ejecutiva, se le solicitó ratificar si se mantiene la sesión de las 4:00 p. m. hora México (5:00 p. m. Perú) e indicar su nombre para personalizar la sesión, brindándole con total transparencia y cortesía la alternativa de liberar el horario si se le complica con sus consultas.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** y programando el monitoreo para el mediodía / 01:00 p. m. para ratificar o liberar el bloque de la tarde.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
