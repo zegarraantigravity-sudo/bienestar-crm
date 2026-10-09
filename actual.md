@@ -861,6 +861,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:12 a. m., constatando que David se encontraba en línea, Alberto envió un mensaje asertivo y de alta postura comercial planteándole con franqueza el desgaste mutuo de coordinar el saldo desde la semana pasada y solicitándole liquidar hoy mismo la transferencia de los S/ 200 para cerrar su expediente de enero de 2027 sin generar incomodidades diarias.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** y fijando la verificación del comprobante de transferencia para hoy **viernes 9 de octubre de 2026 a las 2:00 p. m.** (`14:00`).
 
+### 119. Admisión al CRM y Zoom Agendado para la Tarde - Nutrióloga Michoacán (9 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   En prospección en frío por WhatsApp en Michoacán, México (`+52 1 715 120 5933`), la profesional respondió con alto interés (*«Buenas tardes si me interesa»*).
+    *   Alberto le planteó opciones para el viernes y la profesional seleccionó y confirmó formalmente el horario de la tarde (*«A las 4:00 por favor»*). Alberto confirmó la reunión demostrativa por Zoom de 10 minutos para hoy **viernes 9 de octubre a las 4:00 p. m. México / 5:00 p. m. Perú**.
+    *   Cumpliendo estrictamente la **Regla 5 (Admisión al CRM)**, se dio de alta en Supabase bajo el identificador provisional **`Nutrióloga Michoacán`** en estado **`cita_agendada`**, con plan proyectado Plan 30 ($114 USD / S/ 400).
+    *   Se programó la próxima acción para hoy **viernes 9 de octubre de 2026 a las 4:00 p. m. Perú** (`16:00` / `15:00` México) para el envío del recordatorio asertivo de 1 hora previa y posterior enlace de Zoom.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
