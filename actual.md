@@ -855,6 +855,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Kit de Prueba como Paciente**: A las 10:56 p. m., Alberto le compartió el enlace oficial de instalación de la PWA (`https://nutri-alberto.bienestarsinexcusas.site/`), video tutorial guiado para celular y el código de activación exclusivo **`NUT-FLC-5S8N`** para que experimente en carne propia el flujo clínico de 28 días con recetario interactivo y asistente virtual 24/7.
     *   Se actualizó su ficha en Supabase adjuntando el documento de propuesta en su galería, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **sábado 10 de octubre de 2026 a las 11:00 a. m.** para evaluar su experiencia y resolver dudas comerciales.
 
+### 118. Mensaje Asertivo de Cobranza Definitiva y Cierre de Saldo S/ 200 - David Godoy (9 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:39 a. m., tras no registrarse el abono comprometido en audio el día previo, Alberto realizó llamadas telefónicas (convencional y por WhatsApp) sin respuesta.
+    *   A las 10:12 a. m., constatando que David se encontraba en línea, Alberto envió un mensaje asertivo y de alta postura comercial planteándole con franqueza el desgaste mutuo de coordinar el saldo desde la semana pasada y solicitándole liquidar hoy mismo la transferencia de los S/ 200 para cerrar su expediente de enero de 2027 sin generar incomodidades diarias.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** y fijando la verificación del comprobante de transferencia para hoy **viernes 9 de octubre de 2026 a las 2:00 p. m.** (`14:00`).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
