@@ -848,6 +848,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 05:15 p. m., tras cumplir 15 minutos de cortesía, Alberto cerró la sala de Zoom y envió mensaje de alta postura empática reconociendo que seguramente se le complicó con consultas o pacientes de última hora, dejando la puerta abierta y la pelota en su cancha.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** y programando la próxima acción para el **viernes 9 de octubre de 2026 a las 5:00 p. m.** para evaluar respuesta espontánea sin insistir.
 
+### 117. Despacho de Propuesta Formal en PDF ($114 USD) y Entrega de Código de Activación NUT-FLC-5S8N - Eva Álvarez (8 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:02 p. m., Alberto entregó a Eva Álvarez la propuesta formal de servicios integrales en PDF (*`PROPUESTA_NUTRIOLOGA_EVA_ALVAREZ.pdf`*) con una vigencia de 15 días (hasta el 23 de octubre de 2026).
+    *   **Estructura Tarifaria en USD (Mercado Internacional México)**: Se presentó el Plan 30 a **$114.00 USD/mes** ($3.80 USD por paciente), Plan 80 a **$200.00 USD/mes** y Plan 200 a **$340.00 USD/mes**, con facilidades de pago del 50% de anticipo y 50% contra entrega vía PayPal o Western Union.
+    *   **Kit de Prueba como Paciente**: A las 10:56 p. m., Alberto le compartió el enlace oficial de instalación de la PWA (`https://nutri-alberto.bienestarsinexcusas.site/`), video tutorial guiado para celular y el código de activación exclusivo **`NUT-FLC-5S8N`** para que experimente en carne propia el flujo clínico de 28 días con recetario interactivo y asistente virtual 24/7.
+    *   Se actualizó su ficha en Supabase adjuntando el documento de propuesta en su galería, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **sábado 10 de octubre de 2026 a las 11:00 a. m.** para evaluar su experiencia y resolver dudas comerciales.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
