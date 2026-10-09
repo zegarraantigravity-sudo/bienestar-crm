@@ -874,6 +874,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Con alta postura ejecutiva, se le solicitó ratificar si se mantiene la sesión de las 4:00 p. m. hora México (5:00 p. m. Perú) e indicar su nombre para personalizar la sesión, brindándole con total transparencia y cortesía la alternativa de liberar el horario si se le complica con sus consultas.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** y programando el monitoreo para el mediodía / 01:00 p. m. para ratificar o liberar el bloque de la tarde.
 
+### 121. Desenganche y Cierre de Consuelo Naranjo, Protocolo de Enlace para Nutrióloga Michoacán y Reprogramación de Cobranza de David Godoy (9 de Octubre de 2026 - Tarde)
+*   **Acción Realizada**:
+    *   **Consuelo Naranjo**: Tras constatar que la prospecto leyó con doble check azul el mensaje de cortesía tras su segundo plantón de Zoom del día anterior y acumuló 24 horas completas en silencio, Alberto le envió a las 3:45 p. m. el mensaje de desenganche elegante (break-up) retirando la presión comercial, cerrando su cupo de prueba y dejando la puerta abierta con alta postura ejecutiva. Se actualizó su estado en Supabase pasando a **`cerrado_perdido`** con motivo `no_responde` (*«Plantón a 2 Zooms y desenganche elegante con puerta abierta»*), depurando el embudo activo.
+    *   **Nutrióloga Michoacán**: A las 3:40 p. m. se verificó que el mensaje de filtro matutino mantiene dos checks plomos (el contacto no abrió el chat de WhatsApp por encontrarse en consultas). En cumplimiento estricto del compromiso de honor y profesionalismo acordado el día previo (*«Unos 10 minutos antes te comparto el enlace»*), se programó el envío del enlace de la sala de Zoom para las **4:50 p. m. Perú (3:50 p. m. México)** para la sesión de las 5:00 p. m., otorgándole 10-12 minutos de cortesía en sala antes de dar por concluida la cita si no asiste.
+    *   **David Godoy**: Al constatarse que a las 3:40 p. m. aún no se registraba la transferencia de los S/ 200 de saldo, se acordó otorgarle holgura operativa hasta el cierre de la jornada laboral (6:00 p. m.). De no ingresar el comprobante para dicha hora, se procederá con una llamada telefónica directa de definición para cuadrar la cuenta o pausar el proyecto hasta su inicio formal en enero de 2027. Se reprogramó la próxima acción en Supabase para hoy **viernes 9 de octubre de 2026 a las 6:00 p. m.** (`18:00`).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
