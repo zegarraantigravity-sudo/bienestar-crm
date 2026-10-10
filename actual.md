@@ -895,6 +895,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 07:01 p. m., Edna respondió con gran entusiasmo y calidez (*«Muchas gracias. Me parece muy bien ahorita que termine la instalaré»*).
     *   Se actualizó su ficha en Supabase: identificador renombrado de `Nutrióloga Michoacán` a **`Edna Mendez`**, estado actualizado a **`presentacion_realizada`** (Plan 30 — S/ 400 / $114 USD) y próxima acción programada para el **lunes 12 de octubre de 2026 a las 11:00 a. m.** para evaluar su experiencia en la app y resolver dudas comerciales.
 
+### 124. Definición Estratégica de Cobranza de Saldo Contra Entrega - David Godoy (9 de Octubre de 2026 - Cierre)
+*   **Acción Realizada**:
+    *   Al cierre de la jornada del viernes (07:45 p. m.), se constató que David Godoy no realizó la transferencia de los S/ 200 de saldo que prometió liquidar en sus audios.
+    *   **Enfoque Comercial y Modelo de Negocio Clarificado**: Se estableció formalmente el fundamento de la cobranza: el saldo pendiente de S/ 200 corresponde estrictamente al **50% contra entrega por el trabajo de desarrollo y diseño de la web y app PWA ya culminados y aprobados**, habiendo pagado previamente el 50% de anticipo en 2 partes. La fecha de apertura de su centro fitness en enero de 2027 es independiente de la obligación de liquidar el software ya entregado y en su poder.
+    *   Para no perder postura cobrando un viernes por la noche fuera de horario de oficina, se programó la gestión directa para el horario operativo matutino del sábado.
+    *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **sábado 10 de octubre de 2026 a las 10:30 a. m.** para llamada telefónica directa de liquidación (o envío de mensaje firme con cuentas BBVA y PLIN en caso de no contestar).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
