@@ -886,6 +886,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se facilitó el material técnico para que su equipo de programación y diseño pueda avanzar en la integración de la web sin presionar los tiempos de su migración (10 a 15 días).
     *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y ratificando la próxima acción para el **lunes 26 de octubre de 2026 a las 11:30 a. m.** para evaluar el término de la migración y coordinar la vinculación técnica del aplicativo antes del lanzamiento oficial de noviembre.
 
+### 123. Presentación Exitosa en Vivo, Despacho de Propuesta ($114 USD) y Código NUT-FLC-R5CO - Edna Mendez (9 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 05:00 p. m. (04:00 p. m. México), se llevó a cabo la reunión demostrativa por Zoom en vivo con la Lic. Edna Mendez (`+52 1 715 120 5933`, Michoacán, México).
+    *   La sesión fue altamente exitosa: la nutrióloga mostró gran receptividad y destacó como ventaja decisiva la personalización de Marca Blanca (Portal Web y App PWA con su propia identidad visual), diferenciándola de la plataforma *Avena* que no brinda personalización con la marca del profesional.
+    *   A las 06:51 p. m., Alberto le compartió el enlace oficial de instalación de la PWA (`https://nutri-alberto.bienestarsinexcusas.site/`), las instrucciones paso a paso, el código de activación exclusivo **`NUT-FLC-R5CO`** y el video tutorial explicativo para que realice la prueba del flujo clínico de 28 días en su celular.
+    *   Asimismo, se le remitió la propuesta formal de servicios integrales en PDF con tarifas para el mercado internacional en USD (Plan 30 a **$114.00 USD/mes** / $3.80 por paciente, Plan 80 a **$200.00 USD/mes** y Plan 200 a **$340.00 USD/mes** con 50% de anticipo y 50% contra entrega vía PayPal o Western Union).
+    *   A las 07:01 p. m., Edna respondió con gran entusiasmo y calidez (*«Muchas gracias. Me parece muy bien ahorita que termine la instalaré»*).
+    *   Se actualizó su ficha en Supabase: identificador renombrado de `Nutrióloga Michoacán` a **`Edna Mendez`**, estado actualizado a **`presentacion_realizada`** (Plan 30 — S/ 400 / $114 USD) y próxima acción programada para el **lunes 12 de octubre de 2026 a las 11:00 a. m.** para evaluar su experiencia en la app y resolver dudas comerciales.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
