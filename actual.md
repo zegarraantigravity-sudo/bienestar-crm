@@ -902,6 +902,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Para no perder postura cobrando un viernes por la noche fuera de horario de oficina, se programó la gestión directa para el horario operativo matutino del sábado.
     *   Se actualizó su bitácora en Supabase, manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para el **sábado 10 de octubre de 2026 a las 10:30 a. m.** para llamada telefónica directa de liquidación (o envío de mensaje firme con cuentas BBVA y PLIN en caso de no contestar).
 
+### 125. Cierre de 2do Cliente Activo (DTC Boutique) y Activación de Comisión Pasiva - Luis Culqui (10 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   Luis Culqui consiguió y refirió con éxito a su segundo cliente: **DTC Boutique (Dogo Training Center Boutique)**, estudio boutique de striking para mujeres ubicado en Pueblo Libre.
+    *   El cliente adquirió el **Plan 30 (S/ 400)**, habiendo abonado ya **S/ 200 de anticipo** y quedando pendiente la diferencia de **S/ 200 de saldo contra entrega**.
+    *   La plataforma web y aplicativo móvil PWA quedaron 100% desarrollados, personalizados y operativos en [`dtc-boutique.bienestarsinexcusas.site`](https://dtc-boutique.bienestarsinexcusas.site/).
+    *   Para hoy **sábado 10 de octubre**, se programó la sesión de capacitación a cargo del socio comercial Luis Hakim, donde el cliente cancelará el saldo pendiente de S/ 200.
+    *   **Liquidación de Comisión por Venta Nueva**: De los S/ 400 del plan, se liquidan **S/ 60 (15%)** a favor de Luis Culqui una vez ingresado el saldo.
+    *   **Hito de Alianza B2B y Desbloqueo de Ingreso Pasivo Recurrente**: Con la incorporación de DTC Boutique, Luis Culqui alcanza formalmente sus **2 negocios activos** requeridos (junto a Vinces Fight Club). Según los términos del convenio comercial acordado, este logro activa su derecho a cobrar el **10% de comisión de cada uno como ingreso pasivo en cada una de sus futuras renovaciones**.
+    *   En cumplimiento de la directiva de gestión de referidos (mismo esquema de Vinces Fight), no se creó ficha independiente en el CRM, centralizando todo el historial, cobranza y estatus dentro de la bitácora de Luis Culqui.
+    *   Se actualizó su bitácora en Supabase y se programó la próxima acción para hoy **sábado 10 de octubre de 2026 a las 6:00 p. m.** (`18:00`) para verificar la conclusión de la capacitación con Luis Hakim, el ingreso del saldo de S/ 200 y la liquidación de sus S/ 60 de comisión.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
