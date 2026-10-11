@@ -930,6 +930,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   **Plan Proyectado**: Plan 30 ($114.00 USD / S/ 400)
         *   **Próxima Acción**: Enviar enlace de sala de Zoom 10 minutos antes, programada para el **domingo 11 de octubre de 2026 a las 09:50 a. m. hora Perú** (`08:50` hora Nicaragua).
 
+### 128. Cierre de Jornada de Sábado: Capacitación de DTC Boutique Realizada y Definición de Suspensión de David Godoy (10 de Octubre de 2026 - Noche)
+*   **Acción Realizada**:
+    *   **Luis Culqui (Capacitación de DTC Boutique Completada)**: A las 8:50 p. m., Alberto confirmó que la capacitación técnica y comercial de DTC Boutique a cargo del socio comercial Luis Hakim se llevó a cabo exitosamente hoy sábado, completando la entrega del software. Luis Culqui ya gestionó directamente con la clienta el requerimiento de transferencia del saldo del 50% (S/ 200), encontrándose a la espera del ingreso bancario. Al confirmarse el abono, se procederá con la liquidación inmediata de los S/ 60 (15%) de comisión para Culqui. Se actualizó su ficha en Supabase y se programó la próxima acción para el **lunes 12 de octubre de 2026 a las 10:30 a. m.** para monitorear el comprobante de pago.
+    *   **David Godoy (Definición Estratégica de Suspensión)**: Al cierre de la jornada del sábado, David Godoy mantuvo el silencio y no transfirió el saldo pendiente de S/ 200 ni respondió al mensaje firme enviado a las 11:25 a. m. En resguardo de la postura comercial y el descanso de fin de semana, se mantuvo cero comunicación el sábado por la noche y domingo. Se estableció como definición operativa que el lunes a primera hora se le remitirá la notificación formal de suspensión temporal del proyecto, servidores y accesos hasta la liquidación del desarrollo entregado, cortando el desgaste semanal. Se actualizó su ficha en Supabase y se programó la próxima acción para el **lunes 12 de octubre de 2026 a las 10:00 a. m.**
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
