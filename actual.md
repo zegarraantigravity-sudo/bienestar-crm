@@ -952,6 +952,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Con alta postura ejecutiva y consideración por sus tiempos familiares de domingo, se justificó la demora matutina y se le plantearon dos opciones transparentes para concretar la reunión demostrativa de 10 minutos por Zoom en vivo: hoy por la tarde (a partir de las 4:00 p. m. hora Nicaragua) o mañana lunes con calma.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** (Plan 30 — $114 USD / S/ 400) y fijando la próxima acción para hoy **domingo 11 de octubre de 2026 a las 03:30 p. m. hora Perú** (`15:30` / `14:30` Nicaragua) para monitorear respuesta o coordinar la sala.
 
+### 131. Reactivación Comercial de Alto Valor tras Desenganche - Consuelo Naranjo (11 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 02:28 p. m. del domingo, tras el mensaje de desenganche elegante (break-up) enviado el viernes que dio por cerrado su cupo de prueba, la Lic. Consuelo Naranjo (`+593 96 251 9793`, Ecuador) rompió el silencio disculpándose formalmente y justificando que su ausencia en los Zooms previos se debió a contingencias familiares no previstas.
+    *   **Revelación Comercial de Oro**: Consuelo confirmó una necesidad de altísimo valor: *«Tengo una plataforma pero quiero mejorar. Lo que pasa es que estoy en asuntos familiares. Mil disculpas. Yo creo me desocupo el jueves. Yo me comunico»*. Esto valida que ya está educada en el uso de plataformas nutricionales digitales, paga actualmente por software de mercado (tipo Avena o Nutrimind) pero busca mejorar su propuesta (ventaja decisiva de Marca Blanca y personalización propia), con fecha de apertura fijada por ella misma para el jueves.
+    *   A las 02:32 p. m., Alberto le respondió con calidez y alta postura ejecutiva, validando con empatía sus prioridades familiares, destacando que justamente la app de Marca Blanca está diseñada para dar ese salto cualitativo sobre plataformas genéricas y otorgándole total tranquilidad hasta el jueves para coordinar la sesión de 10 minutos por Zoom en vivo.
+    *   Se reactivó su ficha en Supabase pasando de `cerrado_perdido` a estado **`cita_agendada`** (Plan 30 — S/ 400), eliminando las etiquetas de pérdida y programando la próxima acción para el **jueves 15 de octubre de 2026 a las 03:00 p. m.** para monitorear su contacto o enviar recordatorio ligero.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
