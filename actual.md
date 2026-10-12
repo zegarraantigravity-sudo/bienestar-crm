@@ -1017,6 +1017,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Paciencia Táctica y Alta Postura**: Considerando el perfil analítico de Mónica (quien ya validó su interés en incorporar la app a sus servicios y se encuentra en el día 17+ de su prueba de escritorio en PC) y para no saturar con mensajes duplicados durante el arranque de semana en consultorio, se determinó otorgarle la jornada de hoy lunes.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — S/ 400) y reprogramando la próxima acción para el **martes 13 de octubre de 2026 a las 11:30 a. m.** para evaluar respuesta espontánea o enviar mensaje de definición formal de Plan 30 por vencimiento de prueba.
 
+### 139. Depuración Comercial y Cierre de Puerta Abierta - Carmina Badillo (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A la 01:58 p. m. del lunes, se realizó la inspección visual del chat de WhatsApp con la Lic. Carmina Badillo (`+52 1 722 677 3506`, Toluca, México).
+    *   Se constató que en su última interacción del lunes 5 de octubre, la profesional reiteró por duplicado su deseo de espacio: *«por favor te aviso cualquier cosa, gracias Bendiciones!»* y posteriormente *«por favor te aviso. Linda tarde. Hasta pronto 🙏😃»*.
+    *   **Alta Postura Comercial y Respeto a la Voluntad del Prospecto**: Alberto determinó con total certeza comercial no insistir ni saturar a la profesional tras cumplirse la semana de margen. Insistir tras una despedida formal afectaría la excelente reputación del producto.
+    *   **Depuración del Embudo Activo**: Se actualizó su ficha en Supabase pasando de `presentacion_realizada` al estado definitivo **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Puerta abierta cordial tras reiterar 'por favor te aviso'»*), dejando la próxima acción fijada en *«Puerta abierta; contactar solo si ella escribe para retomar»* (sin fecha activa de alarma).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
