@@ -1029,6 +1029,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Aracely Serrano (`+505 8665 3473`, Nicaragua)**: A las 02:18 p. m. del lunes, se verificó el chat de WhatsApp constatando que leyó con doble check azul el mensaje de inicio de semana enviado a las 08:48 a. m., sin emitir respuesta aún. Se determinó aplicar silencio táctico total durante la tarde de hoy para no ejercer presión contraproducente. Se reprogramó en Supabase para el **martes 13 de octubre de 2026 a las 10:00 a. m.** para evaluar si responde espontáneamente; de continuar en silencio, se aplicará mensaje cordial de break-up elegante.
     *   **Dario Cienfuegos (`+51 987 654 321`, Lima, Perú)**: Se evaluó el estatus del contacto. La última interacción del jueves consistió únicamente en un escueto «Con fe» respecto al tema de David Godoy, sin mostrar interés comercial ni requerimientos sobre la plataforma de nutrición. Alberto determinó depurar el embudo activo trasladándolo formalmente al estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Sin interés comercial activo en plataforma (contacto pasivo)»*), dejando puerta abierta y fijando la próxima acción en *«Puerta abierta; contactar solo si él escribe o consulta»* (sin fecha de alarma activa).
 
+### 141. Reprogramación de Seguimiento Nocturno - Yoselin Nails Parra Calixto (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 02:40 p. m. del lunes, Alberto dispuso programar el contacto con Yoselin Nails (`+51 981 576 351`) para la noche de hoy lunes a las **08:30 p. m.** (`20:30`).
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`cerrado_ganado`**, fijando la próxima acción en *«Escribirle por WhatsApp para verificar cómo le está yendo con su página y el saldo de los 200 soles»* para hoy a las 08:30 p. m., dejando la tarde despejada para las actividades externas de Alberto.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
