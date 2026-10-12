@@ -1024,6 +1024,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura Comercial y Respeto a la Voluntad del Prospecto**: Alberto determinó con total certeza comercial no insistir ni saturar a la profesional tras cumplirse la semana de margen. Insistir tras una despedida formal afectaría la excelente reputación del producto.
     *   **Depuración del Embudo Activo**: Se actualizó su ficha en Supabase pasando de `presentacion_realizada` al estado definitivo **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Puerta abierta cordial tras reiterar 'por favor te aviso'»*), dejando la próxima acción fijada en *«Puerta abierta; contactar solo si ella escribe para retomar»* (sin fecha activa de alarma).
 
+### 140. Depuración Comercial (Dario Cienfuegos) y Pausa Táctica (Aracely Serrano) (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   **Aracely Serrano (`+505 8665 3473`, Nicaragua)**: A las 02:18 p. m. del lunes, se verificó el chat de WhatsApp constatando que leyó con doble check azul el mensaje de inicio de semana enviado a las 08:48 a. m., sin emitir respuesta aún. Se determinó aplicar silencio táctico total durante la tarde de hoy para no ejercer presión contraproducente. Se reprogramó en Supabase para el **martes 13 de octubre de 2026 a las 10:00 a. m.** para evaluar si responde espontáneamente; de continuar en silencio, se aplicará mensaje cordial de break-up elegante.
+    *   **Dario Cienfuegos (`+51 987 654 321`, Lima, Perú)**: Se evaluó el estatus del contacto. La última interacción del jueves consistió únicamente en un escueto «Con fe» respecto al tema de David Godoy, sin mostrar interés comercial ni requerimientos sobre la plataforma de nutrición. Alberto determinó depurar el embudo activo trasladándolo formalmente al estado **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Sin interés comercial activo en plataforma (contacto pasivo)»*), dejando puerta abierta y fijando la próxima acción en *«Puerta abierta; contactar solo si él escribe o consulta»* (sin fecha de alarma activa).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
