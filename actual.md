@@ -965,6 +965,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura y Rigor Comunicacional**: Sin asumir presunciones ni dar por sentado acuerdos no confirmados, se consultó con franqueza su disponibilidad de tiempos para coordinar los 10 minutos por Zoom pendientes para hoy (a media mañana o por la tarde), dándole margen de descompresión si se encuentra copada con consultas y pacientes de arranque de semana.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cita_agendada`** (Plan 30 — $114 USD / S/ 400) y fijando la próxima acción para hoy **lunes 12 de octubre de 2026 a las 12:00 p. m.** para monitorear respuesta o definir la siguiente jugada.
 
+### 133. Cobro Total de DTC Boutique (S/ 200) y Liquidación de Comisión a Luis Culqui (S/ 60) - 12 de Octubre de 2026
+*   **Acción Realizada**:
+    *   A las 09:17 a. m. del lunes, se confirmó el pago total del saldo de **DTC Boutique (Dogo Training Center Boutique)**: la clienta transfirió los S/ 200 restantes, completando el 100% de los **S/ 400 del Plan 30**.
+    *   **Liquidación Inmediata de Comisión por Venta Nueva**: Alberto liquidó inmediatamente los **S/ 60 (15%)** de comisión comercial a favor de Luis Culqui, saneando la cuenta al 100%.
+    *   **Vigencia del Plan y Consolidación de Alianza B2B**:
+        *   El plan de 30 créditos de DTC Boutique tiene vigencia oficial hasta el **27 de noviembre de 2026**.
+        *   Con esto, Luis Culqui consolida formalmente sus **2 negocios activos** requeridos (Vinces Fight Club con corte el **20 de noviembre de 2026** y DTC Boutique con corte el **27 de noviembre de 2026**).
+        *   Este hito activa definitivamente su derecho a percibir el **10% de comisión pasiva recurrente** en cada renovación futura de ambas cuentas.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`cerrado_ganado`**, registrando los términos actualizados y programando la próxima acción para el **lunes 16 de noviembre de 2026 a las 10:00 a. m.** para coordinar el soporte previo a los vencimientos.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
