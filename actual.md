@@ -1001,6 +1001,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   **Estado:** **`cita_agendada`**
         *   **Próxima Acción:** Enviar enlace directo de sala de Zoom 10 minutos antes, programada para hoy **lunes 12 de octubre de 2026 a las 05:50 p. m. hora Perú** (`17:50` / `16:50` El Salvador).
 
+### 137. Llamadas Telefónicas y Audio Directo de Cobranza Fraterna - David Godoy (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:01 p. m. del lunes, Alberto realizó dos llamadas telefónicas (línea convencional y llamada por WhatsApp) a David Godoy (`Godoy Fitness`), sin registrar respuesta.
+    *   A las 12:04 p. m., constatando que David se encontraba «en línea» en WhatsApp, Alberto le envió una nota de voz directa de 2 minutos abordándolo con respeto, franqueza y alta postura fraterna («como patas»):
+        *   Le expuso la incomodidad mutua del desgaste diario de llamadas y mensajes tras más de un mes de espera habiendo cumplido con entregar el desarrollo y diseño de la web y app terminados semanas atrás (destacando las continuas mejoras añadidas como rutinas con GIFs animados).
+        *   Le planteó una solución financiera práctica y sin pretextos: liquidar **S/ 100 hoy y S/ 100 mañana** para saldar definitivamente los S/ 200 de saldo pendiente y cerrar su expediente contable.
+        *   El audio fue escuchado inmediatamente con **doble check azul** manteniéndose David en línea.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** y programando la próxima acción para hoy **lunes 12 de octubre de 2026 a las 06:00 p. m.** (`18:00`) para monitorear respuesta y el comprobante del primer abono de S/ 100.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
