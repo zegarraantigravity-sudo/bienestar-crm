@@ -988,6 +988,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura Comercial y Respeto a Tiempos Clínicos**: Teniendo en cuenta que los lunes por la mañana los consultorios médicos se encuentran saturados con pesajes y agendas semanales, y que la propuesta formal en PDF cuenta con vigencia plena hasta el 23 de octubre, se determinó no saturar a la profesional con mensajes duplicados a primera hora.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400) y reprogramando la próxima acción para el **martes 13 de octubre de 2026 a las 11:00 a. m.** para evaluar respuesta espontánea durante el lunes o realizar micro-toque descompresor el martes.
 
+### 136. Admisión al CRM y Cita Agendada por Zoom en Vivo - Elmer Platero (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   En prospección en frío por WhatsApp en El Salvador (`+503 6066 9437`), el profesional reaccionó con ❤️ y solicitó ver el funcionamiento de la aplicación móvil (*«Muéstrame la app please»*).
+    *   Alberto le propuso conectarse 10 minutos por Zoom en vivo con pantalla compartida para ver la experiencia como paciente y le consultó su nombre y preferencia horaria.
+    *   El contacto respondió con alto compromiso proponiendo el bloque de la tarde (*«Fíjese que mejor en la tarde. Aunque quizás noche puede a las 6:00 pm ? O 5:00 pm?»*). Alberto confirmó la reunión demostrativa para hoy **lunes 12 de octubre de 2026 a las 5:00 p. m. hora El Salvador (6:00 p. m. hora Perú)**.
+    *   El profesional confirmó su nombre completo y asistencia con entusiasmo (*«Muchísimas gracias. Claro que si. Elmer Platero»*).
+    *   **Cumplimiento Estricto de la Regla 5 de Admisión al CRM**: Se dio de alta formalmente en Supabase (`eb54488a-246e-449a-a1aa-625e864afba0`):
+        *   **Identificador:** **Elmer Platero**
+        *   **Tipo:** Nutricionista (`nutricionista`)
+        *   **Plan Proyectado:** Plan 30 ($114.00 USD / S/ 400)
+        *   **Estado:** **`cita_agendada`**
+        *   **Próxima Acción:** Enviar enlace directo de sala de Zoom 10 minutos antes, programada para hoy **lunes 12 de octubre de 2026 a las 05:50 p. m. hora Perú** (`17:50` / `16:50` El Salvador).
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
