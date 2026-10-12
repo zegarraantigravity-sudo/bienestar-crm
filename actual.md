@@ -975,6 +975,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Este hito activa definitivamente su derecho a percibir el **10% de comisión pasiva recurrente** en cada renovación futura de ambas cuentas.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cerrado_ganado`**, registrando los términos actualizados y programando la próxima acción para el **lunes 16 de noviembre de 2026 a las 10:00 a. m.** para coordinar el soporte previo a los vencimientos.
 
+### 134. Seguimiento Matutino Post-Demo y Evaluación de Prueba - Edna Mendez (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:31 a. m. del lunes, tras las 48 horas de holgura del fin de semana, Alberto envió mensaje de seguimiento de inicio de semana por WhatsApp a la Lic. Edna Mendez (`+52 1 715 120 5933`, Michoacán, México).
+    *   **Enfoque de Experiencia y Soporte Comercial**: Con calidez y sin presiones de venta, se le consultó cómo le fue con la instalación de la PWA en su celular, qué tal sintió la experiencia del flujo clínico de 28 días con el código `NUT-FLC-R5CO`, y se le ofreció total apertura para absolver dudas de la propuesta formal en PDF ($114 USD / Plan 30) de cara a implementarla con sus pacientes.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400) y fijando la próxima acción para el **martes 13 de octubre de 2026 a las 11:00 a. m.** para monitorear respuesta o impresiones de prueba.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
