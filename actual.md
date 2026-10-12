@@ -981,6 +981,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Enfoque de Experiencia y Soporte Comercial**: Con calidez y sin presiones de venta, se le consultó cómo le fue con la instalación de la PWA en su celular, qué tal sintió la experiencia del flujo clínico de 28 días con el código `NUT-FLC-R5CO`, y se le ofreció total apertura para absolver dudas de la propuesta formal en PDF ($114 USD / Plan 30) de cara a implementarla con sus pacientes.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400) y fijando la próxima acción para el **martes 13 de octubre de 2026 a las 11:00 a. m.** para monitorear respuesta o impresiones de prueba.
 
+### 135. Inspección Visual y Reprogramación Estratégica Post-Demo - Eva Álvarez (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:41 a. m. del lunes, se realizó la inspección visual del chat de WhatsApp con la Lic. Eva Álvarez (`+52 1 442 754 5575`, Querétaro, México).
+    *   Se constató que el mensaje de seguimiento enviado el sábado a las 11:33 a. m. mantiene doble check azul (leído por la profesional durante el fin de semana sin emitir respuesta).
+    *   **Alta Postura Comercial y Respeto a Tiempos Clínicos**: Teniendo en cuenta que los lunes por la mañana los consultorios médicos se encuentran saturados con pesajes y agendas semanales, y que la propuesta formal en PDF cuenta con vigencia plena hasta el 23 de octubre, se determinó no saturar a la profesional con mensajes duplicados a primera hora.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400) y reprogramando la próxima acción para el **martes 13 de octubre de 2026 a las 11:00 a. m.** para evaluar respuesta espontánea durante el lunes o realizar micro-toque descompresor el martes.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
