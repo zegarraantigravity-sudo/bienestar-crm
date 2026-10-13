@@ -1034,6 +1034,67 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 02:40 p. m. del lunes, Alberto dispuso programar el contacto con Yoselin Nails (`+51 981 576 351`) para la noche de hoy lunes a las **08:30 p. m.** (`20:30`).
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`cerrado_ganado`**, fijando la próxima acción en *«Escribirle por WhatsApp para verificar cómo le está yendo con su página y el saldo de los 200 soles»* para hoy a las 08:30 p. m., dejando la tarde despejada para las actividades externas de Alberto.
 
+### 142. Zoom Demostrativo en Vivo y Entrega de Flujo Post-Demo - Elmer Platero (12 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 06:00 p. m. hora Perú (05:00 p. m. El Salvador), Alberto llevó a cabo con total éxito la reunión demostrativa por Zoom en vivo con el Lic. Elmer Platero (`+503 6066 9437`, El Salvador).
+    *   **Entrega de Acceso y Activación Clínica**: Se le facilitó el enlace oficial a la plataforma (`https://nutri-alberto.bienestarsinexcusas.site/`) junto con el instructivo paso a paso detallado para instalar la PWA (botón «Instalar App»), validar su correo, ingresar su código de activación y completar su ficha para estructurar su plan de 28 días, respaldado con video tutorial de apoyo visual.
+    *   **Interés Firme en Plan 30 y Despacho de Cotización**: Elmer confirmó su alto interés en contratar el **Plan 30 ($114 USD / S/ 400)**. Alberto le elaboró y entregó la cotización formal de servicios integrales en formato editable Microsoft Word (`Propuesta_Elmer_Platero.docx`) y PDF (`Propuesta_Elmer_Platero.pdf`) en dólares americanos, adaptada con vigencia de 15 días (hasta el 27 de octubre) y enlace exclusivo de ejemplo (`elmerplatero.bienestarsinexcusas.site`).
+    *   **Actualización en Supabase**: Se actualizó su ficha (`eb54488a-246e-449a-a1aa-625e864afba0`) pasando formalmente de `cita_agendada` a **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), fijando la próxima acción en *«Monitorear armado de plan de 28 días en la app y recepción de cotización formal de Plan 30 ($114 USD)»* programada para el **miércoles 14 de octubre de 2026 a las 11:00 a. m.**
+
+---
+
+## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
+
+### 1. Plantilla Maestra Post-Zoom (WhatsApp)
+> ¡Hola **[NOMBRE]**! 👋 Te comparto el enlace de la plataforma y los pasos directos para activar y armar tu plan clínico de 28 días:
+>
+> 🔗 **Enlace de la plataforma:**
+> https://nutri-alberto.bienestarsinexcusas.site/
+>
+> 📲 **Paso 1: Instalar la aplicación**
+> Abre el enlace (desde tu celular o en tu computadora) y dale clic al botón que dice **«Instalar App»** (arriba a la derecha) para que se instale directamente en tu pantalla.
+>
+> 👤 **Paso 2: Iniciar registro**
+> Una vez instalada, dale clic al botón verde **«Comenzar Mi Plan»** (en el centro) o a **«Acceso Pacientes»** (arriba a la derecha).
+>
+> ✉️ **Paso 3: Validación de correo**
+> Coloca tu correo electrónico. Te llegará un código de verificación a tu bandeja de entrada; ingrésalo en la app para continuar.
+>
+> 🔑 **Paso 4: Código de activación**
+> En la siguiente pantalla te pedirá tu código de activación, colocas este:
+> 👉 **[CÓDIGO_DE_ACTIVACIÓN]**
+>
+> 📝 **Paso 5: Llenar tu ficha**
+> Completa tus datos y objetivos nutricionales, y al finalizar dale clic a **«Enviar»**.
+>
+> ⏱️ **Paso 6: Generación del plan**
+> ¡Listo! En aproximadamente **1 hora** el sistema estructurará y tendrá listo tu plan completo de 28 días en la plataforma para que lo explores a fondo.
+>
+> 🎥 **Te adjunto también un video corto para que te sirva de guía visual en todo el proceso.**
+>
+> Cualquier duda que tengas en algún paso, me avisas de inmediato. ¡Éxitos! 🚀
+
+### 2. Plantilla Maestra de Cotización Internacional ($ USD)
+*   **Encabezado**: BIENESTAR SIN EXCUSAS • TECNOLOGÍA NUTRICIONAL CLÍNICA | PROPUESTA DE SERVICIOS INTEGRALES
+*   **Dirigido a**: `[NOMBRE_DEL_PROFESIONAL]` — Nutriólogo Clínico / Especialista en Nutrición
+*   **Vigencia**: 15 días a partir de la fecha de emisión.
+*   **Responsable Comercial**: Alberto Zegarra Ballón — Director General (+51 978 438 246, `albertozegarra@bienestarsinexcusas.site`, `bienestarsinexcusas.site`).
+*   **Pilares**: 1. Prescripción Nutricional Automatizada de 28 Días, 2. App Móvil & Web Marca Blanca, 3. Asistente Virtual 24/7.
+*   **Tarifario Oficial ($ USD)**:
+    *   **Plan 30**: $ 114.00 USD (Hasta 30 pacientes | $ 3.80 USD / paciente)
+    *   **Plan 80**: $ 200.00 USD (Hasta 80 pacientes | $ 2.50 USD / paciente)
+    *   **Plan 200 (Recomendado)**: $ 340.00 USD (Hasta 200 pacientes | $ 1.70 USD / paciente)
+    *   **Plan 500**: $ 770.00 USD | **Plan 1,200**: $ 1,714.00 USD | **Plan 3,300**: $ 4,285.00 USD | **Plan 8,000**: $ 8,570.00 USD
+*   **Módulo 2**: Web profesional, subdominio personalizado (`[nombre].bienestarsinexcusas.site` o dominio propio), PWA instalable en iOS y Android con un clic, cartel QR para sala de espera y botón de WhatsApp.
+*   **Beneficio 100% Incluido**: App y web personalizada sin costo adicional de desarrollo desde Plan 30 en adelante.
+*   **Condiciones Comerciales**: 50% anticipo para inicio y desarrollo / 50% contra entrega y activación oficial.
+*   **Métodos de Pago**:
+    1. **PayPal**: Pago online con tarjeta internacional o cuenta PayPal ($ USD).
+    2. **Western Union**: Transferencia internacional en efectivo o web ($ USD) a nombre de Alberto Gustavo Zegarra Ballón Quezada (DNI: 10783023, Lima, Perú).
+    3. **Transferencia Bancaria (PEN)**: BBVA Cta: 0011-0131-0200371618 / CCI: 0111-31000-20037161806.
+    4. **Billetera Digital (PEN)**: PLIN: 978 438 246.
+*   **Generador Automatizado**: Script en Python disponible en el entorno para exportar instantáneamente el documento formal en Word (`.docx`) y PDF (`.pdf`) en la carpeta de descargas de Alberto.
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
