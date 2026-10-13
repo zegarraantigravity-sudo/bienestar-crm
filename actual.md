@@ -1082,6 +1082,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura Comercial y Respeto a Tiempos de Consultorio**: Teniendo en cuenta que la propuesta formal en PDF ($114 USD / Plan 30) cuenta con vigencia plena hasta el 24 de octubre, y que enviar mensajes duplicados en menos de 24 horas resulta contraproducente y ansioso, Alberto determinó otorgar 48 horas de holgura táctica.
     *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), reprogramando la próxima acción para el **miércoles 14 de octubre de 2026 a las 11:30 a. m.** para evaluar respuesta espontánea o realizar micro-toque enfocado en su experiencia PWA vs Avena.
 
+### 149. Micro-Toque de Soporte Técnico y Descompresión - Eva Álvarez (13 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:00 a. m. del martes, se realizó la inspección visual del chat de WhatsApp con la Lic. Eva Álvarez (`+52 1 442 754 5575`, Querétaro, México), constatando 72 horas completas de margen desde el mensaje del sábado sin respuesta (doble check azul en visto).
+    *   **Micro-Toque Descompresor de Soporte**: A las 11:02 a. m., Alberto le envió un mensaje breve y ligero enfocado exclusivamente en soporte técnico («¿tuviste alguna dificultad técnica para ingresar con tu código a la app o si todo bien por ahí?»), sin presiones comerciales ni mención a la cotización formal, facilitando una respuesta de baja fricción.
+    *   Se actualizó su ficha en Supabase manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), reprogramando la próxima acción para el **miércoles 14 de octubre de 2026 a las 11:00 a. m.** para monitorear respuesta.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
