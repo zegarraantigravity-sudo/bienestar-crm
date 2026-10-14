@@ -1148,6 +1148,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`) manteniendo el estado **`presentacion_realizada`**, programando la próxima acción en *«Llamadas telefónicas matutinas de definición; de no contestar, enviar mensaje directo de evasión (Plazo definitivo: sábado 17/10)»* para el **miércoles 14 de octubre de 2026 a las 09:30 a. m.**
     *   Asimismo, se reprogramó el contacto con **Yoselin Nails** para el **miércoles 14 de octubre de 2026 a las 10:00 a. m.** para consultar sobre el saldo de los 200 soles y su página web.
 
+### 158. Seguimiento Post-Demo y Evaluación de Experiencia en App - Elmer Platero (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:23 a. m. del miércoles, tras cumplirse ~39 horas de holgura desde la entrega de credenciales, PWA y propuesta formal en PDF ($114 USD / Plan 30), Alberto envió mensaje de seguimiento cálido y de soporte técnico vía WhatsApp a Elmer Platero (`+503 6066 9437`, El Salvador).
+    *   **Enfoque de Experiencia Clínica y Cero Presión**: Con alta postura y calidez, se le consultó cómo le fue con el armado de su plan de 28 días en la app y cómo sintió la experiencia como paciente, abriendo el espacio para absolver dudas puntuales sin empujar la venta del PDF de manera agresiva.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`eb54488a-246e-449a-a1aa-625e864afba0`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), fijando la próxima acción en *«Monitorear respuesta de Elmer a seguimiento de plan de 28 días y propuesta de Plan 30 ($114 USD)»* programada para el **jueves 15 de octubre de 2026 a las 11:00 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
