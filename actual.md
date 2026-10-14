@@ -1173,6 +1173,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura y Manejo de Objeción de Competencia**: A las 10:48 a. m., Alberto le respondió con calidez validando su digitalización («¡Excelente, colega! La verdad que tener una plataforma te quita un dolor de cabeza enorme con el Excel...»), sembrando el diferenciador decisivo de **Marca Blanca** (que las plataformas tradicionales son genéricas y muestran la marca del proveedor, mientras que Bienestar Sin Excusas le entrega una App y portal con su propio logo y nombre para sus pacientes).
     *   **Cumplimiento de Reglas Comerciales (Regla 4 y Regla 5)**: Se le dejó la invitación abierta a evaluar la diferencia en una sesión demostrativa de 10 min por Zoom en vivo con pantalla compartida (descartando cualquier video demo según la Regla 4) y se le consultó su nombre para personalizar la comunicación. En estricto apego a la **Regla 5 de Admisión al CRM**, el prospecto se mantiene en seguimiento en WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para el Zoom.
 
+### 162. Confirmación de Instalación de PWA y Holgura Vespertina para Prueba - Edna Mendez (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:43 a. m. del miércoles, apenas 2 minutos después del micro-toque de soporte, la Lic. Edna Mendez (`+52 1 715 120 5933`, Michoacán, México) respondió con gran calidez: *«Bien gracias a Dios y usted ? He tenido unos días un poco complicados pero ya en la tarde pienso que si alcanzaré a checar... Si la instale puse datos pero no he podido revisar detenidamente»*.
+    *   **Hito Clínico Clave**: Se confirmó que la profesional ya completó la instalación de la PWA en su celular y cargó sus datos, encontrándose su plan de 28 días ya generado y estructurado en la plataforma. Su silencio previo se debió exclusivamente a la saturación de consultas médicas de inicio de semana, comprometiéndose ella misma a explorar el aplicativo hoy por la tarde.
+    *   **Validación y Holgura sin Presión**: A las 10:53 a. m., Alberto le respondió con empatía validando la demanda de tiempo de los pacientes en consultorio y otorgándole total tranquilidad para navegar y explorar la app por la tarde.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), programando la próxima acción en *«Monitorear impresiones de Edna tras revisión vespertina de la PWA y conectar con propuesta de Plan 30 ($114 USD)»* para el **jueves 15 de octubre de 2026 a las 11:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
