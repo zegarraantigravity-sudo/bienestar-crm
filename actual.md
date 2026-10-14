@@ -1129,6 +1129,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Postura Profesional y Cierre Amable**: Alberto concluyó la interacción con alta postura dejando la puerta 100% abierta para el futuro si decide digitalizar sus planes nutricionales.
     *   **Actualización en Supabase**: Se depuró el embudo activo trasladando su ficha (`7924bc58-e14a-4943-ac9f-27dfac3a0100`) formalmente al estado **`cerrado_perdido`** con motivo `agenda_liberada_puerta_abierta` (*«Aceptó amablemente liberación de agenda con 'Gracias!'; puerta abierta para futuro»*), fijando la próxima acción en *«Puerta abierta; contactar solo si ella vuelve a escribir»* (sin fecha de alarma activa).
 
+### 156. Zoom Demostrativo Realizado, Entrega de Código NUT-FLC-AN7A y Diagnóstico SERUMS - Nutrióloga Anita (13 de Octubre de 2026 - Noche)
+*   **Acción Realizada**:
+    *   Alberto llevó a cabo con éxito la reunión demostrativa por Zoom en vivo con la Lic. Anita (`+51 928 756 030`, Perú), mostrando en pantalla la plataforma web y el aplicativo móvil interactivo.
+    *   **Diagnóstico y Validación de Producto**: La profesional conoce y utiliza actualmente la plataforma mexicana *Nutrimind*; sin embargo, validó que la propuesta de valor y personalización de Bienestar Sin Excusas le gustó mucho.
+    *   **Contexto Profesional (SERUMS)**: Explicó que actualmente se encuentra realizando su SERUMS y cuenta con un volumen reducido de pacientes privados por el momento, por lo que una suscripción mensual fija no le resulta rentable en esta etapa.
+    *   **Estrategia de Prueba como Paciente**: Alberto acordó otorgarle un código de activación exclusivo (**`NUT-FLC-AN7A`**) para que estructure su plan de 28 días y experimente en carne propia el flujo clínico interactivo de la PWA. No se requiere despacho de cotización en PDF debido a que los planes y precios fueron explicados en detalle verbalmente durante la sesión.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`e59041be-45c7-48dc-ab66-1af431230480`) pasando formalmente de `cita_agendada` a **`presentacion_realizada`** (Plan 30 — S/ 400), fijando la próxima acción en *«Monitorear armado de plan de 28 días con código NUT-FLC-AN7A»* programada para el **viernes 16 de octubre de 2026 a las 11:00 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
