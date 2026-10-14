@@ -1137,6 +1137,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Estrategia de Prueba como Paciente**: Alberto acordó otorgarle un código de activación exclusivo (**`NUT-FLC-AN7A`**) para que estructure su plan de 28 días y experimente en carne propia el flujo clínico interactivo de la PWA. No se requiere despacho de cotización en PDF debido a que los planes y precios fueron explicados en detalle verbalmente durante la sesión.
     *   **Actualización en Supabase**: Se actualizó su ficha (`e59041be-45c7-48dc-ab66-1af431230480`) pasando formalmente de `cita_agendada` a **`presentacion_realizada`** (Plan 30 — S/ 400), fijando la próxima acción en *«Monitorear armado de plan de 28 días con código NUT-FLC-AN7A»* programada para el **viernes 16 de octubre de 2026 a las 11:00 a. m.**
 
+### 157. Estrategia de Cobranza Definitiva y Plazo Límite de Baja Irreversible - David Godoy (13 de Octubre de 2026 - Noche)
+*   **Acción Realizada**:
+    *   A las 11:15 p. m. del martes, se realizó la inspección visual del chat de WhatsApp con David Godoy (`+51 917 825 485`, Godoy Fitness).
+    *   Se constató que el mensaje de cobro directo del saldo completo (S/ 200) enviado a las 02:37 p. m. fue leído con doble check azul; sin embargo, David no emitió ninguna respuesta ni envió la constancia de pago por Plin, Yape o BBVA durante el resto de la jornada, manteniendo una conducta de evasión por silencio.
+    *   **Directiva Comercial y Ultimátum Improrrogable**: Alberto estableció una estrategia definitiva para cortar el desgaste:
+        1. **Llamadas matutinas:** El miércoles por la mañana se realizarán llamadas telefónicas continuas para forzar el contacto directo y exigir la fecha de pago de palabra.
+        2. **Mensaje de confrontación:** De no responder a las llamadas, se le remitirá mensaje directo confrontando su silencio (*«David, veo que me leíste y no me respondiste. El aplicativo y la web ya te los entregué completos y aprobados hace semanas. Dime con total franqueza qué día haces la transferencia de los 200 soles para anotar la fecha exacta y no estar desgastándonos con mensajes a cada rato.»*).
+        3. **Consecuencia irreversible (Plazo sábado 17 de octubre):** Se fija como fecha límite el sábado 17 de octubre de 2026. Si para ese día no ha liquidado los S/ 200 de saldo, se dará de baja por completo su página web y aplicativo móvil de los servidores de manera irreversible. Si a futuro (en enero de 2027 o posterior) decide reactivar el proyecto, perderá el anticipo previo y deberá pagar el desarrollo completo de nuevo desde cero.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`) manteniendo el estado **`presentacion_realizada`**, programando la próxima acción en *«Llamadas telefónicas matutinas de definición; de no contestar, enviar mensaje directo de evasión (Plazo definitivo: sábado 17/10)»* para el **miércoles 14 de octubre de 2026 a las 09:30 a. m.**
+    *   Asimismo, se reprogramó el contacto con **Yoselin Nails** para el **miércoles 14 de octubre de 2026 a las 10:00 a. m.** para consultar sobre el saldo de los 200 soles y su página web.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
