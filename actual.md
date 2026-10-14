@@ -1167,6 +1167,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Enfoque de Soporte y Cero Presión**: Se constató que el mensaje previo mantenía doble check plomo; por ende, se le consultó con calidez si tuvo alguna dificultad técnica para instalar la PWA en su celular o ingresar con su código de activación (`NUT-FLC-R5CO`), facilitando una respuesta de bajísima fricción sin presiones comerciales de venta.
     *   **Actualización en Supabase**: Se actualizó su ficha (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), fijando la próxima acción en *«Monitorear respuesta a micro-toque de soporte técnico o aplicar regla de silencio de 48h»* programada para el **viernes 16 de octubre de 2026 a las 11:30 a. m.**
 
+### 161. Respuesta y Filtro de Marca Blanca a Prospecto Frío - Nutriólogo Colombia (`+57 304 2430342`) (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 10:43 a. m. del miércoles, un profesional de nutrición en Colombia (`+57 304 2430342`) respondió a un mensaje de prospección en frío indicando: *«Gracias amigo ya adquirir un software para nutricionistas»*.
+    *   **Alta Postura y Manejo de Objeción de Competencia**: A las 10:48 a. m., Alberto le respondió con calidez validando su digitalización («¡Excelente, colega! La verdad que tener una plataforma te quita un dolor de cabeza enorme con el Excel...»), sembrando el diferenciador decisivo de **Marca Blanca** (que las plataformas tradicionales son genéricas y muestran la marca del proveedor, mientras que Bienestar Sin Excusas le entrega una App y portal con su propio logo y nombre para sus pacientes).
+    *   **Cumplimiento de Reglas Comerciales (Regla 4 y Regla 5)**: Se le dejó la invitación abierta a evaluar la diferencia en una sesión demostrativa de 10 min por Zoom en vivo con pantalla compartida (descartando cualquier video demo según la Regla 4) y se le consultó su nombre para personalizar la comunicación. En estricto apego a la **Regla 5 de Admisión al CRM**, el prospecto se mantiene en seguimiento en WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para el Zoom.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
