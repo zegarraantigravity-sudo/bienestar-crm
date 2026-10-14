@@ -1190,6 +1190,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Postura de Silencio Comercial y Consecuencia**: Alberto entró en silencio absoluto, suspendiendo cualquier intento adicional de contacto. Si al sábado 17 de octubre a las 12:00 p. m. no regulariza el saldo, se ejecutará la baja definitiva e irreversible de la web y aplicativo móvil de los servidores.
     *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`) manteniendo el estado **`presentacion_realizada`**, programando la próxima acción en *«Monitorear respuesta o constancia de pago de S/ 200 (Plazo definitivo de baja de servidores: sábado 17/10 a las 12:00 p. m.)»* para el **sábado 17 de octubre de 2026 a las 12:00 p. m.**
 
+### 164. Clarificación de Cuenta Saldada y Programación de Seguimiento Post-Venta - Yoselin Nails Parra Calixto (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:30 a. m. del miércoles, Alberto precisó y clarificó el estatus contable de Yoselin Nails (`+51 981 576 351`): la clienta canceló previamente el 100% del valor total de su cuenta, encontrándose completamente saldada y con cero saldo pendiente.
+    *   **Enfoque de Éxito del Cliente y Venta de Créditos**: Se corrigió la descripción de la tarea para enfocarla exclusivamente en acompañamiento post-venta: consultar cómo le está yendo con la aplicación y evaluar si ya comenzó a comercializar y colocar los créditos del plan nutricional entre las clientas de su salón de belleza.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`3b52b10a-8261-4b84-b304-9e87cb9c5b78`) manteniéndose en estado **`cerrado_ganado`**, fijando la próxima acción en *«Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas»* programada para hoy **miércoles 14 de octubre de 2026 a las 08:30 p. m.** (`20:30`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
