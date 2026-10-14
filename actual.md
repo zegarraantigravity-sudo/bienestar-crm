@@ -1182,6 +1182,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Validación y Holgura sin Presión**: A las 10:53 a. m., Alberto le respondió con empatía validando la demanda de tiempo de los pacientes en consultorio y otorgándole total tranquilidad para navegar y explorar la app por la tarde.
     *   **Actualización en Supabase**: Se actualizó su ficha (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), programando la próxima acción en *«Monitorear impresiones de Edna tras revisión vespertina de la PWA y conectar con propuesta de Plan 30 ($114 USD)»* para el **jueves 15 de octubre de 2026 a las 11:30 a. m.**
 
+### 163. Llamadas Matutinas sin Respuesta y Despacho de Mensaje de Confrontación con Plazo Límite - David Godoy (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 11:15 a. m. del miércoles, Alberto ejecutó el primer paso acordado realizando 3 llamadas telefónicas convencionales y 3 llamadas por WhatsApp (11:07, 11:11 y 11:13 a. m.) a David Godoy (`+51 917 825 485`, Godoy Fitness) sin obtener respuesta.
+    *   **Evasión Deliberada Constatada**: Se verificó en WhatsApp que su última conexión figuraba a las 11:01 a. m. (minutos antes de las llamadas), confirmando que ignoró deliberadamente las alertas telefónicas a sabiendas de la deuda pendiente de S/ 200 por el desarrollo entregado.
+    *   **Ejecución de Mensaje de Confrontación y Ultimátum**: A las 11:19 a. m., Alberto le envió mensaje formal confrontando su silencio (*«David, veo que me leíste ayer y no me respondiste, y ahora tampoco me atiendes las llamadas a pesar de estar en línea. El aplicativo y la web ya te los entregué completos y aprobados hace semanas. Dime con total franqueza qué día haces la transferencia de los 200 soles pendientes para anotar la fecha exacta y no estar desgastándonos con llamadas y mensajes a cada rato. Tenemos como fecha límite este sábado 17 para liquidar tu cuenta contable.»*).
+    *   **Postura de Silencio Comercial y Consecuencia**: Alberto entró en silencio absoluto, suspendiendo cualquier intento adicional de contacto. Si al sábado 17 de octubre a las 12:00 p. m. no regulariza el saldo, se ejecutará la baja definitiva e irreversible de la web y aplicativo móvil de los servidores.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`) manteniendo el estado **`presentacion_realizada`**, programando la próxima acción en *«Monitorear respuesta o constancia de pago de S/ 200 (Plazo definitivo de baja de servidores: sábado 17/10 a las 12:00 p. m.)»* para el **sábado 17 de octubre de 2026 a las 12:00 p. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
