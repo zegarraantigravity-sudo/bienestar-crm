@@ -1196,6 +1196,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Enfoque de Éxito del Cliente y Venta de Créditos**: Se corrigió la descripción de la tarea para enfocarla exclusivamente en acompañamiento post-venta: consultar cómo le está yendo con la aplicación y evaluar si ya comenzó a comercializar y colocar los créditos del plan nutricional entre las clientas de su salón de belleza.
     *   **Actualización en Supabase**: Se actualizó su ficha (`3b52b10a-8261-4b84-b304-9e87cb9c5b78`) manteniéndose en estado **`cerrado_ganado`**, fijando la próxima acción en *«Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas»* programada para hoy **miércoles 14 de octubre de 2026 a las 08:30 p. m.** (`20:30`).
 
+### 165. Respuesta y Canalización a Zoom en Vivo de Prospecto Frío - Nutriólogo Colombia (`+57 300 7420729`) (14 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 12:07 p. m. del miércoles, un profesional de nutrición en Colombia (`+57 300 7420729`) respondió a un mensaje de prospección en frío aceptando la demostración de la App con un conciso: *«Ok»*.
+    *   **Canalización Directa a Zoom Demostrativo (Regla 4)**: A las 12:09 p. m., Alberto le respondió con calidez canalizando el contacto hacia una sesión demostrativa de 10 min por Zoom en vivo con pantalla compartida («¡Genial, colega! Nos conectamos 10 minutitos por Zoom y te comparto pantalla para que veas en vivo la experiencia del paciente con su menú interactivo de 28 días, fotos de comidas y el asistente virtual...»), descartando cualquier video demo según la Regla 4, brindándole opciones de horario (hoy tarde o mañana mañana) y consultando su nombre.
+    *   **Cumplimiento de la Regla 5**: En estricto apego a la **Regla 5 de Admisión al CRM**, el prospecto se mantiene en seguimiento por WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para la sesión demostrativa por Zoom.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
