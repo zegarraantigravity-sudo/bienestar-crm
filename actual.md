@@ -1208,6 +1208,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Desarme de Confusión y Propuesta Colegiada**: A las 07:38 p. m., Alberto le respondió con empatía aclarando que escribe de colega a colega (desarmando la presunción de ser un paciente buscando consulta médica), presentando la propuesta de valor de **Marca Blanca** (App móvil y web con su propio logo para que sus pacientes tengan su menú interactivo de 28 días en el celular en vez de PDFs), consultando si actualmente sigue entregando planes en PDF/Excel y solicitando su nombre.
     *   **Cumplimiento de Reglas Comerciales (Regla 4 y Regla 5)**: En estricto apego a la **Regla 5 de Admisión al CRM**, el contacto se mantiene en seguimiento en WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para una sesión demostrativa por Zoom en vivo.
 
+### 167. Reprogramación Estratégica Post-Venta para Inicio de Semana - Yoselin Nails Parra Calixto (15 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 08:58 a. m. del jueves, Alberto dispuso no interrumpir a Yoselin Nails (`+51 981 576 351`) durante sus días pico de atención en el salón de belleza (jueves a sábado) y reprogramar su seguimiento post-venta para el arranque de la próxima semana.
+    *   **Estatus Contable 100% Saldado**: Se ratificó que la clienta no mantiene ninguna deuda y que el acompañamiento comercial se centrará en verificar el uso del aplicativo y la colocación de créditos entre sus clientas.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`3b52b10a-8261-4b84-b304-9e87cb9c5b78`) manteniéndose en estado **`cerrado_ganado`**, reprogramando la próxima acción en *«Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas»* para el **lunes 19 de octubre de 2026 a las 10:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
