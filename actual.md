@@ -1214,6 +1214,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Estatus Contable 100% Saldado**: Se ratificó que la clienta no mantiene ninguna deuda y que el acompañamiento comercial se centrará en verificar el uso del aplicativo y la colocación de créditos entre sus clientas.
     *   **Actualización en Supabase**: Se actualizó su ficha (`3b52b10a-8261-4b84-b304-9e87cb9c5b78`) manteniéndose en estado **`cerrado_ganado`**, reprogramando la próxima acción en *«Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas»* para el **lunes 19 de octubre de 2026 a las 10:30 a. m.**
 
+### 168. Inspección de Chat y Holgura Táctica Post-Demo - Elmer Platero (15 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:15 a. m. del jueves, se realizó la inspección visual del chat de WhatsApp con el Lic. Elmer Platero (`+503 6066 9437`, El Salvador).
+    *   Se constató que el mensaje de seguimiento de experiencia clínica enviado ayer miércoles a las 10:23 a. m. mantiene doble check plomo (el contacto no ha abierto el chat de WhatsApp desde ayer por encontrarse en consultas).
+    *   **Alta Postura Comercial y Respeto a Tiempos de Consultorio**: Considerando que apenas han transcurrido 23 horas y que la propuesta formal en PDF ($114 USD / Plan 30) cuenta con vigencia plena hasta el 27 de octubre, se determinó con criterio profesional no enviar mensajes duplicados hoy. Se otorga holgura táctica de 48 horas para que el profesional revise el mensaje con calma.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`eb54488a-246e-449a-a1aa-625e864afba0`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), reprogramando la próxima acción en *«Evaluar lectura de mensaje y aplicar micro-toque de soporte técnico tras 48h de holgura»* para el **viernes 16 de octubre de 2026 a las 11:00 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
