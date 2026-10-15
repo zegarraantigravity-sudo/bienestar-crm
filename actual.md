@@ -1227,6 +1227,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Enfoque de Experiencia de Paciente y Cero Presión**: Se le consultó con cordialidad cómo le fue explorando su plan de 28 días en la app ayer por la tarde, qué tal sintió la experiencia como paciente con las recetas y fotos de comidas, y si le surgió alguna duda puntual, facilitando el puente hacia la cotización de Plan 30 ($114 USD).
     *   **Actualización en Supabase**: Se actualizó su ficha (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), programando la próxima acción en *«Monitorear respuesta de Edna sobre experiencia de prueba en PWA y conectar con cotización de Plan 30 ($114 USD)»* para el **viernes 16 de octubre de 2026 a las 11:30 a. m.**
 
+### 170. Mensaje de Desenganche Elegante y Cierre de Período de Prueba - Mónica (15 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:45 a. m. del jueves, tras cumplirse 23 días de prueba de la plataforma (desde el 22 de septiembre) y transcurrir 46 horas completas sin respuesta al mensaje de definición del martes (acumulando dos toques consecutivos en visto/plomo), Alberto envió el mensaje formal de desenganche (*break-up*) vía WhatsApp a la Lic. Mónica (`+52 1 56 1283 2754`, México).
+    *   **Alta Postura Comercial y Cierre Psicológico Limpio**: El mensaje retiró formalmente la presión comercial y notificó con total cordialidad la pausa temporal de sus accesos a la plataforma de prueba (*«Mónica, veo que has andado a full con el trabajo y tus consultas. Para no saturarte de mensajes, voy a pausar por ahora los accesos a la plataforma de prueba. Si más adelante decides digitalizar las consultas de tus pacientes con tu propia App móvil y web personalizada, me escribes y con gusto lo retomamos. Te deseo muchos éxitos con tus pacientes 🙌»*), logrando desarmar la evasión y dejando la puerta 100% abierta para que sea ella quien busque el servicio si decide retomar en el futuro.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`6010bb15-3765-4f3b-b7fb-13c5163f4581`) pasando formalmente a estado **`cerrado_perdido`**, asignando `lost_reason: "sin_tiempo_interes"`, `lost_reason_label: "Pausa temporal de accesos tras 23 días de prueba; puerta abierta si decide retomar"`, fijando la próxima acción en *«Puerta abierta; contactar solo si ella vuelve a escribir para retomar Plan 30»* sin fecha pendiente (`next_action_date: ""`).
+
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
