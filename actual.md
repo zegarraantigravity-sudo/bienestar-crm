@@ -1202,6 +1202,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Canalización Directa a Zoom Demostrativo (Regla 4)**: A las 12:09 p. m., Alberto le respondió con calidez canalizando el contacto hacia una sesión demostrativa de 10 min por Zoom en vivo con pantalla compartida («¡Genial, colega! Nos conectamos 10 minutitos por Zoom y te comparto pantalla para que veas en vivo la experiencia del paciente con su menú interactivo de 28 días, fotos de comidas y el asistente virtual...»), descartando cualquier video demo según la Regla 4, brindándole opciones de horario (hoy tarde o mañana mañana) y consultando su nombre.
     *   **Cumplimiento de la Regla 5**: En estricto apego a la **Regla 5 de Admisión al CRM**, el prospecto se mantiene en seguimiento por WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para la sesión demostrativa por Zoom.
 
+### 166. Desarme de Mensaje Automático y Filtro Profesional - Nutrióloga Perú (`+51 946 662 222`) (14 de Octubre de 2026 - Noche)
+*   **Acción Realizada**:
+    *   A las 07:30 p. m. del miércoles, en prospección en frío por WhatsApp en Perú (`+51 946 662 222`), ingresó de inmediato el mensaje de bienvenida automático de WhatsApp Business de consultorio: *«Hola🙋🏻‍♀️ ¿En qué puedo ayudarte?🏽»*.
+    *   **Desarme de Confusión y Propuesta Colegiada**: A las 07:38 p. m., Alberto le respondió con empatía aclarando que escribe de colega a colega (desarmando la presunción de ser un paciente buscando consulta médica), presentando la propuesta de valor de **Marca Blanca** (App móvil y web con su propio logo para que sus pacientes tengan su menú interactivo de 28 días en el celular en vez de PDFs), consultando si actualmente sigue entregando planes en PDF/Excel y solicitando su nombre.
+    *   **Cumplimiento de Reglas Comerciales (Regla 4 y Regla 5)**: En estricto apego a la **Regla 5 de Admisión al CRM**, el contacto se mantiene en seguimiento en WhatsApp y no se da de alta en Supabase hasta que confirme formalmente interés y defina día/hora para una sesión demostrativa por Zoom en vivo.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
