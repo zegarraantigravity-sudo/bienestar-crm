@@ -1221,6 +1221,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura Comercial y Respeto a Tiempos de Consultorio**: Considerando que apenas han transcurrido 23 horas y que la propuesta formal en PDF ($114 USD / Plan 30) cuenta con vigencia plena hasta el 27 de octubre, se determinó con criterio profesional no enviar mensajes duplicados hoy. Se otorga holgura táctica de 48 horas para que el profesional revise el mensaje con calma.
     *   **Actualización en Supabase**: Se actualizó su ficha (`eb54488a-246e-449a-a1aa-625e864afba0`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), reprogramando la próxima acción en *«Evaluar lectura de mensaje y aplicar micro-toque de soporte técnico tras 48h de holgura»* para el **viernes 16 de octubre de 2026 a las 11:00 a. m.**
 
+### 169. Seguimiento de Experiencia de Prueba en PWA - Edna Mendez (15 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A las 09:29 a. m. del jueves, tras la confirmación del día anterior de que ya había instalado la PWA y cargado sus datos clínicos, Alberto envió un mensaje de seguimiento cálido vía WhatsApp a la Lic. Edna Mendez (`+52 1 715 120 5933`, Michoacán, México).
+    *   **Enfoque de Experiencia de Paciente y Cero Presión**: Se le consultó con cordialidad cómo le fue explorando su plan de 28 días en la app ayer por la tarde, qué tal sintió la experiencia como paciente con las recetas y fotos de comidas, y si le surgió alguna duda puntual, facilitando el puente hacia la cotización de Plan 30 ($114 USD).
+    *   **Actualización en Supabase**: Se actualizó su ficha (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) manteniéndose en estado **`presentacion_realizada`** (Plan 30 — $114 USD / S/ 400), programando la próxima acción en *«Monitorear respuesta de Edna sobre experiencia de prueba en PWA y conectar con cotización de Plan 30 ($114 USD)»* para el **viernes 16 de octubre de 2026 a las 11:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
