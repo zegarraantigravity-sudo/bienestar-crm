@@ -1280,6 +1280,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Alta Postura Comercial y Cero Saturación Nocturna**: En estricto apego a la dignidad y autoridad comercial, se determinó no insistir por la noche. Si para mañana al mediodía no confirma espontáneamente el Zoom para el viernes, se evaluará la emisión del mensaje de desenganche formal (*break-up*) para pasarla a `cerrado_perdido` y proteger la agenda comercial.
     *   **Actualización en Supabase**: Se actualizó su ficha (`0b19d4c1-a96a-44c5-9526-0c0ee1a5fc9c`) manteniéndose en estado **`cita_agendada`** (Plan 30 — $114 USD / S/ 400), reprogramando la próxima acción en *«Evaluar respuesta espontánea para Zoom de viernes o aplicar break-up definitivo»* para el **viernes 16 de octubre de 2026 a las 11:30 a. m.** (`11:30`).
 
+### 178. Inspección Visual Nocturna, Estrategia de Cobranza por SMS y Cláusula de Pérdida de Adelanto - David Godoy (15 de Octubre de 2026 - Noche)
+*   **Acción Realizada**:
+    *   A las 07:39 p. m. del jueves, se realizó la inspección visual del chat de WhatsApp con David Godoy (`+51 917 825 485`, Godoy Fitness).
+    *   Se constató que el mensaje de confrontación y ultimátum enviado ayer a las 11:19 a. m. mantiene doble check plomo (el contacto evade deliberadamente abrir el chat de WhatsApp a pesar de haberse conectado).
+    *   **Clarificación de Realidad Operativa del Lead**: Se ratifica en el expediente que David NO se encuentra operando la aplicación móvil actualmente y cuenta con CERO alumnos adentro (su proyecto de apertura está previsto para enero de 2027 o más adelante). La deuda pendiente de S/ 200 corresponde al 50% restante del trabajo de desarrollo, programación y entrega de la Web y App PWA ya culminado y aprobado semanas atrás.
+    *   **Estrategia de Cobro Directo por SMS y Cláusula Comercial Estricta**: Para romper su evasión en WhatsApp y evitar que dé por perdido el saldo sin consecuencias, Alberto determinó enviarle mañana viernes a las 10:30 a. m. un mensaje de texto tradicional (SMS) directo a su celular. Asimismo, se fijó la regla comercial definitiva: si al sábado 17 de octubre a las 12:00 p. m. no transfiere los S/ 200 de saldo, la plataforma se elimina definitivamente e irreversiblemente de los servidores, **pierde el 100% del adelanto de S/ 200 ya pagado**, y si en el futuro pretende retomar el aplicativo, no se le aceptará pagar la diferencia, sino que deberá cancelar los S/ 400 completos desde cero.
+    *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`) manteniéndose en estado **`presentacion_realizada`**, programando la próxima acción en *«Enviar SMS directo de cobro y ultimátum de pérdida de adelanto (Plazo definitivo: sábado 17/10 a las 12:00 p. m.)»* para el **viernes 16 de octubre de 2026 a las 10:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
