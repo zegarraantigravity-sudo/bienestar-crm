@@ -1371,6 +1371,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         4. **12:00 p. m. (Plazo Improrrogable de Cobranza - David Godoy)**: Verificar el abono de los S/ 200.00 de saldo. En caso de no registrarse el pago, aplicar llamada de presión final de 60 segundos o ejecutar la eliminación definitiva e irreversible del software y web de los servidores, aplicando la pérdida total del anticipo.
         5. **Frente Denisse Apaza (Opción de Reserva Anticipada)**: Evaluar propuesta de congelamiento de tarifa y separación de marca blanca con el 50% de anticipo (S/ 200.00) mientras culmina su viaje.
 
+### 190. Rediseño Visual Ejecutivo Soft-Canvas (Dribbble/Salesforce) e Implementación de Vista de Agenda Visual de Citas (CalendarView) (17 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   A solicitud de Alberto tras analizar propuestas de diseño de alto nivel en Dribbble (Relate Wise, Salesforce Customer Daily Operation y Microsoft Dynamics 365 Sales Hub), se ejecutó una modernización profunda de la interfaz y la adición del módulo visual de citas.
+    *   **Paleta Soft-Canvas Ejecutiva y Tokens en `src/index.css`**: Se configuraron tokens de diseño profesionales inspirados en plataformas SaaS corporativas modernas (`#F8FAFC` como fondo de lienzo, `#FFFFFF` en paneles y tarjetas, `#0F172A` para tipografía ejecutiva y elementos activos, `#E2E8F0` en bordes limpios, sombras tenues `rgba(15, 23, 42, 0.04)` y esquinas redondeadas de 14px a 16px).
+    *   **Segmented View Switcher en el Encabezado (`src/App.jsx`)**: Se incorporó en el header una barra segmentada moderna (`[ 📋 Tablero ] [ 📅 Agenda ] [ 👥 Directorio ] [ 📊 Métricas ]`) con micro-interacciones suaves que permite cambiar de vista en un solo clic, complementando el menú lateral tradicional.
+    *   **Creación del Módulo de Agenda (`src/components/CalendarView.jsx`)**:
+        *   **Navegación Dinámica**: Vista en cuadrícula mensual y vista semanal fluida, con botones de desplazamiento de período y botón de retorno rápido a «Hoy».
+        *   **Mapeo Seguro de Supabase**: Extracción y ordenamiento determinista de fechas de citas (`next_action_date`) desde el objeto `notes` de cada prospecto.
+        *   **Chips Visuales por Fase Comercial**: Representación cromática de eventos según el estado del lead (`cita_agendada` en morado ejecutivo, `presentacion_realizada` en azul índigo, `cerrado_ganado` en verde esmeralda y tareas de seguimiento en pizarra).
+        *   **Panel Lateral «Citas y Tareas de Hoy»**: Lista interactiva de los compromisos del día con visualización de hora am/pm, nombre del profesional y descripción concisa de la acción, equipada con botones de acción rápida en un clic (Llamar 📞, WhatsApp con plantillas 💬 y Ficha completa 📋).
+        *   **Métricas de Capacidad**: Tarjeta informativa con el balance de citas agendadas, demos realizadas y tareas de seguimiento del período.
+    *   **Verificación y Compilación Exitosa**: Se ejecutó `npm run build` con Vite v8.1.5, validando la compilación limpia de 1,831 módulos en 2.30 segundos con cero errores de sintaxis o empaquetado.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas

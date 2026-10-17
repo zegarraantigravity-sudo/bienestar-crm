@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut, ShieldCheck } from 'lucide-react';
+import { LayoutDashboard, Columns, Users, Plus, RefreshCw, LogOut, ShieldCheck, Calendar } from 'lucide-react';
 import { supabase } from './lib/supabaseClient';
 import { isSuperAdmin, getUserDisplayName, getUserRoleLabel, canUserViewLead } from './lib/utils';
 
@@ -7,6 +7,7 @@ import { isSuperAdmin, getUserDisplayName, getUserRoleLabel, canUserViewLead } f
 import DashboardView from './components/DashboardView';
 import KanbanView from './components/KanbanView';
 import LeadTableView from './components/LeadTableView';
+import CalendarView from './components/CalendarView';
 import LoginView from './components/LoginView';
 import LandingPageView from './components/LandingPageView';
 
@@ -299,6 +300,15 @@ export default function App() {
             </li>
             <li>
               <button 
+                className={`menu-item ${activeView === 'calendar' ? 'active' : ''}`}
+                onClick={() => setActiveView('calendar')}
+              >
+                <Calendar size={18} />
+                <span>Agenda / Citas</span>
+              </button>
+            </li>
+            <li>
+              <button 
                 className={`menu-item ${activeView === 'table' ? 'active' : ''}`}
                 onClick={() => setActiveView('table')}
               >
@@ -344,6 +354,7 @@ export default function App() {
               <h1>
                 {activeView === 'dashboard' && 'Panel de Controladores'}
                 {activeView === 'kanban' && 'Tablero Kanban'}
+                {activeView === 'calendar' && 'Agenda y Citas'}
                 {activeView === 'table' && 'Directorio de Leads'}
               </h1>
               {isAdmin && (
@@ -355,8 +366,43 @@ export default function App() {
             <p>
               {activeView === 'dashboard' && 'Métricas de rendimiento comercial en tiempo real'}
               {activeView === 'kanban' && 'Flujo visual del embudo de prospección y ventas'}
+              {activeView === 'calendar' && 'Control visual de sesiones por Zoom y seguimiento programado'}
               {activeView === 'table' && 'Registro completo y bitácoras de llamadas de clientes'}
             </p>
+          </div>
+
+          <div className="header-center-tabs">
+            {/* Segmented View Pills (Relate Wise style) */}
+            <div className="segmented-view-tabs">
+              <button 
+                className={`segmented-tab ${activeView === 'kanban' ? 'active' : ''}`}
+                onClick={() => setActiveView('kanban')}
+              >
+                <Columns size={15} />
+                <span>Tablero</span>
+              </button>
+              <button 
+                className={`segmented-tab ${activeView === 'calendar' ? 'active' : ''}`}
+                onClick={() => setActiveView('calendar')}
+              >
+                <Calendar size={15} />
+                <span>Agenda</span>
+              </button>
+              <button 
+                className={`segmented-tab ${activeView === 'table' ? 'active' : ''}`}
+                onClick={() => setActiveView('table')}
+              >
+                <Users size={15} />
+                <span>Directorio</span>
+              </button>
+              <button 
+                className={`segmented-tab ${activeView === 'dashboard' ? 'active' : ''}`}
+                onClick={() => setActiveView('dashboard')}
+              >
+                <LayoutDashboard size={15} />
+                <span>Métricas</span>
+              </button>
+            </div>
           </div>
 
           <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -410,6 +456,13 @@ export default function App() {
                 onSelectLead={handleOpenEditModal}
                 onOpenWhatsApp={handleOpenWhatsAppModal}
                 onRequestLostReason={handleRequestLostReason}
+              />
+            )}
+            {activeView === 'calendar' && (
+              <CalendarView 
+                leads={visibleLeads} 
+                onSelectLead={handleOpenEditModal}
+                onOpenWhatsApp={handleOpenWhatsAppModal}
               />
             )}
             {activeView === 'table' && (
