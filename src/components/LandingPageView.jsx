@@ -20,7 +20,8 @@ import {
   Layers,
   HelpCircle,
   ExternalLink,
-  DollarSign
+  DollarSign,
+  Bot
 } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import LoginView from './LoginView';

@@ -224,7 +224,11 @@ export default function App() {
 
   // If not logged in, render the SaaS Landing Page View (with Login and Demo request modals)
   if (!session) {
-    return <LandingPageView />;
+    return (
+      <ErrorBoundary>
+        <LandingPageView />
+      </ErrorBoundary>
+    );
   }
 
   // Filter leads based on user permissions:

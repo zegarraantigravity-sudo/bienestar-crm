@@ -1427,6 +1427,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Compilación exitosa con `npm run build` en 1.94s (bundle `index-Du275w92.js`).
     *   Sincronización mediante Git y verificación en producción en Vercel.
 
+### 195. Corrección de Icono `Bot` no Importado en Landing Page y Blindaje con `ErrorBoundary` en Acceso Público (17 de Octubre de 2026)
+*   **Diagnóstico de Pantalla en Blanco**:
+    *   Al ingresar a `bienestar-crm.vercel.app` sin sesión iniciada, la pantalla se mostraba completamente en blanco.
+    *   La causa raíz fue que en la nueva tarjeta interactiva del Copiloto IA de la Landing Page se usó el elemento `<Bot size={20} />`, pero el identificador `Bot` no había sido importado en la cabecera de `src/components/LandingPageView.jsx` desde `lucide-react`. Esto provocaba una excepción de tiempo de ejecución (`ReferenceError: Bot is not defined`) que desmontaba la vista completa.
+*   **Correcciones Realizadas**:
+    *   **Importación en `src/components/LandingPageView.jsx`**: Se agregó `Bot` a las importaciones de `lucide-react`. Se verificó mediante script automatizado que todos los componentes JSX de la Landing Page están 100% resueltos (`Missing from lucide-react: []`).
+    *   **Blindaje en `src/App.jsx`**: Se envolvió la vista `<LandingPageView />` con `<ErrorBoundary>`, garantizando que el acceso público quede blindado ante cualquier excepción no controlada.
+*   **Compilación y Despliegue**:
+    *   Compilación limpia con `npm run build` en 1.53 segundos (bundle `index-Dbdh3D75.js`).
+    *   Sincronización a GitHub (`main`) y verificación en producción en Vercel.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
