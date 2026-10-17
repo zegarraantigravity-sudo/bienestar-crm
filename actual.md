@@ -1400,6 +1400,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Compilación Local Impecable**: `npm run build` ejecutado en 1.36 segundos transformando 1,832 módulos sin advertencias de dependencias.
     *   **Despliegue y Validación Automatizada**: Se realiza el push a GitHub (`main`) y monitoreo de la API de GitHub/Vercel hasta certificar el paso a estado exitoso del nuevo despliegue.
 
+### 193. Llamada sin Respuesta, Despacho de SMS de Ultimátum Formal y Plazo Límite Final (05:00 p. m.) - David Godoy (Godoy Fitness) (17 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   **Vencimiento de Plazo e Inspección de Cuentas**: A las 11:36 a. m., Alberto constató que el plazo formal de las 12:00 p. m. para liquidar los S/ 200.00 de saldo pendiente de David Godoy no registraba abonos en Plin ni en BBVA.
+    *   **Llamada Telefónica Convencional**: A las 03:23 p. m., aplicando postura de autoridad tras más de 3 horas de vencido el plazo, Alberto marcó directamente a su línea móvil nacional (`+51 917 825 485`), la cual no fue atendida (llamada sin respuesta).
+    *   **Despacho de SMS de Ultimátum Formal**: En estricto cumplimiento de la regla de protección de línea contra bloqueos de WhatsApp y para no mostrar desesperación ni insistencia innecesaria por chat, a las 03:26 p. m. Alberto le despachó un mensaje SMS convencional con carácter de notificación formal y perentoria (*«David, te llamé a tu celular. Hoy al mediodía venció el plazo formal de los S/ 200 de saldo de tu plataforma y no figura tu abono. Tienes plazo límite hasta las 5:00 p. m. de hoy para realizar el Plin. De lo contrario, procedo con la baja y eliminación definitiva del software y la web del servidor, aplicando la pérdida del anticipo. Alberto Zegarra.»*).
+    *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`), registrando en la bitácora la llamada no atendida y el texto íntegro del SMS, configurando la próxima acción como *«Plazo final 05:00 p. m.: verificar Plin de S/ 200.00 o ejecutar baja y eliminación definitiva de servidores y pase a cerrado perdido»* para las `2026-10-17T17:00:00`.
+    *   **Directriz de Ejecución**: Si a las 05:00 p. m. no existe abono confirmado en Plin, se procederá con la eliminación definitiva de su software y entorno web, aplicando la pérdida total del anticipo y cerrando la cuenta en `cerrado_perdido`.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
