@@ -2,17 +2,14 @@ import React, { useState, useMemo } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
-  Calendar as CalendarIcon, 
   Clock, 
   Phone, 
   MessageCircle, 
-  Users, 
   CheckCircle2, 
-  AlertCircle,
   Video,
   Filter
 } from 'lucide-react';
-import { formatDateTimeDisplay, isDateToday, isDateOverdue } from '../lib/utils';
+import { isDateToday } from '../lib/utils';
 
 export default function CalendarView({ leads, onSelectLead, onOpenWhatsApp }) {
   const [currentDate, setCurrentDate] = useState(new Date());

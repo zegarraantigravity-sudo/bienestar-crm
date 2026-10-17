@@ -1393,6 +1393,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Se envolvió el contenedor de vistas principales con `<ErrorBoundary key={activeView} onReset={fetchLeads}>`, garantizando que ante cualquier eventual excepción en una vista, la aplicación jamás se desmonte a una pantalla en blanco, manteniendo siempre intactas la barra lateral fija, la cabecera, los accesos a otras vistas y desplegando una tarjeta informativa con botón para reintentar la carga.
     *   **Verificación y Compilación Exitosa**: Se ejecutó `npm run build` con Vite v8.1.5, transformando 1,832 módulos en 1.57 segundos con cero errores.
 
+### 192. Limpieza de Imports, Saneamiento de Bundle y Despliegue Forzado a Vercel con Monitoreo de API (17 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   **Diagnóstico de Persistencia de Pantalla en Blanco**: Al realizar una inspección de bajo nivel mediante solicitudes HTTP directas a `https://bienestar-crm.vercel.app`, se constató que la infraestructura de Vercel devolvía `Last-Modified: Sat, 17 Oct 2026 16:04:46 GMT` con encabezado `X-Vercel-Cache: HIT`. Esto demostró que el servidor de Vercel no había disparado o procesado el webhook de despliegue para el commit `16b61ff`, continuando con la entrega del bundle desactualizado (`index-CaCW1BsN.js`).
+    *   **Saneamiento y Optimización de Módulos**: Se depuraron imports en desuso en `src/components/KanbanView.jsx` (`Calendar`, `AlertCircle`), `src/components/CalendarView.jsx` (`CalendarIcon`, `Users`, `AlertCircle`, `formatDateTimeDisplay`, `isDateOverdue`) y `src/App.jsx` (`LoginView`).
+    *   **Compilación Local Impecable**: `npm run build` ejecutado en 1.36 segundos transformando 1,832 módulos sin advertencias de dependencias.
+    *   **Despliegue y Validación Automatizada**: Se realiza el push a GitHub (`main`) y monitoreo de la API de GitHub/Vercel hasta certificar el paso a estado exitoso del nuevo despliegue.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas

@@ -8,7 +8,6 @@ import DashboardView from './components/DashboardView';
 import KanbanView from './components/KanbanView';
 import LeadTableView from './components/LeadTableView';
 import CalendarView from './components/CalendarView';
-import LoginView from './components/LoginView';
 import LandingPageView from './components/LandingPageView';
 
 // Modals & Widgets

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Phone, Calendar, Target, MessageCircle, AlertCircle, Snowflake } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, Target, MessageCircle, Snowflake } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { getWhatsAppUrl, getDaysInactive, isDateToday, isDateOverdue, formatDateTimeDisplay, getLeadAdvisorName } from '../lib/utils';
 
