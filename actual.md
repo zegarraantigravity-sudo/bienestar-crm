@@ -1384,6 +1384,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   **Métricas de Capacidad**: Tarjeta informativa con el balance de citas agendadas, demos realizadas y tareas de seguimiento del período.
     *   **Verificación y Compilación Exitosa**: Se ejecutó `npm run build` con Vite v8.1.5, validando la compilación limpia de 1,831 módulos en 2.30 segundos con cero errores de sintaxis o empaquetado.
 
+### 191. Corrección Crítica de Variable `isStale` en Tablero Kanban e Implementación de Componente Guardián ErrorBoundary (17 de Octubre de 2026)
+*   **Acción Realizada**:
+    *   **Diagnóstico del Pantallazo Blanco al Entrar al Tablero**: Al hacer clic en la pestaña «Tablero», la aplicación se quedaba completamente en blanco. Se inspeccionó el componente `src/components/KanbanView.jsx` y se detectó que en las líneas 186 y 191 se evaluaba la variable `isStale` (para el indicador de prospectos estancados con más de 5 días de inactividad `❄️ +Xd`), pero se omitió su definición en el alcance de la tarjeta, provocando una excepción fatal en tiempo de ejecución (`ReferenceError: isStale is not defined`).
+    *   **Corrección en `src/components/KanbanView.jsx`**: Se definió formalmente la variable `const isStale = daysInactive >= 5 && !isClosed;`, resolviendo la excepción de raíz y restituyendo la visualización del flujo Kanban y sus distintivos.
+    *   **Blindaje con Componente `ErrorBoundary` (`src/components/ErrorBoundary.jsx` y `src/App.jsx`)**:
+        *   Se construyó un componente de frontera de error (`ErrorBoundary`) con captura de excepciones de ciclo de vida (`componentDidCatch` y `getDerivedStateFromError`).
+        *   Se envolvió el contenedor de vistas principales con `<ErrorBoundary key={activeView} onReset={fetchLeads}>`, garantizando que ante cualquier eventual excepción en una vista, la aplicación jamás se desmonte a una pantalla en blanco, manteniendo siempre intactas la barra lateral fija, la cabecera, los accesos a otras vistas y desplegando una tarjeta informativa con botón para reintentar la carga.
+    *   **Verificación y Compilación Exitosa**: Se ejecutó `npm run build` con Vite v8.1.5, transformando 1,832 módulos en 1.57 segundos con cero errores.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas

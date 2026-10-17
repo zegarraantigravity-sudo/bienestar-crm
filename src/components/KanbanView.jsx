@@ -174,6 +174,7 @@ export default function KanbanView({ leads, onUpdateLead, onSelectLead, onOpenWh
                 
                 const daysInactive = getDaysInactive(lead.last_interaction);
                 const isClosed = ['cerrado_ganado', 'cerrado_perdido'].includes(lead.status);
+                const isStale = daysInactive >= 5 && !isClosed;
                 const isOverdue = !isClosed && isDateOverdue(actionDate);
                 const isToday = !isClosed && isDateToday(actionDate);
 

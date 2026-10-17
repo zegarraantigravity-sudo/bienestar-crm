@@ -16,6 +16,7 @@ import LeadModal from './components/LeadModal';
 import WhatsAppModal from './components/WhatsAppModal';
 import LostReasonModal from './components/LostReasonModal';
 import AIChatWidget from './components/AIChatWidget';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -448,31 +449,33 @@ export default function App() {
           </div>
         ) : (
           <div style={{ flexGrow: 1 }}>
-            {activeView === 'dashboard' && <DashboardView leads={visibleLeads} />}
-            {activeView === 'kanban' && (
-              <KanbanView 
-                leads={visibleLeads} 
-                onUpdateLead={handleSaveLead}
-                onSelectLead={handleOpenEditModal}
-                onOpenWhatsApp={handleOpenWhatsAppModal}
-                onRequestLostReason={handleRequestLostReason}
-              />
-            )}
-            {activeView === 'calendar' && (
-              <CalendarView 
-                leads={visibleLeads} 
-                onSelectLead={handleOpenEditModal}
-                onOpenWhatsApp={handleOpenWhatsAppModal}
-              />
-            )}
-            {activeView === 'table' && (
-              <LeadTableView 
-                leads={visibleLeads} 
-                onSelectLead={handleOpenEditModal}
-                onAddNewLead={handleOpenAddModal}
-                onOpenWhatsApp={handleOpenWhatsAppModal}
-              />
-            )}
+            <ErrorBoundary key={activeView} onReset={fetchLeads}>
+              {activeView === 'dashboard' && <DashboardView leads={visibleLeads} />}
+              {activeView === 'kanban' && (
+                <KanbanView 
+                  leads={visibleLeads} 
+                  onUpdateLead={handleSaveLead}
+                  onSelectLead={handleOpenEditModal}
+                  onOpenWhatsApp={handleOpenWhatsAppModal}
+                  onRequestLostReason={handleRequestLostReason}
+                />
+              )}
+              {activeView === 'calendar' && (
+                <CalendarView 
+                  leads={visibleLeads} 
+                  onSelectLead={handleOpenEditModal}
+                  onOpenWhatsApp={handleOpenWhatsAppModal}
+                />
+              )}
+              {activeView === 'table' && (
+                <LeadTableView 
+                  leads={visibleLeads} 
+                  onSelectLead={handleOpenEditModal}
+                  onAddNewLead={handleOpenAddModal}
+                  onOpenWhatsApp={handleOpenWhatsAppModal}
+                />
+              )}
+            </ErrorBoundary>
           </div>
         )}
       </main>
