@@ -1408,6 +1408,25 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Actualización en Supabase**: Se actualizó su ficha (`fc83b2a4-10ca-449a-a05c-947c383af072`), registrando en la bitácora la llamada no atendida y el texto íntegro del SMS, configurando la próxima acción como *«Plazo final 05:00 p. m.: verificar Plin de S/ 200.00 o ejecutar baja y eliminación definitiva de servidores y pase a cerrado perdido»* para las `2026-10-17T17:00:00`.
     *   **Directriz de Ejecución**: Si a las 05:00 p. m. no existe abono confirmado en Plin, se procederá con la eliminación definitiva de su software y entorno web, aplicando la pérdida total del anticipo y cerrando la cuenta en `cerrado_perdido`.
 
+### 194. Erradicación Integral de Referencias a Telegram y Lanzamiento del Copiloto IA Nativo (Voice-to-CRM) en la Landing Page y Modelos de Asistencia (17 de Octubre de 2026)
+*   **Contexto y Decisión Estratégica**:
+    *   Alberto instruyó eliminar de forma definitiva y permanente cualquier mención al antiguo "Bot de Telegram" en toda la comunicación pública y los prompts del sistema, dado que representaba una experiencia deficiente y desconectada.
+    *   En su lugar, se potencia comercial y visualmente la funcionalidad real del producto: el **Copiloto IA (Estratega Comercial)** nativo, integrado directamente dentro del aplicativo web y móvil del CRM, con capacidad de dictado por voz mediante micrófono (Voice-to-CRM), generación automática de bitácoras, redacción de respuestas persuasivas de WhatsApp y actualización instantánea del pipeline.
+*   **Modificaciones en la Landing Page (`src/components/LandingPageView.jsx`)**:
+    *   **Navbar**: Cambio de enlace a `Copiloto IA`.
+    *   **Hero Section**: Badge actualizado a *«EL ÚNICO CRM CON COPILOTO DE VOZ Y ESTRATEGIA COMERCIAL INTEGRADO»*. Titular enfocado en: *«Actualiza tu CRM dictándole a tu Copiloto con IA nativa mientras cierras clientes.»*
+    *   **Showcase Interactivo (Tarjeta de Copiloto IA)**: Se sustituyó por completo el antiguo mockup azul de Telegram por una réplica fidedigna y elegante del widget real del Copiloto IA (`AIChatWidget`): cabecera ejecutiva blanca con icono de robot, badge *Estratega Comercial*, sugerencias rápidas (*«Resumir acuerdos con clientes»*, *«Redactar mensaje de seguimiento»*), burbuja de dictado de voz del usuario con icono de micrófono (*«Copiloto, acabo de hablar con la Dra. Méndez. Le interesó la App de Nutrición de $340...»*), tarjeta de lead detectado y registrado automáticamente en el CRM con badge verde *✓ Lead Actualizado en CRM*, caja de copy persuasivo de WhatsApp generado con botón de *Copiar Mensaje*, y barra inferior de dictado por voz y envío.
+    *   **Sección de Características**: Actualizado a *«1. Dictas por voz en 1 clic: Abres el CRM desde tu celular o computadora y le dictas por voz al Copiloto IA resumiendo lo acordado en 5 segundos.»*
+    *   **Tabla Comparativa**: Se reemplazaron las filas anteriores por *«Copiloto IA nativo con dictado por voz (Voice-to-CRM)»* y *«Agenda inteligente y alertas proactivas en la App»*, con ventaja absoluta frente a hojas de cálculo y CRMs tradicionales.
+    *   **Planes y Precios**: Planes Profesional y Clínica actualizados destacando *«Copiloto IA integrado con dictado por voz»* y *«Copiloto IA avanzado multi-asesor»*.
+    *   **Preguntas Frecuentes (FAQ)**: Actualizada la pregunta sobre cómo funciona el dictado por voz nativo en la app sin requerir aplicaciones externas ni Telegram.
+    *   **Auditoría de Texto**: Se certificó que el conteo de la palabra "Telegram" en toda la Landing Page pasó a **0**.
+*   **Blindaje en Prompts de IA (`api/chat.js` y `src/lib/aiService.js`)**:
+    *   Se incorporó la regla de sistema obligatoria: prohibición absoluta de mencionar Telegram, bots de mensajería externos o canales de terceros. El asistente debe actuar y comunicarse reconociendo exclusivamente el Copiloto IA nativo integrado con Voice-to-CRM.
+*   **Compilación y Despliegue**:
+    *   Compilación exitosa con `npm run build` en 1.94s (bundle `index-Du275w92.js`).
+    *   Sincronización mediante Git y verificación en producción en Vercel.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas

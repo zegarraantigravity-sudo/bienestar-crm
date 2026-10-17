@@ -41,12 +41,12 @@ export default function LandingPageView() {
 
   const faqs = [
     {
-      q: '¿Cómo funciona el Copiloto de Telegram por voz?',
-      a: 'Solo abres Telegram y le envías una nota de voz como si hablaras con tu asistente. Dices: "Anota llamada con Carlos de FitClub para mañana a las 3pm, le gustó el plan anual de S/ 1,200". La Inteligencia Artificial analiza tu voz, busca a Carlos en el CRM, actualiza la etapa a Cita Agendada y programa una alerta 20 minutos antes para que no lo olvides.'
+      q: '¿Cómo funciona el Copiloto IA integrado por voz?',
+      a: 'Solo haces clic en el botón del micrófono dentro del CRM o abres el chat del Copiloto desde tu celular. Le dices: "Anota llamada con Carlos de FitClub para mañana a las 3pm, le gustó el plan anual de S/ 1,200". La Inteligencia Artificial analiza tu voz, busca a Carlos en el CRM, actualiza la etapa a Cita Agendada y deja la bitácora registrada al instante con fecha y hora.'
     },
     {
       q: '¿Tengo que instalar aplicaciones pesadas o configurar servidores?',
-      a: 'Cero instalaciones. Bienestar CRM es 100% web en la nube, optimizado tanto para computadoras como para celulares. Tu equipo comercial solo necesita su navegador y su Telegram habitual.'
+      a: 'Cero instalaciones complicadas. Bienestar CRM es 100% web en la nube, optimizado como Progressive Web App (PWA) tanto para computadoras como para celulares. Tu equipo comercial solo entra desde su navegador y tiene su asistente de IA listo para trabajar.'
     },
     {
       q: '¿Puedo tener varios vendedores y ocultar prospectos entre ellos?',
@@ -183,7 +183,7 @@ export default function LandingPageView() {
           {/* NAV LINKS (DESKTOP) */}
           <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
             <a href="#copiloto" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
-              Copiloto Telegram
+              Copiloto IA
             </a>
             <a href="#caracteristicas" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
               Pipeline Kanban
@@ -279,7 +279,7 @@ export default function LandingPageView() {
           letterSpacing: '0.03em'
         }}>
           <Sparkles size={14} />
-          <span>EL ÚNICO CRM CON COPILOTO DE VOZ EN TELEGRAM</span>
+          <span>EL ÚNICO CRM CON COPILOTO DE VOZ Y ESTRATEGIA COMERCIAL INTEGRADO</span>
           <span style={{
             background: 'hsl(var(--color-llamado))',
             color: '#000',
@@ -305,7 +305,7 @@ export default function LandingPageView() {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            Actualiza tu CRM hablándole a Telegram.
+            Actualiza tu CRM dictándole a tu Copiloto con IA nativa.
           </span>
         </h1>
 
@@ -401,7 +401,7 @@ export default function LandingPageView() {
           </div>
         </div>
 
-        {/* INTERACTIVE DUAL SHOWCASE (KANBAN + TELEGRAM MOCKUP) */}
+        {/* INTERACTIVE DUAL SHOWCASE (KANBAN + NATIVE COPILOTO IA WIDGET) */}
         <div style={{
           marginTop: '65px',
           width: '100%',
@@ -506,151 +506,209 @@ export default function LandingPageView() {
             </div>
           </div>
 
-          {/* RIGHT: SMARTPHONE TELEGRAM COPILOT PREVIEW */}
+          {/* RIGHT: IN-APP NATIVE COPILOT IA PREVIEW (MATCHING CRM WIDGET) */}
           <div style={{
-            backgroundColor: '#17212b',
-            borderRadius: '18px',
-            border: '2px solid hsla(215, 90%, 60%, 0.4)',
+            backgroundColor: '#FFFFFF',
+            borderRadius: '22px',
+            border: '1px solid #E2E8F0',
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             textAlign: 'left',
-            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.5)'
+            boxShadow: '0 20px 50px rgba(15, 23, 42, 0.12), 0 0 25px rgba(59, 130, 246, 0.1)'
           }}>
-            {/* Telegram Header */}
+            {/* Copilot Header */}
             <div style={{
-              background: '#242f3d',
+              background: 'linear-gradient(to right, rgba(59, 130, 246, 0.08), rgba(168, 85, 247, 0.08))',
               padding: '14px 18px',
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
-              borderBottom: '1px solid #10161e'
+              justifyContent: 'space-between',
+              borderBottom: '1px solid #E2E8F0'
             }}>
-              <div style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #2AABEE, #229ED9)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                fontWeight: 800
-              }}>
-                🤖
-              </div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#fff' }}>Copiloto Bienestar CRM</div>
-                <div style={{ fontSize: '0.75rem', color: '#4ade80', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80' }} />
-                  bot con Inteligencia Artificial
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff',
+                  boxShadow: '0 4px 12px rgba(37, 99, 235, 0.25)'
+                }}>
+                  <Bot size={20} />
                 </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontWeight: 800, fontSize: '0.98rem', color: '#0F172A' }}>Copiloto IA</span>
+                    <span style={{
+                      fontSize: '0.68rem',
+                      backgroundColor: 'rgba(34, 197, 94, 0.12)',
+                      color: '#16A34A',
+                      padding: '2px 8px',
+                      borderRadius: '6px',
+                      fontWeight: 700
+                    }}>
+                      Estratega Comercial
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '0.72rem', color: '#64748B' }}>
+                    Conectado con memoria y contexto a tu CRM
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{
+                  background: '#F1F5F9',
+                  border: '1px solid #E2E8F0',
+                  color: '#475569',
+                  padding: '4px 8px',
+                  borderRadius: '7px',
+                  fontSize: '0.7rem',
+                  fontWeight: 600
+                }}>
+                  🔄 Nuevo chat
+                </span>
               </div>
             </div>
 
-            {/* Telegram Chat Body */}
+            {/* Quick Suggestion Pills */}
             <div style={{
-              padding: '18px',
+              display: 'flex',
+              gap: '6px',
+              padding: '10px 14px',
+              backgroundColor: '#F8FAFC',
+              borderBottom: '1px solid #E2E8F0',
+              overflowX: 'auto'
+            }}>
+              <span style={{
+                fontSize: '0.7rem',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E2E8F0',
+                color: '#475569',
+                padding: '3px 10px',
+                borderRadius: '12px',
+                fontWeight: 600,
+                whiteSpace: 'nowrap'
+              }}>
+                ¿Qué tareas tengo para hoy?
+              </span>
+              <span style={{
+                fontSize: '0.7rem',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E2E8F0',
+                color: '#475569',
+                padding: '3px 10px',
+                borderRadius: '12px',
+                fontWeight: 600,
+                whiteSpace: 'nowrap'
+              }}>
+                ¿Qué le respondo a Rodrigo?
+              </span>
+            </div>
+
+            {/* Chat Body */}
+            <div style={{
+              padding: '16px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '14px',
+              gap: '12px',
               flex: 1,
-              background: '#0e1621'
+              backgroundColor: '#FFFFFF'
             }}>
-              {/* User Voice Note Bubble */}
+              {/* User Voice Dictation Bubble */}
               <div style={{
                 alignSelf: 'flex-end',
-                maxWidth: '88%',
-                background: '#2b5278',
-                color: '#fff',
+                maxWidth: '90%',
+                background: '#F59E0B',
+                color: '#000000',
                 borderRadius: '16px 16px 4px 16px',
-                padding: '12px 14px',
-                fontSize: '0.84rem',
-                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.25)'
+                padding: '10px 14px',
+                fontSize: '0.82rem',
+                fontWeight: 600,
+                boxShadow: '0 2px 8px rgba(245, 158, 11, 0.2)'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
-                  <div style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: '#5b88bd',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    <Play size={14} fill="#fff" />
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontWeight: 700, fontSize: '0.78rem' }}>🎙️ Nota de voz (0:09)</span>
-                    <span style={{ fontSize: '0.7rem', color: '#a5c4e8' }}>Transcrito por IA:</span>
-                  </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#78350F', marginBottom: '3px' }}>
+                  <Mic size={13} />
+                  <span>Dictado por voz en el CRM:</span>
                 </div>
-                <div style={{ fontStyle: 'italic', color: '#e2edfa', fontSize: '0.82rem', lineHeight: 1.4 }}>
-                  “Anota llamada con Rodrigo de Titan Gym. Cerramos cita por Zoom este viernes a las 11:00 am. Monto S/ 1,800.”
-                </div>
-                <div style={{ textAlign: 'right', fontSize: '0.66rem', color: '#88a8cc', marginTop: '4px' }}>14:22 ✓✓</div>
+                “Anota llamada con Rodrigo de Titan Gym. Cerramos cita por Zoom este viernes a las 11:00 am. Monto S/ 1,800.”
               </div>
 
               {/* Bot Answer Bubble */}
               <div style={{
                 alignSelf: 'flex-start',
-                maxWidth: '90%',
-                background: '#182533',
-                color: '#e4ecf2',
+                maxWidth: '92%',
+                background: '#F8FAFC',
+                color: '#0F172A',
                 borderRadius: '16px 16px 16px 4px',
-                padding: '14px 16px',
-                fontSize: '0.84rem',
-                border: '1px solid #233446',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
+                padding: '12px 14px',
+                fontSize: '0.8rem',
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)'
               }}>
-                <div style={{ fontWeight: 700, color: '#4ade80', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span>⚡ ¡Lead Registrado & Actualizado!</span>
+                <div style={{ fontWeight: 700, color: '#16A34A', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <CheckCircle2 size={14} />
+                  <span>¡Lead Registrado & Próxima Acción Agendada!</span>
                 </div>
-                <div style={{ fontSize: '0.8rem', lineHeight: 1.5, color: '#c9d9e6' }}>
+                <div style={{ fontSize: '0.76rem', lineHeight: 1.5, color: '#334155', marginBottom: '8px' }}>
                   <div>🏢 <strong>Contacto:</strong> Rodrigo (Titan Gym)</div>
-                  <div>📊 <strong>Etapa:</strong> 📅 Cita Agendada</div>
-                  <div>⏰ <strong>Fecha:</strong> Viernes 11:00 AM</div>
-                  <div>💰 <strong>Monto estimado:</strong> S/ 1,800</div>
-                  <div>👤 <strong>Asignado a:</strong> Luis Hakim</div>
+                  <div>📊 <strong>Etapa:</strong> 📅 Cita Agendada | Viernes 11:00 AM</div>
+                  <div>💰 <strong>Monto estimado:</strong> S/ 1,800 (Plan 200)</div>
                 </div>
+
                 <div style={{
-                  marginTop: '10px',
-                  paddingTop: '8px',
-                  borderTop: '1px solid #233446',
-                  fontSize: '0.75rem',
-                  color: '#60a5fa',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px'
+                  padding: '8px 10px',
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '8px',
+                  border: '1px solid #E2E8F0',
+                  fontSize: '0.74rem',
+                  color: '#475569'
                 }}>
-                  <Clock size={13} />
-                  <span>Te enviaré un recordatorio 20 min antes.</span>
+                  <div style={{ fontWeight: 700, color: '#2563EB', marginBottom: '2px' }}>💬 Mensaje listo para WhatsApp:</div>
+                  <div style={{ fontStyle: 'italic', color: '#1E293B' }}>
+                    «Hola Rodrigo, excelente coordinar contigo. Queda confirmada nuestra sesión por Zoom para este viernes a las 11:00 am. Te mandaré el enlace 10 minutos antes. ¡Muchos éxitos!»
+                  </div>
                 </div>
-                <div style={{ textAlign: 'right', fontSize: '0.66rem', color: '#68829e', marginTop: '4px' }}>14:22</div>
               </div>
             </div>
 
-            {/* Telegram Input Bar */}
+            {/* In-App Input Bar */}
             <div style={{
-              background: '#17212b',
+              background: '#F8FAFC',
               padding: '10px 14px',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              borderTop: '1px solid #233446'
+              gap: '8px',
+              borderTop: '1px solid #E2E8F0'
             }}>
-              <span style={{ color: '#6e869f', fontSize: '0.82rem' }}>Escribe un mensaje o mantén presionado...</span>
               <div style={{
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: '#2AABEE',
+                flex: 1,
+                background: '#FFFFFF',
+                border: '1px solid #E2E8F0',
+                borderRadius: '10px',
+                padding: '8px 12px',
+                fontSize: '0.78rem',
+                color: '#64748B'
+              }}>
+                Escribe o dicta tu consulta (Enter para enviar)...
+              </div>
+              <div style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                background: '#2563EB',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#fff'
+                color: '#fff',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)'
               }}>
-                <Mic size={18} />
+                <Mic size={17} />
               </div>
             </div>
           </div>
@@ -713,9 +771,9 @@ export default function LandingPageView() {
             }}>
               <Mic size={26} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>1. Dictas por audio tras colgar</h3>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>1. Dictas por voz en 1 clic</h3>
             <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.92rem', lineHeight: 1.6 }}>
-              Saliste de una reunión o colgaste una llamada mientras manejas. Envías un audio a Telegram resumiendo lo acordado sin detener tu día.
+              Colgaste una llamada o saliste de una reunión. Abres el CRM desde tu celular o computadora y le dictas por voz al Copiloto IA resumiendo lo acordado en 5 segundos.
             </p>
           </div>
 
@@ -815,7 +873,7 @@ export default function LandingPageView() {
               </thead>
               <tbody>
                 <tr style={{ borderBottom: '1px solid hsl(var(--border-color))' }}>
-                  <td style={{ padding: '16px 24px', fontWeight: 600 }}>Copiloto por notas de voz en Telegram</td>
+                  <td style={{ padding: '16px 24px', fontWeight: 600 }}>Copiloto IA nativo con dictado por voz (Voice-to-CRM)</td>
                   <td style={{ padding: '16px 20px', color: '#4ade80', fontWeight: 700, background: 'hsla(215, 90%, 55%, 0.05)' }}>✅ Incluido de fábrica</td>
                   <td style={{ padding: '16px 20px', color: '#f87171' }}>❌ No disponible</td>
                   <td style={{ padding: '16px 20px', color: '#f87171' }}>❌ No disponible</td>
@@ -839,8 +897,8 @@ export default function LandingPageView() {
                   <td style={{ padding: '16px 20px', color: '#fbbf24' }}>⚠️ Configuración engorrosa</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid hsl(var(--border-color))' }}>
-                  <td style={{ padding: '16px 24px', fontWeight: 600 }}>Alertas de llamadas directo a tu mensajería</td>
-                  <td style={{ padding: '16px 20px', color: '#4ade80', fontWeight: 700, background: 'hsla(215, 90%, 55%, 0.05)' }}>✅ Telegram proactivo</td>
+                  <td style={{ padding: '16px 24px', fontWeight: 600 }}>Agenda inteligente y alertas proactivas en la App</td>
+                  <td style={{ padding: '16px 20px', color: '#4ade80', fontWeight: 700, background: 'hsla(215, 90%, 55%, 0.05)' }}>✅ Integradas en CRM y PWA</td>
                   <td style={{ padding: '16px 20px', color: '#fbbf24' }}>⚠️ Solo email o push</td>
                   <td style={{ padding: '16px 20px', color: '#fbbf24' }}>⚠️ Notificaciones perdidas</td>
                 </tr>
@@ -1019,7 +1077,7 @@ export default function LandingPageView() {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={17} color="#22c55e" />
-                    <span><strong>Copiloto de Telegram</strong> por voz</span>
+                    <span><strong>Copiloto IA integrado</strong> con dictado por voz</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={17} color="#22c55e" />
@@ -1107,7 +1165,7 @@ export default function LandingPageView() {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={17} color="#c084fc" />
-                    <span><strong>Copiloto de Telegram multi-usuario</strong></span>
+                    <span><strong>Copiloto IA avanzado</strong> multi-asesor</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={17} color="#c084fc" />
@@ -1490,7 +1548,7 @@ export default function LandingPageView() {
                   </div>
                   <h3 style={{ fontSize: '1.45rem', fontWeight: 800 }}>Agenda tu demo comercial</h3>
                   <p style={{ color: 'hsl(var(--text-muted))', fontSize: '0.85rem', marginTop: '4px' }}>
-                    Te mostraremos en vivo cómo opera el Copiloto de Telegram en tu negocio.
+                    Te mostraremos en vivo cómo opera el Copiloto de Inteligencia Artificial en tu negocio.
                   </p>
                 </div>
 
