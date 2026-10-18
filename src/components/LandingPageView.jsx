@@ -183,19 +183,44 @@ export default function LandingPageView() {
 
           {/* NAV LINKS (DESKTOP) */}
           <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-            <a href="#copiloto" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
+            <a 
+              href="#copiloto" 
+              style={{ color: 'rgba(255, 255, 255, 0.82)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}
+              onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.82)'}
+            >
               Copiloto IA
             </a>
-            <a href="#caracteristicas" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
+            <a 
+              href="#caracteristicas" 
+              style={{ color: 'rgba(255, 255, 255, 0.82)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}
+              onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.82)'}
+            >
               Pipeline Kanban
             </a>
-            <a href="#comparativa" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
+            <a 
+              href="#comparativa" 
+              style={{ color: 'rgba(255, 255, 255, 0.82)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}
+              onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.82)'}
+            >
               Comparativa
             </a>
-            <a href="#precios" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
+            <a 
+              href="#precios" 
+              style={{ color: 'rgba(255, 255, 255, 0.82)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}
+              onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.82)'}
+            >
               Planes
             </a>
-            <a href="#faq" style={{ color: 'hsl(var(--text-secondary))', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}>
+            <a 
+              href="#faq" 
+              style={{ color: 'rgba(255, 255, 255, 0.82)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'var(--transition)' }}
+              onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.82)'}
+            >
               Preguntas
             </a>
           </nav>
@@ -205,24 +230,31 @@ export default function LandingPageView() {
             <button
               onClick={() => setShowLoginModal(true)}
               style={{
-                background: 'hsla(220, 20%, 14%, 0.8)',
-                border: '1px solid hsl(var(--border-color))',
-                color: 'hsl(var(--text-primary))',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.22)',
+                color: '#FFFFFF',
                 padding: '10px 18px',
                 borderRadius: '10px',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '0.88rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
                 transition: 'var(--transition)'
               }}
-              onMouseOver={e => e.currentTarget.style.borderColor = 'hsl(var(--border-focus))'}
-              onMouseOut={e => e.currentTarget.style.borderColor = 'hsl(var(--border-color))'}
+              onMouseOver={e => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.45)';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.22)';
+              }}
             >
-              <Lock size={15} color="hsl(var(--color-llamado))" />
-              <span>Iniciar Sesión</span>
+              <Lock size={15} color="#60A5FA" />
+              <span style={{ color: '#FFFFFF', fontWeight: 700 }}>Iniciar Sesión</span>
             </button>
 
             <button

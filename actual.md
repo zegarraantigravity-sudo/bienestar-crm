@@ -1452,6 +1452,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Próxima Acción: `Expediente archivado por falta de pago de saldo y abandono` (`next_action_date: null`).
         *   Bitácora: Asentada la nota formal de cierre de expediente por Alberto Zegarra.
 
+### 197. Corrección de Contraste y Legibilidad en Navbar: Botón «Iniciar Sesión» y Enlaces de Menú (18 de Octubre de 2026)
+*   **Diagnóstico de Visibilidad en Producción**:
+    *   Alberto constató que en la barra superior (Navbar) de la Landing Page el botón «Iniciar Sesión» era prácticamente ilegible.
+    *   La causa raíz se debió a que el Navbar mantiene un fondo oscuro ejecutivo (`hsla(220, 25%, 6%, 0.85)`), mientras que el botón y los enlaces utilizaban variables del tema Soft-Canvas claro (`--text-primary: #0F172A` y `--text-secondary: #475569`). Esto provocaba que el texto se renderizara en negro/carbón sobre fondo oscuro.
+*   **Correcciones Implementadas en `src/components/LandingPageView.jsx`**:
+    *   **Botón «Iniciar Sesión»**: Tipografía actualizada a **blanco puro (`#FFFFFF`)** con peso `700`, fondo traslúcido estilizado (`rgba(255, 255, 255, 0.08)`), borde nítido (`rgba(255, 255, 255, 0.22)`), icono de candado en azul brillante (`#60A5FA`) y efectos de hover iluminados (`rgba(255, 255, 255, 0.16)`).
+    *   **Enlaces de Navegación**: Se ajustaron los enlaces (*Copiloto IA*, *Pipeline Kanban*, *Comparativa*, *Planes*, *Preguntas*) a color blanco perlado (`rgba(255, 255, 255, 0.82)`) con transición al pasar el cursor a blanco absoluto (`#FFFFFF`), garantizando una lectura nítida y estética premium.
+*   **Compilación y Despliegue**:
+    *   Compilación exitosa con `npm run build` en 3.22s (bundle `index-et9RKdhR.js`).
+    *   Sincronización a GitHub (`main`) y verificación en producción en Vercel.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
