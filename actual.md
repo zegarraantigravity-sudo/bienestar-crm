@@ -1438,6 +1438,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Compilación limpia con `npm run build` en 1.53 segundos (bundle `index-Dbdh3D75.js`).
     *   Sincronización a GitHub (`main`) y verificación en producción en Vercel.
 
+### 196. Cierre Definitivo de Expediente por Incumplimiento de Pago, Pérdida de Anticipo y Rescisión de Servicio - David Godoy (Godoy Fitness) (17 de Octubre de 2026 - Noche)
+*   **Contexto y Vencimiento Improrrogable**:
+    *   Tras haberse despachado a las 03:26 p. m. la notificación formal por SMS concediendo un plazo final e improrrogable hasta las 05:00 p. m. de hoy sábado para el abono de los S/ 200.00 de saldo vía Plin, a las 09:57 p. m. Alberto constató la ausencia absoluta de transferencias bancarias o pagos en billeteras digitales, así como el silencio total del contacto sin respuesta alguna al ultimátum.
+*   **Acciones Comerciales y Operativas Ejecutadas**:
+    *   **Pérdida Total del Anticipo**: Se aplicó formalmente la cláusula de penalidad por abandono e incumplimiento de saldo, declarándose la pérdida irrevocable de los S/ 200.00 entregados como anticipo semanas atrás.
+    *   **Rescisión y Baja de Servidores**: Se canceló de forma definitiva el proyecto de desarrollo de software y entorno web para Godoy Fitness, disponiéndose la eliminación de instancias de servidores. Si el cliente pretendiera reactivar el servicio a futuro, deberá contratar la plataforma desde cero abonando la tarifa completa de S/ 400.00 sin reconocimiento del adelanto extinguido.
+    *   **Actualización en Supabase**:
+        *   Ficha: `fc83b2a4-10ca-449a-a05c-947c383af072` (Godoy Fitness).
+        *   Estado: Transferido de `presentacion_realizada` a **`cerrado_perdido`**.
+        *   Motivo de Pérdida (`lost_reason`): `falta_de_pago_saldo_abandono`.
+        *   Etiqueta de Pérdida (`lost_reason_label`): *«Incumplimiento de pago de saldo de S/ 200 tras vencimiento de ultimátum formal (17/10/2026 05:00 p. m.). Pérdida total del anticipo y rescisión definitiva.»*
+        *   Próxima Acción: `Expediente archivado por falta de pago de saldo y abandono` (`next_action_date: null`).
+        *   Bitácora: Asentada la nota formal de cierre de expediente por Alberto Zegarra.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
