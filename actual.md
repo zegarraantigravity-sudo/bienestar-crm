@@ -1541,6 +1541,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió a Héctor Tena el mensaje corporativo exacto con reciprocidad de web (`https://www.bienestarsinexcusas.site/`), destacando la sinergia de entregar a los gimnasios que él asesora una app móvil de nutrición y coach IA bajo su propia marca para maximizar retención y rentabilidad, invitándolo a una reunión demostrativa por Zoom en vivo de 15 minutos en pantalla.
 *   **Regla 5 de Admisión al CRM**: Héctor Tena permanece en seguimiento conversacional en Messenger. Solo será ingresado a la base de datos de Supabase cuando confirme fecha y hora exacta para la reunión en vivo por Zoom.
 
+### 204. Establecimiento de la Cadencia Diaria Oficial de Prospección Multicanal (19 de Octubre de 2026 - Tarde)
+*   **Directriz Estratégica de Generación de Demos y Alianzas**:
+    *   Alberto oficializó el protocolo de prospección diaria de alto volumen con **90 toques diarios** divididos en 3 bloques de tiempo para blindaje anti-spam:
+        1. **WhatsApp (30 toques diarios)**:
+           * Bloque Mañana: 10 mensajes.
+           * Bloque Tarde: 10 mensajes.
+           * Bloque Noche: 10 mensajes.
+        2. **Facebook Messenger (60 toques diarios)**:
+           * Bloque Mañana: 20 mensajes.
+           * Bloque Tarde: 20 mensajes.
+           * Bloque Noche: 20 mensajes.
+*   **Seguridad y Políticas Anti-Bloqueo de Meta/WhatsApp**:
+    *   La distribución en 3 ventanas de tiempo previene los patrones de saturación algorítmica de Meta.
+    *   En el primer contacto en frío **nunca se envían enlaces ni URLs idénticas**; se utiliza apertura conversacional de baja fricción personalizada al nicho (nutricionista, coach o gimnasio). El enlace a la web y la propuesta de Zoom en vivo se despachan exclusivamente cuando el prospecto responde.
+*   **Métricas del Embudo Semanal**:
+    *   Volumen proyectado: ~450 a 540 toques semanales $\rightarrow$ 22 a 40 conversaciones calificadas $\rightarrow$ 5 a 10 demostraciones por Zoom en vivo $\rightarrow$ 1 a 3 ventas semanales cerradas (planes de créditos) y alianzas B2B de distribución.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
