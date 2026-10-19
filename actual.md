@@ -1624,6 +1624,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Incluye nota de agendamiento y confirmación formal de horario de las 5:38 p. m.
     *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes (12:50 p. m. hora Perú / 11:50 a. m. hora Honduras) y ejecutar demostración en vivo` para el **martes 20 de octubre de 2026 a las 12:50 p. m.** (`2026-10-20T12:50:00`).
 
+### 208. Reprogramación de Seguimiento Post-Venta - Yoselin Nails (19 de Octubre de 2026 - Noche)
+*   **Ajuste de Agenda Comercial**:
+    *   Por instrucción explícita de Alberto, el contacto de seguimiento post-venta con Yoselin Nails (`+51 981 576 351`) previsto inicialmente para la noche de hoy fue reprogramado para el **miércoles 21 de octubre a las 10:00 a. m.**
+    *   **Objetivo de la gestión**: Consultar cómo le está yendo en el uso del aplicativo personalizado y la venta/colocación de sus créditos del plan nutricional con las clientas de su salón de belleza.
+*   **Ficha Actualizada en Supabase**:
+    *   ID: `3b52b10a-8261-4b84-b304-9e87cb9c5b78`
+    *   Contacto: **Yoselin Nails Parra Calixto**
+    *   Estado: **`cerrado_ganado`**
+    *   Próxima Acción: `Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas` para el **miércoles 21 de octubre de 2026 a las 10:00 a. m.** (`2026-10-21T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
