@@ -1513,6 +1513,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   A las 10:15 a. m. se identificó como **Lizbeth**, aceptó la reunión demostrativa para mañana martes (*«Mañana en la mañana estaría bien»*) y consultó por el precio (*«El precio?»*).
         *   Alberto le respondió aplicando la técnica de anclaje de valor por paciente (desde S/ 13 soles por paciente al mes), destacando que la App propia y web están 100% incluidas sin costo adicional de desarrollo, y ofreciéndole dos opciones de horario concreto para mañana: **10:00 a. m. o 11:00 a. m.** Pendiente de su elección de hora para registrarla en el CRM bajo la Regla 5.
 
+### 202. Admisión Oficial al CRM y Agendamiento de Zoom Demostrativo en Vivo - Lic. Lizbeth (Liz Nutris) (19 de Octubre de 2026 - Tarde)
+*   **Cumplimiento Estricto de las Reglas 4 y 5**:
+    *   A las 10:31 a. m., la Lic. Lizbeth (`+51 981 229 719`, Perú) respondió confirmando la hora exacta para la reunión demostrativa por Zoom en vivo: *«A las 10 estaría bien»*.
+    *   Alberto le despachó de inmediato la confirmación formal por WhatsApp: *«Excelente, Lizbeth. Queda agendada nuestra sesión para mañana martes a las 10:00 a. m. Te enviaré el enlace de la sala de Zoom 10 minutos antes por aquí para conectarnos puntuales y compartirte pantalla. ¡Muchos éxitos en tu jornada de hoy!»*.
+    *   Al haberse consolidado el interés genuino y la reunión en vivo fijada, se procedió a la **admisión oficial en la base de datos de Supabase** cumpliendo la **Regla 5**.
+*   **Ficha Registrada en Supabase**:
+    *   ID: `56817740-e8f4-49ea-8bb8-ebd9457cbee0`
+    *   Nombre Comercial: **Liz Nutris**
+    *   Contacto: **Lic. Lizbeth**
+    *   Teléfono: `+51 981 229 719`
+    *   Tipo de Cliente: `nutricionista`
+    *   Estado: **`cita_agendada`**
+    *   Plan Objetivo: `plan_30` (S/ 400.00 / mes)
+    *   Asignado a: **Alberto Zegarra**
+    *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes y ejecutar demostración en vivo de plataforma y App móvil` para el **martes 20 de octubre de 2026 a las 09:50 a. m.** (`2026-10-20T09:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
