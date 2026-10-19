@@ -1529,6 +1529,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Asignado a: **Alberto Zegarra**
     *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes y ejecutar demostración en vivo de plataforma y App móvil` para el **martes 20 de octubre de 2026 a las 09:50 a. m.** (`2026-10-20T09:50:00`).
 
+### 203. Diagnóstico Estratégico de Héctor Tena (BMA Perú), Despacho de Pitch B2B y Blindaje del ADN del Producto (19 de Octubre de 2026 - Tarde)
+*   **Análisis Ejecutivo de Héctor Tena (`hectortena.com.pe`)**:
+    *   Héctor Tena respondió en Facebook Messenger: *«Hola Alberto. No soy entrenador. Te comparto mi web: www.hectortena.com.pe»*.
+    *   Se analizó su perfil corporativo: Director Fundador de **BMA Perú (Business Management Advisor)**, Magíster en Marketing por ESAN y Máster por ESIC España, con más de 25 años en dirección de unidades de negocio fitness y ex-directivo en **Smart Fit, Bodytech y Gold's Gym**.
+    *   **Diagnóstico de Oportunidad**: NO es prospecto para planes individuales de coach/nutricionista. Representa un **Aliado Estratégico B2B / Canal Multiplicador de Alto Nivel** que asesora a dueños e inversionistas de gimnasios y centros deportivos.
+*   **Blindaje Inviolable del ADN de Producto**:
+    *   Se ratifica y formaliza la distinción permanente: **Bienestar CRM** (este repositorio y panel interno) es el sistema privado para el seguimiento y prospección de leads de Alberto y su equipo comercial.
+    *   **El Producto Comercial que Alberto vende en sus Zooms** es la **Plataforma y Aplicativo Móvil PWA de Bienestar, Nutrición y Entrenamiento con Marca Blanca** (`bienestarsinexcusas.site`): planes nutricionales de 28 días con fotos reales, recálculo de macros, lista de compras semanal y Asistente Virtual IA Lucas 24/7, comercializado en planes por créditos (**Plan 30 a S/ 400**, **Plan 80 a S/ 700**, **Plan 200 a S/ 1,200**, etc.) y personalizable para gimnasios (ej. American Gold Gym, Reeves, Toro Hakim, Dogo Training Center) y profesionales de la salud.
+*   **Despacho de Pitch Estratégico en Facebook Messenger**:
+    *   Alberto envió a Héctor Tena el mensaje corporativo exacto con reciprocidad de web (`https://www.bienestarsinexcusas.site/`), destacando la sinergia de entregar a los gimnasios que él asesora una app móvil de nutrición y coach IA bajo su propia marca para maximizar retención y rentabilidad, invitándolo a una reunión demostrativa por Zoom en vivo de 15 minutos en pantalla.
+*   **Regla 5 de Admisión al CRM**: Héctor Tena permanece en seguimiento conversacional en Messenger. Solo será ingresado a la base de datos de Supabase cuando confirme fecha y hora exacta para la reunión en vivo por Zoom.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
