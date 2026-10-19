@@ -1591,6 +1591,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Visión IA*: Proyección fotorrealista Vertex Vision IA integrada.
     *   *Infraestructura PWA*: Peso ultraligero (< 2 MB), funcionamiento offline y cero comisiones a Apple/Google.
 
+### 206. Consolidación de Alianza Estratégica B2B con Dario Cienfuegos (Agencia Cienfuegos) y Lanzamiento de Presentación Comercial (19 de Octubre de 2026 - Tarde)
+*   **Acuerdo de Canal y Derivación de Gimnasios**:
+    *   Dario Cienfuegos (`dariospaarnold@gmail.com`), director de **Cienfuegos - Agencia de Consultoría y Gestión Empresarial**, acordó formalmente operar como canal B2B estratégico de derivación de gimnasios hacia la plataforma de Bienestar Sin Excusas, replicando y escalando el exitoso modelo de canal que ya se mantiene con Luis Culqui.
+    *   Inicio de derivaciones programado para esta misma semana (octubre 2026).
+*   **Presentación Comercial de Co-Branding Oficial ("Cienfuegos | Apps para Gimnasios")**:
+    *   Alberto produjo el dossier comercial de alta conversión de 4 páginas en PDF:
+        *   *Pág. 1 - Propuesta de Valor*: «Tu gimnasio. Ahora con tu propia App con Inteligencia Artificial. Plataforma móvil marca blanca personalizada con tu logo y colores. Lista en 48 horas sin programadores». 100% tu marca, IA 24/7 en sala, más retención.
+        *   *Pág. 2 - Experiencia del Socio*: Nutrición inteligente de 28 días, códigos QR en máquinas físicas, Coach con IA 24/7 y progreso corporal con capturas reales de la App.
+        *   *Pág. 3 - Retorno de Inversión*: 01/ Membresías VIP & híbridas para elevar el ticket promedio, 02/ Blindaje de retención (evita 60% de abandono), 03/ Cero costos de desarrollo ($0 en servidores ni mantenimiento).
+        *   *Pág. 4 - Cierre y Alianza*: «Cienfuegos en alianza con Bienestar Sin Excusas». Invitación a demostración interactiva de 15 minutos en el propio gimnasio o virtual, con promoción de lanzamiento: **Configuración de marca BONIFICADA**.
+*   **Preparación en Bienestar CRM**:
+    *   El sistema cuenta con el rol, privacidad y filtro de vendedor activo para `dariospaarnold@gmail.com`. Cada lead derivado por Dario se ingresará a Supabase con su atribución comercial correspondiente para trazabilidad de comisiones, demos y cierres.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
