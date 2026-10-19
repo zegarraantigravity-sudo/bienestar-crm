@@ -1604,6 +1604,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Preparación en Bienestar CRM**:
     *   El sistema cuenta con el rol, privacidad y filtro de vendedor activo para `dariospaarnold@gmail.com`. Cada lead derivado por Dario se ingresará a Supabase con su atribución comercial correspondiente para trazabilidad de comisiones, demos y cierres.
 
+### 207. Admisión Oficial al CRM y Agendamiento de Zoom Demostrativo en Vivo - Lic. Diana Landa (Honduras) (19 de Octubre de 2026 - Tarde)
+*   **Cumplimiento Estricto de las Reglas 4 y 5**:
+    *   Tras el despacho del mensaje de anclaje de horario, la prospecto de Honduras (`+504 3218-9442`) respondió a las 3:29 p. m.: *«Si gracias disculpe mi nombre es Diana Landa. Y me queda mejor al mediodía. Podría ser mañana si gusta»*.
+    *   Alberto le propuso de inmediato la hora exacta contemplando la diferencia de husos horarios: **12:00 p. m. hora de Honduras (1:00 p. m. hora de Perú)** para mañana martes 20 de octubre.
+    *   Al haberse consolidado el interés genuino, la identidad confirmada y la reunión en vivo fijada, se procedió a la **admisión oficial en la base de datos de Supabase** cumpliendo la **Regla 5**.
+*   **Ficha Registrada en Supabase**:
+    *   ID: `020bc877-9f73-4688-830b-1f101a79f52c`
+    *   Nombre Comercial: **Diana Landa Nutrición**
+    *   Contacto: **Lic. Diana Landa**
+    *   Teléfono: `+504 3218-9442` (Honduras)
+    *   Tipo de Cliente: `nutricionista`
+    *   Estado: **`cita_agendada`**
+    *   Plan Objetivo: `plan_30` (USD 114.00 / mes)
+    *   Valor Estimado: S/ 400.00 ($ 114.00 USD)
+    *   Asignado a: **Alberto Zegarra**
+    *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes (12:50 p. m. hora Perú / 11:50 a. m. hora Honduras) y ejecutar demostración en vivo` para el **martes 20 de octubre de 2026 a las 12:50 p. m.** (`2026-10-20T12:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
