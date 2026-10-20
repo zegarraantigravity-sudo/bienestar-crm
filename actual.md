@@ -1676,6 +1676,26 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Directriz de Negociación B2B**: Postura de alta dirección y cero saturación. Se respeta el tiempo de análisis de un directivo corporativo y se mantiene silencio estratégico sin despachar toques adicionales durante la noche ni el martes. De no mediar respuesta, se evaluará un seguimiento profesional para el jueves por la mañana.
     *   **Cumplimiento de la Regla 5**: Héctor permanece en prospección conversacional en Messenger sin ingresar a Supabase hasta la fijación de la cita demostrativa en vivo.
 
+### 213. Calibración de Seguridad y Optimización de Cadencia Diaria en Facebook Messenger (19 de Octubre de 2026 - Noche)
+*   **Diagnóstico de Restricción Preventiva de Meta**:
+    *   Durante el bloque nocturno de prospección, Facebook activó una restricción temporal de 24 horas para envío de mensajes tras alcanzar el umbral de 60 toques diarios (20-20-20).
+    *   Por el contrario, el canal de WhatsApp (`30 toques diarios`: 10 mañana / 10 tarde / 10 noche) operó con total normalidad, sin bloqueos ni advertencias.
+*   **Ajuste Oficial de Cadencia Diaria (75 Toques Totales)**:
+    *   Por decisión estratégica de Alberto, se calibra el volumen en Facebook Messenger reduciéndolo de **60 a 45 mensajes diarios**, distribuidos en **3 bloques de 15 toques** para mantenerse por debajo del radar de detección algorítmica de Meta:
+        1. **WhatsApp (30 toques diarios)**:
+           * Bloque Mañana: 10 mensajes.
+           * Bloque Tarde: 10 mensajes.
+           * Bloque Noche: 10 mensajes.
+        2. **Facebook Messenger (45 toques diarios)**:
+           * Bloque Mañana: 15 mensajes.
+           * Bloque Tarde: 15 mensajes.
+           * Bloque Noche: 15 mensajes.
+    *   *Volumen semanal proyectado*: ~375 a 450 toques de alta calidad, suficientes para alimentar un flujo continuo de 5 a 8 reuniones demostrativas por Zoom a la semana sin riesgo de suspensión.
+*   **Protocolo de Blindaje y Protección de Cuenta**:
+    1. *Enfriamiento estricto de 24 horas*: Cero envíos por Facebook Messenger hasta la noche del martes 20 de octubre.
+    2. *Espaciado humano*: Intervalos de 45 a 90 segundos entre mensajes en Messenger.
+    3. *Rotación de aperturas (Anti-Hash)*: Alternancia permanente de 3 variantes de copy y saludo personalizado para evitar patrones idénticos.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
