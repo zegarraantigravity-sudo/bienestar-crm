@@ -1822,6 +1822,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se registró en su bitácora el detalle del Zoom, su especialidad geriátrica, el potencial con sus colegas y la entrega de accesos y cotización.
     *   Se programó la próxima acción en: *«Seguimiento post-prueba de app (plan 28 días) y recepción de propuesta formal en Word ($114 USD / Plan 30)»* para el **viernes 23 de octubre de 2026 a las 10:30 a. m.**
 
+### 225. Inspección Vespertina y Aplicación de Silencio Estratégico - Lic. Denisse Apaza (20 de Octubre de 2026 - Tarde)
+*   **Inspección Visual de WhatsApp (03:35 p. m.)**:
+    *   Alberto auditó la conversación de WhatsApp con la Lic. Denisse Apaza (`+51 953 555 700`, Arequipa), constatando que el mensaje de seguimiento de las 09:10 a. m. continúa en **doble check plomo** sin respuesta por jornada clínica continua en su consultorio.
+    *   Se implementa el protocolo estricto de **Cero Saturación y Silencio Estratégico**: prohibido enviar un segundo mensaje en el mismo día para no devaluar la postura comercial ni saturar a la profesional.
+    *   Se programa verificación visual nocturna a las **08:00 p. m.** para evaluar si revisó la app con su asistente al término de su consulta médica.
+*   **Actualización en Supabase**:
+    *   Lead: Denisse Apaza (`2071efe8-e881-4762-8a66-dc29b22d6609`). Estado: **`presentacion_realizada`**.
+    *   Próxima Acción: `Inspección visual nocturna de WhatsApp tras cierre de consultorio (evaluación de respuesta sobre Plan 30 y personalización de app)` programada para el **martes 20 de octubre de 2026 a las 08:00 p. m.** (`2026-10-20T20:00:00`).
+
+### 226. Integración de Promociones de Cierre Fitness B2B y Criterio de Activación Oportuna (20 de Octubre de 2026 - Tarde)
+*   **Incorporación de Herramientas de Cierre B2B**:
+    *   Alberto validó e integró la propuesta de servicios integrales para gimnasios y centros deportivos (Tecnología Fitness B2B) para dinamizar las presentaciones en vivo y acelerar cierres en caliente.
+    *   **Bono de Acción Rápida (48 Horas)**: En Plan 30 entrega +15 días gratis (45 días por S/ 400); en Plan 80 entrega 2 meses por el precio de 1 (60 días por S/ 700).
+    *   **Garantía de Escalamiento Flexible (7 Días)**: Si supera el cupo en los primeros 7 días, salta al siguiente plan pagando únicamente la diferencia (S/ 300 de Plan 30 a 80; S/ 500 de Plan 80 a 200).
+    *   **Módulo 3 (QRs Físicos para Máquinas)**: Solución de stickers resistentes para digitalizar salas de máquinas (Modalidad A: Solo QR / Modalidad B: Videos + QR).
+    *   **Regla de Oro de Activación Oportuna (Criterio Alberto)**: Estas promociones no se disparan por adelantado ni de forma indiscriminada. Se reservan tácticamente: el Bono de 48h como acelerador contra la indecisión o postergación; la Garantía de Escalamiento ante dudas de cupo; y los QRs físicos exclusivamente para gimnasios con equipamiento presencial.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
@@ -1875,6 +1892,42 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     3. **Transferencia Bancaria (PEN)**: BBVA Cta: 0011-0131-0200371618 / CCI: 0111-31000-20037161806.
     4. **Billetera Digital (PEN)**: PLIN: 978 438 246.
 *   **Generador Automatizado**: Script en Python disponible en el entorno para exportar instantáneamente el documento formal en Word (`.docx`) y PDF (`.pdf`) en la carpeta de descargas de Alberto.
+
+### 3. Propuesta Oficial Fitness B2B y Promociones de Cierre (Gimnasios y Centros Deportivos)
+*   **Encabezado**: BIENESTAR SIN EXCUSAS · TECNOLOGÍA FITNESS B2B | PROPUESTA DE SERVICIOS INTEGRALES
+*   **Pilares**: 1. Planes Inteligentes de Nutrición y Entrenamiento (28 días con IA Lucas 2.0), 2. App Móvil Marca Blanca y Web Propia, 3. Interactividad en Sala con Códigos QR en máquinas.
+*   **Tarifario Oficial en Soles (PEN)**:
+    *   **Plan 30**: S/ 400.00 (+ IGV: S/ 472.00) | Hasta 30 alumnos | S/ 13.33 x alumno
+    *   **Plan 80**: S/ 700.00 (+ IGV: S/ 826.00) | Hasta 80 alumnos | S/ 8.75 x alumno
+    *   **Plan 200**: S/ 1,200.00 (+ IGV: S/ 1,416.00) | Hasta 200 alumnos | S/ 6.00 x alumno
+    *   **Plan 500**: S/ 2,700.00 (+ IGV: S/ 3,186.00) | Hasta 500 alumnos
+    *   **Plan 1,200**: S/ 6,000.00 (+ IGV: S/ 7,080.00) | Hasta 1,200 alumnos
+    *   **Plan 3,300**: S/ 15,000.00 (+ IGV: S/ 17,700.00) | Hasta 3,300 alumnos
+    *   **Plan 8,000**: S/ 30,000.00 (+ IGV: S/ 35,400.00) | Hasta 8,000 alumnos
+*   **Bono de Bienvenida y Acción Rápida (Válido por 48 Horas)**:
+    *   **En Plan 30**: +15 DÍAS ADICIONALES GRATIS. 45 días continuos de plataforma por el precio regular de 1 mes (Ahorro: S/ 200.00).
+    *   **En Plan 80**: 2 MESES COMPLETOS POR EL PRECIO DE 1 (2x1). Pagas primer mes y el segundo es 100% gratis: 60 días completos para hasta 80 alumnos (Ahorro: S/ 700.00).
+*   **Garantía de Escalamiento Flexible (Ventana de 7 Días)**:
+    *   Si en los primeros 7 días el cliente supera su cupo, sube al siguiente plan pagando ÚNICAMENTE la diferencia:
+        *   De Plan 30 a Plan 80: Paga solo S/ 300.00 y suma 50 cupos al instante.
+        *   De Plan 80 a Plan 200: Paga solo S/ 500.00 y suma 120 cupos al instante.
+*   **Módulo 2 (App Móvil y Web Marca Blanca)**: ¡100% INCLUIDO Y GRATUITO DESDE EL PLAN 30 EN ADELANTE!
+*   **Módulo 3: Digitalización de Ejercicios y QRs Físicos (Stickers de Sala)**:
+    *   **Modalidad A: «Solo QR» (El gimnasio da los videos)**:
+        *   50 QR: S/ 300.00 (2-3 días) | 100 QR: S/ 500.00 (3-4 días) | 200 QR: S/ 800.00 (4-5 días)
+    *   **Modalidad B: «Servicio Completo» (Grabamos videos + QR)**:
+        *   25 Videos + QR: S/ 850.00 (4-6 días) | 50 Videos + QR: S/ 1,450.00 (6-8 días)
+        *   100 Videos + QR: S/ 2,500.00 (8-12 días) | 200 Videos + QR: S/ 4,500.00 (12-15 días)
+*   **Condiciones Comerciales y Cuentas de Abono Fitness**:
+    *   Facilidad 50% / 50%: 50% de adelanto para iniciar personalización y 50% contra entrega de stickers y activación.
+    *   **Titular de Cuentas Fitness**: Luis Rafael Hakim Toro
+        *   **BBVA**: 0011-0732-0200094530 / CCI: 0011-732-000200094530-59
+        *   **Interbank**: 487 3130613420 / CCI: 003 487 013130613420 69
+*   **Criterio Táctico de Aplicación (Regla Alberto)**:
+    *   *No regalar bonos sin resistencia*: Si el cliente compra precio regular, se cobra regular.
+    *   *Disparador del Bono 48h*: Solo para romper la objeción de «lo voy a pensar» o «la otra semana», condicionando el beneficio al abono del anticipo en 48 horas.
+    *   *Disparador de Garantía*: Solo cuando el prospecto exprese temor de que el plan le quede chico o grande.
+    *   *Disparador de Módulo 3*: Exclusivo para gimnasios y centros deportivos con infraestructura de máquinas.
 
 ---
 
