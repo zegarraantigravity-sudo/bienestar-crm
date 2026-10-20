@@ -1855,6 +1855,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Darío Cienfuegos (`896adc39-99b3-4ad9-b6b6-f6c6975a54b4`).
     *   Se registró la gestión en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear respuesta de Darío sobre gimnasios en mente o lista de prospectos»* para el **jueves 22 de octubre de 2026 a las 11:00 a. m.**
 
+### 229. Compromiso Formal de Agendamiento con Base de Impulse Fitness - Darío Cienfuegos (20 de Octubre de 2026 - Tarde)
+*   **Alineación de Rol y Negociación de Canal**:
+    *   A las 06:28 p. m., Darío respondió revelando que dispone de una base de datos en Excel de clientes de **Impulse Fitness** (compradores de equipamiento deportivo y asistentes a exposiciones), pero argumentó que habría que llamarlos desde cero y no los había contactado aún.
+    *   Alberto mantuvo postura empresarial de socio: en lugar de asumir el trabajo operativo de call center en frío para Darío, le propuso que aproveche su relación directa y la confianza de Impulse para sacar citas y agendar demostraciones por Zoom, consultándole formalmente fecha estimada para los primeros gimnasios.
+    *   A las 06:40 p. m., Darío asumió el compromiso formal fijando como ventana **este jueves 22 y viernes 23 de octubre** para contactar a su base y agendar las primeras reuniones demostrativas, cerrando con sticker de pacto de socios (`🤝`). Alberto ratificó el acuerdo con saludo fraterno.
+*   **Actualización en Supabase**:
+    *   Lead: Darío Cienfuegos (`896adc39-99b3-4ad9-b6b6-f6c6975a54b4`).
+    *   Se registró en su bitácora (`notes.timeline`) el compromiso de agendamiento con la base de Impulse.
+    *   Se programó la próxima acción en: *«Escribir a Darío para revisar primeros gimnasios agendados de la base de Impulse»* para el **jueves 22 de octubre de 2026 a las 10:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
