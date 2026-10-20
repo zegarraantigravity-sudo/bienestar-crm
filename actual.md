@@ -1839,6 +1839,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Módulo 3 (QRs Físicos para Máquinas)**: Solución de stickers resistentes para digitalizar salas de máquinas (Modalidad A: Solo QR / Modalidad B: Videos + QR).
     *   **Regla de Oro de Activación Oportuna (Criterio Alberto)**: Estas promociones no se disparan por adelantado ni de forma indiscriminada. Se reservan tácticamente: el Bono de 48h como acelerador contra la indecisión o postergación; la Garantía de Escalamiento ante dudas de cupo; y los QRs físicos exclusivamente para gimnasios con equipamiento presencial.
 
+### 227. Incorporación de la Biblia de Cierres de Alex Dey en la Memoria del CRM (20 de Octubre de 2026 - Tarde)
+*   **Capacitación e Inyección Estratégica**:
+    *   Alberto integró la transcripción íntegra del programa maestro *«Cómo dominar el arte de la venta moderna»* de Alex Dey (escuela Tom Hopkins).
+    *   Se institucionalizan las 3 leyes fundamentales: Escucha activa con ratio 2:1 (dos oídos, una boca), método socrático de venta (*«de aquí en adelante no les diré, les preguntaré»*) y la Teoría del Silencio en el Cierre (*«al hacer la pregunta de cierre, ¡te callas! El primero que hable, pierde»*).
+    *   Se incorporan los 12 cierres clásicos al arsenal comercial del CRM: Cierre por Conclusión, Doble Alternativa, Amarre, Amarre Invertido, Puercoespín (devolver pregunta con pregunta y llenar papelería), Envolvente, Por Equivocación, Por Compromiso, Por Proceso de Eliminación, Cierre Rebote (fuerza del judo), Cierre de Benjamín Franklin (tabla T para desarmar el «quiero pensarlo») y Cierre de Acción Rápida.
+    *   El asistente y copiloto IA quedan 100% calibrados bajo esta mentalidad comercial agresiva: cero saludos tibios, ganchos directos al dolor y al dinero en prospección, y foco absoluto en captar el 50% de anticipo en cada presentación.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
@@ -1928,6 +1935,27 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Disparador del Bono 48h*: Solo para romper la objeción de «lo voy a pensar» o «la otra semana», condicionando el beneficio al abono del anticipo en 48 horas.
     *   *Disparador de Garantía*: Solo cuando el prospecto exprese temor de que el plan le quede chico o grande.
     *   *Disparador de Módulo 3*: Exclusivo para gimnasios y centros deportivos con infraestructura de máquinas.
+
+### 4. Decálogo Maestro de Cierres y Psicología de Venta (Alex Dey & Tom Hopkins)
+*   **Las 3 Leyes Fundamentales**:
+    1.  *Ratio 2:1*: Escuchar el doble de lo que se habla para identificar el perfil del cliente (acelerado vs reflexivo).
+    2.  *Preguntar en vez de afirmar*: Si lo dice el vendedor, dudan; si lo dice el cliente al responder, es ley.
+    3.  *La Teoría del Silencio*: Lanzada la pregunta de cierre, silencio absoluto. El primero que hable, pierde.
+*   **Inventario Operativo de Cierres para Bienestar Sin Excusas**:
+    1.  **Cierre por Conclusión**: Estado mental permanente: *«Sí lo quiere, sí lo quiere»*. Nunca autotraicionarse ante clientes serios o con cara de piedra.
+    2.  **Doble Alternativa**: Ofrecer siempre dos opciones positivas: *«¿Prefieres arrancar con el Plan 30 o aprovechar el 2x1 del Plan 80?»* / *«¿El anticipo del 50% lo abonas por PayPal o Western Union / BCP?»*.
+    3.  **Cierre Amarre**: Pregunta final afirmativa para acumular síes: *«Automatizar tus planes y darle tu propia App a tus pacientes eleva el estatus de tu consulta, ¿no cree usted? / ¿verdad? / ¿sí o no?»*.
+    4.  **Cierre Amarre Invertido**: Pregunta afirmativa al inicio para variar: *«¿Verdad que ahorrarse 15 horas a la semana armando dietas en Excel es lo que necesita tu consultorio?»*.
+    5.  **Cierre Puercoespín**: Responder una pregunta con otra de cierre y tomar datos:
+        *   Cliente: *«¿Y la app se puede instalar en iPhone y Android?»*.
+        *   Alberto: *«¿A ti te gustaría que tus pacientes la descarguen tanto en iPhone como en Android?»* -> *«Sí»* -> *«Perfecto, está 100% lista para ambos. ¿A nombre de qué consultorio o gimnasio ponemos el encabezado?»*.
+    6.  **Cierre Envolvente**: Proyectar al cliente como dueño en el futuro: *«¿Tu logotipo en la aplicación lo vas a querer centrado o con fondo blanco?»*.
+    7.  **Cierre por Equivocación**: Equivocarse a propósito para que el cliente confirme la compra: *«¿Me dijiste que arrancamos con 15 cupos o con el Plan 30 de 30 cupos?»* -> *«Con el Plan 30»*.
+    8.  **Cierre por Compromiso**: Comprometer al cliente condicionando la solución a su objeción: *«Si yo te demuestro en pantalla que el asistente virtual Lucas responde dudas de recetas 24/7 liberando tu WhatsApp, ¿arrancamos hoy mismo?»*.
+    9.  **Cierre por Proceso de Eliminación**: Aislar la objeción real cuando dicen «déjame pensarlo»: *«¿Hay algo de malo con mi producto? ... ¿Es la reputación de mi empresa? ... ¿Es la calidad? ... ¿Fui yo? ... Entonces, dígame sinceramente: ¿es por el dinero, verdad?»*.
+    10. **Cierre Rebote (Judo)**: Usar la fuerza de la objeción agresiva para cerrar: *«¡Está muy caro!»* -> *«Si le demuestro que con solo 3 pacientes el sistema se paga solo y le deja ganancia líquida, ¿lo adquiere ahorita mismo?»*.
+    11. **Cierre de Benjamín Franklin**: La madre de los cierres para el «quiero pensarlo». Bajar la guardia, trazar la T de razones por las que SÍ y pasarle la pluma para descubrir las razones por las que NO y rebatir únicamente la objeción auténtica.
+    12. **Cierre por Acción Rápida (Urgencia de 48 Horas)**: Ofrecer los 15 días gratis o el 2x1 únicamente condicionado al abono del 50% de anticipo dentro de las 48 horas.
 
 ---
 
