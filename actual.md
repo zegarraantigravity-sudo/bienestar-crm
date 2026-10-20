@@ -1809,6 +1809,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Diana Landa** (`020bc877-9f73-4688-830b-1f101a79f52c`): Próxima acción a las `12:50 p. m.` para envío de enlace de sala.
     *   **Denisse Apaza** (`2071efe8-e881-4762-8a66-dc29b22d6609`): Próxima acción a las `03:30 p. m.` para monitoreo post-consultorio.
 
+### 224. Presentación Exitosa en Vivo, Despacho de Propuesta en Word ($114 USD) y Código de Activación - Lic. Diana Landa (20 de Octubre de 2026 - Tarde)
+*   **Ejecución de Sesión Demostrativa por Zoom en Vivo**:
+    *   A las 01:00 p. m. hora Perú (12:00 p. m. hora Honduras), Alberto ejecutó con total éxito la reunión demostrativa por Zoom con la Lic. Diana Landa (`+504 3218-9442`, Honduras).
+    *   Se le presentó la plataforma completa en pantalla: prescripción automatizada de 28 días, recetario con fotografías reales y gramajes, intercambio de equivalencias, lista de compras semanal, asistente virtual 24/7 y la Aplicación Móvil (PWA) Marca Blanca para iOS y Android.
+    *   **Feedback del Prospecto y Nicho Clínico**: La profesional manifestó un alto agrado por la herramienta y evaluará incorporarla más adelante. Se identificó su nicho de especialidad en nutrición para personas mayores / adultos mayores (tercera edad). Asimismo, se ofreció a recomendar la plataforma con colegas nutricionistas a quienes les puede interesar.
+*   **Entrega de Kit de Prueba y Cotización Formal en Dólares ($ USD)**:
+    *   **Kit de Activación PWA**: Se le compartió el instructivo paso a paso para la instalación de la app (`https://nutri-alberto.bienestarsinexcusas.site/`) junto con el código de activación exclusivo **`NUT-FLC-DLND`** para que experimente el flujo clínico de 28 días como paciente.
+    *   **Propuesta Formal en Word**: Alberto le generó y despachó la propuesta comercial en Microsoft Word (*`Propuesta_Diana_Landa.docx`*) en dólares americanos ($114.00 USD / Plan 30, $200.00 USD / Plan 80, $340.00 USD / Plan 200), con facilidades de 50% de anticipo ($57.00 USD) y 50% contra entrega, y métodos de pago internacionales vía PayPal y Western Union, con vigencia de 15 días (hasta el 4 de noviembre de 2026).
+*   **Actualización en Supabase**:
+    *   Se actualizó la ficha de **Diana Landa** (`020bc877-9f73-4688-830b-1f101a79f52c`) pasando de `cita_agendada` a **`presentacion_realizada`**.
+    *   Se registró en su bitácora el detalle del Zoom, su especialidad geriátrica, el potencial con sus colegas y la entrega de accesos y cotización.
+    *   Se programó la próxima acción en: *«Seguimiento post-prueba de app (plan 28 días) y recepción de propuesta formal en Word ($114 USD / Plan 30)»* para el **viernes 23 de octubre de 2026 a las 10:30 a. m.**
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
