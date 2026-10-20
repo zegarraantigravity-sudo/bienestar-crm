@@ -1711,15 +1711,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Asignado a: **Alberto Zegarra**
     *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes (05:50 a. m.) a Culqui / cliente y ejecutar demostración en vivo de plataforma y App móvil para gimnasios` para el **martes 20 de octubre de 2026 a las 05:50 a. m.** (`2026-10-20T05:50:00`).
 
-### 215. Confirmación Definitiva de Zoom Nocturno (7:30 p. m.) - Gimnasio Referido de Luis Culqui (20 de Octubre de 2026 - Mañana)
-*   **Fijación Definitiva de Horario Nocturno**:
-    *   Tras la inasistencia matutina de las 06:00 a. m. por apertura de local, a las 08:53 a. m. Alberto confirmó directamente con Luis Culqui que la reunión demostrativa por Zoom en vivo con el dueño del gimnasio queda formalmente pactada para hoy **martes 20 de octubre a las 07:30 p. m.**
-    *   Horario estratégico óptimo para el propietario del centro deportivo tras concluir el turno pico vespertino.
+### 215. Confirmación Definitiva de Zoom Nocturno (7:30 p. m.) - Jean Carlo Robles / Evolution Center SJM (20 de Octubre de 2026 - Mañana)
+*   **Fijación Definitiva e Identidad Comercial Confirmada por Luis Culqui**:
+    *   Tras la inasistencia matutina de las 06:00 a. m. por apertura de local, a las 08:58 a. m. Luis Culqui remitió la ficha oficial completa del centro deportivo:
+        *   **Contacto**: Jean Carlo Robles (Dueño)
+        *   **Gimnasio**: Evolution Center
+        *   **Ubicación**: San Juan de Miraflores (SJM, Lima)
+        *   **Horario Pactado**: Hoy **martes 20 de octubre a las 07:30 p. m.**
+    *   Alberto confirmó la hora de inmediato (*«queda»*). Horario de altísima receptividad para presentar en pantalla el ecosistema PWA, códigos QR en sala y monetización de membresías híbridas.
 *   **Ficha Actualizada en Supabase**:
     *   ID: `6100a083-a6af-45de-99c1-733adeb565ed`
-    *   Contacto: **Cliente Gimnasio (Vía Luis Culqui)**
+    *   Nombre Comercial: **Evolution Center (SJM)**
+    *   Contacto: **Jean Carlo Robles**
     *   Estado: **`cita_agendada`**
-    *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes (07:20 p. m.) a Culqui / cliente y ejecutar demostración en vivo de plataforma y App móvil para gimnasios` para el **martes 20 de octubre de 2026 a las 07:20 p. m.** (`2026-10-20T19:20:00`).
+    *   Próxima Acción: `Enviar enlace de sala de Zoom 10 minutos antes (07:20 p. m.) a Jean Carlo Robles / Culqui y ejecutar demostración en vivo de plataforma y App móvil para Evolution Center` para el **martes 20 de octubre de 2026 a las 07:20 p. m.** (`2026-10-20T19:20:00`).
 
 ---
 
