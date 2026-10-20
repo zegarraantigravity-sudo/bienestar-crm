@@ -1634,6 +1634,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: **`cerrado_ganado`**
     *   Próxima Acción: `Seguimiento post-venta: consultar cómo le va con la aplicación y si está vendiendo sus créditos a sus clientas` para el **miércoles 21 de octubre de 2026 a las 10:00 a. m.** (`2026-10-21T10:00:00`).
 
+### 209. Programación Estratégica de Seguimiento Matutino - Lic. Denisse Apaza (19 de Octubre de 2026 - Noche)
+*   **Diagnóstico de Postura y Timing Comercial**:
+    *   Tras la revisión del chat de WhatsApp a las 08:55 p. m., se constató que Denisse no envió mensajes en la tarde tras su aviso del mediodía (*«Recién lo veremos en la tarde»*).
+    *   Por instrucción y decisión estratégica de Alberto, se aplicó la regla de postura y respeto de horarios clínicos: no invadir su descanso nocturno personal y trasladar el contacto de seguimiento para **mañana martes 20 de octubre a las 09:15 a. m.**, momento en el que se encuentra instalada en su consultorio de Arequipa junto con su asistente frente a la computadora.
+    *   **Objetivo de la gestión**: Consultar impresiones tras la exploración de la plataforma y el código `NUT-FLC-DNSE`, y conectar con el 50% de anticipo para el Plan 30 (S/ 400.00).
+*   **Ficha Actualizada en Supabase**:
+    *   ID: `2071efe8-e881-4762-8a66-dc29b22d6609`
+    *   Contacto: **Lic. Denisse Apaza**
+    *   Estado: **`presentacion_realizada`**
+    *   Próxima Acción: `Seguimiento matutino a Denisse tras revisión vespertina: consultar impresiones del código/plataforma con su asistente y conectar con 50% de anticipo para Plan 30` para el **martes 20 de octubre de 2026 a las 09:15 a. m.** (`2026-10-20T09:15:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
