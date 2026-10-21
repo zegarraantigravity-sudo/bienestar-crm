@@ -2009,6 +2009,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5 de Admisión al CRM**:
     *   El prospecto permanece en conversación activa en WhatsApp. Se creará su ficha formal en Supabase en el instante en que confirme su identidad y fije el horario para la sesión demostrativa.
 
+### 241. Mega Campaña de Reactivación B2B (14 Prospectos) y Agendamiento de Cierre — Noé Rojas / NR Sports (21 de Octubre de 2026 - Tarde)
+*   **Despliegue Masivo de Reactivación Directa**:
+    *   Entre las 02:20 p. m. y las 02:35 p. m., Alberto ejecutó una campaña relámpago de toques asertivos y de baja fricción sobre la cartera histórica de prospectos cualificados que habían mostrado interés o recibido demos previas:
+        *   **Nivel 2 (7 contactos - pendientes de demo)**: Lic. Lizbeth (`+51 981 229 719`), Coach Catrina (`+52 1 55 1269 4842`), Deysi (`+51 969 274 321`), Mirian (`+51 953 087 295`), Lisbeth (`+51 935 837 552`), Karla (`+52 1 993 169 4385`) y Carmina Badillo (`+52 1 722 677 3506`).
+        *   **Nivel 1 (7 contactos - con demo o propuesta previa)**: Consuelo Naranjo (`+593 96 251 9793`), Eva Álvarez (`+52 1 442 754 5575`), Aracely Serrano (`+505 8665 3473`), Mónica (`+52 1 56 1283 2754`), Nancy Tafoya (`+52 1 56 1664 9812`), Anita (`+51 928 756 030`) y Noé Rojas (`+52 1 314 181 6670`).
+        *   *Exclusiones estratégicas*: Antonio Barrera (Miura Gym) y Veronica Durand (Active Life) preservados por su condición de cuentas de socios/referidos.
+*   **Respuesta Inmediata y Cierre de Cita — Noé Rojas (NR Sports México)**:
+    *   A las 02:39 p. m., apenas 1 minuto después de enviado el mensaje, Noé respondió con total apertura (*«Amigo si gustas platicamos el Viernes»*), confirmó que la web `nrsports.mx` está casi terminada y que el video de portada facilitado por Alberto quedó excelente. En audio posterior, detalló que la apertura de la tienda física se posterga a dic/2027, abriendo el espacio ideal para priorizar la App como canal digital inmediato.
+    *   **Calibración Quirúrgica de Huso Horario**: Tras un intercambio de precisión sobre las horas locales (México vs. Perú) y en atención al inicio de sus consultas médicas de las 12:00 de México, Noé fijó formalmente la cita por Zoom para el **viernes 23 de octubre a las 11:00 a. m. hora México / 12:00 p. m. hora Perú**.
+*   **Actualización en Supabase**:
+    *   Lead: Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49`).
+    *   Estado: Retorna formalmente a **`cita_agendada`** (Reunión de Cierre y Configuración de App NR Sports).
+    *   Próxima Acción: *«Despacho de enlace de Zoom (11:50 a. m. Perú / 10:50 a. m. México) y reunión de cierre para configuración y activación de app móvil NR Sports»* programada para el **viernes 23 de octubre de 2026 a las 11:50 a. m.** (`2026-10-23T11:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
