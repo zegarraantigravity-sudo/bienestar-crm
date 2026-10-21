@@ -1954,6 +1954,26 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   **Estado**: **`cita_agendada`**
         *   **Próxima Acción**: *«Despacho de enlace de sala de Zoom 10 minutos antes (05:50 p. m.) y ejecución de presentación en vivo de PWA y catálogo Fuxion»* programada para hoy **miércoles 21 de octubre de 2026 a las 05:50 p. m.** (`2026-10-21T17:50:00`).
 
+### 237. Admisión Oficial al CRM y Agendamiento de Zoom Estratégico (Jueves 11:00 a. m.) — Héctor Tena / BMA Perú (21 de Octubre de 2026 - Mediodía)
+*   **Aceptación de Reunión Demostrativa por Zoom**:
+    *   A las 10:42 a. m., Héctor Tena (Director de BMA Perú, cuenta `@GymUniversityPeru`, ex-directivo de Smart Fit, Bodytech y Gold's Gym) respondió afirmativamente al pitch de WhatsApp sin enlaces enviado por Alberto: *«Hola Alberto. Te parece bien mañana jueves a las 11:00 am?»*.
+    *   Alberto ratificó formalmente la reunión demostrativa para el **jueves 22 de octubre a las 11:00 a. m.**, comprometiendo el envío de la sala de Zoom 10 minutos antes (10:50 a. m.).
+*   **Calibración y Blindaje de la Agenda del Jueves 22 de Octubre**:
+    *   *10:30 a. m.*: Darío Cienfuegos (Impulse) — Toque por WhatsApp para auditar lista de gimnasios agendados.
+    *   *11:00 a. m.*: **Héctor Tena (BMA Perú) — Sesión Demostrativa por Zoom en Vivo (15 min)**.
+    *   *11:30 a. m.*: Jean Carlo Robles (Evolution Center) — Seguimiento de prueba PWA (`TIT-FLC-UH50`) y cierre de Plan 200 (S/ 1,200).
+*   **Admisión Oficial al CRM en Supabase (Regla 5)**:
+    *   En cumplimiento estricto de la **Regla 5 de Admisión al CRM**, tras confirmarse la cita demostrativa por Zoom en vivo, se creó formalmente su ficha en la base de datos:
+        *   **ID**: `ff68ce78-8968-4ce1-9d14-2dd5722da20d`
+        *   **Contacto**: Héctor Tena
+        *   **Empresa / Rol**: BMA Perú / Gym University (`hectortena.com.pe`) — Aliado Estratégico Corporativo
+        *   **Teléfono / WhatsApp**: `+51 992 741 111`
+        *   **Correo**: `directorgeneral@hectortena.com.pe`
+        *   **Tipo**: `gimnasio`
+        *   **Plan Objetivo**: `plan_200` (S/ 1,200.00 / mes)
+        *   **Estado**: **`cita_agendada`**
+        *   **Próxima Acción**: *«Despacho de enlace de sala de Zoom 10 minutos antes (10:50 a. m.) y presentación en vivo de plataforma PWA marca blanca para gimnasios asesorados»* programada para el **jueves 22 de octubre de 2026 a las 10:50 a. m.** (`2026-10-22T10:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
