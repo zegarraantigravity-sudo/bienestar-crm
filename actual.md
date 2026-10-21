@@ -1917,6 +1917,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: **`presentacion_realizada`**.
     *   Próxima Acción: *«Inspección visual de WhatsApp de la tarde en horario de receso de consultorio (evaluación de apertura de mensaje)»* programada para el **miércoles 21 de octubre de 2026 a las 03:30 p. m.** (`2026-10-21T15:30:00`).
 
+### 234. Migración Estratégica a WhatsApp y Despacho de Pitch B2B sin Enlace — Héctor Tena / BMA Perú (21 de Octubre de 2026 - Mañana)
+*   **Contexto y Cambio de Canal B2B**:
+    *   Héctor Tena (Director Fundador de BMA Perú, consultor corporativo fitness y ex-directivo de Smart Fit, Bodytech y Gold's Gym) se encontraba en seguimiento en Facebook Messenger tras haber compartido su web (`hectortena.com.pe`) el 19 de octubre. Ante la lentitud intrínseca de Messenger para ejecutivos de alto nivel, Alberto localizó su número corporativo de WhatsApp.
+*   **Decisión Táctica: Omisión Deliberada del Enlace Web**:
+    *   Alberto y el asistente consensuaron no incluir el enlace de la web comercial (`bienestarsinexcusas.site`) en el mensaje de WhatsApp.
+    *   **Justificación Comercial**: Proteger el misterio y la curiosidad, impidiendo que el prospecto evalúe la plataforma de forma superficial e incompleta en una web estática. El único medio para apreciar la PWA móvil con marca blanca, la IA 24/7 y la automatización de menús clínicos es la demostración por Zoom en vivo.
+*   **Despacho del Mensaje Ejecutivo (09:58 a. m.)**:
+    *   Alberto despachó por WhatsApp el mensaje ejecutivo puente conectando con su web de consultoría, reconociendo su trayectoria y proponiendo un Zoom puntual de 10 a 15 minutos para explorar una alianza estratégica orientada a los gimnasios que él asesora.
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   Héctor Tena se mantiene en seguimiento pasivo en WhatsApp. Solo será ingresado a la base de datos de Supabase en el momento en que concrete fecha y hora para la reunión demostrativa por Zoom en vivo.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
