@@ -1939,6 +1939,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5 de Admisión al CRM**:
     *   El contacto permanece en espera pasiva en WhatsApp. Se dará de alta en Supabase una vez que confirme su nombre y agende la sesión demostrativa por Zoom en vivo.
 
+### 236. Admisión Oficial al CRM y Agendamiento de Zoom Demostrativo (06:00 p. m.) — Rosa Freire / Fuxion Ecuador (21 de Octubre de 2026 - Mañana)
+*   **Confirmación de Nombre y Cita por Zoom**:
+    *   A las 10:13 a. m., la profesional de Ecuador (`+593 93 958 5832`) respondió confirmando su identidad: *«Hola mi Nombre es Rosa Freire»* y aceptando la cita demostrativa por Zoom en vivo: *«A las 6 está bien»* / *«De la tarde»*.
+    *   A las 10:17 a. m., Alberto le envió la ratificación cordial y profesional fijando la cita para las **06:00 p. m.** (hora Perú / Ecuador) y comprometiendo el envío del enlace de la sala 10 minutos antes (05:50 p. m.).
+*   **Admisión Oficial al CRM en Supabase (Regla 5)**:
+    *   Cumpliendo estrictamente con la **Regla 5**, al confirmarse el interés genuino y la reunión demostrativa por Zoom en vivo, se creó formalmente su ficha en Supabase:
+        *   **ID**: `030c95bc-fac4-4f0f-99b5-1131a4464b05`
+        *   **Contacto**: Rosa Freire
+        *   **Empresa / Especialidad**: Consultorio Nutricional / Fuxion Ecuador
+        *   **Teléfono**: `+593 93 958 5832`
+        *   **Tipo**: `nutricionista`
+        *   **Plan Objetivo**: `plan_30` ($114 USD / S/ 400.00)
+        *   **Estado**: **`cita_agendada`**
+        *   **Próxima Acción**: *«Despacho de enlace de sala de Zoom 10 minutos antes (05:50 p. m.) y ejecución de presentación en vivo de PWA y catálogo Fuxion»* programada para hoy **miércoles 21 de octubre de 2026 a las 05:50 p. m.** (`2026-10-21T17:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
