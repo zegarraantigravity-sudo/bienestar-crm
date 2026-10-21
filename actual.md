@@ -2000,6 +2000,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Dr. Elmer Platero (`eb54488a-246e-449a-a1aa-625e864afba0`). Estado: **`presentacion_realizada`**.
     *   Se registró la gestión en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear respuesta de Elmer Platero al toque de cierre directo sobre personalización de app y cotización de $114 USD»* para hoy **miércoles 21 de octubre de 2026 a las 05:30 p. m.** (`2026-10-21T17:30:00`).
 
+### 240. Interés Inmediato en Bolivia (+591) y Despacho de Propuesta de Zoom Demostrativo (21 de Octubre de 2026 - Tarde)
+*   **Interacción y Respuesta Cualificada**:
+    *   A la 01:06 p. m., en el marco de la prospección fría multicanal, Alberto despachó el mensaje de apertura clínica al número `+591 74818757` (Bolivia, zona horaria GMT-4, +1 hora respecto a Perú).
+    *   A la 01:19 p. m., el profesional respondió con alto interés: *«Quisiera ver cómo funciona»*.
+*   **Despacho de Propuesta de Zoom en Vivo (01:31 p. m.)**:
+    *   En cumplimiento estricto de la **Regla 4 (Cero Videos Demo, Solo Zoom en Vivo)**, Alberto envió el mensaje solicitando su nombre y planteando una reunión demostrativa de 10 a 15 minutos en pantalla por Zoom con técnica de doble alternativa para hoy: **04:00 p. m. o 04:30 p. m. hora Perú** (05:00 p. m. o 05:30 p. m. hora Bolivia), preservando holgura previa a la cita de las 06:00 p. m. con Rosa Freire.
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   El prospecto permanece en conversación activa en WhatsApp. Se creará su ficha formal en Supabase en el instante en que confirme su identidad y fije el horario para la sesión demostrativa.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
