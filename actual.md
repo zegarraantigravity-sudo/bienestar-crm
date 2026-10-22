@@ -2041,6 +2041,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Carmina Badillo (`f612bf5a-eb3c-4999-9823-e7507b3fcba2`).
     *   Se registró la interacción y el audio en su bitácora (`notes.timeline`) y se programó la próxima acción en: *«Monitorear respuesta de Carmina sobre fecha de retorno a Metepec para agendar Zoom de 10 min»* para el **jueves 22 de octubre de 2026 a las 11:00 a. m.** (`2026-10-22T11:00:00`).
 
+### 244. Presentación Exitosa por Zoom, Compromiso de Plan 30 para Fin de Mes por Western Union y Entrega de Código NUT-FLC-AV4O — Rosa Freire / Fuxion Ecuador (21 de Octubre de 2026 - Noche)
+*   **Resultados de la Demostración por Zoom en Vivo**:
+    *   Alberto llevó a cabo con éxito la reunión demostrativa por Zoom con Rosa Freire (`+593 93 958 5832`, Ecuador). La profesional mostró enorme interés hacia el menú clínico interactivo de 28 días, el recálculo automático y la ventaja decisiva de contar con su propia App de marca blanca.
+    *   **Acuerdo Comercial Firme (Plan 30 para Fin de Mes)**: Rosa manifestó su decisión de contratar el **Plan 30 ($114.00 USD / S/ 400.00)** para arrancar a finales de octubre.
+    *   **Gancho Decisivo de Integración Fuxion**: Se acordó integrar dentro de su App móvil personalizada los productos y suplementos de su catálogo de Fuxion, permitiendo que sus pacientes los elijan y se los adquieran directamente a ella.
+    *   **Modalidad de Pago Pactada**: Transferencia internacional vía **Western Union** con la facilidad del 50% de anticipo (**$57.00 USD**) para inicio del desarrollo y despliegue de su marca blanca, y el 50% de saldo contra entrega.
+*   **Entrega de Kit de Activación PWA**:
+    *   Alberto despachó por WhatsApp el instructivo guiado junto con su código de activación exclusivo **`NUT-FLC-AV4O`** y el enlace a la plataforma (`https://nutri-alberto.bienestarsinexcusas.site/`) para que estructure su plan clínico y experimente el flujo completo como paciente.
+*   **Actualización en Supabase**:
+    *   Lead: Rosa Freire (`030c95bc-fac4-4f0f-99b5-1131a4464b05`).
+    *   Estado: De `cita_agendada` a **`presentacion_realizada`**.
+    *   Plan Objetivo: **`plan_30`** | Valor Estimado: **$114.00 USD (S/ 400.00)**.
+    *   Próxima Acción: *«Monitorear prueba de app clínica con código NUT-FLC-AV4O y coordinar abono de 50% de anticipo ($57 USD) vía Western Union para fin de mes con catálogo Fuxion»* programada para el **sábado 24 de octubre de 2026 a las 11:00 a. m.** (`2026-10-24T11:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
