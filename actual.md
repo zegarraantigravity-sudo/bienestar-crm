@@ -2114,6 +2114,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: De `cita_agendada` a **`cerrado_perdido`** con motivo **`sin_tiempo_interes`** y etiqueta *«Pausa por viaje; puerta abierta cordial ('cuando desee le escribiré')»*, depurando el embudo activo para concentrar foco en prospectos inmediatos.
     *   Se registró la interacción completa en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Puerta abierta; seguimiento pasivo si retoma contacto tras su viaje»* para el **lunes 16 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-16T11:00:00`).
 
+### 250. Presentación por Zoom con Héctor Tena (BMA Perú) y Cierre de Compromiso de Canal con Darío Cienfuegos (22 de Octubre de 2026 - Mediodía)
+*   **Resultados de la Demostración en Vivo — Héctor Tena (BMA Perú)**:
+    *   A las 11:00 a. m., Alberto llevó a cabo la reunión demostrativa por Zoom con Héctor Tena (`+51 992 741 111`, Director de BMA Perú / Gym University, ex-directivo de Smart Fit, Bodytech y Gold's Gym).
+    *   Alberto expuso las funcionalidades de la App móvil PWA marca blanca, la automatización nutricional y los beneficios de retención para gimnasios.
+    *   **Definición Comercial Directa**: Héctor manifestó que no está interesado en establecer una alianza comercial de distribución o canal para su consultora BMA Perú en este momento.
+    *   **Postura de Alto Estatus y Depuración**: Se cerró la interacción de manera cordial y ejecutiva, evitando insistencia innecesaria y preservando el prestigio institucional.
+    *   **Actualización en Supabase**:
+        *   Lead: Héctor Tena (`ff68ce78-8968-4ce1-9d14-2dd5722da20d`).
+        *   Estado: De `cita_agendada` a **`cerrado_perdido`** con motivo **`sin_tiempo_interes`** y etiqueta *«Reunión por Zoom realizada; no interesado en alianza de canal B2B»*, depurando el embudo activo.
+        *   Próxima Acción: *«Puerta abierta institucional; contactar solo si él retoma la iniciativa»* (`2026-11-23T11:00:00`).
+*   **Consolidación de Canal B2B — Darío Cienfuegos / Impulse Fitness**:
+    *   A las 10:46 a. m., Darío respondió con un audio de 3:03 min dando luz verde total para prospección: confirmó que seleccionará una lista inicial de **20 gimnasios calificados** de sus bases de datos de Impulse Fitness (dueño, teléfono, ubicación) para que Alberto realice la prospección y demos directamente, mientras Darío se enfoca en la apertura de un gimnasio en Surco.
+    *   A las 10:47 a. m., Alberto ratificó el acuerdo con total apertura y respaldo.
+    *   **Actualización en Supabase**:
+        *   Lead: Darío Cienfuegos (`896adc39-99b3-4ad9-b6b6-f6c6975a54b4`).
+        *   Se registró en su bitácora (`notes.timeline`) el compromiso de los 20 contactos y se fijó la próxima acción en: *«Monitorear recepción de lista de 20 gimnasios de Impulse prometida por Darío»* para el **viernes 23 de octubre de 2026 a las 10:00 a. m.** (`2026-10-23T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
