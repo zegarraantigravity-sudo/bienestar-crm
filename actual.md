@@ -2055,6 +2055,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Plan Objetivo: **`plan_30`** | Valor Estimado: **$114.00 USD (S/ 400.00)**.
     *   Próxima Acción: *«Monitorear prueba de app clínica con código NUT-FLC-AV4O y coordinar abono de 50% de anticipo ($57 USD) vía Western Union para fin de mes con catálogo Fuxion»* programada para el **sábado 24 de octubre de 2026 a las 11:00 a. m.** (`2026-10-24T11:00:00`).
 
+### 245. Fijación de Ventana de Retorno para la Primera Semana de Noviembre — Carmina Badillo / México (21 de Octubre de 2026 - Noche)
+*   **Alineación Temporal Acordada**:
+    *   A las 06:03 p. m., Carmina Badillo (`+52 1 722 677 3506`, Metepec, México) respondió al mensaje de descompresión enviado por Alberto, confirmando su fecha exacta de regreso a su consultorio: *«Gracias Alberto, llego la primera semana de noviembre. Por favor te aviso. Un abrazo !!»*.
+    *   A las 09:58 p. m., Alberto le envió la ratificación cordial y ejecutiva deseándole un excelente viaje y comprometiendo retomar contacto la primera semana de noviembre.
+*   **Actualización en Supabase**:
+    *   Lead: Carmina Badillo (`f612bf5a-eb3c-4999-9823-e7507b3fcba2`).
+    *   Se registró la ventana de retorno en su bitácora (`notes.timeline`) y se programó la próxima acción en: *«Reactivación de bienvenida post-viaje y agendamiento de Zoom demostrativo de 10 min»* para el **martes 3 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-03T11:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
