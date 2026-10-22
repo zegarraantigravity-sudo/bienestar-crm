@@ -2131,6 +2131,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Lead: Darío Cienfuegos (`896adc39-99b3-4ad9-b6b6-f6c6975a54b4`).
         *   Se registró en su bitácora (`notes.timeline`) el compromiso de los 20 contactos y se fijó la próxima acción en: *«Monitorear recepción de lista de 20 gimnasios de Impulse prometida por Darío»* para el **viernes 23 de octubre de 2026 a las 10:00 a. m.** (`2026-10-23T10:00:00`).
 
+### 251. Prospección Clínica en Ecuador (+593), Compromiso de Revisión y Salida Descompresiva — Elliette Benitez (22 de Octubre de 2026 - Tarde)
+*   **Interacción y Apertura Clínica**:
+    *   A las 10:25 a. m., en el marco de la prospección fría multicanal en WhatsApp, Alberto envió la plantilla de modernización clínica con enlace a la web de muestra (`nutri-alberto.bienestarsinexcusas.site`) a Elliette Benitez (`+593 98 452 8432`, especialista en medicina y salud / nutrición, Ecuador).
+    *   A las 10:35 a. m., la profesional respondió estableciendo un compromiso voluntario de revisión: *«Gracias este fin de semana reviso»*.
+*   **Respuesta Táctica sin Presión**:
+    *   A la 01:37 p. m., tras culminar el bloque de reuniones matutinas, Alberto le despachó un mensaje cálido y descompresivo para validar sus tiempos de consulta médica y anclar el seguimiento para el inicio de semana:
+        > *«¡Perfecto, Elliette! Dale una mirada con calma estos días y el lunes te escribo un toque para ver qué tal te pareció. ¡Que tengas un excelente fin de semana! 🙌»*
+*   **Cumplimiento Estricto de la Regla 5 de Admisión al CRM**:
+    *   Dado que se encuentra en prospección inicial y aún no ha confirmado ni agendado una cita demostrativa por Zoom en vivo, el contacto permanece activo exclusivamente en WhatsApp. Se dará de alta en Supabase una vez que el lunes se concrete la sesión demostrativa.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
