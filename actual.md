@@ -2081,6 +2081,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *11:00 a. m.*: **HÉCTOR TENA (BMA Perú) — SESIÓN DEMOSTRATIVA POR ZOOM EN VIVO**.
     *   *11:30 a. m.*: **Jean Carlo Robles (Evolution Center)** — Monitoreo de kit `TIT-FLC-UH50` y avance de anticipo del **Plan 200 (S/ 1,200)**.
 
+### 247. Despacho de Micro-Toque de Reactivación — Lic. Denisse Apaza / Arequipa (22 de Octubre de 2026 - 09:50 a. m.)
+*   **Diagnóstico de Auditoría Visual**:
+    *   A las 09:42 a. m., Alberto constató mediante captura de pantalla que el chat con la Lic. Denisse Apaza (`+51 953 555 700`, Arequipa) acumulaba ~48 horas en doble check plomo (no abierto / sepultado bajo el flujo asistencial de sus consultas en consultorio).
+*   **Estrategia y Despacho de Micro-Toque de 1 Línea (Opción B)**:
+    *   A las 09:50 a. m., Alberto ejecutó la **Opción B**: un toque de una sola línea, diseñado estratégicamente para mostrarse de forma completa en la previsualización de la barra de notificaciones del celular sin requerir apertura del chat, forzando la curiosidad y la definición comercial:
+        > *«Hola Denisse, ¿tuviste alguna duda con el código o avanzamos con el montaje de tu App?»*
+*   **Actualización en Supabase**:
+    *   Lead: Lic. Denisse Apaza (`2071efe8-e881-4762-8a66-dc29b22d6609`). Estado: **`presentacion_realizada`**.
+    *   Se registró la gestión en su bitácora (`notes.timeline`) y se reprogramó la próxima acción en: *«Monitorear respuesta de Denisse al micro-toque y coordinar avance de personalización de App (Plan 30 - S/ 400)»* para hoy **jueves 22 de octubre de 2026 a las 02:00 p. m.** (`2026-10-22T14:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
