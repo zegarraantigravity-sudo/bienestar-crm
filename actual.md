@@ -2102,6 +2102,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Darío Cienfuegos (`896adc39-99b3-4ad9-b6b6-f6c6975a54b4`).
     *   Se registró la gestión en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear respuesta de Darío sobre primeros gimnasios agendados de la base de Impulse y coordinar horarios de demos por Zoom»* para hoy **jueves 22 de octubre de 2026 a la 01:30 p. m.** (`2026-10-22T13:30:00`).
 
+### 249. Respuesta por Viaje, Salida Elegante y Depuración a Cerrado Perdido — Lic. Lizbeth / Liz Nutris (22 de Octubre de 2026 - 10:10 a. m.)
+*   **Respuesta de la Profesional al Toque de Reactivación**:
+    *   A las 09:50 a. m., Lic. Lizbeth (`+51 981 229 719`, empresa `Liz Nutris`) respondió al mensaje de decisión de reactivación despachado en la víspera, explicando con amabilidad que se encuentra de viaje y solicitando no avanzar por ahora:
+        > *«Buenos días, por el momento no estimado. Ahorita estoy de viaje, cuando desee le escribiré. Gracias 🤗»*
+*   **Respuesta Táctica de Alto Estatus y Salida Elegante**:
+    *   A las 10:07 a. m., aplicando las directrices de psicología comercial (evitar insistencia inoportuna que deteriore la relación y preservar la imagen de marca), Alberto le despachó una salida cálida y descompresiva:
+        > *«¡Comprendido al 100%, Lizbeth! Despreocúpate y disfruta mucho de tu viaje. Aquí tienes mi contacto para cuando gustes retomarlo a tu regreso. ¡Un fuerte abrazo y muchos éxitos! 🙌»*
+*   **Depuración Comercial y Actualización en Supabase**:
+    *   Lead: Lic. Lizbeth (`56817740-e8f4-49ea-8bb8-ebd9457cbee0`).
+    *   Estado: De `cita_agendada` a **`cerrado_perdido`** con motivo **`sin_tiempo_interes`** y etiqueta *«Pausa por viaje; puerta abierta cordial ('cuando desee le escribiré')»*, depurando el embudo activo para concentrar foco en prospectos inmediatos.
+    *   Se registró la interacción completa en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Puerta abierta; seguimiento pasivo si retoma contacto tras su viaje»* para el **lunes 16 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-16T11:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
