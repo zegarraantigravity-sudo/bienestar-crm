@@ -2195,6 +2195,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5 de Admisión al CRM**:
     *   El contacto permanece activo en WhatsApp. Se dará de alta formalmente en Supabase con estado `cita_agendada` en el instante en que confirme el horario para la sesión demostrativa.
 
+### 257. Reactivación Asertiva con Respeto de Tiempos y Puerta Abierta — Deysi Nutris (23 de Octubre de 2026 - 09:35 a. m.)
+*   **Interacción y Respuesta Cualificada**:
+    *   En respuesta a la campaña de reactivación directa despachada el miércoles 21 (*«¿sigues interesada en tener tu propia App con tu logo para tus pacientes este mes, o ya descartaste el proyecto?»*), Deysi (`+51 969 274 321`) respondió hoy viernes a las 08:03 a. m. confirmando su interés en el proyecto: *«Si, voy a programa. el día para informarme»*.
+*   **Despacho Asertivo sin Presión (09:35 a. m.)**:
+    *   Alberto le respondió validando sus tiempos con alta empatía profesional, dándole espacio para que revise su agenda y le avise qué día le queda más cómodo para conectarse a una sesión demostrativa de 10 minutos por Zoom en vivo, sin forzar horarios inmediatos que colisionen con su carga laboral.
+*   **Actualización en Supabase**:
+    *   Lead: Deysi (`fe860f24-facc-41df-9f0b-5a602420a9e0`).
+    *   Se registró la reactivación en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear aviso de Deysi con día libre para agendar Zoom de 10 min»* para el **sábado 24 de octubre de 2026 a las 10:00 a. m.** (`2026-10-24T10:00:00`). Su estado se reactivará formalmente a `cita_agendada` en cuanto concrete fecha y hora de la reunión.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
