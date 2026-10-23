@@ -2228,6 +2228,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Edna Mendez (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`). Estado: `presentacion_realizada`.
     *   Se registró la gestión en su bitácora (`notes.timeline`) y se reprogramó la próxima acción en: *«Monitorear respuesta de Edna al toque de cierre proactivo para definir personalizacion de App»* para hoy **viernes 23 de octubre de 2026 a las 04:00 p. m.** (`2026-10-23T16:00:00`).
 
+### 261. Despacho de Toque de Desenganche Psicológico (Break-up / Retiro de Cupo) — Dr. Elmer Platero / El Salvador (23 de Octubre de 2026 - 11:10 a. m.)
+*   **Acción Realizada y Psicología de Miedo a la Pérdida**:
+    *   Habiéndose acumulado 3 toques consecutivos en doble check plomo sin abrir desde el 16 de octubre, Alberto ejecutó la técnica de desenganche comercial y retiro de oferta (*«asumo que has decidido descartar el proyecto... para no ser inoportuno libero el cupo del Plan 30 y doy de baja tu código de prueba»*).
+    *   **Efecto Comercial Buscado**: Activar el principio de aversión a la pérdida (FOMO) para forzar una definición inmediata: o el prospecto reacciona rescatando su oportunidad, o se depura el embudo activo liberando recursos comerciales.
+*   **Actualización en Supabase**:
+    *   Lead: Elmer Platero (`eb54488a-246e-449a-a1aa-625e864afba0`). Estado: `presentacion_realizada`.
+    *   Se registró el despacho en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear reaccion de Elmer Platero al mensaje de desenganche y retiro de cupo/codigo»* para hoy **viernes 23 de octubre de 2026 a las 05:00 p. m.** (`2026-10-23T17:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
