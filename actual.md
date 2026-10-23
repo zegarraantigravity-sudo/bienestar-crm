@@ -2212,6 +2212,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Consuelo Naranjo (`0b19d4c1-a96a-44c5-9526-0c0ee1a5fc9c`). Estado: `cita_agendada`.
     *   Se registró el despacho en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear confirmación de hora de Zoom (propuesto 03:30 p. m. o 05:00 p. m.)»* para hoy **viernes 23 de octubre de 2026 a las 02:00 p. m.** (`2026-10-23T14:00:00`).
 
+### 259. Despacho de Toque de Soporte y Seguimiento Post-Prueba — Lic. Diana Landa / Honduras (23 de Octubre de 2026 - 10:28 a. m.)
+*   **Acción Realizada y Postura de Soporte**:
+    *   Habiéndose cumplido 72 horas de holgura desde la presentación demostrativa por Zoom del martes 20, Alberto despachó un toque suave de seguimiento por WhatsApp a la Lic. Diana Landa (`+504 3218-9442`, Honduras).
+    *   **Estrategia de Cero Fricción**: El mensaje se enfocó en asistencia técnica sobre el acceso con su código exclusivo `NUT-FLC-DLND` y consultas del menú clínico, validando con empatía su tiempo en caso de haber tenido una semana de alta carga asistencial en consultorio.
+*   **Actualización en Supabase**:
+    *   Lead: Lic. Diana Landa (`020bc877-9f73-4688-830b-1f101a79f52c`). Estado: `presentacion_realizada`.
+    *   Se registró el despacho en su bitácora (`notes.timeline`) y se programó la próxima acción en: *«Monitorear respuesta de Diana Landa al toque de soporte sobre app de prueba (NUT-FLC-DLND)»* para el **sábado 24 de octubre de 2026 a las 10:00 a. m.** (`2026-10-24T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
