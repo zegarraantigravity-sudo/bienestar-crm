@@ -2246,6 +2246,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: De `presentacion_realizada` a **`cerrado_perdido`** con motivo `sin_tiempo_interes` (*«Aceptó salida cordial con disculpas tras desenganche; cerrado con puerta abierta»*), depurando el embudo activo.
     *   Próxima Acción: *«Puerta abierta; contactar solo si retoma la iniciativa»* (`2026-11-23T11:00:00`).
 
+### 263. Imprevisto por Corte Eléctrico y Propuesta de Reprogramación de Zoom para Sábado — Noé Rojas / NR Sports México (23 de Octubre de 2026 - 12:40 p. m.)
+*   **Imprevisto de Fuerza Mayor y Comunicación Oportuna**:
+    *   Alberto abrió puntualmente la sala de Zoom y esperó a Noé Rojas. A las 12:38 p. m., Noé se comunicó ofreciendo disculpas y explicando que un corte de energía eléctrica en su zona de México durante la mañana le desfasó por completo la atención de sus pacientes (*«Voy atrasado, se fue la luz en la mañana y me atrasó todo. ¿Podemos verlo por la tarde?»*), ratificando su interés intacto en la plataforma.
+*   **Alineación de Agenda y Propuesta de Reprogramación**:
+    *   Considerando que Alberto cuenta con un compromiso presencial a las 03:00 p. m. en Lima, le respondió validando el imprevisto con total empatía y planteó reprogramar la reunión demostrativa y de cierre para **mañana sábado con calma**, ofreciéndole dos alternativas: **10:00 a. m. o 11:00 a. m. hora México** (11:00 a. m. o 12:00 p. m. hora Perú).
+*   **Actualización en Supabase**:
+    *   Lead: Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49`).
+    *   Estado: Se mantiene en **`cita_agendada`**.
+    *   Se registró el imprevisto en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear confirmación de hora de Noé Rojas para Zoom de mañana sábado (10:00 u 11:00 a. m. MX)»* para el **sábado 24 de octubre de 2026 a las 09:30 a. m.** (`2026-10-24T09:30:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
