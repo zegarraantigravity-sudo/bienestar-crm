@@ -2186,6 +2186,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se iniciaron las primeras interacciones orgánicas de respuesta (ej. contacto de México `+52 1 55 2283 0714` del grupo *Masterclass NutriMarketing*).
     *   En estricto apego a la **Regla 5 de Admisión al CRM**, las conversaciones preliminares se mantienen activas en WhatsApp sin crearse en la base de datos hasta que el profesional confirme interés genuino y se agende formalmente una cita por Zoom en vivo.
 
+### 256. Aclaración de Confusión de Paciente y Despacho de Propuesta de Zoom en Vivo — Lic. Camila / Perú (23 de Octubre de 2026 - 09:25 a. m.)
+*   **Interacción y Respuesta Cualificada**:
+    *   En el marco de los 30 toques despachados anoche, la Lic. Camila (`+51 900 398 611`, Nutricionista en Perú) activó inicialmente su bot de WhatsApp Business y a las 02:09 a. m. respondió manualmente asumiendo que Alberto era una paciente buscando consulta nutricional (*«Si quieres 😊, vemos juntas qué opción encaja mejor con tu caso. Me cuentas y te oriento»*).
+*   **Desarme Asertivo y Propuesta de Zoom Demostrativo (09:25 a. m.)**:
+    *   Alberto le respondió desarmando la confusión con calidez y simpatía (*«no soy paciente jaja 😊»*), reubicando su propuesta como desarrollador de software y App propia de Marca Blanca para nutricionistas con planes automatizados de 28 días para eliminar la carga manual de Excel/PDF.
+    *   En cumplimiento estricto de la **Regla 4 (Cero Videos Demo, Solo Zoom en Vivo)**, propuso una reunión demostrativa de 10 minutos por Zoom con doble alternativa para hoy: **04:30 p. m. o 05:30 p. m.**
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   El contacto permanece activo en WhatsApp. Se dará de alta formalmente en Supabase con estado `cita_agendada` en el instante en que confirme el horario para la sesión demostrativa.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
