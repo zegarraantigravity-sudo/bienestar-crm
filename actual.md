@@ -2329,6 +2329,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5 de Admisión al CRM**:
     *   La conversación permanece activa en la bandeja de entrada de Instagram. Se formalizará su alta en Supabase con estado `cita_agendada` una vez que Ximena o Roger confirmen disponibilidad y fecha exacta para la demostración en vivo.
 
+### 270. Reunión por Zoom con Noé Rojas (NR Sports México) — Postergación por Apertura de Tienda Física en Enero y Feedback de Catálogo (24 de Octubre de 2026 - 12:30 p. m.)
+*   **Ejecución de la Demostración en Vivo por Zoom**:
+    *   A las 11:00 a. m. hora Perú (10:00 a. m. hora México), Alberto y Noé Rojas llevaron a cabo la sesión demostrativa y de alineación por Zoom tras el despacho oportuno del enlace.
+*   **Situación Operativa del Cliente y Desfase Temporal**:
+    *   Durante la reunión, Noé expuso que su foco absoluto de inversión, tiempo y esfuerzo está concentrado en la apertura de su tienda física de suplementos y nutrición deportiva en México, la cual proyecta inaugurar tentativamente para **enero de 2027**.
+    *   Por este motivo, Noé prefiere poner en pausa la implementación de la aplicación móvil de marca blanca por el momento, mostrando un interés comercial inmediato moderado o tibio.
+*   **Feedback de Alto Valor y Relación en Puerta Abierta**:
+    *   Noé aportó valiosas sugerencias técnicas y comerciales sobre cómo organizar y presentar el catálogo de productos dentro del aplicativo para potenciar la venta de suplementos.
+    *   Alberto gestionó el cierre de la llamada con total empatía ejecutiva, manteniendo la relación comercial intacta y con las puertas abiertas de par en par. Se acordó pausar el contacto activo para no generar presión innecesaria y retomar la comunicación hacia finales de noviembre, cuando Noé se encuentre en la etapa final de aprovisionamiento de stock para su tienda física.
+*   **Actualización en Supabase**:
+    *   Lead: Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49`).
+    *   Estado: Se actualiza formalmente de `cita_agendada` ➡️ **`presentacion_realizada`**.
+    *   Bitácora: Se registró el resultado de la sesión de Zoom, la postergación a enero por apertura de local y el feedback de catálogo en `notes.timeline`.
+    *   Próxima acción: *«Contacto previo a apertura de tienda física y revisión de catálogo de productos (NR Sports)»* programada para el **lunes 23 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-23T11:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
