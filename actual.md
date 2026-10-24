@@ -2303,6 +2303,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5 de Admisión al CRM**:
     *   El contacto permanece en WhatsApp activo. Se registrará formalmente en Supabase con estado `cita_agendada` una vez que confirme identidad y horario del Zoom.
 
+### 268. Reunión Presencial Estratégica con Frank Serapión — Proyecto Joint Venture App Oficial B2C (23 de Octubre de 2026 - Noche)
+*   **Reunión Presencial y Tracción de Alto Nivel**:
+    *   Alberto y su socio sostuvieron una reunión presencial en las instalaciones del gimnasio de **Frank Serapión**, máxima figura de autoridad y referente del entrenamiento fitness en el Perú con comunidad masiva en redes sociales.
+*   **Pivote de Modelo de Negocio: De Suscripción B2B a Joint Venture B2C**:
+    *   Frank quedó fascinado con todas las capacidades y herramientas del aplicativo móvil y la plataforma tecnológica. Sin embargo, en lugar de adoptarlo como un software interno de gimnasio, planteó una alianza de escala superior: **crear una App Oficial donde él sea la imagen principal y rostro de la marca**, asociándose con Alberto y su socio bajo un esquema de reparto de ganancias (Revenue Share).
+*   **Modelo Comercial y Meta de Facturación Proyectada**:
+    *   La tesis de negocio apunta a un modelo de suscripción recurrente B2C sumamente accesible y masivo: **$10 USD mensuales por usuario**, con una meta comercial de **2,000 planes activos al mes**. Esto proyecta una facturación mensual recurrente de **$20,000 USD/mes** ($240,000 USD anuales).
+*   **Siguiente Paso Operativo (Efecto Posesión y Maqueta Oficial)**:
+    *   Como próximo paso acordado, Frank enviará material audiovisual oficial (fotografías de alta resolución, videos de presentación y ejercicios, logos y paleta de colores de su marca) para configurar y maquetar su App prototipo personalizada. Una vez que Frank experimente su aplicativo instalado en su celular y se afine la estética final, se procederá a estructurar la negociación económica y el contrato de sociedad.
+*   **Reactivación y Actualización en Supabase**:
+    *   Lead: Frank Serapion (`5820bfd8-0cb3-4333-8734-e9db597e270b`).
+    *   Estado: Reactivado formalmente de `cerrado_perdido` a **`presentacion_realizada`**.
+    *   Tipo de cliente: `coach` (Referente / Autoridad Fitness).
+    *   Valor estimado: `$20,000` (proyección de facturación mensual).
+    *   Bitácora: Registro de la reunión presencial, modelo B2C planteado y acuerdo de maquetación de prototipo.
+    *   Próxima acción: *«Recepción de fotos, videos y branding de Frank Serapión para montaje de App prototipo oficial»* programada para el **martes 27 de octubre de 2026 a las 10:00 a. m.** (`2026-10-27T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
