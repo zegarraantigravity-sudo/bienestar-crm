@@ -2320,6 +2320,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro de la reunión presencial, modelo B2C planteado y acuerdo de maquetación de prototipo.
     *   Próxima acción: *«Recepción de fotos, videos y branding de Frank Serapión para montaje de App prototipo oficial»* programada para el **martes 27 de octubre de 2026 a las 10:00 a. m.** (`2026-10-27T10:00:00`).
 
+### 269. Prospección en Instagram y Solicitud de Enlace con Dirección — Coach in home / Roger (`@coachinhome`) y Asesora Ximena (24 de Octubre de 2026 - 11:00 a. m.)
+*   **Prospección Cualificada en Instagram**:
+    *   Alberto contactó a la cuenta comercial de **Coach in home** (`@coachinhome`), empresa especializada en entrenamiento personalizado y funcional a domicilio, tras visualizar el contenido y propuesta de su entrenador líder, **Roger**.
+*   **Interacción con Asesora Comercial y Despacho de Enfoque B2B**:
+    *   La asesora de la cuenta, **Ximena**, atendió la consulta saludando y preguntando en qué podía ayudar.
+    *   Alberto despachó un mensaje de alto rapport profesional: reconoció el modelo de entrenamiento a domicilio, expuso la solución de la plataforma y App móvil personalizada de marca blanca (con el logo y nombre de Coach in home) para que sus entrenadores sistematicen y automaticen la entrega de rutinas, planes y seguimiento en los celulares de sus alumnos, y solicitó el canal o puente para coordinar una reunión de 10 minutos por Zoom con Roger o la gerencia comercial.
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   La conversación permanece activa en la bandeja de entrada de Instagram. Se formalizará su alta en Supabase con estado `cita_agendada` una vez que Ximena o Roger confirmen disponibilidad y fecha exacta para la demostración en vivo.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
