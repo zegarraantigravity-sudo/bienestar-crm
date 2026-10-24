@@ -2294,6 +2294,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Interacción Automática — Lima Natural Health Clinic**:
     *   A las 09:27 p. m., el asistente virtual de la clínica respondió reconociendo su naturaleza de bot e indicando que las coordinaciones con proveedores las revisa un asesor en horario de atención (sábado por la mañana y lunes por la tarde). La propuesta de Alberto quedó registrada en el historial para revisión del equipo comercial.
 
+### 267. Aclaración de Confusión sobre Consulta Virtual y Despacho de Propuesta de Zoom — Prospecto Bolivia (`+591 71273744`) (23 de Octubre de 2026 - 09:58 p. m.)
+*   **Interacción y Respuesta Cualificada**:
+    *   En respuesta a la prospección nocturna en WhatsApp, el profesional de Bolivia (`+591 71273744`) manifestó interés genuino pero confuso (*«Me gustaría conocer la plataforma pero ya me diste toda la información que necesito para hacer mi consulta virtual. Gracias por invitarme»*), asumiendo que el enlace web de muestra era un servicio de consulta virtual para pacientes.
+*   **Desarme Asertivo y Propuesta de Demostración por Zoom**:
+    *   Alberto desarmó la confusión con simpatía, aclarando que la web es solo una muestra de cara al paciente y que la verdadera plataforma y App móvil es una herramienta de gestión profesional para automatizar planes, recetas y listas de compras con su propia marca.
+    *   Apoyándose en su deseo expreso de conocer la plataforma, Alberto le propuso una reunión demostrativa de 10 minutos por Zoom para la próxima semana (lunes o martes), consultando su nombre para personalizar el trato.
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   El contacto permanece en WhatsApp activo. Se registrará formalmente en Supabase con estado `cita_agendada` una vez que confirme identidad y horario del Zoom.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
