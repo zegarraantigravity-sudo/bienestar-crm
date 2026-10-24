@@ -2256,6 +2256,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: Se mantiene en **`cita_agendada`**.
     *   Se registró el imprevisto en su bitácora (`notes.timeline`) y se fijó la próxima acción en: *«Monitorear confirmación de hora de Noé Rojas para Zoom de mañana sábado (10:00 u 11:00 a. m. MX)»* para el **sábado 24 de octubre de 2026 a las 09:30 a. m.** (`2026-10-24T09:30:00`).
 
+### 264. Prospección en Nicaragua (Omar Daniel González) y Ratificación de Cita por Zoom con Noé Rojas para Sábado (23 de Octubre de 2026 - Noche)
+*   **Prospección Cualificada y Compromiso de Contacto — Omar Daniel González / Nicaragua (`+505 7803 9714`)**:
+    *   Al mediodía, el profesional consultó si el sistema tenía costo (*«Dn Alberto, todo esto, tiene algún costo?»*). Alberto respondió anclando que cuenta con planes accesibles que se pagan solos con 1-2 pacientes y propuso reunión demostrativa por Zoom.
+    *   Ante la respuesta de cierre de semana (*«Hoy es viernes, va ser muy difícil, yo le contacto...»*), Alberto tomó la iniciativa con empatía, pidiéndole su nombre y solicitando permiso para escribirle el lunes.
+    *   El prospecto brindó su identidad completa (**Omar Daniel González**) y aceptó el contacto (*«Gracias»*). Cumpliendo la **Regla 5**, permanece en WhatsApp y se dará de alta en Supabase una vez que el lunes confirme horario de Zoom.
+*   **Ratificación de Cita de Cierre — Noé Rojas / NR Sports México**:
+    *   A las 04:02 p. m., Noé Rojas confirmó su marco horario para el sábado (*«Me queda 10 o 12hrs mex»*).
+    *   A las 08:42 p. m., Alberto ratificó formalmente la cita fijándola para las **10:00 a. m. hora México / 11:00 a. m. hora Perú** del sábado 24 de octubre, con despacho de sala de Zoom 10 minutos antes (10:50 a. m. PE / 09:50 a. m. MX).
+*   **Actualización en Supabase**:
+    *   Lead: Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49`). Estado: **`cita_agendada`**.
+    *   Se registró la confirmación en su bitácora (`notes.timeline`) y se programó la próxima acción en: *«Despacho de enlace de Zoom (10:50 a. m. PE / 09:50 a. m. MX) y reunión de cierre por Zoom para configuración y activación de app móvil NR Sports»* para el **sábado 24 de octubre de 2026 a las 10:50 a. m.** (`2026-10-24T10:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
