@@ -28,7 +28,7 @@
 
 ## 7. Regla de Oro Comercial: Hambre de Cierre y Conexión Inmediata (Prohibido Patear al Lunes)
 - Cuando un prospecto responda con interés activo («si deseo ver cómo funciona», «me interesa», etc.) y esté en línea, **JAMÁS patear la reunión al futuro ni al lunes**.
-- Si el prospecto está en línea hoy, **se busca conectar y cerrar HOY MISMO** ofreciendo opciones inmediatas mediante Doble Alternativa (*«¿ahorita o en 30 minutos / hoy por la tarde?»*).
+- Si el prospecto está en línea hoy, **se busca conectar y cerrar HOY MISMO** ofreciendo opciones inmediatas mediante Doble Alternativa (*«¿ahorita o en 30 minutos / a las 5:00 p. m.?»*).
 - El impulso de compra se enfría con las horas. Mandar un lead caliente al lunes es regalar la venta y actuar sin colmillo comercial.
-- Aplicar SIEMPRE las técnicas de ventas de Alex Dey con hambre y colmillo: Doble Alternativa inmediata, Cierre por Conclusión, Amarres y Cierre de Acción Rápida para captar el 50% de anticipo.
+- Aplicar SIEMPRE las técnicas de Alex Dey: Doble Alternativa inmediata, Cierre por Conclusión, Amarres y Cierre de Acción Rápida para captar el 50% de anticipo.
 
