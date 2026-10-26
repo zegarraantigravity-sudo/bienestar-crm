@@ -2464,6 +2464,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro de la auditoría visual y despacho del mensaje de desenganche suave con puerta abierta.
     *   Próxima acción: *«Monitorear reacción a mensaje de desenganche suave de Denisse Apaza»* programada para el **martes 27 de octubre de 2026 a las 11:00 a. m.** (`2026-10-27T11:00:00`).
 
+### 277. Despacho de Desenganche Suave y Traslado a Cerrado Perdido con Puerta Abierta — Consuelo Naranjo (Ecuador) (26 de Octubre de 2026 - 11:20 a. m.)
+*   **Auditoría Visual de WhatsApp y Diagnóstico de Desinterés**:
+    *   A las 11:02 a. m., Alberto realizó la auditoría visual del chat con **Consuelo Naranjo** (`+593 96 251 9793`, Ecuador), constatando que tras su compromiso explícito del 16 de octubre (*«El 22 termino mis gestiones. A partir del 23 estoy libre»*), los mensajes de seguimiento del miércoles 21 y viernes 23 permanecían en **doble check plomo** (no leídos).
+*   **Depuración del Embudo y Despacho de Ruptura Suave**:
+    *   Reconociendo la falta de interés genuino y evitando la persecución pasiva, Alberto envió a las 11:13 a. m. el mensaje de desenganche suave liberando el cupo demostrativo (*«Hola Consuelo, ¿cómo estás? Imagino que sigues a full con tus gestiones. Para no incomodarte voy a liberar el espacio de demostración de tu App. Si más adelante decides ver la plataforma para tus pacientes, me avisas con total confianza. ¡Muchos éxitos!»*).
+    *   Con esta maniobra se protege la alta postura comercial y se focaliza el 100% de la energía operativa en prospectos con tracción activa.
+*   **Actualización en Supabase**:
+    *   Lead: Consuelo Naranjo (`0b19d4c1-a96a-44c5-9526-0c0ee1a5fc9c`).
+    *   Estado: Se traslada formalmente de `cita_agendada` ➡️ **`cerrado_perdido`** con motivo `no_responde` (Falta de respuesta / Desenganche suave con puerta abierta).
+    *   Bitácora: Registro de la auditoría visual y despacho de desenganche.
+    *   Próxima acción: *«Puerta abierta; contactar únicamente si Consuelo retoma la iniciativa»*.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
