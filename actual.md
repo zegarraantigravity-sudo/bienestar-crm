@@ -2442,6 +2442,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro del despacho de cierre envolvente por insumos.
     *   Próxima acción: *«Monitorear recepción de logo, colores y catálogo Fuxion de Rosa Freire para preparación de App»* programada para el **miércoles 28 de octubre de 2026 a las 11:00 a. m.** (`2026-10-28T11:00:00`).
 
+### 275. Despacho de Toques Matutinos de Inicio de Semana — Omar Daniel González (Nicaragua) y Lic. Yajaira Alarcón Torres (Puno) (26 de Octubre de 2026 - 10:28 a. m.)
+*   **Cumplimiento de Compromiso y Propuesta de Zoom — Omar Daniel González / Nicaragua (`+505 7803 9714`)**:
+    *   A las 10:28 a. m., cumpliendo el pacto comercial del viernes, Alberto envió un mensaje cordial a Omar Daniel recordándole la coordinación y ofreciendo dos alternativas para conectarse hoy mismo por Zoom de 10 minutos (11:30 a. m. o 04:30 p. m. hora Perú).
+    *   **Cumplimiento de la Regla 5 de Admisión al CRM**: El prospecto permanece en WhatsApp a la espera de la confirmación de horario para proceder a su registro oficial en Supabase.
+*   **Toque de Acompañamiento Técnico Suave — Lic. Yajaira Alarcón Torres / Puno (`+51 913 975 382`)**:
+    *   A las 10:28 a. m., en estricta aplicación de la **Regla de Oro Comercial #8 (Calibración de Perfil)**, Alberto despachó un mensaje de soporte suave y sin presión de cobro a Yajaira. Se le consultó si logró ingresar a la plataforma con el código exclusivo `NUT-FLC-9GZ0`, qué le pareció el plan clínico de 28 días en su celular y si tenía alguna duda sobre la cotización en Word para su futuro consultorio.
+*   **Actualización en Supabase**:
+    *   Lead: Yajaira Alarcón Torres (`8125214b-528a-4b7b-ad9c-21bbc8c89cab`). Estado: `presentacion_realizada`.
+    *   Bitácora: Registro del toque de acompañamiento técnico suave.
+    *   Próxima acción: *«Monitorear respuesta de Yajaira Alarcón sobre prueba con código NUT-FLC-9GZ0»* programada para el **martes 27 de octubre de 2026 a las 10:30 a. m.** (`2026-10-27T10:30:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
