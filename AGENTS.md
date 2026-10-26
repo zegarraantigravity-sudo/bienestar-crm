@@ -38,3 +38,13 @@
 - Esto genera **compromiso psicológico y efecto posesión sin fricción financiera**: el cliente siente que estamos trabajando en su proyecto, y al llegar la fecha pactada, el cobro del anticipo fluye de manera 100% natural y sin resistencia.
 - **Calibración obligatoria del perfil:** Pensar siempre en el contexto real del prospecto antes de plantear una acción (un estudiante por graduarse no tiene el mismo flujo ni urgencia que una clínica o un gimnasio operativo).
 
+## 9. Blindaje Tarifario Oficial (Cero Precios Fuera de Catálogo)
+- NUNCA inventar, prorratear ni citar tarifas mensuales inferiores a los planes oficiales de Bienestar Sin Excusas.
+- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 114.00 USD / mes**.
+- Queda terminantemente prohibido utilizar cálculos de ofertas anuales o acuerdos ad-hoc pasados (ej. Sonny Kenn) como si fueran tarifas mensuales estándar.
+- Los planes oficiales son inalterables:
+  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000).
+  - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
+- El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
+
+

@@ -55,6 +55,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - Esto genera **compromiso psicológico y efecto posesión sin fricción financiera**: el cliente siente que estamos trabajando en su proyecto, y al llegar la fecha pactada, el cobro del anticipo fluye de manera 100% natural y sin resistencia.
 - **Calibración obligatoria del perfil:** Pensar siempre en el contexto real del prospecto antes de plantear una acción (un estudiante por graduarse no tiene el mismo flujo ni urgencia que una clínica o un gimnasio operativo).
 
+### 9. Blindaje Tarifario Oficial (Cero Precios Fuera de Catálogo)
+- NUNCA inventar, prorratear ni citar tarifas mensuales inferiores a los planes oficiales de Bienestar Sin Excusas.
+- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 114.00 USD / mes**.
+- Queda terminantemente prohibido utilizar cálculos de ofertas anuales o acuerdos ad-hoc pasados (ej. Sonny Kenn) como si fueran tarifas mensuales estándar.
+- Los planes oficiales son inalterables:
+  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000).
+  - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
+- El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
+
+
 ---
 
 ## ✅ Lo que se ha Hecho (Completado)
@@ -2524,6 +2534,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: Se traslada formalmente de `presentacion_realizada` ➡️ **`cerrado_perdido`** con motivo `decision_pospuesta` (*«Por ahora no»*).
     *   Bitácora: Registro de la resolución comercial reportada por Luis Culqui.
     *   Próxima acción: *«Evaluar con Luis Culqui reactivación de Evolution Center para campaña de verano / retención de socios»* programada para el **1 de diciembre de 2026 a las 10:00 a. m.** (`2026-12-01T10:00:00`).
+
+### 282. Interacción de Prospección Fría y Despacho de Propuesta de Valor — Personal Trainer WhatsApp (26 de Octubre de 2026 - 03:04 p. m.)
+*   **Contexto de Prospección y Respuesta Activa**:
+    *   A las 02:38 p. m., Alberto despachó el mensaje de prospección fría a un entrenador personal («PERSONAL TRAINER») vía WhatsApp con el enlace de muestra `https://coach-alberto.bienestarsinexcusas.site/`.
+    *   A las 03:00 p. m., el prospecto respondió en línea con interés genuino: *«Hola. Si suena interesante cuanto costaría ello ?»*.
+*   **Enfoque Comercial de Valor vs Gasto y Anclaje de Retorno**:
+    *   Alberto instruyó enfocar la respuesta estrictamente en que el prospecto **entienda el valor real de lo que se le entrega** antes de evaluar precios.
+    *   Se despachó a las 03:04 p. m. el mensaje estructurado resaltando:
+        1. **Estatus y Marca Blanca:** Su propia App instalable con su logo y nombre (erradicando el envío informal de PDFs y Excels).
+        2. **Automatización:** Rutinas con videos y planes de alimentación centralizados.
+        3. **Asistente Virtual con IA 24/7:** Atención permanente para liberar horas de su WhatsApp personal.
+    *   **Inversión y Retorno de Inversión (ROI):** Se ancló de acuerdo con la tarifa oficial en el **Plan 30 (S/ 400.00 / mes)**, demostrándole que representa solo S/ 13.33 por alumno al mes y que **con solo 2 asesorados que paguen su mensualidad de entrenamiento, la plataforma se paga sola**, dejando los otros 28 cupos como ganancia neta.
+    *   Se aplicó la **Regla 7 (Conexión Inmediata)** invitándolo a un Zoom rápido de 10 minutos con Doble Alternativa (*«¿ahorita o a las 4:00 p. m.?»*).
+*   **Codificación de la Regla 9 (Blindaje Tarifario Oficial)**:
+    *   A raíz de este evento, se codificó formalmente la **Regla 9** en `AGENTS.md`, `GEMINI.md` y `actual.md` para blindar que NUNCA se citen precios prorrateados o informales ajenos al tarifario oficial de Bienestar Sin Excusas.
+*   **Cumplimiento de la Regla 5**:
+    *   Al ser un contacto de prospección fría en proceso de coordinación, aún no se registra en Supabase a la espera de la confirmación formal del Zoom.
 
 ---
 
