@@ -49,6 +49,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - El impulso de compra se enfría con las horas. Mandar un lead caliente al lunes es regalar la venta y actuar sin colmillo comercial.
 - Aplicar SIEMPRE las técnicas de Alex Dey: Doble Alternativa inmediata, Cierre por Conclusión, Amarres y Cierre de Acción Rápida para captar el 50% de anticipo.
 
+### 8. Regla de Oro Comercial: Timing de Cobro y Cierre Envolvente por Insumos (Cero Desesperación)
+- Si un cliente ya pactó una fecha futura de pago (*«fin de mes»* o una fecha específica), **JAMÁS adelantar el cobro ni pasar números de cuenta antes de tiempo**. Eso huele a necesidad, desesperación y rompe el acuerdo.
+- El puente táctico previo a la fecha de pago es el **Cierre Envolvente por Insumos**: solicitarle sus logos, fotos, paleta de colores y catálogo de productos para *«ir avanzando con calma en el montaje de su App»*.
+- Esto genera **compromiso psicológico y efecto posesión sin fricción financiera**: el cliente siente que estamos trabajando en su proyecto, y al llegar la fecha pactada, el cobro del anticipo fluye de manera 100% natural y sin resistencia.
+- **Calibración obligatoria del perfil:** Pensar siempre en el contexto real del prospecto antes de plantear una acción (un estudiante por graduarse no tiene el mismo flujo ni urgencia que una clínica o un gimnasio operativo).
+
 ---
 
 ## ✅ Lo que se ha Hecho (Completado)
@@ -2422,6 +2428,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Estado del Embudo y Foco para la Semana de Cierre de Mes (Lunes 26 a Sábado 31 de Octubre)**:
     *   La jornada dominical del 25 de octubre se mantiene en modo de **radar pasivo** para no saturar a los profesionales de la salud en su día de descanso familiar.
     *   El lunes 26 a primera hora se activará la ofensiva de cierre: cobro del anticipo de Yajaira Alarcón (S/ 200), cobro del anticipo de Titan Fitness / Luis Culqui (S/ 600), coordinación del anticipo Western Union de Rosa Freire (Ecuador) y agendamiento de Zoom con Omar Daniel González (Nicaragua).
+
+### 274. Despacho de Cierre Envolvente por Insumos — Rosa Freire / Fuxion Ecuador e Institucionalización de la Regla de Oro Comercial #8 (26 de Octubre de 2026 - 10:15 a. m.)
+*   **Análisis Táctico de Psicología de Ventas y Calibración de Timing**:
+    *   Habiendo pactado con Rosa Freire (`+593 93 958 5832`, Ecuador) el inicio de su Plan 30 para **fin de mes** con pago vía Western Union, Alberto corrigió proactivamente el riesgo de adelantar el cobro un lunes 26. Pasar datos de transferencia con 5 días de anticipación transmite desesperación comercial y genera fricción innecesaria.
+*   **Despacho del Mensaje de Cierre Envolvente por Insumos**:
+    *   Alberto envió un mensaje estratégico solicitándole su logotipo o foto profesional, su paleta de colores de preferencia y el catálogo de productos de Fuxion que más suele recetar a sus pacientes para «ir preparando todo el montaje de su App con calma de cara al arranque de fin de mes».
+    *   Esta técnica genera compromiso psicológico y efecto posesión sin tocar el bolsillo antes de tiempo, asegurando que cuando llegue el 30 de octubre el pago del anticipo fluya de manera orgánica sobre un producto ya visualizado.
+*   **Institucionalización de la Regla de Oro Comercial #8 (Timing de Cobro y Cierre Envolvente por Insumos)**:
+    *   Se grabó de forma permanente en `AGENTS.md`, `GEMINI.md` y en la cabecera de `actual.md` la doctrina de no forzar cobros antes de las fechas pactadas, calibrar el perfil real del cliente y usar los insumos de marca para consolidar la venta.
+*   **Actualización en Supabase**:
+    *   Lead: Rosa Freire (`030c95bc-fac4-4f0f-99b5-1131a4464b05`). Estado: `presentacion_realizada`.
+    *   Bitácora: Registro del despacho de cierre envolvente por insumos.
+    *   Próxima acción: *«Monitorear recepción de logo, colores y catálogo Fuxion de Rosa Freire para preparación de App»* programada para el **miércoles 28 de octubre de 2026 a las 11:00 a. m.** (`2026-10-28T11:00:00`).
 
 ---
 

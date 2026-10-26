@@ -32,3 +32,9 @@
 - El impulso de compra se enfría con las horas. Mandar un lead caliente al lunes es regalar la venta y actuar sin colmillo comercial.
 - Aplicar SIEMPRE las técnicas de Alex Dey: Doble Alternativa inmediata, Cierre por Conclusión, Amarres y Cierre de Acción Rápida para captar el 50% de anticipo.
 
+## 8. Regla de Oro Comercial: Timing de Cobro y Cierre Envolvente por Insumos (Cero Desesperación)
+- Si un cliente ya pactó una fecha futura de pago (*«fin de mes»* o una fecha específica), **JAMÁS adelantar el cobro ni pasar números de cuenta antes de tiempo**. Eso huele a necesidad, desesperación y rompe el acuerdo.
+- El puente táctico previo a la fecha de pago es el **Cierre Envolvente por Insumos**: solicitarle sus logos, fotos, paleta de colores y catálogo de productos para *«ir avanzando con calma en el montaje de su App»*.
+- Esto genera **compromiso psicológico y efecto posesión sin fricción financiera**: el cliente siente que estamos trabajando en su proyecto, y al llegar la fecha pactada, el cobro del anticipo fluye de manera 100% natural y sin resistencia.
+- **Calibración obligatoria del perfil:** Pensar siempre en el contexto real del prospecto antes de plantear una acción (un estudiante por graduarse no tiene el mismo flujo ni urgencia que una clínica o un gimnasio operativo).
+
