@@ -2644,6 +2644,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro de la auditoría visual, lectura en azul y conclusión del ciclo activo.
     *   Próxima acción: *«Puerta abierta; contactar únicamente si Diana retoma la iniciativa»* (sin fecha activa).
 
+### 290. Auditoría de Silencio Prolongado y Traslado a Cerrado Perdido — Lic. Denisse Apaza / Arequipa (27 de Octubre de 2026 - 11:25 a. m.)
+*   **Auditoría Visual de WhatsApp y Diagnóstico Final**:
+    *   A las 11:22 a. m., Alberto constató mediante captura de pantalla que el mensaje de liberación de cupo despachado el lunes 26 a las 10:40 a. m. (*«voy a liberar tu cupo de prueba para no incomodarte...»*) permanece en **doble check plomo** (sin abrir).
+    *   La prospecto acumula 8 días continuos sin abrir el chat desde el 19 de octubre.
+    *   **Higiene Comercial del Embudo**: Al haberse cumplido 24 horas del aviso de liberación de cupo, se concluye formalmente el ciclo de seguimiento para evitar métricas infladas en el pipeline activo.
+*   **Actualización en Supabase**:
+    *   Lead: Lic. Denisse Apaza (`2071efe8-e881-4762-8a66-dc29b22d6609`).
+    *   Estado: Se traslada formalmente de `presentacion_realizada` ➡️ **`cerrado_perdido`** con motivo `no_responde` (Chat inactivo prolongado / Cupo liberado).
+    *   Bitácora: Registro de la auditoría visual y conclusión del ciclo activo con puerta 100% abierta si Denisse retoma la iniciativa.
+    *   Próxima acción: *«Puerta abierta; contactar únicamente si Denisse retoma la iniciativa»* (sin fecha activa).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
