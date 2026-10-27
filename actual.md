@@ -2602,6 +2602,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:17 p. m., la especialista de Bolivia respondió manifestando alto interés: *«Si me gustaría verla y podemos hablar pero después de esos días ya que estoy bien ocupada»*.
     *   Alberto le despachó un mensaje empático ofreciendo Doble Alternativa para después de sus días críticos (miércoles 28 o jueves 29) en horario matutino (11:00 a. m.) o vespertino (04:00 p. m.) y solicitando su nombre para registro formal.
 
+### 287. Admisión Oficial al CRM y Agendamiento Internacional de Zoom — Lic. Roxana Gómez Saenz / Bolivia (27 de Octubre de 2026 - 12:15 a. m.)
+*   **Cumplimiento Estricto de la Regla 5**:
+    *   A las 12:10 a. m. del martes 27, la prospecto de Bolivia (`+591 71273744`) confirmó de manera formal su aceptación para la reunión demostrativa por Zoom y remitió su identidad profesional completa: *«Por la tarde el miércoles. Soy la Licenciada Roxana Gómez Saenz»*.
+    *   Alberto confirmó y ancló la cita para el **miércoles 28 de octubre de 2026 a las 04:00 p. m. hora Perú (05:00 p. m. hora Bolivia)**, contemplando el huso horario internacional (GMT-4 en Bolivia).
+*   **Alta Oficial en Supabase**:
+    *   **ID**: `f904ebb4-8caa-46ae-bac3-25d571cc90bf`
+    *   **Contacto**: Lic. Roxana Gómez Saenz
+    *   **Nombre Comercial**: Consultorio Nutricional Lic. Roxana Gómez
+    *   **Teléfono**: `+591 71273744` (Bolivia)
+    *   **Tipo de Cliente**: `nutricionista`
+    *   **Plan Objetivo**: `plan_30` (Tarifa oficial internacional: **$ 114.00 USD / mes** acorde a la **Regla 9**)
+    *   **Estado**: **`cita_agendada`**
+    *   **Próxima Acción**: *«Enviar enlace de Zoom 10 min antes (03:50 p. m. PE / 04:50 p. m. BO) a Lic. Roxana Gómez y ejecutar demostración en vivo»* para el **miércoles 28 de octubre de 2026 a las 03:50 p. m.** (`2026-10-28T15:50:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
