@@ -2580,6 +2580,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 05:27 p. m., la nutricionista **Gheraldi Muñoz Cotrina** respondió entusiasmada en Messenger (*«Wao que bueno, Y como funciona, Con alguna inscripción??»*).
     *   A las 08:10 p. m., Alberto le despachó la propuesta de valor y modelo de inversión del **Plan 30 (S/ 400 / mes)** con invitación a Zoom de 10 min para el martes al mediodía (12:00 p. m.) o tarde (04:30 p. m.), quedando a la espera de su confirmación para proceder con su admisión al CRM.
 
+### 285. Soporte de Acceso Web y Despacho de Invitación a Zoom — Carlos Silva / Coach (26 de Octubre de 2026 - 09:48 p. m.)
+*   **Interacción en Prospección Saliente por Facebook Messenger**:
+    *   A las 09:00 p. m., el coach y atleta de fisicoculturismo **Carlos Silva** respondió activamente al mensaje de prospección saliente indicando: *«Buena. No puedo entrar al link»*.
+    *   Esta objeción técnica evidenció un interés genuino y una intención real de inspeccionar la plataforma.
+*   **Gestión Comercial y Resolución de Acceso**:
+    *   A las 09:48 p. m., Alberto le explicó que el navegador interno de Facebook suele bloquear enlaces externos y le compartió el enlace directo limpio (`https://coach-alberto.bienestarsinexcusas.site/`) para abrirlo en Chrome o Safari.
+    *   Aplicando la **Regla 4 (Solo Zoom en Vivo)** y la **Regla 7 (Conexión Inmediata)**, le propuso no complicarse navegando solo y coordinar una sesión demostrativa de 10 minutos por Zoom para el martes 27 con Doble Alternativa (**12:00 m.** o **03:30 p. m.**), solicitándole su número de WhatsApp.
+*   **Cumplimiento de la Regla 5**:
+    *   Queda en seguimiento activo y se procederá con su alta en Supabase apenas confirme la cita y remita su número de WhatsApp.
+*   **Balance del Cierre de Jornada (Lunes 26 de Octubre)**:
+    *   Se cierra el día con un nuevo lead calificado y agendado en el CRM (**Pablo Briceño** - S/ 400), dos sesiones demostrativas programadas para el martes (**Siéntete Fit** 10:30 a. m. y **Pablo Briceño** 11:30 a. m.), y tres conversaciones de alto potencial abiertas (**Gheraldi Muñoz**, **Carlos Silva** y el **Personal Trainer** de WhatsApp).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
