@@ -64,6 +64,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
   - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
 - El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
 
+### 10. Enfoque Positivo de Producto en Seguimientos (Cero Sugerencia de Errores)
+- En toques de acompañamiento, seguimiento o reactivación técnica post-prueba, **NUNCA asumir, insinuar ni preguntar si la plataforma tuvo errores, bugs o problemas técnicos**.
+- La plataforma es robusta y de alta calidad. Sugerir fallas crea desconfianza inconsciente y una predisposición negativa en el cliente.
+- El enfoque debe ser SIEMPRE positivo, enfocado en su **experiencia de uso, sensaciones y valor** (*«¿cómo te va con la aplicación?»*, *«¿qué tal la experiencia de usarla en tu celular?»*), desarmando con empatía cualquier temor a la presión comercial o de cobro.
+
+
 
 ---
 
@@ -2615,6 +2621,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Plan Objetivo**: `plan_30` (Tarifa oficial internacional: **$ 114.00 USD / mes** acorde a la **Regla 9**)
     *   **Estado**: **`cita_agendada`**
     *   **Próxima Acción**: *«Enviar enlace de Zoom 10 min antes (03:50 p. m. PE / 04:50 p. m. BO) a Lic. Roxana Gómez y ejecutar demostración en vivo»* para el **miércoles 28 de octubre de 2026 a las 03:50 p. m.** (`2026-10-28T15:50:00`).
+
+### 288. Despacho de Toque de Desarme Financiero y Enfoque Positivo de Uso — Yajaira Alarcón Torres (27 de Octubre de 2026 - 11:00 a. m.)
+*   **Diagnóstico de Auditoría Visual en WhatsApp**:
+    *   A las 10:56 a. m., Alberto constató mediante captura de pantalla que el mensaje de acompañamiento despachado el lunes 26 a las 10:28 a. m. fue leído (**doble check azul**), sin registrar respuesta.
+    *   **Calibración de Perfil (Regla 8)**: Al ser estudiante por graduarse en Puno sin flujo activo de pacientes, el silencio obedece al temor inconsciente de ser presionada por el abono del anticipo de S/ 200 cotizado formalmente.
+*   **Despacho de Toque Quirúrgico y Codificación de la Regla 10**:
+    *   Alberto corrigió la formulación del mensaje para erradicar cualquier mención a "errores o fallas", estableciendo la **Regla 10: Enfoque Positivo de Producto en Seguimientos (Cero Sugerencia de Errores)**.
+    *   A las 11:00 a. m., Alberto despachó el mensaje eliminando por completo la presión del dinero y consultando positivamente por su experiencia de usuario: *«Hola Yajaira! Imagino que debes andar a full con la universidad y tus clases. 👋 Descuida, no te preocupes por el tema de la propuesta comercial por ahora; solo quería saber cómo te va con la aplicación y qué tal te pareció la experiencia de usarla en tu celular. ¡Muchos éxitos en tus jornadas de esta semana!»*.
+*   **Actualización en Supabase**:
+    *   Lead: Yajaira Alarcón Torres (`8125214b-528a-4b7b-ad9c-21bbc8c89cab`). Estado: `presentacion_realizada`.
+    *   Bitácora: Registro del toque de desarme financiero y consulta de experiencia de uso.
+    *   Próxima acción: *«Monitorear respuesta de Yajaira Alarcón sobre experiencia de uso de App»* programada para el **jueves 29 de octubre de 2026 a las 10:30 a. m.** (`2026-10-29T10:30:00`).
 
 ---
 

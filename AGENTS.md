@@ -47,4 +47,10 @@
   - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
 - El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
 
+## 10. Enfoque Positivo de Producto en Seguimientos (Cero Sugerencia de Errores)
+- En toques de acompañamiento, seguimiento o reactivación técnica post-prueba, **NUNCA asumir, insinuar ni preguntar si la plataforma tuvo errores, bugs o problemas técnicos**.
+- La plataforma es robusta y de alta calidad. Sugerir fallas crea desconfianza inconsciente y una predisposición negativa en el cliente.
+- El enfoque debe ser SIEMPRE positivo, enfocado en su **experiencia de uso, sensaciones y valor** (*«¿cómo te va con la aplicación?»*, *«¿qué tal la experiencia de usarla en tu celular?»*), desarmando con empatía cualquier temor a la presión comercial o de cobro.
+
+
 
