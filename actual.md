@@ -69,6 +69,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - La plataforma es robusta y de alta calidad. Sugerir fallas crea desconfianza inconsciente y una predisposición negativa en el cliente.
 - El enfoque debe ser SIEMPRE positivo, enfocado en su **experiencia de uso, sensaciones y valor** (*«¿cómo te va con la aplicación?»*, *«¿qué tal la experiencia de usarla en tu celular?»*), desarmando con empatía cualquier temor a la presión comercial o de cobro.
 
+### 11. Mentalidad de Cierre Voraz y Consulta Obligatoria de Técnicas Alex Dey (Prohibido Soltar un Lead Caliente)
+- **Valor Supremo del Prospecto:** Cada lead que responde costó 30 WhatsApps y 15 mensajes de Facebook en frío de prospección diaria. Un prospecto que responde e interactúa es **ORO PURO**. Jamás regalar la venta, jamás dar una salida fácil y **TERMINANTEMENTE PROHIBIDO** usar frases derrotistas como *«si prefieres lo dejamos aquí»*, disculparse sumisamente por prospectar o dar por perdida una conversación activa.
+- **Paso Previo Obligatorio:** Antes de redactar cualquier mensaje de respuesta a un prospecto, el asistente DEBE consultar obligatoriamente el **Inventario de Cierres de Alex Dey** (Conclusión, Doble Alternativa, Puercoespín, Amarre, Rebote/Judo, Compromiso, Envolvente), identificar la técnica exacta a aplicar y estructurar la respuesta con agresividad comercial sana, autoridad profesional y hambre voraz de cierre.
+- **Postura Comercial:** Orgullo total de **Bienestar Sin Excusas**, convicción plena en el valor de la tecnología y foco inamovible en el objetivo: **agendar el Zoom en vivo de 10 minutos o captar el anticipo del 50%**.
+
+
 
 
 ---
@@ -2663,6 +2669,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead: Pablo Briceño (`4a291370-8007-4a4d-b81d-54a9f5c57ead`). Estado: `cita_agendada`.
     *   Bitácora: Registro de la apertura del canal de WhatsApp y reconfirmación previa.
     *   Próxima acción: *«Enviar enlace de Zoom 10 min antes (03:20 p. m.) a Pablo Briceño (+51 935 801 176) y ejecutar demostración en vivo»* para hoy **martes 27 de octubre de 2026 a las 03:20 p. m.** (`2026-10-27T15:20:00`).
+
+### 292. Interacción Avanzada con Nutriólogo en México y Codificación de la Regla 11 (27 de Octubre de 2026 - 12:05 p. m.)
+*   **Negociación Técnica con Prospecto de México (`+52 1 228 344 4163`)**:
+    *   Tras recibir el desglose de software clínico (Nutrimind, Aznutrition, Avena), a las 11:44 a. m. el especialista mexicano formuló preguntas de validación de identidad y canal: *«¿Cómo se llama este software? ¿De dónde obtuviste mi contacto?»*.
+    *   Alberto instruyó responder con total firmeza, orgullo de marca y técnica cerradora sin regalar la venta ni mostrar sumisión.
+    *   Se despachó el mensaje aplicando **Cierre Rebote / Judo y Doble Alternativa**:
+        *   Presentación de la marca **Bienestar Sin Excusas**.
+        *   Validación del prospecto como un referente clínico y deportivo activo en México que fue seleccionado a propósito.
+        *   Uso de su dolor central (tiempo perdido en menús) como palanca para invitarlo a Zoom de 10 min (hoy al mediodía o 4:00 p. m. MX).
+*   **Institucionalización de la Regla de Oro Comercial #11**:
+    *   Alberto corrigió con contundencia cualquier atisbo de pasividad o frases derrotistas en la labor del copiloto, formalizando la **Regla 11: Mentalidad de Cierre Voraz y Consulta Obligatoria de Técnicas Alex Dey (Prohibido Soltar un Lead Caliente)**.
+    *   Queda establecido que cada lead es ORO PURO (costó 45 prospecciones en frío) y que antes de plantear una respuesta, es obligatorio estructurarla con las técnicas maestras de Alex Dey sin permitir salidas fáciles.
 
 ---
 
