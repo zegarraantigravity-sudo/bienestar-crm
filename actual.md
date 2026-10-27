@@ -2590,7 +2590,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Regla 5**:
     *   Queda en seguimiento activo y se procederá con su alta en Supabase apenas confirme la cita y remita su número de WhatsApp.
 *   **Balance del Cierre de Jornada (Lunes 26 de Octubre)**:
-    *   Se cierra el día con un nuevo lead calificado y agendado en el CRM (**Pablo Briceño** - S/ 400), dos sesiones demostrativas programadas para el martes (**Siéntete Fit** 10:30 a. m. y **Pablo Briceño** 11:30 a. m.), y tres conversaciones de alto potencial abiertas (**Gheraldi Muñoz**, **Carlos Silva** y el **Personal Trainer** de WhatsApp).
+    *   Se cierra el día con un nuevo lead calificado y agendado en el CRM (**Pablo Briceño** - S/ 400), dos sesiones demostrativas programadas para el martes (**Siéntete Fit** 10:30 a. m. y **Pablo Briceño** 03:30 p. m.), y tres conversaciones de alto potencial abiertas (**Gheraldi Muñoz**, **Carlos Silva** y el **Personal Trainer** de WhatsApp).
+
+### 286. Fijación Definitiva de Horario Vespertino (Pablo Briceño) y Toque a Prospecto de Bolivia (26 de Octubre de 2026 - 11:45 p. m.)
+*   **Fijación Definitiva de Zoom — Pablo Briceño / Coach (`+51 935 801 176`)**:
+    *   A las 10:26 p. m., Pablo ratificó en Messenger la recepción del enlace vía WhatsApp (*«Wsp estará bien»*).
+    *   A las 11:41 p. m., Pablo especificó su preferencia horaria: *«Para la tarde»*, dado su turno continuo de sala en el gimnasio hasta las 10:00 p. m.
+    *   Alberto confirmó y ancló la reunión demostrativa por Zoom para el **martes 27 de octubre de 2026 a las 03:30 p. m.**, programando el despacho del enlace directo a su WhatsApp 10 minutos antes (03:20 p. m.).
+    *   **Actualización en Supabase**: Lead `4a291370-8007-4a4d-b81d-54a9f5c57ead` actualizado con `next_action_date` en `2026-10-27T15:20:00`.
+*   **Toque Internacional a Prospecto en WhatsApp — Bolivia (`+591 71273744`)**:
+    *   A las 10:17 p. m., la especialista de Bolivia respondió manifestando alto interés: *«Si me gustaría verla y podemos hablar pero después de esos días ya que estoy bien ocupada»*.
+    *   Alberto le despachó un mensaje empático ofreciendo Doble Alternativa para después de sus días críticos (miércoles 28 o jueves 29) en horario matutino (11:00 a. m.) o vespertino (04:00 p. m.) y solicitando su nombre para registro formal.
 
 ---
 
