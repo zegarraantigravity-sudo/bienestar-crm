@@ -2737,6 +2737,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Regla 5 de Admisión al CRM**:
     *   Se mantiene en seguimiento directo por WhatsApp. Tan pronto Ever confirme el horario y acepte la sesión de Zoom, se procederá a su creación formal en Supabase.
 
+### 297. Despacho de Toque de Reactivación con Cierre por Compromiso y Doble Alternativa en Horario CDMX — Nutriólogo de México (28 de Octubre de 2026 - 10:15 a. m.)
+*   **Diagnóstico de Lectura Previa y Vencimiento de Convocatoria**:
+    *   A las 10:12 a. m., Alberto constató mediante captura de pantalla que el especialista clínico y deportivo de México (`+52 1 228 344 4163`) leyó en **doble check azul** la explicación sobre la plataforma **Bienestar Sin Excusas** y la obtención de su contacto desde las 11:57 a. m. del día anterior, sin emitir respuesta.
+    *   Al igual que en otros casos, el llamado a la acción original (*«¿nos conectamos hoy?»*) hacía referencia al martes 27, quedando la conversación en pausa al no renovarse la propuesta.
+*   **Despacho de Toque Quirúrgico con Técnicas Alex Dey (Compromiso + Doble Alternativa en Horario Local)**:
+    *   A las 10:14 a. m., en estricta observancia de la Regla 11, Alberto le despachó un mensaje enfocado con precisión láser en el dolor operativo que el propio prospecto confesó (*«tardo demasiado en hacer menús con IA»*):
+        *   *«¡Hola, colega! Buen día. Si yo te demuestro en pantalla en solo 10 minutos cómo nuestra IA te estructura y cuadra un menú clínico personalizado en menos de 60 segundos (ahorrándote esas horas que hoy se pierden frente a la computadora), ¿nos conectamos hoy para que lo veas en vivo? ¿Te acomoda a las 11:00 a. m. o a las 04:30 p. m. (hora de México / CDMX)? 🤝»*.
+    *   **Calibración de Zona Horaria**: Se adaptó el horario a la franja local de México (UTC-6, 1 hora detrás de Perú):
+        *   11:00 a. m. CDMX = 12:00 m. PE.
+        *   04:30 p. m. CDMX = 05:30 p. m. PE.
+    *   **Blindaje de Agenda**: Ambas alternativas dejan completamente libre y con holgura la reunión de las **04:00 p. m. PE** con la **Lic. Roxana Gómez Saenz (Bolivia)**.
+*   **Regla 5 de Admisión al CRM**:
+    *   Se mantiene el seguimiento en WhatsApp. Al confirmar horario de la sesión demostrativa, se registrará en Supabase con el Plan 30 Internacional ($114.00 USD / mes).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
