@@ -2726,6 +2726,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro del despacho de reactivación matutina en Facebook Messenger con Doble Alternativa (11:00 a. m. / 12:00 m.).
     *   Próxima acción: *«Monitorear respuesta de Pablo Briceño en Messenger y preparar sala de Zoom (11:00 a. m. / 12:00 m.)»* programada para hoy **miércoles 28 de octubre de 2026 a las 11:00 a. m.** (`2026-10-28T11:00:00`).
 
+### 296. Despacho de Toque de Reactivación Matutina con Doble Alternativa Calibrada — Ever Rodríguez (28 de Octubre de 2026 - 10:08 a. m.)
+*   **Diagnóstico de Chat Enterrado y Vencimiento de Propuesta Horaria**:
+    *   A las 10:06 a. m., Alberto constató que el chat de WhatsApp de **Ever Rodríguez** (`@everthefit`) permanecía en doble check plomo desde las 05:00 p. m. del día anterior.
+    *   **Causa Raíz Identificada**: El mensaje detallado de propuesta de valor y precios quedó truncado con el botón *"Leer más"*, coincidiendo con el inicio del turno punta del gimnasio. Además, la propuesta de conexión que contenía (*«¿te acomoda hoy a las 8:00 o 9:00 p. m.?»*) ya había caducado, dejando el llamado a la acción desfasado.
+*   **Despacho de Toque Corto con Técnicas Alex Dey (Conclusión + Doble Alternativa Calibrada)**:
+    *   A las 10:08 a. m., Alberto le despachó un mensaje fresco de 2 líneas asumiendo su ritmo de entrenamiento y renovando la oferta horaria para hoy:
+        *   *«¡Hola Ever, buen día! Me imagino que ayer estuviste a full en el gym. Como te explicaba arriba, ver la App por dentro toma solo 10 minutitos. ¿Te acomoda que nos conectemos hoy a las 11:30 a. m. o prefieres a las 5:30 p. m.? 🤝»*.
+    *   **Blindaje de Agenda**: Se fijaron las 05:30 p. m. en la segunda opción para proteger estrictamente la sala de Zoom de las **04:00 p. m.** pactada con la **Lic. Roxana Gómez Saenz (Bolivia)**.
+*   **Regla 5 de Admisión al CRM**:
+    *   Se mantiene en seguimiento directo por WhatsApp. Tan pronto Ever confirme el horario y acepte la sesión de Zoom, se procederá a su creación formal en Supabase.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
