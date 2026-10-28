@@ -2814,6 +2814,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Regla 5 de Admisión al CRM**:
     *   Se mantiene en seguimiento directo por WhatsApp. Al confirmar horario de la sesión demostrativa y proporcionar su nombre profesional, se registrará formalmente en Supabase con el Plan 30 oficial (S/ 400.00 / mes acorde a la Regla 9).
 
+### 303. Presentación por Zoom en Vivo, Enfoque Clínico y Entrega de Código NUT-FLC-7YBQ — Lic. Roxana Gómez / Bolivia (28 de Octubre de 2026 - 05:22 p. m.)
+*   **Resultados de la Demostración en Pantalla**:
+    *   A las 04:00 p. m. PE / 05:00 p. m. BO, Alberto llevó a cabo la reunión demostrativa por Zoom con la **Lic. Roxana Gómez Saenz** (`+591 71273744`, Bolivia).
+    *   **Diagnóstico de Objeción y Foco Profesional**: La especialista manifestó menor entusiasmo inicial argumentando que su consulta atiende principalmente **pacientes clínicos y patológicos** (diabetes, renales, hipertensión, etc.), mostrando cierta reserva sobre la capacidad de personalización del sistema frente a consultas puramente fitness o estéticas.
+*   **Estrategia de Adopción de Producto y Desarme de Escepticismo (Regla 8 y Regla 10)**:
+    *   Para demostrar en la práctica médica la precisión de los equivalentes y el recálculo automático de requerimientos clínicos, Alberto le despachó la plantilla maestra post-zoom con el enlace a la plataforma (`nutri-alberto.bienestarsinexcusas.site`), video explicativo de registro y el código exclusivo de activación:
+        *   **Código de Activación**: `NUT-FLC-7YBQ` (Prueba de 28 días).
+    *   Este movimiento táctico busca generar **efecto posesión** al permitirle ingresar un caso clínico real y constatar directamente en su teléfono celular la solidez de la plataforma.
+*   **Actualización en Supabase**:
+    *   Lead: **Lic. Roxana Gómez Saenz** (`f904ebb4-8caa-46ae-bac3-25d571cc90bf`).
+    *   Estado: Se traslada formalmente de `cita_agendada` ➔ **`presentacion_realizada`** (Plan 30 Internacional - $114.00 USD / mes).
+    *   Bitácora: Registro de la ejecución del Zoom, objeción clínica y entrega de credencial `NUT-FLC-7YBQ`.
+    *   Próxima acción: *«Monitorear activación de prueba de 28 días y experiencia clínica con código NUT-FLC-7YBQ — Lic. Roxana Gómez»* programada para el **viernes 30 de octubre de 2026 a las 11:30 a. m.** (`2026-10-30T11:30:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
