@@ -2774,6 +2774,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Bitácora: Registro de la auditoría visual y aplicación de silencio táctico respetando la ventana de mediodía.
     *   Próxima acción: *«Monitorear lectura de Messenger y evaluar conexión de mediodía a las 12:00 m.»* reprogramada para hoy **miércoles 28 de octubre de 2026 a las 12:00 m.** (`2026-10-28T12:00:00`).
 
+### 300. Respeto al Timing de Cierre y Blindaje de Fin de Mes (Regla 8) — Rosa Freire / Fuxion Ecuador (28 de Octubre de 2026 - 11:10 a. m.)
+*   **Auditoría de Interacciones y Diagnóstico Operativo**:
+    *   A las 11:07 a. m., Alberto constató que la profesional de Ecuador (`+593 93 958 5832`) no emitió mensajes adicionales tras la sesión de soporte técnico del lunes sobre la instalación PWA en Android.
+    *   Rosa se encuentra culminando su capacitación académica en enfermedades metabólicas y utilizando activamente la aplicación.
+*   **Aplicación Estricta de la Regla de Oro 8 (Timing de Cobro y Cero Desesperación)**:
+    *   El acuerdo comercial vinculante pactado en la sesión de Zoom fue arrancar con el **Plan 30 ($114.00 USD / mes)** para **FIN DE MES**.
+    *   Siendo miércoles 28, adelantar cobros o insistir con mensajes de seguimiento intermedios violaría la Regla 8, proyectando necesidad y quebrando la postura ejecutiva.
+    *   Se aplica respeto absoluto al ciclo comercial: silencio estratégico durante miércoles 28 y jueves 29 para proteger la relación y permitir que Rosa continúe su efecto posesión con la plataforma.
+*   **Actualización en Supabase**:
+    *   Lead: **Rosa Freire** (`030c95bc-fac4-4f0f-99b5-1131a4464b05`). Estado: `presentacion_realizada`.
+    *   Bitácora: Registro de la auditoría y aplicación de la Regla 8 protegiendo el timing de fin de mes.
+    *   Próxima acción: *«Contacto de cierre de fin de mes y coordinación de anticipo del 50% ($57 USD Western Union / PayPal)»* programada para el **viernes 30 de octubre de 2026 a las 10:00 a. m.** (`2026-10-30T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
