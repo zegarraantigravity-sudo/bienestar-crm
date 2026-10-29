@@ -2879,6 +2879,29 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras resolverse el bloqueo temporal de WhatsApp, Alberto reactivó el ritmo operativo completando en la tanda matutina **10 de 30 mensajes de WhatsApp** y **5 de 60 mensajes de Facebook Messenger**.
     *   Objetivo para la tarde (02:00 - 04:00 p. m.) y noche (07:00 - 09:00 p. m.): despachar los 20 WhatsApps y 55 Messenger restantes para cumplir la meta de 90 toques diarios.
 
+### 308. Respuesta en Caliente de 2 Nuevos Leads (NicoMstar y L.N.C. Gladys de México), Blindaje Tarifario y Doble Alternativa (29 de Octubre de 2026 - 12:12 p. m.)
+*   **Resultados Inmediatos del Motor de Prospección Matutino**:
+    *   De los 10 mensajes despachados por WhatsApp a las 10:30-10:49 a. m., se generaron dos respuestas cualificadas en tiempo real en menos de 90 minutos:
+*   **Caso 1: Lead `@NicoMstar` (12:00 p. m.)**:
+    *   *Interacción*: El prospecto respondió con un conciso y directo *"Ok"* al mensaje donde Alberto ofrecía mostrar la App por dentro para sus pacientes.
+    *   *Acción Comercial (Regla 7)*: Alberto aplicó de inmediato la técnica de **Cierre por Conclusión + Doble Alternativa Inmediata** a las 12:08 p. m.:
+        > *«Excelente colega. Mucho gusto, soy Alberto Zegarra.*
+        >
+        > *Son 10 minutos por Zoom para mostrarte en pantalla cómo funciona la App y la automatización con IA.*
+        >
+        > *¿Te viene mejor conectarnos ahorita a las 12:30 p. m. o prefieres por la tarde a las 4:30 p. m.?»*
+    *   *Estado*: A la espera de confirmación de horario para despacho de link de Zoom y alta en Supabase (Regla 5).
+*   **Caso 2: L.N.C. Gladys (`+52 1 245 119 3642`, México) (12:09 p. m.)**:
+    *   *Perfil*: Nutrióloga Clínica con consultorio activo, marca propia («Nutri@ Nutrición Clínica») y WhatsApp Business. Perfil AAA según el criterio de Product-Market Fit de la Regla 12.
+    *   *Consulta de Entrada*: *"Hola, buen día. Qué costo tiene la plataforma y la app?"*.
+    *   *Respuesta Estratégica (Regla 9 y 11)*: Despachada a las 12:12 p. m., blindando la tarifa internacional oficial (**Plan 30: $114.00 USD / mes** | $3.80 USD x paciente), enfatizando el retorno de inversión (se paga con solo 2 consultas) y el desarrollo de App y web marca blanca 100% bonificado, cerrando con **Doble Alternativa Inmediata en horario de México**:
+        > *«Hola Licenciada Gladys, un gusto saludarte.*
+        >
+        > *La plataforma se maneja por planes según tu volumen de pacientes. El plan inicial para hasta 30 pacientes está en $114 USD al mes (menos de $4 dólares por paciente, que se pagan solos con 2 consultas). Te incluye sin ningún costo adicional el desarrollo de tu propia App móvil y web oficial con tu logotipo y colores.*
+        >
+        > *Para mostrarte en pantalla cómo funciona y cómo luciría tu App personalizada: ¿te viene mejor que nos conectemos 10 minutos por Zoom hoy a la 1:30 p. m. o prefieres por la tarde a las 4:30 p. m. (hora de México)?»*
+    *   *Estado*: A la espera de confirmación de hora para despacho de link de Zoom y alta formal en Supabase como `cita_agendada` (Regla 5).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
