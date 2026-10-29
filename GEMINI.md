@@ -22,9 +22,11 @@
 - SOLO registrar a un nuevo prospecto en la base de datos de Supabase cuando confirme interés real y se coordine o agende una reunión por ZOOM en vivo.
 - Las conversaciones iniciales de prospección en frío o respuestas tentativas NO se ingresan al CRM hasta que se concrete el compromiso formal de un Zoom demostrativo.
 
-## 6. Información Veraz de Producto (Cero Invenciones)
+## 6. Información Veraz de Producto y Cero Supuestos de Mercados Locales
 - NUNCA inventar características o estados de la plataforma (por ejemplo, afirmar que ya está publicada en Play Store o App Store bajo marcas individuales).
 - Ceñirse estrictamente a la realidad del producto validada por Alberto.
+- **Cero Invención de Tarifas Locales:** NUNCA inventar o asumir precios de consultas, tarifas de mercado o afirmaciones financieras de otros países (ej. México, Colombia, etc.) que Alberto no conozca ni haya validado personalmente.
+- El argumento comercial se apoya estrictamente en los **planes oficiales de Bienestar Sin Excusas**, el **retorno de inversión demostrable** y la **transformación del modelo de negocio** (entregar una App propia con IA 24/7 en lugar de una consulta suelta en papel).
 
 ## 7. Regla de Oro Comercial: Hambre de Cierre y Conexión Inmediata (Prohibido Patear al Lunes)
 - Cuando un prospecto responda con interés activo («si deseo ver cómo funciona», «me interesa», etc.) y esté en línea, **JAMÁS patear la reunión al futuro ni al lunes**.

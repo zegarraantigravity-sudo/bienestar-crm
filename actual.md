@@ -39,9 +39,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - SOLO registrar a un nuevo prospecto en la base de datos de Supabase cuando confirme interés real y se coordine o agende una reunión por ZOOM en vivo.
 - Las conversaciones iniciales de prospección en frío o respuestas tentativas NO se ingresan al CRM hasta que se concrete el compromiso formal de un Zoom demostrativo.
 
-### 6. Información Veraz de Producto (Cero Invenciones)
+### 6. Información Veraz de Producto y Cero Supuestos de Mercados Locales
 - NUNCA inventar características o estados de la plataforma (por ejemplo, afirmar que ya está publicada en Play Store o App Store bajo marcas individuales).
 - Ceñirse estrictamente a la realidad del producto validada por Alberto.
+- **Cero Invención de Tarifas Locales:** NUNCA inventar o asumir precios de consultas, tarifas de mercado o afirmaciones financieras de otros países (ej. México, Colombia, etc.) que Alberto no conozca ni haya validado personalmente.
+- El argumento comercial se apoya estrictamente en los **planes oficiales de Bienestar Sin Excusas**, el **retorno de inversión demostrable** y la **transformación del modelo de negocio** (entregar una App propia con IA 24/7 en lugar de una consulta suelta en papel).
 
 ### 7. Regla de Oro Comercial: Hambre de Cierre y Conexión Inmediata (Prohibido Patear al Lunes)
 - Cuando un prospecto responda con interés activo («si deseo ver cómo funciona», «me interesa», etc.) y esté en línea, **JAMÁS patear la reunión al futuro ni al lunes**.
@@ -2948,6 +2950,26 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Caso Edson Flores (`+51 929 027 696`, Perú) — Filtro Clínico de Negocio**:
     *   *Reacción del Contacto (01:58 p. m.)*: Al recibir la salida elegante por rubro de eventos, Edson defendió su profesión respondiendo: *«Igual soy nutricionista / Vendo Teoma productos / De nutrición»*.
     *   *Calificación Quirúrgica de Product-Market Fit (Regla 12)*: A las 02:02 p. m., Alberto despachó el mensaje de filtro directo para discernir si atiende pacientes en consulta privada cobrando planes dietéticos o si se enfoca exclusivamente en la venta de productos de red de mercadeo (MLM), protegiendo la agenda de demostraciones.
+
+### 311. Aceptación de Zoom de L.N.C. Gladys (Área Renal), Calibración Estricta de Veracidad y Refuerzo de la Regla 6 (29 de Octubre de 2026 - 02:44 p. m.)
+*   **Interés Clínico y Apertura de Demostración por Zoom**:
+    *   A las 02:37 p. m., L.N.C. Gladys (`+52 1 245 119 3642`, México) respondió aceptando la demostración: *«Hoy no puedo, podría mañana después de las 7 pm»*.
+    *   A las 02:38 p. m., profundizó su interés comercial manifestando: *«Me interesa saber cómo podría aumentar el precio de la consulta y cómo me podría ayudar en mi enfoque, atiendo pacientes crónicos, en especial en área renal»*.
+*   **Calibración Crítica de Veracidad y Mejora Continua (Regla de Alberto)**:
+    *   Alberto corrigió de inmediato cualquier formulación basada en supuestos o precios no verificados del mercado mexicano, estableciendo que la comunicación comercial debe apoyarse estrictamente en hechos 100% reales, comprobables y en el valor intrínseco del producto.
+    *   *Refuerzo Institucional de la Regla 6*: Se blindó en `AGENTS.md`, `GEMINI.md` y `actual.md` la prohibición absoluta de inventar o suponer tarifas de mercados ajenos (ej. México o Colombia). El argumento debe anclarse únicamente en los **planes oficiales de Bienestar Sin Excusas** y en la **transformación del modelo de servicio** (App propia con IA 24/7 y seguimiento continuo vs. consulta suelta en papel).
+*   **Despacho de Argumento Clínico Veraz y Doble Alternativa**:
+    *   A las 02:43 p. m., Alberto despachó la respuesta técnica ajustada a la realidad del área renal (control estricto de alimentos y miedo del paciente a equivocarse) y amarrando la cita con Doble Alternativa:
+        > *«Excelente enfoque, Licenciada. El paciente renal es justamente uno de los más delicados porque requiere un control estricto de sus comidas y tiene dudas constantes sobre qué ingredientes puede o no consumir.*
+        >
+        > *¿Cómo ayuda a aumentar el valor de tu servicio? Porque en lugar de entregarles solo una hoja o un PDF con la dieta, les entregas **tu propia App oficial en su celular** con su plan clínico de 28 días y un asistente virtual que les responde dudas de alimentos las 24 horas.*
+        >
+        > *Al brindarles tu propia tecnología y un acompañamiento continuo, no les vendes solo una consulta suelta, sino un servicio integral de mayor categoría por el que puedes cobrar una tarifa superior.*
+        >
+        > *Mañana en 10 minutos por Zoom te muestro la plataforma en pantalla para que veas cómo funciona la IA y cómo adaptarla a tus pacientes.*
+        >
+        > *Para apartar tu espacio mañana viernes: ¿te queda mejor a las 7:15 p. m. o a las 7:30 p. m. (hora de México)?»*
+    *   *Estado*: A la espera de reconfirmación de los minutos finales para alta formal en Supabase como `cita_agendada` (Regla 5).
 
 ---
 
