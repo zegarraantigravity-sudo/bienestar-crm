@@ -66,6 +66,12 @@
   4. **Protocolo Obligatorio:** Aplicar de inmediato **Salida Elegante de Alto Estatus y Descompresión** (*«Sé que tu prioridad ahorita es graduarte y aún no atiendes de forma regular; despreocúpate por el tema comercial por ahora. Guarda el acceso y cuando recibas tus primeros pacientes me escribes para montar tu marca»*).
   5. **Blindaje del Pipeline:** Se pausa el lead en Supabase hasta su inicio profesional, liberando el 100% del tiempo y foco en prospectos con dinero y clientes activos.
 
+## 13. Auditoría Visual Obligatoria de Perfil y Filtro de Rubro No-Fit (Caso Edson Flores)
+- **Obligación Inexcusable del Asistente:** En CADA captura de pantalla que Alberto comparta, el asistente DEBE auditar obligatoriamente el panel de información del contacto (categoría de empresa, descripción, página web, correo y nombre) ANTES de sugerir cualquier respuesta o acción de venta.
+- **Descalificación Inmediata por Rubro:** Si el prospecto pertenece a rubros ajenos a nutrición clínica, salud o fitness (ej. organización de eventos, arte, entretenimiento, comercio general), queda TERMINANTEMENTE PROHIBIDO proponer agendar Zoom o empujar ventas.
+- **Protocolo de Actuación:** El asistente redactará de inmediato y de forma autónoma una salida elegante por cruce de base de datos (*«Al revisar tu perfil veo que estás en el rubro de eventos; nuestra plataforma es exclusiva para nutricionistas clínicos y gimnasios. Disculpa el cruce de datos...»*), descalificando el lead sin registrarlo en Supabase para proteger al 100% el tiempo y la energía de Alberto.
+
+
 
 
 

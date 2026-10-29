@@ -74,6 +74,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Paso Previo Obligatorio:** Antes de redactar cualquier mensaje de respuesta a un prospecto, el asistente DEBE consultar obligatoriamente el **Inventario de Cierres de Alex Dey** (Conclusión, Doble Alternativa, Puercoespín, Amarre, Rebote/Judo, Compromiso, Envolvente), identificar la técnica exacta a aplicar y estructurar la respuesta con agresividad comercial sana, autoridad profesional y hambre voraz de cierre.
 - **Postura Comercial:** Orgullo total de **Bienestar Sin Excusas**, convicción plena en el valor de la tecnología y foco inamovible en el objetivo: **agendar el Zoom en vivo de 10 minutos o captar el anticipo del 50%**.
 
+### 12. Discernimiento de Product-Market Fit: Estudiantes vs. Profesionales Activos
+- **El Cliente Ideal del SaaS:** Es el profesional (nutricionista, coach) o centro deportivo que **YA TIENE pacientes o socios activos** (15, 30, 50+) y está colapsado armando PDFs en Excel o respondiendo WhatsApps a deshoras. Para ellos, pagar S/ 400 o $114 USD es una salvación operativa y una inversión que se amortiza de inmediato.
+- **El Filtro para Estudiantes o Egresados sin Pacientes (Caso Yajaira Alarcón):**
+  1. **Cero dolor operativo:** No sufren por falta de tiempo porque no tienen pacientes que atender.
+  2. **Cero flujo de caja:** Cualquier tarifa o anticipo es un gasto gravoso, no una inversión de retorno rápido.
+  3. **Terminantemente Prohibido empujar cobros forzados:** Jamás presionar por anticipos ni meter urgencia de fin de mes a un estudiante o recién graduado sin cartera activa.
+  4. **Protocolo Obligatorio:** Aplicar de inmediato **Salida Elegante de Alto Estatus y Descompresión** (*«Sé que tu prioridad ahorita es graduarte y aún no atiendes de forma regular; despreocúpate por el tema comercial por ahora. Guarda el acceso y cuando recibas tus primeros pacientes me escribes para montar tu marca»*).
+  5. **Blindaje del Pipeline:** Se pausa el lead en Supabase hasta su inicio profesional, liberando el 100% del tiempo y foco en prospectos con dinero y clientes activos.
+
+### 13. Auditoría Visual Obligatoria de Perfil y Filtro de Rubro No-Fit (Caso Edson Flores)
+- **Obligación Inexcusable del Asistente:** En CADA captura de pantalla que Alberto comparta, el asistente DEBE auditar obligatoriamente el panel de información del contacto (categoría de empresa, descripción, página web, correo y nombre) ANTES de sugerir cualquier respuesta o acción de venta.
+- **Descalificación Inmediata por Rubro:** Si el prospecto pertenece a rubros ajenos a nutrición clínica, salud o fitness (ej. organización de eventos, arte, entretenimiento, comercio general), queda TERMINANTEMENTE PROHIBIDO proponer agendar Zoom o empujar ventas.
+- **Protocolo de Actuación:** El asistente redactará de inmediato y de forma autónoma una salida elegante por cruce de base de datos (*«Al revisar tu perfil veo que estás en el rubro de eventos; nuestra plataforma es exclusiva para nutricionistas clínicos y gimnasios. Disculpa el cruce de datos...»*), descalificando el lead sin registrarlo en Supabase para proteger al 100% el tiempo y la energía de Alberto.
+
 
 
 
@@ -2901,6 +2915,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         >
         > *Para mostrarte en pantalla cómo funciona y cómo luciría tu App personalizada: ¿te viene mejor que nos conectemos 10 minutos por Zoom hoy a la 1:30 p. m. o prefieres por la tarde a las 4:30 p. m. (hora de México)?»*
     *   *Estado*: A la espera de confirmación de hora para despacho de link de Zoom y alta formal en Supabase como `cita_agendada` (Regla 5).
+
+### 309. Descalificación por Rubro No-Fit (Edson Flores - Huamanguna) e Institucionalización de la Regla 13 (29 de Octubre de 2026 - 01:55 p. m.)
+*   **Detección Visual y Filtro de Rubro No-Fit**:
+    *   Al recibir respuesta de Edson Flores (`+51 929 027 696`), Alberto identificó en el panel lateral de perfil de WhatsApp Business que el contacto pertenece al rubro de *«Servicio profesional • Organización de eventos • Arte y entretenimiento»* (`info@huamanguna.com` / `huamanguna.com`), producto de un cruce en la base de números fríos.
+    *   Hacer demostración o seguimiento a un perfil no vinculado a nutrición o centros deportivos representa una pérdida crítica de tiempo y desenfoque comercial.
+*   **Despacho de Salida Elegante por Cruce de Datos**:
+    *   A las 01:55 p. m., Alberto despachó el mensaje de cierre y descarte cortés:
+        > *«Hola Edson, disculpa la confusión. Al revisar tu perfil veo que estás en el rubro de eventos y entretenimiento. Nuestra plataforma es exclusivamente para nutricionistas clínicos y entrenadores con pacientes.*
+        >
+        > *Mil disculpas si hubo un cruce en la base de datos de contacto. ¡Muchos éxitos con Huamanguna!»*
+    *   *Resultado*: Contacto cerrado y descalificado limpiamente, sin registro en Supabase (Regla 5).
+*   **Codificación de la Regla 13 en Protocolos (`AGENTS.md` y `GEMINI.md`)**:
+    *   Alberto ordenó e institucionalizó la **Regla 13: Auditoría Visual Obligatoria de Perfil y Filtro de Rubro No-Fit (Caso Edson Flores)**:
+        1. *Obligación Inexcusable*: El asistente DEBE auditar visualmente el panel de información de cada captura (categoría comercial, descripción, web y correo) antes de emitir cualquier sugerencia comercial.
+        2. *Descalificación Inmediata*: Prohibido sugerir Zoom o empujar ventas si el rubro no es nutrición, salud o fitness.
+        3. *Protocolo Autónomo*: Formular de inmediato la salida elegante por cruce de datos y proteger al 100% la agenda de Alberto.
 
 ---
 
