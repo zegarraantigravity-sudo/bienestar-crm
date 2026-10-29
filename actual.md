@@ -2856,6 +2856,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Bitácora: Registro del toque de descompresión y calibración de perfil.
         *   Próxima acción: `Pausado hasta graduación y primeras consultas con pacientes en Puno` (`2027-01-15T10:00:00`), despejando el pipeline activo de fin de mes para concentrar la energía en prospectos con flujo financiero (Rosa Freire, Roxana Gómez, Pablo Briceño).
 
+### 306. Institucionalización de la Regla 12 de Product-Market Fit: Discernimiento Estudiantes vs. Profesionales Activos (29 de Octubre de 2026 - 11:15 a. m.)
+*   **Blindaje Normativo en Protocolos (`AGENTS.md` y `GEMINI.md`)**:
+    *   Alberto oficializó y autorizó la incorporación de la **Regla 12 Obligatoria** en los archivos centrales de comportamiento del asistente.
+    *   **Criterio de Discernimiento Autónomo**:
+        1. *Cliente Ideal*: Nutricionista, coach o centro fitness con 15+ clientes/pacientes activos, colapsado en envíos manuales de Excel/PDF. Para ellos el SaaS representa ahorro de tiempo y se amortiza de inmediato.
+        2. *Filtro Estudiantes / Sin Pacientes (Caso Yajaira)*: Cero dolor operativo activo y cero flujo de caja. Queda terminantemente prohibido empujar cobros o cierres forzados de anticipo.
+        3. *Protocolo de Actuación*: Aplicación automática de **Salida Elegante de Alto Estatus y Descompresión**, dejando la puerta abierta como referente para cuando inicien su práctica profesional, y pausando el lead en Supabase para proteger el tiempo y foco en prospectos con capacidad de pago inmediata.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
