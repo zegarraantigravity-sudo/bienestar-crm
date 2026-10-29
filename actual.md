@@ -2864,6 +2864,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         2. *Filtro Estudiantes / Sin Pacientes (Caso Yajaira)*: Cero dolor operativo activo y cero flujo de caja. Queda terminantemente prohibido empujar cobros o cierres forzados de anticipo.
         3. *Protocolo de Actuación*: Aplicación automática de **Salida Elegante de Alto Estatus y Descompresión**, dejando la puerta abierta como referente para cuando inicien su práctica profesional, y pausando el lead en Supabase para proteger el tiempo y foco en prospectos con capacidad de pago inmediata.
 
+### 307. Reactivación de Cita con Doble Alternativa a Nutricionista Perú (+51 929 027 696) y Desbloqueo del Motor de Prospección (29 de Octubre de 2026 - 11:50 a. m.)
+*   **Diagnóstico de Lead en WhatsApp (`+51 929 027 696`)**:
+    *   El prospecto (nutricionista en Perú) respondió *"Hola"* al mensaje inicial de prospección el miércoles 28 a la 1:13 p. m. Alberto ofreció demostración por Zoom para esa misma tarde (5:00 o 6:30 p. m.), quedando el mensaje en visto (doble check azul) al cruzarse con el horario de consultas clínicas.
+*   **Aplicación de Técnicas Alex Dey (Regla 11 — Prohibido Soltar un Lead Caliente)**:
+    *   En lugar de dar por perdida la conversación o reclamar el visto, se aplicó **Cierre por Conclusión + Empatía Profesional + Doble Alternativa para Hoy**:
+    *   *Mensaje despachado a las 11:48 a. m.*:
+        > *«Hola colega, ¿cómo va tu día? Me imagino que ayer anduviste a full con pacientes y consultas.*
+        >
+        > *Para no cruzarte con tus atenciones de hoy: ¿te acomoda que nos conectemos 10 minutos por Zoom a las 4:30 p. m. o a las 6:00 p. m. para mostrarte la App funcionando en pantalla?»*
+*   **Cumplimiento de la Regla 5 de Admisión al CRM**:
+    *   El lead se mantiene en monitoreo activo de mensajería y **no se ingresa a Supabase** hasta que confirme explícitamente su elección de horario para la sesión demostrativa.
+*   **Reactividad del Motor de Prospección Diaria**:
+    *   Tras resolverse el bloqueo temporal de WhatsApp, Alberto reactivó el ritmo operativo completando en la tanda matutina **10 de 30 mensajes de WhatsApp** y **5 de 60 mensajes de Facebook Messenger**.
+    *   Objetivo para la tarde (02:00 - 04:00 p. m.) y noche (07:00 - 09:00 p. m.): despachar los 20 WhatsApps y 55 Messenger restantes para cumplir la meta de 90 toques diarios.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
