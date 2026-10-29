@@ -3033,6 +3033,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Enmienda Obligatoria a la Regla 12 en Protocolos (`AGENTS.md` y `GEMINI.md`)**:
     *   Se institucionalizó la inclusión obligatoria de profesionales y distribuidores de suplementación/nutrición: queda terminantemente prohibido descartar a prospectos que hagan ventas o marketing de productos. El argumento debe apoyarse en la integración del catálogo de productos en la App y automatización de dietas.
 
+### 316. Resurrección Comercial de Dra. Edna Mendez (México), Cierre Envolvente por Insumos y Reactivación en Supabase (29 de Octubre de 2026 - 06:45 p. m.)
+*   **Retorno Espontáneo y Compromiso de Compra de Dra. Edna Mendez (`+52 1 715 120 5933`, Michoacán)**:
+    *   Habiéndose aplicado el desenganche suave con puerta abierta el viernes 23 y tras pasar formalmente a `cerrado_perdido`, Edna retomó la iniciativa por voluntad propia a las 05:58 p. m. explicando que atravesó una compleja situación por un familiar enfermo con altos gastos médicos, pero ratificando su decisión de compra:
+        > *«Con estos gastos se me ha complicado mucho pero talvez el martes comienzo a darle una pequeña parte y ya que sean la mitad puedan comenzar por favor»*.
+*   **Respuesta de Alto Estatus y Aplicación de la Regla 8 (Cierre Envolvente por Insumos)**:
+    *   A las 06:16 p. m., Alberto respondió con empatía sobria y masculina, validando la facilidad de pago parcial a partir del martes y tendiendo el puente de posesión psicológica para que revise la web de muestra (`nutri-alberto.bienestarsinexcusas.site`) y prepare el envío de sus fotos, logo y redes.
+    *   *Ética Profesional de la Clienta (06:23 p. m.)*: Edna respondió con gran integridad moral: *«Muchas gracias ☺️ me gustaría mandar mis datos ya el martes que de un adelanto, no me gusta que se vea mal y prefiero adelantar en cuestión de pago»*.
+    *   Alberto ratificó el acuerdo con clase ejecutiva: *«Me parece perfecto, Edna. Habla muy bien de ti y de tu profesionalismo. Quedamos coordinados para el martes entonces. Concéntrate en tu familia estos días y que todo mejore. ¡Un abrazo!»*.
+*   **Reactivación Formal en Supabase**:
+    *   Lead ID: `9dd3e12c-5d85-40cf-965e-816b5fe543c7` | Contacto: **Edna Mendez**
+    *   Estado: Se traslada formalmente de `cerrado_perdido` ➔ **`presentacion_realizada`** (Plan 30 - $114.00 USD / mes).
+    *   Próxima acción: *«Recepción de anticipo y entrega de datos/logo para montaje de App — Dra. Edna Mendez»* programada para el **martes 3 de noviembre de 2026 a las 10:00 a. m.** (`2026-11-03T10:00:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
