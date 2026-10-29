@@ -2991,6 +2991,27 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         > *Por cierto, ¿con quién tengo el gusto de conversar?»*
     *   *Estado*: En monitoreo de respuesta y revisión de perfil en panel de WhatsApp Business. Cero alta en Supabase hasta concretar el Zoom (Regla 5).
 
+### 314. Doble Cierre de Citas para Fin de Mes: Alta de L.N.C. Gladys (México) y Cita Confirmada de Pablo Briceño (29 de Octubre de 2026 - 03:40 p. m.)
+*   **Alta Oficial de L.N.C. Gladys en Supabase (Cumplimiento Estricto de la Regla 5)**:
+    *   *Confirmación de Cita (03:24 p. m.)*: Gladys confirmó formalmente la reunión demostrativa por Zoom para **mañana viernes 30 de octubre a las 07:30 p. m. México / 08:30 p. m. Perú** (*«7:30 pm»*). Alberto ratificó y entregó el enlace de sala.
+    *   *Registro en Base de Datos Supabase*:
+        *   Lead ID: `59d2c802-f338-428c-9d40-b8be64e56302` | Contacto: **L.N.C. Gladys**
+        *   Empresa: **Nutri@ Nutrición Clínica** | Teléfono: `+52 1 245 119 3642` (México)
+        *   Tipo: `nutricionista` | Estado: **`cita_agendada`** | Plan Objetivo: `plan_30` ($114.00 USD / mes) | Valor: `S/ 400.00`.
+        *   Próxima acción: *«Demostración por Zoom en vivo de plataforma, App personalizada e IA para pacientes crónicos y renales — L.N.C. Gladys»* programada para el **viernes 30 de octubre a las 08:30 p. m. Perú / 07:30 p. m. México** (`2026-10-30T20:30:00`).
+*   **Reactivación y Cita Confirmada de Pablo Briceño (Coach / Entrenador)**:
+    *   *Interacción (03:31 - 03:37 p. m.)*: Pablo respondió manifestando: *«Mañana estoy libre toda la mañana»*. Alberto le aplicó Doble Alternativa (09:30 a. m. o 11:00 a. m.). Pablo confirmó de inmediato: *«Si esta bien / 9y30 / Puntual / no vaya ser xomo el otro dia 3y20 / Y nunca escribiste»*.
+    *   *Manejo de Fricción con Alex Dey*: Alberto desarmó el reclamo reconociendo con empatía la falla técnica de WhatsApp del martes, validó el interés genuino que Pablo mantuvo por la reunión y entregó de inmediato el enlace de la sala de Zoom asegurando puntualidad absoluta a las 09:30 a. m.
+    *   *Actualización en Supabase*:
+        *   Lead ID: `4a291370-8007-4a4d-b81d-54a9f5c57ead` | Contacto: **Pablo Briceño**
+        *   Estado: **`cita_agendada`** | Bitácora actualizada con la confirmación horaria y despacho del enlace.
+        *   Próxima acción: *«Demostración por Zoom en vivo de plataforma, App móvil marca blanca y ejercicios 3D — Pablo Briceño»* programada para el **viernes 30 de octubre a las 09:30 a. m.** (`2026-10-30T09:30:00`).
+*   **Cartelera Oficial de Cierres para el Viernes 30 de Octubre (Cierre de Mes)**:
+    1. **09:30 a. m.** — Zoom en vivo demostrativo con **Pablo Briceño** (Entrenador).
+    2. **10:00 a. m.** — Toque comercial de cobro del 50% de anticipo ($57 USD) con **Rosa Freire** (Ecuador).
+    3. **11:30 a. m.** — Toque de seguimiento de prueba con código `NUT-FLC-7YBQ` con **Lic. Roxana Gómez** (Bolivia).
+    4. **08:30 p. m. PE / 07:30 p. m. MX** — Zoom en vivo demostrativo con **L.N.C. Gladys** (México, Área Renal).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
