@@ -2932,6 +2932,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         2. *Descalificación Inmediata*: Prohibido sugerir Zoom o empujar ventas si el rubro no es nutrición, salud o fitness.
         3. *Protocolo Autónomo*: Formular de inmediato la salida elegante por cruce de datos y proteger al 100% la agenda de Alberto.
 
+### 310. Manejo de Objeción de Software de Bajo Costo ($17 USD) con L.N.C. Gladys (México) y Filtro Clínico de Edson Flores (29 de Octubre de 2026 - 02:05 p. m.)
+*   **Caso L.N.C. Gladys (`+52 1 245 119 3642`, México) — Objeción de Precio y Herramienta Actual**:
+    *   *Objeción de Entrada (12:52 p. m.)*: Tras recibir la cotización del Plan 30 ($114 USD), Gladys respondió citando el pitch: *«Revisé lo que muestra el link, se ve bien la app y la plataforma pero estoy usando por ahora un software con su app, por el costo me es conveniente, pago 329 pesos mxn, 17 USD al mes»*.
+    *   *Diagnóstico Estratégico*: El prospecto ya es usuario activo y pagador de software nutricional (alta predisposición a herramientas digitales). La objeción radica en percibir a Bienestar Sin Excusas como "un software genérico más" en lugar de un ecosistema de **marca blanca con App y web propia y asistente de IA 24/7**.
+    *   *Aplicación de Cierre Rebote / Judo de Alex Dey (Regla 11)*: A las 02:05 p. m., Alberto despachó el contra-argumento de alto estatus y retorno de inversión, diferenciando el software compartido de una solución tecnológica propia que permite subir tarifas a los pacientes:
+        > *«Totalmente comprensible, Licenciada. Conozco muy bien esas plataformas genéricas de $17 USD.*
+        >
+        > *La diferencia principal es que nosotros no somos un software compartido donde tus pacientes ven la marca de otra empresa. Te entregamos **tu propia App móvil con tu nombre, logotipo oficial y asistente de IA 24/7**.*
+        >
+        > *Los nutriólogos que trabajan con nosotros utilizan su propia tecnología para posicionar su consulta en un nivel premium y cobrar $10 a $15 USD más por paciente en su seguimiento. Con apenas 2 o 3 pacientes el sistema se paga solo y te genera rentabilidad líquida.*
+        >
+        > *Sin ningún compromiso, me gustaría mostrarte en 10 minutos por Zoom cómo funciona la IA y cómo luce una App personalizada. ¿Te acomoda que nos conectemos hoy a las 4:30 p. m. o prefieres a las 6:00 p. m. (hora de México)?»*
+    *   *Estado*: A la espera de confirmación de horario de demostración por Zoom.
+*   **Caso Edson Flores (`+51 929 027 696`, Perú) — Filtro Clínico de Negocio**:
+    *   *Reacción del Contacto (01:58 p. m.)*: Al recibir la salida elegante por rubro de eventos, Edson defendió su profesión respondiendo: *«Igual soy nutricionista / Vendo Teoma productos / De nutrición»*.
+    *   *Calificación Quirúrgica de Product-Market Fit (Regla 12)*: A las 02:02 p. m., Alberto despachó el mensaje de filtro directo para discernir si atiende pacientes en consulta privada cobrando planes dietéticos o si se enfoca exclusivamente en la venta de productos de red de mercadeo (MLM), protegiendo la agenda de demostraciones.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
