@@ -3046,6 +3046,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Estado: Se traslada formalmente de `cerrado_perdido` ➔ **`presentacion_realizada`** (Plan 30 - $114.00 USD / mes).
     *   Próxima acción: *«Recepción de anticipo y entrega de datos/logo para montaje de App — Dra. Edna Mendez»* programada para el **martes 3 de noviembre de 2026 a las 10:00 a. m.** (`2026-11-03T10:00:00`).
 
+### 317. Agendamiento de Alianza Comercial de Ventas B2B SaaS con Fernando Julián (RE/MAX) para el Viernes 30 a las 4:00 p. m. (29 de Octubre de 2026 - 07:00 p. m.)
+*   **Perfil y Contexto del Prospecto de Alianza Comercial**:
+    *   **Fernando Julián**: Profesional de alto rendimiento en ventas, actualmente desempeñándose como agente en **RE/MAX** (sector inmobiliario). Cuenta con disciplina comercial comprobada, manejo de prospección y habilidades de cierre.
+    *   *Objetivo Estratégico de Alberto*: Incorporarlo como cerrador comercial B2B para la distribución del SaaS Bienestar Sin Excusas bajo un modelo comisionable agresivo (tipo canal de distribución / Culqi), aprovechando que la plataforma, los planes (Plan 30, Plan 80, Plan 200) y los generadores de prospección en 1 clic ya están 100% operativos.
+*   **Estructura de la Sesión Demostrativa y Propuesta (Viernes 30 de Octubre - 04:00 p. m.)**:
+    1. *Demostración en Vivo (5 min)*: Muestra visual de `nutri-alberto.bienestarsinexcusas.site`, menús con fotos reales, asistente Lucas 2.0 y ejercicios 3D para centros fitness.
+    2. *Dolor de Mercado*: Nutricionistas y gimnasios saturados de envíos manuales de Excel y WhatsApps sin cobrar asesoría digital continua.
+    3. *Herramientas Listas para Vender*: Acceso a los generadores de prospección de 1 clic (WhatsApp y Facebook) y guiones estandarizados.
+    4. *Ventaja Competitiva sobre Bienes Raíces*: En RE/MAX los ciclos de venta duran 3 a 6 meses; en Bienestar Sin Excusas los cierres se generan en 24 a 48 horas con cobro inmediato del 50% de anticipo y potencial de comisiones mensuales recurrentes (MRR).
+*   **Cartelera Consolidada y Blindada para el Viernes 30 de Octubre (Cierre de Mes)**:
+    1. **09:30 a. m.** — 🖥️ Zoom en vivo demostrativo con **Pablo Briceño** (Entrenador).
+    2. **10:00 a. m.** — 💰 Toque comercial de cobro del 50% de anticipo ($57 USD) con **Rosa Freire** (Ecuador).
+    3. **11:30 a. m.** — 🩺 Toque de seguimiento de prueba con código `NUT-FLC-7YBQ` con **Lic. Roxana Gómez** (Bolivia).
+    4. **04:00 p. m.** — 🤝 **Zoom de Alianza Comercial con Fernando Julián (RE/MAX / Ventas B2B SaaS)**.
+    5. **08:30 p. m. PE / 07:30 p. m. MX** — 🖥️ Zoom en vivo demostrativo con **L.N.C. Gladys** (México, Nutrición Renal).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
