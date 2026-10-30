@@ -3079,6 +3079,26 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         > *Apenas me confirmes tu método de preferencia, te paso los datos para empezar con la configuración.»*
     *   *Actualización en Supabase*: Lead `030c95bc-fac4-4f0f-99b5-1131a4464b05` actualizado con el registro del toque de cobro. Próxima acción programada para hoy **viernes 30 de octubre a las 02:00 p. m.** (`2026-10-30T14:00:00`) para remitir datos de abono.
 
+### 319. Toque Clínico a Lic. Roxana Gómez y Respuesta en Caliente de Christian Montes (Coach de Basketball) (30 de Octubre de 2026 - 02:20 p. m.)
+*   **Toque de Seguimiento a Lic. Roxana Gómez (`+591 71273744`, Bolivia)**:
+    *   *Auditoría Visual de Chat*: Se constató lectura en doble check azul de instrucciones y video tutorial post-demo.
+    *   *Despacho Bajo Regla 10 (Enfoque Positivo)*: A las 02:00 p. m., Alberto envió mensaje para conocer su experiencia de uso armando el plan de 28 días en su celular con el código `NUT-FLC-7YBQ`.
+    *   *Actualización en Supabase*: Lead `f904ebb4-8caa-46ae-bac3-25d571cc90bf` actualizado con bitácora y próxima acción para el **sábado 31 de octubre a las 10:00 a. m.** (`2026-10-31T10:00:00`).
+*   **Respuesta de Prospección en Caliente: Christian Montes (Coach de Basketball)**:
+    *   *Entrada Calificada (02:05 - 02:06 p. m.)*: Tras mensaje inicial de Alberto a las 02:03 p. m., el entrenador respondió identificándose: *«Soy Coach de Basketball / Enfocado en la Alta Competencia / Me enfoco desde los 10 años en adelante»*.
+    *   *Alineación de Producto y Moat*: El baloncesto de alta competencia requiere preparación física rigurosa (potencia, salto vertical, agilidad) y nutrición deportiva de recuperación. Entregarles su propia App con su marca blanca permite a su academia estructurar rutinas en video, menús para atletas y elevar el valor percibido por los padres de familia.
+    *   *Acción Comercial (Regla 7 y 11)*: A las 02:17 p. m., Alberto despachó el mensaje conectando el software con su disciplina y lanzando Doble Alternativa para Zoom hoy mismo (03:15 p. m. o 05:30 p. m.):
+        > *«¡Qué tal Coach Christian! Tremenda disciplina.*
+        >
+        > *En el básquetbol de alta competencia, la preparación física (salto vertical, potencia, agilidad) y la nutrición deportiva son las que marcan la diferencia en la cancha.*
+        >
+        > *La plataforma te permite tener **tu propia App oficial con tu nombre y logo**, donde tus jugadores y los padres de familia pueden ver sus rutinas de entrenamiento en video, sus planes de nutrición y el seguimiento de su rendimiento.*
+        >
+        > *Son 10 minutos por Zoom para mostrarte la plataforma en pantalla y cómo adaptarla a tus jugadores.*
+        >
+        > *¿Te viene bien que nos conectemos hoy a las 3:15 p. m. o prefieres a las 5:30 p. m.?»*
+    *   *Estado*: A la espera de confirmación de horario para entrega de sala y alta formal en Supabase (Regla 5).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
