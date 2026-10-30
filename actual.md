@@ -3099,6 +3099,24 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         > *¿Te viene bien que nos conectemos hoy a las 3:15 p. m. o prefieres a las 5:30 p. m.?»*
     *   *Estado*: A la espera de confirmación de horario para entrega de sala y alta formal en Supabase (Regla 5).
 
+### 320. Confirmación de Cita y Alta Oficial en Supabase de Coach Christian Montes (30 de Octubre de 2026 - 02:45 p. m.)
+*   **Confirmación de Horario para Zoom en Vivo (02:24 p. m.)**:
+    *   Christian Montes respondió eligiendo su franja horaria: *«Me viene bien la reunión pero plan de 6pm hora perú»*.
+    *   *Despacho de Confirmación sin Enlace Anticipado (02:33 p. m.)*: Alberto ratificó la cita para las 06:00 p. m. puntual y coordinó el envío de la sala de Zoom 10 minutos antes (05:50 p. m.) para asegurar puntualidad y evitar que el enlace se traspapele:
+        > *«¡Perfecto Coach Christian! Quedamos confirmados para hoy a las 6:00 p. m. puntual (hora Perú).*
+        >
+        > *Unos 10 minutos antes te comparto el enlace de Zoom por aquí para conectarnos. ¡Nos vemos en breve!»*
+*   **Alta Oficial en Supabase (Cumplimiento de la Regla 5)**:
+    *   Lead ID: `2f6fde82-0c68-42ce-bcf7-986325365e7c` | Contacto: **Coach Christian Montes**
+    *   Empresa: **Christian Montes Basketball Academy** | Teléfono: `+51 956 417 599` (Perú)
+    *   Tipo: `coach` | Estado: **`cita_agendada`** | Plan Objetivo: `plan_30` (S/ 400.00 / mes) | Valor Estimado: `S/ 400.00`.
+    *   Próxima acción: *«Despachar enlace de Zoom (05:50 p. m.) y sesión demostrativa de App móvil para academia de básquetbol — Coach Christian Montes»* programada para hoy **viernes 30 de octubre a las 05:50 p. m.** (`2026-10-30T17:50:00`).
+*   **Cartelera de la Tarde y Noche de Hoy (Viernes 30 de Octubre)**:
+    1. **04:00 p. m.** — 🤝 Zoom de Alianza Comercial con **Fernando Julián** (RE/MAX / Ventas B2B SaaS).
+    2. **05:50 p. m.** — 🔗 Despacho de enlace de Zoom a **Coach Christian Montes** (`+51 956 417 599`).
+    3. **06:00 p. m.** — 🖥️ Zoom en vivo demostrativo con **Coach Christian Montes** (Basketball Academy).
+    4. **08:30 p. m. PE / 07:30 p. m. MX** — 🖥️ Zoom en vivo demostrativo con **L.N.C. Gladys** (México, Área Renal).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
