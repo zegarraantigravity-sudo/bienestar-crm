@@ -114,7 +114,8 @@ export const SUPER_ADMIN_EMAILS = [
 export const SALES_REPRESENTATIVES = [
   { id: 'alberto', name: 'Alberto Zegarra', email: 'albertozbcoach@gmail.com' },
   { id: 'luis', name: 'Luis Hakim', email: 'torohakim@gmail.com' },
-  { id: 'dario', name: 'Dario Cienfuegos', email: 'dariospaarnold@gmail.com' }
+  { id: 'dario', name: 'Dario Cienfuegos', email: 'dariospaarnold@gmail.com' },
+  { id: 'christian', name: 'Christian Montes', email: 'chismont@gmail.com' }
 ];
 
 export const isSuperAdmin = (email) => {
@@ -133,6 +134,9 @@ export const getUserDisplayName = (email) => {
   }
   if (cleanEmail === 'dariospaarnold@gmail.com') {
     return 'Dario Cienfuegos';
+  }
+  if (cleanEmail === 'chismont@gmail.com') {
+    return 'Coach Christian Montes';
   }
   return email.split('@')[0];
 };
@@ -159,6 +163,11 @@ export const canUserViewLead = (lead, userEmail) => {
     return assigned.includes('dario') || assigned.includes('cienfuegos') || assigned.includes('dariospaarnold');
   }
 
+  // If Coach Christian Montes logs in:
+  if (user === 'chismont@gmail.com') {
+    return assigned.includes('christian') || assigned.includes('montes') || assigned.includes('chismont');
+  }
+
   // Any other seller only sees their assigned leads
   return assigned.includes(user);
 };
@@ -172,6 +181,7 @@ export const getLeadAdvisorName = (assignedToRaw, contactName = '') => {
   if (a.includes('alberto') || a.includes('zegarra') || a.includes('mostré la plata')) return 'Alberto Zegarra';
   if (a.includes('luis') || a.includes('hakim') || a.includes('socio comercial')) return 'Luis Hakim';
   if (a.includes('dario') || a.includes('cienfuegos') || a.includes('dariospaarnold')) return 'Dario Cienfuegos';
+  if (a.includes('christian') || a.includes('montes') || a.includes('chismont')) return 'Coach Christian Montes';
   return assignedToRaw;
 };
 
@@ -188,6 +198,9 @@ export const isLeadAssignedToUser = (lead, userEmail) => {
   }
   if (user === 'dariospaarnold@gmail.com') {
     return advisor === 'Dario Cienfuegos';
+  }
+  if (user === 'chismont@gmail.com') {
+    return advisor === 'Coach Christian Montes';
   }
   return advisor.toLowerCase().includes(user) || (lead.assigned_to || '').toLowerCase().includes(user);
 };

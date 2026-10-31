@@ -3117,6 +3117,58 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     3. **06:00 p. m.** — 🖥️ Zoom en vivo demostrativo con **Coach Christian Montes** (Basketball Academy).
     4. **08:30 p. m. PE / 07:30 p. m. MX** — 🖥️ Zoom en vivo demostrativo con **L.N.C. Gladys** (México, Área Renal).
 
+### 321. Sesión de Mentoría y Alianza Comercial con Fernando Julián (RE/MAX) (30 de Octubre de 2026 - 04:00 p. m.)
+*   **Ejecución del Zoom**: Alberto se reunió con Fernando Julián para presentar la plataforma y evaluar su posible incorporación como socio comercial para prospección y cierre de SaaS de Bienestar Sin Excusas.
+*   **Balance Estratégico**:
+    *   Fernando no se sumará activamente al equipo de ventas del SaaS por estar enfocado en su cartera inmobiliaria en RE/MAX.
+    *   No obstante, aportó valiosas recomendaciones de posicionamiento B2B, pitch comercial y enfoque en métricas de retención y volumen de clientes que robustecen la estrategia de ventas de Alberto.
+
+### 322. Demostración en Vivo con Coach Christian Montes y Despliegue de Acceso al CRM (30 de Octubre de 2026 - 06:00 p. m. a 07:30 p. m.)
+*   **Ejecución de Zoom Demostrativo**:
+    *   Christian Montes (`+51 956 417 599`), director de su propia academia de básquetbol con más de 10 años de trayectoria formativa, se conectó puntualmente a la presentación en pantalla.
+    *   Quedó gratamente impresionado por la capacidad integral de la plataforma para entregar nutrición clínica y rutinas de fuerza/acondicionamiento a los deportistas de su academia.
+    *   **Requerimiento Funcional**: Solicitó incorporar una pestaña o módulo exclusivo para entrenamientos y fundamentos de básquetbol. Alberto le explicó y acordó que con gusto se habilitará dicho módulo una vez que el Coach entregue el diseño y la data/videos técnicos correspondientes.
+*   **Entrega de Código de Activación y Video Guía**:
+    *   Alberto le despachó la plantilla post-zoom con el código de prueba de 28 días: **`NUT-FLC-AV4O`** en `https://nutri-alberto.bienestarsinexcusas.site/`, acompañado del video tutorial de instalación en celular Android.
+    *   A las 08:43 p. m., Christian confirmó recepción: *«Hola Alberto muchas gracias a ti por la info. Lo veré»*.
+*   **Creación de Acceso de Usuario en el CRM**:
+    *   A solicitud de Christian (fascinado también por el CRM de gestión), Alberto solicitó crear su acceso en `https://bienestar-crm.vercel.app/`.
+    *   Se creó el usuario en Supabase Auth con correo **`chismont@gmail.com`** y contraseña temporal.
+    *   Se configuró el CRM en `src/lib/utils.js` para registrar a **Coach Christian Montes** en `SALES_REPRESENTATIVES`, asignarle nombre legible (`getUserDisplayName`) y brindarle aislamiento estricto de leads para proteger la privacidad de la cartera.
+*   **Actualización en Supabase**:
+    *   Lead `2f6fde82-0c68-42ce-bcf7-986325365e7c` actualizado a estado **`presentacion_realizada`**.
+    *   Próxima acción programada para el **lunes 2 de noviembre a las 11:30 a. m.** (`2026-11-02T11:30:00`): *«Monitorear activación de PWA con código NUT-FLC-AV4O y uso de CRM — Coach Christian Montes»*.
+
+### 323. Manejo de Objeción de Saúl Jaimez: Desarme de Alto Estatus frente a Avena (30 de Octubre de 2026 - 08:00 p. m.)
+*   **Contexto de la Conversación**:
+    *   Saúl Jaimez (`+52 1 33 1087 4955`, México) consultó a las 06:05 p. m. si el costo era membresía o pago único.
+    *   Al informarle de la membresía y desarrollo 100% bonificado, canceló la reunión a las 06:11 p. m. objetando: *«No, mejor cancelame la cita, la verdad no me interesa, ya he trabajado con avena y es muy similar, además el costo se me hace elevado para solo 30 pacientes y de manera mensual. Una disculpa por la molestia»*.
+*   **Aplicación Magistral de Cierre Judo / Rebote de Alto Estatus (Alex Dey)**:
+    *   A las 08:00 p. m., Alberto aplicó con firmeza y elegancia la diferenciación de marca blanca vs. software genérico:
+        > *«Descuida Saúl, ninguna molestia. Cita cancelada, no te preocupes.*
+        > 
+        > *Solo para que no te quedes con la idea equivocada: a diferencia de Avena (donde tus pacientes ven la marca de ellos y eres un usuario más), nosotros te entregamos tu propia App móvil con tu nombre y logotipo oficial, para que posiciones tu consulta a nivel premium y no compitas por precio.*
+        > 
+        > *Si en algún momento decides tener tu propia tecnología para tus pacientes, me avisas con confianza. ¡Muchos éxitos en tu consultorio!»*
+    *   **Respuesta del Prospecto**: A las 08:26 p. m., Saúl respondió con respeto y dejando la puerta abierta: *«Gracias por la atención / Tal vez en el futuro»*.
+    *   Lección: Se protegió el estatus del producto, se educó al mercado sobre la diferencia entre ser un usuario más de Avena vs. tener su propia App de marca, sin rogar ni devaluar el servicio.
+
+### 324. Demostración en Vivo con L.N.C. Gladys y Entrega de Código Renal (30 de Octubre de 2026 - 08:30 p. m. a 09:30 p. m.)
+*   **Ejecución de Zoom Demostrativo**:
+    *   L.N.C. Gladys (`+52 1 245 119 3642`, México) se conectó al Zoom en vivo demostrativo para evaluar la herramienta.
+    *   **Diagnóstico Clínico y Financiero**:
+        *   Especialidad: Pacientes con patologías renales (requerimientos estrictos de fósforo, potasio, sodio y proteínas).
+        *   Tarifa actual: Cobra $26 USD por consulta en su localidad mexicana.
+        *   Objeción: El Plan 30 ($114 USD/mes) le pareció inicialmente elevado debido a la fuerte competencia en su zona, aunque constató que el sistema le ahorraría una enorme carga de trabajo manual y cálculos minuciosos.
+*   **Cierre de Valor y Entrega de Código de Prueba**:
+    *   Alberto le otorgó un código de acceso exclusivo a la plataforma para que viva la experiencia en carne propia: **`NUT-FLC-O02A`** en `https://nutri-alberto.bienestarsinexcusas.site/`.
+    *   Se le despachó la guía paso a paso con video explicativo para su celular.
+*   **Actualización en Supabase**:
+    *   Lead `59d2c802-f338-428c-9d40-b8be64e56302` actualizado a estado **`presentacion_realizada`**.
+    *   Próxima acción programada para el **martes 3 de noviembre a las 11:00 a. m.** (`2026-11-03T11:00:00`): *«Monitorear activación de prueba de 28 días con código NUT-FLC-O02A y experiencia clínica — L.N.C. Gladys»*.
+
+
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
