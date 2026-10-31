@@ -3184,6 +3184,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead `4a291370-8007-4a4d-b81d-54a9f5c57ead` actualizado con bitácora de entrega.
     *   Próxima acción comercial ratificada para el **lunes 2 de noviembre a las 11:00 a. m.** (`2026-11-02T11:00:00`): *«Seguimiento post-prueba de 28 días (código NUT-FLC-O02A), feedback de alumnos y cierre comercial — Pablo Briceño»*.
 
+### 327. Manejo Magistral de Objeción de Usabilidad Geriátrica con Lic. Roxana Gómez (31 de Octubre de 2026 - 09:25 a. m.)
+*   **Diagnóstico de Objeción**:
+    *   La Lic. Roxana Gómez Saenz (`+591 71273744`, Bolivia) respondió al seguimiento post-prueba el viernes a las 06:17 p. m.: *«Buenas noches, tu aplicación es buena, para mis pacientes es complicada ya que son adultos mayores si me lanzo a otro nicho te aviso para poder comprar tu aplicación por el momento no la necesito»*.
+    *   *Análisis*: La profesional validó la calidad del sistema (*«tu aplicación es buena»*), pero asumió erróneamente que el paciente adulto mayor estaba obligado a interactuar con la app móvil.
+*   **Contraataque Comercial (Alex Dey: Cierre Judo / Rebote y Cierre por Compromiso)**:
+    *   En estricto cumplimiento de la Regla 11 (prohibido soltar un lead caliente y cero sumisión), Alberto desarmó la falsa creencia de raíz:
+        > *«Totalmente entendible Roxana, con pacientes adultos mayores la tecnología en el celular a veces puede ser una barrera.*
+        >
+        > *Pero ojo con un detalle clave: tus pacientes no están obligados a usar la App. La plataforma te permite descargar e imprimir el plan completo de 28 días en PDF con un clic para entregárselo en físico como a ellos les gusta (o pasárselo a los familiares que les cocinan).*
+        >
+        > *El verdadero valor para ti es que tú te ahorras días enteros calculando calorías, nutrientes y recetas a mano.*
+        >
+        > *Si tú puedes seguir entregándoles sus hojas impresas como siempre, pero ahorrándote el 90% del tiempo de cálculo en tus consultas, ¿te ayudaría en tu día a día?»*
+*   **Actualización en Supabase**:
+    *   Lead `f904ebb4-8caa-46ae-bac3-25d571cc90bf` actualizado en bitácora.
+    *   Próxima acción: Monitoreo de respuesta tras el desarme de la objeción para perfilar cierre del Plan 30 ($114 USD).
+
 
 
 ---
