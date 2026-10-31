@@ -3167,6 +3167,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead `59d2c802-f338-428c-9d40-b8be64e56302` actualizado a estado **`presentacion_realizada`**.
     *   Próxima acción programada para el **martes 3 de noviembre a las 11:00 a. m.** (`2026-11-03T11:00:00`): *«Monitorear activación de prueba de 28 días con código NUT-FLC-O02A y experiencia clínica — L.N.C. Gladys»*.
 
+### 325. Respuesta Positiva de Prospección en Guadalajara y Despacho de Doble Alternativa (30 de Octubre de 2026 - 09:59 p. m.)
+*   **Interés Activo de Prospecto en México**:
+    *   El contacto de empresa `+52 1 33 1342 2488` (Guadalajara, Jalisco) respondió a las 09:00 p. m. al mensaje de prospección: *«Si me gustaría ver cómo funciona la app por dentro»*.
+*   **Aplicación Estricta de las Reglas 4 y 7 (Alex Dey)**:
+    *   Cero videos pregrabados (Regla 4).
+    *   Cero patear al lunes (Regla 7): Alberto despachó de inmediato la **Doble Alternativa** ofreciendo sesión demostrativa por Zoom en pantalla para el sábado 31 de octubre a las **10:30 a. m. o 12:00 p. m. (hora México)** / *11:30 a. m. o 01:00 p. m. (hora Perú)*.
+    *   *Estado*: En espera de confirmación de hora en WhatsApp durante la mañana para remitir el enlace de Zoom 10 minutos antes y dar el alta formal en Supabase como `cita_agendada` (Plan 30 - $114 USD) bajo la Regla 5.
+
+### 326. Entrega de Código de Activación a Pablo Briceño y Activación de Prueba Fitness (31 de Octubre de 2026 - 09:15 a. m.)
+*   **Confirmación de Interés**:
+    *   Tras el Zoom demostrativo del viernes, Pablo Briceño (`+51 935 801 176`) confirmó anoche a las 11:49 p. m. su deseo de testear el sistema: *«Claro estaría bien para probar el aplicativo»*.
+*   **Despacho de Guía y Código de Prueba**:
+    *   A las 09:15 a. m. del sábado 31 de octubre, Alberto le remitió la plantilla maestra adaptada a acondicionamiento físico con el código de prueba de 28 días **`NUT-FLC-O02A`** en `https://nutri-alberto.bienestarsinexcusas.site/`, acompañado del video tutorial de instalación en celular.
+*   **Actualización en Supabase**:
+    *   Lead `4a291370-8007-4a4d-b81d-54a9f5c57ead` actualizado con bitácora de entrega.
+    *   Próxima acción comercial ratificada para el **lunes 2 de noviembre a las 11:00 a. m.** (`2026-11-02T11:00:00`): *«Seguimiento post-prueba de 28 días (código NUT-FLC-O02A), feedback de alumnos y cierre comercial — Pablo Briceño»*.
+
 
 
 ---
