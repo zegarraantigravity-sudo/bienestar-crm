@@ -3197,6 +3197,9 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         > *El verdadero valor para ti es que tú te ahorras días enteros calculando calorías, nutrientes y recetas a mano.*
         >
         > *Si tú puedes seguir entregándoles sus hojas impresas como siempre, pero ahorrándote el 90% del tiempo de cálculo en tus consultas, ¿te ayudaría en tu día a día?»*
+*   **⚠️ Fe de Erratas (Regla 6 - corregido el 1 de noviembre de 2026)**:
+    *   La descripción *«descargar e imprimir con un clic»* no era exacta en la forma. **Lo validado por Alberto**: al completar el paciente su ficha, además de ver su plan en la App, **recibe automáticamente en su correo un PDF con todo su plan de comidas y su rutina de entrenamiento** (imprimible).
+    *   La cifra *«90% del tiempo»* fue inventada por el asistente y **NO está validada**. Prohibido volver a usar porcentajes de ahorro no confirmados por Alberto.
 *   **Actualización en Supabase**:
     *   Lead `f904ebb4-8caa-46ae-bac3-25d571cc90bf` actualizado en bitácora.
     *   Próxima acción: Monitoreo de respuesta tras el desarme de la objeción para perfilar cierre del Plan 30 ($114 USD).
@@ -3229,6 +3232,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización en Supabase**:
     *   Lead `f904ebb4-8caa-46ae-bac3-25d571cc90bf` trasladado formalmente a estado **`cerrado_perdido`** con motivo *"Ya cuenta con software de dietas propio / No requiere cambio actualmente"*.
     *   *Resultado*: Pipeline limpio y 100% enfocado en prospectos calientes para la apertura de semana (Pablo Briceño, Coach Christian Montes, Dra. Edna Mendez y L.N.C. Gladys).
+
+### 330. Diagnóstico de Visto de Rosa Freire, Código Duplicado y Validación de Función PDF (1 de Noviembre de 2026 - 10:25 a. m.)
+*   **Rosa Freire (`+593 93 958 5832`, Ecuador) - Doble visto sin respuesta**:
+    *   Leyó el mensaje de anticipo (viernes 10:20 a. m.) y el de logo/catálogo FuXion (sábado 09:34 a. m.) sin contestar.
+    *   *Lectura*: Freno probablemente financiero o de timing; no es desistimiento confirmado (usó activamente la App y pactó pago a fin de mes). Como observó Alberto, mucha gente no sabe decir «no» y prefiere dejar en visto.
+    *   *Decisión*: Cero mensajes en domingo/feriado. **Lunes 2 de noviembre 10:30 a. m.**: un solo toque con Doble Alternativa que mantiene viva la venta y le da salida digna si el tema es dinero:
+        > *«Hola Rosa, buen día. Estoy armando la agenda de montajes de esta semana y quiero separarte tu espacio.*
+        >
+        > *Dime con confianza: ¿arrancamos ahora o te queda más cómodo mover el inicio para el 15 de noviembre?»*
+    *   Si elige el 15: era dinero y el trato sigue con fecha fija. Si persiste el visto: llamada telefónica (no mensaje) a mitad de semana.
+    *   Supabase actualizado con próxima acción `2026-11-02T10:30:00`.
+*   **Código `NUT-FLC-O02A` entregado a dos prospectos (Gladys y Pablo Briceño)**:
+    *   Ninguno lo ha usado aún. Criterio de Alberto: el que lo use y no pueda activarlo escribirá (señal de interés real); si nadie escribe, se pregunta en los toques del lunes (Pablo) y martes (Gladys) y se genera un código nuevo para quien lo necesite.
+*   **Función de Producto Validada por Alberto (Regla 6)**:
+    *   ✅ Cuando el paciente completa su ficha, además de ver su plan en la App, **recibe automáticamente en su correo un PDF con todo su plan de comidas y su rutina de entrenamiento**.
+    *   Argumento oficial para pacientes adultos mayores o poco tecnológicos: pueden imprimir su PDF o reenviarlo a quien les cocina.
 
 
 
@@ -3271,6 +3290,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Vigencia**: 15 días a partir de la fecha de emisión.
 *   **Responsable Comercial**: Alberto Zegarra Ballón — Director General (+51 978 438 246, `albertozegarra@bienestarsinexcusas.site`, `bienestarsinexcusas.site`).
 *   **Pilares**: 1. Prescripción Nutricional Automatizada de 28 Días, 2. App Móvil & Web Marca Blanca, 3. Asistente Virtual 24/7.
+*   **Entregable Validado (PDF por Correo)**: Al completar su ficha, el paciente recibe automáticamente en su correo un PDF con todo su plan de comidas y rutina de entrenamiento (ideal para pacientes mayores o que prefieren el papel).
 *   **Tarifario Oficial ($ USD)**:
     *   **Plan 30**: $ 114.00 USD (Hasta 30 pacientes | $ 3.80 USD / paciente)
     *   **Plan 80**: $ 200.00 USD (Hasta 80 pacientes | $ 2.50 USD / paciente)
