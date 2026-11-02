@@ -94,6 +94,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Descalificación Inmediata por Rubro:** Si el prospecto pertenece a rubros ajenos a nutrición clínica, salud o fitness (ej. organización de eventos, arte, entretenimiento, comercio general), queda TERMINANTEMENTE PROHIBIDO proponer agendar Zoom o empujar ventas.
 - **Protocolo de Actuación:** El asistente redactará de inmediato y de forma autónoma una salida elegante por cruce de base de datos (*«Al revisar tu perfil veo que estás en el rubro de eventos; nuestra plataforma es exclusiva para nutricionistas clínicos y gimnasios. Disculpa el cruce de datos...»*), descalificando el lead sin registrarlo en Supabase para proteger al 100% el tiempo y la energía de Alberto.
 
+### 14. Prioridad Absoluta de Respuesta WhatsApp: Cero Demoras Técnicas
+- Cuando Alberto comparta una captura de WhatsApp o pida un mensaje de respuesta, la PRIORIDAD NÚMERO 1 ES ENTREGAR EL MENSAJE DE VENTA INMEDIATAMENTE.
+- Queda TERMINANTEMENTE PROHIBIDO ponerse a actualizar bases de datos, editar archivos de bitácora, hacer consultas lentas o demorar la respuesta con procesos secundarios mientras el cliente está esperando en línea.
+- El asistente debe responder de forma instantánea, en primera persona («yo me encargo», nunca «nosotros»), llamando al prospecto por su nombre y con el texto exacto listo para copiar y enviar.
+- Los registros en Supabase, git o `actual.md` se hacen ÚNICAMENTE DESPUÉS de que Alberto ya tiene el mensaje y lo despacha.
+
 
 
 
