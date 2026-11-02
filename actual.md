@@ -3259,6 +3259,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead `030c95bc-fac4-4f0f-99b5-1131a4464b05` actualizado con bitácora de envío.
     *   Próxima acción: Monitorear respuesta para definir inicio inmediato del Plan 30 ($114 USD) o agendar arranque formal para el 15 de noviembre.
 
+### 332. Confirmación de Cita por Audio y Alta Oficial de Coach Dominicana en Supabase (2 de Noviembre de 2026 - 10:15 a. m.)
+*   **Prospección y Respuesta Activa**:
+    *   Alberto envió mensaje de prospección saliente matutino al contacto `+1 (849) 517-1690` (República Dominicana).
+    *   A las 09:49 a. m., el prospecto respondió confirmando interés directo: *«Me interesa»*.
+*   **Aplicación de Doble Alternativa y Confirmación por Voz (Reglas 4, 7 y 11)**:
+    *   A las 10:01 a. m., Alberto le ofreció sesión demostrativa por Zoom de 10 minutos con Doble Alternativa para hoy (2:00 p. m. o 5:00 p. m. hora Dominicana).
+    *   A las 10:02 a. m., el coach respondió con nota de voz eligiendo su horario: *«Bueno, en realidad a mí me convendría a las 5. A las 5 de la tarde»*.
+    *   Alberto ratificó la cita puntual para las 05:00 p. m. RD (04:00 p. m. PE), anticipando el envío del enlace de Zoom 10 minutos antes y solicitando su nombre para registro de contacto.
+*   **Alta Oficial en Supabase (Cumplimiento Estricto de la Regla 5)**:
+    *   Lead ID: `115fd8e8-b423-47a0-a761-96b5ecf3c279`
+    *   Contacto: **Coach Dominicana** | Teléfono: `+1 (849) 517-1690` (República Dominicana)
+    *   Tipo: `coach` | Estado: **`cita_agendada`** | Plan Objetivo: `plan_30` ($114.00 USD / mes)
+    *   Próxima acción: Despachar enlace de Zoom (03:50 p. m. PE / 04:50 p. m. RD) y sesión demostrativa en pantalla de App móvil programada para hoy **lunes 2 de noviembre a las 03:50 p. m. PE** (`2026-11-02T15:50:00`).
+
 
 
 ---
