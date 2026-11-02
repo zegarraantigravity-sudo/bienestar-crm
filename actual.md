@@ -3249,6 +3249,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   ✅ Cuando el paciente completa su ficha, además de ver su plan en la App, **recibe automáticamente en su correo un PDF con todo su plan de comidas y su rutina de entrenamiento**.
     *   Argumento oficial para pacientes adultos mayores o poco tecnológicos: pueden imprimir su PDF o reenviarlo a quien les cocina.
 
+### 331. Ejecución del Despacho de Doble Alternativa a Rosa Freire (2 de Noviembre de 2026 - 09:33 a. m.)
+*   **Despacho Ejecutado**:
+    *   Alberto envió a Rosa Freire (`+593 93 958 5832`, Ecuador) el mensaje de apertura de semana con Doble Alternativa:
+        > *«Hola Rosa, buen día. Estoy armando la agenda de montajes de esta semana y quiero separarte tu espacio.*
+        >
+        > *Dime con confianza: ¿arrancamos ahora o te queda más cómodo mover el inicio para el 15 de noviembre?»*
+*   **Actualización en Supabase**:
+    *   Lead `030c95bc-fac4-4f0f-99b5-1131a4464b05` actualizado con bitácora de envío.
+    *   Próxima acción: Monitorear respuesta para definir inicio inmediato del Plan 30 ($114 USD) o agendar arranque formal para el 15 de noviembre.
+
 
 
 ---
