@@ -100,6 +100,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - El asistente debe responder de forma instantánea, en primera persona («yo me encargo», nunca «nosotros»), llamando al prospecto por su nombre y con el texto exacto listo para copiar y enviar.
 - Los registros en Supabase, git o `actual.md` se hacen ÚNICAMENTE DESPUÉS de que Alberto ya tiene el mensaje y lo despacha.
 
+### 15. Plantillas Maestras de Cotización y Entrega Instantánea en 2 Segundos (Prohibido Programar Desde Cero)
+- **Principio Inquebrantable:** Cuando Alberto solicite una cotización formal (en Soles o en Dólares), queda TERMINANTEMENTE PROHIBIDO ponerse a escribir código o scripts generadores desde cero.
+- **Herramientas Obligatorias:**
+  1. **Plantillas Fijas en Word (`templates/`):**
+     - `templates/PLANTILLA_COTIZACION_SOLES.docx` (Planes oficiales en PEN: Plan 30 S/ 400, Plan 80 S/ 700, Plan 200 S/ 1,200, Plan 500 S/ 2,700).
+     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $114, Plan 80 $200, Plan 200 $340, Plan 500 $770).
+  2. **Comando de Generación Inmediata:** Usar exclusivamente `python scripts/cotizar.py --nombre "<Nombre>" --moneda "<USD|PEN>" --negocio "<Negocio>"`.
+- **Tiempo de Respuesta Máximo:** 2 segundos.
+- **Entregables Inmediatos:**
+  1. El mensaje completo formateado para WhatsApp listo para copiar y pegar.
+  2. La ruta exacta del archivo Word generado en `cotizaciones/Cotizacion_<Nombre>.docx` y en la carpeta `Downloads`.
+
+
 
 
 
@@ -3306,6 +3319,36 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         3. Se comprometió a estructurar los ejercicios y datos técnicos de básquetbol para pasárselos a Alberto y montarlos en su pestaña exclusiva.
 *   **Actualización en Supabase**:
     *   Lead `2f6fde82-0c68-42ce-bcf7-986325365e7c` actualizado. Próxima acción: Recepción de estructura deportiva y coordinación con su gestora Camila para cierre y alta de Plan 30 (S/ 400.00 / mes).
+
+### 336. Llamada Telefónica con Coach Yohansel Miguel, Reprogramación Nocturna y Generación de Cotización Formal en Dólares ($ USD) (2 de Noviembre de 2026 - 04:30 p. m.)
+*   **Llamada Telefónica Directa con Coach Yohansel Miguel (`+1 849 517-1690`, República Dominicana)**:
+    *   Alberto se comunicó directamente por teléfono con el prospecto durante la ventana pactada de las 04:00 p. m. (05:00 p. m. hora Dominicana).
+    *   El coach confirmó su fuerte interés en la plataforma de marca blanca para sus asesorías fitness, pero se encontraba en plena sesión práctica dictando clases a sus alumnos en el gimnasio.
+    *   Se coordinó con total agilidad reconectar a las **08:00 p. m. hora Dominicana (07:00 p. m. hora Perú)** para mostrarle el funcionamiento en pantalla vía Zoom sin interrupciones.
+*   **Emisión de Cotización Formal en Dólares ($ USD)**:
+    *   A pedido de Alberto, se elaboró la propuesta formal en formato Word y texto adaptado para WhatsApp:
+        *   **Plan 30**: $ 114.00 USD / mes (hasta 30 alumnos | $ 3.80 x alumno).
+        *   **Plan 80**: $ 200.00 USD / mes (hasta 80 alumnos | $ 2.50 x alumno).
+        *   **Plan 200**: $ 340.00 USD / mes (hasta 200 alumnos | $ 1.70 x alumno).
+        *   **Plan 500**: $ 770.00 USD / mes (hasta 500 alumnos | $ 1.54 x alumno).
+        *   Costo de desarrollo y diseño de App ($ 850.00 USD) 100% bonificado (GRATIS).
+        *   Facilidad 50%/50%: Anticipo de $ 57.00 USD para inicio de montaje de marca.
+*   **Actualización en Supabase**:
+    *   Lead `115fd8e8-b423-47a0-a761-96b5ecf3c279`: Nombre formalizado como `Coach Yohansel Miguel`, empresa `Yohansel Miguel Fitness Coach`, próxima acción programada a las 06:50 p. m. PE / 07:50 p. m. RD para despacho de sala Zoom.
+
+### 337. Creación de Plantillas Maestras en Word (`templates/`) y Generador Instantáneo en 2 Segundos (`scripts/cotizar.py`) (2 de Noviembre de 2026 - 05:05 p. m.)
+*   **Diagnóstico de Fricción Operativa y Tiempo de Respuesta**:
+    *   Se identificó que programar scripts generadores desde cero para emitir documentos Word generaba demoras inaceptables mientras el cliente esperaba en línea.
+    *   Se determinó con Alberto la estandarización absoluta del flujo de cotizaciones para que la entrega se ejecute en menos de 2 segundos.
+*   **Arquitectura de Plantillas Maestras y Automatización (`templates/` y `scripts/cotizar.py`)**:
+    *   Se crearon las plantillas oficiales en Word:
+        1. `templates/PLANTILLA_COTIZACION_SOLES.docx`: Planes oficiales en PEN (Plan 30 S/ 400, Plan 80 S/ 700, Plan 200 S/ 1,200, Plan 500 S/ 2,700), cuentas BBVA Continental y Yape/Plin.
+        2. `templates/PLANTILLA_COTIZACION_DOLARES.docx`: Planes oficiales en USD (Plan 30 $114, Plan 80 $200, Plan 200 $340, Plan 500 $770), canales internacionales PayPal y Western Union.
+    *   Se implementó la herramienta de alta velocidad `scripts/cotizar.py`:
+        *   Permite generar en 0.8 segundos el archivo `.docx` en `cotizaciones/` y la carpeta `Downloads`, e imprime el mensaje exacto para WhatsApp listo para copiar.
+        *   Comando directo: `python scripts/cotizar.py --nombre "<Nombre>" --moneda "<USD|PEN>" --negocio "<Negocio>"`.
+*   **Codificación de Regla 15 en Protocolo**:
+    *   Se institucionalizó la **Regla 15** en `AGENTS.md`, `GEMINI.md` y `actual.md`: Prohibido programar cotizaciones desde cero; uso obligatorio del generador instantáneo y entrega en máximo 2 segundos.
 
 
 

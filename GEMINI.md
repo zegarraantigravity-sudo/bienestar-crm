@@ -83,6 +83,19 @@
 - El asistente debe responder de forma instantánea, en primera persona («yo me encargo», nunca «nosotros»), llamando al prospecto por su nombre y con el texto exacto listo para copiar y enviar.
 - Los registros en Supabase, git o `actual.md` se hacen ÚNICAMENTE DESPUÉS de que Alberto ya tiene el mensaje y lo despacha.
 
+## 15. Plantillas Maestras de Cotización y Entrega Instantánea en 2 Segundos (Prohibido Programar Desde Cero)
+- **Principio Inquebrantable:** Cuando Alberto solicite una cotización formal (en Soles o en Dólares), queda TERMINANTEMENTE PROHIBIDO ponerse a escribir código o scripts generadores desde cero.
+- **Herramientas Obligatorias:**
+  1. **Plantillas Fijas en Word (`templates/`):**
+     - `templates/PLANTILLA_COTIZACION_SOLES.docx` (Planes oficiales en PEN: Plan 30 S/ 400, Plan 80 S/ 700, Plan 200 S/ 1,200, Plan 500 S/ 2,700).
+     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $114, Plan 80 $200, Plan 200 $340, Plan 500 $770).
+  2. **Comando de Generación Inmediata:** Usar exclusivamente `python scripts/cotizar.py --nombre "<Nombre>" --moneda "<USD|PEN>" --negocio "<Negocio>"`.
+- **Tiempo de Respuesta Máximo:** 2 segundos.
+- **Entregables Inmediatos:**
+  1. El mensaje completo formateado para WhatsApp listo para copiar y pegar.
+  2. La ruta exacta del archivo Word generado en `cotizaciones/Cotizacion_<Nombre>.docx` y en la carpeta `Downloads`.
+
+
 
 
 
