@@ -3350,6 +3350,28 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Codificación de Regla 15 en Protocolo**:
     *   Se institucionalizó la **Regla 15** en `AGENTS.md`, `GEMINI.md` y `actual.md`: Prohibido programar cotizaciones desde cero; uso obligatorio del generador instantáneo y entrega en máximo 2 segundos.
 
+### 338. Cierre Ganado y Cobro de Anticipo ($57.00 USD) de Dra. Edna Mendez (México) — Recepción de Logo, Redes y Modelo Visual de Marca Blanca (3 de Noviembre de 2026 - 07:19 p. m.)
+*   **Cobro Efectivo de Anticipo del 50% ($57.00 USD) por PayPal**:
+    *   En cumplimiento estricto de la fecha pactada con la clienta (martes 3 de noviembre) y de la **Regla 8 (Cierre Envolvente por Insumos y Timing de Cobro)**, Alberto le escribió por la mañana para coordinar el inicio de la personalización de su plataforma.
+    *   Edna despejó su última inquietud clínica sobre los resultados y adherencia de los pacientes, eligió como canal de abono **PayPal**, y a las **07:19 p. m.** remitió el comprobante formal de la transacción:
+        *   **Monto Abonado**: **-$57.00 USD** ($1,128.31 MXN cargado a su tarjeta Mastercard x-5124).
+        *   **Beneficiario**: Alberto Gustavo Zegarra Ballón (`albertozbcoach@gmail.com`).
+        *   **Saldo Pendiente**: $57.00 USD (a liquidarse contra entrega formal de la plataforma activa).
+*   **Recepción Completa de Insumos de Marca Blanca**:
+    *   **Logotipo Oficial**: Entregado a las 07:36 p. m., diseño minimalista con silueta estilizada, cítrico y marco de rombo dorado/naranja, con tipografía en aguamarina/turquesa y texto: **`Edna Mendez NUTRIÓLOGA`**.
+    *   **Canales y Datos de Contacto**:
+        *   WhatsApp: `+52 1 715 120 5933` (Michoacán, México).
+        *   Facebook: `https://www.facebook.com/share/1FLnpraBhB/?mibextid=wwXIfr` (*Edna Méndez*).
+        *   Instagram: `@Ednamendez23`.
+    *   **Preferencia Estética y Formato Visual**:
+        *   Edna solicitó adaptar su portal web y PWA bajo el formato visual elegante en modo oscuro que vio en `https://yoselin-parra.bienestarsinexcusas.site/`.
+        *   Debido a su timidez frente a las cámaras (*«No soy mucho de tomarme fotos 🙈»*), se acordó iniciar el montaje apoyándose exclusivamente en su logotipo oficial y paleta de colores (turquesa y dorado/negro), con la tranquilidad de que más adelante podrá incorporar sus fotografías cuando lo desee.
+*   **Actualización en Supabase**:
+    *   Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7`: Trasladado formalmente a estado **`cerrado_ganado`**.
+    *   Plan oficial: **Plan 30 ($114.00 USD / mes)**.
+    *   Valor registrado: `$114 USD` | Anticipo confirmado: `$57 USD`.
+    *   Próxima acción: *«Montaje, configuración y despliegue de App PWA y portal web de Dra. Edna Mendez (Plazo 48-72h)»* programada para el **jueves 5 de noviembre a las 12:00 m.** (`2026-11-05T12:00:00`).
+
 
 
 ---
