@@ -3372,6 +3372,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Valor registrado: `$114 USD` | Anticipo confirmado: `$57 USD`.
     *   Próxima acción: *«Montaje, configuración y despliegue de App PWA y portal web de Dra. Edna Mendez (Plazo 48-72h)»* programada para el **jueves 5 de noviembre a las 12:00 m.** (`2026-11-05T12:00:00`).
 
+### 339. Despacho de Códigos de Activación a Cinthya, Carolina y Angie, y Estandarización de Cobro por Western Union (3 y 4 de Noviembre de 2026)
+*   **Entrega de Plantillas Maestras con Códigos de Prueba**:
+    *   **Cinthya**: Se le despachó la guía con código exclusivo **`NUT-FLC-9Z6Q`** en `https://nutri-alberto.bienestarsinexcusas.site/` e invitación a Zoom de 10 minutos para demostración en pantalla.
+    *   **Carolina**: Se le remitió la guía con código de acceso **`NUT-FLC-7YBQ`** para armado de su plan clínico de 28 días y recepción de PDF automatizado.
+    *   **Angie**: Se le despachó la guía con código de acceso **`NUT-FLC-O02A`** para activación inmediata de su plataforma de prueba.
+*   **Estandarización de Datos Oficiales de Cobro por Western Union**:
+    *   Se formalizó la plantilla fija de cobro internacional en ventanilla para clientes del exterior a nombre de Alberto Gustavo Zegarra-Ballon Quezada (DNI: 10783023, Lima, Perú) con solicitud de comprobante y código MTCN de 10 dígitos.
+    *   Se integró automáticamente en el motor `scripts/cotizar.py` y en la plantilla de cotizaciones en $ USD.
+
 
 
 ---
@@ -3485,6 +3494,22 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     10. **Cierre Rebote (Judo)**: Usar la fuerza de la objeción agresiva para cerrar: *«¡Está muy caro!»* -> *«Si le demuestro que con solo 3 pacientes el sistema se paga solo y le deja ganancia líquida, ¿lo adquiere ahorita mismo?»*.
     11. **Cierre de Benjamín Franklin**: La madre de los cierres para el «quiero pensarlo». Bajar la guardia, trazar la T de razones por las que SÍ y pasarle la pluma para descubrir las razones por las que NO y rebatir únicamente la objeción auténtica.
     12. **Cierre por Acción Rápida (Urgencia de 48 Horas)**: Ofrecer los 15 días gratis o el 2x1 únicamente condicionado al abono del 50% de anticipo dentro de las 48 horas.
+
+### 5. Plantilla Oficial de Cobro por Western Union (Ventanilla)
+> 💵 **DATOS PARA ENVÍO POR WESTERN UNION (Ventanilla):**
+>
+> 👤 **Nombres:** Alberto Gustavo  
+> 👤 **Apellidos:** Zegarra-Ballon Quezada *(en caja también lo pueden poner como Zegarra Ballon Quezada sin guion)*  
+> 🆔 **DNI:** 10783023  
+> 📍 **Ciudad:** Lima  
+> 📍 **País:** Perú  
+> 📱 **Teléfono:** +51 978 438 246  
+> ✉️ **Correo:** albertozegarra@bienestarsinexcusas.site  
+>
+> 💡 **Indicación en caja:**  
+> Puedes ir a cualquier agente de Western Union. Diles que vas a hacer un envío a Perú para que el destinatario reciba $57 USD en efectivo (tú pagas en ventanilla).  
+>
+> 📸 Al terminar, me mandas una foto clara del ticket donde se vea el código MTCN de 10 dígitos para confirmar tu plan y habilitarte el acceso de inmediato. 🚀
 
 ---
 
