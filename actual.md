@@ -3381,6 +3381,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se formalizó la plantilla fija de cobro internacional en ventanilla para clientes del exterior a nombre de Alberto Gustavo Zegarra-Ballon Quezada (DNI: 10783023, Lima, Perú) con solicitud de comprobante y código MTCN de 10 dígitos.
     *   Se integró automáticamente en el motor `scripts/cotizar.py` y en la plantilla de cotizaciones en $ USD.
 
+### 340. Negociación Magistral con Noé Rojas ($57 USD Acordados), Descalificación de Nico y Cierre de Jornada (4 de Noviembre de 2026)
+*   **Negociación y Cierre Firme con Noé Rojas (`NR Sports`, México)**:
+    *   Noé Rojas reabrió conversación consultando avances sobre un desarrollo a medida (botón condicional de venta de suplementos en el flujo de creación de planes: Sí para resurtir en su tienda y No para educar con link a catálogo) y solicitó códigos gratis para atender pacientes.
+    *   Alberto aplicó con maestría el **Cierre por Conclusión** y blindaje de desarrollo: cortó de raíz el trabajo no remunerado, aclarando que los códigos de prueba son exclusivamente de exploración técnica personal y que la atención de pacientes reales corresponde a la operación comercial formal del **Plan 30 ($114 USD / mes)** o **anticipo del 50% ($57 USD)** por Western Union.
+    *   Asimismo, le comunicó con alta autoridad que el desarrollo personalizado se programa únicamente para cuentas activas en producción.
+    *   *Resultado rotundo*: Noé aceptó las condiciones al 100%, descartó pretextos de esperar a fin de mes tras aclararse el ciclo de facturación de 30 días continuos, coordinó con su contador la liberación de los recursos y **se comprometió a depositar los $57.00 USD de anticipo entre el jueves 5 o viernes 6 de noviembre** vía Western Union (con liquidación del 50% restante en una semana y media).
+    *   *Supabase*: Lead `644ee5f0-f9a3-4ced-af12-1d61f9325f49` actualizado con bitácora completa y próxima acción programada para el **viernes 6 de noviembre a las 12:00 m.** (`2026-11-06T12:00:00`) para verificar el comprobante MTCN y liberar los 30 cupos.
+*   **Demostración por Zoom y Descalificación Inmediata de Nico (`@NicoMstar`, Saposoa, San Martín, Perú)**:
+    *   A las 04:30 p. m., Alberto llevó a cabo la reunión pactada por Zoom en vivo.
+    *   *Diagnóstico de Fit*: Se identificó de inmediato que el prospecto carece al 100% de Product-Market Fit (Regla 12): no cuenta con pacientes ni clientes activos, no tiene flujo de caja ni visión comercial, y su única motivación es el activismo religioso adventista para difundir que todos deben ser veganos «porque así lo dice Dios».
+    *   *Acción*: Descalificación inmediata y pase formal en Supabase a **`cerrado_perdido`** (Lead `ccb716e1-1127-4de0-84ff-fe1a6bcff96b`), protegiendo el tiempo y liberando el radar de prospectos improductivos.
+*   **Salida Elegante de Alto Estatus a Elio (`+34 614 00 97 50`, España)**:
+    *   Elio indicó que solo maneja 1 clienta y que la tarifa básica de Harbiz (20 €) ya le resulta gravosa.
+    *   Se aplicó la **Regla 12 (Salida Elegante de Alto Estatus y Descompresión)**, felicitándolo por su inicio, manteniendo el blindaje de precios ($114 USD / 105 €) y dejándole la puerta abierta para cuando su cartera alcance los 15-20 alumnos.
+
 
 
 ---
