@@ -3396,6 +3396,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Elio indicó que solo maneja 1 clienta y que la tarifa básica de Harbiz (20 €) ya le resulta gravosa.
     *   Se aplicó la **Regla 12 (Salida Elegante de Alto Estatus y Descompresión)**, felicitándolo por su inicio, manteniendo el blindaje de precios ($114 USD / 105 €) y dejándole la puerta abierta para cuando su cartera alcance los 15-20 alumnos.
 
+### 341. Entrega en Tiempo Récord de Plataforma a Dra. Edna Mendez y Filtro de Rubro (5 de Noviembre de 2026 - 10:15 a. m.)
+*   **Entrega Oficial de Portal Web y App PWA a Dra. Edna Mendez (Michoacán, México)**:
+    *   En un plazo menor a 48 horas desde la recepción de su anticipo ($57.00 USD), Alberto finalizó el montaje, configuración y despliegue del portal web y PWA oficial: `https://edna-mendez.bienestarsinexcusas.site/`.
+    *   *Especificaciones técnicas y estéticas cumplidas al 100%*: Logotipo oficial (*Edna Mendez NUTRIÓLOGA*) integrado en cabecera, paleta corporativa aguamarina/turquesa y dorado, diseño elegante en modo oscuro estilo *Yoselin Parra*, botones directos a WhatsApp (+52 1 715 120 5933), Facebook e Instagram (@Ednamendez23), sin fotografías personales conforme a su solicitud.
+    *   *Despacho y Estrategia de Onboarding (Regla 8 - Timing de Cobro)*: Se remitió mensaje cálido y profesional entregando el enlace para revisión móvil, solicitando su visto bueno o requerimientos de ajuste, pidiendo su correo electrónico principal para el alta de administradora y proyectando la sesión de Zoom de 10 minutos para enseñarle a asignar créditos y planes a sus pacientes (momento en el cual se liquidará el saldo de $57.00 USD).
+    *   *Supabase*: Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7` actualizado con bitácora de entrega y próxima acción configurada para hoy **jueves 5 de noviembre a las 06:00 p. m.** (`2026-11-05T18:00:00`).
+*   **Descalificación y Salida Elegante a Coach Desarrollador (`+54 9 11 4972-3042`, Argentina)**:
+    *   El prospecto respondió indicando que él mismo programa y realiza despliegues semanales de su propia app, rechazando el servicio.
+    *   En cumplimiento de la **Regla 12 (Product-Market Fit y Salida Elegante)**, se cerró el chat felicitándolo con alto estatus por su desarrollo propio, evitando desgastes estériles de venta con programadores que ya cuentan con solución propia.
+
 
 
 ---
