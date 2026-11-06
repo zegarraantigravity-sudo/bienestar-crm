@@ -3416,6 +3416,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Noé Rojas (`NR Sports`, México)**: En espera del comprobante de anticipo de $57.00 USD vía Western Union con plazo acordado hasta el viernes 6 de noviembre. Si no reporta comprobante, se dará seguimiento suave el sábado 7 por la mañana.
     *   **Prospectos en Radar**: Inbound calificado de nutrición vía grupo de Facebook BioNutrición (`+51 901 164 375`) con cotización de Plan 30 (S/ 400.00 / mes) remitida y propuesta de Zoom; coach de México (`+52 1 55 2828 9614`) con cotización de Plan 30 ($114.00 USD) enviada; avance de cuota con 10 mensajes de WhatsApp y 5 de Facebook despachados en la mañana.
 
+### 343. Confirmación de Cita por Zoom con Cinthya Puppi, Descompresión Táctica con Yohansel Miguel y Cierre de Jornada (5 de Noviembre de 2026 - 07:30 p. m.)
+*   **Agendamiento Confirmado con Cinthya Puppi (`Dr Gym`, Nutricionista)**:
+    *   Cinthya cuenta con el código de prueba `NUT-FLC-9Z6Q`. Tras seguimiento vespertino, solicitó coordinar para el martes.
+    *   Alberto aplicó de inmediato la técnica de **Doble Alternativa** (11:00 a. m. o 7:30 p. m.); Cinthya respondió fijando su horario definitivo: **martes 10 de noviembre a las 04:00 p. m.**
+    *   Alberto ratificó la cita puntual con aviso de despacho de sala de Zoom 10 minutos antes.
+    *   *Supabase*: Alta oficial en cumplimiento de la **Regla 5** (Lead ID: `1c3a09a4-0370-44c4-ba18-880319d858f3`), estado **`cita_agendada`**, Plan 30 (S/ 400.00 / mes), próxima acción programada para el **martes 10 de noviembre a las 03:50 p. m.** (`2026-11-10T15:50:00`).
+*   **Manejo de Objeción y Descompresión de Alto Estatus con Coach Yohansel Miguel (República Dominicana)**:
+    *   Yohansel argumentó que la mensualidad le resulta un gasto elevado y manifestó temor a asumir compromisos por miedo a «quedar mal» (*«no me gusta quedar mal en los compromisos»*).
+    *   Alberto aplicó la técnica de **Alineación por Valores y Retirada Estratégica**: validó su sentido de honor y palabra, le aclaró que no se trata de una deuda fija ni contrato forzoso (el servicio es mensual y se puede pausar), pero le retiró toda presión comercial manifestándole que prefiere arrancar cuando él esté 100% cómodo y sin estrés.
+    *   Se dejó el puente abierto en máximo estatus para cuando Yohansel decida dar el paso sin forzar la venta.
+*   **Seguimiento al Coach de República Dominicana (`+1 809 304-4019`)**:
+    *   Se le consultó por la propuesta del Plan 30 ($114 USD); indicó estar en una reunión y Alberto le otorgó descompresión total (*«concéntrate en tu reunión, quedo atento»*), dejando la iniciativa en su cancha.
+
 
 
 ---
