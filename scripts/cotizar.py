@@ -262,13 +262,13 @@ def build_docx(nombre, negocio, moneda="USD", tipo="fitness", fecha_str=None, vi
 
     if is_usd:
         data_plans = [
-            ("Plan 30\n(Recomendado Inicio)", "Hasta 30 alumnos", "$ 3.80 USD / alumno", "$ 114.00 USD / mes"),
-            ("Plan 80", "Hasta 80 alumnos", "$ 2.50 USD / alumno", "$ 200.00 USD / mes"),
-            ("Plan 200\n(Recomendado Escala)", "Hasta 200 alumnos", "$ 1.70 USD / alumno", "$ 340.00 USD / mes"),
-            ("Plan 500", "Hasta 500 alumnos", "$ 1.54 USD / alumno", "$ 770.00 USD / mes")
+            ("Plan 30\n(Recomendado Inicio)", "Hasta 30 alumnos", "$ 4.00 USD / alumno", "$ 120.00 USD / mes"),
+            ("Plan 80", "Hasta 80 alumnos", "$ 2.62 USD / alumno", "$ 210.00 USD / mes"),
+            ("Plan 200\n(Recomendado Escala)", "Hasta 200 alumnos", "$ 1.80 USD / alumno", "$ 360.00 USD / mes"),
+            ("Plan 500", "Hasta 500 alumnos", "$ 1.60 USD / alumno", "$ 800.00 USD / mes")
         ]
         setup_val = "$ 850.00 USD"
-        advance_val = "$ 57.00 USD"
+        advance_val = "$ 60.00 USD"
     else:
         data_plans = [
             ("Plan 30\n(Recomendado Inicio)", "Hasta 30 alumnos", "S/ 13.33 x alumno", "S/ 400.00 / mes"),
@@ -425,13 +425,13 @@ def print_whatsapp_message(nombre, negocio, moneda="USD", tipo="fitness"):
     
     if is_usd:
         plans_text = (
-            "• *Plan 30:* *$114 USD / mes* (hasta 30 alumnos | $3.80 x alumno)\n"
-            "• *Plan 80:* *$200 USD / mes* (hasta 80 alumnos | $2.50 x alumno)\n"
-            "• *Plan 200:* *$340 USD / mes* (hasta 200 alumnos | $1.70 x alumno)\n"
-            "• *Plan 500:* *$770 USD / mes* (hasta 500 alumnos | $1.54 x alumno)"
+            "• *Plan 30:* *$120 USD / mes* (hasta 30 alumnos | $4.00 x alumno)\n"
+            "• *Plan 80:* *$210 USD / mes* (hasta 80 alumnos | $2.62 x alumno)\n"
+            "• *Plan 200:* *$360 USD / mes* (hasta 200 alumnos | $1.80 x alumno)\n"
+            "• *Plan 500:* *$800 USD / mes* (hasta 500 alumnos | $1.60 x alumno)"
         )
         setup_val = "$850 USD"
-        advance_val = "$57 USD"
+        advance_val = "$60 USD"
     else:
         plans_text = (
             "• *Plan 30:* *S/ 400 / mes* (hasta 30 alumnos | S/ 13.33 x alumno)\n"

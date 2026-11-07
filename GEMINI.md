@@ -42,11 +42,11 @@
 
 ## 9. Blindaje Tarifario Oficial (Cero Precios Fuera de Catálogo)
 - NUNCA inventar, prorratear ni citar tarifas mensuales inferiores a los planes oficiales de Bienestar Sin Excusas.
-- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 114.00 USD / mes**.
+- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 120.00 USD / mes** (hasta 30 alumnos | $ 4.00 x alumno | 50% de anticipo: $ 60.00 USD).
 - Queda terminantemente prohibido utilizar cálculos de ofertas anuales o acuerdos ad-hoc pasados (ej. Sonny Kenn) como si fueran tarifas mensuales estándar.
 - Los planes oficiales son inalterables:
-  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000).
-  - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
+  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000), Plan 8,000 (S/ 30,000).
+  - **Internacional (USD):** Plan 30 ($120), Plan 80 ($210), Plan 200 ($360), Plan 500 ($800), Plan 1,200 ($1,800), Plan 3,300 ($4,500), Plan 8,000 ($9,000).
 - El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
 
 ## 10. Enfoque Positivo de Producto en Seguimientos (Cero Sugerencia de Errores)
@@ -60,7 +60,7 @@
 - **Postura Comercial:** Orgullo total de **Bienestar Sin Excusas**, convicción plena en el valor de la tecnología y foco inamovible en el objetivo: **agendar el Zoom en vivo de 10 minutos o captar el anticipo del 50%**.
 
 ## 12. Discernimiento de Product-Market Fit: Estudiantes vs. Profesionales Activos y Distribuidores de Nutrición
-- **El Cliente Ideal del SaaS:** Es el profesional (nutricionista, coach) o centro deportivo que **YA TIENE pacientes o socios activos** (15, 30, 50+) y está colapsado armando PDFs en Excel o respondiendo WhatsApps a deshoras. Para ellos, pagar S/ 400 o $114 USD es una salvación operativa y una inversión que se amortiza de inmediato.
+- **El Cliente Ideal del SaaS:** Es el profesional (nutricionista, coach) o centro deportivo que **YA TIENE pacientes o socios activos** (15, 30, 50+) y está colapsado armando PDFs en Excel o respondiendo WhatsApps a deshoras. Para ellos, pagar S/ 400 o $120 USD es una salvación operativa y una inversión que se amortiza de inmediato.
 - **Inclusión Obligatoria: Profesionales de Nutrición con Venta de Productos y Suplementación (Caso Teoma / Marcas de Nutrición):**
   - **Cliente Objetivo de Alto Valor:** Todo profesional, nutricionista o asesor que venda productos nutricionales o suplementos (ej. Teoma, suplementación deportiva, marcas propias) y entregue planes de alimentación a sus clientes es un **CLIENTE IDEAL** para Bienestar Sin Excusas.
   - **El Moat del Producto:** La plataforma no solo calcula dietas, sino que **integra su catálogo de productos directamente dentro de los menús de 28 días**, permitiéndoles fidelizar el consumo de sus clientes, elevar el estatus de su marca y escalar su marketing de negocio.
@@ -88,7 +88,7 @@
 - **Herramientas Obligatorias:**
   1. **Plantillas Fijas en Word (`templates/`):**
      - `templates/PLANTILLA_COTIZACION_SOLES.docx` (Planes oficiales en PEN: Plan 30 S/ 400, Plan 80 S/ 700, Plan 200 S/ 1,200, Plan 500 S/ 2,700).
-     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $114, Plan 80 $200, Plan 200 $340, Plan 500 $770).
+     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $120, Plan 80 $210, Plan 200 $360, Plan 500 $800).
   2. **Comando de Generación Inmediata:** Usar exclusivamente `python scripts/cotizar.py --nombre "<Nombre>" --moneda "<USD|PEN>" --negocio "<Negocio>"`.
 - **Tiempo de Respuesta Máximo:** 2 segundos.
 - **Entregables Inmediatos:**

@@ -59,11 +59,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### 9. Blindaje Tarifario Oficial (Cero Precios Fuera de Catálogo)
 - NUNCA inventar, prorratear ni citar tarifas mensuales inferiores a los planes oficiales de Bienestar Sin Excusas.
-- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 114.00 USD / mes**.
+- El plan mínimo oficial de entrada en Perú es estrictamente el **Plan 30: S/ 400.00 / mes** (hasta 30 alumnos | S/ 13.33 x alumno) y en el mercado internacional es el **Plan 30: $ 120.00 USD / mes** (hasta 30 alumnos | $ 4.00 x alumno | 50% de anticipo: $ 60.00 USD).
 - Queda terminantemente prohibido utilizar cálculos de ofertas anuales o acuerdos ad-hoc pasados (ej. Sonny Kenn) como si fueran tarifas mensuales estándar.
 - Los planes oficiales son inalterables:
-  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000).
-  - **Internacional (USD):** Plan 30 ($114), Plan 80 ($200), Plan 200 ($340), Plan 500 ($770), Plan 1,200 ($1,714), Plan 3,300 ($4,285).
+  - **Perú (PEN):** Plan 30 (S/ 400), Plan 80 (S/ 700), Plan 200 (S/ 1,200), Plan 500 (S/ 2,700), Plan 1,200 (S/ 6,000), Plan 3,300 (S/ 15,000), Plan 8,000 (S/ 30,000).
+  - **Internacional (USD):** Plan 30 ($120), Plan 80 ($210), Plan 200 ($360), Plan 500 ($800), Plan 1,200 ($1,800), Plan 3,300 ($4,500), Plan 8,000 ($9,000).
 - El foco comercial al hablar de precio es SIEMPRE el **retorno de inversión y el estatus de tener su propia App de marca blanca**: demostrar que con solo 2 o 3 clientes el Plan 30 se amortiza por completo.
 
 ### 10. Enfoque Positivo de Producto en Seguimientos (Cero Sugerencia de Errores)
@@ -77,7 +77,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Postura Comercial:** Orgullo total de **Bienestar Sin Excusas**, convicción plena en el valor de la tecnología y foco inamovible en el objetivo: **agendar el Zoom en vivo de 10 minutos o captar el anticipo del 50%**.
 
 ### 12. Discernimiento de Product-Market Fit: Estudiantes vs. Profesionales Activos y Distribuidores de Nutrición
-- **El Cliente Ideal del SaaS:** Es el profesional (nutricionista, coach) o centro deportivo que **YA TIENE pacientes o socios activos** (15, 30, 50+) y está colapsado armando PDFs en Excel o respondiendo WhatsApps a deshoras. Para ellos, pagar S/ 400 o $114 USD es una salvación operativa y una inversión que se amortiza de inmediato.
+- **El Cliente Ideal del SaaS:** Es el profesional (nutricionista, coach) o centro deportivo que **YA TIENE pacientes o socios activos** (15, 30, 50+) y está colapsado armando PDFs en Excel o respondiendo WhatsApps a deshoras. Para ellos, pagar S/ 400 o $120 USD es una salvación operativa y una inversión que se amortiza de inmediato.
 - **Inclusión Obligatoria: Profesionales de Nutrición con Venta de Productos y Suplementación (Caso Teoma / Marcas de Nutrición):**
   - **Cliente Objetivo de Alto Valor:** Todo profesional, nutricionista o asesor que venda productos nutricionales o suplementos (ej. Teoma, suplementación deportiva, marcas propias) y entregue planes de alimentación a sus clientes es un **CLIENTE IDEAL** para Bienestar Sin Excusas.
   - **El Moat del Producto:** La plataforma no solo calcula dietas, sino que **integra su catálogo de productos directamente dentro de los menús de 28 días**, permitiéndoles fidelizar el consumo de sus clientes, elevar el estatus de su marca y escalar su marketing de negocio.
@@ -105,7 +105,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Herramientas Obligatorias:**
   1. **Plantillas Fijas en Word (`templates/`):**
      - `templates/PLANTILLA_COTIZACION_SOLES.docx` (Planes oficiales en PEN: Plan 30 S/ 400, Plan 80 S/ 700, Plan 200 S/ 1,200, Plan 500 S/ 2,700).
-     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $114, Plan 80 $200, Plan 200 $340, Plan 500 $770).
+     - `templates/PLANTILLA_COTIZACION_DOLARES.docx` (Planes oficiales en USD: Plan 30 $120, Plan 80 $210, Plan 200 $360, Plan 500 $800).
   2. **Comando de Generación Inmediata:** Usar exclusivamente `python scripts/cotizar.py --nombre "<Nombre>" --moneda "<USD|PEN>" --negocio "<Negocio>"`.
 - **Tiempo de Respuesta Máximo:** 2 segundos.
 - **Entregables Inmediatos:**
@@ -3483,6 +3483,23 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización en Supabase**:
     *   Lead `644ee5f0-f9a3-4ced-af12-1d61f9325f49`: Trasladado formalmente a estado **`cerrado_ganado`**, bitácora actualizada con MTCN `550-604-0267` y próxima acción fijada para hoy a las **04:50 p. m.** (`2026-11-07T16:50:00`) para despacho de enlace de Zoom y sesión de onboarding.
 
+### 348. Calibración y Blindaje Oficial del Tarifario Internacional ($ USD) (7 de Noviembre de 2026 - 11:15 a. m.)
+*   **Diagnóstico de Desfase Cambiario y Comisiones Internacionales**:
+    *   Alberto detectó que las cotizaciones en dólares anteriores ($114 USD para el Plan 30) calculadas a un tipo de cambio ficticio de ~3.50 quedaban por debajo del precio base de Perú (S/ 400.00 PEN) tras descontar las comisiones de PayPal/Western Union (5.4%) y el diferencial cambiario bancario (~3.40), arrojando apenas S/ 387 Soles netos.
+    *   *Resolución*: Todo software SaaS internacional cobra tarifas iguales o superiores en USD para compensar retenciones, pasarelas de pago transfronterizas y mayor capacidad adquisitiva del mercado exterior.
+*   **Aprobación del Nuevo Tarifario Oficial Internacional ($ USD)**:
+    *   **Plan 30**: **$ 120.00 USD / mes** ($ 4.00 USD / alumno | Anticipo 50%: **$ 60.00 USD**).
+    *   **Plan 80**: **$ 210.00 USD / mes** ($ 2.62 USD / alumno | Anticipo 50%: **$ 105.00 USD**).
+    *   **Plan 200**: **$ 360.00 USD / mes** ($ 1.80 USD / alumno | Anticipo 50%: **$ 180.00 USD**).
+    *   **Plan 500**: **$ 800.00 USD / mes** ($ 1.60 USD / alumno | Anticipo 50%: **$ 400.00 USD**).
+    *   **Plan 1,200**: **$ 1,800.00 USD / mes** ($ 1.50 USD / alumno).
+    *   **Plan 3,300**: **$ 4,500.00 USD / mes** ($ 1.36 USD / alumno).
+    *   **Plan 8,000**: **$ 9,000.00 USD / mes** ($ 1.12 USD / alumno).
+*   **Actualización Integral en el Sistema**:
+    *   Se actualizaron las Reglas 9, 12 y 15 en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+    *   Se reconfiguró el generador instantáneo `scripts/cotizar.py` con los nuevos valores y mensajes formateados.
+    *   Se regeneró la plantilla maestra `templates/PLANTILLA_COTIZACION_DOLARES.docx` con las tarifas calibradas.
+
 
 
 ---
@@ -3526,10 +3543,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Pilares**: 1. Prescripción Nutricional Automatizada de 28 Días, 2. App Móvil & Web Marca Blanca, 3. Asistente Virtual 24/7.
 *   **Entregable Validado (PDF por Correo)**: Al completar su ficha, el paciente recibe automáticamente en su correo un PDF con todo su plan de comidas y rutina de entrenamiento (ideal para pacientes mayores o que prefieren el papel).
 *   **Tarifario Oficial ($ USD)**:
-    *   **Plan 30**: $ 114.00 USD (Hasta 30 pacientes | $ 3.80 USD / paciente)
-    *   **Plan 80**: $ 200.00 USD (Hasta 80 pacientes | $ 2.50 USD / paciente)
-    *   **Plan 200 (Recomendado)**: $ 340.00 USD (Hasta 200 pacientes | $ 1.70 USD / paciente)
-    *   **Plan 500**: $ 770.00 USD | **Plan 1,200**: $ 1,714.00 USD | **Plan 3,300**: $ 4,285.00 USD | **Plan 8,000**: $ 8,570.00 USD
+    *   **Plan 30**: $ 120.00 USD (Hasta 30 pacientes | $ 4.00 USD / paciente | Anticipo 50%: $ 60.00 USD)
+    *   **Plan 80**: $ 210.00 USD (Hasta 80 pacientes | $ 2.62 USD / paciente | Anticipo 50%: $ 105.00 USD)
+    *   **Plan 200 (Recomendado)**: $ 360.00 USD (Hasta 200 pacientes | $ 1.80 USD / paciente | Anticipo 50%: $ 180.00 USD)
+    *   **Plan 500**: $ 800.00 USD (Hasta 500 pacientes | $ 1.60 USD / paciente | Anticipo 50%: $ 400.00 USD)
+    *   **Plan 1,200**: $ 1,800.00 USD | **Plan 3,300**: $ 4,500.00 USD | **Plan 8,000**: $ 9,000.00 USD
 *   **Módulo 2**: Web profesional, subdominio personalizado (`[nombre].bienestarsinexcusas.site` o dominio propio), PWA instalable en iOS y Android con un clic, cartel QR para sala de espera y botón de WhatsApp.
 *   **Beneficio 100% Incluido**: App y web personalizada sin costo adicional de desarrollo desde Plan 30 en adelante.
 *   **Condiciones Comerciales**: 50% anticipo para inicio y desarrollo / 50% contra entrega y activación oficial.
@@ -3609,7 +3627,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 > ✉️ **Correo:** albertozegarra@bienestarsinexcusas.site  
 >
 > 💡 **Indicación en caja:**  
-> Puedes ir a cualquier agente de Western Union. Diles que vas a hacer un envío a Perú para que el destinatario reciba $57 USD en efectivo (tú pagas en ventanilla).  
+> Puedes ir a cualquier agente de Western Union. Diles que vas a hacer un envío a Perú para que el destinatario reciba $60 USD en efectivo (tú pagas en ventanilla).  
 >
 > 📸 Al terminar, me mandas una foto clara del ticket donde se vea el código MTCN de 10 dígitos para confirmar tu plan y habilitarte el acceso de inmediato. 🚀
 
