@@ -353,17 +353,14 @@ def build_docx(nombre, negocio, moneda="USD", tipo="fitness", fecha_str=None, vi
         r_pt.font.color.rgb = primary_color
 
         r_pdet = p_pay.add_run(
-            "• PayPal (Pago Online Seguro con Tarjeta o Saldo PayPal):\n"
-            "  - Correo PayPal: albertozbcoach@gmail.com\n"
-            "  - Titular: Alberto Gustavo Zegarra Ballón\n"
-            "• Western Union (Envío por Ventanilla Internacional):\n"
+            "• Western Union (Canal Oficial Único de Abono Internacional en Efectivo):\n"
             "  - Nombres: Alberto Gustavo\n"
             "  - Apellidos: Zegarra-Ballon Quezada (o Zegarra Ballon Quezada sin guion)\n"
             "  - Documento de Identidad (DNI): 10783023\n"
             "  - Ciudad / País de Destino: Lima, Perú\n"
             "  - Teléfono: +51 978 438 246\n"
             "  - Correo: albertozegarra@bienestarsinexcusas.site\n"
-            "  - Indicación: Solicitar envío en efectivo ($ USD) y remitir foto de ticket con código MTCN (10 dígitos)."
+            "  - Indicación en caja: Solicitar envío en efectivo ($ USD) y remitir foto clara de ticket con código MTCN (10 dígitos) para activación inmediata."
         )
     else:
         r_pt = p_pay.add_run("CUENTAS OFICIALES DE ABONO (PERÚ - SOLES):\n")

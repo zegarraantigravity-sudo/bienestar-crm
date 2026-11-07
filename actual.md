@@ -3500,6 +3500,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se reconfiguró el generador instantáneo `scripts/cotizar.py` con los nuevos valores y mensajes formateados.
     *   Se regeneró la plantilla maestra `templates/PLANTILLA_COTIZACION_DOLARES.docx` con las tarifas calibradas.
 
+### 349. Exclusividad de Western Union para Cobros Internacionales y Baja Definitiva de PayPal (7 de Noviembre de 2026 - 11:32 a. m.)
+*   **Determinación Comercial y Financiera de Alberto**:
+    *   Se decidió retirar de forma definitiva e inmediata **PayPal** de todas las cotizaciones, plantillas y canales de cobro para clientes del exterior en dólares ($ USD).
+    *   *Justificación*: PayPal aplica retenciones, cobra 5.4% de comisión fija más diferencial cambiario al retirar a cuentas peruanas y expone a riesgos de contracargos. En contraparte, **Western Union** garantiza el cobro del 100% en efectivo en ventanilla (en USD o PEN), con trazabilidad instantánea vía código MTCN y cero deducciones al titular.
+*   **Ajuste en Plantillas y Scripts**:
+    *   Se eliminó PayPal de `scripts/cotizar.py` en el bloque de pagos internacionales.
+    *   Se regeneró la plantilla maestra `templates/PLANTILLA_COTIZACION_DOLARES.docx` con **Western Union** como único canal internacional oficial.
+    *   Se actualizó la copia física en la carpeta principal de Descargas (`C:\Users\Alberto\Downloads\PLANTILLA_COTIZACION_DOLARES.docx`).
+
 
 
 ---
@@ -3552,10 +3561,9 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Beneficio 100% Incluido**: App y web personalizada sin costo adicional de desarrollo desde Plan 30 en adelante.
 *   **Condiciones Comerciales**: 50% anticipo para inicio y desarrollo / 50% contra entrega y activación oficial.
 *   **Métodos de Pago**:
-    1. **PayPal**: Pago online con tarjeta internacional o cuenta PayPal ($ USD).
-    2. **Western Union**: Transferencia internacional en efectivo o web ($ USD) a nombre de Alberto Gustavo Zegarra Ballón Quezada (DNI: 10783023, Lima, Perú).
-    3. **Transferencia Bancaria (PEN)**: BBVA Cta: 0011-0131-0200371618 / CCI: 0111-31000-20037161806.
-    4. **Billetera Digital (PEN)**: PLIN: 978 438 246.
+    1. **Western Union (Canal Exclusivo Internacional en Efectivo)**: Transferencia internacional en efectivo o web ($ USD) a nombre de Alberto Gustavo Zegarra Ballón Quezada (DNI: 10783023, Lima, Perú). Cero comisiones de plataforma y cobro 100% íntegro con código MTCN.
+    2. **Transferencia Bancaria (Perú / Soles)**: BBVA Cta: 0011-0131-0200371618 / CCI: 0111-31000-20037161806.
+    3. **Billetera Digital (Perú / Soles)**: PLIN: 978 438 246.
 *   **Generador Automatizado**: Script en Python disponible en el entorno para exportar instantáneamente el documento formal en Word (`.docx`) y PDF (`.pdf`) en la carpeta de descargas de Alberto.
 
 ### 3. Propuesta Oficial Fitness B2B y Promociones de Cierre (Gimnasios y Centros Deportivos)
