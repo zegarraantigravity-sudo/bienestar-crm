@@ -3464,6 +3464,25 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización en Supabase**:
     *   Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7`: Bitácora enriquecida con la sesión y credenciales entregadas; próxima acción actualizada a *«Recepción de saldo pendiente de $57.00 USD vía PayPal»* programada para el **martes 10 de noviembre a las 11:00 a. m.** (`2026-11-10T11:00:00`).
 
+### 347. Cierre Ganado y Cobro de Anticipo ($57.03 USD) de Noé Rojas (NR Sports, México) vía Western Union y Agendamiento de Onboarding (7 de Noviembre de 2026 - 10:55 a. m.)
+*   **Cobro de Anticipo del 50% Confirmado vía Western Union**:
+    *   Noé Rojas Díaz formalizó el pago del 50% de anticipo para el **Plan 30 ($114.00 USD / mes)** mediante transferencia internacional Western Union.
+    *   *Detalles de la Transacción*:
+        *   **Monto**: **$57.03 USD** (1,095.00 MXN enviados vía SPEI).
+        *   **Código de Seguimiento (MTCN)**: **`550-604-0267`**.
+        *   **Beneficiario**: Alberto Zegarra-ballon Quezada Gustavo (DNI: 10783023, Lima, Perú).
+        *   **Modalidad**: Cobro en efectivo en ventanilla de cualquier agencia Western Union.
+*   **Bono de Fidelización y Alianza Comercial**:
+    *   Alberto otorgó **32 créditos en total** (30 oficiales correspondientes al Plan 30 + 2 cupos de cortesía para pruebas clínicas de Noé y su hermano).
+*   **Agendamiento de Sesión de Onboarding y Entrega de Credenciales**:
+    *   Se coordinó y confirmó sesión de Zoom en vivo para hoy **sábado 7 de noviembre de 2026 a las 05:00 p. m. hora Perú** (04:00 p. m. hora México).
+    *   *Objetivos de la sesión*:
+        1. Entrega formal de credenciales de Administrador (usuario y contraseña).
+        2. Inducción práctica en pantalla sobre asignación de créditos y carga de pacientes.
+        3. Demostración en vivo de la arquitectura de venta y resurtido de suplementos de **NR Sports** (botones de compra en cada producto y pop-ups condicionales integrados a su tienda).
+*   **Actualización en Supabase**:
+    *   Lead `644ee5f0-f9a3-4ced-af12-1d61f9325f49`: Trasladado formalmente a estado **`cerrado_ganado`**, bitácora actualizada con MTCN `550-604-0267` y próxima acción fijada para hoy a las **04:50 p. m.** (`2026-11-07T16:50:00`) para despacho de enlace de Zoom y sesión de onboarding.
+
 
 
 ---
