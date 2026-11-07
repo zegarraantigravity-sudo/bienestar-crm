@@ -3449,6 +3449,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Ajuste de Agenda Corporativa con Gustavo Gamarra (Lab Nutrition)**:
     *   La reunión presencial en Miraflores (**Av. Santa Cruz 875, Piso 7**) se trasladó oficialmente a las **04:00 p. m.** (llegada a recepción a las 03:45 p. m.), otorgando un margen operativo óptimo para el traslado.
 
+### 346. Zoom de Inducción Exitoso con Dra. Edna Mendez, Entrega de Accesos y Pacto de Saldo ($57 USD) (6 de Noviembre de 2026 - 10:40 p. m.)
+*   **Sesión de Onboarding Clínico y Asignación de Créditos**:
+    *   Alberto llevó a cabo la reunión por Zoom en vivo con la Dra. Edna Mendez (Nutrióloga, Michoacán, México).
+    *   Se le explicó en pantalla cómo funciona el flujo de alta de pacientes, asignación de créditos y estructuración automatizada de planes clínicos de 28 días en su plataforma oficial (`https://edna-mendez.bienestarsinexcusas.site/`).
+*   **Entrega Oficial de Credenciales y Cartel QR Personalizado**:
+    *   A las 10:15 p. m. se le despacharon por WhatsApp sus accesos de Administradora:
+        *   **Usuario**: `EDNA MENDEZ`
+        *   **Contraseña**: `WKWZIP`
+    *   A las 10:16 p. m. se le entregó su código QR oficial en alta resolución con su logotipo central (*Edna Mendez NUTRIÓLOGA*) para imprimir en sala de espera o compartir en redes.
+    *   *Respuesta de la clienta (10:38 p. m.)*: Gratitud total y validación del servicio: *«Muchas gracias por todo. Y la confianza»*.
+*   **Acuerdo Financiero y Timing de Cobro (Regla 8)**:
+    *   Sin fricción ni presiones comerciales indebidas, se acordó con la Dra. Edna la liquidación del 50% restante (**$57.00 USD** vía PayPal) para el **martes 10 de noviembre de 2026**.
+*   **Actualización en Supabase**:
+    *   Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7`: Bitácora enriquecida con la sesión y credenciales entregadas; próxima acción actualizada a *«Recepción de saldo pendiente de $57.00 USD vía PayPal»* programada para el **martes 10 de noviembre a las 11:00 a. m.** (`2026-11-10T11:00:00`).
+
 
 
 ---
