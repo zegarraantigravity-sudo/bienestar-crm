@@ -3509,6 +3509,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se regeneró la plantilla maestra `templates/PLANTILLA_COTIZACION_DOLARES.docx` con **Western Union** como único canal internacional oficial.
     *   Se actualizó la copia física en la carpeta principal de Descargas (`C:\Users\Alberto\Downloads\PLANTILLA_COTIZACION_DOLARES.docx`).
 
+### 350. Prospección Exitosa en Bolivia, Presentación de Nuevo Tarifario y Cita por Zoom con Rómulo e Isabel (7 de Noviembre de 2026 - 09:35 p. m.)
+*   **Apertura y Calificación Inmediata en Santa Cruz, Bolivia (`+591 69210829`)**:
+    *   A las 09:21 p. m. Alberto remitió mensaje de prospección en frío. Los entrenadores **Rómulo e Isabel** respondieron en tiempo real consultando la procedencia (*«Desde dónde me escribe?»*).
+    *   Alberto proyectó autoridad internacional indicando sede en Lima, Perú y alcance regional. Rómulo e Isabel consultaron de inmediato por redes sociales, videos de demostración y el monto de inversión.
+*   **Aplicación Estricta de las Reglas Comerciales (Regla 4 y Regla 9)**:
+    *   *Regla 4 (Cero videos pregrabados)*: Se fundamentó con alto estatus que las plataformas son marcas blancas privadas y personalizadas, por lo que las demostraciones se realizan en vivo en pantalla por Zoom.
+    *   *Regla 9 (Blindaje Tarifario Oficial Calibrado)*: Se presentó formalmente el **Plan 30 ($120.00 USD / mes)** con desarrollo y personalización 100% bonificados y anticipo del 50% (**$60.00 USD**).
+*   **Agendamiento Confirmado por Zoom**:
+    *   Mediante Doble Alternativa, los prospectos seleccionaron la tarde: **lunes 9 de noviembre de 2026 a las 05:00 p. m. hora Bolivia / 04:00 p. m. hora Perú**.
+    *   Alberto confirmó la cita y los prospectos validaron con entusiasmo (*«Súper, perfecto! Gracias. Estamos en contacto, bendecido fin de semana»*).
+*   **Alta Oficial en Supabase (Regla 5)**:
+    *   Lead creado con éxito (ID: `0866afc0-60c6-4dbc-a50a-9df4d1897c18`), tipo `coach`, estado **`cita_agendada`**, `target_plan`: `plan_30`, valor estimado `$120 USD`.
+    *   Próxima acción programada para el **lunes 9 de noviembre a las 03:50 p. m. PE** (`2026-11-09T15:50:00`) para despacho de sala de Zoom 10 minutos antes.
+
 
 
 ---
