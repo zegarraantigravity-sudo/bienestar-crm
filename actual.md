@@ -3523,6 +3523,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead creado con éxito (ID: `0866afc0-60c6-4dbc-a50a-9df4d1897c18`), tipo `coach`, estado **`cita_agendada`**, `target_plan`: `plan_30`, valor estimado `$120 USD`.
     *   Próxima acción programada para el **lunes 9 de noviembre a las 03:50 p. m. PE** (`2026-11-09T15:50:00`) para despacho de sala de Zoom 10 minutos antes.
 
+### 351. Agendamiento de Tercer Zoom Internacional: Sandrita FITNESS (Thunders Fit, Bolivia) para el Lunes (7 de Noviembre de 2026 - 10:55 p. m.)
+*   **Prospección de Alto Impacto y Calificación Visual (Regla 13)**:
+    *   Alberto envió mensaje de prospección a las 09:37 p. m. La entrenadora **Sandrita FITNESS (`+591 75029581`, Bolivia)** respondió entusiasmada (*«Uyyy si me interesa»*).
+    *   *Auditoría de Perfil*: Sandrita lidera el centro de entrenamiento **`THUNDERS FIT Sandrita`**, dictando clases grupales presenciales de Crossfit, Calistenia, Full Body y Cardio Hit con clientela activa, cumpliendo al 100% el perfil de cliente ideal (Regla 12).
+*   **Conexión y Agendamiento Rápido (Regla 7)**:
+    *   Alberto aplicó Doble Alternativa invitándola a demostración en pantalla por Zoom. Sandrita aceptó de inmediato para el **lunes 9 de noviembre de 2026 a las 10:30 a. m. hora Bolivia / 09:30 a. m. hora Perú**.
+    *   Alberto ratificó la cita puntual con aviso de despacho de sala 10 minutos antes.
+*   **Alta Oficial en Supabase (Regla 5)**:
+    *   Lead registrado con éxito (ID: `affa7a11-edc1-48bc-93d6-8078a80aeff0`), estado **`cita_agendada`**, `client_type`: `coach`, `target_plan`: `plan_30`, valor estimado `$120 USD`.
+    *   Próxima acción programada para el **lunes 9 de noviembre a las 09:20 a. m. PE** (`2026-11-09T09:20:00`) para despacho de enlace de Zoom.
+
 
 
 ---
