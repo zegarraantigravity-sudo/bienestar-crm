@@ -3534,6 +3534,36 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Lead registrado con éxito (ID: `affa7a11-edc1-48bc-93d6-8078a80aeff0`), estado **`cita_agendada`**, `client_type`: `coach`, `target_plan`: `plan_30`, valor estimado `$120 USD`.
     *   Próxima acción programada para el **lunes 9 de noviembre a las 09:20 a. m. PE** (`2026-11-09T09:20:00`) para despacho de enlace de Zoom.
 
+### 352. Ejecución de Zoom Exitoso con Rómulo e Isabel (Bolivia), Despacho de Códigos, Cotización Oficial y Balance de Pipeline (9 de Noviembre de 2026 - 10:45 p. m.)
+*   **Reunión Demostrativa por Zoom con Rómulo e Isabel Montero (`+591 69210829`, Santa Cruz, Bolivia)**:
+    *   A las 04:25 p. m. Alberto lideró la sesión demostrativa por Zoom en vivo con los entrenadores Rómulo e Isabel.
+    *   Se mostraron en pantalla las capacidades de la plataforma web de marca blanca, rutinas en video y armado clínico de menús de 28 días con IA Lucas 2.0.
+    *   Los prospectos manifestaron alto entusiasmo y deseo de probar la plataforma de cara al montaje de su aplicativo.
+*   **Despacho de Plantilla Maestra Post-Zoom y Asignación de Códigos de Prueba**:
+    *   Se les despachó la guía oficial con los dos códigos exclusivos para generar sus planes nutricionales en `https://nutri-alberto.bienestarsinexcusas.site/`:
+        *   **Código Isabel**: `NUT-FLC-3CME`
+        *   **Código Rómulo**: `NUT-FLC-BHUV`
+*   **Generación Inmediata de Cotización Formal Internacional ($ USD)**:
+    *   Bajo la **Regla 15**, mediante `python scripts/cotizar.py --nombre "Isabel Montero Ribera" --moneda "USD" --negocio "Isabel Montero Ribera Coach"` se exportó en tiempo récord el archivo formal `cotizaciones/Cotizacion_Isabel_Montero_Ribera.docx` y el mensaje formateado para WhatsApp.
+    *   Condiciones oficiales cotizadas: **Plan 30 ($120.00 USD / mes)** con desarrollo y personalización visual 100% bonificados (valorizado en $850 USD) e inicio con **50% de anticipo ($60.00 USD)** vía Western Union.
+*   **Actualización en Supabase**:
+    *   Lead `0866afc0-60c6-4dbc-a50a-9df4d1897c18` trasladado a estado **`presentacion_realizada`**, bitácora actualizada y próxima acción programada para el **martes 10 de noviembre a las 04:00 p. m.** (`2026-11-10T16:00:00`) para seguimiento a activación y cobro de anticipo.
+*   **Seguimiento Financiero de la Dra. Edna Mendez (Michoacán, México)**:
+    *   La Dra. Edna informó que ya se encuentra lista para asignar códigos a sus pacientes pero se le complicó salir al OXXO/Elektra por la tarde; acordó formalizar el envío de la liquidación de **$57.00 USD** vía Western Union para el **martes 10 de noviembre**. Bitácora en Supabase (`9dd3e12c-5d85-40cf-965e-816b5fe543c7`) actualizada.
+*   **Agendamiento Nocturno y Reprogramación con Coach Bolivia (`+591 77882708` - Hybrido Aesthetics)**:
+    *   El coach confirmó cita por Zoom para hoy a las 23:00 BO / 22:00 PE. No se conectó a la hora pactada; a las 22:12 Alberto aplicó mensaje de descompresión y cierre de sala.
+    *   A las 22:24 el coach respondió disculpándose amablemente por una urgencia con la cerradura/llaves de su cuarto y solicitó reprogramar formalmente para el martes con calma.
+    *   Alta oficial en Supabase (Lead `4214218e-1624-437d-b446-3310044d59bf`), estado **`cita_agendada`**, `target_plan`: `plan_30`, valor `$120 USD`.
+*   **Cuota y Auditoría de Prospección del Día**:
+    *   Se cumplió con el envío de **30 mensajes de WhatsApp y 5 de Facebook** en frío, además de **10 toques estratégicos de reactivación** de prospectos con respuestas previas pendientes en República Dominicana, México y Perú.
+    *   Se detectó prospecto calificado en México (`+52 1 33 3778 5155`) usando Nutrimind que consultó precio; se despachó contraataque de marca blanca + IA 24/7 y tarifa Plan 30 ($120 USD).
+    *   Se descalificó de forma inmediata bajo la **Regla 13** a Tukay Terapia Manual (`@tukay_terapiamanual`, servicio de masajes) con salida elegante por cruce de datos.
+*   **Radar de Cierre para el Martes 10 de Noviembre**:
+    1.  **11:00 a. m.**: Cobro y verificación de ticket de liquidación de **$57.00 USD** con la **Dra. Edna Mendez** (México).
+    2.  **11:30 a. m. o 06:30 p. m. BO**: Zoom demostrativo con **Coach Hybrido Aesthetics** (`+591 77882708`, Bolivia).
+    3.  **03:50 p. m. / 04:00 p. m.**: 🎥 **Zoom Demostrativo en Vivo con Cinthya Puppi (`Dr Gym`, código `NUT-FLC-9Z6Q`)** para cerrar Plan 30 (S/ 400.00 / mes).
+    4.  **Seguimiento Post-Prueba**: Acompañamiento clínico de 28 días a **Isabel y Rómulo** (`NUT-FLC-3CME` / `NUT-FLC-BHUV`).
+
 
 
 ---
