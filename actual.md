@@ -3564,6 +3564,28 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     3.  **03:50 p. m. / 04:00 p. m.**: 🎥 **Zoom Demostrativo en Vivo con Cinthya Puppi (`Dr Gym`, código `NUT-FLC-9Z6Q`)** para cerrar Plan 30 (S/ 400.00 / mes).
     4.  **Seguimiento Post-Prueba**: Acompañamiento clínico de 28 días a **Isabel y Rómulo** (`NUT-FLC-3CME` / `NUT-FLC-BHUV`).
 
+### 353. Jornada de Seguimiento Matutino: Reactivación de Prospectos Internacionales, Cobro Dra. Edna, Cierre Envolvente Rosa Freire y Filtro de Pipeline (11 de Noviembre de 2026 - 09:45 a. m.)
+*   **Balance Operativo del Martes 10 de Noviembre**:
+    *   Se despacharon **20 mensajes de WhatsApp y 10 de Facebook** adicionales de prospección.
+    *   **Cinthya Puppi (`Dr Gym`)**: La sesión de Zoom de las 04:00 p. m. fue pospuesta debido a que se encontraba en tránsito en el Metropolitano; se mantuvo contacto nocturno a las 07:23 p. m. Al amanecer del miércoles se corroboró que su chat permanece en **doble check gris** (no ha abierto WhatsApp), aplicando rigurosamente la **Regla 8 de cero insistencia** y esperando su conexión.
+*   **Seguimiento Financiero de Cobro — Dra. Edna Mendez (México)**:
+    *   A las 09:30 a. m. se despachó toque matutino de alta cortesía con Doble Alternativa recordando el envío del comprobante de Western Union por los **$57.00 USD** restantes de su liquidación para habilitar los créditos clínicos de sus pacientes.
+*   **Aplicación Estricta de la Regla 8 (Cierre Envolvente por Insumos) — Rosa Freire (Ecuador)**:
+    *   Tras el visto del lunes sobre el anticipo de Western Union, se rompió toda fricción financiera y sensación de cobro: se le envió mensaje pidiendo fotografías en alta definición de sus productos FuXion, paleta de colores y logotipo oficial para ir montando su App con calma. Se despierta compromiso psicológico y efecto posesión sin hablar de dinero.
+*   **Acompañamiento Clínico Post-Prueba — Isabel y Rómulo (Bolivia)**:
+    *   Siguiendo la **Regla 10 (enfoque positivo de producto)**, se consultó su experiencia de uso y navegación con sus planes de 28 días (`NUT-FLC-3CME` / `NUT-FLC-BHUV`).
+*   **Batería de Reactivaciones Matutinas Despachadas (Miércoles 09:40 a. m.)**:
+    1.  **Ernesto Ramos Quiza (`+51 951 256 320` - Indomable 24/7)**: Distribuidor de nutrición deportiva (**Regla 12**). Se reactivó con Doble Alternativa (11:30 a. m. o 05:00 p. m.) para mostrar en pantalla de 10 min cómo se integra su catálogo de productos en los menús de 28 días para recompra automática.
+    2.  **Coach Hybrido Aesthetics (`+591 77882708` - Bolivia)**: Reactivación con técnica de desarme con humor (anécdota de la chapa y la llave) y Doble Alternativa en hora de Bolivia (03:30 p. m. o 07:00 p. m. BO).
+    3.  **Prospecto Bolivia (`+591 78163641`)**: Habiendo postulado formalmente para asesoría 1 a 1 y para su alumna con pulgar arriba (👍), se despachó propuesta de llamada rápida de 2 minutos con Doble Alternativa (11:30 a. m. o 04:00 p. m. BO).
+    4.  **Melba García (`@nutricionistamelba`)**: Tras haber indicado objeción de uso previo de otra app y leído en visto la pregunta de diagnóstico profesional, Alberto determinó pausarla. Se archiva el lead protegiendo el alto estatus de la empresa (cero insistencia a quien declinó).
+*   **Radar Inmediato para la Tarde del Miércoles 11 de Noviembre**:
+    1.  Recepción de comprobante de liquidación MTCN Western Union ($57.00 USD) de la **Dra. Edna Mendez**.
+    2.  Recepción de insumos gráficos y catálogo FuXion de **Rosa Freire**.
+    3.  Confirmaciones de horario para Zoom con **Ernesto Ramos**, **Coach Hybrido** y llamada con **Prospecto Bolivia**.
+    4.  Atención de respuesta de **Cinthya Puppi** al abrir WhatsApp.
+    5.  Cumplimiento de la cuota diaria de prospección (30 WhatsApps y 15 Facebooks).
+
 
 
 ---
