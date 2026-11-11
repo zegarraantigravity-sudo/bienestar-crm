@@ -3586,6 +3586,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     4.  Atención de respuesta de **Cinthya Puppi** al abrir WhatsApp.
     5.  Cumplimiento de la cuota diaria de prospección (30 WhatsApps y 15 Facebooks).
 
+### 354. Confirmación de Liquidación de Saldo con la Dra. Edna Mendez (México) y Coordinación de Cobro MTCN (11 de Noviembre de 2026 - 01:20 p. m.)
+*   **Gestión Comercial y Asesoramiento Financiero por Nota de Voz**:
+    *   La Dra. Edna Mendez informó por WhatsApp que ayer acudió a un agente cercano pero no gestionaban envíos internacionales, debiendo acudir al centro (Elektra), y consultó si existía alguna forma de transferir directamente.
+    *   Alberto envió nota de voz personalizada (01:44 min) asesorándola con empatía y alta autoridad: le explicó que puede descargar la aplicación móvil oficial de Western Union en su celular, registrarse y transferir directamente con su tarjeta de débito o crédito sin necesidad de salir de su consultorio ni desplazarse físicamente a ventanilla.
+    *   Se utilizó como respaldo y prueba social el caso de **Noé Rojas (`NR Sports`, México)**, quien liquidó su anticipo exitosamente por esa vía. Asimismo, Alberto transparentó los altos costos de PayPal (30%-35% de comisiones y conversión desfavorable), solicitándole su horario estimado para consolidar el retiro de varios giros internacionales en ventanilla de una sola vez.
+*   **Compromiso Firme de Liquidación para la Tarde**:
+    *   A las 11:17 a. m. la Dra. Edna confirmó formalmente: *«A las 3:00 por tarde ya está el depósito»*.
+    *   **Calibración de Huso Horario**: Michoacán (México) se encuentra en UTC-6 (1 hora menos que Perú). Sus 3:00 p. m. corresponden a las **04:00 p. m. hora de Perú**, momento en el que se recepcionará la captura del ticket con el código MTCN de 10 dígitos para validar el abono y habilitar sus créditos clínicos.
+*   **Actualización de Bitácora en Supabase**:
+    *   Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7` actualizado en Supabase: registrada la confirmación de abono en su bitácora (`notes.timeline`) y reprogramada la próxima acción (`notes.next_action`) en *«Recepción de ticket MTCN y liquidación de $57.00 USD vía Western Union»* para hoy **miércoles 11 de noviembre a las 04:00 p. m. PE** (`2026-11-11T16:00:00`).
+
 
 
 ---
