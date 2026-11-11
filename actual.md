@@ -3597,6 +3597,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización de Bitácora en Supabase**:
     *   Lead `9dd3e12c-5d85-40cf-965e-816b5fe543c7` actualizado en Supabase: registrada la confirmación de abono en su bitácora (`notes.timeline`) y reprogramada la próxima acción (`notes.next_action`) en *«Recepción de ticket MTCN y liquidación de $57.00 USD vía Western Union»* para hoy **miércoles 11 de noviembre a las 04:00 p. m. PE** (`2026-11-11T16:00:00`).
 
+### 355. Rescate Táctico de Isabel & Rómulo (Regla 8 - Enfoque Reto Enero) y Cita de Zoom Agendada con Ricardo Restrepo (11 de Noviembre de 2026 - 02:40 p. m.)
+*   **Rescate Magistral de Pipeline con Isabel Montero y Rómulo (Bolivia)**:
+    *   Isabel respondió manifestando que la plataforma les pareció increíble, pero que por situaciones personales y para aprovechar al máximo las plazas evaluaban postergar la adquisición hasta enero o febrero.
+    *   En estricto cumplimiento de la **Regla 8 (Cierre Envolvente por Insumos y cero desesperación de cobro)**, Alberto no forzó un cobro inmediato ni dejó morir el lead; les planteó la visión estratégica del negocio fitness: la campaña más fuerte del año es el **Reto de Año Nuevo (1 de enero)**. Les ofreció avanzar el diseño y montaje de su App con calma en estas semanas enviando logos y colores sin presión de pago, para tener su plataforma lista en enero y activar el plan cuando tengan sus alumnos inscritos.
+    *   **Respuesta de Alto Compromiso**: Isabel respondió con total entusiasmo: *«Me parece una gran oportunidad, más tarde por la noche confirmamos porfavor, muchas gracias ☺️»*. Se acordó evaluar internamente con Rómulo para coordinar el envío de insumos esta noche. Bitácora en Supabase (`0866afc0-60c6-4dbc-a50a-9df4d1897c18`) actualizada.
+*   **Prospección Exitosa y Cita de Zoom Confirmada — Ricardo Restrepo (`@rianreba`, Perú)**:
+    *   Prospecto coach en Perú respondió a la prospección matutina validando el punto de dolor exacto: *«Envío por pdf»*.
+    *   Alberto aplicó de inmediato la técnica de conexión de dolor y Doble Alternativa, proponiendo Zoom de 10 minutos. El coach contraofertó para las 07:30 p. m. por encontrarse con alumnos.
+    *   Se confirmó país (Perú) y nombre completo (**Ricardo Restrepo**), dejándole rotulada su sesión y el enlace de Zoom con la indicación ejecutiva de apertura puntual a las 07:30 p. m. en punto.
+*   **Alta Oficial en Supabase (Regla 5 de Admisión al CRM)**:
+    *   Lead registrado exitosamente (ID: `19874edf-64d0-4127-ac6d-f66a7775401f`), estado **`cita_agendada`**, `client_type`: `coach`, `target_plan`: `plan_30`, valor estimado `S/ 400.00 PEN / mes`. Próxima acción programada para hoy **miércoles 11 de noviembre a las 07:30 p. m. PE** (`2026-11-11T19:30:00`).
+
 
 
 ---
