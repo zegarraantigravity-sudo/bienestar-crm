@@ -3624,10 +3624,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cumplimiento de la Cuota Diaria de Prospección (Miércoles 11 de Noviembre)**:
     *   Alberto completó con disciplina absoluta el despacho de **30 mensajes de WhatsApp y 5 de Facebook** en frío a nutricionistas clínicos y entrenadores fitness, asegurando el flujo continuo del embudo para las jornadas de jueves y viernes.
 *   **Radar de Cierre para el Jueves 12 de Noviembre**:
-    1.  **Mañana**: Recepción de confirmación de horario para Zoom de 10 min con **Ricardo Restrepo** (11:30 a. m. o 05:30 p. m.).
-    2.  **04:00 p. m.**: 🎥 **Zoom Demostrativo en Vivo con Cinthya Puppi (`Dr Gym`, código `NUT-FLC-9Z6Q`)** para cerrar Plan 30 (S/ 400.00 / mes).
-    3.  **Seguimiento a Rómulo e Isabel (Bolivia)**: Coordinación de recepción de insumos gráficos y colores para el Reto de Enero.
-    4.  Atención de prospectos que respondan a la batería de 30 WhatsApps y 5 Facebooks enviados hoy.
+    1.  **04:00 p. m.**: 🎥 **Zoom Demostrativo en Vivo con Cinthya Puppi (`Dr Gym`, código `NUT-FLC-9Z6Q`)** para cerrar Plan 30 (S/ 400.00 / mes).
+    2.  **Seguimiento a Rómulo e Isabel (Bolivia)**: Coordinación de recepción de insumos gráficos y colores para el Reto de Enero.
+    3.  Atención de prospectos que respondan a la batería de 30 WhatsApps y 5 Facebooks enviados hoy.
+    4.  **Viernes 13 de Noviembre (08:00 p. m.)**: 🎥 **Zoom Demostrativo en Vivo con Ricardo Restrepo** para cerrar Plan 30 (S/ 400.00 / mes).
+
+### 357. Confirmación Definitiva de Zoom con Ricardo Restrepo para el Viernes 8:00 p. m. (11 de Noviembre de 2026 - 11:42 p. m.)
+*   **Respuesta Nocturna y Fijación de Cita por Propuesta del Prospecto**:
+    *   A las 11:37 p. m., Ricardo Restrepo respondió disculpándose amablemente por la hora debido a encontrarse muy ocupado y propuso formalmente: *«Buenas noches disculpa responder tarde algo ocupado, podría ser el viernes 8 pm hora perú»*.
+    *   Alberto ratificó de inmediato la cita con calidez y alta postura ejecutiva, compartiéndole el enlace oficial de Zoom y reiterando la regla de apertura puntual a las 08:00 p. m. en punto para la sesión de 10 minutos.
+*   **Actualización en Supabase**:
+    *   Lead `19874edf-64d0-4127-ac6d-f66a7775401f` actualizado: próxima acción programada formalmente para el **viernes 13 de noviembre a las 08:00 p. m. PE** (`2026-11-13T20:00:00`).
 
 
 
