@@ -3651,6 +3651,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Prospecto entrenador de Colombia contactó vía WhatsApp consultando por la estructura de la plataforma de entrenamiento.
     *   Óscar propuso cita por Zoom para el viernes a las 08:00 p. m.; debido a que ese horario ya se encuentra blindado y reservado para Ricardo Restrepo, Alberto le ofreció reprogramar para el viernes a las 08:45 p. m. o el sábado a las 10:30 a. m. con total calma tras su viaje.
 
+### 359. Confirmación de Cita por Zoom con Óscar (Colombia) y Alta Oficial en Supabase (12 de Noviembre de 2026 - 05:55 p. m.)
+*   **Agendamiento Exitoso de Zoom Internacional — Óscar (`@arteoscar7`, Colombia)**:
+    *   Óscar envió nota de voz confirmando con agrado la opción del fin de semana debido al cansancio de su viaje: *«O sí, sí hagamos eso... mejor el sábado, sí... démoslo mejor a las 10:30»*.
+    *   Alberto ratificó de inmediato la cita con alta postura comercial y empatía, enviándole el enlace de Zoom oficial con la indicación de apertura puntual para el **sábado 14 de noviembre a las 10:30 a. m. hora Colombia/Perú**.
+*   **Alta Oficial en Supabase (Regla 5 de Admisión al CRM)**:
+    *   Lead registrado exitosamente (ID: `1b22c1c0-b263-4561-a6d9-ec2a75858f98`), estado **`cita_agendada`**, `client_type`: `coach`, `target_plan`: `plan_30`, valor estimado `$120.00 USD / mes`. Próxima acción programada para el **sábado 14 de noviembre a las 10:30 a. m.** (`2026-11-14T10:30:00`).
+*   **Radar de Demostraciones en Vivo para el Fin de Semana**:
+    1.  **Viernes 13 de Noviembre (12:00 p. m.)**: Acompañamiento a prueba de 28 días con **Cinthya Puppi (`Dr Gym`, código `NUT-FLC-IEPC`)** y cierre de Plan 30 (S/ 400.00 / mes).
+    2.  **Viernes 13 de Noviembre (08:00 p. m.)**: 🎥 **Zoom Demostrativo en Vivo con Ricardo Restrepo** para Plan 30 (S/ 400.00 / mes).
+    3.  **Sábado 14 de Noviembre (10:30 a. m.)**: 🎥 **Zoom Demostrativo en Vivo con Óscar (Colombia)** para Plan 30 ($120.00 USD / mes).
+
 
 
 ---
