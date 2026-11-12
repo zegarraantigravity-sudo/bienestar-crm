@@ -3636,6 +3636,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Actualización en Supabase**:
     *   Lead `19874edf-64d0-4127-ac6d-f66a7775401f` actualizado: próxima acción programada formalmente para el **viernes 13 de noviembre a las 08:00 p. m. PE** (`2026-11-13T20:00:00`).
 
+### 358. Ejecución Exitosa de Zoom con Cinthya Puppi (Dr Gym), Asignación de Código de Prueba y Análisis de Negocio ACTÍVA-T (12 de Noviembre de 2026 - 05:35 p. m.)
+*   **Demostración en Vivo por Zoom con Lic. Cinthya Puppi (`Dr Gym`, Nutricionista y Personal Trainer)**:
+    *   A las 04:00 p. m. se llevó a cabo exitosamente la sesión demostrativa por Zoom en pantalla. Cinthya mostró alto entusiasmo por el funcionamiento de la plataforma web y la App móvil.
+    *   **Modelo de Negocio y Validación Comercial**: Cinthya compartió su flyer oficial de su nuevo programa **«ACTÍVA-T INTEGRAL (Entrenamiento + Nutrición 100% Virtual)»**, donde comercializa su plan integral a **S/ 299.00 / mes** y clases virtuales a S/ 150 y S/ 120.
+    *   La clienta validó por sí misma el poder de escalamiento del aplicativo (*«si utilizo tu herramienta ya no haría clases yo jjjjjj, voy a ver si lo incluyo aquí o creo otra promoción a menor precio»*), comprendiendo que la automatización de rutinas en video y dietas de 28 días le permite desengancharse de dictar clases en vivo a cada hora.
+    *   Alberto le planteó la matemática irrefutable del retorno de inversión: con apenas **2 alumnas en su plan de S/ 299 (S/ 598.00)**, el **Plan 30 (S/ 400.00 / mes)** se paga solo al 100% y le genera ganancia líquida inmediata, abriendo además la posibilidad de crear un plan automatizado de volumen a S/ 99 o S/ 120 al mes.
+*   **Entrega de Guía Post-Zoom y Código de Activación de Prueba**:
+    *   Se le asignó formalmente el código exclusivo **`NUT-FLC-IEPC`** para estructurar y probar su propio plan clínico y de entrenamiento de 28 días en `https://nutri-alberto.bienestarsinexcusas.site/`.
+    *   Bajo la **Regla 15**, se generó la cotización oficial en Word en `cotizaciones/Cotizacion_Cinthya_Puppi.docx` para el Plan 30 (S/ 400.00 / mes) con costo de desarrollo 100% bonificado.
+*   **Actualización en Supabase**:
+    *   Lead `1c3a09a4-0370-44c4-ba18-880319d858f3` trasladado oficialmente al estado **`presentacion_realizada`**, bitácora actualizada con el perfil híbrido y próxima acción programada para el **viernes 13 de noviembre a las 12:00 p. m.** (`2026-11-13T12:00:00`) para acompañamiento a la prueba y cierre.
+*   **Gestión de Prospecto Inbound de Colombia — Óscar (`@arteoscar7`)**:
+    *   Prospecto entrenador de Colombia contactó vía WhatsApp consultando por la estructura de la plataforma de entrenamiento.
+    *   Óscar propuso cita por Zoom para el viernes a las 08:00 p. m.; debido a que ese horario ya se encuentra blindado y reservado para Ricardo Restrepo, Alberto le ofreció reprogramar para el viernes a las 08:45 p. m. o el sábado a las 10:30 a. m. con total calma tras su viaje.
+
 
 
 ---
