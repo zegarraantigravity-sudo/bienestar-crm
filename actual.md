@@ -122,6 +122,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Prohibición Expresa de la palabra "IA":** En el gremio de nutricionistas clínicos y médicos, la palabra "IA" genera escepticismo, paradigmas de reemplazo o desconfianza clínica. Usar siempre términos como **«asistente virtual 24/7»** o **«soporte automatizado guiado por tu propio criterio y plan»**.
 - **Puente Obligatorio al Zoom de 10 Minutos:** El único objetivo es llevar al prospecto a la demostración en pantalla mediante Doble Alternativa, porque en el Zoom es donde ven la App en vivo, se enamoran del producto y el valor supera cualquier objeción de precio.
 
+### 17. Protocolo Obligatorio de Auditoría Matutina de Vencidos en Supabase (Cero Prospectos Olvidados)
+- **Consulta Obligatoria de Vencimientos Pasados:** Cuando Alberto pregunte *«¿qué tareas tenemos para hoy?»* o al inicio de cada jornada comercial, el asistente DEBE consultar obligatoriamente en Supabase la lista de todos los prospectos con fecha de próxima acción vencida (`next_action_date < hoy`).
+- **Estructura Obligatoria de Respuesta Diaria en 2 Bloques:**
+  1. **🚨 Bloque 1: Radar de Seguimientos Vencidos / Por Cerrar (Prioridad Máxima):** Todo lead con más de 24 a 48 horas en silencio tras un Zoom, entrega de código o propuesta, mostrando su estado exacto y el mensaje de descarte o cierre listo para copiar y enviar. Si tras el toque no responde, se cierra y se mueve formalmente a `perdido` o `pausado` para no acumular basura.
+  2. **🎯 Bloque 2: Citas y Acciones del Día (Prioridad 2):** Los Zooms, llamadas y toques programados estrictamente para el día corriente.
+- **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Ningún lead puede quedarse en el limbo sin seguimiento ni cierre formal.
+
+
 
 
 
@@ -3687,6 +3695,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Sembrado de los 3 dolores cotidianos**: Foco obligatorio en ahorro de 15 horas/semana en PDFs, liberación de WhatsApp a deshoras con asistente virtual 24/7 y retención de pacientes con su propia App de marca blanca.
     *   **Eliminación del término "IA" con nutricionistas**: Reemplazo total por *«asistente virtual 24/7 guiado por tu propio plan y criterio»* para neutralizar barreras de entrada y paradigmas de sustitución profesional.
     *   Incorporación formal como **Regla 16** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
+### 362. Blindaje del CRM: Incorporación de Regla 17 (Auditoría Matutina Obligatoria de Vencidos en Supabase) (13 de Noviembre de 2026 - 11:32 a. m.)
+*   **Corrección Estructural del Flujo de Tareas**:
+    *   A raíz de la identificación de prospectos con fechas de seguimiento vencidas en el pipeline (Gladys, Pablo Briceño, etc.) que no se reportaban por consultar únicamente lo agendado para el día corriente, Alberto ordenó blindar un protocolo inquebrantable de reporte diario.
+    *   **Consulta Obligatoria de Vencimientos Pasados**: Cada inicio de jornada o ante la pregunta *«¿qué tareas tenemos para hoy?»*, el asistente debe consultar en Supabase todos los prospectos con `next_action_date < hoy` antes de presentar las citas del día.
+    *   **Estructura Obligatoria en 2 Bloques**: 1) *Bloque de Vencidos / Por Cerrar* (prioridad máxima con mensaje de descarte listo), y 2) *Citas del Día*.
+    *   Incorporación formal como **Regla 17** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
 
 
 

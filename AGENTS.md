@@ -105,6 +105,14 @@
 - **Prohibición Expresa de la palabra "IA":** En el gremio de nutricionistas clínicos y médicos, la palabra "IA" genera escepticismo, paradigmas de reemplazo o desconfianza clínica. Usar siempre términos como **«asistente virtual 24/7»** o **«soporte automatizado guiado por tu propio criterio y plan»**.
 - **Puente Obligatorio al Zoom de 10 Minutos:** El único objetivo es llevar al prospecto a la demostración en pantalla mediante Doble Alternativa, porque en el Zoom es donde ven la App en vivo, se enamoran del producto y el valor supera cualquier objeción de precio.
 
+## 17. Protocolo Obligatorio de Auditoría Matutina de Vencidos en Supabase (Cero Prospectos Olvidados)
+- **Consulta Obligatoria de Vencimientos Pasados:** Cuando Alberto pregunte *«¿qué tareas tenemos para hoy?»* o al inicio de cada jornada comercial, el asistente DEBE consultar obligatoriamente en Supabase la lista de todos los prospectos con fecha de próxima acción vencida (`next_action_date < hoy`).
+- **Estructura Obligatoria de Respuesta Diaria en 2 Bloques:**
+  1. **🚨 Bloque 1: Radar de Seguimientos Vencidos / Por Cerrar (Prioridad Máxima):** Todo lead con más de 24 a 48 horas en silencio tras un Zoom, entrega de código o propuesta, mostrando su estado exacto y el mensaje de descarte o cierre listo para copiar y enviar. Si tras el toque no responde, se cierra y se mueve formalmente a `perdido` o `pausado` para no acumular basura.
+  2. **🎯 Bloque 2: Citas y Acciones del Día (Prioridad 2):** Los Zooms, llamadas y toques programados estrictamente para el día corriente.
+- **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Ningún lead puede quedarse en el limbo sin seguimiento ni cierre formal.
+
+
 
 
 
