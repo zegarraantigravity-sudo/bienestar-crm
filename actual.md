@@ -112,6 +112,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
   1. El mensaje completo formateado para WhatsApp listo para copiar y pegar.
   2. La ruta exacta del archivo Word generado en `cotizaciones/Cotizacion_<Nombre>.docx` y en la carpeta `Downloads`.
 
+### 16. Protocolo Anti-Descarte por Preguntas de Precio y Blindaje de Dolores Clínicos (Cero Mención de "IA")
+- **Prohibición Absoluta de Soltar Tarifas en Seco:** Cuando un prospecto pregunte *«¿cuál es el costo?»*, *«¿cuánto vale?»* o *«precios»*, queda TERMINANTEMENTE PROHIBIDO responder con una cifra plana o monto total en frío (ej. *«cuesta S/ 400 al mes»*). El prospecto no conoce el valor del aplicativo, lo compara con calculadoras baratas de S/ 50 y nos descarta de inmediato.
+- **Micro-Costo Adaptable:** La respuesta sobre precio debe indicar siempre que la inversión es sumamente accesible y se adapta a la cantidad de pacientes del profesional (mencionando si acaso el micro-costo de *«desde S/ 13 por paciente al mes»*).
+- **Sembrado Obligatorio de los 3 Dolores Reales (Mensajes Cortos y Quirúrgicos):**
+  1. *Ahorro de tiempo:* Dejar de perder 15 a 20 horas a la semana armando menús y PDFs a mano.
+  2. *WhatsApp libre:* Asistente virtual 24/7 que responde dudas de recetas y porciones basadas estrictamente en su plan, liberando sus noches y fines de semana.
+  3. *Retención y estatus:* Entregarle **su propia App móvil** con su nombre y logo oficial para que el paciente no abandone la dieta y renueve mes a mes.
+- **Prohibición Expresa de la palabra "IA":** En el gremio de nutricionistas clínicos y médicos, la palabra "IA" genera escepticismo, paradigmas de reemplazo o desconfianza clínica. Usar siempre términos como **«asistente virtual 24/7»** o **«soporte automatizado guiado por tu propio criterio y plan»**.
+- **Puente Obligatorio al Zoom de 10 Minutos:** El único objetivo es llevar al prospecto a la demostración en pantalla mediante Doble Alternativa, porque en el Zoom es donde ven la App en vivo, se enamoran del producto y el valor supera cualquier objeción de precio.
+
+
 
 
 
@@ -3668,6 +3679,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Cese de Obligaciones Periódicas**: Queda formalmente suspendida la obligación mensual de presentar declaraciones de SIRE (RVIE - Ventas y RCE - Compras) y Formulario 621 (IGV / Renta mensual), eliminando el 100% del riesgo de multas por omisión o vencimiento de plazos.
     *   **Optimización de Costos Operativos**: Se elimina el gasto fijo mensual en honorarios contables externos, dado que el volumen transaccional de arranque de Bienestar Sin Excusas se canaliza por cuentas personales/profesionales y transferencias internacionales (Western Union / PLIN).
     *   **Protocolo de Reactivación Instantánea**: Se dejó documentado y validado el procedimiento de *«Reinicio de Actividades»* en Clave SOL (duración: 2 minutos), garantizando que en el momento en que un cliente corporativo en Perú requiera facturación electrónica con RUC 20, la empresa queda reactivada y habilitada para emitir comprobantes en el acto.
+
+### 361. Blindaje Comercial: Incorporación de Regla 16 (Protocolo Anti-Descarte por Precio, Dolores Clínicos y Cero Mención de IA) (13 de Noviembre de 2026 - 11:00 a. m.)
+*   **Calibración Comercial de Alta Precisión**:
+    *   A raíz de respuestas de prospección en frío matutina con preguntas de costo directo, Alberto instruyó blindar formalmente el protocolo de manejo de objeciones de precio en etapas tempranas.
+    *   **Prohibición de tarifas en seco**: Queda terminantemente prohibido soltar montos planos mensuales (ej. S/ 400) antes de construir valor y anclar dolores, evitando que el prospecto compare con software barato de S/ 50 y descarte el servicio. Se maneja micro-costo adaptable (*«desde S/ 13 por paciente»*).
+    *   **Sembrado de los 3 dolores cotidianos**: Foco obligatorio en ahorro de 15 horas/semana en PDFs, liberación de WhatsApp a deshoras con asistente virtual 24/7 y retención de pacientes con su propia App de marca blanca.
+    *   **Eliminación del término "IA" con nutricionistas**: Reemplazo total por *«asistente virtual 24/7 guiado por tu propio plan y criterio»* para neutralizar barreras de entrada y paradigmas de sustitución profesional.
+    *   Incorporación formal como **Regla 16** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
 
 
 

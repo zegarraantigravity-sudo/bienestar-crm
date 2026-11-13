@@ -95,6 +95,17 @@
   1. El mensaje completo formateado para WhatsApp listo para copiar y pegar.
   2. La ruta exacta del archivo Word generado en `cotizaciones/Cotizacion_<Nombre>.docx` y en la carpeta `Downloads`.
 
+## 16. Protocolo Anti-Descarte por Preguntas de Precio y Blindaje de Dolores Clínicos (Cero Mención de "IA")
+- **Prohibición Absoluta de Soltar Tarifas en Seco:** Cuando un prospecto pregunte *«¿cuál es el costo?»*, *«¿cuánto vale?»* o *«precios»*, queda TERMINANTEMENTE PROHIBIDO responder con una cifra plana o monto total en frío (ej. *«cuesta S/ 400 al mes»*). El prospecto no conoce el valor del aplicativo, lo compara con calculadoras baratas de S/ 50 y nos descarta de inmediato.
+- **Micro-Costo Adaptable:** La respuesta sobre precio debe indicar siempre que la inversión es sumamente accesible y se adapta a la cantidad de pacientes del profesional (mencionando si acaso el micro-costo de *«desde S/ 13 por paciente al mes»*).
+- **Sembrado Obligatorio de los 3 Dolores Reales (Mensajes Cortos y Quirúrgicos):**
+  1. *Ahorro de tiempo:* Dejar de perder 15 a 20 horas a la semana armando menús y PDFs a mano.
+  2. *WhatsApp libre:* Asistente virtual 24/7 que responde dudas de recetas y porciones basadas estrictamente en su plan, liberando sus noches y fines de semana.
+  3. *Retención y estatus:* Entregarle **su propia App móvil** con su nombre y logo oficial para que el paciente no abandone la dieta y renueve mes a mes.
+- **Prohibición Expresa de la palabra "IA":** En el gremio de nutricionistas clínicos y médicos, la palabra "IA" genera escepticismo, paradigmas de reemplazo o desconfianza clínica. Usar siempre términos como **«asistente virtual 24/7»** o **«soporte automatizado guiado por tu propio criterio y plan»**.
+- **Puente Obligatorio al Zoom de 10 Minutos:** El único objetivo es llevar al prospecto a la demostración en pantalla mediante Doble Alternativa, porque en el Zoom es donde ven la App en vivo, se enamoran del producto y el valor supera cualquier objeción de precio.
+
+
 
 
 
