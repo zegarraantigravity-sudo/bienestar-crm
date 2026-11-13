@@ -35,9 +35,10 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - NUNCA ofrecer, prometer, sugerir ni mencionar enviar videos de demostración a ningún prospecto o lead.
 - El ÚNICO objetivo y canal comercial oficial para mostrar el funcionamiento del aplicativo móvil a un cliente potencial es coordinar y agendar una reunión por ZOOM en vivo para mostrar la plataforma en pantalla.
 
-### 5. Regla de Admisión al CRM (Solo Leads con Interés y Zoom Agendado)
-- SOLO registrar a un nuevo prospecto en la base de datos de Supabase cuando confirme interés real y se coordine o agende una reunión por ZOOM en vivo.
-- Las conversaciones iniciales de prospección en frío o respuestas tentativas NO se ingresan al CRM hasta que se concrete el compromiso formal de un Zoom demostrativo.
+### 5. Regla de Admisión, Registro Temprano y Cadena de Seguimiento en el CRM
+- **Registro Inmediato de Prospectos que Responden:** Todo prospecto que responda a la prospección diaria (WhatsApp o Facebook) y al que Alberto le despache un mensaje de respuesta, se registra OBLIGATORIAMENTE en la base de datos de Supabase en estado `contacto_inicial` con su bitácora y una `next_action_date` viva (24 a 48 horas).
+- **Cadena de Seguimiento de 3 Toques:** Si el prospecto no responde al mensaje de respuesta, se le realizan hasta 2 toques adicionales de seguimiento estructurado. Si tras el 3er toque persiste el silencio absoluto, se mueve formalmente a `perdido`.
+- **Compromiso de Zoom:** Cuando el prospecto acepta y pacta la reunión por Zoom, avanza formalmente al estado `cita_agendada`.
 
 ### 6. Información Veraz de Producto y Cero Supuestos de Mercados Locales
 - NUNCA inventar características o estados de la plataforma (por ejemplo, afirmar que ya está publicada en Play Store o App Store bajo marcas individuales).
@@ -122,12 +123,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Prohibición Expresa de la palabra "IA":** En el gremio de nutricionistas clínicos y médicos, la palabra "IA" genera escepticismo, paradigmas de reemplazo o desconfianza clínica. Usar siempre términos como **«asistente virtual 24/7»** o **«soporte automatizado guiado por tu propio criterio y plan»**.
 - **Puente Obligatorio al Zoom de 10 Minutos:** El único objetivo es llevar al prospecto a la demostración en pantalla mediante Doble Alternativa, porque en el Zoom es donde ven la App en vivo, se enamoran del producto y el valor supera cualquier objeción de precio.
 
-### 17. Protocolo Obligatorio de Auditoría Matutina de Vencidos en Supabase (Cero Prospectos Olvidados)
+### 17. Protocolo Obligatorio de Auditoría Matutina de Vencidos y Cadena Ininterrumpida de Próximas Acciones
+- **Regla Inquebrantable de Cadena Continua:** NINGÚN lead en estado activo (`contacto_inicial`, `cita_agendada`, `presentacion_realizada`, etc.) puede quedarse jamás sin `next_action` y `next_action_date`. Cada vez que Alberto despacha un mensaje o captura, se registra en la bitácora y se fija OBLIGATORIAMENTE la siguiente acción y fecha. La cadena de próximas acciones solo se detiene cuando el lead pasa formalmente a `cerrado_ganado` o `cerrado_perdido`.
 - **Consulta Obligatoria de Vencimientos Pasados:** Cuando Alberto pregunte *«¿qué tareas tenemos para hoy?»* o al inicio de cada jornada comercial, el asistente DEBE consultar obligatoriamente en Supabase la lista de todos los prospectos con fecha de próxima acción vencida (`next_action_date < hoy`).
 - **Estructura Obligatoria de Respuesta Diaria en 2 Bloques:**
-  1. **🚨 Bloque 1: Radar de Seguimientos Vencidos / Por Cerrar (Prioridad Máxima):** Todo lead con más de 24 a 48 horas en silencio tras un Zoom, entrega de código o propuesta, mostrando su estado exacto y el mensaje de descarte o cierre listo para copiar y enviar. Si tras el toque no responde, se cierra y se mueve formalmente a `perdido` o `pausado` para no acumular basura.
+  1. **🚨 Bloque 1: Radar de Seguimientos Vencidos / Por Cerrar (Prioridad Máxima):** Todo lead rezagado del día anterior con mensaje de descarte o cierre listo para copiar y enviar. Si tras el toque no responde en 24h, se cierra y se mueve formalmente a `perdido` o `pausado` para no acumular basura.
   2. **🎯 Bloque 2: Citas y Acciones del Día (Prioridad 2):** Los Zooms, llamadas y toques programados estrictamente para el día corriente.
-- **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Ningún lead puede quedarse en el limbo sin seguimiento ni cierre formal.
+- **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Es imperdonable tener tareas olvidadas en el CRM.
+
 
 
 
@@ -3702,6 +3705,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Consulta Obligatoria de Vencimientos Pasados**: Cada inicio de jornada o ante la pregunta *«¿qué tareas tenemos para hoy?»*, el asistente debe consultar en Supabase todos los prospectos con `next_action_date < hoy` antes de presentar las citas del día.
     *   **Estructura Obligatoria en 2 Bloques**: 1) *Bloque de Vencidos / Por Cerrar* (prioridad máxima con mensaje de descarte listo), y 2) *Citas del Día*.
     *   Incorporación formal como **Regla 17** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
+### 363. Blindaje Operativo: Registro Temprano de Prospectos y Cadena Continua de Próximas Acciones (13 de Noviembre de 2026 - 12:25 p. m.)
+*   **Alineación Oficial del Flujo Comercial de Prospección y CRM**:
+    *   Alberto instruyó y formalizó el flujo ininterrumpido del sistema de ventas diario:
+    *   **Registro Inmediato en Prospección**: Todo prospecto que responde a la batería diaria (30 WhatsApps / 15 Facebooks) y recibe respuesta de Alberto se registra en Supabase en `contacto_inicial` con bitácora y próxima acción viva a 24-48 horas.
+    *   **Cadena de 3 Toques de Seguimiento**: Se ejecutan hasta 2 toques adicionales si no contesta. Si al 3er mensaje no hay respuesta, se cierra y se mueve a `perdido`.
+    *   **Ininterrupción de Próxima Acción**: Ningún lead abierto puede quedarse sin `next_action` y `next_action_date`. La cadena de seguimiento solo termina al ganar o perder el lead.
+    *   Actualización oficial de **Regla 5** y **Regla 17** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
 
 
 
