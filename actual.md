@@ -3785,6 +3785,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear respuesta para Zoom de 10 min hoy (4:00 o 6:30 p. m.); si no confirma, despachar 2do toque de seguimiento mañana.
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m.
 
+### 370. Blindaje de Escucha Activa, Calibración de Regla 7 y Avance de Cita con Katty (13 de Noviembre de 2026 - 02:20 p. m.)
+*   **Blindaje de Escucha Activa y Prohibición de Respuestas Sordas (Regla 18)**:
+    *   Alberto corrigió severamente la tendencia a forzar robóticamente el día de hoy cuando el prospecto ya delimitó explícitamente su ventana de tiempo.
+    *   **Incorporación en Regla 18**: Queda terminantemente prohibido actuar como un autómata que ignora lo que el cliente acaba de escribir para empujar una respuesta prefabricada o forzar una regla ciega. El asistente DEBE leer palabra por palabra el mensaje del prospecto, interpretar su intención real y respetar sus límites explícitos (fechas, disponibilidad, decisiones tomadas).
+*   **Calibración Obligatoria de Regla 7 (Ventana Temporal del Cliente)**:
+    *   Si el prospecto acepta la reunión pero delimita formalmente su disponibilidad para el futuro (*«la otra semana»*, *«el martes»*, etc.), queda terminantemente prohibido insistir tercamente en conectar hoy. La técnica de Doble Alternativa de Alex Dey se aplica **DENTRO de la ventana temporal indicada por el cliente** para fijar de inmediato día y hora exacta (*«¿lunes a las 11:00 a. m. o martes a las 4:30 p. m.?»*), respetando su decisión y asegurando el compromiso sin parecer desesperado.
+*   **Actualización de Bitácora de Katty en Supabase (981fd227-38c6-49ba-bcd8-6dcb0990560c)**:
+    *   Katty aceptó el Zoom para la próxima semana (02:11 p. m.).
+    *   Alberto despachó validación de su tiempo y Doble Alternativa para la próxima semana (02:18 p. m.): *«¡Totalmente de acuerdo, Katty! Quedamos para la próxima semana con calma. 🤝 Para apartarte el espacio en agenda: ¿te acomoda mejor el lunes a las 11:00 a. m. o prefieres el martes por la tarde a las 4:30 p. m.? Son solo 10 minutitos.»*.
+    *   *Próxima Acción*: Monitorear confirmación de día y hora para Zoom la próxima semana (Lunes 11:00 a. m. o Martes 4:30 p. m.); fecha fijada para el sábado 14 de noviembre a las 11:00 a. m.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
