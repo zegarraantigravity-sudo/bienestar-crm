@@ -135,6 +135,8 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 - **Principio Inquebrantable:** Queda TERMINANTEMENTE PROHIBIDO redactar o sugerir un mensaje de seguimiento o cierre sin antes haber auditado la bitácora completa en Supabase y la última interacción visual del chat de WhatsApp.
 - **Detección de Toques Previos:** El asistente debe verificar siempre cuántos toques previos se enviaron, qué se preguntó exactamente y si fueron leídos en visto/azul, para evitar repetir preguntas como disco rayado (ej. insistir por tercera vez sobre el mismo pendiente) y calibrar la técnica exacta de Alex Dey (seguimiento suave vs mensaje de ruptura/descarte definitivo).
 - **Alineación de Canales:** Garantizar que la bitácora del CRM refleje con exactitud la realidad de lo ocurrido en el chat de WhatsApp.
+- **Registro Exhaustivo y Fiel de cada Interacción:** CADA captura, texto, audio o respuesta que Alberto comparta de un prospecto DEBE registrarse de inmediato y con máxima fidelidad en su bitácora de Supabase. Queda TERMINANTEMENTE PROHIBIDO redactar resúmenes flojos, vagos o incompletos que omitan el desenlace real de la conversación (ej. si el cliente dijo «exacto» tras una retirada de alto estatus, debe registrarse la conclusión real y cerrar o pausar formalmente el lead, en lugar de dejar tareas falsas abiertas que luego figuren como vencidas).
+
 
 
 
@@ -3725,6 +3727,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Al contrastar el chat en vivo de Coach Christian Montes con la bitácora de Supabase, Alberto evidenció que ya se habían enviado 2 toques previos el 6 y 9 de noviembre que fueron leídos en visto, lo que transformó completamente la respuesta técnica de un simple seguimiento a un mensaje de ruptura/descarte definitivo de alta postura.
     *   **Prohibición de Mensajes a Ciegas**: Queda terminantemente prohibido redactar respuestas sin contrastar la bitácora completa y la captura de WhatsApp más reciente, evitando sonar como un disco rayado que repite preguntas redundantes.
     *   Incorporación formal como **Regla 18** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
+### 365. Blindaje del Registro: Obligatoriedad de Bitácoras Fidedignas y Cierre Formal de Casos (13 de Noviembre de 2026 - 01:05 p. m.)
+*   **Fidelidad Absoluta en el Registro del CRM**:
+    *   A partir del caso de Coach Yohansel Miguel (donde se ejecutó un cierre de alto estatus ratificado con un «Exacto» pero se dejó una próxima acción abierta por un resumen incompleto), Alberto blindó la obligatoriedad de volcar con total fidelidad cada conclusión y desenlace de chat en la bitácora de Supabase.
+    *   **Prohibición de Resúmenes Vagos**: Queda terminantemente prohibido omitir el desenlace final o dejar tareas abiertas en prospectos cuya relación ya fue pausada o cerrada formalmente.
+    *   Actualización formal de **Regla 18** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
 
 
 
