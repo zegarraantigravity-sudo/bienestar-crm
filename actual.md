@@ -3775,6 +3775,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear respuesta de la CM para derivación con dirección médica / Zoom; si persiste silencio, despachar 2do toque de seguimiento.
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 02:05 p. m. (plazo vivo de 24h).
 
+### 369. Admisión Temprana y Registro en Supabase de Katty (13 de Noviembre de 2026 - 02:09 p. m.)
+*   **Admisión Temprana en Caliente (Regla 5 y Regla 14)**:
+    *   La nutricionista independiente Katty (+51 956 692 178 - Perú) respondió al contacto en frío indicando que revisaría el enlace enviado.
+    *   Alberto despachó de inmediato un mensaje aclarando que el portal web exterior es solo una muestra y que el verdadero valor clínico radica en la App móvil por dentro (ahorro de 15 horas semanales y asistente 24/7 libre de recetas en WhatsApp), aplicando Doble Alternativa para Zoom de 10 min hoy mismo (4:00 p. m. o 6:30 p. m.).
+    *   **Registro en Supabase (981fd227-38c6-49ba-bcd8-6dcb0990560c)**:
+        *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+        *   *Bitácora*: Registro exhaustivo del saludo, su respuesta «lo voy a revisar» y el cierre con doble alternativa para Zoom.
+        *   *Próxima Acción*: Monitorear respuesta para Zoom de 10 min hoy (4:00 o 6:30 p. m.); si no confirma, despachar 2do toque de seguimiento mañana.
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
