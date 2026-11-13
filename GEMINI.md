@@ -115,6 +115,12 @@
   2. **🎯 Bloque 2: Citas y Acciones del Día (Prioridad 2):** Los Zooms, llamadas y toques programados estrictamente para el día corriente.
 - **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Es imperdonable tener tareas olvidadas en el CRM.
 
+## 18. Auditoría Obligatoria de Bitácora y Última Interacción en WhatsApp antes de Sugerir Respuestas
+- **Principio Inquebrantable:** Queda TERMINANTEMENTE PROHIBIDO redactar o sugerir un mensaje de seguimiento o cierre sin antes haber auditado la bitácora completa en Supabase y la última interacción visual del chat de WhatsApp.
+- **Detección de Toques Previos:** El asistente debe verificar siempre cuántos toques previos se enviaron, qué se preguntó exactamente y si fueron leídos en visto/azul, para evitar repetir preguntas como disco rayado (ej. insistir por tercera vez sobre el mismo pendiente) y calibrar la técnica exacta de Alex Dey (seguimiento suave vs mensaje de ruptura/descarte definitivo).
+- **Alineación de Canales:** Garantizar que la bitácora del CRM refleje con exactitud la realidad de lo ocurrido en el chat de WhatsApp.
+
+
 
 
 

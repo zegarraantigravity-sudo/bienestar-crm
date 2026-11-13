@@ -131,6 +131,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
   2. **🎯 Bloque 2: Citas y Acciones del Día (Prioridad 2):** Los Zooms, llamadas y toques programados estrictamente para el día corriente.
 - **Prohibición Terminante:** Queda TERMINANTEMENTE PROHIBIDO limitarse a reportar únicamente lo agendado para el día de hoy ignorando las tareas vencidas de días anteriores. Es imperdonable tener tareas olvidadas en el CRM.
 
+### 18. Auditoría Obligatoria de Bitácora y Última Interacción en WhatsApp antes de Sugerir Respuestas
+- **Principio Inquebrantable:** Queda TERMINANTEMENTE PROHIBIDO redactar o sugerir un mensaje de seguimiento o cierre sin antes haber auditado la bitácora completa en Supabase y la última interacción visual del chat de WhatsApp.
+- **Detección de Toques Previos:** El asistente debe verificar siempre cuántos toques previos se enviaron, qué se preguntó exactamente y si fueron leídos en visto/azul, para evitar repetir preguntas como disco rayado (ej. insistir por tercera vez sobre el mismo pendiente) y calibrar la técnica exacta de Alex Dey (seguimiento suave vs mensaje de ruptura/descarte definitivo).
+- **Alineación de Canales:** Garantizar que la bitácora del CRM refleje con exactitud la realidad de lo ocurrido en el chat de WhatsApp.
+
+
 
 
 
@@ -3713,6 +3719,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Cadena de 3 Toques de Seguimiento**: Se ejecutan hasta 2 toques adicionales si no contesta. Si al 3er mensaje no hay respuesta, se cierra y se mueve a `perdido`.
     *   **Ininterrupción de Próxima Acción**: Ningún lead abierto puede quedarse sin `next_action` y `next_action_date`. La cadena de seguimiento solo termina al ganar o perder el lead.
     *   Actualización oficial de **Regla 5** y **Regla 17** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
+### 364. Blindaje Comercial: Incorporación de Regla 18 (Auditoría Obligatoria de Bitácora e Historial Visual de WhatsApp) (13 de Noviembre de 2026 - 12:40 p. m.)
+*   **Calibración Estratégica de Seguimientos Reales**:
+    *   Al contrastar el chat en vivo de Coach Christian Montes con la bitácora de Supabase, Alberto evidenció que ya se habían enviado 2 toques previos el 6 y 9 de noviembre que fueron leídos en visto, lo que transformó completamente la respuesta técnica de un simple seguimiento a un mensaje de ruptura/descarte definitivo de alta postura.
+    *   **Prohibición de Mensajes a Ciegas**: Queda terminantemente prohibido redactar respuestas sin contrastar la bitácora completa y la captura de WhatsApp más reciente, evitando sonar como un disco rayado que repite preguntas redundantes.
+    *   Incorporación formal como **Regla 18** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
+
 
 
 
