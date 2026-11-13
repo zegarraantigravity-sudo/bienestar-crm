@@ -3750,6 +3750,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Rómulo e Isabel (Bolivia)*: Próxima acción calibrada en Supabase para el 1 de diciembre a las 10:00 a. m. (campaña Reto de Enero).
     *   **Resultado Operativo**: El radar comercial de prospectos activos quedó 100% al día y sincronizado con las conversaciones reales de WhatsApp.
 
+### 367. Admisión Temprana y Registro en Supabase de Prospectos de Prospección Matutina (13 de Noviembre de 2026 - 01:54 p. m.)
+*   **Admisión Temprana (Regla 5 y Regla 16)**:
+    *   Alberto autorizó el ingreso formal de los 2 prospectos que respondieron a la prospección matutina preguntando por precio.
+    *   **Prospectos Registrados en Supabase**:
+        1.  *Colega Nutricionista (+51 956 377 768 | ID: e62fb890-5fcf-4536-a6ac-d5a586139249)*:
+            *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+            *   *Bitácora*: Registro cronológico de su consulta de precio (10:38 a. m.), su objeción («Uso una de menor costo», 10:44 a. m.) y el mensaje despachado por Alberto atacando los 3 dolores clínicos reales (15h en PDFs, WhatsApp 24/7 libre de recetas/porciones, retención de pacientes con App móvil propia) con invitación a Zoom de 10 min.
+            *   *Próxima Acción*: Monitorear respuesta a manejo de objeción por dolores clínicos y Zoom; fijada para el sábado 14 de noviembre a las 11:00 a. m.
+        2.  *NUTRISANA (54387ad6-b2df-4224-8809-b5291e9dba28)*:
+            *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+            *   *Bitácora*: Consulta institucional pidiendo identificación y costo (10:40 y 10:44 a. m.), y despacho de propuesta de valor institucional por Alberto Zegarra.
+            *   *Próxima Acción*: Monitorear respuesta a presentación de propuesta y costos; fijada para el sábado 14 de noviembre a las 11:00 a. m.
+    *   **Impacto Operativo**: El 100% de los prospectos que interactuaron durante la mañana quedan debidamente ingresados en la base de datos, con bitácora fidedigna y cadena continua de seguimiento para el radar matutino de mañana sábado.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
