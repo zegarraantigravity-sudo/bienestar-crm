@@ -3734,13 +3734,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Prohibición de Resúmenes Vagos**: Queda terminantemente prohibido omitir el desenlace final o dejar tareas abiertas en prospectos cuya relación ya fue pausada o cerrada formalmente.
     *   Actualización formal de **Regla 18** en `AGENTS.md`, `GEMINI.md` y `actual.md`.
 
-
-
-
-
-
-
-
+### 366. Saneamiento Integral del Pipeline y Calibración de Fechas en Supabase (13 de Noviembre de 2026 - 01:25 p. m.)
+*   **Depuración Quirúrgica del Embudo**:
+    *   Alberto lideró una auditoría exhaustiva uno por uno de todos los prospectos en seguimiento para erradicar tareas vencidas y dejar el pipeline 100% calibrado.
+    *   **Acciones Ejecutadas en Vivo**:
+        *   *L.N.C. Gladys (México)*: Despacho de mensaje de caducidad de código NUT-FLC-O02A (plazo 24h, fijado 14/nov 11:00 a. m.).
+        *   *Pablo Briceño (Perú)*: Despacho de mensaje de ruptura / descarte definitivo tras 3 toques en visto (plazo 24h, fijado 14/nov 12:30 p. m.).
+        *   *Coach Christian Montes (Perú)*: Despacho de mensaje de ruptura / descarte definitivo tras 2 toques en visto sobre Camila y ejercicios (plazo 24h, fijado 14/nov 12:37 p. m.).
+        *   *Cinthya Puppi (Perú)*: Despacho de primer toque post-prueba para proyección con alumnas de ACTÍVA-T (plazo 24h, fijado 14/nov 11:00 a. m.).
+        *   *Frank Serapion (Perú)*: Prototipo entregado con éxito; reagendado formalmente para el lunes 16 de noviembre post-lanzamiento.
+        *   *Coach Yohansel Miguel (R. Dominicana)*: Actualizado formalmente a cerrado_perdido tras retirada estratégica ratificada con «Exacto» (sin tareas pendientes).
+        *   *Coach Hybrido Aesthetics (Bolivia)*: Despacho de mensaje de ruptura tras inasistencia y 48h de silencio (plazo 24h, fijado 14/nov 01:09 p. m.).
+        *   *Sandrita FITNESS (Bolivia)*: Despacho de mensaje de ruptura tras inasistencia a sala y 4 días de visto (plazo 24h, fijado 14/nov 01:17 p. m.).
+        *   *Rosa Freire (Ecuador)*: Próxima acción calibrada en Supabase para el 28 de noviembre a las 10:00 a. m. (fin de mes / llegada de insumos FuXion).
+        *   *Rómulo e Isabel (Bolivia)*: Próxima acción calibrada en Supabase para el 1 de diciembre a las 10:00 a. m. (campaña Reto de Enero).
+    *   **Resultado Operativo**: El radar comercial de prospectos activos quedó 100% al día y sincronizado con las conversaciones reales de WhatsApp.
 
 ---
 
