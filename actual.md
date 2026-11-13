@@ -3764,6 +3764,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
             *   *Próxima Acción*: Monitorear respuesta a presentación de propuesta y costos; fijada para el sábado 14 de noviembre a las 11:00 a. m.
     *   **Impacto Operativo**: El 100% de los prospectos que interactuaron durante la mañana quedan debidamente ingresados en la base de datos, con bitácora fidedigna y cadena continua de seguimiento para el radar matutino de mañana sábado.
 
+### 368. Admisión Temprana y Registro en Supabase de Nutri.tiva Consultoría Nutricional (13 de Noviembre de 2026 - 02:05 p. m.)
+*   **Admisión Temprana en Caliente (Regla 5 y Regla 14)**:
+    *   La Community Manager de Nutri.tiva Consultoría Nutricional (+51 957 228 876 - Perú) respondió al contacto en frío agradeciendo el mensaje y solicitando nombre y motivo.
+    *   Alberto despachó un mensaje con autoridad ejecutiva destacando los dolores de consulta (App móvil oficial con su nombre y logo, menús clínicos de 28 días y asistente 24/7 sin colapso de WhatsApp) y solicitando contacto con dirección médica / doctoras del equipo para Zoom de 10 min.
+    *   **Registro en Supabase (f86492b0-b90a-483b-829e-4a2704c6c456)**:
+        *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+        *   *Cliente*: Equipo de 4 nutricionistas colegiadas.
+        *   *Bitácora*: Registro fiel de la respuesta de la CM y el mensaje de autoridad ejecutiva despachado por Alberto.
+        *   *Próxima Acción*: Monitorear respuesta de la CM para derivación con dirección médica / Zoom; si persiste silencio, despachar 2do toque de seguimiento.
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 02:05 p. m. (plazo vivo de 24h).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
