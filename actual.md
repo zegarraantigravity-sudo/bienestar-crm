@@ -3850,6 +3850,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: 🎥 Ejecución de Zoom demostrativo de 10 min en vivo con Óscar (Colombia) para presentar plataforma y cerrar Plan 30 ($120 USD / mes - anticipo $60 USD).
         *   *Fecha y Hora*: Sábado 14 de noviembre de 2026 a las 10:30 a. m. (2026-11-14T10:30:00).
 
+### 376. Seguimiento Matutino y Confirmación de Horario para Zoom con Ricardo Restrepo (14 de Noviembre de 2026 - 10:25 a. m.)
+*   **Gestión de Cita y Acompañamiento Calibrado (Regla 7 y Regla 18)**:
+    *   Tras el mensaje enviado anoche a Ricardo Restrepo (@rianreba - Coach Perú) ofreciendo reprogramar para el sábado 14 de noviembre con Doble Alternativa, y habiendo verificado lectura con doble check azul, Alberto despachó a las 10:24 a. m. un toque cálido matutino para confirmar su preferencia horaria.
+    *   **Mensaje Despachado por WhatsApp**: *«¡Hola Ricardo! Buen día, hermano. 🤝 Paso rápido por aquí para confirmar si te acomoda que nos conectemos hoy a las 12:00 m. o si prefieres que lo dejemos con más calma para la tarde a las 4:30 p. m. (son solo 10 minutitos en pantalla). ¡Un abrazo, me confirmas para pasarte el link!»*.
+    *   **Actualización en Supabase (19874edf-64d0-4127-ac6d-f66a7775401f)**:
+        *   *Estado*: cita_agendada.
+        *   *Bitácora*: Registro fidedigno del toque de confirmación matutino con Doble Alternativa.
+        *   *Próxima Acción*: Monitorear confirmación de horario de Ricardo para Zoom de hoy (12:00 m. o 4:30 p. m.) y enviar link de sala.
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 12:00 m. (2026-11-14T12:00:00).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
