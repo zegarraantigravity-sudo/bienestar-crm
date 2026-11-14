@@ -3818,6 +3818,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear respuesta de Ricardo para conexión hoy o fijar horario de Zoom para mañana sábado (12:00 m. o 4:30 p. m.).
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 09:00 a. m.
 
+### 373. Admisión Temprana y Registro en Supabase de Ettore Fitness Trainer (13 de Noviembre de 2026 - 10:04 p. m.)
+*   **Admisión Temprana en Caliente (Regla 5 y Regla 14)**:
+    *   Ettore Fitness Trainer (@ettorefelix) respondió al contacto en frío de la noche consultando cómo podían ayudar.
+    *   Alberto despachó un mensaje de presentación oficial destacando los dolores de coach deportivo (dar el salto de PDFs a App móvil oficial con su nombre y logo, rutinas en video y nutrición automatizada), con Doble Alternativa para Zoom de 10 min mañana sábado (12:00 m. o 05:00 p. m.).
+    *   **Registro en Supabase (880e48bd-0f3c-4301-82d2-fcf39a9c0d86)**:
+        *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+        *   *Cliente*: Coach deportivo / Fitness trainer.
+        *   *Bitácora*: Registro completo del saludo y mensaje de valor con propuesta de Zoom.
+        *   *Próxima Acción*: Monitorear respuesta para Zoom mañana sábado (12:00 m. o 5:00 p. m.); si persiste silencio, despachar 2do toque.
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m. (plazo vivo de 24h).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
