@@ -3908,6 +3908,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: Monitorear feedback de propuesta formal ($120 USD / Plan 30) y prueba de app con código NUT-FLC-DOKN tras su análisis de fin de semana.
     *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-16T11:00:00`).
 
+### 381. Depuración Quirúrgica del Pipeline: Cierre Formal de 5 Casos Inactivos tras Vencimiento de 24h (14 de Noviembre de 2026 - 03:45 p. m.)
+*   **Saneamiento y Blindaje del Embudo Comercial (Regla 5, Regla 17 y Regla 18)**:
+    *   Alberto completó la auditoría visual de los 5 prospectos que tenían plazo de 24 horas tras mensajes de ruptura y avisos de caducidad enviados el 13 de noviembre.
+    *   En las 5 capturas de WhatsApp se constató que todos leyeron los mensajes con doble check azul y mantuvieron silencio absoluto durante más de 24 horas, aceptando tácitamente la salida y liberación de cupo.
+    *   **Casos Procesados y Actualizados a `cerrado_perdido` en Supabase**:
+        1.  **Pablo Briceño** (`4a291370-8007-4a4d-b81d-54a9f5c57ead` — Coach Perú): Leído en visto desde las 12:29 p. m. de ayer; silencio de más de 27 horas.
+        2.  **Coach Christian Montes** (`2f6fde82-0c68-42ce-bcf7-986325365e7c` — Baloncesto Perú): Leído en visto desde las 12:35 p. m. de ayer sobre academia y ejercicios de Camila; silencio de más de 27 horas.
+        3.  **Coach Hybrido Aesthetics** (`4214218e-1624-437d-b446-3310044d59bf` — Bolivia): Leído en visto desde la 01:09 p. m. de ayer tras inasistencia a Zoom; silencio de más de 26 horas.
+        4.  **Sandrita FITNESS** (`affa7a11-edc1-48bc-93d6-8078a80aeff0` — Bolivia): Leído en visto desde la 01:17 p. m. de ayer tras abandono de sala y silencio desde el lunes; más de 26 horas de visto.
+        5.  **L.N.C. Gladys** (`59d2c802-f338-428c-9d40-b8be64e56302` — Nutrióloga México): Leído en visto desde las 11:25 a. m. de ayer sobre caducidad y liberación de cupo del código `NUT-FLC-O02A`; más de 28 horas de silencio.
+    *   **Impacto Operativo**: Los 5 casos quedaron archivados formalmente en `cerrado_perdido`, con bitácora fidedigna de cierre y sin tareas pendientes (`next_action: null`), reduciendo el pipeline activo y eliminando alertas vencidas en el CRM.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
