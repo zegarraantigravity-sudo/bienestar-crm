@@ -3808,6 +3808,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: 🎥 Ejecución de Zoom demostrativo de 10 min en vivo con Katty Nutris para mostrar plataforma y cerrar Plan 30 (S/ 400 - anticipo S/ 200). Despachar enlace de sala a las 04:15 p. m.
     *   *Fecha y Hora*: **Martes 17 de noviembre de 2026 a las 04:30 p. m. (2026-11-17T16:30:00)**.
 
+### 372. Reprogramación Sincera y Calibración de Cita con Ricardo Restrepo (13 de Noviembre de 2026 - 09:10 p. m.)
+*   **Gestión de Cita y Alta Postura (Regla 6 y Regla 18)**:
+    *   Alberto llegó a casa a las 09:06 p. m. tras un imprevisto que impidió iniciar la sesión a las 08:00 p. m.
+    *   Se despachó de inmediato un mensaje natural y sincero a Ricardo Restrepo explicando que recién llegaba a casa, ofreciendo entrar de inmediato 10 minutos a la sala si aún continuaba disponible, o reprogramar para el sábado 14 de noviembre mediante Doble Alternativa (12:00 m. o 04:30 p. m.).
+    *   **Actualización en Supabase (19874edf-64d0-4127-ac6d-f66a7775401f)**:
+        *   *Estado*: cita_agendada (reprogramación activa).
+        *   *Bitácora*: Registro cronológico de la disculpa sincera y la propuesta de conexión inmediata o sábado con doble alternativa.
+        *   *Próxima Acción*: Monitorear respuesta de Ricardo para conexión hoy o fijar horario de Zoom para mañana sábado (12:00 m. o 4:30 p. m.).
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 09:00 a. m.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
