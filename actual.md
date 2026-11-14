@@ -3933,6 +3933,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Se registró su número telefónico oficial (`+51 960 169 576`), su especialidad clínica en fenotipo metabólico y el mensaje despachado por Alberto a las 03:52 p. m. con Doble Alternativa para Zoom hoy mismo (4:45 p. m. o 5:30 p. m.).
     *   **Resultado Operativo**: El 100% de las tareas del CRM quedaron calibradas, erradicando alertas vencidas y dejando la tarde libre para la respuesta de Nutrisana y el Zoom de las 06:30 p. m. con Ricardo Restrepo.
 
+### 383. Admisión Temprana, Interacción con Bot de IA y Captación de Datos Clave de Bienestar 4 áreas (Herbalife Huancayo) (14 de Noviembre de 2026 - 04:55 p. m.)
+*   **Admisión Temprana y Descubrimiento de Lead de Alto Valor (Regla 5 y Regla 12)**:
+    *   A las 04:08 p. m., la cuenta de empresa Bienestar 4 áreas (@victor_tarrillo1) respondió a la prospección mediante su bot oficial de IA de WhatsApp Business, elogiando la estructura del enlace y ofreciendo conectar con el asesor de plataforma del centro.
+    *   Alberto facilitó su número de contacto directo (+51 978 438 246) para coordinar 10 minutos por Zoom.
+    *   A las 04:31 p. m., el bot de IA registró los datos de Alberto y reveló la información oficial de la empresa: WhatsApp directo `+51 935 629 435`, correo `tarrillohbl@gmail.com` y ubicación en Huancayo, Perú, confirmando que se trata de un centro de distribución y asesoría de Herbalife (Regla 12).
+    *   Alberto despachó a las 04:54 p. m. un mensaje de alto estatus saludando al equipo de Huancayo y dejando el canal abierto para que el asesor humano tome el contacto.
+*   **Registro en Supabase (c7adef5b-a1c0-4b93-bc3f-9521a6f8c34c)**:
+    *   *Estado*: **prospecto** (Plan 30 - S/ 400.00 / mes).
+    *   *Contacto*: Víctor Tarrillo (Bienestar 4 áreas - Herbalife Huancayo).
+    *   *Teléfono / Correo*: `+51 935 629 435` | `tarrillohbl@gmail.com`.
+    *   *Bitácora*: Registro exhaustivo del intercambio con el bot de IA y el mensaje de cierre para el asesor humano.
+    *   *Próxima Acción*: Monitorear contacto del asesor humano de Bienestar 4 áreas; si no escriben en el fin de semana, despachar mensaje directo al +51 935 629 435 el lunes.
+    *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:30 a. m.** (`2026-11-16T11:30:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
