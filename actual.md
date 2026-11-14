@@ -3860,6 +3860,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear confirmación de horario de Ricardo para Zoom de hoy (12:00 m. o 4:30 p. m.) y enviar link de sala.
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 12:00 m. (2026-11-14T12:00:00).
 
+### 377. Presentación Realizada con Óscar (Colombia), Despacho de Propuesta Formal ($120 USD), Cotizacion_Oscar.pdf y Código NUT-FLC-DOKN (14 de Noviembre de 2026 - 11:36 a. m.)
+*   **Presentación en Vivo y Transición a Cierre por Insumos y Prueba (Regla 4, Regla 7 y Regla 18)**:
+    *   A las 10:30 a. m. se llevó a cabo el Zoom demostrativo con Óscar (@arteoscar7 - Colombia), mostrándole la plataforma y el funcionamiento de la App móvil por dentro.
+    *   Al concluir el tiempo de la sala y tras intentar pasar a Meet, Óscar envió un audio indicando que se ocupó, solicitó las tarifas oficiales y mencionó que este fin de semana evaluará la propuesta frente a otra alternativa de aplicativo que le ofrecieron, proyectando su respuesta entre mañana domingo o a más tardar el lunes.
+    *   Alberto le respondió vía audio con calidez y a las 11:35 a. m. le remitió el kit completo comercial y técnico:
+        1.  **Propuesta Formal Internacional**: Desglose oficial de planes (Plan 30: $120.00 USD / mes | $4.00 USD x alumno | 50% de anticipo: $60.00 USD), bonificación del 100% en diseño/montaje ($850 USD gratis) y Bono de Acción Rápida de 48 horas (+15 días adicionales gratis).
+        2.  **Documento Formal**: Despacho de `Cotizacion_Oscar.pdf` (2 páginas).
+        3.  **Kit de Prueba de 28 Días como Alumno**: Paso a paso de instalación de PWA en `https://nutri-alberto.bienestarsinexcusas.site/`, código de activación exclusivo **`NUT-FLC-DOKN`** y video tutorial explicativo (10:46 min) para experimentar el flujo completo en su celular.
+*   **Actualización en Supabase (1b22c1c0-b263-4561-a6d9-ec2a75858f98)**:
+    *   *Estado*: Avanza formalmente a **`presentacion_realizada`**.
+    *   *Bitácora*: Registro cronológico fidedigno del Zoom realizado, intercambio de audios, envío de propuesta formal ($120 USD / mes), PDF, tutorial y código de prueba `NUT-FLC-DOKN`.
+    *   *Próxima Acción*: Monitorear feedback de propuesta formal y prueba de app con código NUT-FLC-DOKN tras su análisis de fin de semana.
+    *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-16T11:00:00`), respetando su ventana temporal delimitada.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
