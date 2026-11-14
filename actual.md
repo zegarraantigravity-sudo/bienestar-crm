@@ -3840,6 +3840,16 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear respuesta para Zoom mañana sábado (12:00 m. o 5:00 p. m.); si persiste silencio, despachar 2do toque.
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m. (plazo vivo de 24h).
 
+### 375. Despacho de Sala y Preparación de Cierre para Zoom con Óscar (Colombia) (14 de Noviembre de 2026 - 10:12 a. m.)
+*   **Acompañamiento y Calentamiento de Cita (Regla 4 y Regla 18)**:
+    *   Alberto despachó a las 10:10 a. m. el recordatorio puntual y el enlace oficial de sala Zoom para la demostración en vivo de las 10:30 a. m. con Óscar (@arteoscar7 - Colombia).
+    *   **Estrategia Comercial Calibrada**: Demostración de 10 minutos enfocada en la App móvil con rutinas en video y nutrición, asistente virtual 24/7, retorno de inversión del Plan 30 internacional ($120.00 USD / mes) y captación del 50% de anticipo ($60.00 USD vía Western Union) con bono de 15 días gratis de acción rápida.
+    *   **Actualización en Supabase (1b22c1c0-b263-4561-a6d9-ec2a75858f98)**:
+        *   *Estado*: cita_agendada.
+        *   *Bitácora*: Registro del envío del recordatorio y link de Zoom.
+        *   *Próxima Acción*: 🎥 Ejecución de Zoom demostrativo de 10 min en vivo con Óscar (Colombia) para presentar plataforma y cerrar Plan 30 ($120 USD / mes - anticipo $60 USD).
+        *   *Fecha y Hora*: Sábado 14 de noviembre de 2026 a las 10:30 a. m. (2026-11-14T10:30:00).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
