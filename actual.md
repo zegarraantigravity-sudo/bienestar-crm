@@ -3920,6 +3920,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         5.  **L.N.C. Gladys** (`59d2c802-f338-428c-9d40-b8be64e56302` — Nutrióloga México): Leído en visto desde las 11:25 a. m. de ayer sobre caducidad y liberación de cupo del código `NUT-FLC-O02A`; más de 28 horas de silencio.
     *   **Impacto Operativo**: Los 5 casos quedaron archivados formalmente en `cerrado_perdido`, con bitácora fidedigna de cierre y sin tareas pendientes (`next_action: null`), reduciendo el pipeline activo y eliminando alertas vencidas en el CRM.
 
+### 382. Calibración Estratégica del Pipeline para el Lunes y Actualización de Nutrisana (14 de Noviembre de 2026 - 04:20 p. m.)
+*   **Alineación de la Cadena de 3 Toques y Cero Tareas Vencidas (Regla 5, Regla 10 y Regla 17)**:
+    *   Alberto auditó visualmente los 5 prospectos que mantenían lectura en visto tras su primer mensaje de prospección/seguimiento (Colega Nutricionista, Cinthya Puppi, Nutri.tiva Consultoría, Ettore Fitness y Power Fitness EMS).
+    *   Por criterio comercial de alto estatus (evitar insistencia en sábado por la tarde y asegurar mayor ratio de respuesta al inicio de semana laboral), se calibraron sus próximas acciones de 2do toque para el **lunes 16 de noviembre por la mañana**:
+        1.  **Colega Nutricionista** (`+51 956 377 768` | ID: `e62fb890...`): 2do toque sobre comparativa de retención de pacientes vs software genérico (Lunes 16/nov 10:30 a. m.).
+        2.  **Cinthya Puppi** (`1c3a09a4...` — Dr Gym / ACTÍVA-T): 2do toque de acompañamiento con enfoque positivo sobre experiencia con código `NUT-FLC-IEPC` (Lunes 16/nov 10:30 a. m.).
+        3.  **Nutri.tiva Consultoría** (`+51 957 228 876` | ID: `f86492b0...`): 2do toque a la Community Manager para derivación con dirección médica / Zoom (Lunes 16/nov 11:00 a. m.).
+        4.  **Ettore Fitness Trainer** (`@ettorefelix` | ID: `880e48bd...`): 2do toque para coordinar Zoom de 10 min en la semana (Lunes 16/nov 11:30 a. m.).
+        5.  **Power Fitness EMS** (`@power.fitness.hyo` | ID: `b25101ad...`): 2do toque para coordinar Zoom con entrenadores o gerencia (Lunes 16/nov 11:30 a. m.).
+    *   **Actualización de Nutrisana (`54387ad6-b2df-4224-8809-b5291e9dba28`)**:
+        *   Se registró su número telefónico oficial (`+51 960 169 576`), su especialidad clínica en fenotipo metabólico y el mensaje despachado por Alberto a las 03:52 p. m. con Doble Alternativa para Zoom hoy mismo (4:45 p. m. o 5:30 p. m.).
+    *   **Resultado Operativo**: El 100% de las tareas del CRM quedaron calibradas, erradicando alertas vencidas y dejando la tarde libre para la respuesta de Nutrisana y el Zoom de las 06:30 p. m. con Ricardo Restrepo.
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
