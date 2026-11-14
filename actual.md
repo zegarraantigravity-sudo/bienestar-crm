@@ -3829,6 +3829,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Próxima Acción*: Monitorear respuesta para Zoom mañana sábado (12:00 m. o 5:00 p. m.); si persiste silencio, despachar 2do toque.
         *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m. (plazo vivo de 24h).
 
+### 374. Admisión Temprana y Registro en Supabase de Power Fitness EMS (13 de Noviembre de 2026 - 10:35 p. m.)
+*   **Admisión Temprana en Caliente (Regla 5 y Regla 14)**:
+    *   Power Fitness EMS (@power.fitness.hyo - Huancayo) respondió a la prospección nocturna solicitando nombres y motivo.
+    *   Alberto despachó un mensaje de presentación oficial con autoridad ejecutiva atacando dolores de centros de fitness (App móvil propia con nombre y logo, rutinas en video y nutrición para elevar la retención de alumnos y valor de membresías), con Doble Alternativa para Zoom de 10 min mañana sábado (12:00 m. o 05:00 p. m.).
+    *   **Registro en Supabase (b25101ad-eeb8-49fd-947e-dd3c701ad7e1)**:
+        *   *Estado*: prospecto (Plan 30 - S/ 400.00).
+        *   *Cliente*: Centro de fitness y electroestimulación muscular.
+        *   *Bitácora*: Registro cronológico del saludo inicial y el despacho de la propuesta ejecutiva para Zoom.
+        *   *Próxima Acción*: Monitorear respuesta para Zoom mañana sábado (12:00 m. o 5:00 p. m.); si persiste silencio, despachar 2do toque.
+        *   *Fecha Límite*: Sábado 14 de noviembre de 2026 a las 11:00 a. m. (plazo vivo de 24h).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
