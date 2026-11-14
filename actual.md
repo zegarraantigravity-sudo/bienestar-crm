@@ -3874,6 +3874,29 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: Monitorear feedback de propuesta formal y prueba de app con código NUT-FLC-DOKN tras su análisis de fin de semana.
     *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:00 a. m.** (`2026-11-16T11:00:00`), respetando su ventana temporal delimitada.
 
+### 378. Cierre y Agendamiento Formal de Zoom con Ricardo Restrepo para Hoy a las 6:30 p. m. (14 de Noviembre de 2026 - 11:53 a. m.)
+*   **Cierre por Doble Alternativa y Conclusión Exitoso (Regla 5, Regla 7 y Regla 18)**:
+    *   A las 10:52 a. m., Ricardo Restrepo (@rianreba - Coach Perú) respondió al seguimiento matutino indicando: *«430 no puedo»*, manteniendo vivo su interés pero descartando el horario de la tarde.
+    *   Alberto despachó a las 11:50 a. m. un reajuste adaptado a su disponibilidad (disponible desde las 4:00 p. m. en adelante) y a su preferencia nocturna, aplicando Doble Alternativa: *«¿te acomoda mejor a las 6:30 p. m. o prefieres en la noche a las 8:00 p. m. como ayer?»*.
+    *   A las 11:52 a. m., Ricardo eligió de forma inmediata: *«630»*.
+    *   Alberto ejecutó a las 11:53 a. m. el Cierre por Conclusión ratificando el acuerdo formal: *«¡Excelente, Ricardo! Queda agendadísimo para hoy a las 6:30 p. m. (en punto). 🤝 A las 6:15 p. m. te paso por aquí el enlace directo de la sala de Zoom para entrar puntual. ¡Un abrazo, nos vemos en la tarde en pantalla! 📲✨»*.
+*   **Actualización en Supabase (19874edf-64d0-4127-ac6d-f66a7775401f)**:
+    *   *Estado*: **cita_agendada**.
+    *   *Bitácora*: Registro cronológico fidedigno de la elección de Ricardo y la ratificación formal de la cita para las 6:30 p. m.
+    *   *Próxima Acción*: 🎥 Ejecución de Zoom demostrativo de 10 min en vivo con Ricardo Restrepo para presentar plataforma y cerrar Plan 30 (S/ 400 - anticipo S/ 200). Despachar link de sala a las 6:15 p. m.
+    *   *Fecha y Hora*: **Sábado 14 de noviembre de 2026 a las 06:30 p. m. (2026-11-14T18:30:00)**.
+
+### 379. Admisión Temprana y Registro en Supabase de LCN. Karen Luna (14 de Noviembre de 2026 - 12:00 m.)
+*   **Admisión Temprana en Caliente (Regla 5, Regla 13 y Regla 16)**:
+    *   La Licenciada en Ciencias de la Nutrición LCN. Karen Luna (+52 1 443 271 8448 - México) respondió al contacto en frío de las 10:09 a. m. preguntando a las 11:35 a. m.: *«Gracias, solo una duda como obtuvo mi número?»*.
+    *   Alberto despachó a las 12:00 m. una respuesta de alto estatus explicando el origen en directorios y redes profesionales de nutrición en México, sembrando los 3 dolores clínicos reales (ahorro de horas en PDFs, WhatsApp 24/7 sin colapso y App móvil oficial con su nombre y logo) y aplicando Doble Alternativa para Zoom de 10 min (hoy a las 5:00 p. m. o lunes por la mañana).
+*   **Registro en Supabase (b1072d0c-4b6a-4de5-9714-aa2787838118)**:
+    *   *Estado*: **prospecto** (Plan 30 - $120.00 USD / mes).
+    *   *Contacto*: LCN. Karen Luna (Nutrióloga Clínica).
+    *   *Bitácora*: Registro fiel del contacto en frío, su consulta de origen de datos y el mensaje de autoridad clínica con Doble Alternativa para Zoom.
+    *   *Próxima Acción*: Monitorear respuesta para Zoom de 10 min (hoy 5:00 p. m. o lunes por la mañana); si no contesta, despachar 2do toque mañana domingo.
+    *   *Fecha Límite*: **Domingo 15 de noviembre de 2026 a las 12:00 m.** (2026-11-15T12:00:00).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
