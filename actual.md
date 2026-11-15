@@ -3980,6 +3980,36 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Cierre Implacable al Zoom de 10 Minutos*: Uso de Doble Alternativa y Cierre por Conclusión de Alex Dey como cirujanos para llenar la agenda diaria y maximizar conversiones.
 *   **Compromiso Sellado**: El asistente asume formalmente su rol como colmillo comercial y cerrador voraz de Alberto para alcanzar y sostener la meta de los S/ 3,200.00 mensuales.
 
+### 386. Triple Admisión Temprana de Nutriólogas en México y Cierre de Rebote ante Objeción de Software (14 de Noviembre de 2026 - 09:55 p. m.)
+*   **Admisión Temprana de 3 Leads en Caliente de México (Regla 5, Regla 11, Regla 14 y Regla 19)**:
+    *   Durante el bloque nocturno de prospección por WhatsApp enfocado en Morelia, Michoacán (+52 1 443), respondieron 3 prospectos de forma consecutiva, siendo atendidos al instante en primera persona:
+    1.  **Claudia Gómez (`+52 1 443 440 5471` - Morelia, México)**:
+        *   Disparó auto-respuesta preguntando con quién tiene el gusto y en qué puede apoyar.
+        *   Alberto despachó presentación en primera persona («yo»), sembró los 3 dolores clínicos (15-20h en PDFs, WhatsApp 24/7 y App móvil con nombre y logo Claudia Gómez) y aplicó Doble Alternativa para Zoom de 10 min el lunes (11:00 a. m. o 4:30 p. m.).
+        *   *Registro en Supabase*: ID `f8275d58-38b4-4d03-b1cc-4fbea9cf9916`, estado `prospecto`, Plan 30 ($120 USD). Próxima acción: Lunes 16/nov a las 10:30 a. m.
+    2.  **Arlethe Cruz / Nutreteam (`+52 1 443 690 5407` - Morelia, México)**:
+        *   Fundadora de la marca y equipo Nutreteam. Activó auto-respuesta invitando a agendar consulta personalizada.
+        *   Alberto despachó propuesta adaptada a su rol de fundadora, ofreciéndole su propia App oficial de Nutreteam con logo y colores de marca, atacando los dolores operativos y planteando Zoom de 10 min el lunes (11:30 a. m. o 5:00 p. m.).
+        *   *Registro en Supabase*: ID `6f6d4498-5440-41a3-bc84-d467e3d331fb`, estado `prospecto`, Plan 30 ($120 USD). Próxima acción: Lunes 16/nov a las 11:00 a. m.
+    3.  **Colega Nutriólogo con Software Actual (`+52 1 443 698 0680` - Morelia, México)**:
+        *   Prospecto respondió activamente en línea: *«Gracias ya cuento con un software y app»*.
+        *   En estricto cumplimiento de la **Regla 11 y Regla 19**, Alberto aplicó la técnica de **Cierre Rebote (Judo) de Alex Dey**: felicitó su adopción tecnológica, cuestionó con sutileza las debilidades del software tradicional (falta de marca blanca propia en la pantalla del paciente y ausencia de asistente 24/7 que libere WhatsApp) e invitó a un Zoom comparativo de 10 min el lunes (11:30 a. m. o 5:00 p. m.).
+        *   *Registro en Supabase*: ID `f36f8a7f-d629-4335-901a-61f7b40c6fdb`, estado `prospecto`, Plan 30 ($120 USD). Próxima acción: Lunes 16/nov a las 11:30 a. m.
+*   **Balance del Bloque Nocturno**: Los 3 prospectos quedaron admitidos en Supabase con bitácoras fidedignas y calendarizados para el lunes 16 de noviembre en horarios escalonados, blindando la meta de los 12 Zooms semanales.
+
+### 387. Admisión Temprana de Lead Caliente en México («Me interesa») y Cierre Inmediato para Zoom Hoy Domingo (Regla 7) (15 de Noviembre de 2026 - 12:15 p. m.)
+*   **Respuesta Activa a Prospección Nocturna (Regla 5, Regla 7, Regla 11, Regla 14 y Regla 19)**:
+    *   Prospecto nutriólogo de Morelia, México (`+52 443 507 3767`) respondió a las 09:58 p. m. del sábado con interés explícito: *«Me interesa»*.
+    *   A las 12:13 p. m. del domingo, en estricto cumplimiento de la **Regla 7 (Prohibido patear al lunes cuando hay interés activo)**, Alberto despachó de inmediato un mensaje de alto impacto sembrando los 3 dolores clínicos (menús 28 días, asistente 24/7 liberador de WhatsApp y App móvil propia con su marca), solicitando su nombre para rotular la sala y aplicando Doble Alternativa para conectar **HOY MISMO domingo** (04:30 p. m. o 06:00 p. m.).
+*   **Registro en Supabase (80deec0b-4e2c-48ad-92ef-554eeac453b0)**:
+    *   *Estado*: **prospecto** (`nutricionista`, Plan 30 - $120.00 USD / mes).
+    *   *Teléfono*: `+52 443 507 3767`.
+    *   *Bitácora*: Registro cronológico fidedigno del mensaje en frío, su respuesta de interés activo y la propuesta dominical inmediata con Doble Alternativa.
+    *   *Próxima Acción*: Monitorear confirmación de horario para Zoom hoy (4:30 p. m. o 6:00 p. m.) y recepción de nombre para rotular la sala.
+    *   *Fecha Límite*: **Hoy domingo 15 de noviembre de 2026 a las 04:00 p. m.** (`2026-11-15T16:00:00`).
+
+
+
 
 ---
 
