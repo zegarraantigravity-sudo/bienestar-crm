@@ -4008,6 +4008,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: Monitorear confirmación de horario para Zoom hoy (4:30 p. m. o 6:00 p. m.) y recepción de nombre para rotular la sala.
     *   *Fecha Límite*: **Hoy domingo 15 de noviembre de 2026 a las 04:00 p. m.** (`2026-11-15T16:00:00`).
 
+### 388. Calibración Estratégica de Agenda del Lunes y Programación de Cobro de Saldo de $57 USD con Noé Rojas (15 de Noviembre de 2026 - 12:28 p. m.)
+*   **Gestión Operativa de Suspensión Temporal de WhatsApp**:
+    *   Alberto informó de una suspensión temporal preventiva de WhatsApp por 24 horas originada por la prospección en frío, la cual se reactiva automáticamente hoy domingo a las 10:00 p. m.
+    *   Se recalibraron los toques y seguimientos para sincronizarlos con la reapertura de la línea y la jornada del lunes 16 de noviembre:
+        1.  **LCN. Karen Luna (`+52 1 443 271 8448` - México)**: Toque 2 de seguimiento suave programado para el lunes a las 10:30 a. m.
+        2.  **Nutrisana (`+51 960 169 576` - Perú)**: Toque 2 de reactivación al equipo clínico programado para el lunes a las 11:30 a. m.
+        3.  **Colega Nutriólogo (`+52 443 507 3767` - México)**: Alerta programada para hoy a las 10:00 p. m. al reactivarse WhatsApp para revisar su respuesta a la invitación de Zoom y coordinar para el lunes por la mañana.
+*   **Programación de Cobro de Saldo con Noé Rojas — NR Sports (Regla 8 y Regla 9)**:
+    *   Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` - México) confirmó su compromiso de transferir el saldo pendiente de **$57.00 USD** para mañana **lunes 16 de noviembre por la tarde**, completando la liquidación del 100% de su Plan 30 oficial ($120.00 USD).
+    *   Ficha actualizada en Supabase con próxima acción de cobro fijada para las **04:00 p. m.** (`2026-11-16T16:00:00`).
+*   **Saneamiento y Cero Tareas Vencidas**: La base de datos de Supabase quedó con 0 tareas vencidas para el día de hoy, dejando la agenda del lunes 16 de noviembre perfectamente orquestada para prospección, cierres y cobros.
+
+
 
 
 
