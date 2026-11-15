@@ -3947,6 +3947,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: Monitorear contacto del asesor humano de Bienestar 4 áreas; si no escriben en el fin de semana, despachar mensaje directo al +51 935 629 435 el lunes.
     *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:30 a. m.** (`2026-11-16T11:30:00`).
 
+### 384. Presentación Realizada con Éxito, Despacho de Propuesta Formal en Soles (S/ 400 PEN) y Código NUT-FLC-KY85 a Ricardo Restrepo (14 de Noviembre de 2026 - 07:30 p. m.)
+*   **Presentación en Pantalla y Transición a Cierre (Regla 4, Regla 5, Regla 9 y Regla 18)**:
+    *   A las 06:35 p. m. se llevó a cabo el Zoom demostrativo con Ricardo Restrepo (@rianreba), entrenador colombiano radicado en Perú hace 10 años dedicado a personalizados presenciales.
+    *   La sesión fue sumamente positiva: Ricardo quedó encantado con la plataforma (*«le pareció chévere el aplicativo»*).
+    *   A las 07:30 p. m., Alberto le despachó el paquete completo de propuesta y prueba:
+        1.  **Propuesta Formal en Soles**: Desglose oficial de planes para Perú (Plan 30: S/ 400.00 / mes | S/ 13.33 x alumno | 50% de anticipo: S/ 200.00), bonificación total en diseño/montaje (S/ 3,000 bonificados al 100%) y Bono de Acción Rápida de 48 horas (+15 días adicionales gratis).
+        2.  **Documento Formal**: Despacho de `Cotizacion_Ricardo_Restrepo.docx`.
+        3.  **Kit de Prueba de 28 Días como Alumno**: Paso a paso de instalación de PWA en `https://nutri-alberto.bienestarsinexcusas.site/`, código de activación exclusivo **`NUT-FLC-KY85`** y video tutorial explicativo para experimentar el flujo completo en su celular.
+*   **Actualización en Supabase (19874edf-64d0-4127-ac6d-f66a7775401f)**:
+    *   *Estado*: Avanza formalmente a **`presentacion_realizada`**.
+    *   *Bitácora*: Registro cronológico fidedigno del Zoom ejecutado, su perfil profesional, la excelente recepción del sistema y el despacho de la cotización formal en Soles con código `NUT-FLC-KY85`.
+    *   *Próxima Acción*: Monitorear feedback de propuesta formal (Plan 30 - S/ 400) y prueba con código NUT-FLC-KY85 tras su análisis de fin de semana.
+    *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:30 a. m.** (`2026-11-16T11:30:00`).
+
 ---
 
 ## 📚 Biblioteca de Plantillas Comerciales Estandarizadas
