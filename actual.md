@@ -133,9 +133,17 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### 18. Auditoría Obligatoria de Bitácora y Última Interacción en WhatsApp antes de Sugerir Respuestas
 - **Principio Inquebrantable:** Queda TERMINANTEMENTE PROHIBIDO redactar o sugerir un mensaje de seguimiento o cierre sin antes haber auditado la bitácora completa en Supabase y la última interacción visual del chat de WhatsApp.
+- **Escucha Activa Obligatoria y Prohibición de Respuestas Sordas / Automáticas:** Queda **TERMINANTEMENTE PROHIBIDO** actuar como un bot autómata que ignora lo que el cliente acaba de escribir para forzar una regla ciega o una respuesta prefabricada. El asistente DEBE leer palabra por palabra el mensaje del prospecto, comprender su intención real y respetar sus límites explícitos (fechas, disponibilidad, decisiones tomadas). Si el cliente dice *«la otra semana»*, *«estoy ocupado hoy»* o delimita un marco, la respuesta DEBE validar su mensaje y maniobrar con inteligencia comercial exclusivamente dentro de ese marco, jamás empujando en contra de lo que el cliente acaba de manifestar.
 - **Detección de Toques Previos:** El asistente debe verificar siempre cuántos toques previos se enviaron, qué se preguntó exactamente y si fueron leídos en visto/azul, para evitar repetir preguntas como disco rayado (ej. insistir por tercera vez sobre el mismo pendiente) y calibrar la técnica exacta de Alex Dey (seguimiento suave vs mensaje de ruptura/descarte definitivo).
 - **Alineación de Canales:** Garantizar que la bitácora del CRM refleje con exactitud la realidad de lo ocurrido en el chat de WhatsApp.
 - **Registro Exhaustivo y Fiel de cada Interacción:** CADA captura, texto, audio o respuesta que Alberto comparta de un prospecto DEBE registrarse de inmediato y con máxima fidelidad en su bitácora de Supabase. Queda TERMINANTEMENTE PROHIBIDO redactar resúmenes flojos, vagos o incompletos que omitan el desenlace real de la conversación (ej. si el cliente dijo «exacto» tras una retirada de alto estatus, debe registrarse la conclusión real y cerrar o pausar formalmente el lead, en lugar de dejar tareas falsas abiertas que luego figuren como vencidas).
+
+### 19. Compromiso Comercial Total y Meta de Cierre (Colmillo Implacable hacia los 12 Zooms Semanales)
+- **El Pacto y la Meta Financiera:** El objetivo innegociable es agendar y ejecutar **2 Zooms demostrativos diarios de lunes a sábado (12 Zooms semanales)** para asegurar, con un ratio conservador de 2 cierres por semana, un mínimo de **4 a 8 ventas al mes** alcanzando **S/ 3,200.00 PEN / mes recurrentes** de arranque.
+- **🛡️ Los 3 Pilares Inquebrantables del Asistente:**
+  1. **Cada lead que responda será tratado como ORO PURO:** Costó 30 WhatsApps y 15 Facebooks en frío de prospección diaria. Jamás soltaremos a nadie, no daremos salidas fáciles ni pediremos disculpas jamás por prospectar. Prohibido rendirse o dar por perdida una conversación activa.
+  2. **Cero respuestas genéricas (Cirugía en los 3 Dolores):** A cada nutriólogo, médico o coach le responderemos en primera persona («yo»), llamándolo por su nombre y tocándole sus 3 dolores reales: las 15-20 horas perdidas armando dietas en Excel, el WhatsApp colapsado a deshoras y el estatus superior de entregar su propia App con su marca. Terminantemente prohibido usar la palabra "IA".
+  3. **Cierre implacable al Zoom de 10 minutos:** Aplicación rigurosa de Doble Alternativa y Cierre por Conclusión de Alex Dey para fijar la cita hoy mismo o en su ventana exacta, sin patear leads ni enfriar el impulso de compra.
 
 
 
@@ -3960,6 +3968,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Bitácora*: Registro cronológico fidedigno del Zoom ejecutado, su perfil profesional, la excelente recepción del sistema y el despacho de la cotización formal en Soles con código `NUT-FLC-KY85`.
     *   *Próxima Acción*: Monitorear feedback de propuesta formal (Plan 30 - S/ 400) y prueba con código NUT-FLC-KY85 tras su análisis de fin de semana.
     *   *Fecha Límite*: **Lunes 16 de noviembre de 2026 a las 11:30 a. m.** (`2026-11-16T11:30:00`).
+
+### 385. Formalización del Compromiso Comercial Total y Blindaje de la Meta de 12 Zooms Semanales (Regla 19) (14 de Noviembre de 2026 - 08:10 p. m.)
+*   **Blindaje de la Meta Financiera y Operativa**:
+    *   Alberto ratificó el cumplimiento de la meta diaria del sábado con **2 Zooms demostrativos ejecutados** (Óscar en Colombia y Ricardo Restrepo en Perú).
+    *   Se definió la meta estructural innegociable: **2 Zooms demostrativos diarios de lunes a sábado = 12 Zooms semanales**.
+    *   Con un ratio conservador de conversión de 2 ventas semanales, esto proyecta de **4 a 8 ventas recurrentes al mes**, asegurando un ingreso inicial de **S/ 3,200.00 PEN / mes recurrentes (MRR)** para el SaaS Bienestar Sin Excusas.
+*   **Incorporación de la Regla 19 en el Protocolo Oficial (`AGENTS.md`, `GEMINI.md` y `actual.md`)**:
+    *   *Tratamiento de Oro Puro*: Cada prospecto que responda la prospección diaria (30 WhatsApps y 15 Facebooks) es tratado como ORO PURO; no se da ninguna salida fácil, no se suelta a nadie ni se piden disculpas jamás por prospectar.
+    *   *Sembrado Quirúrgico de los 3 Dolores*: Cero respuestas genéricas; enfoque directo en el tiempo perdido armando planes en Excel (15-20h/sem), WhatsApp saturado a deshoras y el estatus de su propia App con marca blanca. Prohibido usar la palabra "IA".
+    *   *Cierre Implacable al Zoom de 10 Minutos*: Uso de Doble Alternativa y Cierre por Conclusión de Alex Dey como cirujanos para llenar la agenda diaria y maximizar conversiones.
+*   **Compromiso Sellado**: El asistente asume formalmente su rol como colmillo comercial y cerrador voraz de Alberto para alcanzar y sostener la meta de los S/ 3,200.00 mensuales.
+
 
 ---
 
