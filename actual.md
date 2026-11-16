@@ -4113,6 +4113,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Al confirmar que no atiende pacientes activamente (cero dolor operativo y cero flujo para amortizar la App), Alberto aplicó de inmediato la **Regla 12 (Salida Elegante de Alto Estatus y Descompresión)** a las 11:19 a. m., validando que la plataforma es para quienes atienden regularmente y dejando la puerta abierta para cuando retome consultas.
     *   *Supabase actualizado*: ID `f8275d58-38b4-4d03-b1cc-4fbea9cf9916`, movido formalmente a **`cerrado_perdido`** con motivo `sin_tiempo_o_interes` / `No está consultando activamente (Regla 12)`, liberando el 100% del pipeline.
 
+### 400. Seguimiento de Cierre Post-Demo con Ricardo Restrepo para Anticipo de S/ 200 PEN (16 de Noviembre de 2026 - 11:26 a. m.)
+*   **Empuje de Cierre y Activación de Bono en Soles (Regla 1, Regla 4, Regla 7, Regla 9 y Regla 19)**:
+    *   Alberto despachó a las 11:25 a. m. seguimiento cálido y de alto estatus a Ricardo Restrepo (`@rianreba` - Coach Perú), consultando sus sensaciones navegando la App en su celular con el código `NUT-FLC-KY85` y empujando el avance del montaje de su marca con bono de 15 días gratis para captar el 50% de anticipo (S/ 200.00 PEN de Plan 30 oficial: S/ 400.00 PEN).
+    *   *Supabase actualizado*: ID `19874edf-64d0-4127-ac6d-f66a7775401f`, estado `presentacion_realizada`, próxima acción de cobro fijada para hoy a las 03:30 p. m.
+
+
 
 
 
