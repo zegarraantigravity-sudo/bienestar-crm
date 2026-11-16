@@ -4107,6 +4107,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 11:12 a. m. Toque 2 institucional a Nutri.tiva Consultoría (`+51 957 228 876` - Perú), saludando al área de recepción/CM y consultando si pudieron revisar la información de la App oficial, solicitando puente con la dirección nutricional o agendar 10 min por Zoom.
     *   *Supabase actualizado*: ID `f86492b0-b90a-483b-829e-4a2704c6c456`, estado `prospecto`, próxima acción fijada para hoy a las 05:00 p. m.
 
+### 399. Aplicación de Filtro PMF (Regla 12), Salida Elegante y Cierre Formal de Claudia Gómez (16 de Noviembre de 2026 - 11:19 a. m.)
+*   **Filtro de Product-Market Fit y Descompresión (Regla 12 y Regla 18)**:
+    *   Claudia Gómez (`+52 1 443 440 5471` - Morelia, México) respondió a las 11:04 a. m.: *«Hola muchas gracias por la información por el momento no es de mi interés ya que no estoy consultando»*.
+    *   Al confirmar que no atiende pacientes activamente (cero dolor operativo y cero flujo para amortizar la App), Alberto aplicó de inmediato la **Regla 12 (Salida Elegante de Alto Estatus y Descompresión)** a las 11:19 a. m., validando que la plataforma es para quienes atienden regularmente y dejando la puerta abierta para cuando retome consultas.
+    *   *Supabase actualizado*: ID `f8275d58-38b4-4d03-b1cc-4fbea9cf9916`, movido formalmente a **`cerrado_perdido`** con motivo `sin_tiempo_o_interes` / `No está consultando activamente (Regla 12)`, liberando el 100% del pipeline.
+
+
 
 
 
