@@ -4102,6 +4102,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 11:06 a. m. Toque 2 suave a Arlethe Cruz (`+52 1 443 690 5407` - Morelia, México), fundadora de Nutreteam, saludando y ofreciendo conexión de 10 min por Zoom hoy a las 05:00 p. m. para mostrar la App oficial con la marca Nutreteam.
     *   *Supabase actualizado*: ID `6f6d4498-5440-41a3-bc84-d467e3d331fb`, estado `prospecto`, próxima acción fijada para hoy a las 04:30 p. m.
 
+### 398. Despacho de Toque 2 de Derivación Institucional a Nutri.tiva Consultoría (16 de Noviembre de 2026 - 11:12 a. m.)
+*   **Seguimiento y Registro Inmediato (Regla 1, Regla 5, Regla 14 y Regla 18)**:
+    *   Alberto despachó a las 11:12 a. m. Toque 2 institucional a Nutri.tiva Consultoría (`+51 957 228 876` - Perú), saludando al área de recepción/CM y consultando si pudieron revisar la información de la App oficial, solicitando puente con la dirección nutricional o agendar 10 min por Zoom.
+    *   *Supabase actualizado*: ID `f86492b0-b90a-483b-829e-4a2704c6c456`, estado `prospecto`, próxima acción fijada para hoy a las 05:00 p. m.
+
+
 
 
 
