@@ -4162,6 +4162,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   En estricto cumplimiento de la **Regla 18 (Escucha Activa)** y **Regla 10 (Enfoque Positivo)**, Alberto validó con total empatía su descanso de fin de semana, orientó su atención técnica hacia la experiencia de sus alumnos con rutinas en video y el asistente virtual que libera su WhatsApp, y aplicó Doble Alternativa suave para retomar contacto hoy a las 06:30 p. m. o mañana temprano.
     *   *Supabase actualizado*: ID `19874edf-64d0-4127-ac6d-f66a7775401f`, estado `presentacion_realizada`, bitácora fidedigna con transcripción del audio y respuesta de Alberto, y próxima acción viva fijada para monitorear feedback y dudas para cierre del Plan 30 (S/ 400 - 50% anticipo S/ 200) hoy a las 06:30 p. m. (`2026-11-16T18:30:00`).
 
+### 406. Calibración Temporal por Clases de Ricardo Restrepo y Ancla Fina a las 8:00 p. m. (16 de Noviembre de 2026 - 12:41 p. m.)
+*   **Escucha Activa y Respeto a la Ventana de Actividad del Cliente (Regla 1, Regla 3, Regla 5, Regla 18 y Regla 19)**:
+    *   A las 12:31 p. m., Ricardo Restrepo (`19874edf-64d0-4127-ac6d-f66a7775401f` — Coach Perú) envió un segundo audio de 9 segundos informando que tiene clases continuas hasta las 07:00 p. m. y que *«saliendo lo reviso»*.
+    *   En estricto cumplimiento de la **Regla 18 (Escucha Activa)**, Alberto calibró de inmediato la hora de contacto para no interrumpirlo durante su jornada académica, deseándole éxitos en sus clases y fijando el seguimiento para las **08:00 p. m.** una vez que esté libre y descansado.
+    *   *Supabase actualizado*: ID `19874edf-64d0-4127-ac6d-f66a7775401f`, estado `presentacion_realizada`, bitácora actualizada con la segunda nota de voz y respuesta, y próxima acción viva calibrada para hoy a las 08:00 p. m. (`2026-11-16T20:00:00`).
+    *   **Blindaje Operativo**: Con este ajuste, el radar de cierre con Ricardo queda perfectamente orquestado para la noche tras sus clases, dejando la franja de la tarde libre para las confirmaciones de Zoom y el cobro de Noé Rojas a las 04:00 p. m.
+
 
 
 
