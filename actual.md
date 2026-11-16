@@ -4136,6 +4136,20 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   *Supabase actualizado*: ID `f36f8a7f-d629-4335-901a-61f7b40c6fdb`, estado `prospecto`, bitácora cronológica actualizada y próxima acción viva fijada para hoy a las 02:00 p. m.
     *   **Impacto Operativo**: El 100% de los toques y seguimientos de WhatsApp de la mañana quedan formalmente despachados, asentados en Supabase y sincronizados sin tareas rezagadas.
 
+### 403. Despacho y Registro de Toque 2 en Instagram a Power Fitness EMS y Ettore Felix (16 de Noviembre de 2026 - 11:58 a. m.)
+*   **Reactivación de Centros y Coaches Deportivos para Zoom Hoy Lunes (Regla 1, Regla 3, Regla 5, Regla 7, Regla 11 y Regla 19)**:
+    *   **Power Fitness EMS (`@power.fitness.hyo` — Huancayo 🇵🇪)**:
+        *   Alberto despachó a las 11:53 a. m. Toque 2 de reactivación tras el fin de semana al centro de entrenamiento y electroestimulación muscular de Huancayo.
+        *   Presentó el valor de la App móvil bajo la propia marca de Power Fitness con rutinas en video y nutrición integrada para disparar la retención de socios y el valor de membresías.
+        *   Aplicó Doble Alternativa de Alex Dey para Zoom hoy lunes (03:15 p. m. o 06:30 p. m.).
+        *   *Supabase actualizado*: ID `b25101ad-eeb8-49fd-947e-dd3c701ad7e1`, estado `prospecto`, bitácora cronológica actualizada y próxima acción viva fijada para hoy a las 02:30 p. m.
+    *   **Ettore Fitness Trainer (`@ettorefelix` — Coach Perú 🇵🇪)**:
+        *   Alberto despachó a las 11:54 a. m. Toque 2 de reactivación tras el fin de semana al coach deportivo en Instagram Direct.
+        *   Destacó la migración de PDFs sueltos a su propia App móvil con nombre y logo oficial para rutinas en video, menús y monitoreo de progreso de sus alumnos.
+        *   Aplicó Doble Alternativa de Alex Dey para Zoom hoy lunes (03:30 p. m. o 06:45 p. m.).
+        *   *Supabase actualizado*: ID `880e48bd-0f3c-4301-82d2-fcf39a9c0d86`, estado `prospecto`, bitácora cronológica actualizada y próxima acción viva fijada para hoy a las 02:30 p. m.
+    *   **Balance Matutino Completo**: Se concluyó con éxito el 100% de los toques y seguimientos de la mañana (15 prospectos contactados), dejando la agenda perfectamente estructurada para recepcionar confirmaciones de horario, ejecutar los Zooms demostrativos y proceder con el cobro de Noé Rojas a las 04:00 p. m.
+
 
 
 
