@@ -4124,6 +4124,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Presentó el valor de la App móvil de marca blanca enfocada en centros de distribución de nutrición (Regla 12), destacando la integración de su catálogo de productos directamente dentro de los menús de 28 días para fidelizar el consumo recurrente, y aplicó Doble Alternativa para Zoom hoy lunes (01:30 p. m. o 05:30 p. m.).
     *   *Supabase actualizado*: ID `c7adef5b-a1c0-4b93-bc3f-9521a6f8c34c`, estado `prospecto`, próxima acción fijada para hoy a las 05:00 p. m.
 
+### 402. Despacho y Registro de Toque 2 a Nutrisana y Colega Nutriólogo con Software Actual (16 de Noviembre de 2026 - 11:45 a. m.)
+*   **Reactivación Clínica y Cierre Judo para Zoom Hoy Lunes (Regla 1, Regla 3, Regla 5, Regla 7, Regla 11 y Regla 19)**:
+    *   **Nutrisana (`+51 960 169 576` — Perú 🇵🇪)**:
+        *   Alberto despachó a las 11:42 a. m. Toque 2 de reactivación tras el fin de semana al equipo clínico de Nutrisana, atacando el valor clínico de la automatización de menús según fenotipo metabólico y la fidelización de pacientes mediante su propia App de marca blanca oficial.
+        *   Aplicó Doble Alternativa de Alex Dey para Zoom hoy lunes (02:30 p. m. o 05:45 p. m.).
+        *   *Supabase actualizado*: ID `54387ad6-b2df-4224-8809-b5291e9dba28`, estado `prospecto`, bitácora cronológica actualizada y próxima acción viva fijada para hoy a las 02:00 p. m.
+    *   **Colega Nutriólogo con Software Actual (`+52 1 443 698 0680` — Morelia, México 🇲🇽)**:
+        *   Alberto despachó a las 11:43 a. m. Toque 2 de seguimiento suave con Cierre Judo/Rebote al prospecto de Morelia que ya cuenta con software, invitándolo a una comparativa en pantalla de 10 minutos para ver la gran diferencia de marca blanca propia (logo en el celular del paciente) y soporte automatizado 24/7.
+        *   Aplicó Doble Alternativa de Alex Dey para Zoom hoy lunes (02:45 p. m. o 06:00 p. m.).
+        *   *Supabase actualizado*: ID `f36f8a7f-d629-4335-901a-61f7b40c6fdb`, estado `prospecto`, bitácora cronológica actualizada y próxima acción viva fijada para hoy a las 02:00 p. m.
+    *   **Impacto Operativo**: El 100% de los toques y seguimientos de WhatsApp de la mañana quedan formalmente despachados, asentados en Supabase y sincronizados sin tareas rezagadas.
+
 
 
 
