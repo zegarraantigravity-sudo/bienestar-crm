@@ -4031,6 +4031,40 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Próxima Acción*: Monitorear respuesta de Kath Veliz para confirmar horario de Zoom hoy lunes (12:00 m. o 4:30 p. m.).
     *   *Fecha Límite*: **Hoy lunes 16 de noviembre de 2026 a las 11:45 a. m.** (`2026-11-16T11:45:00`).
 
+### 390. Admisión Temprana de Nicanor Camacho (Asesor Fitness Camacho) y Cierre Doble Alternativa para Zoom (16 de Noviembre de 2026 - 09:37 a. m.)
+*   **Conexión por WhatsApp Business y Personalización Quirúrgica (Regla 5, Regla 7, Regla 11, Regla 14 y Regla 19)**:
+    *   A las 09:33 a. m., Nicanor Camacho (Consultor-Asesor Fitness Camacho, `@c.asesorfit.c` en Perú) activó auto-respuesta de WhatsApp Business destacando su metodología integral (hardware/software), cupos limitados y base académica.
+    *   A las 09:37 a. m., Alberto despachó respuesta conectando con su concepto de hardware y software, sembrando los 3 dolores de la alta personalización (rutinas en video sin PDFs ni Excel, asistente virtual 24/7 y App móvil oficial con su marca Asesor Fitness Camacho) y aplicando Doble Alternativa para conectar **HOY MISMO lunes** (12:30 p. m. o 05:00 p. m.).
+*   **Registro en Supabase (`a3622eec-4320-4a08-9858-a1ed6b85310e`)**:
+    *   *Estado*: **prospecto** (`coach`, Plan 30 - S/ 400.00 PEN / mes).
+    *   *Contacto*: Nicanor Camacho (`@c.asesorfit.c`).
+    *   *Bitácora*: Registro del contacto, auto-respuesta de consultor y despacho de propuesta a medida con Doble Alternativa.
+    *   *Próxima Acción*: Monitorear elección de horario para Zoom hoy lunes (12:30 p. m. o 5:00 p. m.).
+    *   *Fecha Límite*: **Hoy lunes 16 de noviembre de 2026 a las 12:00 m.** (`2026-11-16T12:00:00`).
+
+### 391. Admisión Temprana de Nutrióloga Gloria Glz (San Luis Potosí, México) y Cierre Doble Alternativa para Zoom (16 de Noviembre de 2026 - 09:40 a. m.)
+*   **Respuesta Activa en México y Sembrado de Dolores Clínicos (Regla 5, Regla 7, Regla 14 y Regla 19)**:
+    *   A las 09:37 a. m., la Nutrióloga Gloria González (`+52 1 444 193 9677` - San Luis Potosí, México) respondió al contacto en frío de WhatsApp preguntando cómo puede ayudar.
+    *   A las 09:39 a. m., Alberto despachó presentación en primera persona («yo»), sembrando los 3 dolores clínicos (15-20h en PDFs, WhatsApp 24/7 y App propia con el nombre y logo de Gloria González) y aplicando Doble Alternativa para Zoom **HOY MISMO lunes** (01:00 p. m. o 05:30 p. m.).
+*   **Registro en Supabase (`128bec8d-3529-4c57-b1bc-2c420a7f9b6d`)**:
+    *   *Estado*: **prospecto** (`nutricionista`, Plan 30 - $120.00 USD / mes).
+    *   *Contacto*: Nutrióloga Gloria Glz (`+52 1 444 193 9677`).
+    *   *Bitácora*: Registro de prospección en frío, respuesta de la nutrióloga y despacho de propuesta clínica con Doble Alternativa.
+    *   *Próxima Acción*: Monitorear confirmación de horario para Zoom hoy lunes (1:00 p. m. o 5:30 p. m.).
+    *   *Fecha Límite*: **Hoy lunes 16 de noviembre de 2026 a las 12:30 p. m.** (`2026-11-16T12:30:00`).
+
+### 392. Admisión Temprana de Lactipara Nutrición (San Luis Potosí, México) y Cierre Doble Alternativa para Zoom (16 de Noviembre de 2026 - 09:47 a. m.)
+*   **Respuesta Activa de Centro Nutricional y Sembrado de Estatus (Regla 5, Regla 7, Regla 14 y Regla 19)**:
+    *   A las 09:37 a. m., Lactipara Nutrición (`+52 1 444 225 7888` - San Luis Potosí, México) respondió al contacto en frío de WhatsApp solicitando saber cómo pueden ayudar.
+    *   A las 09:46 a. m., Alberto despachó propuesta destacando su labor de marca, sembrando los 3 dolores clínicos (15-20h en menús de 28 días, WhatsApp 24/7 y App móvil propia con el logo de Lactipara Nutrición) y aplicando Doble Alternativa para Zoom **HOY MISMO lunes** (01:15 p. m. o 06:00 p. m.).
+*   **Registro en Supabase (`b4226a84-64cd-4af9-a365-7e74d8f26ae5`)**:
+    *   *Estado*: **prospecto** (`nutricionista`, Plan 30 - $120.00 USD / mes).
+    *   *Contacto*: Lactipara Nutrición (`+52 1 444 225 7888`).
+    *   *Bitácora*: Registro de prospección en frío, respuesta de bienvenida del centro y propuesta personalizada con Doble Alternativa para Zoom hoy.
+    *   *Próxima Acción*: Monitorear confirmación de horario para Zoom hoy lunes (1:15 p. m. o 6:00 p. m.).
+    *   *Fecha Límite*: **Hoy lunes 16 de noviembre de 2026 a las 12:45 p. m.** (`2026-11-16T12:45:00`).
+
+
 
 
 
