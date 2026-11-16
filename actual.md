@@ -4092,6 +4092,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 10:48 a. m. Toque 2 suave de inicio de semana a la Nutrióloga Claudia Gómez (`+52 1 443 440 5471` - Morelia, México), consultando si alcanzó a ver el mensaje del sábado y ofreciendo conexión de 10 min por Zoom hoy a las 04:30 p. m.
     *   *Supabase actualizado*: ID `f8275d58-38b4-4d03-b1cc-4fbea9cf9916`, estado `prospecto`, próxima acción fijada para hoy a las 04:00 p. m. para monitorear respuesta y sala de Zoom.
 
+### 396. Seguimiento de Cierre Post-Demo con Óscar (Colombia) para Anticipo de $60 USD (16 de Noviembre de 2026 - 11:00 a. m.)
+*   **Empuje de Cierre y Activación de Bono (Regla 1, Regla 4, Regla 7, Regla 9 y Regla 19)**:
+    *   Alberto despachó a las 10:59 a. m. seguimiento cálido y de alto estatus a Óscar (`@arteoscar7` - Colombia), consultando sus sensaciones probando la App con el código `NUT-FLC-DOKN` y empujando el avance del montaje de su marca con bono de 15 días gratis para captar el 50% de anticipo ($60.00 USD de Plan 30 oficial: $120.00 USD).
+    *   *Supabase actualizado*: ID `1b22c1c0-b263-4561-a6d9-ec2a75858f98`, estado `presentacion_realizada`, próxima acción de cobro fijada para hoy a las 03:00 p. m.
+
+
 
 
 
