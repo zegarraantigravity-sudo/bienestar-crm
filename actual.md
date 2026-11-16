@@ -4118,6 +4118,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 11:25 a. m. seguimiento cálido y de alto estatus a Ricardo Restrepo (`@rianreba` - Coach Perú), consultando sus sensaciones navegando la App en su celular con el código `NUT-FLC-KY85` y empujando el avance del montaje de su marca con bono de 15 días gratis para captar el 50% de anticipo (S/ 200.00 PEN de Plan 30 oficial: S/ 400.00 PEN).
     *   *Supabase actualizado*: ID `19874edf-64d0-4127-ac6d-f66a7775401f`, estado `presentacion_realizada`, próxima acción de cobro fijada para hoy a las 03:30 p. m.
 
+### 401. Contacto Directo con Asesor Humano de Bienestar 4 áreas (Herbalife Huancayo) (16 de Noviembre de 2026 - 11:33 a. m.)
+*   **Alineación de Canal y Propuesta de Recompra (Regla 1, Regla 5, Regla 12 y Regla 19)**:
+    *   Alberto abrió conversación directa por WhatsApp al asesor humano (`+51 935 629 435`) del centro Bienestar 4 áreas en Huancayo a las 11:33 a. m. referenciando la coordinación del sábado con Víctor Tarrillo.
+    *   Presentó el valor de la App móvil de marca blanca enfocada en centros de distribución de nutrición (Regla 12), destacando la integración de su catálogo de productos directamente dentro de los menús de 28 días para fidelizar el consumo recurrente, y aplicó Doble Alternativa para Zoom hoy lunes (01:30 p. m. o 05:30 p. m.).
+    *   *Supabase actualizado*: ID `c7adef5b-a1c0-4b93-bc3f-9521a6f8c34c`, estado `prospecto`, próxima acción fijada para hoy a las 05:00 p. m.
+
+
 
 
 
