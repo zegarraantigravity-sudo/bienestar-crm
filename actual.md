@@ -4333,6 +4333,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 05:52 p. m. Toque 3 de ruptura suave consultando si se anima a ver la plataforma en pantalla mañana miércoles a las 11:00 a. m. o 05:00 p. m., o si lo dejamos en pausa.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 10:00 a. m. (`2026-11-18T10:00:00`) para cierre definitivo en caso de silencio tras 24h.
 
+### 433. Registro de Toque 2 a Grupo Malca Nutrition (17 de Noviembre de 2026 - 06:01 p. m.)
+*   **Grupo Malca Nutrition (`57ab87ea-7da2-484f-9a11-2dcdd27c8df1` — `+51 900 985 739` — Perú 🇵🇪)**:
+    *   Alberto despachó a las 05:59 p. m. Toque 2 dirigido al gerente/encargado de tienda consultando si pudo revisar la propuesta de App propia con catálogo de suplementos integrado y aplicando Doble Alternativa para Zoom mañana miércoles 18 a las 11:00 a. m. o 04:30 p. m.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 10:30 a. m. (`2026-11-18T10:30:00`).
+
 
 
 
