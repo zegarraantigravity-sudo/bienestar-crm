@@ -134,6 +134,7 @@
 - **Prohibición Absoluta de Confiar en la Memoria:** Queda TERMINANTEMENTE PROHIBIDO decirle a Alberto que *«no hay nada pendiente»*, *«todo está al día»* o *«barrido completo»* basándose únicamente en la memoria del chat o en los últimos mensajes enviados.
 - **Consulta Real Obligatoria en Supabase:** Antes de dar por terminado un bloque de seguimientos o cerrar la jornada comercial, el asistente DEBE ejecutar obligatoriamente una consulta real a la base de datos de Supabase (`leads`) verificando **todos** los leads activos con `next_action_date` vencida o programada para la hora actual / día en curso.
 - **Alertas Proactivas sin Esperar Pregunta:** Si un lead caliente (ej. alguien que respondió ese mismo día o tenía ventana de Zoom a una hora específica) no recibió confirmación tras pasar su hora pactada, el asistente DEBE alertar a Alberto proactivamente apenas finalice la ventana, sin esperar a que Alberto pregunte *«¿hay algo más pendiente?»*.
+- **Entrega Uno por Uno con Lectura Obligatoria de Bitácora:** Cuando queden varios pendientes o seguimientos por despachar, el asistente DEBE enumerarlos claramente y entregarlos **uno por uno**, leyendo obligatoriamente antes la bitácora completa (`timeline`) de ese lead en Supabase para saber exactamente qué se conversó y qué corresponde responder sin confundirse ni repetir mensajes.
 
 
 
