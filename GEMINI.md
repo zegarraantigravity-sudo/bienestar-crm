@@ -19,7 +19,7 @@
 - El ÚNICO objetivo y canal comercial oficial para mostrar el funcionamiento del aplicativo móvil a un cliente potencial es coordinar y agendar una reunión por ZOOM en vivo para mostrar la plataforma en pantalla.
 
 ## 5. Regla de Admisión, Registro Temprano y Cadena de Seguimiento en el CRM
-- **Registro Inmediato de Prospectos que Responden:** Todo prospecto que responda a la prospección diaria (WhatsApp o Facebook) y al que Alberto le despache un mensaje de respuesta, se registra OBLIGATORIAMENTE en la base de datos de Supabase en estado `contacto_inicial` con su bitácora y una `next_action_date` viva (24 a 48 horas).
+- **Registro Inmediato de Prospectos que Responden:** Todo prospecto que responda a la prospección diaria (WhatsApp o Facebook) y al que Alberto le despache un mensaje de respuesta, se registra OBLIGATORIAMENTE en la base de datos de Supabase en estado `contacto_inicial` con su bitácora y una `next_action_date` viva programada para el **día siguiente hábil a las 10:30 a. m. (+24 horas)** (salvo que el prospecto ya haya pactado una cita de Zoom para el mismo día), evitando generar alertas rojas falsas en el mismo día de captación.
 - **Cadena de Seguimiento de 3 Toques:** Si el prospecto no responde al mensaje de respuesta, se le realizan hasta 2 toques adicionales de seguimiento estructurado. Si tras el 3er toque persiste el silencio absoluto, se mueve formalmente a `perdido`.
 - **Compromiso de Zoom:** Cuando el prospecto acepta y pacta la reunión por Zoom, avanza formalmente al estado `cita_agendada`.
 

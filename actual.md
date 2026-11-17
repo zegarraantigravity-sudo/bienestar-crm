@@ -4349,6 +4349,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 11:00 a. m. (`2026-11-18T11:00:00`).
 *   **Auditoría en Vivo (Regla 20)**: Todos los leads rezagados del bloque quedaron despachados y sincronizados, reportando con transparencia los leads con ventana vencida de hoy para decisión de Alberto.
 
+### 436. Reprogramación Limpia a +24h y Regla Operativa de Cero Alertas Falsas (17 de Noviembre de 2026 - 06:21 p. m.)
+*   **Estándar de Programación (+24h en Regla 5 de `AGENTS.md` y `GEMINI.md`)**:
+    *   Alberto determinó que todo lead nuevo al que se le responde en el día debe quedar programado automáticamente para el **día siguiente hábil a las 10:30 a. m.** (salvo cita ya confirmada para el mismo día), evitando alertas rojas falsas durante el día.
+*   **Saneamiento en Supabase (6 Leads)**:
+    *   Reprogramados para mañana **miércoles 18 de noviembre a las 10:30 a. m.** (`2026-11-18T10:30:00`) para Toque 2: **Bem Estar, Biocenter, Club Salud y Lily Esparza Fitness**.
+    *   Reprogramados para mañana **miércoles 18 de noviembre a las 10:00 a. m.** (`2026-11-18T10:00:00`): **Consultorio Nutricional (`+52 443 507 3767`)** (cierre tras Toque 3) y **Frank Serapion** (monitoreo con socio).
+    *   **Resultado:** El CRM queda con **0 alertas vencidas**, dejando únicamente el cierre nocturno de las **08:00 p. m. con Ricardo Restrepo**.
+
 
 
 
