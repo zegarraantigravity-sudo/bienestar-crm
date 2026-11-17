@@ -4312,6 +4312,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo (`19874edf-64d0-4127-ac6d-f66a7775401f` — Coach Perú 🇵🇪)**:
         *   Alberto programó en WhatsApp el toque de cierre nocturno para salir hoy a las **08:00 p. m.**, consultando sus sensaciones tras revisar la App y ofreciendo conectarse en ese momento o a las 09:00 p. m. para cerrar su Plan 30 (S/ 400.00 PEN — anticipo S/ 200.00 PEN). Próxima acción fijada para hoy martes 17 a las 08:00 p. m. (`2026-11-17T20:00:00`).
 
+### 429. Formalización de la Regla 20 en `AGENTS.md` y `GEMINI.md`: Verificación Obligatoria en Vivo contra Supabase (17 de Noviembre de 2026 - 05:29 p. m.)
+*   **Corrección Operativa Permanente (Regla 20)**:
+    *   Tras haberse omitido en un barrido parcial a 2 leads rezagados (Víctor Tarrillo y LCN. Karen Luna) y no alertar proactivamente tras vencer la ventana horaria de un lead caliente del día (Yisela Zambrano), Alberto ordenó grabar formalmente esta regla en los archivos de protocolo del proyecto (`AGENTS.md` y `GEMINI.md`).
+    *   **Contenido de la Regla 20**: Queda terminantemente prohibido declarar *"cero pendientes"* o *"barrido completo"* confiando en la memoria del chat. Antes de cerrar cualquier bloque o jornada, el asistente DEBE consultar en vivo la tabla `leads` de Supabase y verificar que no quede ningún lead vencido ni ventana horaria cumplida sin alerta proactiva.
+
 
 
 
