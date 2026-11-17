@@ -4296,6 +4296,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Colega Nutriólogo Software Actual (`f36f8a7f-d629-4335-901a-61f7b40c6fdb` — `+52 1 443 698 0680` — Morelia, México 🇲🇽)**:
         *   Alberto despachó a las 02:42 p. m. Toque 3 de ruptura suave para comparativa rápida de 10 minutos por Zoom hoy a las 06:30 p. m. o mañana miércoles a las 12:00 m. Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m. (`2026-11-18T10:00:00`).
 
+### 427. Barrido Completo de Toques 3 en Perú e Instagram: 5 Leads Sincronizados (17 de Noviembre de 2026 - 02:53 p. m.)
+*   **Cierre de Cadena de 3 Toques (Regla 1, Regla 3, Regla 5 y Regla 19)**:
+    *   **Colega Nutricionista (`e62fb890-5fcf-4536-a6ac-d5a586139249` — `+51 956 377 768`)**: Toque 3 comparativo de retención en App propia vs calculadora de menor costo (Zoom hoy 06:00 p. m. o mañana 11:00 a. m.).
+    *   **Nutri.tiva Consultoría (`f86492b0-b90a-483b-829e-4a2704c6c456` — `+51 957 228 876`)**: Toque 3 de derivación hacia dirección médica o nutrición (Zoom mañana 11:30 a. m. o 04:00 p. m.).
+    *   **Nicanor Camacho (`a3622eec-4320-4a08-9858-a1ed6b85310e` — `@c.asesorfit.c`)**: Toque 3 de ruptura suave por redes (Zoom mañana 11:00 a. m. o 04:30 p. m.).
+    *   **Power Fitness EMS (`b25101ad-eeb8-49fd-947e-dd3c701ad7e1` — `@power.fitness.hyo`)**: Toque 3 de ruptura suave para centro fitness (Zoom mañana 11:30 a. m. o 05:00 p. m.).
+    *   **Ettore Fitness (`880e48bd-0f3c-4301-82d2-fcf39a9c0d86` — `@ettorefelix`)**: Toque 3 de ruptura suave para entrenador personal (Zoom mañana 12:00 m. o 05:30 p. m.).
+    *   *Supabase actualizado*: Los 5 leads quedaron actualizados con su próxima acción viva fijada para mañana **miércoles 18 de noviembre a las 10:00 a. m.** (`2026-11-18T10:00:00`) para cierre definitivo a `cerrado_perdido` en caso de persistir silencio tras el 3er toque.
+
 
 
 
