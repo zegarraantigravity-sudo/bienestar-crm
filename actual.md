@@ -4257,6 +4257,15 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` — NR Sports México)**:
     *   Alberto determinó dar margen al horario bancario en México tras el feriado de ayer, reprogramando el recordatorio amable por el saldo pendiente ($57.00 USD) para hoy **martes 17 de noviembre a las 04:00 p. m.** (`2026-11-17T16:00:00`).
 
+### 422. Despacho y Registro de Toque 3 a Óscar (Colombia) y Colega Nutriólogo +52 443 507 3767 (17 de Noviembre de 2026 - 02:17 p. m.)
+*   **Urgencia de Cupo Post-Demo y Reactivación Post-Feriado (Regla 1, Regla 3, Regla 5 y Regla 19)**:
+    *   **Óscar (`1b22c1c0-b263-4561-a6d9-ec2a75858f98` — `@arteoscar7` — Colombia 🇨🇴)**:
+        *   Alberto despachó Toque 3 con Cierre por Acción Rápida / Liberación de Cupo, recordando el cierre semanal del bono de 15 días gratis y consultando con alto estatus si logró realizar el giro de $60.00 USD por Western Union o si liberamos el espacio.
+        *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 10:00 a. m. (`2026-11-18T10:00:00`) para cierre definitivo en caso de silencio.
+    *   **Colega Nutriólogo (`80deec0b-4e2c-48ad-92ef-554eeac453b0` — `+52 443 507 3767` — México 🇲🇽)**:
+        *   Alberto despachó Toque 3 aprovechando el regreso de actividades en México tras el feriado, con Doble Alternativa para Zoom hoy a la 01:00 p. m. o 05:30 p. m.
+        *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para monitorear confirmación hoy a las 05:00 p. m. (`2026-11-17T17:00:00`).
+
 
 
 
