@@ -4317,6 +4317,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras haberse omitido en un barrido parcial a 2 leads rezagados (Víctor Tarrillo y LCN. Karen Luna) y no alertar proactivamente tras vencer la ventana horaria de un lead caliente del día (Yisela Zambrano), Alberto ordenó grabar formalmente esta regla en los archivos de protocolo del proyecto (`AGENTS.md` y `GEMINI.md`).
     *   **Contenido de la Regla 20**: Queda terminantemente prohibido declarar *"cero pendientes"* o *"barrido completo"* confiando en la memoria del chat. Antes de cerrar cualquier bloque o jornada, el asistente DEBE consultar en vivo la tabla `leads` de Supabase y verificar que no quede ningún lead vencido ni ventana horaria cumplida sin alerta proactiva.
 
+### 430. Registro de Toque 2 a Yisela Zambrano y Ampliación de Regla 20 (17 de Noviembre de 2026 - 05:44 p. m.)
+*   **Yisela Zambrano (`11dc20bc-2e71-4181-8920-4ca740d8dae5` — `@yiselazambrano`)**:
+    *   Alberto despachó a las 05:37 p. m. Toque 2 amable rescatando el hilo tras vencer la ventana de las 03:30 p. m., con Doble Alternativa para Zoom de 10 minutos mañana miércoles 18 a las 11:00 a. m. o 04:00 p. m.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 10:30 a. m. (`2026-11-18T10:30:00`).
+*   **Ampliación de Regla 20 (`4b12550`)**: Se incorporó la obligación de entregar los pendientes **uno por uno** con lectura previa obligatoria de su bitácora completa en Supabase.
+
 
 
 
