@@ -4250,6 +4250,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto respondió a las 11:00 a. m. con su nombre y cargo de Director dirigiendo la propuesta a **Dirección / Área de Nutrición**, presentando su propia App móvil oficial de **Biocenter** con planes clínicos de 28 días y asistente virtual 24/7, aplicando Doble Alternativa para Zoom hoy martes (12:30 p. m. o 05:00 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `92a9585f-287e-4ab1-9c1a-5a3eb05aba39`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para monitorear derivación hoy a las 03:30 p. m. (`2026-11-17T15:30:00`).
 
+### 421. Calibración de Alto Estatus para Cinthya Puppi y Ventana Bancaria de Noé Rojas (17 de Noviembre de 2026 - 11:30 a. m.)
+*   **Cinthya Puppi (`1c3a09a4-0370-44c4-ba18-880319d858f3` — Dr Gym / ACTÍVA-T)**:
+    *   Alberto reportó haber coincidido presencialmente con Cinthya ayer lunes en el gimnasio sin que ella hiciera mención ni respondiera al Toque 2 de WhatsApp.
+    *   Para proteger el alto estatus comercial, se suspende toda insistencia hoy y se calibra su próxima acción para el **viernes 20 de noviembre a las 10:00 a. m.** (`2026-11-20T10:00:00`), fecha en la cual, si persiste el silencio, se despachará mensaje de despedida/ruptura y se cerrará el lead.
+*   **Noé Rojas (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` — NR Sports México)**:
+    *   Alberto determinó dar margen al horario bancario en México tras el feriado de ayer, reprogramando el recordatorio amable por el saldo pendiente ($57.00 USD) para hoy **martes 17 de noviembre a las 04:00 p. m.** (`2026-11-17T16:00:00`).
+
 
 
 
