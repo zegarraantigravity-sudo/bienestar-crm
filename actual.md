@@ -4220,6 +4220,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto respondió a las 08:20 p. m. celebrando con altura la expansión de su agencia, quitándole la carga de armar listas y dejando sembrado el incentivo de comisión directa si conecta algún dueño de gimnasio al paso.
     *   *Supabase actualizado*: ID `896adc39-99b3-4ad9-b6b6-f6c6975a54b4`, bitácora actualizada con el resumen fiel del audio y la respuesta, y próxima acción calibrada a seguimiento pasivo de canal B2B para el **lunes 30 de noviembre a las 10:00 a. m.** (`2026-11-30T10:00:00`) para mantener el foco 100% en leads activos de cierre inmediato esta semana.
 
+### 416. Confirmación Explícita de Interés y Cita de Cierre Nocturna con Ricardo Restrepo (16 de Noviembre de 2026 - 10:37 p. m.)
+*   **Descubrimiento de Dolor Exacto y Calibración de Cierre (Regla 1, Regla 3, Regla 7, Regla 18 y Regla 19)**:
+    *   A las 09:39 p. m., Ricardo Restrepo (`19874edf-64d0-4127-ac6d-f66a7775401f` — Coach Perú) respondió al mensaje programado con un audio de 1:54 min confirmando explícitamente su interés (*«la verdad sí estoy muy interesado»*), detallando que sus alumnos presenciales tienen buena capacidad económica y que busca escalar hacia el mercado virtual dejando de armar PDFs a mano entre múltiples ventanas con hojas membretadas para unificar todo en un solo sistema. Solicitó conversarlo mañana martes por la noche.
+    *   Alberto respondió a las 09:55 p. m. validando su visión de crecimiento online, reforzando el retorno inmediato (*«con un par de alumnos online nuevos la plataforma se paga sola»*) y aplicando Doble Alternativa dentro de su ventana nocturna para fijar el cierre mañana **martes 17 de noviembre a las 08:00 p. m. o 09:00 p. m.**
+    *   *Supabase actualizado*: ID `19874edf-64d0-4127-ac6d-f66a7775401f`, estado `presentacion_realizada`, bitácora fidedigna actualizada y próxima acción viva fijada para confirmar hora nocturna y ejecutar el cierre del Plan 30 (S/ 400.00 PEN — 50% anticipo S/ 200.00 PEN) mañana martes 17 de noviembre a las 05:00 p. m. (`2026-11-17T17:00:00`).
+
 
 
 
