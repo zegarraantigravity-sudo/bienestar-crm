@@ -4343,6 +4343,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 06:06 p. m. Toque 2 dirigido al encargado/dueño de marca consultando si pudo ver la propuesta de App móvil integrando sus productos saludables en menús y recetas para multiplicar recompras, aplicando Doble Alternativa para Zoom mañana miércoles 18 a las 11:30 a. m. o 05:00 p. m.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 11:00 a. m. (`2026-11-18T11:00:00`).
 
+### 435. Registro de Toque 2 a Mutant's Gym y Cierre de Bloque con Regla 20 (17 de Noviembre de 2026 - 06:13 p. m.)
+*   **Mutant's Gym (`3d1b6bf3-c204-4aa4-b4e0-d670ba8ae316` — Perú 🇵🇪)**:
+    *   Alberto despachó a las 06:11 p. m. Toque 2 dirigido al dueño/administrador consultando si pudo revisar la propuesta de App móvil oficial de Mutant's Gym con rutinas en video y nutrición, aplicando Doble Alternativa para Zoom mañana miércoles 18 a las 12:00 m. o 05:30 p. m.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana miércoles 18 a las 11:00 a. m. (`2026-11-18T11:00:00`).
+*   **Auditoría en Vivo (Regla 20)**: Todos los leads rezagados del bloque quedaron despachados y sincronizados, reportando con transparencia los leads con ventana vencida de hoy para decisión de Alberto.
+
 
 
 
