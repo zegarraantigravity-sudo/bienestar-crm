@@ -4305,6 +4305,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ettore Fitness (`880e48bd-0f3c-4301-82d2-fcf39a9c0d86` — `@ettorefelix`)**: Toque 3 de ruptura suave para entrenador personal (Zoom mañana 12:00 m. o 05:30 p. m.).
     *   *Supabase actualizado*: Los 5 leads quedaron actualizados con su próxima acción viva fijada para mañana **miércoles 18 de noviembre a las 10:00 a. m.** (`2026-11-18T10:00:00`) para cierre definitivo a `cerrado_perdido` en caso de persistir silencio tras el 3er toque.
 
+### 428. Programación Nocturna de Cobro a Noé Rojas y Cierre a Ricardo Restrepo (17 de Noviembre de 2026 - 05:18 p. m.)
+*   **Timing de Alto Estatus y Cierre Nocturno (Regla 1, Regla 3, Regla 8 y Regla 19)**:
+    *   **Noé Rojas — NR Sports (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` — México 🇲🇽)**:
+        *   Alberto programó en WhatsApp un toque fraterno y de alto estatus para esta noche consultando si el banco mexicano liberó hoy el pago en dólares, mencionando con naturalidad logística que mañana irá a Western Union a cobrar otros pagos para aprovechar un solo viaje. Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m. (`2026-11-18T10:00:00`).
+    *   **Ricardo Restrepo (`19874edf-64d0-4127-ac6d-f66a7775401f` — Coach Perú 🇵🇪)**:
+        *   Alberto programó en WhatsApp el toque de cierre nocturno para salir hoy a las **08:00 p. m.**, consultando sus sensaciones tras revisar la App y ofreciendo conectarse en ese momento o a las 09:00 p. m. para cerrar su Plan 30 (S/ 400.00 PEN — anticipo S/ 200.00 PEN). Próxima acción fijada para hoy martes 17 a las 08:00 p. m. (`2026-11-17T20:00:00`).
+
 
 
 
