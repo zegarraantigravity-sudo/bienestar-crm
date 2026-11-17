@@ -4266,6 +4266,21 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
         *   Alberto despachó Toque 3 aprovechando el regreso de actividades en México tras el feriado, con Doble Alternativa para Zoom hoy a la 01:00 p. m. o 05:30 p. m.
         *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para monitorear confirmación hoy a las 05:00 p. m. (`2026-11-17T17:00:00`).
 
+### 423. Reprogramación por Salud de Katty Nutris y Despacho de Toques 3 a Kath Veliz y Nutrisana (17 de Noviembre de 2026 - 02:27 p. m.)
+*   **Katty Nutris (`981fd227-38c6-49ba-bcd8-6dcb0990560c` — `+51 956 692 178` — Perú 🇵🇪)**:
+    *   A las 02:20 p. m., Alberto despachó reconfirmación preventiva para el Zoom de las 04:30 p. m. Katty respondió al minuto (02:21-02:22 p. m.) informando que no podrá conectarse hoy porque está resfriada y sin voz, pidiendo recuperarse bien de la gripe.
+    *   En cumplimiento de la **Regla 18 (Escucha Activa)**, Alberto respondió con empatía total, liberando la sesión de hoy y fijando un saludo de recuperación para el **viernes 20 de noviembre a las 10:30 a. m.** (`2026-11-20T10:30:00`).
+*   **Kath Veliz (`b1b7f0b0-62a7-437b-a40f-da93f72028db` — `+51 955 290 735` — Perú 🇵🇪)**:
+    *   Alberto despachó a las 02:25 p. m. Toque 3 de ruptura suave con Doble Alternativa para Zoom hoy a las 05:30 p. m. o mañana miércoles a las 11:00 a. m. Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m.
+*   **Nutrisana (`54387ad6-b2df-4224-8809-b5291e9dba28` — `+51 960 169 576` — Perú 🇵🇪)**:
+    *   Alberto despachó a las 02:25 p. m. Toque 3 de ruptura suave al equipo clínico con Doble Alternativa para Zoom hoy a las 06:00 p. m. o mañana miércoles a las 11:30 a. m. Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m.
+
+### 424. Admisión Temprana y Derivación a Nutricionistas: Bem Estar (17 de Noviembre de 2026 - 02:35 p. m.)
+*   **Salto de Menú de Pacientes hacia Dirección Clínica (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   A las 02:27 p. m., el centro de nutrición **Bem Estar** (`+51 926 854 252` — Perú) respondió con su menú automático de bienvenida ofreciendo cita virtual (1) o presencial (2).
+    *   Alberto despachó a las 02:28 p. m. un mensaje dirigido específicamente a **Dirección / Equipo de Nutricionistas de Bem Estar**, presentando su propia App móvil oficial para pacientes virtuales y presenciales con automatización de menús de 28 días y asistente virtual 24/7, aplicando Doble Alternativa para Zoom hoy martes (04:30 p. m. o 06:00 p. m.).
+    *   *Supabase actualizado*: Nuevo registro creado con ID `a2c57a3c-8bf4-45fd-8507-dd1402e443bd`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para monitorear respuesta humana hoy a las 05:30 p. m. (`2026-11-17T17:30:00`).
+
 
 
 
