@@ -4281,6 +4281,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 02:28 p. m. un mensaje dirigido específicamente a **Dirección / Equipo de Nutricionistas de Bem Estar**, presentando su propia App móvil oficial para pacientes virtuales y presenciales con automatización de menús de 28 días y asistente virtual 24/7, aplicando Doble Alternativa para Zoom hoy martes (04:30 p. m. o 06:00 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `a2c57a3c-8bf4-45fd-8507-dd1402e443bd`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para monitorear respuesta humana hoy a las 05:30 p. m. (`2026-11-17T17:30:00`).
 
+### 425. Contraataque Clínico a Nutrisana y Toques 3 de México: Gloria Glz y Lactipara (17 de Noviembre de 2026 - 02:41 p. m.)
+*   **Nutrisana (`54387ad6-b2df-4224-8809-b5291e9dba28` — Perú 🇵🇪)**:
+    *   A las 02:32 p. m. se disparó una respuesta rápida institucional destacando sus 7 años de perfil clínico y Fenotipo Metabólico. Alberto validó su trayectoria a las 02:34 p. m. y solicitó confirmación directa de la licenciada encargada o coordinación para Zoom (hoy 06:00 p. m. o mañana 11:30 a. m.).
+*   **Nutrióloga Gloria Glz (`128bec8d-3529-4c57-b1bc-2c420a7f9b6d` — México 🇲🇽)**:
+    *   Alberto despachó a las 02:38 p. m. Toque 3 de ruptura suave retomando labores tras el puente en México (Zoom hoy 05:30 p. m. o mañana 11:00 a. m.). Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m.
+*   **Lactipara Nutrición (`b4226a84-64cd-4af9-a365-7e74d8f26ae5` — México 🇲🇽)**:
+    *   Alberto despachó a las 02:38 p. m. Toque 3 de ruptura suave tras el puente en México (Zoom hoy 06:00 p. m. o mañana 11:30 a. m.). Próxima acción fijada para mañana miércoles 18 a las 10:00 a. m.
+
 
 
 
