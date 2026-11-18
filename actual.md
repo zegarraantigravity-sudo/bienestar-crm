@@ -4362,6 +4362,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó que quedó pactada la reunión presencial con **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) para el **viernes 20 de noviembre a las 11:00 a. m.** en su gimnasio de Miraflores, con el fin de revisar avances de su App prototipo y estructurar los siguientes pasos comerciales.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para el viernes 20 de noviembre a las 11:00 a. m. (`2026-11-20T11:00:00`).
 
+### 438. Calibración Empática de Cierre para Mañana Miércoles con Ricardo Restrepo (17 de Noviembre de 2026 - 09:57 p. m.)
+*   **Escucha Activa y Cierre de Jornada Sin Fricción (Regla 1, Regla 3, Regla 18 y Regla 20)**:
+    *   A las 08:26 p. m., Ricardo Restrepo (`19874edf-64d0-4127-ac6d-f66a7775401f`) envió una nota de voz de 14s explicando que seguía dando su último turno de clase y terminaría ~09:30 p. m. rumbo a casa.
+    *   Al estar cerca de las 10:00 p. m., Alberto envió un mensaje empático a las 09:55 p. m. liberándolo para descansar y aplicando Doble Alternativa para cerrar su Plan 30 mañana **miércoles 18 de noviembre a las 11:00 a. m. o 04:00 p. m.**
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva calibrada para mañana miércoles 18 a las 10:00 a. m. (`2026-11-18T10:00:00`), cerrando la jornada del martes con **0 tareas vencidas o pendientes**.
+
 
 
 
