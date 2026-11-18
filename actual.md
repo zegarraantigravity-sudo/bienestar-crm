@@ -4398,6 +4398,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 10:42 p. m. un mensaje personalizado llamándolo por su nombre, presentando su propia App móvil oficial con rutinas en video, planes de alimentación y asistente virtual 24/7, aplicando Doble Alternativa para Zoom mañana miércoles 18 (11:30 a. m. o 05:00 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `12e3c7cf-a805-4692-856f-126156c0eba3`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 444. Admisión Temprana de Centro de Alto Rendimiento: Espartano360 (17 de Noviembre de 2026 - 11:07 p. m.)
+*   **App de Marca Blanca para Entrenamiento Funcional y Retención (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   A las 10:38 p. m., **Espartano360 – Centro de Alto Rendimiento** (`+51 933 374 108` — Perú) respondió con su bienvenida automática.
+    *   Alberto despachó a las 10:52 p. m. un mensaje ejecutivo dirigido a **Dirección / Gerencia**, presentando su propia App móvil oficial de **Espartano360** con rutinas en video, control de progreso, planes de alimentación y asistente virtual 24/7 para disparar retención de membresías, aplicando Doble Alternativa para Zoom mañana miércoles 18 (12:00 m. o 05:30 p. m.).
+    *   *Supabase actualizado*: Nuevo registro creado con ID `d9e64d44-6dbc-4853-8935-bcc28d2cd675`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+
 
 
 
