@@ -4374,6 +4374,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto respondió a las 10:02 p. m. agradeciendo con total tranquilidad y altura comercial sin presionar.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para recibir el código MTCN / comprobante y cobrar en Western Union mañana miércoles 18 de noviembre a las 10:00 a. m. (`2026-11-18T10:00:00`).
 
+### 440. Admisión Temprana de Tienda Nutricional: Natural Time (17 de Noviembre de 2026 - 10:20 p. m.)
+*   **Integración de Catálogo y Recompras en App de Marca Blanca (Regla 1, Regla 3, Regla 5 y Regla 12)**:
+    *   A las 10:00 p. m., la tienda nutricional **Natural Time** (`+51 932 012 324` — Perú) respondió con su bienvenida automática destacando suplementos, snacks saludables y productos naturales.
+    *   Alberto despachó a las 10:13 p. m. un mensaje estratégico adaptado a tiendas nutricionales (App móvil oficial de **Natural Time** integrando sus productos en menús y recetas para multiplicar recompras mensuales, asistente virtual 24/7 y Doble Alternativa para Zoom mañana miércoles 18 a las 11:00 a. m. o 04:30 p. m.).
+    *   *Supabase actualizado*: Nuevo registro creado con ID `14e0d10c-de29-4433-8fe0-d03dd82ca638`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`) respetando la regla +24h sin alertas falsas.
+
 
 
 
