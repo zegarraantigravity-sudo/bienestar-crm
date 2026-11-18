@@ -4411,6 +4411,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Noé Rojas (`644ee5f0...`)**: Calibrado para esperar su confirmación de giro ($57.00 USD) en la tarde (`2026-11-18T16:00:00`).
     *   **Ricardo Restrepo (`19874edf...`)**: Confirmado para hoy miércoles a las **04:00 p. m.** (`2026-11-18T16:00:00`) para ejecutar cierre de Plan 30 (S/ 400.00 — anticipo S/ 200.00).
 
+### 446. Admisión Temprana de Distribuidor de Nutrición: Marlon Gonzales (18 de Noviembre de 2026 - 10:04 a. m.)
+*   **Integración de Catálogo Herbalife en Menús de 28 Días (Regla 1, Regla 3, Regla 5 y Regla 12)**:
+    *   A las 09:49 a. m., **Marlon Gonzales** (`@marlongtooth`) respondió con menú automático ofreciendo Asesoría de Bienestar y Nutrición (Herbalife).
+    *   Alberto despachó a las 10:02 a. m. un mensaje personalizado saltando el menú de alumnos, presentando su propia App móvil oficial con integración de sus productos en menús de 28 días para multiplicar recompras, asistente virtual 24/7 y Doble Alternativa para Zoom hoy miércoles 18 (03:30 p. m. o 05:30 p. m.).
+    *   *Supabase actualizado*: Nuevo registro creado con ID `83ffe3de-6a5b-4d57-ab25-80faa0d942db`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+
 
 
 
