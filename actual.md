@@ -4583,6 +4583,19 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 >
 > 📸 Al terminar, me mandas una foto clara del ticket donde se vea el código MTCN de 10 dígitos para confirmar tu plan y habilitarte el acceso de inmediato. 🚀
 
+### 6. Plantilla Oficial de Insumos para Montaje de Página Web y App (WhatsApp)
+> Para dejar todo listo para el montaje oficial de tu página web y App con tu marca, envíame por aquí estos datos cuando puedas:
+>
+> 1️⃣ **Nombre oficial** que irá en tu aplicación y web  
+> 2️⃣ **Logo** *(en buena calidad)*  
+> 3️⃣ **2 colores principales** de tu marca  
+> 4️⃣ **2 imágenes para los videos:** 1 imagen para el video de inicio y 1 imagen para el video final  
+> 5️⃣ **Testimonios de clientes** *(si tienes, y si son con fotos mucho mejor)*  
+> 6️⃣ **Datos de contacto:** Correo electrónico, número de WhatsApp y tus redes sociales  
+> 7️⃣ **Dirección y horario de atención** *(si cuentas con atención presencial)*  
+>
+> ¡Con eso dejamos tu plataforma personalizada y lista! 🚀💪
+
 ---
 
 ## 🛠️ Lo que se va a Hacer (Siguientes Pasos / Ideas)
