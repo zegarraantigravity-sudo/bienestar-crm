@@ -4573,6 +4573,7 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 > 👤 **Nombres:** Alberto Gustavo  
 > 👤 **Apellidos:** Zegarra-Ballon Quezada *(en caja también lo pueden poner como Zegarra Ballon Quezada sin guion)*  
 > 🆔 **DNI:** 10783023  
+> 📍 **Dirección:** Julián Arce 251 A, Santa Catalina - La Victoria - Lima  
 > 📍 **Ciudad:** Lima  
 > 📍 **País:** Perú  
 > 📱 **Teléfono:** +51 978 438 246  
