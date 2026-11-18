@@ -4447,6 +4447,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó la **Plantilla Maestra Post-Zoom** con código **`NUT-FLC-DOKN`**, la cotización formal en dólares (`cotizaciones/Cotizacion_Lily_Esparza.docx`), la nueva **Plantilla 6** de insumos para montaje de web/App y los datos oficiales de **Western Union** (actualizada con dirección oficial en La Victoria, Lima).
     *   *Supabase actualizado*: Estado ascendido de `cita_agendada` a **`presentacion_realizada`**, Plan 30 ($120 USD) y próxima acción viva fijada para recibir el código MTCN e insumos gráficos mañana **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 452. Reprogramación Limpia en Lote por Bloqueo Temporal de 24h en WhatsApp (18 de Noviembre de 2026 - 06:13 p. m.)
+*   **Gestión Preventiva de Pipeline y Cero Alertas Falsas (Regla 1, Regla 3 y Regla 20)**:
+    *   Ante la suspensión temporal de 24 horas en el WhatsApp principal (que se reactiva mañana **jueves 19 de noviembre a las ~10:30 a. m.**), se determinó no cerrar a ningún prospecto hasta recibir mañana las respuestas acumuladas en cola.
+    *   Se reprogramaron en lote **23 leads** en Supabase (`Ricardo Restrepo` a las **10:30 a. m.** y los otros **22 leads** de seguimiento a las **11:00 a. m.** del jueves 19 de noviembre), dejando la jornada de hoy miércoles 18 con **0 alertas vencidas o pendientes**.
+    *   **Medida Anti-Baneo**: A partir de mañana se elimina el enlace web (`https://...`) del primer mensaje de prospección en frío, adoptando los nuevos ganchos de dolor + micro-CTA (*«respóndeme 'A ver'»*).
+
 
 
 
