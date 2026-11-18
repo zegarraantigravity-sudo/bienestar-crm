@@ -4417,6 +4417,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 10:02 a. m. un mensaje personalizado saltando el menú de alumnos, presentando su propia App móvil oficial con integración de sus productos en menús de 28 días para multiplicar recompras, asistente virtual 24/7 y Doble Alternativa para Zoom hoy miércoles 18 (03:30 p. m. o 05:30 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `83ffe3de-6a5b-4d57-ab25-80faa0d942db`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 447. Confirmación de Primer Zoom del Día con Lily Esparza Fitness (18 de Noviembre de 2026 - 10:12 a. m.)
+*   **Ascenso a `cita_agendada` y Calibración de Huso Horario (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   A las 09:54 a. m., **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1` — México 🇲🇽) respondió confirmando su cita por Zoom: *«Hola si con gusto 12:30 Porfa»*.
+    *   Alberto confirmó la cita aclarando el huso horario (**12:30 p. m. hora México / 01:30 p. m. hora Perú**) y anticipando el envío del enlace 15 minutos antes (01:15 p. m. hora Perú).
+    *   *Supabase actualizado*: Estado ascendido formalmente de `prospecto` a **`cita_agendada`**, Plan 30 Internacional ($120.00 USD / mes — anticipo $60.00 USD) y próxima acción viva fijada para hoy miércoles 18 a la **01:30 p. m.** (`2026-11-18T13:30:00`).
+
 
 
 
