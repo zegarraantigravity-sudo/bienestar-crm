@@ -4357,6 +4357,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Reprogramados para mañana **miércoles 18 de noviembre a las 10:00 a. m.** (`2026-11-18T10:00:00`): **Consultorio Nutricional (`+52 443 507 3767`)** (cierre tras Toque 3) y **Frank Serapion** (monitoreo con socio).
     *   **Resultado:** El CRM queda con **0 alertas vencidas**, dejando únicamente el cierre nocturno de las **08:00 p. m. con Ricardo Restrepo**.
 
+### 437. Confirmación de Reunión Presencial en Miraflores con Frank Serapion (17 de Noviembre de 2026 - 09:51 p. m.)
+*   **Avance de Alianza Estratégica B2C (Regla 1, Regla 3 y Regla 5)**:
+    *   Alberto confirmó que quedó pactada la reunión presencial con **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) para el **viernes 20 de noviembre a las 11:00 a. m.** en su gimnasio de Miraflores, con el fin de revisar avances de su App prototipo y estructurar los siguientes pasos comerciales.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para el viernes 20 de noviembre a las 11:00 a. m. (`2026-11-20T11:00:00`).
+
 
 
 
