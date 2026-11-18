@@ -4423,6 +4423,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó la cita aclarando el huso horario (**12:30 p. m. hora México / 01:30 p. m. hora Perú**) y anticipando el envío del enlace 15 minutos antes (01:15 p. m. hora Perú).
     *   *Supabase actualizado*: Estado ascendido formalmente de `prospecto` a **`cita_agendada`**, Plan 30 Internacional ($120.00 USD / mes — anticipo $60.00 USD) y próxima acción viva fijada para hoy miércoles 18 a la **01:30 p. m.** (`2026-11-18T13:30:00`).
 
+### 448. Liquidación del 100% del Plan 30 ($120 USD) de Noé Rojas — NR Sports (18 de Noviembre de 2026 - 10:57 a. m.)
+*   **Cobro Exitoso Vía Western Union (Regla 1, Regla 3, Regla 8 y Regla 9)**:
+    *   A las 10:37 a. m., **Noé Rojas** (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` — NR Sports México) envió comprobante oficial de Western Union por el saldo de **$57.00 USD** (**MTCN: `1337364135`**), completando el 100% de la liquidación de su Plan 30 Internacional ($120.00 USD).
+    *   *Supabase actualizado*: Estado ratificado en `cerrado_ganado` (`$120 USD`), bitácora actualizada con el código MTCN y próxima acción fijada para seguimiento mensual el **18 de diciembre de 2026 a las 10:00 a. m.** (`2026-12-18T10:00:00`).
+
 
 
 
