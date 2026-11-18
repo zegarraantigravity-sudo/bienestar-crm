@@ -4440,6 +4440,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   En cumplimiento de la **Regla 12**, Alberto aplicó **Cierre Rebote / Judo de Alex Dey** a las 11:08 a. m. aclarando el malentendido y destacando que la App integra sus productos directamente dentro de los menús de 28 días de sus clientes para evitar el abandono y multiplicar recompras mensuales, proponiendo Zoom de 10 minutos hoy a las 05:30 p. m. o mañana jueves a las 11:00 a. m.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para mañana **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 451. Zoom Exitoso, Cotización USD y Cierre de Anticipo ($60 USD) con Lily Esparza Fitness (18 de Noviembre de 2026 - 02:55 p. m.)
+*   **Presentación Realizada y Compromiso de Plan 30 + Potencial de Gimnasio (Regla 1, Regla 3, Regla 9 y Regla 15)**:
+    *   A la 01:30 p. m. hora Perú (12:30 p. m. México), Alberto ejecutó el Zoom demostrativo en vivo con **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1` — México 🇲🇽).
+    *   A Lily le encantó la plataforma; confirmó que quiere el **Plan 30 Internacional ($120.00 USD / mes)** para su marca personal (y posteriormente evalúa también su gimnasio) y solicitó los datos para enviar el adelanto del **50% ($60.00 USD)**.
+    *   Alberto despachó la **Plantilla Maestra Post-Zoom** con código **`NUT-FLC-DOKN`**, la cotización formal en dólares (`cotizaciones/Cotizacion_Lily_Esparza.docx`), la nueva **Plantilla 6** de insumos para montaje de web/App y los datos oficiales de **Western Union** (actualizada con dirección oficial en La Victoria, Lima).
+    *   *Supabase actualizado*: Estado ascendido de `cita_agendada` a **`presentacion_realizada`**, Plan 30 ($120 USD) y próxima acción viva fijada para recibir el código MTCN e insumos gráficos mañana **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+
 
 
 
