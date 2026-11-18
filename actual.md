@@ -4428,6 +4428,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:37 a. m., **Noé Rojas** (`644ee5f0-f9a3-4ced-af12-1d61f9325f49` — NR Sports México) envió comprobante oficial de Western Union por el saldo de **$57.00 USD** (**MTCN: `1337364135`**), completando el 100% de la liquidación de su Plan 30 Internacional ($120.00 USD).
     *   *Supabase actualizado*: Estado ratificado en `cerrado_ganado` (`$120 USD`), bitácora actualizada con el código MTCN y próxima acción fijada para seguimiento mensual el **18 de diciembre de 2026 a las 10:00 a. m.** (`2026-12-18T10:00:00`).
 
+### 449. Admisión Temprana de Lead Caliente en Aguascalientes: Colega +52 449 837 1341 (18 de Noviembre de 2026 - 11:04 a. m.)
+*   **Respuesta Activa al Zoom y Doble Alternativa Vespertina (Regla 1, Regla 3, Regla 5, Regla 7 y Regla 16)**:
+    *   A las 10:46 a. m., el colega nutriólogo (`+52 449 837 1341` — Aguascalientes, México 🇲🇽) respondió activamente: *«Hola buen día. Si me gustaría me mostrarás»*.
+    *   Alberto despachó a las 11:00 a. m. la presentación de los 3 dolores clínicos y Doble Alternativa para Zoom hoy miércoles en la tarde calibrando husos horarios: **2:30 p. m. México (3:30 p. m. Perú)** o **4:30 p. m. México (5:30 p. m. Perú)**.
+    *   *Supabase actualizado*: Nuevo registro creado con ID `989adeac-00c2-4a66-928e-019c1ae2cd73`, estado `prospecto`, Plan 30 Internacional ($120.00 USD) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`) si no confirma hoy.
+
 
 
 
