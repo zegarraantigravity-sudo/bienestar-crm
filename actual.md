@@ -4380,6 +4380,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 10:13 p. m. un mensaje estratégico adaptado a tiendas nutricionales (App móvil oficial de **Natural Time** integrando sus productos en menús y recetas para multiplicar recompras mensuales, asistente virtual 24/7 y Doble Alternativa para Zoom mañana miércoles 18 a las 11:00 a. m. o 04:30 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `14e0d10c-de29-4433-8fe0-d03dd82ca638`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`) respetando la regla +24h sin alertas falsas.
 
+### 441. Admisión Temprana y Derivación a Dirección Médica: Clínica SEYSO (17 de Noviembre de 2026 - 10:32 p. m.)
+*   **App Institucional para Clínica de Salud y Colaboradores Corporativos (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   A las 10:01 p. m., **Clínica SEYSO — Recepción Talara** (`+51 933 191 682` — Perú) respondió con su bienvenida automática.
+    *   Alberto despachó a las 10:28 p. m. un mensaje ejecutivo dirigido a **Dirección Médica / Área de Nutrición**, ofreciendo su propia App móvil oficial de **Clínica SEYSO** para pacientes y colaboradores corporativos con planes clínicos de 28 días y asistente virtual 24/7, aplicando Doble Alternativa para Zoom mañana miércoles 18 (11:30 a. m. o 05:00 p. m.).
+    *   *Supabase actualizado*: Nuevo registro creado con ID `53784274-2af7-484c-962b-1036b30a1a9d`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+
 
 
 
