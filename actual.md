@@ -4404,6 +4404,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó a las 10:52 p. m. un mensaje ejecutivo dirigido a **Dirección / Gerencia**, presentando su propia App móvil oficial de **Espartano360** con rutinas en video, control de progreso, planes de alimentación y asistente virtual 24/7 para disparar retención de membresías, aplicando Doble Alternativa para Zoom mañana miércoles 18 (12:00 m. o 05:30 p. m.).
     *   *Supabase actualizado*: Nuevo registro creado con ID `d9e64d44-6dbc-4853-8935-bcc28d2cd675`, estado `prospecto`, Plan 30 (S/ 400.00) y próxima acción viva fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 445. Toque 2 a Lily Esparza Fitness y Calibración Vespertina de Noé Rojas y Ricardo Restrepo (18 de Noviembre de 2026 - 09:55 a. m.)
+*   **Lily Esparza Fitness (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1` — México 🇲🇽)**:
+    *   Alberto despachó Toque 2 a las 09:49 a. m. consultando si alcanzó a ver la propuesta de App móvil oficial de **Lily Esparza Fitness**, aplicando Doble Alternativa para Zoom hoy miércoles a las 03:30 p. m. o 05:30 p. m. Próxima acción fijada para el **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+*   **Calibración de Cierre y Cobro (04:00 p. m.)**:
+    *   **Noé Rojas (`644ee5f0...`)**: Calibrado para esperar su confirmación de giro ($57.00 USD) en la tarde (`2026-11-18T16:00:00`).
+    *   **Ricardo Restrepo (`19874edf...`)**: Confirmado para hoy miércoles a las **04:00 p. m.** (`2026-11-18T16:00:00`) para ejecutar cierre de Plan 30 (S/ 400.00 — anticipo S/ 200.00).
+
 
 
 
