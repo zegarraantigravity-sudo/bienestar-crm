@@ -4458,6 +4458,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 07:14 p. m., **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1` — México 🇲🇽) confirmó que mañana **jueves 19 de noviembre** enviará el adelanto de **$60.00 USD** (50% de su Plan 30 Internacional — $120.00 USD).
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para recibir el ticket Western Union (MTCN — $60.00 USD) e insumos para Web/App mañana **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
 
+### 454. Admisión y Contraataque Rebote/Judo a Carlos Huamanfit — Herbalife (19 de Noviembre de 2026 - 09:50 a. m.)
+*   **Defensa de Marca Blanca y Cierre al Zoom (Regla 1, Regla 3, Regla 5, Regla 11, Regla 12 y Regla 16)**:
+    *   **Carlos Huamanfit** (Coach de pérdida de peso / Herbalife en Lima) respondió por Facebook Messenger con objeción de confianza visual sobre la web demo y fotos de Facebook.
+    *   Alberto despachó respuesta aplicando **Rebote/Judo + Doble Alternativa de Alex Dey**, aclarando que el aplicativo se arma 100% con su propia marca, logo, colores y productos de Herbalife integrados dentro de los menús de 28 días (con asistente 24/7) e invitándolo a Zoom en vivo de 10 minutos hoy a las **05:00 p. m.** o **07:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado con ID `bee6f615-920d-40d0-bc61-827e3b9f0ff7`, estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para mañana **viernes 20 de noviembre a las 10:30 a. m.** (`2026-11-20T10:30:00`).
+
 
 
 
