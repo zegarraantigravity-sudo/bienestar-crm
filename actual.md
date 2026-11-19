@@ -4453,6 +4453,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se reprogramaron en lote **23 leads** en Supabase (`Ricardo Restrepo` a las **10:30 a. m.** y los otros **22 leads** de seguimiento a las **11:00 a. m.** del jueves 19 de noviembre), dejando la jornada de hoy miércoles 18 con **0 alertas vencidas o pendientes**.
     *   **Medida Anti-Baneo**: A partir de mañana se elimina el enlace web (`https://...`) del primer mensaje de prospección en frío, adoptando los nuevos ganchos de dolor + micro-CTA (*«respóndeme 'A ver'»*).
 
+### 453. Confirmación de Adelanto ($60 USD) para Mañana Jueves de Lily Esparza Fitness (18 de Noviembre de 2026 - 08:05 p. m.)
+*   **Compromiso Firme de Pago (Regla 1, Regla 3, Regla 8 y Regla 18)**:
+    *   A las 07:14 p. m., **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1` — México 🇲🇽) confirmó que mañana **jueves 19 de noviembre** enviará el adelanto de **$60.00 USD** (50% de su Plan 30 Internacional — $120.00 USD).
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para recibir el ticket Western Union (MTCN — $60.00 USD) e insumos para Web/App mañana **jueves 19 de noviembre a las 10:30 a. m.** (`2026-11-19T10:30:00`).
+
 
 
 
