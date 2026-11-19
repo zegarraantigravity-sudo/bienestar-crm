@@ -4579,6 +4579,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó retirada elegante de alto estatus dejando la puerta abierta para el futuro.
     *   *Supabase actualizado*: **Mutant's Gym** (`3d1b6bf3-c204-4aa4-b4e0-d670ba8ae316`) cerrado formalmente a **`cerrado_perdido`**.
 
+### 477. Auditoría Visual en WhatsApp y Cierre Formal de 14 Leads Post-Toque 3 (19 de Noviembre de 2026 - 12:37 p. m.)
+*   **Limpieza Verificada del Bloque 1 (Regla 1, Regla 3, Regla 5, Regla 17, Regla 18 y Regla 20)**:
+    *   Alberto auditó uno a uno mediante **14 capturas reales de WhatsApp** todos los chats del Bloque 1 tras la reactivación de la línea, confirmando silencio absoluto posterior al **Toque 3** del martes 17 de noviembre.
+    *   Se movieron formalmente a **`cerrado_perdido`** en Supabase: `Óscar (@arteoscar7)`, `Colega Nutricionista (+51 956 377 768)`, `Nutri.tiva (+51 957 228 876)`, `Colega Nutriólogo (+52 443 507 3767)`, `Consultorio Morelia (+52 1 443 698 0680)`, `LCN. Karen Luna (+52 1 443 271 8448)`, `Nutrióloga Gloria Glz (+52 1 444 193 9677)`, `Lactipara Nutrición (+52 1 444 225 7888)`, `Kath Veliz (@Kath.fit)`, `Nutrisana (+51 960 169 576)`, `Nutreteam / Arlethe Cruz (+52 1 443 690 5407)`, `Nicanor Camacho (@c.asesorfit.c)`, `Power Fitness EMS` y `Ettore (@ettorefelix)`.
+    *   *Resultado en vivo*: Pipeline del jueves 19 de noviembre 100% depurado, quedando únicamente **Lily Esparza Fitness ($60.00 USD)** y **Ricardo Restrepo Coach (S/ 400)** en monitoreo para las **04:00 p. m.**
+
 
 
 
