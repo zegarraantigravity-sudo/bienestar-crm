@@ -4464,6 +4464,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó respuesta aplicando **Rebote/Judo + Doble Alternativa de Alex Dey**, aclarando que el aplicativo se arma 100% con su propia marca, logo, colores y productos de Herbalife integrados dentro de los menús de 28 días (con asistente 24/7) e invitándolo a Zoom en vivo de 10 minutos hoy a las **05:00 p. m.** o **07:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado con ID `bee6f615-920d-40d0-bc61-827e3b9f0ff7`, estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para mañana **viernes 20 de noviembre a las 10:30 a. m.** (`2026-11-20T10:30:00`).
 
+### 455. Cierre Inmediato de Zoom en Vivo con Carlos Huamanfit — Herbalife (19 de Noviembre de 2026 - 10:19 a. m.)
+*   **Conexión en Caliente y Regla 7 (Regla 1, Regla 3, Regla 7 y Regla 16)**:
+    *   Carlos consultó si el servicio es pago único o membresía; Alberto aplicó **Cierre Puercoespín** + micro-costo adaptable (`desde S/ 13/cliente al mes`).
+    *   Al indicar Carlos que en la tarde trabaja pero estaba libre en ese momento (*«Si estás libre explícame ahora lo veo»*), Alberto aplicó **Doble Alternativa inmediata** y concretó el **Zoom en vivo a las 10:19 a. m.**
+    *   *Supabase actualizado*: Estado ascendido de `prospecto` a **`cita_agendada`**, bitácora actualizada y próxima acción fijada para hoy **11:30 a. m.** (`2026-11-19T11:30:00`) para registrar el desenlace del Zoom.
+
 
 
 
