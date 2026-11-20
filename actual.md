@@ -4635,6 +4635,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto precisó que la reunión presencial de mañana **viernes 20 de noviembre** con **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) en su gimnasio de **Miraflores** es al **mediodía (`12:00 m.`)** y no a las `11:00 a. m.`
     *   *Supabase actualizado*: Hora de próxima acción ajustada a `2026-11-20T12:00:00` y bitácora actualizada.
 
+### 487. Despachos Matutinos: Lily Esparza, Cierre de Dr Gym y Espera Táctica a Ricardo Restrepo (20 de Noviembre de 2026 - 10:18 a. m.)
+*   **Barrido de Prioridades Antes de Salir a Miraflores (Regla 1, Regla 3, Regla 8 y Regla 18)**:
+    *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`): Alberto envió saludo matutino cordial solicitando ticket Western Union (`$60.00 USD`) y logo/colores; monitoreo movido a hoy **04:00 p. m.** (`2026-11-20T16:00:00`).
+    *   **Dr Gym — Cinthya Puppi** (`1c3a09a4-0370-44c4-ba18-880319d8f3`): Tras silencio desde el lunes, Alberto envió despedida elegante de alto estatus y cerró formalmente a **`cerrado_perdido`**.
+    *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Auditoría visual confirmó mensaje nocturno aún en doble check gris; se mantiene espera táctica sin saturar hasta hoy **04:00 p. m.** (`2026-11-20T16:00:00`).
+
 
 
 
