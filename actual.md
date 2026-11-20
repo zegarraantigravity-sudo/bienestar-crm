@@ -4747,6 +4747,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó respuesta ejecutiva dirigida a esa área presentando su App móvil oficial para control metabólico (planes de 28 días, intercambios manteniendo macros/carbohidratos y asistente virtual 24/7) con **Doble Alternativa** para Zoom hoy viernes (`04:00 p. m.` o `05:30 p. m.` hora México).
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
 
+### 506. Cita de Zoom Confirmada con Yolitzin para Lunes 23 (20 de Noviembre de 2026 - 06:18 p. m.)
+*   **Calibración por Ventana Explícita (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   A las 4:26 p. m., **Yolitzin (`+52 1 55 3403 4897`)** aceptó el Zoom delimitando fecha: *«puede ser el día Lunes 6:30 pm hora México»*.
+    *   Alberto confirmó de inmediato para el **lunes 23 de noviembre a las `6:30 p. m. hora México` (`7:30 p. m. hora Perú`)**, anticipando envío del enlace 15 min antes y consultando el nombre del encargado de Nutrición.
+    *   *Supabase actualizado*: Estado ascendido de `prospecto` a **`cita_agendada`** (`754f2483-967c-4ed4-a87f-35d1aa610109`), bitácora actualizada y próxima acción fijada para el **lunes 23 de noviembre a las 07:15 p. m. hora Perú** (`2026-11-23T19:15:00`).
+
 
 
 
