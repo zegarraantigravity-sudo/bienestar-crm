@@ -4764,6 +4764,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto completó el despacho diario de **20 WhatsApps** (plantillas limpias sin enlaces) y **10 mensajes en Facebook**, sumando hoy 2 Zooms nuevos agendados (**Katty Nutris** y **Colega `+52 449 837 1341`** para sábado 21; **Yolitzin** para lunes 23).
     *   *Supabase actualizado*: Se ajustó la próxima acción de **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) para aplicar mañana **sábado 21 a las 10:30 a. m.** **Cierre Envolvente por Insumos** (solicitar logo, 2 colores y datos Web/App para avanzar diseño el fin de semana, sin mencionar cobro).
 
+### 509. Blindaje Estricto de la Regla 3 ("DALE") en AGENTS.md y GEMINI.md (20 de Noviembre de 2026 - 06:51 p. m.)
+*   **Corrección Definitiva de Brecha Operativa (Regla 1, Regla 2, Regla 3, Regla 5 y Regla 18)**:
+    *   Se eliminó la cláusula ambigua *«(o una confirmación explícita equivalente)»* en la **Regla 3** de [AGENTS.md](file:///c:/Users/Alberto/Downloads/CRM/AGENTS.md) y [GEMINI.md](file:///c:/Users/Alberto/Downloads/CRM/GEMINI.md), estableciendo que únicamente la palabra literal **`DALE`** autoriza escrituras en archivos, Supabase o Git.
+    *   Se añadió la **Prohibición Terminante de Doble Acción en el Mismo Turno** (prohibido emitir herramientas de escritura junto con la propuesta) y se alinearon las **Reglas 5 y 18** con la espera obligatoria de **`DALE`**.
+
 
 
 
