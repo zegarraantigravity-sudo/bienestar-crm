@@ -4753,6 +4753,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó de inmediato para el **lunes 23 de noviembre a las `6:30 p. m. hora México` (`7:30 p. m. hora Perú`)**, anticipando envío del enlace 15 min antes y consultando el nombre del encargado de Nutrición.
     *   *Supabase actualizado*: Estado ascendido de `prospecto` a **`cita_agendada`** (`754f2483-967c-4ed4-a87f-35d1aa610109`), bitácora actualizada y próxima acción fijada para el **lunes 23 de noviembre a las 07:15 p. m. hora Perú** (`2026-11-23T19:15:00`).
 
+### 507. Cierre de Tarde del Viernes: Toque 2 a AS Nutrition y Reprogramación de Lily Esparza y Ricardo Restrepo (20 de Noviembre de 2026 - 06:27 p. m.)
+*   **Control de Ventana 04:00 p. m. y Cero Pendientes del Viernes (Regla 1, Regla 3, Regla 8 y Regla 20)**:
+    *   **AS Nutrition** (`1b968dae-44a2-4e47-bc75-2484afdc0bb3`): Alberto despachó **Toque 2** (`10:00 a. m.` o `01:00 p. m.` del sábado); monitoreo fijado para **mañana sábado 21 a las 10:30 a. m.**
+    *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) y **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Auditoría visual confirmó ambos mensajes aún en doble check gris; se evita presionar y se reprograman para **mañana sábado 21 a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+    *   *Resultado*: Viernes 20 cerrado con **0 pendientes**.
+
 
 
 
