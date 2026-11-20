@@ -4618,6 +4618,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Aprovechando el horario habitual de salida de clases de **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`), Alberto despachó a las 09:28 p. m. un toque cordial con **Cierre Envolvente + Doble Alternativa** para conectarse mañana viernes a las **09:30 a. m.** o **04:00 p. m.** y cerrar su **Plan 30 (S/ 400)**.
     *   *Supabase actualizado*: Bitácora actualizada y alerta temprana fijada para mañana **viernes 20 de noviembre a las 09:00 a. m.** (`2026-11-20T09:00:00`).
 
+### 484. Admisión y Contraataque Rebote/Judo a Lincoln Cruz Personal Trainer (19 de Noviembre de 2026 - 09:44 p. m.)
+*   **Defensa de Diferenciadores frente a Software Actual (Regla 1, Regla 3, Regla 5, Regla 11 y Regla 16)**:
+    *   **Lincoln Cruz Personal Trainer** respondió por Facebook Messenger: *«hola, no gracias ya cuemto con el mio saludos»*.
+    *   Alberto aplicó **Rebote/Judo + Cierre Puercoespín** cuestionando si su plataforma actual genera planes de nutrición de 28 días automáticos e incluye asistente virtual 24/7 mientras entrena, con **Doble Alternativa** para Zoom comparativo mañana viernes a las **04:00 p. m.** o **06:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para mañana **viernes 20 de noviembre a las 10:30 a. m.** (`2026-11-20T10:30:00`).
+
+### 485. Retirada Elegante y Cierre de Lincoln Cruz Personal Trainer (19 de Noviembre de 2026 - 09:46 p. m.)
+*   **Escucha Activa y Cuidado de Cuenta (Regla 1, Regla 3 y Regla 18)**:
+    *   **Lincoln Cruz Personal Trainer** (`f1873ef3-09cc-4804-abed-429c6e547702`) respondió firme: *«por favor no insista no dese9 eso saludos»*.
+    *   Alberto despachó retirada elegante en 1 línea respetando su tiempo para cuidar su cuenta de Facebook.
+    *   *Supabase actualizado*: **Lincoln Cruz Personal Trainer** cerrado formalmente a **`cerrado_perdido`**.
+
 
 
 
