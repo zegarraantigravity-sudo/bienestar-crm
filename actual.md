@@ -4735,6 +4735,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó mensaje destacando su App móvil oficial integrando sus productos en menús de 28 días + asistente virtual 24/7 para multiplicar recompras, con **Doble Alternativa** para Zoom hoy viernes (`04:00 p. m.` o `06:00 p. m.`).
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
 
+### 504. Cita de Zoom Confirmada con Colega +52 449 837 1341 para Sábado Mediodía Perú (20 de Noviembre de 2026 - 02:59 p. m.)
+*   **Rescate Exitoso tras Toque 3 (Regla 1, Regla 3 y Regla 5)**:
+    *   A las 2:55 p. m., **Colega Nutriólogo (`+52 449 837 1341`)** respondió tras el Toque 3: *«Perdoname / Tengo mucho trabajo / Yo podría hasta mañana como 11 am»*.
+    *   Alberto confirmó la cita aclarando el huso horario (**11:00 a. m. hora México = 12:00 m. hora Perú**, sin cruzarse con el Zoom de Katty Nutris de las 11:00 a. m. Perú) y consultó su nombre para agendarlo.
+    *   *Supabase actualizado*: Estado ascendido de `prospecto` a **`cita_agendada`** (`989adeac-00c2-4a66-928e-019c1ae2cd73`), bitácora actualizada y próxima acción fijada para **mañana sábado 21 de noviembre a las 11:45 a. m. hora Perú** (`2026-11-21T11:45:00`).
+
 
 
 
