@@ -4682,6 +4682,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó despedida cordial de alto estatus sin bajar tarifas oficiales y dejando la puerta abierta para cuando crezca su cartera o comparta el Plan 30 con otro asociado.
     *   *Supabase actualizado*: **Carlos Huamanfit** cerrado formalmente a **`cerrado_perdido`**.
 
+### 495. Admisión y Respuesta a Lead Caliente +52 1 474 569 7685 ("A ver") (20 de Noviembre de 2026 - 10:58 a. m.)
+*   **Efectividad de Gancho Sin Enlaces (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   **Colega Nutriólogo (`+52 1 474 569 7685`)** respondió activamente **`"A ver"`** a las 10:56 a. m. tras prospección sin enlaces.
+    *   Alberto despachó presentación atacando los 3 dolores clínicos (sin "IA") y aplicando **Doble Alternativa** para Zoom hoy viernes a las **03:00 p. m. o 05:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+
 
 
 
