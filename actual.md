@@ -4663,6 +4663,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó **Toque 3 de cierre suave** (`4:00 p. m.` o `6:00 p. m.` hoy viernes) a **Bem Estar** (`a2c57a3c-8bf4-45fd-8507-dd1402e443bd`), **Natural Time** (`14e0d10c-de29-4433-8fe0-d03dd82ca638`), **Clínica SEYSO** (`53784274-2af7-484c-962b-1036b30a1a9d`) y **Club Salud** (`7c942edf-31d5-40af-acf6-3000717d2814`).
     *   *Supabase actualizado*: Los 4 leads reprogramados para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`); si persiste silencio en 24h, cerrar a `cerrado_perdido`.
 
+### 492. Cierre del Bloque Matutino: Endometabolic Center, AS Nutrition y Limpieza de 5 Leads Post-Toque 3 (20 de Noviembre de 2026 - 10:41 a. m.)
+*   **Mañana 100% Despejada Antes de Reunión Presencial con Frank Serapion (Regla 1, Regla 3, Regla 5 y Regla 20)**:
+    *   **Endometabolic Center** (`6274241f-5340-4f05-8d8e-c381a778e9ee`): Toque 2 enviado (`4:00 p. m.` o `6:00 p. m.`); reprogramado para **mañana sábado 21 a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+    *   **AS Nutrition** (`1b968dae-44a2-4e47-bc75-2484afdc0bb3`): Monitoreo movido a hoy **04:00 p. m.** (`2026-11-20T16:00:00`).
+    *   **5 leads Post-Toque 3 cerrados a `cerrado_perdido`:** `ChikiPunch` (`a28689e6-7f67-4f64-ac53-539d97e32e6a`), `Marlon Gonzales` (`83ffe3de-6a5b-4d57-ab25-80faa0d942db`), `Víctor Tarrillo / Bienestar 4 áreas` (`c7adef5b-a1c0-4b93-bc3f-9521a6f8c34c`), `Yisela Zambrano` (`11dc20bc-2e71-4181-8920-4ca740d8dae5`) y `Grupo Malca Nutrition` (`57ab87ea-7da2-484f-9a11-2dcdd27c8df1`).
+    *   *Resultado*: Bloque matutino en **0 pendientes**, quedando únicamente **Frank Serapion (12:00 m.)** y la ventana de las **04:00 p. m.** (`Lily Esparza`, `Ricardo Restrepo`, `Katty Nutris` y `AS Nutrition`).
+
 
 
 
