@@ -4717,6 +4717,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó despedida elegante en 1 línea respetando su tiempo.
     *   *Supabase actualizado*: **Club Salud** cerrado formalmente a **`cerrado_perdido`**.
 
+### 501. Admisión y Respuesta Ejecutiva a Consultorio Médico Salud Es Vida (20 de Noviembre de 2026 - 02:44 p. m.)
+*   **Nuevo Consultorio Médico (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp a las 10:16 a. m., saltó la bienvenida automática de **Consultorio Médico Salud Es Vida** (`+51 942 006 477`).
+    *   Alberto despachó respuesta ejecutiva a Dirección Médica atacando los 3 dolores clínicos (sin mencionar "IA") y aplicando **Doble Alternativa** para Zoom hoy viernes a las **04:00 p. m.** o **06:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+
 
 
 
