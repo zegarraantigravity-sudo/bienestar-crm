@@ -4711,6 +4711,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó refuerzo estratégico dirigido al encargado destacando la integración de sus productos naturales dentro de menús de 28 días para multiplicar recompras y aplicando **Doble Alternativa** para Zoom hoy viernes (`04:00 p. m.` o `06:00 p. m.`).
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
 
+### 500. Despedida Elegante y Cierre de Club Salud (20 de Noviembre de 2026 - 02:40 p. m.)
+*   **Escucha Activa y Cierre Formal (Regla 1, Regla 3 y Regla 18)**:
+    *   **Club Salud** (`7c942edf-31d5-40af-acf6-3000717d2814`) respondió a las 10:45 a. m. tras el Toque 3: *«no gracias»*.
+    *   Alberto despachó despedida elegante en 1 línea respetando su tiempo.
+    *   *Supabase actualizado*: **Club Salud** cerrado formalmente a **`cerrado_perdido`**.
+
 
 
 
