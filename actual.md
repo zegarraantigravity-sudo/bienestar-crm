@@ -4658,6 +4658,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó **Toque 3 de cierre suave** (`4:00 p. m.` o `6:00 p. m.` hoy viernes) a **Vital Foods** (`d66a3967-3159-46ae-82ae-7c45f8cda5f4`), **José Pablo Rocha** (`12e3c7cf-a805-4692-856f-126156c0eba3`), **Espartano360** (`d9e64d44-6dbc-4853-8935-bcc28d2cd675`) y **Biocenter** (`92a9585f-287e-4ab1-9c1a-5a3eb05aba39`).
     *   *Supabase actualizado*: Los 4 leads reprogramados para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`); si persiste silencio en 24h, cerrar a `cerrado_perdido`.
 
+### 491. Despachos #12 al #15: Toques 3 a Bem Estar, Natural Time, Clínica SEYSO y Club Salud (20 de Noviembre de 2026 - 10:37 a. m.)
+*   **Cierre de Ráfaga Matutina (Regla 1, Regla 3, Regla 5 y Regla 18)**:
+    *   Alberto despachó **Toque 3 de cierre suave** (`4:00 p. m.` o `6:00 p. m.` hoy viernes) a **Bem Estar** (`a2c57a3c-8bf4-45fd-8507-dd1402e443bd`), **Natural Time** (`14e0d10c-de29-4433-8fe0-d03dd82ca638`), **Clínica SEYSO** (`53784274-2af7-484c-962b-1036b30a1a9d`) y **Club Salud** (`7c942edf-31d5-40af-acf6-3000717d2814`).
+    *   *Supabase actualizado*: Los 4 leads reprogramados para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`); si persiste silencio en 24h, cerrar a `cerrado_perdido`.
+
 
 
 
