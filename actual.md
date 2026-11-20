@@ -4646,6 +4646,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Carlos Huamanfit** (`bee6f615-920d-40d0-bc61-827e3b9f0ff7`): Alberto envió seguimiento positivo sobre la prueba en su celular y evaluación del Plan 30 (`S/ 400`) con su asociado de Herbalife; próxima acción fijada para **mañana sábado 21 a las 10:30 a. m.** (`2026-11-21T10:30:00`).
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`): Alberto saludó por su recuperación de gripe aplicando Doble Alternativa para Zoom **hoy 04:00 p. m.** o **mañana sábado 11:00 a. m.**; próxima acción fijada para hoy **04:00 p. m.** (`2026-11-20T16:00:00`).
 
+### 489. Despachos #5, #6 y #7: Colega +52 449, Valente Brothers México y Coach EE. UU. (20 de Noviembre de 2026 - 10:29 a. m.)
+*   **Seguimientos en Ráfaga Antes de Salir a Miraflores (Regla 1, Regla 3 y Regla 18)**:
+    *   **Colega Nutriólogo (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): Toque 3 de cierre suave (`3:00 p. m.` o `5:00 p. m.` hora México).
+    *   **Valente Brothers México** (`8fe3448c-eaa8-4b21-912a-e50c47aff437`): Toque 2 (`3:00 p. m.` o `5:00 p. m.` hora México).
+    *   **Coach EE. UU. (`+1 202-503-7108`)** (`83fabf99-127b-46bc-88ae-de8ff25722a6`): Toque 2 en inglés (`4:00 p. m.` o `6:00 p. m.` EST).
+    *   *Supabase actualizado*: Los 3 leads reprogramados para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+
 
 
 
