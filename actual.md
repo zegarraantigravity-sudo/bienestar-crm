@@ -4803,6 +4803,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Alberto envió toque de eliminación directa (Alex Dey) preguntando con franqueza si se complicó el presupuesto o siguen adelante; próxima acción movida al **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
     *   **Colega Nutriólogo (`+52 1 474 569 7685`)** (`65c2ae4e-f130-46c1-888f-768e5528cf0d`): Alberto despachó **Toque 2** proponiendo Zoom hoy sábado **03:00 p. m. o 05:00 p. m. hora México**; monitoreo fijado para hoy **03:30 p. m. hora Perú** (`2026-11-21T15:30:00`).
 
+### 516. Confirmación de Katty Nutris al Mediodía (12:00 m.) y Corrección Limpia de Bitácora (21 de Noviembre de 2026 - 10:52 a. m.)
+*   **Reagendamiento Directo sin Cruces (Regla 1, Regla 3 y Regla 7)**:
+    *   A las 10:45 a. m., **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) solicitó mover la sala de las `11:00 a. m.` al **mediodía (`12:00 m.`)**; Alberto confirmó de inmediato aprovechando que previamente había liberado el mediodía al reprogramar al Colega de México (`+52 449`).
+    *   *Supabase actualizado*: Bitácora de **Katty Nutris** actualizada con próxima acción hoy **11:45 a. m.** (`2026-11-21T11:45:00`) para enviar enlace de Zoom, y depurados los registros adelantados del turno interrumpido previo.
+
 
 
 
