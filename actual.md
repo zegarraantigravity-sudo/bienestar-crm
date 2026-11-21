@@ -4851,6 +4851,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Colega (`+52 1 474 569 7685`)** (`65c2ae4e-f130-46c1-888f-768e5528cf0d`): Alberto despachó **Toque 3 de cierre suave** (`6:00 p. m.` hoy o `lunes 10:00 a. m. México`); monitoreo fijado al **lunes 23 a las 10:30 a. m.** (`2026-11-23T10:30:00`).
     *   **Colega (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): Auditoría visual confirmó ambos mensajes de hoy en doble check gris sin lectura; reprogramado al **lunes 23 a las 10:30 a. m.** (`2026-11-23T10:30:00`) para reagendar su Zoom.
 
+### 525. Admisión y Propuesta Clínica a Edith Nutrición +52 1 476 135 8909 (21 de Noviembre de 2026 - 05:41 p. m.)
+*   **Derivación a Equipo Humano en México (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp a las 10:24 a. m., el bot IA de **Edith Nutrición (`+52 1 476 135 8909`)** derivó la propuesta a su equipo.
+    *   Alberto despachó propuesta completa atacando los 3 dolores clínicos (sin mencionar "IA") y aplicando **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 04:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
