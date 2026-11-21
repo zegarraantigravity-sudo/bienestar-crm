@@ -4775,6 +4775,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó los 3 dolores del coaching fitness (+1,300 ejercicios en video, planes 28 días, asistente virtual 24/7 y App marca blanca) con **Doble Alternativa inmediata** para Zoom ahorita o **mañana sábado a las 03:00 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
 
+### 511. Admisión y Respuesta Personalizada a VULKANA — Valentina Morales (20 de Noviembre de 2026 - 08:19 p. m.)
+*   **Centro de Fisioterapia, Fuerza y Movimiento (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp sin enlaces a las 8:14 p. m., saltó bienvenida automática de **VULKANA** (**Valentina Morales**, `+52 1 777 218 8885`, Morelos, México).
+    *   Alberto despachó respuesta personalizada presentando App móvil oficial de Vulkana (videos guiados de fuerza/movilidad, planes nutricionales 28 días y asistente virtual 24/7), aplicando **Doble Alternativa** para Zoom **mañana sábado a las 03:00 p. m. o 05:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+
 
 
 
