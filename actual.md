@@ -4798,6 +4798,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Para evitar cruce de tiempo, Alberto escribió con antelación al **Colega (+52 449 837 1341)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`) proponiendo correr el Zoom para hoy sábado por la tarde: **03:00 p. m. o 05:00 p. m. hora México** (`04:00 p. m.` o `06:00 p. m.` hora Perú).
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción del Colega (+52 449) fijada para hoy **03:30 p. m. hora Perú** (`2026-11-21T15:30:00`).
 
+### 515. Toque de Eliminación a Ricardo Restrepo y Toque 2 a Colega +52 1 474 569 7685 (21 de Noviembre de 2026 - 10:42 a. m.)
+*   **Seguimientos Prioritarios de Sábado (Regla 1, Regla 3 y Regla 18)**:
+    *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Alberto envió toque de eliminación directa (Alex Dey) preguntando con franqueza si se complicó el presupuesto o siguen adelante; próxima acción movida al **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+    *   **Colega Nutriólogo (`+52 1 474 569 7685`)** (`65c2ae4e-f130-46c1-888f-768e5528cf0d`): Alberto despachó **Toque 2** proponiendo Zoom hoy sábado **03:00 p. m. o 05:00 p. m. hora México**; monitoreo fijado para hoy **03:30 p. m. hora Perú** (`2026-11-21T15:30:00`).
+
 
 
 
