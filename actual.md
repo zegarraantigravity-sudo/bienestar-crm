@@ -4857,6 +4857,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó propuesta completa atacando los 3 dolores clínicos (sin mencionar "IA") y aplicando **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 04:00 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 526. Admisión y Refuerzo Estratégico a Natural Power Nutrition Trujillo (21 de Noviembre de 2026 - 05:55 p. m.)
+*   **Tienda de Suplementación Deportiva + Descarte Previo No-Fit Oriflame (Regla 1, Regla 3, Regla 5, Regla 12 y Regla 13)**:
+    *   Se descalificó por cruce de rubro a **Oriflame** (`Belleza y cosmética`) sin registrarlo en Supabase.
+    *   Tras prospección por WhatsApp a las 10:40 a. m., saltó la bienvenida de **Natural Power Nutrition Trujillo** (`+51 947 315 624`). Alberto despachó refuerzo estratégico a Gerencia destacando la integración de su catálogo de suplementos dentro de menús de 28 días y rutinas en video con asistente 24/7 para multiplicar recompras, aplicando **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 04:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva fijada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
