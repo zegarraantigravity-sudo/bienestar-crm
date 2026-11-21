@@ -4874,6 +4874,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó el envío del mensaje comercial inicial a **Full Fitness Nutrition (`+51 948 904 323`)** tras su autorización con `DALE`.
     *   *Supabase actualizado*: Bitácora actualizada en estado `prospecto` (`35258753-13e0-4418-a33c-29d01a47c528`) con próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 529. Respuesta con Rebote/Judo a Audio de Éxito y Bienestar (21 de Noviembre de 2026 - 06:24 p. m.)
+*   **Manejo de Objeción de Tiempo (Regla 1, Regla 3, Regla 11 y Regla 18)**:
+    *   **Éxito y Bienestar (`@ExitoyBienestar9`)** respondió al Toque 2 con un audio (6:11 p. m.) indicando que *«no está interesado en estos días porque anda ocupadito atendiendo a sus clientes»*.
+    *   Alberto aplicó **Rebote / Judo** de Alex Dey (convirtiendo su saturación de clientes en la razón para automatizar con App propia y recompras) + **Doble Alternativa** fuera de *"estos días"*: Zoom de 10 minutos el **miércoles 25 a las 4:00 p. m.** o **jueves 26 a las 10:00 a. m.**
+    *   *Supabase actualizado*: Bitácora actualizada en estado `prospecto` (`8977c5f3-3e27-443c-83eb-7bf3fffc1336`) con próxima acción programada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
