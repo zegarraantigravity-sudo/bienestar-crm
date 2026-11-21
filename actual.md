@@ -4831,6 +4831,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Alberto envió toque corto previo a las 05:00 p. m. (hoy tarde o lunes primera hora); próxima acción fijada para el **lunes 23 a las 10:30 a. m.** (`2026-11-23T10:30:00`).
     *   **Colega (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): Alberto envió toque de rescate para confirmar el Zoom de hoy **05:00 p. m. México (`06:00 p. m. Perú`)** o lunes; alerta fijada hoy **05:45 p. m. Perú** (`2026-11-21T17:45:00`).
 
+### 521. Despachos #4 al #7: AS Nutrition, Salud Es Vida, Nutrimas y Éxito y Bienestar (21 de Noviembre de 2026 - 05:03 p. m.)
+*   **Avance Vespertino de Sábado (Regla 1, Regla 3 y Regla 18)**:
+    *   Alberto despachó mensajes calibrados (`07:00 p. m.` hoy o `lunes 10:00 a. m.`) a **AS Nutrition** (`Toque 3`), **Consultorio Médico Salud Es Vida** (`Toque 2`), **Nutrimas** (`Toque 2`) y **Éxito y Bienestar** (`Toque 2`).
+    *   *Supabase actualizado*: Los 4 leads reprogramados para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
