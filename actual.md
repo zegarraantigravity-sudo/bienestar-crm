@@ -4814,6 +4814,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto respondió fijando **Doble Alternativa** hoy mismo ya instalado en casa (**02:30 p. m.** o **05:00 p. m.**) para probar la App y cerrar su **Plan 30 (S/ 400)**.
     *   *Supabase actualizado*: Bitácora actualizada y alerta fijada hoy sábado a las **02:15 p. m.** (`2026-11-21T14:15:00`).
 
+### 518. Descubrimiento Herbalife en Katty Nutris y Reprogramación a 04:00 p. m. (21 de Noviembre de 2026 - 12:03 p. m.)
+*   **Moat de Productos Integrados en Menús (Regla 1, Regla 3 y Regla 12)**:
+    *   A las 11:50 a. m., **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) avisó que se demoraba por estar en llamada de pago de pedido con **Herbalife** (revelando perfil mixto **Nutricionista + Herbalife**).
+    *   Alberto despachó nota de voz de `1:03` (`11:55 a. m.`) destacando que el sistema incluye el catálogo completo de **Herbalife Perú** integrado en los menús de 28 días y proponiendo el Zoom hoy sábado a las **04:00 p. m.**
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción fijada hoy a las **03:45 p. m.** (`2026-11-21T15:45:00`).
+
 
 
 
