@@ -4808,6 +4808,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   A las 10:45 a. m., **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) solicitó mover la sala de las `11:00 a. m.` al **mediodía (`12:00 m.`)**; Alberto confirmó de inmediato aprovechando que previamente había liberado el mediodía al reprogramar al Colega de México (`+52 449`).
     *   *Supabase actualizado*: Bitácora de **Katty Nutris** actualizada con próxima acción hoy **11:45 a. m.** (`2026-11-21T11:45:00`) para enviar enlace de Zoom, y depurados los registros adelantados del turno interrumpido previo.
 
+### 517. Reactivación Positiva de Ricardo Restrepo Coach vía Nota de Voz (21 de Noviembre de 2026 - 10:59 a. m.)
+*   **Efectividad del Toque de Eliminación (Regla 1, Regla 3, Regla 7 y Regla 18)**:
+    *   Tras el toque de eliminación de Alex Dey, **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`) envió nota de voz de 35s a las 10:46 a. m. confirmando interés (*«sí quiero probar la app»*), explicando su saturación semanal y señalando que sale hacia su casa tipo **01:00 p. m.**
+    *   Alberto respondió fijando **Doble Alternativa** hoy mismo ya instalado en casa (**02:30 p. m.** o **05:00 p. m.**) para probar la App y cerrar su **Plan 30 (S/ 400)**.
+    *   *Supabase actualizado*: Bitácora actualizada y alerta fijada hoy sábado a las **02:15 p. m.** (`2026-11-21T14:15:00`).
+
 
 
 
