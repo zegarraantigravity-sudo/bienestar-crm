@@ -4787,6 +4787,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó presentación de los 3 dolores del coaching (+1,300 videos guiados, planes 28 días, asistente virtual 24/7 y App marca blanca) con **Doble Alternativa** para Zoom **mañana sábado a las 02:00 p. m. o 04:30 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
 
+### 513. Despacho de Cierre Envolvente por Insumos a Lily Esparza Fitness (21 de Noviembre de 2026 - 10:25 a. m.)
+*   **Cierre Envolvente Sin Presión Financiera (Regla 1, Regla 3, Regla 5 y Regla 8)**:
+    *   Alberto despachó a **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) el mensaje envolvente solicitando logo, 2 colores principales y nombre exacto en la App para avanzar el boceto este fin de semana, sin mencionar cobro.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción viva fijada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
