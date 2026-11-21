@@ -4820,6 +4820,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó nota de voz de `1:03` (`11:55 a. m.`) destacando que el sistema incluye el catálogo completo de **Herbalife Perú** integrado en los menús de 28 días y proponiendo el Zoom hoy sábado a las **04:00 p. m.**
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción fijada hoy a las **03:45 p. m.** (`2026-11-21T15:45:00`).
 
+### 519. Calibración de Ventana a Próxima Semana con Katty Nutris (21 de Noviembre de 2026 - 04:44 p. m.)
+*   **Doble Alternativa en Ventana Temporal del Prospecto (Regla 1, Regla 3 y Regla 7)**:
+    *   Tras escuchar el audio completo sobre Herbalife Perú, **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) respondió a las 3:58 p. m.: *«Con más seguridad para la otra semana»*.
+    *   Alberto validó su ritmo y fijó **Doble Alternativa** exacta para la semana entrante: **lunes 23 a las 11:00 a. m.** o **martes 24 a las 04:00 p. m.**
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción fijada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
