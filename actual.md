@@ -4769,6 +4769,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Se eliminó la cláusula ambigua *«(o una confirmación explícita equivalente)»* en la **Regla 3** de [AGENTS.md](file:///c:/Users/Alberto/Downloads/CRM/AGENTS.md) y [GEMINI.md](file:///c:/Users/Alberto/Downloads/CRM/GEMINI.md), estableciendo que únicamente la palabra literal **`DALE`** autoriza escrituras en archivos, Supabase o Git.
     *   Se añadió la **Prohibición Terminante de Doble Acción en el Mismo Turno** (prohibido emitir herramientas de escritura junto con la propuesta) y se alinearon las **Reglas 5 y 18** con la espera obligatoria de **`DALE`**.
 
+### 510. Admisión y Respuesta Inmediata a Velafitness — México (20 de Noviembre de 2026 - 08:12 p. m.)
+*   **Respuesta en Línea del Segundo Bloque Nocturno (Regla 1, Regla 3, Regla 5, Regla 7 y Regla 16)**:
+    *   Tras prospección por WhatsApp sin enlaces a las 8:10 p. m., **Velafitness (`+52 1 56 1115 1079`)** respondió al instante en vivo.
+    *   Alberto despachó los 3 dolores del coaching fitness (+1,300 ejercicios en video, planes 28 días, asistente virtual 24/7 y App marca blanca) con **Doble Alternativa inmediata** para Zoom ahorita o **mañana sábado a las 03:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120.00 USD`), asignado a `Alberto Zegarra` y próxima acción viva fijada para **mañana sábado 21 de noviembre a las 10:30 a. m.** (`2026-11-21T10:30:00`).
+
 
 
 
