@@ -4919,6 +4919,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (12:02 p. m.), saltó la bienvenida automática de **Coach Mayelo | Entrenador Personal** (`+52 1 81 4005 3183`, Monterrey, México). Alberto despachó propuesta en primera persona adaptada a su modelo semi-asistido con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 2:00 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 537. Admisión y Propuesta a Coach Esaú Tamez — Team Tamez (22 de Noviembre de 2026 - 12:14 p. m.)
+*   **Personal Trainer & Nutrition en Monterrey (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Tras prospección por WhatsApp (12:07 p. m.), saltaron 2 mensajes automáticos de **Coach Esaú Tamez** (*Team Tamez — Personal Trainer Nutrition*, `+52 1 81 8052 2791`). Alberto despachó propuesta en primera persona enfocada en su propia App con la marca **Team Tamez** (rutinas en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 3:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
