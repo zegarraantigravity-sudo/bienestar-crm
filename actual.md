@@ -4929,6 +4929,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (12:02 p. m.), saltaron 2 mensajes automáticos de **Kinexpro Hugo Meza** (`+52 1 81 4028 7230`, Monterrey, México). Alberto despachó propuesta enfocada en App propia de **KinexPro** (ejercicios guiados en video, plan nutricional de 28 días y asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 10:30 a. m. o 3:30 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 539. Admisión y Propuesta Clínica a Diana Castro Nutricionista (22 de Noviembre de 2026 - 02:56 p. m.)
+*   **Nutricionista con Convenios y Catálogo de Medicina Natural (Regla 1, Regla 3, Regla 5, Regla 12 y Regla 16)**:
+    *   Tras prospección por WhatsApp (2:48 p. m.), saltó el menú automático de **Diana Castro Nutricionista (`@dianacastrowellness`)**, atendiendo pacientes privados, convenios (*Avantari, Luyo Ortodoncia, Cefra, Health & Wellness*) y catálogo de medicina natural. Alberto despachó propuesta en primera persona atacando los 3 dolores clínicos + integración de su catálogo natural dentro de los menús de 28 días, aplicando **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 3:30 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
