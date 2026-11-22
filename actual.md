@@ -4939,6 +4939,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (2:55 p. m.), saltó la bienvenida automática de **Dr Fit Cix Rehabilitación y Rendimiento (`@dr.fit.cix`, Fisiomedicfit)**. Alberto despachó propuesta en primera persona enfocada en App propia de **Fisiomedicfit** (rutinas en video, plan nutricional de 28 días y asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 4:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 541. Admisión y Propuesta a Inconort — Instituto Cardiovascular (22 de Noviembre de 2026 - 03:33 p. m.)
+*   **Instituto Cardiovascular en Chiclayo (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Tras prospección por WhatsApp (3:31 p. m.), saltó la bienvenida automática de **Inconort** (`+51 959 740 578`, Chiclayo, Perú). Alberto despachó propuesta dirigida a Dirección / área encargada enfocada en App propia de **Inconort** para seguimiento nutricional cardiovascular (planes de 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 4:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
