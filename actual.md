@@ -4908,6 +4908,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Coach Nidia Body Trainer & Mujeres con Luz** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`) leyó la propuesta en doble check azul y respondió *«Hola»* en vivo a las 9:50 p. m. Alberto despachó **Doble Alternativa** directa para Zoom de 10 minutos el **lunes 23 a las 10:00 a. m. o 4:00 p. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada en estado `prospecto` con próxima acción programada para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 535. ¡Cita Zoom Agendada! Coach Nidia Body Trainer para el Lunes 23 (21 de Noviembre de 2026 - 10:00 p. m.)
+*   **Cierre de Cita en Vivo (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   **Coach Nidia Body Trainer & Mujeres con Luz** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`) confirmó a las 9:53 p. m. eligiendo el horario de **«4 pm»** (hora México) = **5:00 p. m. hora Perú** del **lunes 23 de noviembre**.
+    *   Alberto selló el compromiso avisando envío del enlace de Zoom 15 minutos antes.
+    *   *Supabase actualizado*: Promovido a `cita_agendada` con próxima acción fijada para el **lunes 23 de noviembre a las 4:45 p. m. Perú** (`2026-11-23T16:45:00`).
+
 
 
 
