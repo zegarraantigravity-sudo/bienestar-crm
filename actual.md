@@ -4914,6 +4914,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto selló el compromiso avisando envío del enlace de Zoom 15 minutos antes.
     *   *Supabase actualizado*: Promovido a `cita_agendada` con próxima acción fijada para el **lunes 23 de noviembre a las 4:45 p. m. Perú** (`2026-11-23T16:45:00`).
 
+### 536. Admisión y Propuesta a Coach Mayelo | Entrenador Personal (22 de Noviembre de 2026 - 12:08 p. m.)
+*   **Estudio Privado de Entrenamiento en Monterrey (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Tras prospección por WhatsApp (12:02 p. m.), saltó la bienvenida automática de **Coach Mayelo | Entrenador Personal** (`+52 1 81 4005 3183`, Monterrey, México). Alberto despachó propuesta en primera persona adaptada a su modelo semi-asistido con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 2:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
