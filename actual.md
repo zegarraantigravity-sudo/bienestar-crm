@@ -4924,6 +4924,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (12:07 p. m.), saltaron 2 mensajes automáticos de **Coach Esaú Tamez** (*Team Tamez — Personal Trainer Nutrition*, `+52 1 81 8052 2791`). Alberto despachó propuesta en primera persona enfocada en su propia App con la marca **Team Tamez** (rutinas en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 3:00 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 538. Admisión y Propuesta a Kinexpro Hugo Meza (22 de Noviembre de 2026 - 12:17 p. m.)
+*   **Terapia Física y Recuperación Deportiva en Monterrey (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Tras prospección por WhatsApp (12:02 p. m.), saltaron 2 mensajes automáticos de **Kinexpro Hugo Meza** (`+52 1 81 4028 7230`, Monterrey, México). Alberto despachó propuesta enfocada en App propia de **KinexPro** (ejercicios guiados en video, plan nutricional de 28 días y asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 10:30 a. m. o 3:30 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
