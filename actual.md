@@ -4891,6 +4891,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto aplicó **Cierre por Compromiso** de alto estatus (cero presión financiera anticipada), deseándole buen regreso y dejando pactada la recepción del comprobante (`$60 USD`) e insumos para el lunes por la tarde.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción programada para el **lunes 23 de noviembre a las 3:00 p. m.** (`2026-11-23T15:00:00`).
 
+### 532. Admisión y Propuesta a Academias ABAR PUMAS + Descarte No-Fit Coach Punto Valle (21 de Noviembre de 2026 - 09:42 p. m.)
+*   **Filtro No-Fit y Prospección Nocturna (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Se descalificó por auditoría visual sin registro en Supabase a **Coach Punto Valle (`+52 1 55 1033 6444`)** por ser tienda minorista de moda (`mx.coach.com`).
+    *   Tras prospección por WhatsApp (9:39 p. m.), saltaron mensajes automáticos de **Lic. Efraín Ramos Guin**, Director General de **Academias ABAR PUMAS** (Monterrey, México). Alberto despachó propuesta de App propia para preparación física y nutrición deportiva con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 4:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
