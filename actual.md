@@ -4934,6 +4934,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (2:48 p. m.), saltó el menú automático de **Diana Castro Nutricionista (`@dianacastrowellness`)**, atendiendo pacientes privados, convenios (*Avantari, Luyo Ortodoncia, Cefra, Health & Wellness*) y catálogo de medicina natural. Alberto despachó propuesta en primera persona atacando los 3 dolores clínicos + integración de su catálogo natural dentro de los menús de 28 días, aplicando **Doble Alternativa** para Zoom este **lunes 23 a las 11:00 a. m. o 3:30 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
 
+### 540. Admisión y Propuesta a Dr Fit Cix Rehabilitación y Rendimiento — Fisiomedicfit (22 de Noviembre de 2026 - 03:00 p. m.)
+*   **Centro de Rehabilitación y Rendimiento en Perú (Regla 1, Regla 3, Regla 5 y Regla 13)**:
+    *   Tras prospección por WhatsApp (2:55 p. m.), saltó la bienvenida automática de **Dr Fit Cix Rehabilitación y Rendimiento (`@dr.fit.cix`, Fisiomedicfit)**. Alberto despachó propuesta en primera persona enfocada en App propia de **Fisiomedicfit** (rutinas en video, plan nutricional de 28 días y asistente virtual 24/7) con **Doble Alternativa** para Zoom este **lunes 23 a las 10:00 a. m. o 4:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **lunes 23 de noviembre a las 10:30 a. m.** (`2026-11-23T10:30:00`).
+
 
 
 
