@@ -4979,6 +4979,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Consultorio Nutricional (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): Alberto despachó **Doble Alternativa** fresca para Zoom hoy lunes **1:00 p. m.** o **5:30 p. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 549. Cierre Formal a `cerrado_perdido`: Éxito y Bienestar (23 de Noviembre de 2026 - 10:33 a. m.)
+*   **Auditoría de Bitácora y Audio (Regla 1, Regla 3 y Regla 18)**:
+    *   **Éxito y Bienestar** (`8977c5f3-3e27-443c-83eb-7bf3fffc1336`): Al auditar la captura completa, el lead dijo literalmente *«no estoy interesado»* en su audio del sábado (6:11 p. m.), leyó en doble check azul el Rebote/Judo de las 6:24 p. m. y no respondió en casi 40 horas.
+    *   *Supabase actualizado*: Cerrado formalmente a `cerrado_perdido`.
+
 
 
 
