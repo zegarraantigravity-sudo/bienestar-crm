@@ -4959,6 +4959,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:48 a. m.), saltó la bienvenida de **Nicolás Arango** (**Quentin Protein Life / Herbalife**, `+51 962 621 107`). Alberto despachó propuesta enfocada en App propia integrando sus batidos/productos dentro de menús de 28 días, rutinas en video y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy lunes 23 a las 12:30 p. m. o 3:30 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 545. Admisión y Propuesta Clínica a Obesity Solutions (23 de Noviembre de 2026 - 09:58 a. m.)
+*   **Clínica Especialista en Obesidad (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp (9:51 a. m.), saltó la bienvenida automática de **Obesity Solutions** (conectado a las 9:53 a. m.). Alberto despachó propuesta clínica a Dirección Médica / Nutrición enfocada en App propia de **Obesity Solutions** (planes de 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **hoy lunes 23 a las 12:00 p. m. o 4:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
