@@ -4954,6 +4954,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:46 a. m.), saltó la bienvenida de **Leslie** (**Prime Advance Nutrición**, `+51 961 850 878`) estando en línea. Alberto despachó propuesta enfocada en App propia integrando su catálogo en menús de 28 días, rutinas en video y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy lunes 23 a las 11:30 a. m. o 4:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 544. Admisión y Propuesta a Nicolás Arango — Quentin Protein Life (23 de Noviembre de 2026 - 09:53 a. m.)
+*   **Coach de Bienestar y Herbalife en Perú (Regla 1, Regla 3, Regla 5 y Regla 12)**:
+    *   Tras prospección por WhatsApp (9:48 a. m.), saltó la bienvenida de **Nicolás Arango** (**Quentin Protein Life / Herbalife**, `+51 962 621 107`). Alberto despachó propuesta enfocada en App propia integrando sus batidos/productos dentro de menús de 28 días, rutinas en video y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy lunes 23 a las 12:30 p. m. o 3:30 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
