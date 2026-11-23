@@ -4969,6 +4969,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Alberto despachó seguimiento matutino con **Doble Alternativa** calibrada a sus ventanas reales (**hoy 12:30 p. m. u 8:30 p. m.** al salir de clases) para arrancar su prueba y cerrar Plan 30.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 547. Seguimiento Matutino #2: Katty Nutris (23 de Noviembre de 2026 - 10:15 a. m.)
+*   **Barrido de Lunes (Regla 1, Regla 3, Regla 12 y Regla 20)**:
+    *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`, Nutricionista + Herbalife Perú): Alberto despachó **Doble Alternativa** por la tarde (**hoy lunes 4:00 p. m.** o **martes 24 a las 4:00 p. m.**) para Zoom de 10 minutos.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
