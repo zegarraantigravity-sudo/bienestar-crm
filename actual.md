@@ -5014,6 +5014,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Coach Mayelo | Entrenador Personal (`+52 1 81 4005 3183`)** (`926a60e1-e3a7-46a3-bcdb-839fddba1751`): Alberto despachó **Toque 2** corto con **Doble Alternativa** para Zoom hoy lunes **2:00 p. m.** o **5:30 p. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 556. Limpieza en Bloque de 15 Leads Sin Respuesta Humana (23 de Noviembre de 2026 - 11:02 a. m.)
+*   **Optimización Operativa del Pipeline (Regla 1 y Regla 3)**:
+    *   Con autorización explícita (`DALE`), se cerraron en bloque a `cerrado_perdido` los **15 leads** del fin de semana/semana pasada que solo activaron bots automáticos o mantuvieron silencio absoluto sin respuesta humana (`Team Tamez`, `Kinexpro Hugo Meza`, `Diana Castro`, `Dr Fit Cix`, `Inconort`, `Salud Es Vida`, `Nutrimas`, `Salud Belleza +51 944`, `Velafitness`, `VULKANA`, `Coach México +52 1 56 1169 3833`, `AS Nutrition`, `Endometabolic Center`, `Coach EE. UU. +1 202-503-7108` y `+52 1 474 569 7685`).
+    *   A partir de hoy, el esfuerzo de 3 toques se reserva exclusivamente para leads con **respuesta humana real**, protegiendo el tiempo y energía comercial de Alberto.
+    *   *Supabase actualizado*: `15` registros movidos a `cerrado_perdido`; quedan activos únicamente los leads con interacción humana real, los toques despachados hoy y las citas confirmadas (**Lily**, **Coach Nidia**, **Yolitzin** y **Frank Serapion**).
+
 
 
 
