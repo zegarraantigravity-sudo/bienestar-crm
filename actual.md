@@ -4964,6 +4964,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:51 a. m.), saltó la bienvenida automática de **Obesity Solutions** (conectado a las 9:53 a. m.). Alberto despachó propuesta clínica a Dirección Médica / Nutrición enfocada en App propia de **Obesity Solutions** (planes de 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **hoy lunes 23 a las 12:00 p. m. o 4:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva (Toque 1) para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 546. Seguimiento Matutino #1: Ricardo Restrepo Coach (23 de Noviembre de 2026 - 10:12 a. m.)
+*   **Barrido de Lunes (Regla 1, Regla 3, Regla 18 y Regla 20)**:
+    *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Alberto despachó seguimiento matutino con **Doble Alternativa** calibrada a sus ventanas reales (**hoy 12:30 p. m. u 8:30 p. m.** al salir de clases) para arrancar su prueba y cerrar Plan 30.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
