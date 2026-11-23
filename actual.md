@@ -5037,6 +5037,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`): Alberto despachó saludo cálido preguntando por su regreso a San Luis Potosí y solicitando su logo y colores para arrancar el montaje (cero presión financiera).
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción programada para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 560. ¡Confirmación Firme de Compra y Envío Hoy! Lily Esparza Fitness (23 de Noviembre de 2026 - 06:21 p. m.)
+*   **Objeción de Contrato Forzoso Resuelta y Cierre Confirmado (Regla 1, Regla 3 y Regla 8)**:
+    *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) respondió a las 6:11 p. m.: *«Si vamos con todo !! Sólo una pregunta, ¿si tiene algún contrato forzoso?»*.
+    *   Alberto le aclaró por audio que es **100% libre mes a mes** sin permanencia obligatoria, y Lily confirmó por nota de voz: *«en un rato te estoy enviando cosas y la mitad de lo que habíamos acordado»* (`$60 USD` por Western Union + logo, fotos y colores).
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción al **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`) para recibir el comprobante/insumos y promover formalmente a `cerrado_ganado`.
+
 
 
 
