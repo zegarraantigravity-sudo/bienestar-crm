@@ -5026,6 +5026,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`) respondió con audio de 36s (`12:06 p. m.`) confirmando **hoy lunes 23 a las 8:30 p. m.** como su mejor horario y revelando que tiene *"trabajo de sobra"* (alumnos a las 12:30, 4:00 y 5:30 p. m.). Alberto selló el compromiso avisando envío del enlace de Zoom a las **8:15 p. m.** para cerrar **Plan 30 (`S/ 400`, anticipo `S/ 200`)**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para **hoy lunes 23 de noviembre a las 8:15 p. m.** (`2026-11-23T20:15:00`).
 
+### 558. ¡Zoom Ejecutado con Éxito! Coach Nidia Body Trainer (Herbalife + Prueba NUT-FLC-82HF + Cotización USD) (23 de Noviembre de 2026 - 06:06 p. m.)
+*   **Presentación Realizada y Cierre en Curso (Regla 1, Regla 3, Regla 12 y Regla 15)**:
+    *   Se ejecutó el Zoom en vivo con **Coach Nidia Body Trainer** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, Monterrey, México). Confirmó que también vende **Herbalife** y le encantó la plataforma.
+    *   Alberto le entregó la guía de acceso de prueba con el código **`NUT-FLC-82HF`** (`nutri-alberto`), la cotización oficial en dólares (Plan 30: `$120 USD` / anticipo `$60 USD`) y el documento Word `cotizaciones/Cotizacion_Coach_Nidia.docx`.
+    *   *Supabase actualizado*: Promovida a `presentacion_realizada` con próxima acción programada para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
