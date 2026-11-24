@@ -5113,6 +5113,18 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Barrido de Martes (Regla 1, Regla 3 y Regla 20)**:
     *   **William Vela (`fb.com/williamjvv`)** (`4c7d43fa-f801-490e-a367-8f7b2ba2b9d4`): Alberto despachó **Toque 2** corto por Messenger con **Doble Alternativa** para hoy martes **2:00 p. m. o 7:00 p. m. hora Perú**, solicitando su WhatsApp (`next_action_date: 2026-11-24T13:30:00`).
 
+### 574. Contingencia por Bloqueo WhatsApp 24h + Toque 2 Daly Nutrition + Limpieza de 10 Bots (24 de Noviembre de 2026 - 09:21 a. m.)
+*   **Gestión de Contingencia y Limpieza Operativa (Regla 1 y Regla 3)**:
+    *   **Daly Nutrition (`Lima`)** (`8fcfea50-0f4f-4c5b-8426-517fdec682c1`): Alberto despachó **Toque 2** por Facebook Messenger (`hoy 2:30 p. m. o 7:30 p. m. Perú`), reprogramado para control hoy a las `2:00 p. m.` (`2026-11-24T14:00:00`).
+    *   **Pausa Técnica WhatsApp 24h:** Por bloqueo temporal de 24 horas en WhatsApp (`9:16 a. m.`), se reprogramaron al **miércoles 25 de noviembre a las 10:30 a. m.** (`2026-11-25T10:30:00`) los `8` leads activos de WhatsApp (`Lily Esparza`, `Coach Nidia`, `Ricardo Restrepo`, `Yolitzin`, `+52 449 837 1341`, `+52 1 477 670 9072`, `+51 962 769 466` y `+52 1 961 245 6759`).
+    *   **Limpieza de 10 Bots:** Cerrados formalmente en bloque a `cerrado_perdido` los `10` leads que solo activaron bots automáticos sin respuesta humana (`Edith Nutrición`, `Natural Power`, `Full Fitness`, `Lorena Robles`, `ABAR PUMAS`, `Coach Mayelo`, `Clínica Santa Beatriz`, `Prime Advance`, `Quentin Protein Life` y `Obesity Solutions`).
+    *   **Agenda activa hoy martes 24:** **Frank Serapion** (`11:00 a. m.` presencial en Miraflores) + **William Vela** (`1:30 p. m.`) y **Daly Nutrition** (`2:00 p. m.`) por Facebook Messenger.
+
+### 575. Recordatorio Matutino a Lily Esparza Fitness (24 de Noviembre de 2026 - 09:46 a. m.)
+*   **Seguimiento Directo Post-Compromiso (Regla 1, Regla 3 y Regla 8)**:
+    *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`): Alberto despachó recordatorio matutino directo solicitando sus cosas (logo, fotos, colores) y el comprobante de los `$60 USD` por Western Union para montar hoy mismo su plataforma con sus **45 días**.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción de control para el **miércoles 25 de noviembre a las 10:30 a. m.** (`2026-11-25T10:30:00`).
+
 
 
 
