@@ -5129,6 +5129,10 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Corrección en Supabase (Regla 1 y Regla 3)**:
     *   Con autorización explícita (`DALE`), se restauraron a **hoy martes 24 de noviembre** los `8` leads activos (`Lily Esparza` `15:00`, `Coach Nidia` `10:30`, `Ricardo Restrepo` `17:00`, `Yolitzin` `10:30`, `+52 449 837 1341` `10:30`, `+52 1 477 670 9072` `10:30`, `+51 962 769 466` `14:30` y `+52 1 961 245 6759` `10:30`) y se reabrieron a estado `prospecto` (`2026-11-24T10:30:00`) los `10` leads (`Edith Nutrición`, `Natural Power`, `Full Fitness`, `Lorena Robles`, `ABAR PUMAS`, `Coach Mayelo`, `Clínica Santa Beatriz`, `Prime Advance`, `Quentin Protein Life` y `Obesity Solutions`), limpiando las notas erróneas de sus bitácoras.
 
+### 577. Generación de Cotización en Soles para Frank Serapión con Cuentas de Luis Rafael Hakim Toro (24 de Noviembre de 2026 - 05:55 p. m.)
+*   **Cotización Formal Fitness en Soles (Regla 1, Regla 3 y Regla 15)**:
+    *   Con autorización explícita (`DALE`), se generó y personalizó `cotizaciones/Cotizacion_Frank_Serapión.docx` (y copia en `Downloads`) incluyendo al final la tabla de **Información de Pago y Condiciones Comerciales** (BBVA `0011-0732-0200094530` e Interbank `487 3130613420` a nombre de **Luis Rafael Hakim Toro**) y su firma oficial (`995 041 640`, `luishakim@bienestarsinexcusas.site`).
+
 
 
 
