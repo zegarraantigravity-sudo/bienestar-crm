@@ -5060,6 +5060,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó propuesta clínica atacando los 3 dolores (sin mencionar "IA" ni videos) con **Doble Alternativa** para Zoom **mañana martes 24 a las 3:00 p. m. o 5:30 p. m. hora Perú**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 564. Calibración a Miércoles 25: Colega +52 1 477 670 9072 (23 de Noviembre de 2026 - 07:39 p. m.)
+*   **Escucha Activa y Doble Alternativa (Regla 1, Regla 3, Regla 7 y Regla 18)**:
+    *   **Colega Nutriólogo (`+52 1 477 670 9072`)** (`28b59b32-b8d8-475d-80f3-473bf19f317e`) respondió a las 7:37 p. m.: *«Interesante, solo que mañana no me será posible... será mi día más complicado de la semana»*.
+    *   Alberto validó su agenda y aplicó **Doble Alternativa** para el **miércoles 25 de noviembre a las 11:00 a. m. o 4:00 p. m. hora México**, solicitando su nombre.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
