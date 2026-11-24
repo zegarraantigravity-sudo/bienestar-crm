@@ -5104,6 +5104,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`): Alberto despachó confirmación directa con **Doble Alternativa** para **hoy martes 24 a las 4:00 p. m. o 6:00 p. m.** (Zoom Herbalife Perú + App).
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción de control hoy **martes 24 de noviembre a las 3:30 p. m.** (`2026-11-24T15:30:00`).
 
+### 572. ¡Cita Zoom Agendada Jueves 26! Katty Nutris + Toque 2 a Colega +51 962 769 466 (24 de Noviembre de 2026 - 09:00 a. m.)
+*   **Cierre de Cita y Seguimiento Matutino (Regla 1, Regla 3 y Regla 7)**:
+    *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) confirmó a las 8:42 a. m.: *«para el día jueves a las 4 pm»*. Alberto selló la cita para el **jueves 26 de noviembre a las 4:00 p. m. hora Perú** (`next_action_date: 2026-11-26T15:45:00`).
+    *   **Colega Nutricionista (`+51 962 769 466`)** (`2c5d83fb-dcf1-4ed0-846f-bfa7050d97ca`): Alberto despachó **Toque 2** matutino corto con **Doble Alternativa** para hoy martes **3:00 p. m.** o **5:30 p. m. hora Perú** (`next_action_date: 2026-11-24T14:30:00`).
+
 
 
 
