@@ -5123,7 +5123,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 575. Recordatorio Matutino a Lily Esparza Fitness (24 de Noviembre de 2026 - 09:46 a. m.)
 *   **Seguimiento Directo Post-Compromiso (Regla 1, Regla 3 y Regla 8)**:
     *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`): Alberto despachó recordatorio matutino directo solicitando sus cosas (logo, fotos, colores) y el comprobante de los `$60 USD` por Western Union para montar hoy mismo su plataforma con sus **45 días**.
-    *   *Supabase actualizado*: Bitácora actualizada con próxima acción de control para el **miércoles 25 de noviembre a las 10:30 a. m.** (`2026-11-25T10:30:00`).
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción de control para hoy **martes 24 de noviembre a las 3:00 p. m.** (`2026-11-24T15:00:00`).
+
+### 576. Restauración de los 8 Leads Activos y Reapertura de los 10 Leads para Hoy Martes 24 (24 de Noviembre de 2026 - 10:08 a. m.)
+*   **Corrección en Supabase (Regla 1 y Regla 3)**:
+    *   Con autorización explícita (`DALE`), se restauraron a **hoy martes 24 de noviembre** los `8` leads activos (`Lily Esparza` `15:00`, `Coach Nidia` `10:30`, `Ricardo Restrepo` `17:00`, `Yolitzin` `10:30`, `+52 449 837 1341` `10:30`, `+52 1 477 670 9072` `10:30`, `+51 962 769 466` `14:30` y `+52 1 961 245 6759` `10:30`) y se reabrieron a estado `prospecto` (`2026-11-24T10:30:00`) los `10` leads (`Edith Nutrición`, `Natural Power`, `Full Fitness`, `Lorena Robles`, `ABAR PUMAS`, `Coach Mayelo`, `Clínica Santa Beatriz`, `Prime Advance`, `Quentin Protein Life` y `Obesity Solutions`), limpiando las notas erróneas de sus bitácoras.
 
 
 
