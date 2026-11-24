@@ -5088,6 +5088,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo Coach** (`19874edf-64d0-4127-ac6d-f66a7775401f`): Tanto la confirmación de la `1:24 p. m.` como el mensaje de enlace de las `8:32 p. m.` quedaron en doble check gris sin lectura. Con postura de alto estatus no se insiste de noche.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 569. Admisión por Facebook Messenger: Daly Nutrition (Lima, Perú) (23 de Noviembre de 2026 - 09:15 p. m.)
+*   **Nutrición y Suplementación Deportiva (Regla 1, Regla 3, Regla 5 y Regla 12)**:
+    *   **Daly Nutrition** (`fb.com/proteinasysuplementoslivegood`, Lima, Perú, 1.6k seguidores) respondió por Messenger: *«Hola en q podemos ayudarte»*.
+    *   Alberto despachó propuesta de App propia integrando sus proteínas y suplementos dentro de los menús de 28 días, rutinas en video y asistente virtual 24/7, con **Doble Alternativa** para Zoom **mañana martes 24 a las 2:30 p. m. o 7:30 p. m. hora Perú**, solicitando su WhatsApp.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
