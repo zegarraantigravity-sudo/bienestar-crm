@@ -5077,6 +5077,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Yolitzin** (`754f2483-967c-4ed4-a87f-35d1aa610109`): Enlace de Zoom enviado a las 7:35 p. m., sin lectura ni ingreso a sala hasta las 7:45 p. m. Alberto despachó toque de rescate proponiendo **mañana martes 24 a las 3:00 p. m. o 5:30 p. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada en `cita_agendada` con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 567. Admisión por Facebook Messenger: William Vela (Moquegua, Perú) (23 de Noviembre de 2026 - 07:57 p. m.)
+*   **Respuesta Humana Activa (Regla 1, Regla 3 y Regla 5)**:
+    *   **William Vela** (`facebook.com/williamjvv`, Moquegua, Perú, 5.1k seguidores) respondió por Messenger a las 3:22 p. m.: *«Hola que tal / Dame más información»*.
+    *   Alberto despachó propuesta en primera persona (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana martes 24 a las 2:00 p. m. o 7:00 p. m. hora Perú**, solicitando su WhatsApp.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
