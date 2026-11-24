@@ -5072,6 +5072,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó propuesta en primera persona (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana martes 24 a las 3:00 p. m. o 5:30 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
 
+### 566. Toque de Rescate de Zoom: Yolitzin — Educación y Nutrición en Diabetes (23 de Noviembre de 2026 - 07:51 p. m.)
+*   **Reagendamiento de Cita (Regla 1, Regla 3 y Regla 18)**:
+    *   **Yolitzin** (`754f2483-967c-4ed4-a87f-35d1aa610109`): Enlace de Zoom enviado a las 7:35 p. m., sin lectura ni ingreso a sala hasta las 7:45 p. m. Alberto despachó toque de rescate proponiendo **mañana martes 24 a las 3:00 p. m. o 5:30 p. m. hora México**.
+    *   *Supabase actualizado*: Bitácora actualizada en `cita_agendada` con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`).
+
 
 
 
