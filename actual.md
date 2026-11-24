@@ -5043,6 +5043,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto le aclaró por audio que es **100% libre mes a mes** sin permanencia obligatoria, y Lily confirmó por nota de voz: *«en un rato te estoy enviando cosas y la mitad de lo que habíamos acordado»* (`$60 USD` por Western Union + logo, fotos y colores).
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción al **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`) para recibir el comprobante/insumos y promover formalmente a `cerrado_ganado`.
 
+### 561. Señal Positiva de Coach Nidia Body Trainer: «Vamos a darle» (23 de Noviembre de 2026 - 07:18 p. m.)
+*   **Activación de Prueba Post-Zoom (Regla 1, Regla 3 y Regla 10)**:
+    *   Tras recibir el video tutorial, `Cotizacion_Coach_Nidia.pdf` y el audio guía paso a paso (6:05 p. m.), **Coach Nidia Body Trainer** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`) respondió a las 6:39 p. m.: *«Ok / Vamos a darle»*.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **martes 24 de noviembre a las 10:30 a. m.** (`2026-11-24T10:30:00`) para consultar su experiencia positiva y cerrar el anticipo del 50% (`$60 USD`).
+
 
 
 
