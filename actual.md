@@ -5196,6 +5196,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió propuesta de App propia con asistente virtual 24/7 y **Doble Alternativa** para Zoom **hoy miércoles 25/11 a las 3:00 p. m. o 4:30 p. m. hora Perú**, solicitando su WhatsApp.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 589. Reactivación de Prospecto (WhatsApp): Diana Castro @dianacastrowellness (25 de Noviembre de 2026 - 2:55 p. m.)
+*   **Escucha Activa y Compromiso de Agenda (Regla 1, Regla 3, Regla 7 y Regla 18)**:
+    *   **Diana Castro** (`0afe1511-37e4-4340-93ed-914655ee6afe`, `@dianacastrowellness`) —previamente cerrada por bot— respondió hoy a las 11:57 a. m.: *«hola Alberto, que interesante propuesta... déjame ver mi agenda de la semana siguiente y te escribo. Me interesa»*.
+    *   Alberto envió audio de 47s (11:59 a. m.) validando con alto estatus y acordando coordinar este viernes qué día y horario de la próxima semana se realiza el Zoom; Diana confirmó a las 12:11 p. m. (*«sí, correcto, te aviso con tiempo para que agendes también, gracias!!!»*).
+    *   *Supabase actualizado*: Reactivada de `cerrado_perdido` a `prospecto`, bitácora actualizada y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
 
 
 
