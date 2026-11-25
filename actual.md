@@ -5178,6 +5178,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:54 a. m.), saltó la bienvenida de **Nutrición PV (`NUTRICIÓNPVCP`, `+51 967 504 399`, Perú)**. Alberto despachó propuesta clínica en primera persona con **Doble Alternativa** para Zoom **hoy miércoles 25 a la 1:30 p. m. o 4:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 586. Admisión por Respuesta Humana: Colega +52 1 55 1499 8971 (25 de Noviembre de 2026 - 11:02 a. m.)
+*   **Prospección Matutina de Miércoles (Regla 1, Regla 3 y Regla 5)**:
+    *   Tras prospección por WhatsApp (9:25 a. m.), **Colega (`+52 1 55 1499 8971`, CDMX, México)** respondió humanamente a las 10:13 a. m.: *«Buenos días!! / Gracias por la sugerencia»*.
+    *   Alberto despachó pregunta de calificación (PDF o WhatsApp) con **Doble Alternativa** para Zoom **hoy miércoles 25 a las 2:00 p. m. o mañana jueves 26 a las 11:00 a. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
