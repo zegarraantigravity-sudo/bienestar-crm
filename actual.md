@@ -5228,6 +5228,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Coach (`+52 1 961 245 6759`)** (`4cd9d6c1-f71b-4948-932a-d1c25db08b12`) recibió Toque 2 retomando su audio positivo para Zoom hoy miércoles a las 3:00 p. m. o mañana jueves a las 11:00 a. m. hora México, solicitando su nombre.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 595. Cita Zoom Agendada (WhatsApp): Coach Jorge Becerra +52 1 961 245 6759 (25 de Noviembre de 2026 - 3:22 p. m.)
+*   **Cierre por Compromiso + Amarre (Regla 1, Regla 3, Regla 5 y Regla 11)**:
+    *   **Jorge Becerra** (`4cd9d6c1-f71b-4948-932a-d1c25db08b12`) respondió en audio a las 3:18 p. m. confirmando su nombre y agendando su Zoom para **mañana jueves 26 de noviembre a las 11:00 a. m. hora México (12:00 m. hora Perú)**.
+    *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`11:45 a. m. Perú`).
+    *   *Supabase actualizado*: Promovido a `cita_agendada`, nombre actualizado a `Jorge Becerra` y próxima acción programada para el **jueves 26 de noviembre a las 11:45 a. m. Perú** (`2026-11-26T11:45:00`).
+
 
 
 
