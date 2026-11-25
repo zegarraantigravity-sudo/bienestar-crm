@@ -5240,6 +5240,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó presentación en primera persona tocando los 3 dolores clínicos (sin "IA" ni "video") con **Doble Alternativa** para Zoom **hoy miércoles 25/11 a las 3:00 p. m. o 3:30 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 597. Cita Zoom Agendada Hoy (WhatsApp): Nutrióloga Lupita +52 1 55 1874 9750 (25 de Noviembre de 2026 - 3:31 p. m.)
+*   **Cierre por Compromiso + Amarre (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   **Nutrióloga Lupita** (`70986b89-3068-4f80-a16a-e717e89c916e`) confirmó a las 3:29 p. m.: *«3 30»* (hoy miércoles a las **3:30 p. m. hora México / 4:30 p. m. hora Perú**).
+    *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`4:15 p. m. Perú`).
+    *   *Supabase actualizado*: Promovida a `cita_agendada` con próxima acción hoy **miércoles 25 de noviembre a las 4:15 p. m. Perú** (`2026-11-25T16:15:00`).
+
 
 
 
