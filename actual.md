@@ -5152,6 +5152,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) acudió hoy martes 24 a ventanilla de Western Union para pagar los **`$60 USD`**; se presentó un inconveniente con el formato del apellido compuesto, el cual ya quedó solucionado con Alberto, y confirmó que **mañana miércoles 25** realiza el envío.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **miércoles 25 de noviembre a las 12:00 m.** (`2026-11-25T12:00:00`) para recibir el comprobante y promover a `cerrado_ganado`.
 
+### 581. ¡Cita Zoom Agendada Hoy Miércoles 5:30 p. m. Perú! Colega +52 477 640 7249 (25 de Noviembre de 2026 - 09:22 a. m.)
+*   **Confirmación de Zoom en Vivo (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   **Colega Nutriólogo (`+52 477 640 7249`, México)** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) confirmó horario eligiendo: *«Alas 4 30»* (**4:30 p. m. hora México / 5:30 p. m. hora Perú**) de **hoy miércoles 25 de noviembre**.
+    *   Alberto selló el compromiso avisando envío del enlace de Zoom 15 minutos antes y consultando su nombre.
+    *   *Supabase actualizado*: Promovido a `cita_agendada` con próxima acción programada para **hoy miércoles 25 de noviembre a las 5:15 p. m. Perú** (`2026-11-25T17:15:00`).
+
 
 
 
