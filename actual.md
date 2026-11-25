@@ -5277,6 +5277,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Clínica Santa Beatriz** (`fc2abff1`) recibió Toque 2 ofreciendo Zoom mañana jueves 26/11 a las **11:00 a. m. o 5:00 p. m. hora Perú**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 604. Rescate Zoom Nutrióloga Lupita + Toque 2 Obesity Solutions (25 de Noviembre de 2026 - 4:41 p. m.)
+*   **Rescate Elegante y Seguimiento (Regla 1, Regla 3 y Regla 21)**:
+    *   **Nutrióloga Lupita** (`70986b89-3068-4f80-a16a-e717e89c916e`): no ingresó a la sala Zoom de las 4:30 p. m. Perú tras envío de enlace (4:31 p. m.); se despachó toque de rescate para reagendar mañana jueves 26/11 a las **10:00 a. m. o 4:00 p. m. hora México**.
+    *   **Obesity Solutions** (`e6ca1c13-d8dc-4a68-87fa-3420e2007d48`): recibió Toque 2 ofreciendo Zoom mañana jueves 26/11 a las **11:00 a. m. o 5:00 p. m. hora Perú**.
+    *   *Supabase actualizado*: Ambos leads actualizados con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
