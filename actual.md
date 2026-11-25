@@ -5207,6 +5207,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Medicentro** (`f570358b-5fc9-4203-b0a8-f2125093bb6b`) respondió hoy a la 1:29 p. m.: *«No contamos con especialidad nutrición. Saludos»*.
     *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`.
 
+### 591. Seguimiento y Cierre Envolvente (WhatsApp): Lily Esparza +52 1 444 819 9663 (25 de Noviembre de 2026 - 3:05 p. m.)
+*   **Cierre Envolvente por Insumos + Control Western Union (Regla 1, Regla 3 y Regla 8)**:
+    *   Se documentó el intercambio de audios del 24/11 (6:11 p. m. - 6:20 p. m.) donde **Lily Esparza** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) confirmó que realizaría el envío hoy miércoles y Alberto le solicitó sus datos de marca.
+    *   Hoy 25/11 a las 3:05 p. m. Alberto envió seguimiento amable consultando cómo le fue con Western Union (ventanilla o app) y solicitando su logo y nombre oficial para avanzar el montaje hoy mismo.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
