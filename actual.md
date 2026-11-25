@@ -5168,6 +5168,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:47 a. m.), saltó la bienvenida de **HEALTHGYM** (*centro médico deportivo*). Alberto despachó propuesta en primera persona a Dirección / área Médico-Deportiva con **Doble Alternativa** para Zoom **hoy miércoles 25 a las 12:30 p. m. o 4:00 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 584. Admisión y Propuesta Clínica a Medicentro +51 967 219 027 (25 de Noviembre de 2026 - 10:02 a. m.)
+*   **Prospección Matutina de Miércoles (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp (9:49 a. m.), saltó la bienvenida de **Medicentro** (`+51 967 219 027`, Perú). Alberto despachó propuesta a Dirección Médica / Área de Nutrición con **Doble Alternativa** para Zoom **hoy miércoles 25 a la 1:00 p. m. o 3:30 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
