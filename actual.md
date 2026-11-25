@@ -5202,6 +5202,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto envió audio de 47s (11:59 a. m.) validando con alto estatus y acordando coordinar este viernes qué día y horario de la próxima semana se realiza el Zoom; Diana confirmó a las 12:11 p. m. (*«sí, correcto, te aviso con tiempo para que agendes también, gracias!!!»*).
     *   *Supabase actualizado*: Reactivada de `cerrado_perdido` a `prospecto`, bitácora actualizada y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
 
+### 590. Cierre por No-Fit (WhatsApp): Medicentro +51 967 219 027 (25 de Noviembre de 2026 - 2:58 p. m.)
+*   **Filtro de Rubro y Cierre Limpio (Regla 1, Regla 3, Regla 13 y Regla 18)**:
+    *   **Medicentro** (`f570358b-5fc9-4203-b0a8-f2125093bb6b`) respondió hoy a la 1:29 p. m.: *«No contamos con especialidad nutrición. Saludos»*.
+    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`.
+
 
 
 
