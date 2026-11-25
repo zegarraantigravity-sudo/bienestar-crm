@@ -5246,6 +5246,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`4:15 p. m. Perú`).
     *   *Supabase actualizado*: Promovida a `cita_agendada` con próxima acción hoy **miércoles 25 de noviembre a las 4:15 p. m. Perú** (`2026-11-25T16:15:00`).
 
+### 598. Seguimiento Toque 3 (WhatsApp): Yolitzin +52 1 55 3403 4897 + Regla 21 de Cruce de Agenda (25 de Noviembre de 2026 - 3:37 p. m.)
+*   **Ruptura Elegante + Regla 21 Anti-Cruces (Regla 1, Regla 3, Regla 11 y Regla 21)**:
+    *   **Yolitzin** (`754f2483-967c-4ed4-a87f-35d1aa610109`) recibió Toque 3 de Ruptura Elegante ofreciendo reagendar mañana jueves 26/11 a las **10:00 a. m. o 4:00 p. m. hora México** (11:00 a. m. o 5:00 p. m. Perú, sin cruzar citas confirmadas).
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+    *   *Protocolo actualizado*: Se agregó la **Regla 21** en `AGENTS.md` y `GEMINI.md` exigiendo cruce obligatorio de agenda y husos horarios antes de proponer horarios de Zoom.
+
 
 
 

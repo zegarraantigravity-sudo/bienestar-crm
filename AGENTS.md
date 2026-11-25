@@ -137,6 +137,10 @@
 - **Alertas Proactivas sin Esperar Pregunta:** Si un lead caliente (ej. alguien que respondió ese mismo día o tenía ventana de Zoom a una hora específica) no recibió confirmación tras pasar su hora pactada, el asistente DEBE alertar a Alberto proactivamente apenas finalice la ventana, sin esperar a que Alberto pregunte *«¿hay algo más pendiente?»*.
 - **Entrega Uno por Uno con Lectura Obligatoria de Bitácora:** Cuando queden varios pendientes o seguimientos por despachar, el asistente DEBE enumerarlos claramente y entregarlos **uno por uno**, leyendo obligatoriamente antes la bitácora completa (`timeline`) de ese lead en Supabase para saber exactamente qué se conversó y qué corresponde responder sin confundirse ni repetir mensajes.
 
+## 21. Cruce Obligatorio de Agenda y Husos Horarios Antes de Proponer Horarios de Zoom
+- **Verificación Previa Inexcusable:** Antes de redactar cualquier propuesta o Doble Alternativa de horario para Zoom, el asistente DEBE consultar y cruzar obligatoriamente **todas las citas confirmadas (`cita_agendada`)** del día propuesto (tanto hoy como días siguientes) y sus respectivos husos horarios (Perú vs. México u otro país del prospecto).
+- **Margen de Seguridad entre Citas:** Queda TERMINANTEMENTE PROHIBIDO ofrecer horarios que coincidan o queden a menos de 45–60 minutos de una cita ya agendada (o fuera de la ventana de disponibilidad indicada por Alberto).
+
 
 
 
