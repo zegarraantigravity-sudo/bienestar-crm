@@ -5272,6 +5272,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Ricardo Restrepo** (`19874edf-64d0-4127-ac6d-f66a7775401f`): sin lectura tras Ruptura Elegante del 24/11 (8:33 a. m.) → movido a `cerrado_perdido` (`next_action_date: null`).
     *   **Colega (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): sin lectura tras 3 toques desde el sábado 21/11 y lunes 23/11 → movido a `cerrado_perdido` (`next_action_date: null`).
 
+### 603. Seguimiento Toque 2 (WhatsApp): Clínica Santa Beatriz +51 961 730 507 (25 de Noviembre de 2026 - 4:38 p. m.)
+*   **Toque 2 + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   **Clínica Santa Beatriz** (`fc2abff1`) recibió Toque 2 ofreciendo Zoom mañana jueves 26/11 a las **11:00 a. m. o 5:00 p. m. hora Perú**.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
