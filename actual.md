@@ -5327,6 +5327,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Técnica Rebote/Judo + Descompresión Total (Regla 1, Regla 3 y Regla 11)**:
     *   **Lorena Robles** (`a1f68e9d-a597-46f8-afb4-c3d7924c5daa`) respondió a las 5:20 p. m.: *«he tenido un gasto muy muy fuerte este mes / Y no podre»* (sin haber visto la App ni precios).
     *   Alberto aplicó Rebote aclarando que el Zoom de 10 minutos no implica gasto ni compromiso este mes y ofreciendo **mañana jueves 26/11 a las 11:00 a. m. o 5:00 p. m. hora Perú**.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 614. Rescate Zoom (WhatsApp): Carlos Gabriel +52 477 640 7249 (25 de Noviembre de 2026 - 5:46 p. m.)
+*   **Rescate Elegante + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`): Alberto envió enlace de Zoom a las 5:31 p. m., ping a las 5:42 p. m. y esperó hasta las 5:45 p. m. sin ingreso ni lectura.
+    *   Se despachó toque de rescate para reagendar mañana jueves 26/11 a las **10:00 a. m. o 4:00 p. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
