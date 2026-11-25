@@ -5234,6 +5234,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`11:45 a. m. Perú`).
     *   *Supabase actualizado*: Promovido a `cita_agendada`, nombre actualizado a `Jorge Becerra` y próxima acción programada para el **jueves 26 de noviembre a las 11:45 a. m. Perú** (`2026-11-26T11:45:00`).
 
+### 596. Admisión de Prospecto (WhatsApp): Nutrióloga Lupita (L.N. Guadalupe Ayala) +52 1 55 1874 9750 (25 de Noviembre de 2026 - 3:28 p. m.)
+*   **Respuesta Humana Directa + Doble Alternativa Inmediata (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   **L.N. Guadalupe Ayala (`~Nutrióloga Lupita`)** (`+52 1 55 1874 9750`, CDMX) respondió a las 3:22 p. m.: *«A ver»*.
+    *   Alberto despachó presentación en primera persona tocando los 3 dolores clínicos (sin "IA" ni "video") con **Doble Alternativa** para Zoom **hoy miércoles 25/11 a las 3:00 p. m. o 3:30 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
