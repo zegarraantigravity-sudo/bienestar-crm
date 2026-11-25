@@ -5158,6 +5158,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto selló el compromiso avisando envío del enlace de Zoom 15 minutos antes y consultando su nombre.
     *   *Supabase actualizado*: Promovido a `cita_agendada` con próxima acción programada para **hoy miércoles 25 de noviembre a las 5:15 p. m. Perú** (`2026-11-25T17:15:00`).
 
+### 582. Confirmación de Nombre de Carlos Gabriel (+52 477 640 7249) + Facilitación de Prueba a Coach Nidia (25 de Noviembre de 2026 - 09:44 a. m.)
+*   **Interacción en Vivo (Regla 1, Regla 3, Regla 10 y Regla 18)**:
+    *   **Carlos Gabriel (`+52 477 640 7249`)** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) confirmó su nombre (`9:25 a. m.`) para el Zoom de hoy a las **4:30 p. m. México / 5:30 p. m. Perú**.
+    *   **Coach Nidia Body Trainer** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`) respondió en 1 minuto (`9:41 a. m.`): *«No lo he hecho»*. Alberto le facilitó enlace y código `NUT-FLC-82HF` a la mano con **Doble Alternativa** para llenarlo en 2 minutos hoy en la mañana o en la tarde (`next_action_date: 2026-11-26T10:30:00`).
+
 
 
 
