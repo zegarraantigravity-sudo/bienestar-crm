@@ -5190,6 +5190,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto aclaró que es plataforma para profesionales, aplicó micro-costo adaptable (**desde `$4 USD` por paciente/mes**) y sembró los 3 beneficios llevando con **Doble Alternativa** al Zoom de 10 minutos **hoy miércoles 2:00 p. m. o mañana jueves 11:00 a. m. hora México**.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 588. Admisión de Prospecto (Facebook Messenger): Luis Gonz (25 de Noviembre de 2026 - 11:36 a. m.)
+*   **Protocolo de Admisión y Cierre Inmediato (Regla 1, Regla 3, Regla 5 y Regla 7)**:
+    *   **Luis Gonz** (`2160789f-ea92-4283-b6f3-45f8ae0b839c`) respondió por Facebook Messenger a las 10:36 a. m.: *«Hola buen días si claro sigo enviando rutinas»*.
+    *   Alberto envió propuesta de App propia con asistente virtual 24/7 y **Doble Alternativa** para Zoom **hoy miércoles 25/11 a las 3:00 p. m. o 4:30 p. m. hora Perú**, solicitando su WhatsApp.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
