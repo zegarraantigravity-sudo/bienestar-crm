@@ -5184,6 +5184,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó pregunta de calificación (PDF o WhatsApp) con **Doble Alternativa** para Zoom **hoy miércoles 25 a las 2:00 p. m. o mañana jueves 26 a las 11:00 a. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 587. Manejo de Objeción de Precio (Regla 16): Colega +52 1 55 1499 8971 (25 de Noviembre de 2026 - 11:14 a. m.)
+*   **Protocolo Anti-Descarte (Regla 1, Regla 3 y Regla 16)**:
+    *   **Colega (`+52 1 55 1499 8971`)** (`9b77fd04-84ef-4956-8c4a-a9b1c213bb3e`) preguntó a las 10:56 a. m.: *«Cuál es el costo de la asesoría??»*.
+    *   Alberto aclaró que es plataforma para profesionales, aplicó micro-costo adaptable (**desde `$4 USD` por paciente/mes**) y sembró los 3 beneficios llevando con **Doble Alternativa** al Zoom de 10 minutos **hoy miércoles 2:00 p. m. o mañana jueves 11:00 a. m. hora México**.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
