@@ -5163,6 +5163,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Carlos Gabriel (`+52 477 640 7249`)** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) confirmó su nombre (`9:25 a. m.`) para el Zoom de hoy a las **4:30 p. m. México / 5:30 p. m. Perú**.
     *   **Coach Nidia Body Trainer** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`) respondió en 1 minuto (`9:41 a. m.`): *«No lo he hecho»*. Alberto le facilitó enlace y código `NUT-FLC-82HF` a la mano con **Doble Alternativa** para llenarlo en 2 minutos hoy en la mañana o en la tarde (`next_action_date: 2026-11-26T10:30:00`).
 
+### 583. Admisión y Propuesta a HEALTHGYM — Centro Médico Deportivo (25 de Noviembre de 2026 - 09:55 a. m.)
+*   **Prospección Matutina de Miércoles (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp (9:47 a. m.), saltó la bienvenida de **HEALTHGYM** (*centro médico deportivo*). Alberto despachó propuesta en primera persona a Dirección / área Médico-Deportiva con **Doble Alternativa** para Zoom **hoy miércoles 25 a las 12:30 p. m. o 4:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
