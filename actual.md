@@ -5267,6 +5267,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Daly Nutrition** (`8fcfea50-0f4f-4c5b-8426-517fdec682c1`) recibió Toque 3 de Ruptura Elegante por Messenger ofreciendo Zoom mañana jueves 26/11 a las **11:00 a. m. o 5:00 p. m. hora Perú** y solicitando su WhatsApp.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 602. Cierre por Silencio (WhatsApp): Ricardo Restrepo y Colega +52 449 837 1341 (25 de Noviembre de 2026 - 3:53 p. m.)
+*   **Auditoría Visual y Limpieza de Pipeline (Regla 1, Regla 3, Regla 17 y Regla 18)**:
+    *   **Ricardo Restrepo** (`19874edf-64d0-4127-ac6d-f66a7775401f`): sin lectura tras Ruptura Elegante del 24/11 (8:33 a. m.) → movido a `cerrado_perdido` (`next_action_date: null`).
+    *   **Colega (`+52 449 837 1341`)** (`989adeac-00c2-4a66-928e-019c1ae2cd73`): sin lectura tras 3 toques desde el sábado 21/11 y lunes 23/11 → movido a `cerrado_perdido` (`next_action_date: null`).
+
 
 
 
