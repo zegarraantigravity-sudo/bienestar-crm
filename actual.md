@@ -5173,6 +5173,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Tras prospección por WhatsApp (9:49 a. m.), saltó la bienvenida de **Medicentro** (`+51 967 219 027`, Perú). Alberto despachó propuesta a Dirección Médica / Área de Nutrición con **Doble Alternativa** para Zoom **hoy miércoles 25 a la 1:00 p. m. o 3:30 p. m.**
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 585. Admisión y Propuesta Clínica a Nutrición PV +51 967 504 399 (25 de Noviembre de 2026 - 10:32 a. m.)
+*   **Prospección Matutina de Miércoles (Regla 1, Regla 3, Regla 5 y Regla 16)**:
+    *   Tras prospección por WhatsApp (9:54 a. m.), saltó la bienvenida de **Nutrición PV (`NUTRICIÓNPVCP`, `+51 967 504 399`, Perú)**. Alberto despachó propuesta clínica en primera persona con **Doble Alternativa** para Zoom **hoy miércoles 25 a la 1:30 p. m. o 4:00 p. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
