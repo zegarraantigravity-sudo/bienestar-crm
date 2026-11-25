@@ -5147,6 +5147,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   Alberto despachó propuesta clínica atacando los 3 dolores (sin mencionar "IA" ni videos) con **Doble Alternativa** para Zoom **mañana miércoles 25 a las 10:00 a. m. o 4:30 p. m. hora México**.
     *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **miércoles 25 de noviembre a las 10:30 a. m.** (`2026-11-25T10:30:00`).
 
+### 580. Intento de Giro en Western Union Hoy y Solución de Apellido: Lily Esparza Fitness (24 de Noviembre de 2026 - 07:14 p. m.)
+*   **Intención de Compra 100% Verificada (Regla 1, Regla 3 y Regla 8)**:
+    *   **Lily Esparza Fitness** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) acudió hoy martes 24 a ventanilla de Western Union para pagar los **`$60 USD`**; se presentó un inconveniente con el formato del apellido compuesto, el cual ya quedó solucionado con Alberto, y confirmó que **mañana miércoles 25** realiza el envío.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **miércoles 25 de noviembre a las 12:00 m.** (`2026-11-25T12:00:00`) para recibir el comprobante y promover a `cerrado_ganado`.
+
 
 
 
