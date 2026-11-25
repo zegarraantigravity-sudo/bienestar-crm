@@ -5218,6 +5218,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Colega Nutriólogo** (`28b59b32-b8d8-475d-80f3-473bf19f317e`) recibió Toque 2 ofreciendo Zoom hoy miércoles a las 3:00 p. m. hora México (4:00 p. m. Perú) o mañana jueves a las 11:00 a. m. hora México, solicitando su nombre.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
 
+### 593. Admisión de Prospecto (WhatsApp): Kenny Azañero Velasquez - Bionaturista Cajamarca (25 de Noviembre de 2026 - 3:14 p. m.)
+*   **Auditoría Visual + Integración de Catálogo Natural (Regla 1, Regla 3, Regla 5, Regla 12 y Regla 13)**:
+    *   **Kenny Azañero Velasquez** (`+51 968 207 907`, `Bionaturista Cajamarca`, Medicina y salud con catálogo activo) recibió propuesta en primera persona para App propia con sus productos naturales integrados en los menús de 28 días y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy miércoles 4:00 p. m. o mañana jueves 11:00 a. m.**
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
 
 
 
