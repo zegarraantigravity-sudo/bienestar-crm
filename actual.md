@@ -5478,7 +5478,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 640. Reconfirmación de Zoom Hoy 4:00 p. m. (WhatsApp): Katty Nutris +51 956 692 178 (26 de Noviembre de 2026 - 1:39 p. m.)
 *   **Aseguramiento de Asistencia (Regla 1, Regla 3 y Regla 18)**:
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) recibió toque corto de reconfirmación para su Zoom de **hoy jueves 26/11 a las 4:00 p. m. Perú** (integración Herbalife Perú).
-    *   *Supabase actualizado*: Se mantiene en `cita_agendada` con `next_action_date` hoy **jueves 26 de noviembre a las 3:45 p. m. Perú** (`2026-11-26T15:45:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Se mantiene en `cita_agendada` con `next_action_date` hoy **jueves 26 de noviembre a las 3:45 p. m. Perú** (`2026-11-26T15:45:00`).
+
+### 641. Admisión por Autocalificación (WhatsApp): Christian Andrade +52 1 222 200 4306 (26 de Noviembre de 2026 - 1:48 p. m.)
+*   **Retirada de Alto Estatus + Cierre por Conclusión (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   Tras salida elegante por perfil de agencia (`1:20 p. m.`), **Christian Andrade** (`+52 1 222 200 4306`, México) respondió a la 1:38 p. m.: *«Además de ser lic en publicidad también soy entrenador personal»*.
+    *   Alberto despachó propuesta de App de entrenador personal (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **hoy jueves 6:00 p. m. (7:00 p. m. Perú) o mañana viernes 10:00 a. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
