@@ -5420,7 +5420,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 630. Seguimiento Reagendamiento (WhatsApp): Nutrióloga Lupita +52 1 55 1874 9750 (26 de Noviembre de 2026 - 11:03 a. m.)
 *   **Toque Corto + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
     *   Tras visto azul de ayer sin respuesta, Alberto despachó toque corto de reagendamiento con **Doble Alternativa** para **hoy jueves 26/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
-    *   *Supabase actualizado*: Bitácora de **Nutrióloga Lupita** (`70986b89-3068-4f80-a16a-e717e89c916e`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora de **Nutrióloga Lupita** (`70986b89-3068-4f80-a16a-e717e89c916e`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 631. Ajuste de Horario por Regla 21 (WhatsApp): Colega Nutrición Renal +51 969 668 613 (26 de Noviembre de 2026 - 11:08 a. m.)
+*   **Alto Estatus + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   **Colega (`+51 969 668 613`)** (`305e3382-b739-480e-a909-b91a2b586c0a`) propuso hoy a las 4:30 p. m. Perú (*«antes no creo posible»*).
+    *   Para no cruzar con Katty Nutris (4:00 p. m.) ni Carlos Gabriel (5:00 p. m.), Alberto ofreció **hoy jueves 6:00 p. m. o mañana viernes 1:30 p. m. Perú**, solicitando su nombre.
+    *   *Supabase actualizado*: Bitácora actualizada con control hoy **jueves 26 de noviembre a las 5:45 p. m.** (`2026-11-26T17:45:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
