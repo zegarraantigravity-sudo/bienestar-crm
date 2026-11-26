@@ -5495,7 +5495,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 643. Cambio de Canal a Google Meet (WhatsApp): Katty Nutris +51 956 692 178 (26 de Noviembre de 2026 - 2:01 p. m.)
 *   **Reconfirmación Exitosa (Regla 1, Regla 3 y Regla 18)**:
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) respondió a la 1:51 p. m. que no tiene Zoom; Alberto propuso **Google Meet** y Katty confirmó (`Ok`, 1:52 p. m.) para **hoy jueves 26/11 a las 4:00 p. m. Perú**.
-    *   *Supabase actualizado*: Bitácora actualizada manteniendo `next_action_date` hoy **jueves 26 de noviembre a las 3:45 p. m. Perú** (`2026-11-26T15:45:00`) para enviar enlace de Google Meet. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada manteniendo `next_action_date` hoy **jueves 26 de noviembre a las 3:45 p. m. Perú** (`2026-11-26T15:45:00`) para enviar enlace de Google Meet.
+
+### 644. Ajuste de Horario por Regla 21 (WhatsApp): Christian Andrade +52 1 222 200 4306 (26 de Noviembre de 2026 - 2:05 p. m.)
+*   **Alto Estatus + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   **Christian Andrade** (`31a77cee-8d59-48ed-a9f9-073128ee6e83`) propuso hoy a las 4:00 p. m. hora México (`5:00 p. m. Perú`).
+    *   Por cruce con Carlos Gabriel, Alberto ofreció **hoy jueves 6:00 p. m. o mañana viernes 4:00 p. m. (o 10:00 a. m.) hora México**.
+    *   *Supabase actualizado*: Bitácora actualizada con control hoy **jueves 26 de noviembre a las 6:45 p. m. Perú** (`2026-11-26T18:45:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
