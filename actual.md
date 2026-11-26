@@ -5415,7 +5415,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 629. Admisión de Prospecto (WhatsApp): Clara Hoyos - La Casita de la Nutrición (26 de Noviembre de 2026 - 10:54 a. m.)
 *   **Auditoría Visual + Catálogo Integrado (Regla 1, Regla 3, Regla 5, Regla 12, Regla 13 y Regla 21)**:
     *   **Clara Hoyos** (`@clarahoyos.bienestar`, *La Casita de la Nutrición*, catálogo activo): saltó evaluación automática a las 10:20 a. m.; Alberto despachó propuesta de App propia integrando sus productos en menús de 28 días y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy jueves 26/11 a las 2:00 p. m. o 6:30 p. m. hora Perú**.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 630. Seguimiento Reagendamiento (WhatsApp): Nutrióloga Lupita +52 1 55 1874 9750 (26 de Noviembre de 2026 - 11:03 a. m.)
+*   **Toque Corto + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   Tras visto azul de ayer sin respuesta, Alberto despachó toque corto de reagendamiento con **Doble Alternativa** para **hoy jueves 26/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
+    *   *Supabase actualizado*: Bitácora de **Nutrióloga Lupita** (`70986b89-3068-4f80-a16a-e717e89c916e`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
