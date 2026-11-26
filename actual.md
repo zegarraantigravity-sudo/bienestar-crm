@@ -5372,7 +5372,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Postura de Alto Estatus + Rebote (Regla 1, Regla 3 y Regla 11)**:
     *   **Coach (`+52 1 221 211 2218`)** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`) preguntó a las 8:52 p. m.: *«De donde sacaste mi número?»*.
     *   Alberto respondió con transparencia (perfil público/directorio) sin disculparse y rebotó calificando si lleva alumnos activos.
-    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 622. Rebote Judo Especializado (WhatsApp): Coach MMA +52 1 221 211 2218 (25 de Noviembre de 2026 - 9:02 p. m.)
+*   **Rebote / Judo + Doble Alternativa (Regla 1, Regla 3, Regla 11 y Regla 21)**:
+    *   **Coach MMA (`+52 1 221 211 2218`)** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`) respondió a las 8:55 p. m.: *«Pero soy coach de Mma»*.
+    *   Alberto aplicó Rebote enfocando la App en preparación física complementaria (fuerza/potencia en video) y control de alimentación/peso de peleadores y alumnos, con **Doble Alternativa** para **mañana jueves 26/11 a las 10:00 a. m. o 1:00 p. m. hora México**.
+    *   *Supabase actualizado*: Perfil actualizado a `Coach MMA` con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
