@@ -5432,7 +5432,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Toque 2 + Cruce de Agenda (Regla 1, Regla 3 y Regla 21)**:
     *   **Colega CDMX (`+52 1 55 1499 8971`)** (`9b77fd04-84ef-4956-8c4a-a9b1c213bb3e`): Toque 2 reforzando retorno de inversión (2-3 pacientes) con Doble Alternativa **hoy jueves 26/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
     *   **Coach MMA (`+52 1 221 211 2218`)** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`): Toque 2 con Doble Alternativa **hoy jueves 26/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
-    *   *Supabase actualizado*: Ambos leads actualizados con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Ambos leads actualizados con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 633. Cambio de Ángulo (Prueba Gratuita): Lorena Robles + Regla 22 (26 de Noviembre de 2026 - 11:28 a. m.)
+*   **Pensamiento Estratégico Contextual (Regla 1, Regla 3 y Regla 22)**:
+    *   **Lorena Robles** (`a1f68e9d-a597-46f8-afb4-c3d7924c5daa`): al verificar que el rebote de ayer quedó sin lectura tras su objeción de gasto fuerte, Alberto soltó la presión de Zoom y ofreció activarle un acceso de prueba sin costo ni llamadas para ver un menú de 28 días en su celular.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+    *   *Protocolo actualizado*: Se agregó la **Regla 22** en `AGENTS.md` y `GEMINI.md` exigiendo análisis estratégico completo del contexto antes de redactar seguimientos. Cerrado el barrido completo de seguimientos del día.
 
 
 

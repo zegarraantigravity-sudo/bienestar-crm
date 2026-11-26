@@ -141,6 +141,10 @@
 - **Verificación Previa Inexcusable:** Antes de redactar cualquier propuesta o Doble Alternativa de horario para Zoom, el asistente DEBE consultar y cruzar obligatoriamente **todas las citas confirmadas (`cita_agendada`)** del día propuesto (tanto hoy como días siguientes) y sus respectivos husos horarios (Perú vs. México u otro país del prospecto).
 - **Margen de Seguridad entre Citas:** Queda TERMINANTEMENTE PROHIBIDO ofrecer horarios que coincidan o queden a menos de 45–60 minutos de una cita ya agendada (o fuera de la ventana de disponibilidad indicada por Alberto).
 
+## 22. Pensamiento Estratégico Contextual y Cero Respuestas Automáticas
+- **Análisis Completo Antes de Redactar:** Antes de sugerir cualquier mensaje de seguimiento o respuesta, el asistente DEBE leer obligatoriamente toda la bitácora y pensar estratégicamente qué dijo el cliente, si leyó o no el mensaje anterior y cuál es el freno real (ej. dinero, tiempo, miedo al cobro).
+- **Prohibido Repetir Argumentos Rechazados:** Si un prospecto ya frenó por gasto o no abrió un mensaje insistiendo en Zoom, NO repetir la misma invitación ni pedirle que lea el mensaje anterior; cambiar el ángulo (ej. prueba gratuita sin costo ni llamadas, insumos o pausa elegante) o pedir captura a Alberto si falta verificar visto/última respuesta.
+
 
 
 
