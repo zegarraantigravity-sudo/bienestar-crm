@@ -5344,7 +5344,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 616. Admisión de Prospecto (WhatsApp): FIT NUTRICION +51 968 993 036 (25 de Noviembre de 2026 - 7:59 p. m.)
 *   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **FIT NUTRICION** (`+51 968 993 036`, Perú): saltó bienvenida y ausencia automática a las 7:58 p. m.; Alberto despachó propuesta de App propia de FIT NUTRICION (planes 28 días, intercambio de platos y asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana jueves 26/11 a las 11:00 a. m. o 2:00 p. m. hora Perú**.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 617. Admisión de Prospecto (WhatsApp): Clinica Athlite +52 1 221 408 1309 (25 de Noviembre de 2026 - 8:06 p. m.)
+*   **Auditoría Visual + Cruce de Agenda (Regla 1, Regla 3, Regla 5, Regla 13 y Regla 21)**:
+    *   **Clinica Athlite** (`+52 1 221 408 1309`, México, Fisioterapia y readaptación deportiva): saltó bienvenida automática a las 8:04 p. m.; Alberto despachó propuesta de App propia (rutinas de readaptación en video, planes 28 días y asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana jueves 26/11 a las 10:00 a. m. o 1:00 p. m. hora México**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
