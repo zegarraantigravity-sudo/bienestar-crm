@@ -5393,7 +5393,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 625. Seguimiento en Grupo (WhatsApp): Frank Serapion - Aplicativo Frank (26 de Noviembre de 2026 - 10:14 a. m.)
 *   **Alineación de Bitácora (Regla 1, Regla 3 y Regla 18)**:
     *   En el grupo *Aplicativo Frank*, **Shirley Martínez** (`+51 929 157 971`) respondió ayer 25/11 (12:19 p. m.): *«Por la tarde conversararé con Frank. Y ya les vamos comentando cómo haremos»*. Hoy 26/11 (9:14 a. m.) **Luis Hakim** envió toque de luz verde.
-    *   *Supabase actualizado*: Bitácora de **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora de **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 626. Seguimiento Envolvente por Insumos (WhatsApp): Coach Nidia +52 1 81 1485 0188 (26 de Noviembre de 2026 - 10:26 a. m.)
+*   **Cierre Envolvente + Enfoque Positivo (Regla 1, Regla 3, Regla 8 y Regla 10)**:
+    *   Tras visto azul de ayer sin respuesta, Alberto aplicó **Cierre Envolvente por Insumos** solicitando su logo y 2 colores principales para ir armando el boceto visual de *Coach Nidia Body Trainer* con Herbalife mientras prueba el demo con calma.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
