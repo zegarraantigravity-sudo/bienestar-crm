@@ -5438,7 +5438,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Pensamiento Estratégico Contextual (Regla 1, Regla 3 y Regla 22)**:
     *   **Lorena Robles** (`a1f68e9d-a597-46f8-afb4-c3d7924c5daa`): al verificar que el rebote de ayer quedó sin lectura tras su objeción de gasto fuerte, Alberto soltó la presión de Zoom y ofreció activarle un acceso de prueba sin costo ni llamadas para ver un menú de 28 días en su celular.
     *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
-    *   *Protocolo actualizado*: Se agregó la **Regla 22** en `AGENTS.md` y `GEMINI.md` exigiendo análisis estratégico completo del contexto antes de redactar seguimientos. Cerrado el barrido completo de seguimientos del día.
+    *   *Protocolo actualizado*: Se agregó la **Regla 22** en `AGENTS.md` y `GEMINI.md` exigiendo análisis estratégico completo del contexto antes de redactar seguimientos.
+
+### 634. Calibración de Ventana Viernes (WhatsApp): Erika - Nutrición Renal +51 969 668 613 (26 de Noviembre de 2026 - 11:35 a. m.)
+*   **Auditoría Visual + Doble Alternativa (Regla 1, Regla 3, Regla 18 y Regla 21)**:
+    *   **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`, nombre confirmado en perfil) respondió a las 11:26 a. m.: *«puede ser mañana / pero despues de las 4 pm»*.
+    *   Alberto aplicó **Doble Alternativa** en su ventana libre de mañana viernes 27/11: **4:30 p. m. o 5:30 p. m. hora Perú**.
+    *   *Supabase actualizado*: Nombre actualizado a `Erika (Nutrición Renal)` con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
