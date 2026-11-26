@@ -5518,7 +5518,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Demo Google Meet + Cierre de Acción Rápida (Regla 1, Regla 3, Regla 12 y Regla 15)**:
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) participó en la demo por Google Meet de las 4:00 p. m. Perú (distribuidora Herbalife Perú).
     *   Alberto despachó Plantilla Maestra Post-Zoom con código **`NUT-FLC-7YBQ`**, video guía, `Cotizacion_Katty_Nutris.docx` en Soles (Plan 30: `S/ 400`, anticipo `S/ 200`) y Bono de Acción Rápida (45 días).
-    *   *Supabase actualizado*: Promovida a **`presentacion_realizada`** con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Promovida a **`presentacion_realizada`** con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 648. Presentación Realizada + Código + Cotización USD: Carlos Gabriel +52 477 640 7249 (26 de Noviembre de 2026 - 5:58 p. m.)
+*   **3ra Demo del Día Exitosa (Regla 1, Regla 3 y Regla 15)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) participó en el Zoom de las 5:00 p. m. Perú (4:00 p. m. México). Estudia Nutrición (2do año) y entrena clientes; le interesó para sus asesorados como entrenador.
+    *   Alberto despachó Plantilla Maestra Post-Zoom con código **`NUT-FLC-9Z6Q`**, video guía y `Cotizacion_Carlos_Gabriel.docx` en Dólares (Plan 30: `$120 USD`, anticipo `$60 USD`).
+    *   *Supabase actualizado*: Promovido a **`presentacion_realizada`** (`client_type: coach`) con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
