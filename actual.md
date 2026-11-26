@@ -5366,7 +5366,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Respuesta Humana Directa + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **Coach (`+52 1 221 211 2218`)** (México) respondió a las 8:45 p. m.: *«Hola?»*.
     *   Alberto despachó presentación en primera persona (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana jueves 26/11 a las 10:00 a. m. o 1:00 p. m. hora México**, solicitando su nombre.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 621. Manejo de Objeción / Rebote (WhatsApp): Coach +52 1 221 211 2218 (25 de Noviembre de 2026 - 8:55 p. m.)
+*   **Postura de Alto Estatus + Rebote (Regla 1, Regla 3 y Regla 11)**:
+    *   **Coach (`+52 1 221 211 2218`)** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`) preguntó a las 8:52 p. m.: *«De donde sacaste mi número?»*.
+    *   Alberto respondió con transparencia (perfil público/directorio) sin disculparse y rebotó calificando si lleva alumnos activos.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
