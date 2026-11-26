@@ -5449,7 +5449,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 635. Cierre Formal (WhatsApp): Colega CDMX +52 1 55 1499 8971 (26 de Noviembre de 2026 - 11:43 a. m.)
 *   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
     *   **Colega CDMX (`+52 1 55 1499 8971`)** (`9b77fd04-84ef-4956-8c4a-a9b1c213bb3e`) declinó a las 11:25 a. m. indicando que ya cuenta con plataforma para entregar sus planes.
-    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`.
+
+### 636. Cita Zoom Agendada (WhatsApp): Erika - Nutrición Renal +51 969 668 613 (26 de Noviembre de 2026 - 11:52 a. m.)
+*   **Cierre por Compromiso + Amarre (Regla 1, Regla 3 y Regla 5)**:
+    *   **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`) confirmó a las 11:42 a. m.: *«4.30»* (**mañana viernes 27/11 a las 4:30 p. m. Perú**).
+    *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`4:15 p. m. Perú`).
+    *   *Supabase actualizado*: Promovida a **`cita_agendada`** con próxima acción programada para el **viernes 27 de noviembre a las 4:15 p. m. Perú** (`2026-11-27T16:15:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
