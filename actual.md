@@ -5512,7 +5512,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 646. Recordatorio de Zoom 1h Antes (WhatsApp): Carlos Gabriel +52 477 640 7249 (26 de Noviembre de 2026 - 4:03 p. m.)
 *   **Aseguramiento de Asistencia (Regla 1, Regla 3 y Regla 18)**:
     *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) recibió recordatorio corto 1 hora antes para reconfirmar el Zoom de **hoy jueves 26/11 a las 4:00 p. m. hora México (5:00 p. m. Perú)**.
-    *   *Supabase actualizado*: Se mantiene en `cita_agendada` con `next_action_date` hoy **jueves 26 de noviembre a las 4:45 p. m. Perú** (`2026-11-26T16:45:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Se mantiene en `cita_agendada` con `next_action_date` hoy **jueves 26 de noviembre a las 4:45 p. m. Perú** (`2026-11-26T16:45:00`).
+
+### 647. Presentación Realizada + Código + Cotización PEN: Katty Nutris +51 956 692 178 (26 de Noviembre de 2026 - 5:04 p. m.)
+*   **Demo Google Meet + Cierre de Acción Rápida (Regla 1, Regla 3, Regla 12 y Regla 15)**:
+    *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`) participó en la demo por Google Meet de las 4:00 p. m. Perú (distribuidora Herbalife Perú).
+    *   Alberto despachó Plantilla Maestra Post-Zoom con código **`NUT-FLC-7YBQ`**, video guía, `Cotizacion_Katty_Nutris.docx` en Soles (Plan 30: `S/ 400`, anticipo `S/ 200`) y Bono de Acción Rápida (45 días).
+    *   *Supabase actualizado*: Promovida a **`presentacion_realizada`** con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
