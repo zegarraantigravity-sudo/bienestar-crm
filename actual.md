@@ -5444,7 +5444,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Auditoría Visual + Doble Alternativa (Regla 1, Regla 3, Regla 18 y Regla 21)**:
     *   **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`, nombre confirmado en perfil) respondió a las 11:26 a. m.: *«puede ser mañana / pero despues de las 4 pm»*.
     *   Alberto aplicó **Doble Alternativa** en su ventana libre de mañana viernes 27/11: **4:30 p. m. o 5:30 p. m. hora Perú**.
-    *   *Supabase actualizado*: Nombre actualizado a `Erika (Nutrición Renal)` con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nombre actualizado a `Erika (Nutrición Renal)` con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 635. Cierre Formal (WhatsApp): Colega CDMX +52 1 55 1499 8971 (26 de Noviembre de 2026 - 11:43 a. m.)
+*   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
+    *   **Colega CDMX (`+52 1 55 1499 8971`)** (`9b77fd04-84ef-4956-8c4a-a9b1c213bb3e`) declinó a las 11:25 a. m. indicando que ya cuenta con plataforma para entregar sus planes.
+    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
 
 
 
