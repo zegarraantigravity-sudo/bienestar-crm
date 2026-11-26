@@ -5378,7 +5378,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Rebote / Judo + Doble Alternativa (Regla 1, Regla 3, Regla 11 y Regla 21)**:
     *   **Coach MMA (`+52 1 221 211 2218`)** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`) respondió a las 8:55 p. m.: *«Pero soy coach de Mma»*.
     *   Alberto aplicó Rebote enfocando la App en preparación física complementaria (fuerza/potencia en video) y control de alimentación/peso de peleadores y alumnos, con **Doble Alternativa** para **mañana jueves 26/11 a las 10:00 a. m. o 1:00 p. m. hora México**.
-    *   *Supabase actualizado*: Perfil actualizado a `Coach MMA` con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Perfil actualizado a `Coach MMA` con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 623. CIERRE GANADO (WhatsApp): Lily Esparza +52 1 444 819 9663 (26 de Noviembre de 2026 - 9:56 a. m.)
+*   **Primer Cierre de la Semana — Plan 30 Internacional `$120.00 USD` (Regla 1, Regla 3 y Regla 17)**:
+    *   **Lily Esparza** (`7d3dde8f-96d6-4b34-8036-8aa99d1abdc1`) realizó el depósito del adelanto de **`$60.00 USD`** (50%) y envió los insumos para el montaje de su página web y App oficial (*Lily Esparza Fitness*).
+    *   *Supabase actualizado*: Promovida formalmente a **`cerrado_ganado`** con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
 
 
 
