@@ -5388,7 +5388,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 624. Admisión de Prospecto (WhatsApp): GET READY +52 1 222 302 0760 (26 de Noviembre de 2026 - 10:09 a. m.)
 *   **Auditoría Visual + Cruce de Agenda (Regla 1, Regla 3, Regla 5, Regla 13 y Regla 21)**:
     *   **GET READY** (`+52 1 222 302 0760`, México, Preparador físico / Acondicionamiento físico): saltó bienvenida automática a las 9:55 a. m.; Alberto despachó propuesta de App propia (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **hoy jueves 26/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 625. Seguimiento en Grupo (WhatsApp): Frank Serapion - Aplicativo Frank (26 de Noviembre de 2026 - 10:14 a. m.)
+*   **Alineación de Bitácora (Regla 1, Regla 3 y Regla 18)**:
+    *   En el grupo *Aplicativo Frank*, **Shirley Martínez** (`+51 929 157 971`) respondió ayer 25/11 (12:19 p. m.): *«Por la tarde conversararé con Frank. Y ya les vamos comentando cómo haremos»*. Hoy 26/11 (9:14 a. m.) **Luis Hakim** envió toque de luz verde.
+    *   *Supabase actualizado*: Bitácora de **Frank Serapion** (`5820bfd8-0cb3-4333-8734-e9db597e270b`) actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
