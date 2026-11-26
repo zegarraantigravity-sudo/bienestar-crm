@@ -5404,7 +5404,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Transparencia Veraz + Puente al Zoom (Regla 1, Regla 3, Regla 5, Regla 6 y Regla 21)**:
     *   **Colega (`+51 969 668 613`, Perú)** respondió a las 10:32 a. m. consultando si el programa maneja electrolitos y bioimpedancia grado médico para pacientes renales (90%).
     *   Alberto respondió con total transparencia (sin inventar funciones): no reemplaza su equipo médico ni laboratorio, sino que automatiza menús de 28 días respetando sus restricciones y asistente virtual 24/7 guiado por su criterio clínico, con **Doble Alternativa** para Zoom **hoy jueves 26/11 a las 11:00 a. m. o 2:00 p. m. Perú**.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 628. Calibración de Ventana Almuerzo (WhatsApp): Colega Nutrición Renal +51 969 668 613 (26 de Noviembre de 2026 - 10:43 a. m.)
+*   **Escucha Activa + Doble Alternativa (Regla 1, Regla 3, Regla 18 y Regla 21)**:
+    *   **Colega (`+51 969 668 613`)** (`305e3382-b739-480e-a909-b91a2b586c0a`) respondió a las 10:38 a. m.: *«tengo pacientes / paro hoy solo al almuerzo»*.
+    *   Alberto aplicó **Doble Alternativa** en su ventana libre de hoy: **1:30 p. m. o 2:00 p. m. hora Perú**, solicitando su nombre.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción hoy **jueves 26 de noviembre a la 1:15 p. m.** (`2026-11-26T13:15:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
