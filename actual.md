@@ -5410,7 +5410,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Escucha Activa + Doble Alternativa (Regla 1, Regla 3, Regla 18 y Regla 21)**:
     *   **Colega (`+51 969 668 613`)** (`305e3382-b739-480e-a909-b91a2b586c0a`) respondió a las 10:38 a. m.: *«tengo pacientes / paro hoy solo al almuerzo»*.
     *   Alberto aplicó **Doble Alternativa** en su ventana libre de hoy: **1:30 p. m. o 2:00 p. m. hora Perú**, solicitando su nombre.
-    *   *Supabase actualizado*: Bitácora actualizada con próxima acción hoy **jueves 26 de noviembre a la 1:15 p. m.** (`2026-11-26T13:15:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción hoy **jueves 26 de noviembre a la 1:15 p. m.** (`2026-11-26T13:15:00`).
+
+### 629. Admisión de Prospecto (WhatsApp): Clara Hoyos - La Casita de la Nutrición (26 de Noviembre de 2026 - 10:54 a. m.)
+*   **Auditoría Visual + Catálogo Integrado (Regla 1, Regla 3, Regla 5, Regla 12, Regla 13 y Regla 21)**:
+    *   **Clara Hoyos** (`@clarahoyos.bienestar`, *La Casita de la Nutrición*, catálogo activo): saltó evaluación automática a las 10:20 a. m.; Alberto despachó propuesta de App propia integrando sus productos en menús de 28 días y asistente virtual 24/7, con **Doble Alternativa** para Zoom **hoy jueves 26/11 a las 2:00 p. m. o 6:30 p. m. hora Perú**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
