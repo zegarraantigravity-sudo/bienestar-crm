@@ -5360,7 +5360,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 619. Cierre Formal (WhatsApp): Edith Nutrición +52 1 476 135 8909 (25 de Noviembre de 2026 - 8:26 p. m.)
 *   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
     *   **Edith Nutrición** (`df579d45-bc6a-463b-8f14-8449d8855dc8`) declinó cortésmente a las 8:20 p. m.: *«Gr. En otra ocasión»*.
-    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`.
+
+### 620. Admisión de Prospecto (WhatsApp): Coach +52 1 221 211 2218 (25 de Noviembre de 2026 - 8:52 p. m.)
+*   **Respuesta Humana Directa + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **Coach (`+52 1 221 211 2218`)** (México) respondió a las 8:45 p. m.: *«Hola?»*.
+    *   Alberto despachó presentación en primera persona (+1,300 ejercicios en video, menús 28 días, asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana jueves 26/11 a las 10:00 a. m. o 1:00 p. m. hora México**, solicitando su nombre.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 Internacional (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción viva para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
