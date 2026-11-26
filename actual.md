@@ -5355,7 +5355,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Rescate por Toque 3 + Exclusividad 1 a 1 (Regla 1, Regla 3, Regla 11 y Regla 21)**:
     *   **Edith Nutrición** (`df579d45-bc6a-463b-8f14-8449d8855dc8`) respondió a las 8:08 p. m.: *«Te agradezco mucho. Es grupal?»*.
     *   Alberto aclaró que es sesión **100% privada 1 a 1** enfocada en su consultorio y aplicó **Doble Alternativa** para **mañana jueves 26/11 a las 10:00 a. m. o 4:00 p. m. hora México**.
-    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **jueves 26 de noviembre a las 10:30 a. m.** (`2026-11-26T10:30:00`).
+
+### 619. Cierre Formal (WhatsApp): Edith Nutrición +52 1 476 135 8909 (25 de Noviembre de 2026 - 8:26 p. m.)
+*   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
+    *   **Edith Nutrición** (`df579d45-bc6a-463b-8f14-8449d8855dc8`) declinó cortésmente a las 8:20 p. m.: *«Gr. En otra ocasión»*.
+    *   *Supabase actualizado*: Movido formalmente a `cerrado_perdido` con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
 
 
 
