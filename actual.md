@@ -5507,7 +5507,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cierre por Compromiso + Amarre (Regla 1, Regla 3 y Regla 5)**:
     *   **Christian Andrade** (`31a77cee-8d59-48ed-a9f9-073128ee6e83`) confirmó a las 2:26 p. m.: *«Mañana 4»* (**viernes 27/11 a las 4:00 p. m. hora México / 5:00 p. m. hora Perú**).
     *   Alberto confirmó la cita y anticipó el envío del enlace 15 minutos antes (`4:45 p. m. Perú`).
-    *   *Supabase actualizado*: Promovido a **`cita_agendada`** con próxima acción programada para el **viernes 27 de noviembre a las 4:45 p. m. Perú** (`2026-11-27T16:45:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Promovido a **`cita_agendada`** con próxima acción programada para el **viernes 27 de noviembre a las 4:45 p. m. Perú** (`2026-11-27T16:45:00`).
+
+### 646. Recordatorio de Zoom 1h Antes (WhatsApp): Carlos Gabriel +52 477 640 7249 (26 de Noviembre de 2026 - 4:03 p. m.)
+*   **Aseguramiento de Asistencia (Regla 1, Regla 3 y Regla 18)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) recibió recordatorio corto 1 hora antes para reconfirmar el Zoom de **hoy jueves 26/11 a las 4:00 p. m. hora México (5:00 p. m. Perú)**.
+    *   *Supabase actualizado*: Se mantiene en `cita_agendada` con `next_action_date` hoy **jueves 26 de noviembre a las 4:45 p. m. Perú** (`2026-11-26T16:45:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
