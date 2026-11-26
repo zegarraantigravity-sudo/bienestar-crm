@@ -5524,7 +5524,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **3ra Demo del Día Exitosa (Regla 1, Regla 3 y Regla 15)**:
     *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`) participó en el Zoom de las 5:00 p. m. Perú (4:00 p. m. México). Estudia Nutrición (2do año) y entrena clientes; le interesó para sus asesorados como entrenador.
     *   Alberto despachó Plantilla Maestra Post-Zoom con código **`NUT-FLC-9Z6Q`**, video guía y `Cotizacion_Carlos_Gabriel.docx` en Dólares (Plan 30: `$120 USD`, anticipo `$60 USD`).
-    *   *Supabase actualizado*: Promovido a **`presentacion_realizada`** (`client_type: coach`) con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Promovido a **`presentacion_realizada`** (`client_type: coach`) con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`).
+
+### 649. Cierre en Bloque Grupo A (8 Leads) + Toque 3 (+52 1 477 670 9072) (26 de Noviembre de 2026 - 6:18 p. m.)
+*   **Limpieza de Pipeline y Ruptura Elegante (Regla 1, Regla 3, Regla 5 y Regla 17)**:
+    *   Cerrados formalmente a `cerrado_perdido` (`next_action_date: null`) los 8 leads del Grupo A sin respuesta tras Toque 3 del 25/11: **Yolitzin** (`754f2483`), **`+51 962 769 466`** (`2c5d83fb`), **William Vela** (`4c7d43fa`), **Daly Nutrition** (`8fcfea50`), **Coach Mayelo** (`926a60e1`), **Full Fitness Nutrition** (`35258753`), **Natural Power Nutrition** (`4fc0b28a`) y **Lic. Efraín Ramos Guin** (`d053dafa`).
+    *   **Colega Nutriólogo (`+52 1 477 670 9072`)** (`28b59b32`): recibió Toque 3 (Ruptura Elegante) ofreciendo Zoom mañana viernes 27/11 a las **10:00 a. m. o 1:00 p. m. hora México** (`next_action_date: 2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
