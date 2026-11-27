@@ -5641,7 +5641,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
     *   **Coach Nidia** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, `+52 1 81 1485 0188`) reaccionó de inmediato a la Ruptura Elegante (`9:59 a. m.`: *«Si si ya»*) y tras **Cierre por Conclusión + Insumos** confirmó (`10:12-10:13 a. m.`): *«Dale / Va»*, enviando su banner (*Método Transformación Integral*), carta de presentación, logo oficial y paleta (**rosa fucsia, dorado y negro**).
     *   Alberto solicitó su catálogo de Herbalife México + 2 fotos/testimonios y despachó la plantilla oficial de **Western Union (`$60 USD`)**.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para **hoy viernes 27 de noviembre a las 5:30 p. m.** (`2026-11-27T17:30:00`) para recibir comprobante MTCN y promover a `cerrado_ganado`.
-    *   *Regla 24 incorporada*: Se grabó en `AGENTS.md` y `GEMINI.md` que **todo cobro del extranjero es exclusivamente vía Western Union** y que ante señal de compra se aplica **Cierre por Conclusión + Insumos** con sutileza. Cerrado el barrido completo de seguimientos del día.
+    *   *Regla 24 incorporada*: Se grabó en `AGENTS.md` y `GEMINI.md` que **todo cobro del extranjero es exclusivamente vía Western Union** y que ante señal de compra se aplica **Cierre por Conclusión + Insumos** con sutileza.
+
+### 671. Admisión de Prospecto (WhatsApp): +52 1 55 1771 5492 (27 de Noviembre de 2026 - 10:30 a. m.)
+*   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **`+52 1 55 1771 5492`** (México) respondió ayer a las `11:24 p. m.`: *«Si»*. Alberto despachó propuesta clínica en primera persona (sin IA ni video) con **Doble Alternativa** para Zoom hoy **viernes 27/11 a la 1:00 p. m. o 5:30 p. m. hora México**, solicitando su nombre.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
