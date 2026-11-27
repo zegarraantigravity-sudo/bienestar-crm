@@ -137,9 +137,13 @@
 - **Alertas Proactivas sin Esperar Pregunta:** Si un lead caliente (ej. alguien que respondió ese mismo día o tenía ventana de Zoom a una hora específica) no recibió confirmación tras pasar su hora pactada, el asistente DEBE alertar a Alberto proactivamente apenas finalice la ventana, sin esperar a que Alberto pregunte *«¿hay algo más pendiente?»*.
 - **Entrega Uno por Uno con Lectura Obligatoria de Bitácora:** Cuando queden varios pendientes o seguimientos por despachar, el asistente DEBE enumerarlos claramente y entregarlos **uno por uno**, leyendo obligatoriamente antes la bitácora completa (`timeline`) de ese lead en Supabase para saber exactamente qué se conversó y qué corresponde responder sin confundirse ni repetir mensajes.
 
-## 21. Cruce Obligatorio de Agenda y Husos Horarios Antes de Proponer Horarios de Zoom
-- **Verificación Previa Inexcusable:** Antes de redactar cualquier propuesta o Doble Alternativa de horario para Zoom, el asistente DEBE consultar y cruzar obligatoriamente **todas las citas confirmadas (`cita_agendada`)** del día propuesto (tanto hoy como días siguientes) y sus respectivos husos horarios (Perú vs. México u otro país del prospecto).
-- **Margen de Seguridad entre Citas:** Queda TERMINANTEMENTE PROHIBIDO ofrecer horarios que coincidan o queden a menos de 45–60 minutos de una cita ya agendada (o fuera de la ventana de disponibilidad indicada por Alberto).
+## 21. Cruce Obligatorio de Agenda, Horarios Oficiales y Husos Horarios Antes de Proponer Zooms
+- **Horario Oficial de Zooms de Alberto (Hora Perú — INQUEBRANTABLE):**
+  - **Lunes a Viernes:** Mañana de **9:00 a. m. a 11:00 a. m.** *(a las 11:00 a. m. va al gimnasio → último arranque máx. 10:15 a. m.)* y Tarde de **3:00 p. m. a 6:00 p. m.** *(almuerzo bloqueado de 1:00 p. m. a 2:00 p. m.; prohibido agendar entre 11:00 a. m. y 3:00 p. m. o después de las 6:00 p. m.)*.
+  - **Sábados:** Mañana de **9:00 a. m. a 11:00 a. m.** y Tarde de **3:00 p. m. a 5:00 p. m.**
+  - **Domingos:** **CERO Zooms** *(prohibido agendar reuniones los domingos)*.
+- **Verificación Previa Inexcusable:** Antes de redactar cualquier propuesta o Doble Alternativa de horario para Zoom, el asistente DEBE consultar y cruzar obligatoriamente **todas las citas confirmadas (`cita_agendada`)** del día propuesto y convertir correctamente los husos horarios (ej. México = `-1h` respecto a Perú).
+- **Espaciado Mínimo Entre Citas:** Queda TERMINANTEMENTE PROHIBIDO ofrecer horarios que coincidan o queden a menos de **60 minutos** de otra cita ya agendada (nunca pegar Zooms seguidos).
 
 ## 22. Pensamiento Estratégico Contextual y Cero Respuestas Automáticas
 - **Análisis Completo Antes de Redactar:** Antes de sugerir cualquier mensaje de seguimiento o respuesta, el asistente DEBE leer obligatoriamente toda la bitácora y pensar estratégicamente qué dijo el cliente, si leyó o no el mensaje anterior y cuál es el freno real (ej. dinero, tiempo, miedo al cobro).
