@@ -5696,7 +5696,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 681. Cierre Formal (WhatsApp): Clínica Athlite (27 de Noviembre de 2026 - 1:27 p. m.)
 *   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
     *   **Clínica Athlite** (`4dd4d9e2-b94b-40a0-aa96-42741587da0c`, `+52 1 221 408 1309`) respondió a la Ruptura Elegante (`1:21 p. m.`): *«Buen día, agradezco la información pero por el momento no estamos interesados gracias»*. Alberto envió despedida de alto estatus.
-    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`.
+
+### 682. Insumos Completos + Acuerdo Domingo y Pago App Western Union: Coach Nidia (27 de Noviembre de 2026 - 1:45 p. m.)
+*   **Cierre en Proceso (Regla 1, Regla 3 y Regla 24)**:
+    *   **Coach Nidia** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, `+52 1 81 1485 0188`) envió `Catalogo Sep 26.pdf` (Herbalife México, 41 págs.), fotos y estilo visual (*limpio con colores llamativos: blanco, rosa, dorado y negro*).
+    *   Alberto mostró ejemplos reales (`lily-esparza`, `yoselin-parra`, `edna-mendez`) y acordó tenerle un adelanto de página para el **domingo 29/11**; Nidia confirmó (*«Ok deja lo intento»* / *«Va»*) hacer el envío de `$60 USD` vía **app de Western Union**.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **domingo 29 de noviembre a las 11:00 a. m.** (`2026-11-29T11:00:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
