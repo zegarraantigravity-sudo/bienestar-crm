@@ -5580,7 +5580,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Seguimiento y Doble Alternativa Directa (Regla 1, Regla 3, Regla 11 y Regla 21)**:
     *   **Nutrición PV** (`bce3499f-d8a8-4104-aec9-100e73036b2b`) respondió al Toque 2 (9:33 p. m.): *«Muchas gracias estimado»*.
     *   Alberto aplicó **Cierre por Conclusión + Doble Alternativa** directa para **mañana viernes 27/11 a las 2:00 p. m. o 6:30 p. m. hora Perú**, solicitando su nombre.
-    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Barrido del día completado al 100%. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Barrido del día completado al 100%.
+
+### 660. Cierre Formal (WhatsApp): Nutrición PV +51 967 504 399 (26 de Noviembre de 2026 - 9:41 p. m.)
+*   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
+    *   **Nutrición PV** (`bce3499f-d8a8-4104-aec9-100e73036b2b`) respondió a las 9:36 p. m.: *«Todavía / Muchas gracias»*.
+    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
 
 
 
