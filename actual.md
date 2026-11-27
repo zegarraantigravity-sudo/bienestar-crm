@@ -5702,7 +5702,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cierre en Proceso (Regla 1, Regla 3 y Regla 24)**:
     *   **Coach Nidia** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, `+52 1 81 1485 0188`) envió `Catalogo Sep 26.pdf` (Herbalife México, 41 págs.), fotos y estilo visual (*limpio con colores llamativos: blanco, rosa, dorado y negro*).
     *   Alberto mostró ejemplos reales (`lily-esparza`, `yoselin-parra`, `edna-mendez`) y acordó tenerle un adelanto de página para el **domingo 29/11**; Nidia confirmó (*«Ok deja lo intento»* / *«Va»*) hacer el envío de `$60 USD` vía **app de Western Union**.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **domingo 29 de noviembre a las 11:00 a. m.** (`2026-11-29T11:00:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **domingo 29 de noviembre a las 11:00 a. m.** (`2026-11-29T11:00:00`).
+
+### 683. Reagendamiento Anticipado de Zoom: Erika - Nutrición Clínica Renal (27 de Noviembre de 2026 - 3:14 p. m.)
+*   **Gestión de Agenda (Regla 1, Regla 3 y Regla 21)**:
+    *   Por imprevisto en el horario de las `4:30 p. m.`, Alberto avisó con anticipación a **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`, `+51 969 668 613`) y propuso reagendar por **Doble Alternativa** para **mañana sábado 28/11 (`11:00 a. m.` o `4:30 p. m. Perú`)**.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
