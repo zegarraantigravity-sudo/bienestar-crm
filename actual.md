@@ -5646,7 +5646,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 671. Admisión de Prospecto (WhatsApp): +52 1 55 1771 5492 (27 de Noviembre de 2026 - 10:30 a. m.)
 *   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **`+52 1 55 1771 5492`** (México) respondió ayer a las `11:24 p. m.`: *«Si»*. Alberto despachó propuesta clínica en primera persona (sin IA ni video) con **Doble Alternativa** para Zoom hoy **viernes 27/11 a la 1:00 p. m. o 5:30 p. m. hora México**, solicitando su nombre.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`$120 USD`), asignado a `Alberto Zegarra` y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 672. Seguimiento Pactado (WhatsApp): Diana Castro (27 de Noviembre de 2026 - 10:42 a. m.)
+*   **Bloque 2 — Prospección #1 (Regla 1, Regla 3 y Regla 7)**:
+    *   **Diana Castro** (`0afe1511-37e4-4340-93ed-914655ee6afe`, `@dianacastrowellness`): tal como se pactó el miércoles, Alberto le escribió hoy viernes proponiendo **lunes 30/11 o martes 01/12** (`11:00 a. m.` o `4:30 p. m.`) para agendar su Zoom.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
