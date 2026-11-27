@@ -5725,7 +5725,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### 687. Reprogramación Post-Demo: Carlos Gabriel (27 de Noviembre de 2026 - 6:33 p. m.)
 *   **Seguimiento (Regla 1 y Regla 3)**:
-    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`): reprogramado para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para consultar experiencia con `NUT-FLC-9Z6Q`. Cerrado el barrido completo de seguimientos del día.
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`): reprogramado para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para consultar experiencia con `NUT-FLC-9Z6Q`.
+
+### 688. Cierre Definitivo de Toque 3 (4 Leads) y Reasignación de Frank Serapion (27 de Noviembre de 2026 - 6:45 p. m.)
+*   **Limpieza de Pipeline (Regla 1, Regla 3, Regla 5 y Regla 17)**:
+    *   Cerrados formalmente a **`cerrado_perdido`** (`next_action_date: null`) tras silencio definitivo después del 3er toque (**Ruptura Elegante**): **Clínica Santa Beatriz** (`fc2abff1`), **Obesity Solutions** (`e6ca1c13`), **Prime Advance Nutrición — Leslie** (`f6d27aef`) y **Quentin Protein Life — Nicolás Arango** (`c34f8fe0`).
+    *   **Frank Serapion** (`5820bfd8`): reasignado en Supabase a `Luis Hakim`, quien lleva directamente esa negociación.
+    *   *Verificación*: **0 pendientes** restantes para hoy viernes 27 de noviembre en el radar de Alberto. Cerrado el barrido completo de seguimientos del día.
 
 
 
