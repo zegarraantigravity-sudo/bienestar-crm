@@ -5691,7 +5691,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 680. Seguimiento Toque 3 (WhatsApp): Bionaturista Cajamarca - Kenny Azañero (27 de Noviembre de 2026 - 1:23 p. m.)
 *   **Bloque 2 — Prospección #9 (Regla 1, Regla 3 y Regla 5)**:
     *   **Bionaturista Cajamarca — Kenny Azañero** (`c85bd5ba-c414-4d0f-87db-9b5583a593cf`, `+51 968 207 907`): Toque 3 (**Ruptura Elegante**) enviado con última ventana para **mañana sábado 28/11 (`11:00 a. m.` o `3:00 p. m. Perú`)** antes de cerrar seguimiento.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 681. Cierre Formal (WhatsApp): Clínica Athlite (27 de Noviembre de 2026 - 1:27 p. m.)
+*   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
+    *   **Clínica Athlite** (`4dd4d9e2-b94b-40a0-aa96-42741587da0c`, `+52 1 221 408 1309`) respondió a la Ruptura Elegante (`1:21 p. m.`): *«Buen día, agradezco la información pero por el momento no estamos interesados gracias»*. Alberto envió despedida de alto estatus.
+    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
 
 
 
