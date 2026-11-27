@@ -5608,7 +5608,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Bloque 1 — #2 (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **GET READY** (`6d910517-dc9c-4496-96d9-164b76d1f87e`, `+52 1 222 302 0760`, México) recibió ayer propuesta inicial sin respuesta.
     *   Alberto despachó **Toque 1** directo con **Doble Alternativa** para Zoom hoy viernes **27/11 a la 1:00 p. m. o 5:30 p. m. hora México**.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para el **sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para el **sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 665. Seguimiento Toque 3 (WhatsApp): Academia / Coach MMA (27 de Noviembre de 2026 - 9:41 a. m.)
+*   **Bloque 1 — #3 (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **Academia / Coach MMA** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`, `+52 1 221 211 2218`, México) no respondió al Toque 2 de ayer.
+    *   Alberto despachó **Toque 3 (Ruptura Elegante)** con última ventana hoy viernes **27/11 a la 1:00 p. m. o 5:30 p. m. hora México** antes de cerrar ficha.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para el **sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para cierre definitivo a `cerrado_perdido` si persiste silencio. Cerrado el barrido completo de seguimientos del día.
 
 
 
