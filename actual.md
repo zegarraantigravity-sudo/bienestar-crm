@@ -5721,7 +5721,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 686. Rescate de Alto Estatus (WhatsApp): Christian Andrade (27 de Noviembre de 2026 - 6:25 p. m.)
 *   **Gestión de Objeción / Molestia (Regla 1, Regla 3 y Regla 21)**:
     *   **Christian Andrade** (`31a77cee-8d59-48ed-a9f9-073128ee6e83`, `+52 1 222 200 4306`) respondió secamente (`6:13 p. m.`): *«No»*. Alberto envió rescate de alto estatus reconociendo el valor de su tiempo y proponiendo **Doble Alternativa** para el **lunes 30/11 (`9:00 a. m.` o `3:00 p. m. hora México`)**.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 687. Reprogramación Post-Demo: Carlos Gabriel (27 de Noviembre de 2026 - 6:33 p. m.)
+*   **Seguimiento (Regla 1 y Regla 3)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`): reprogramado para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para consultar experiencia con `NUT-FLC-9Z6Q`. Cerrado el barrido completo de seguimientos del día.
 
 
 
