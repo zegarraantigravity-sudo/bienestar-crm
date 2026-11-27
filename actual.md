@@ -5585,7 +5585,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 660. Cierre Formal (WhatsApp): Nutrición PV +51 967 504 399 (26 de Noviembre de 2026 - 9:41 p. m.)
 *   **Escucha Activa y Cierre Real (Regla 1, Regla 3 y Regla 18)**:
     *   **Nutrición PV** (`bce3499f-d8a8-4104-aec9-100e73036b2b`) respondió a las 9:36 p. m.: *«Todavía / Muchas gracias»*.
-    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Movida formalmente a **`cerrado_perdido`** con `next_action_date: null`.
+
+### 661. Admisión de Prospecto (WhatsApp): Flor Chileno - AYUDA NUTRICIONAL (26 de Noviembre de 2026 - 9:46 p. m.)
+*   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **Flor Chileno** (`@nutricionistaflorchileno`, *AYUDA NUTRICIONAL*): saltaron mensajes automáticos a las 9:29 p. m.; Alberto despachó propuesta clínica (planes 28 días, intercambio manteniendo macros, asistente virtual 24/7) con **Doble Alternativa** para Zoom **mañana viernes 27/11 a las 2:00 p. m. o 6:30 p. m. hora Perú**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción viva para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
