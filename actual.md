@@ -5620,7 +5620,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Bloque 2 — Cierre #1 (Regla 1, Regla 3 y Regla 18)**:
     *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`) respondió hoy a las 8:47 a. m.: *«Gracias gracias horita lo instalo»*.
     *   Alberto reforzó que pruebe los menús y rutinas con `NUT-FLC-9Z6Q` y pactó seguimiento corto para hoy en la tarde.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para **hoy viernes 27 de noviembre a las 5:30 p. m.** (`2026-11-27T17:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para **hoy viernes 27 de noviembre a las 5:30 p. m.** (`2026-11-27T17:30:00`).
+
+### 667. Reprogramación Estratégica Post-Demo: Katty Nutris (27 de Noviembre de 2026 - 9:48 a. m.)
+*   **Bloque 2 — Cierre #2 (Regla 1, Regla 3 y Regla 22)**:
+    *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`, `+51 956 692 178`): tras recibir su demo y código `NUT-FLC-7YBQ` ayer a las 5:04 p. m., se decidió darle el día de hoy para probar con calma sin presión.
+    *   *Supabase actualizado*: Próxima acción reprogramada para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
