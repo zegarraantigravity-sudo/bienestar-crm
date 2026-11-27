@@ -5625,7 +5625,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 667. Reprogramación Estratégica Post-Demo: Katty Nutris (27 de Noviembre de 2026 - 9:48 a. m.)
 *   **Bloque 2 — Cierre #2 (Regla 1, Regla 3 y Regla 22)**:
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`, `+51 956 692 178`): tras recibir su demo y código `NUT-FLC-7YBQ` ayer a las 5:04 p. m., se decidió darle el día de hoy para probar con calma sin presión.
-    *   *Supabase actualizado*: Próxima acción reprogramada para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Próxima acción reprogramada para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 668. Reconfirmación Zoom (Alma Sedano) + Corrección y Ruptura Elegante (Coach Nidia) (27 de Noviembre de 2026 - 9:57 a. m.)
+*   **Bloque 2 — Cita 11:00 a. m. y Cierre #3 (Regla 1, Regla 3, Regla 18 y Regla 22)**:
+    *   **Alma Sedano** (`28b59b32-b8d8-475d-80f3-473bf19f317e`, `+52 1 477 670 9072`): confirmó su nombre a la `1:28 a. m.` (*«Gracias ...soy Alma Sedano»*). Alberto envió reconfirmación 1 hora antes para el Zoom de hoy `10:00 a. m. México (11:00 a. m. Perú)`, dejando alerta para enviar el enlace a las `10:45 a. m. Perú`.
+    *   **Coach Nidia** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, `+52 1 81 1485 0188`): se corrigió la bitácora de ayer (`10:25 a. m.` fue toque con `NUT-FLC-82HF` o 5 min en vivo, dejado en visto azul; cero ofrecimiento de bocetos gratis porque el montaje inicia únicamente con el **50% de anticipo `$60 USD`**). Alberto despachó **Ruptura Elegante** y se programó seguimiento final para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
