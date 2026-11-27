@@ -150,6 +150,10 @@
 - **Límite del Cierre Envolvente por Insumos:** El Cierre Envolvente por Insumos (Regla 8) se aplica **exclusivamente** cuando el cliente ya dio un compromiso explícito y fecha concreta de pago (o ya depositó su anticipo), **NUNCA** a leads fríos o que dejaron mensajes previos en visto azul sin responder.
 - **Criterio Antes de Redactar:** Si una nota en bitácora contradice el sentido comercial o genera duda frente al estado real del chat, pedir captura o verificar primero antes de proponer seguimientos basados en supuestos viejos.
 
+## 24. Canal Exclusivo de Cobro Internacional (Western Union) y Cierre Sutil por Conclusión + Insumos
+- **Western Union Exclusivo en el Extranjero:** Todo cobro internacional (México, EE. UU., Ecuador, etc.) se realiza **exclusivamente vía Western Union** (usando la Plantilla Oficial de `actual.md`). Queda **TERMINANTEMENTE PROHIBIDO** ofrecer transferencias bancarias locales del país del cliente, enlaces de pago con tarjeta o métodos no autorizados.
+- **Cierre Sutil Ante Señal de Compra:** Cuando un prospecto dé luz verde (*«sí, ya»*, *«dale»*, *«va»*), NO cobrar de golpe en frío; aplicar **Cierre por Conclusión + Envolvente por Insumos** con sutileza (confirmar si arrancamos hoy con el anticipo y pedir de una vez su logo, colores, fotos y catálogo para empezar el montaje).
+
 
 
 

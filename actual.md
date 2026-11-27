@@ -5634,7 +5634,14 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 
 ### 669. Nueva Regla 23: Prohibición de Bocetos Gratis y Montaje Exclusivo con 50% de Anticipo (27 de Noviembre de 2026 - 10:02 a. m.)
 *   **Protocolo Permanente (Regla 1 y Regla 3)**:
-    *   Se incorporó formalmente la **Regla 23** en `AGENTS.md` y `GEMINI.md`: prohibido ofrecer o sugerir bocetos/muestras gratuitas; el montaje inicia únicamente con el **50% de anticipo**, el Cierre Envolvente por Insumos aplica solo cuando existe fecha o compromiso real de pago, y toda nota de bitácora debe contrastarse con criterio comercial frente al estado real del chat. Cerrado el barrido completo de seguimientos del día.
+    *   Se incorporó formalmente la **Regla 23** en `AGENTS.md` y `GEMINI.md`: prohibido ofrecer o sugerir bocetos/muestras gratuitas; el montaje inicia únicamente con el **50% de anticipo**, el Cierre Envolvente por Insumos aplica solo cuando existe fecha o compromiso real de pago, y toda nota de bitácora debe contrastarse con criterio comercial frente al estado real del chat.
+
+### 670. Cierre Inminente + Insumos (Coach Nidia) y Nueva Regla 24 (Western Union Exclusivo) (27 de Noviembre de 2026 - 10:21 a. m.)
+*   **Bloque 2 — Cierre #3 + Regla Permanente (Regla 1, Regla 3 y Regla 24)**:
+    *   **Coach Nidia** (`8da39fb4-f8ba-4905-8374-be4c75e62e6b`, `+52 1 81 1485 0188`) reaccionó de inmediato a la Ruptura Elegante (`9:59 a. m.`: *«Si si ya»*) y tras **Cierre por Conclusión + Insumos** confirmó (`10:12-10:13 a. m.`): *«Dale / Va»*, enviando su banner (*Método Transformación Integral*), carta de presentación, logo oficial y paleta (**rosa fucsia, dorado y negro**).
+    *   Alberto solicitó su catálogo de Herbalife México + 2 fotos/testimonios y despachó la plantilla oficial de **Western Union (`$60 USD`)**.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para **hoy viernes 27 de noviembre a las 5:30 p. m.** (`2026-11-27T17:30:00`) para recibir comprobante MTCN y promover a `cerrado_ganado`.
+    *   *Regla 24 incorporada*: Se grabó en `AGENTS.md` y `GEMINI.md` que **todo cobro del extranjero es exclusivamente vía Western Union** y que ante señal de compra se aplica **Cierre por Conclusión + Insumos** con sutileza. Cerrado el barrido completo de seguimientos del día.
 
 
 
