@@ -5574,7 +5574,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 658. Nombre Confirmado (Alma Sedano) + Toque 2 HEALTHGYM (26 de Noviembre de 2026 - 7:22 p. m.)
 *   **Actualización de Ficha y Seguimiento (Regla 1, Regla 3 y Regla 21)**:
     *   **Alma Sedano** (`28b59b32-b8d8-475d-80f3-473bf19f317e`, `+52 1 477 670 9072`): nombre actualizado en Supabase manteniendo su Zoom de mañana **viernes 27/11 a las 11:00 a. m. Perú (10:00 a. m. México)**.
-    *   **HEALTHGYM** (`394ba1c7-2c05-4739-a27b-5075f3c7c49f`): recibió Toque 2 ofreciendo Zoom mañana viernes 27/11 a las **2:00 p. m. o 6:30 p. m. hora Perú** (`next_action_date: 2026-11-27T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   **HEALTHGYM** (`394ba1c7-2c05-4739-a27b-5075f3c7c49f`): recibió Toque 2 ofreciendo Zoom mañana viernes 27/11 a las **2:00 p. m. o 6:30 p. m. hora Perú** (`next_action_date: 2026-11-27T10:30:00`).
+
+### 659. Toque 2 y Cierre por Conclusión (WhatsApp): Nutrición PV +51 967 504 399 (26 de Noviembre de 2026 - 9:36 p. m.)
+*   **Seguimiento y Doble Alternativa Directa (Regla 1, Regla 3, Regla 11 y Regla 21)**:
+    *   **Nutrición PV** (`bce3499f-d8a8-4104-aec9-100e73036b2b`) respondió al Toque 2 (9:33 p. m.): *«Muchas gracias estimado»*.
+    *   Alberto aplicó **Cierre por Conclusión + Doble Alternativa** directa para **mañana viernes 27/11 a las 2:00 p. m. o 6:30 p. m. hora Perú**, solicitando su nombre.
+    *   *Supabase actualizado*: Bitácora actualizada con próxima acción para el **viernes 27 de noviembre a las 10:30 a. m.** (`2026-11-27T10:30:00`). Barrido del día completado al 100%. Cerrado el barrido completo de seguimientos del día.
 
 
 
