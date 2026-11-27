@@ -145,6 +145,11 @@
 - **Análisis Completo Antes de Redactar:** Antes de sugerir cualquier mensaje de seguimiento o respuesta, el asistente DEBE leer obligatoriamente toda la bitácora y pensar estratégicamente qué dijo el cliente, si leyó o no el mensaje anterior y cuál es el freno real (ej. dinero, tiempo, miedo al cobro).
 - **Prohibido Repetir Argumentos Rechazados:** Si un prospecto ya frenó por gasto o no abrió un mensaje insistiendo en Zoom, NO repetir la misma invitación ni pedirle que lea el mensaje anterior; cambiar el ángulo (ej. prueba gratuita sin costo ni llamadas, insumos o pausa elegante) o pedir captura a Alberto si falta verificar visto/última respuesta.
 
+## 23. Prohibición de Bocetos Gratis y Regla de Montaje Exclusivo con 50% de Anticipo
+- **Cero Bocetos ni Muestras Gratuitas:** Queda **TERMINANTEMENTE PROHIBIDO** ofrecer, prometer o sugerir armar bocetos, prototipos visuales o páginas gratuitas sin pago previo. El montaje y personalización de la página/App de un cliente inicia **únicamente** después de que deposita el **50% de anticipo**.
+- **Límite del Cierre Envolvente por Insumos:** El Cierre Envolvente por Insumos (Regla 8) se aplica **exclusivamente** cuando el cliente ya dio un compromiso explícito y fecha concreta de pago (o ya depositó su anticipo), **NUNCA** a leads fríos o que dejaron mensajes previos en visto azul sin responder.
+- **Criterio Antes de Redactar:** Si una nota en bitácora contradice el sentido comercial o genera duda frente al estado real del chat, pedir captura o verificar primero antes de proponer seguimientos basados en supuestos viejos.
+
 
 
 
