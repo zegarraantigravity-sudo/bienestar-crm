@@ -5614,7 +5614,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Bloque 1 — #3 (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **Academia / Coach MMA** (`77ab6d7f-b30c-410f-9c98-e9b5c671638b`, `+52 1 221 211 2218`, México) no respondió al Toque 2 de ayer.
     *   Alberto despachó **Toque 3 (Ruptura Elegante)** con última ventana hoy viernes **27/11 a la 1:00 p. m. o 5:30 p. m. hora México** antes de cerrar ficha.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para el **sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para cierre definitivo a `cerrado_perdido` si persiste silencio. Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para el **sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`) para cierre definitivo a `cerrado_perdido` si persiste silencio.
+
+### 666. Seguimiento Post-Demo (WhatsApp): Carlos Gabriel (27 de Noviembre de 2026 - 9:46 a. m.)
+*   **Bloque 2 — Cierre #1 (Regla 1, Regla 3 y Regla 18)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`) respondió hoy a las 8:47 a. m.: *«Gracias gracias horita lo instalo»*.
+    *   Alberto reforzó que pruebe los menús y rutinas con `NUT-FLC-9Z6Q` y pactó seguimiento corto para hoy en la tarde.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción programada para **hoy viernes 27 de noviembre a las 5:30 p. m.** (`2026-11-27T17:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
