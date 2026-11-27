@@ -5656,7 +5656,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 673. Demo Ejecutada + Cotización USD (Alma Sedano) y Seguimiento (Clara Hoyos) (27 de Noviembre de 2026 - 12:59 p. m.)
 *   **Zoom #1 del Día + Prospección #2 (Regla 1, Regla 3, Regla 15 y Regla 16)**:
     *   **Alma Sedano** (`28b59b32-b8d8-475d-80f3-473bf19f317e`, `+52 1 477 670 9072`): Zoom demostrativo ejecutado con éxito (`11:00 a. m. Perú / 10:00 a. m. México`). Le interesó la plataforma; como tiene pocos clientes aún, Alberto le entregó kit de prueba con el código **`NUT-FLC-FM1K`** y generó `Cotizacion_Alma_Sedano.docx` en USD (`Plan 30: $120 USD` / anticipo `$60 USD` vía Western Union). Promovida a **`presentacion_realizada`** con próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
-    *   **Clara Hoyos** (`76e09f7f-9641-41b0-a1e3-ed7ac8d95a4e`, `@clarahoyos.bienestar`): seguimiento enviado con **Doble Alternativa** para **mañana sábado 28/11 (`11:00 a. m.` o `3:00 p. m. Perú`)** y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   **Clara Hoyos** (`76e09f7f-9641-41b0-a1e3-ed7ac8d95a4e`, `@clarahoyos.bienestar`): seguimiento enviado con **Doble Alternativa** para **mañana sábado 28/11 (`11:00 a. m.` o `3:00 p. m. Perú`)** y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 674. Seguimiento Toque 1 (WhatsApp): Flor Chileno - AYUDA NUTRICIONAL (27 de Noviembre de 2026 - 1:03 p. m.)
+*   **Bloque 2 — Prospección #3 (Regla 1, Regla 3 y Regla 5)**:
+    *   **Flor Chileno** (`e90dd0ae-5fd1-4487-bdc3-3d42ad20c1dd`, `@nutricionistaflorchileno`): Toque 1 enviado tras propuesta de anoche con **Doble Alternativa** para **mañana sábado 28/11 (`11:00 a. m.` o `3:00 p. m. Perú`)**.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
