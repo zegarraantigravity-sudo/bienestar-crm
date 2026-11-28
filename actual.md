@@ -5743,7 +5743,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Post-Demo + Psicología de Cierre (Regla 1, Regla 3 y Regla 22)**:
     *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`) respondió a las `10:28 p. m.` validando la app con `NUT-FLC-9Z6Q`: acelera el proceso, mantiene precisión frente a sus fórmulas y facilita la organización sin saturarse.
     *   Alberto aplicó **Amarre + Cierre Sutil** consultando nombre de marca y fecha deseada de arranque para sus alumnos (sin presionar cobro aún).
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`).
+
+### 691. Admisión de Prospecto (WhatsApp): Nutrilau asesoría nutricional (28 de Noviembre de 2026 - 9:15 a. m.)
+*   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **Nutrilau asesoría nutricional** (`+51 970 822 945`, `nutrilau.pe@gmail.com`, 5 sedes en Lima + virtual): saltó bienvenida a las `9:14 a. m.`. Alberto despachó propuesta clínica en primera persona (sin IA ni video) con **Doble Alternativa** para Zoom **hoy sábado 28/11 a las 10:00 a. m. o 3:30 p. m. hora Perú**, solicitando su nombre.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
