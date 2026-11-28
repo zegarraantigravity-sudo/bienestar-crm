@@ -5807,7 +5807,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cierre de Bloque Matutino (Regla 1, Regla 3 y Regla 21)**:
     *   Enviados **Toque 2** dentro del horario oficial a **GET READY** (`6d910517`, hoy `2:00 p. m.` o lunes `9:00 a. m. México`), **Flor Chileno** (`e90dd0ae`, hoy `3:00 p. m.` o lunes `10:00 a. m. Perú`) y **NutritionVida** (`7fd204fa`, hoy `3:00 p. m.` o lunes `10:00 a. m. Perú`), todos programados para el **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
     *   **Diana Castro** (`0afe1511`): mensaje de ayer viernes sigue en doble check gris; movida al **lunes 30/11 a las 9:30 a. m.** (`2026-11-30T09:30:00`).
-    *   **Carla Meliza Guere** (Messenger, diseñadora de alta costura): filtrada como **No-Fit** por **Regla 13** (despedida cortés sin registro en Supabase). Cerrado el barrido completo de seguimientos del día.
+    *   **Carla Meliza Guere** (Messenger, diseñadora de alta costura): filtrada como **No-Fit** por **Regla 13** (despedida cortés sin registro en Supabase).
+
+### 703. Admisión de Prospecto (WhatsApp): Cynthia Fuentes - Nutrienlinea (28 de Noviembre de 2026 - 10:55 a. m.)
+*   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
+    *   **Cynthia Fuentes** (`@c3fuentes`, *Nutrienlinea*, Nutricionista Clínica y Pediátrica CNP 4000, Perú): saltó bienvenida a las `10:53 a. m.` estando en línea. Alberto despachó propuesta clínica en primera persona (sin IA ni video) con **Doble Alternativa** para Zoom **hoy sábado 28/11 a las 3:00 p. m. o 4:30 p. m. hora Perú**.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
