@@ -5795,7 +5795,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 700. Seguimiento Programado (Jorge Becerra) + Toque 1 (+52 1 55 1771 5492) (28 de Noviembre de 2026 - 10:38 a. m.)
 *   **Bloque 2 — Cierre #5 y Agenda #4 (Regla 1, Regla 3 y Regla 21)**:
     *   **Jorge Luis Becerra Juarez** (`4cd9d6c1-f71b-4948-932a-d1c25db08b12`, `+52 1 961 245 6759`): mensaje programado para hoy sábado `1:00 p. m. Perú (12:00 m. México)` consultando experiencia con `NUT-FLC-3VNI` y `NUT-FLC-DOKN` y Bono de Acción Rápida (45 días). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
-    *   **`+52 1 55 1771 5492`** (`6e413562-7a3d-484f-aaa0-eb32080f6be2`): Toque 1 enviado con **Doble Alternativa** dentro del horario oficial (**hoy sábado `2:00 p. m.` o lunes `30/11 a las 9:00 a. m. hora México`**). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   **`+52 1 55 1771 5492`** (`6e413562-7a3d-484f-aaa0-eb32080f6be2`): Toque 1 enviado con **Doble Alternativa** dentro del horario oficial (**hoy sábado `2:00 p. m.` o lunes `30/11 a las 9:00 a. m. hora México`**). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 701. Respuesta Cálida (WhatsApp): Clara Hoyos - La Casita de la Nutrición (28 de Noviembre de 2026 - 10:43 a. m.)
+*   **Escucha Activa + Regla 21 (Regla 1 y Regla 3)**:
+    *   **Clara Hoyos** (`76e09f7f-9641-41b0-a1e3-ed7ac8d95a4e`, `@clarahoyos.bienestar`) respondió (`10:33 a. m.`): *«Estoy con reuniones amigo x eso ya no te respondí»*.
+    *   Alberto validó su carga con cero fricción y dejó ventana abierta para el **lunes 30/11 o martes 01/12 (`10:00 a. m.` o `3:30 p. m.`)**.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
