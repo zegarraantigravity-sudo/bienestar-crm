@@ -5737,7 +5737,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cierre por Conclusión + Regla 21 (Regla 1 y Regla 3)**:
     *   Tras el rescate de alto estatus, **Christian Andrade** (`31a77cee-8d59-48ed-a9f9-073128ee6e83`, `+52 1 222 200 4306`) respondió por audio (`7:24 p. m.`): *«puedo el miércoles a partir de las 4 de la tarde»*.
     *   Alberto selló el Zoom para el **miércoles 2 de diciembre a las 4:00 p. m. hora México (`5:00 p. m. hora Perú`)**, 100% dentro del bloque oficial de tarde (`3:00–6:00 p. m. Perú`).
-    *   *Supabase actualizado*: En `cita_agendada`, próxima acción para el **miércoles 2 de diciembre a las 4:45 p. m. Perú** (`2026-12-02T16:45:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: En `cita_agendada`, próxima acción para el **miércoles 2 de diciembre a las 4:45 p. m. Perú** (`2026-12-02T16:45:00`).
+
+### 690. Validación Positiva de Prueba y Cierre Sutil: Carlos Gabriel (27 de Noviembre de 2026 - 10:33 p. m.)
+*   **Post-Demo + Psicología de Cierre (Regla 1, Regla 3 y Regla 22)**:
+    *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`) respondió a las `10:28 p. m.` validando la app con `NUT-FLC-9Z6Q`: acelera el proceso, mantiene precisión frente a sus fórmulas y facilita la organización sin saturarse.
+    *   Alberto aplicó **Amarre + Cierre Sutil** consultando nombre de marca y fecha deseada de arranque para sus alumnos (sin presionar cobro aún).
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para **mañana sábado 28 de noviembre a las 10:30 a. m.** (`2026-11-28T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
