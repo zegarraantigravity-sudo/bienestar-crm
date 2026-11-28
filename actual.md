@@ -5790,7 +5790,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Cierre por Conclusión + Regla 21 (Regla 1 y Regla 3)**:
     *   **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`, `+51 969 668 613`) confirmó (`10:28 a. m.`): *«Lunes»* (**4:30 p. m. hora Perú**).
     *   Alberto selló la cita para el **lunes 30 de noviembre a las 4:30 p. m. hora Perú**, avisando envío de enlace 15 min antes (`4:15 p. m.`).
-    *   *Supabase actualizado*: En `cita_agendada`, próxima acción para el **lunes 30 de noviembre a las 4:15 p. m.** (`2026-11-30T16:15:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: En `cita_agendada`, próxima acción para el **lunes 30 de noviembre a las 4:15 p. m.** (`2026-11-30T16:15:00`).
+
+### 700. Seguimiento Programado (Jorge Becerra) + Toque 1 (+52 1 55 1771 5492) (28 de Noviembre de 2026 - 10:38 a. m.)
+*   **Bloque 2 — Cierre #5 y Agenda #4 (Regla 1, Regla 3 y Regla 21)**:
+    *   **Jorge Luis Becerra Juarez** (`4cd9d6c1-f71b-4948-932a-d1c25db08b12`, `+52 1 961 245 6759`): mensaje programado para hoy sábado `1:00 p. m. Perú (12:00 m. México)` consultando experiencia con `NUT-FLC-3VNI` y `NUT-FLC-DOKN` y Bono de Acción Rápida (45 días). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+    *   **`+52 1 55 1771 5492`** (`6e413562-7a3d-484f-aaa0-eb32080f6be2`): Toque 1 enviado con **Doble Alternativa** dentro del horario oficial (**hoy sábado `2:00 p. m.` o lunes `30/11 a las 9:00 a. m. hora México`**). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
