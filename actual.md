@@ -5769,7 +5769,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 *   **Escucha Activa + Calibración MLM (Regla 1, Regla 3 y Regla 18)**:
     *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`, `+51 956 692 178`) respondió (`9:47 a. m.`): *«Aun no he podido ingresar / Estoy con lo del cierre de mes»*.
     *   Alberto validó su cierre de mes en Herbalife y pactó que pruebe `NUT-FLC-7YBQ` el **martes 1 o miércoles 2 de diciembre** para que le cuente qué le pareció.
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **martes 1 de diciembre a las 10:30 a. m.** (`2026-12-01T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **martes 1 de diciembre a las 10:30 a. m.** (`2026-12-01T10:30:00`).
+
+### 696. Seguimiento Post-Demo Sin Lectura (WhatsApp): Alma Sedano (28 de Noviembre de 2026 - 10:16 a. m.)
+*   **Bloque 2 — Cierre #3 (Regla 1, Regla 3 y Regla 22)**:
+    *   **Alma Sedano** (`28b59b32-b8d8-475d-80f3-473bf19f317e`, `+52 1 477 670 9072`): al verificar doble check gris en el kit de ayer, Alberto envió toque corto y sin presión para que pruebe `NUT-FLC-FM1K` este fin de semana.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
