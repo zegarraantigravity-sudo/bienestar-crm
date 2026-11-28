@@ -5758,6 +5758,11 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 693. Reactivación de Fin de Mes (WhatsApp): Rosa Freire (28 de Noviembre de 2026 - 9:35 a. m.)
 *   **Bloque 2 — Cierre #1 (Regla 1, Regla 3 y Regla 10)**:
     *   **Rosa Freire** (`030c95bc-fac4-4f0f-99b5-1131a4464b05`, `+593 93 958 5832`): reactivación cálida de fin de mes consultando por el cierre de su certificación de enfermedades metabólicas y el lanzamiento de su App con productos FuXion para diciembre.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 694. Seguimiento Post-Demo (WhatsApp): Katty Nutris (28 de Noviembre de 2026 - 9:42 a. m.)
+*   **Bloque 2 — Cierre #2 (Regla 1, Regla 3 y Regla 10)**:
+    *   **Katty Nutris** (`981fd227-38c6-49ba-bcd8-6dcb0990560c`, `+51 956 692 178`): Alberto envió seguimiento positivo (`9:42 a. m.`) consultando su experiencia probando `NUT-FLC-7YBQ` y sus productos Herbalife en los menús.
     *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
