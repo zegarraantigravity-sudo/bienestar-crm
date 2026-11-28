@@ -5779,7 +5779,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 697. Seguimientos (WhatsApp): Carlos Gabriel y Erika - Nutrición Renal (28 de Noviembre de 2026 - 10:24 a. m.)
 *   **Bloque 2 — Cierre #4 y Agenda #1 (Regla 1, Regla 3, Regla 21 y Regla 22)**:
     *   **Carlos Gabriel** (`3f283a4b-ae27-4330-815d-23d5bebe744d`, `+52 477 640 7249`): tras visto azul de anoche (`10:33 p. m.`), Alberto envió toque ligero sin presión para resolver dudas del Plan 30 o arrancar la próxima semana. Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
-    *   **Erika (Nutrición Renal)** (`305e3382-b739-480e-a909-b91a2b586c0a`, `+51 969 668 613`): ping corto de reagendamiento con **Doble Alternativa** dentro del horario oficial (**hoy sábado `4:30 p. m.` o lunes `30/11 a las 4:30 p. m. Perú`**). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   **Erika (Nutrición Renal)** (`305e3382-b739-480e-a909-b91a2b586c0a`, `+51 969 668 613`): ping corto de reagendamiento con **Doble Alternativa** dentro del horario oficial (**hoy sábado `4:30 p. m.` o lunes `30/11 a las 4:30 p. m. Perú`**). Próxima acción: **lunes 30/11 a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 698. Seguimiento (WhatsApp): Clara Hoyos - La Casita de la Nutrición (28 de Noviembre de 2026 - 10:27 a. m.)
+*   **Bloque 2 — Agenda #2 (Regla 1, Regla 3 y Regla 21)**:
+    *   **Clara Hoyos** (`76e09f7f-9641-41b0-a1e3-ed7ac8d95a4e`, `@clarahoyos.bienestar`): toque corto con **Doble Alternativa** dentro del horario oficial (**hoy sábado `3:00 p. m.` o lunes `30/11 a las 10:00 a. m. Perú`**).
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
