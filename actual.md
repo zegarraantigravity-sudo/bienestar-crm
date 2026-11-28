@@ -5748,7 +5748,12 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 691. Admisión de Prospecto (WhatsApp): Nutrilau asesoría nutricional (28 de Noviembre de 2026 - 9:15 a. m.)
 *   **Prospección + Cruce de Agenda (Regla 1, Regla 3, Regla 5 y Regla 21)**:
     *   **Nutrilau asesoría nutricional** (`+51 970 822 945`, `nutrilau.pe@gmail.com`, 5 sedes en Lima + virtual): saltó bienvenida a las `9:14 a. m.`. Alberto despachó propuesta clínica en primera persona (sin IA ni video) con **Doble Alternativa** para Zoom **hoy sábado 28/11 a las 10:00 a. m. o 3:30 p. m. hora Perú**, solicitando su nombre.
-    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Nuevo registro creado en estado `prospecto`, Plan 30 (`S/ 400`), asignado a `Alberto Zegarra` y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 692. Cierre Definitivo de Bloque 1 Vencido (Lupita y Coach MMA) (28 de Noviembre de 2026 - 9:29 a. m.)
+*   **Limpieza de Pipeline (Regla 1, Regla 3 y Regla 17)**:
+    *   Cerrados formalmente a **`cerrado_perdido`** (`next_action_date: null`) tras silencio definitivo después de Ruptura Elegante / Toque 3: **Nutrióloga Lupita** (`70986b89`, `+52 1 55 1874 9750`) y **Academia / Coach MMA** (`77ab6d7f`, `+52 1 221 211 2218`).
+    *   Los 4 restantes de Toque 3 de ayer (**Coach Luis Gonz**, **HEALTHGYM**, **FIT NUTRICION**, **Bionaturista Cajamarca**) quedan monitoreados hasta las **3:00 p. m.** de hoy sábado (`2026-11-28T15:00:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
