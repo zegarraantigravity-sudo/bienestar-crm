@@ -5784,7 +5784,13 @@ Este documento sirve como registro vivo de las tareas completadas, el estado del
 ### 698. Seguimiento (WhatsApp): Clara Hoyos - La Casita de la Nutrición (28 de Noviembre de 2026 - 10:27 a. m.)
 *   **Bloque 2 — Agenda #2 (Regla 1, Regla 3 y Regla 21)**:
     *   **Clara Hoyos** (`76e09f7f-9641-41b0-a1e3-ed7ac8d95a4e`, `@clarahoyos.bienestar`): toque corto con **Doble Alternativa** dentro del horario oficial (**hoy sábado `3:00 p. m.` o lunes `30/11 a las 10:00 a. m. Perú`**).
-    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`). Cerrado el barrido completo de seguimientos del día.
+    *   *Supabase actualizado*: Bitácora actualizada y próxima acción para el **lunes 30 de noviembre a las 10:30 a. m.** (`2026-11-30T10:30:00`).
+
+### 699. Cita Sellada para Lunes 30/11 (WhatsApp): Erika - Nutrición Clínica Renal (28 de Noviembre de 2026 - 10:32 a. m.)
+*   **Cierre por Conclusión + Regla 21 (Regla 1 y Regla 3)**:
+    *   **Erika** (`305e3382-b739-480e-a909-b91a2b586c0a`, `+51 969 668 613`) confirmó (`10:28 a. m.`): *«Lunes»* (**4:30 p. m. hora Perú**).
+    *   Alberto selló la cita para el **lunes 30 de noviembre a las 4:30 p. m. hora Perú**, avisando envío de enlace 15 min antes (`4:15 p. m.`).
+    *   *Supabase actualizado*: En `cita_agendada`, próxima acción para el **lunes 30 de noviembre a las 4:15 p. m.** (`2026-11-30T16:15:00`). Cerrado el barrido completo de seguimientos del día.
 
 
 
